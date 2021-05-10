@@ -18,4 +18,4 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
       - name: Build website flavor of the APK, run lint and tests
-        run: sudo ./gradlew assembleWebsiteRelease lint test
+        run: sudo ./gradlew buildWebsiteRelease

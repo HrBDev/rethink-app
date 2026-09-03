@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="blocklist_update_check_not_required">Bloklijsten zijn al op de laatste versie.</string>
-    <string name="alert_firewall_accessibility_explanation">RethinkDNS gebruikt de toegankelijkheidsdienst om bij te houden welke apps in gebruik zijn (voorgrond) versus die welke niet in gebruik zijn (achtergrond). \n \nRethinkDNS verzamelt geen informatie en bespioneert u op geen enkele manier.</string>
+    <string name="alert_firewall_accessibility_explanation">Rethink gebruikt de toegankelijkheidsdienst om bij te houden welke apps in gebruik zijn (voorgrond) versus die welke niet in gebruik zijn (achtergrond). \n \nRethink verzamelt geen informatie en bespioneert u op geen enkele manier.</string>
     <string name="status_no_internet">geen internet</string>
     <string name="status_protected_with_private_dns">beveiligd met privé dns</string>
     <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Verbonden met RethinkDNS en Firewall</string>
@@ -29,7 +29,7 @@
     <string name="settings_enable_logs">On-device logging inschakelen</string>
     <string name="search_custom_domains"><font size="12">Domeinnamen zoeken</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Bloklijsten zoeken</font></string>
-    <string name="settings_socks5_vpn_disabled_error">Start RethinkDNS om verder te gaan.</string>
+    <string name="settings_socks5_vpn_disabled_error">Start Rethink om verder te gaan.</string>
     <string name="settings_network_all_networks_desc">Indien ingeschakeld, gebruikt RethinkDNS alle beschikbare netwerken om verbinding te maken met het internet. Indien niet, gebruikt het netwerk dat door Android als <i>actief wordt beschouwd</i>.</string>
     <string name="settings_ip_network_heading">Kies IP-versie</string>
     <string name="settings_https_heading">HTTP(S)-proxy instellen</string>
@@ -40,7 +40,7 @@
     <string name="settings_https_disabled_error">Verbonden met %1$s. Zet het uit om verder te gaan.</string>
     <string name="settings_autostart_bootup_desc">Start RethinkDNS bij het opstarten van het apparaat als het actief was voor het afsluiten.</string>
     <string name="settings_autostart_bootup_heading">Auto-start bij opstarten (experimenteel)</string>
-    <string name="settings_custom_downloader_desc">Indien uitgeschakeld, wordt Android\'s ingebouwde <i>Download Manager</i> gebruikt.</string>
+    <string name="settings_custom_downloader_desc">Indien uitgeschakeld wordt Android\'s ingebouwde <i>Download Manager</i> gebruikt</string>
     <string name="settings_app_notification_a13_desc">Meldingsrechten voor de app inschakelen</string>
     <string name="settings_http_proxy_error_text3">Hostname is leeg</string>
     <string name="settings_http_proxy_desc">Doorsturen naar %1$s</string>
@@ -61,7 +61,7 @@
     <string name="firewall_status_excluded">uitgesloten van dns en firewall</string>
     <string name="firewall_status_block_unmetered">geblokkeerd op niet-gemeten (wifi) netwerken</string>
     <string name="orbot_both">TCP + HTTP-proxy</string>
-    <string name="orbot_stop_dialog_message">RethinkDNS is gestopt met het doorsturen van verbindingen naar Orbot, maar Orbot draait misschien op de achtergrond.</string>
+    <string name="orbot_stop_dialog_message">Rethink is gestopt met het doorsturen van verbindingen naar Orbot, maar Orbot draait misschien op de achtergrond.</string>
     <string name="settings_http_proxy_error_text2">Ongeldige poort</string>
     <string name="settings_dns_proxy_dialog_header">SOCKS5 (TCP) proxy instellen</string>
     <string name="settings_vpn_heading">vpn</string>
@@ -175,8 +175,8 @@
     <string name="settings_ip_network_desc">Kies tussen Internet Protocol versies.</string>
     <string name="slide_2_title">Welkom</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
-    <string name="slide_2_desc">RethinkDNS is de eenvoudigste manier om netwerkactiviteiten te controleren, internetcensuur te omzeilen en firewall-apps op uw Android-toestel te gebruiken.</string>
-    <string name="warning_title" description="Status indicator text shown in a warning notification.">Waarschuwing: RethinkDNS is gedeactiveerd</string>
+    <string name="slide_2_desc">Rethink is de eenvoudigste manier om netwerkactiviteiten te controleren, internetcensuur te omzeilen en apps op uw Android-toestel te firewallen.</string>
+    <string name="warning_title" description="Status indicator text shown in a warning notification.">Waarschuwing: Rethink is gedeactiveerd</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification.">Tik om de beveiligingsinstelling te wijzigen</string>
     <string name="brave_dns_connect_mode_change_firewall">Kies de modus.</string>
     <string name="search_firewall_all_apps"><font size="12">Apps zoeken op uid, naam</font></string>
@@ -230,7 +230,7 @@
     <string name="firewall_rule_foreground">App Niet in gebruik</string>
     <string name="univ_firewall_rule_1">Alle apps blokkeren wanneer het apparaat is vergrendeld</string>
     <string name="dc_local_block_desc_1">Kies uit 185+ blocklists. Klik hier om bloklijsten te downloaden of te configureren.</string>
-    <string name="alert_firewall_accessibility_regrant_explanation">RethinkDNS toegankelijkheidsdienst is gestopt of gecrasht. <i><b>Ga naar Instellingen en Forceer Stop</b></i> RethinkDNS en start het opnieuw om <i>te gebruiken Blokkeer elke app die niet in gebruik is</i> functie. \n \nRethinkDNS gebruikt de toegankelijkheidsdienst om bij te houden welke apps in gebruik zijn (voorgrond) versus welke niet in gebruik zijn (achtergrond).</string>
+    <string name="alert_firewall_accessibility_regrant_explanation">Rethink toegankelijkheidsdienst is gestopt of gecrasht. <i><b>Ga naar Instellingen en Forceer Stop</b></i> RethinkDNS en start het opnieuw om de <i>Blokkeer elke app die niet in gebruik is</i> functie te gebruiken.\n\nRethink gebruikt de toegankelijkheidsdienst om bij te houden welke apps in gebruik zijn (voorgrond) versus welke niet in gebruik zijn (achtergrond).</string>
     <string name="show_logs_disabled_dns_message">Het loggen van DNS-verzoeken is uitgeschakeld. Om dit opnieuw in te schakelen, gaat u naar <i>Instellingen</i> en schakelt u <i>Inschakelen van on-device logging in.</i></string>
     <string name="firewall_status_unknown">onbekend</string>
     <string name="ct_bs_app_info_error">App Info niet gevonden</string>
@@ -246,7 +246,7 @@
     <string name="dc_custom_dns_radio">Andere DNS</string>
     <string name="dc_rethink_dns_radio">RethinkDNS</string>
     <string name="dc_local_block_heading">Blokkeringslijsten op het apparaat</string>
-    <string name="dc_dns_website_desc">Haalt website iconen op van <i>duckduckgo.com</i>. Verbruikt tot 350 mb aan schijfruimte</string>
+    <string name="dc_dns_website_desc">Haalt websitepictogrammen op van <i>nextdns.io</i> en <i>duckduckgo.com</i>. Verbruikt tot 350 mb aan schijfruimte</string>
     <string name="univ_firewall_rule_5">Blokkeren wanneer DNS wordt omzeild</string>
     <string name="dc_check_update_desc">Controleer eenmaal per <i>drie</i> dagen of de blocklist is bijgewerkt</string>
     <string name="about_bravedns_explantion">RethinkDNS is de eenvoudigste manier om de activiteit van apps te controleren, internetcensuur te omzeilen en apps op uw Android-toestel te firewarden.</string>
@@ -280,8 +280,8 @@
     <string name="cd_doh_dialog_heading">DNS over HTTPS toevoegen</string>
     <string name="ct_ip_details" translatable="false">%1$s (%2$s)</string>
     <string name="dns_btm_sheet_chip">+%1$s Andere IP\'s</string>
-    <string name="dns_btm_resolved_crypt">opgelost &lt;u&gt;anoniem&lt;/u&gt; %1$s door %2$s</string>
-    <string name="dns_btm_sheet_dialog_ips"><Data> %1$s %2$s &lt;br/&gt;</Data></string>
+    <string name="dns_btm_resolved_crypt">&lt;u&gt;anoniem&lt;/u&gt; opgelost %1$s door %2$s via %3$s</string>
+    <string name="dns_btm_sheet_dialog_ips"><Data><![CDATA[ %1$s %2$s <br/>]]></Data></string>
     <string name="dns_btm_sheet_chip_no_answer">Geen antwoord</string>
     <string name="hs_download_positive_default">ok</string>
     <string name="hs_download_positive_play_store">Volledige update</string>
@@ -319,7 +319,7 @@
     <string name="other_dns_list_tab2">Dnscrypt</string>
     <string name="other_dns_list_tab3">Dns Proxy</string>
     <string name="firewall_rule_no_rule">Geen regel</string>
-    <string name="hs_btm_sheet_lock_down">Kan niet van modus veranderen wanneer VPN is <i>lockdown </i>. Tik op om <u>VPN-instellingen te bewerken</u>.</string>
+    <string name="hs_btm_sheet_lock_down">Kan niet van modus veranderen wanneer VPN in <i>lockdown</i> is. Tik hier om &lt;u&gt;edit VPN settings&lt;/u&gt;.</string>
     <string name="firewall_rule_block_univ_ip">IP / Poort (Universeel)</string>
     <string name="firewall_rule_block_app">App geblokkeerd</string>
     <string name="firewall_rule_block_udp_ntp">UDP geblokkeerd</string>
@@ -656,7 +656,7 @@
     <string name="firewall_status_bypass_dns_firewall" translatable="true">omzeilt dns &amp; firewall regels</string>
     <string name="dc_check_update_heading" translatable="true">Prompt bij blocklist updates</string>
     <string name="private_dns_error" translatable="true">Kan privé dns scherm niet starten.</string>
-    <string name="cd_dns_alg_desc" translatable="true">Uniek IP toewijzen per DNS aanvraag</string>
+    <string name="cd_dns_alg_desc" translatable="true">Uniek IP toewijzen per DNS aanvraag.</string>
     <string name="cd_dns_alg_heading" translatable="true">Geavanceerde DNS-filtering (experimenteel)</string>
     <string name="ctbs_app_info_not_available_toast" translatable="true">App instellingen pagina niet gevonden</string>
     <string name="new_app_bulk_notification_content" translatable="true">RethinkDNS blokkeerde %1$s nieuwe apps. Tik om te bekijken of te wijzigen.</string>
@@ -673,7 +673,7 @@
     <string name="lbl_private" translatable="true">privé</string>
     <string name="lbl_peer" translatable="true">verbonden apparaat</string>
     <string name="lbl_unselected" translatable="true">Ongeselecteerd</string>
-    <string name="bsct_block_domain" translatable="true">Blokkeer, vertrouw &lt;u&gt;domein(en)&lt;/u&gt; voor &lt;u&gt;deze app&lt;u/&gt;</string>
+    <string name="bsct_block_domain" translatable="true">Blokkeer, vertrouw &lt;u&gt;domein(en)&lt;/u&gt; voor &lt;u&gt;deze app&lt;/u&gt;</string>
     <string name="lbl_overall" translatable="true">Totaal</string>
     <string name="lbl_listen_port" translatable="true">Luisterpoort</string>
     <string name="lbl_include" translatable="true">Toevoegen</string>
@@ -686,7 +686,7 @@
     <string name="lbl_split" translatable="true">Splitsen</string>
     <string name="lbl_on_device" translatable="true">Op het apparaat</string>
     <string name="firewall_desc" translatable="true">Beheer het internetgebruik van apps; beperk verbindingen op basis van de app of netwerkactiviteit.</string>
-    <string name="dns_title" translatable="true">Blokkeer advertenties en malware met DNS.</string>
+    <string name="dns_title" translatable="true">Blokkeer advertenties en malware met DNS</string>
     <string name="dns_desc" translatable="true">Kies uit meer dan 190 lijsten om advertenties, trackers en malware te blokkeren.</string>
     <string name="status_no_network" translatable="true">Geen netwerkverbinding</string>
     <string name="conn_track_clear_rule_logs_title" translatable="true">Loggegevens voor deze regel verwijderen?</string>
@@ -855,7 +855,7 @@
     <string name="ci_block" translatable="true">Blokkeer</string>
     <string name="ci_bypass_universal" translatable="true">Universele regels omzeilen</string>
     <string name="ci_trust_rule" translatable="true">Vertrouwen</string>
-    <string name="ci_delete" translatable="true">Verwijderen</string>
+    <string name="ci_delete" translatable="true">verwijderen</string>
     <string name="ada_noapp_dialog_title" translatable="true">Geen dergelijke app gevonden</string>
     <string name="ada_noapp_dialog_message" translatable="true">App-informatie ontbreekt. Misschien is deze app verwijderd?</string>
     <string name="ada_noapp_dialog_positive" translatable="true">Ok</string>
@@ -991,7 +991,7 @@
     <string name="ssv_most_blocked_countries_heading" description="This label will appear on the stats screen as a header for most blocked domains by country" translatable="true">de meest geblokkeerde landen</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Start Rethink om door te gaan</string>
     <string name="ssv_see_more" translatable="true">alles tonen</string>
-    <string name="bad_config_reason_invalid_key" translatable="true">Ongeldige sleutel.</string>
+    <string name="bad_config_reason_invalid_key" translatable="true">Ongeldige sleutel</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Ongeldig nummer</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Ongeldige waarde</string>
     <string name="bad_config_reason_missing_attribute" translatable="true">Ontbrekend kenmerk</string>
@@ -1018,7 +1018,7 @@
     <string name="parse_error_reason" translatable="true">Kan %1$s “%2$s” niet verwerken</string>
     <string name="unknown_error" translatable="true">Onbekende fout</string>
     <string name="invalid_file_error" translatable="true">Ongeldig bestand</string>
-    <string name="import_error" translatable="true">Niet in staat om tunnel te importeren</string>
+    <string name="import_error" translatable="true">Niet in staat om tunnel te importeren: %s</string>
     <string name="illegal_filename_error" translatable="true">Ongeldige bestandsnaam “%s”</string>
     <string name="no_configs_error" translatable="true">Geen configuraties gevonden</string>
     <string name="bad_extension_error" translatable="true">Bestand moet .conf of .zip zijn</string>
@@ -1031,14 +1031,14 @@
     <string name="one_wg_dialog_desc" translatable="true">Alle verbindingen van alle apps, inclusief DNS, worden via één actieve WireGuard-VPN geleid. Andere actieve WireGuard-VPN\'s worden gestopt.</string>
     <string name="catch_all_wg_dialog_title" translatable="true">Altijd ingeschakeld</string>
     <string name="catch_all_wg_dialog_desc" translatable="true">Alle verbindingen en apps die niet via andere WireGuard-VPN\'s worden gerouteerd, worden via deze VPN gerouteerd.</string>
-    <string name="one_wg_error_toast" translatable="true">Om naar Geavanceerd te schakelen, stop WireGuard in de eenvoudige modus.</string>
+    <string name="one_wg_error_toast" translatable="true">Om naar Geavanceerde modus over te schakelen, stop WireGuard in Eenvoudige modus</string>
     <string name="add_remove_apps" translatable="true">Toevoegen / verwijderen (%1$s apps)</string>
     <string name="routing_remaining_apps" translatable="true">Resterende apps routeren</string>
     <string name="add_peer" translatable="true">Verbonden apparaat toevoegen</string>
     <string name="config_delete_dialog_desc" translatable="true">Weet je zeker dat je deze WireGuard-VPN-configuratie wilt verwijderen?</string>
     <string name="config_delete_dialog_title" translatable="true">Verwijderen</string>
     <string name="config_add_success_toast" translatable="true">Klaar</string>
-    <string name="config_delete_all_dialog_desc" translatable="true">Weet je zeker dat je ALLE WireGuard-VPN-configuraties wilt verwijderen? Dit kan NIET ongedaan worden gemaakt.⚠️</string>
+    <string name="config_delete_all_dialog_desc" translatable="true">Weet u zeker dat u ALLE WireGuard-VPN-configuraties wilt verwijderen? Dit kan NIET ongedaan worden gemaakt.</string>
     <string name="config_delete_all_dialog_title" translatable="true">Alles verwijderen</string>
     <string name="include_all_app_wg_dialog_title" translatable="true">Alle apps opnemen</string>
     <string name="include_all_app_wg_dialog_desc" translatable="true">Deze WireGuard-VPN voor alle apps gebruiken?</string>
@@ -1049,7 +1049,7 @@
     <string name="wireguard_one_wg_active_conflict" translatable="true">Er is een actieve One-WireGuard-configuratie in gebruik. Schakel deze eerst uit om afzonderlijke WireGuard-configuraties te gebruiken.</string>
     <string name="wireguard_invalid_config_title" translatable="true">Ongeldige WireGuard-configuratie</string>
     <string name="wireguard_invalid_config_message" translatable="true">De geselecteerde WireGuard-configuratie is ongeldig of ontbreekt. Bewerk of importeer de configuratie opnieuw en probeer het opnieuw.</string>
-    <string name="wireguard_replaced_active_config" translatable="true">De eerder actieve WireGuard-configuratie is vervangen.</string>
+    <string name="wireguard_replaced_active_config" translatable="true">De eerder actieve WireGuard-configuratie is vervangen</string>
     <string name="wireguard_disable_failure" translatable="true">\"Altijd ingeschakelde WireGuard\" kan niet worden uitgeschakeld</string>
     <string name="wireguard_disable_failure_relay" translatable="true">\"Relay WireGuard\" kan niet worden uitgeschakeld</string>
     <string name="wireguard_apps_proxy_map_desc" translatable="true">Onderdeel van %1$s</string>

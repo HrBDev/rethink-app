@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.fragment
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
@@ -30,22 +28,19 @@ import android.graphics.Color
 import android.graphics.Path
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
-import android.icu.text.CompactDecimalFormat
 import android.os.Bundle
 import android.provider.Settings
 import android.text.format.DateUtils
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
-import android.widget.EditText
-import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import android.view.animation.PathInterpolator
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.GridLayout
 import android.widget.LinearLayout
@@ -59,18 +54,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.forEachIndexed
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
-import androidx.core.animation.doOnEnd
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.AppInfoRepository
 import com.celzero.bravedns.database.ConnectionTrackerDAO
@@ -95,20 +85,25 @@ import com.celzero.bravedns.ui.bottomsheet.RpnStatsBottomSheet
 import com.celzero.bravedns.ui.bottomsheet.ServerRemovalNotificationBottomSheet
 import com.celzero.bravedns.ui.bottomsheet.ServerSettingsBottomSheet
 import com.celzero.bravedns.ui.custom.EmbeddedDolphinContent
+import com.celzero.bravedns.ui.fragment.ServerSelectionFragment.Companion.ERROR_DOLPHIN_BOB_HALF_MS
+import com.celzero.bravedns.ui.fragment.ServerSelectionFragment.Companion.RPN_HEATMAP_ROWS_PER_HOUR
+import com.celzero.bravedns.ui.fragment.ServerSelectionFragment.Companion.RPN_HEATMAP_SLOTS
+import com.celzero.bravedns.ui.fragment.ServerSelectionFragment.Companion.RPN_ONBOARDING_READY_TIMEOUT_MS
 import com.celzero.bravedns.ui.tour.RpnOnboardingManager
 import com.celzero.bravedns.ui.tour.TourOverlayController
+import com.celzero.bravedns.util.Logger
+import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import com.celzero.bravedns.util.SnackbarHelper
 import com.celzero.bravedns.util.SnackbarHelper.capitalizeWords
-import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.Utilities
-import com.celzero.bravedns.util.Utilities.isAtleastN
 import com.celzero.bravedns.viewmodel.ServerSelectionViewModel
 import com.celzero.firestack.backend.Backend
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import dev.androidbroadcast.vbpd.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
@@ -127,7 +122,6 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.log10
 import kotlin.math.min
 import kotlin.time.Duration.Companion.milliseconds
-import kotlin.toString
 
 /**
  * Fragment for selecting VPN servers from a list.

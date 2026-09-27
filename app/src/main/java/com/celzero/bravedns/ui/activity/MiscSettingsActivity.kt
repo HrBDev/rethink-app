@@ -15,10 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
-import com.celzero.bravedns.util.Logger.updateConfigLevel
 import android.Manifest
 import android.app.LocaleManager
 import android.content.ActivityNotFoundException
@@ -41,7 +37,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
@@ -51,7 +46,6 @@ import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.backup.BackupHelper
 import com.celzero.bravedns.data.AppConfig
@@ -76,6 +70,10 @@ import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_LENGTH
 import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_REGENERATION_PERIOD_DAYS
 import com.celzero.bravedns.util.LogLifespan
+import com.celzero.bravedns.util.Logger
+import com.celzero.bravedns.util.Logger.LOG_TAG_UI
+import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
+import com.celzero.bravedns.util.Logger.updateConfigLevel
 import com.celzero.bravedns.util.NotificationActionType
 import com.celzero.bravedns.util.PcapMode
 import com.celzero.bravedns.util.SnackbarHelper
@@ -94,6 +92,7 @@ import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dev.androidbroadcast.vbpd.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

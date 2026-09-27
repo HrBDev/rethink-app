@@ -29,7 +29,7 @@ import android.widget.Toast
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.ConnectionTrackerRepository
 import com.celzero.bravedns.database.EventSource

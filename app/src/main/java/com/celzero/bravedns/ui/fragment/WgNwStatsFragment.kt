@@ -23,7 +23,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.WgNwStatsAdapter
 import com.celzero.bravedns.data.DataUsageSummary

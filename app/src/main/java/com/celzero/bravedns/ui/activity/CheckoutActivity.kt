@@ -29,7 +29,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.databinding.ActivityCheckoutProxyBinding
 import com.celzero.bravedns.service.EncryptedFileManager

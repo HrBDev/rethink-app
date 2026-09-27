@@ -31,7 +31,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.OneWgConfigAdapter
 import com.celzero.bravedns.adapter.WgConfigAdapter

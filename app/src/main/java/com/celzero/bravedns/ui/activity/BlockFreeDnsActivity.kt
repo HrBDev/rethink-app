@@ -23,7 +23,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.BlockFreeDnsAdapter
 import com.celzero.bravedns.data.BlockFreeDnsItem

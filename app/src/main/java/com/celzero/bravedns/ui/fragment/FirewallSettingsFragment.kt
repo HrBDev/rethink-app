@@ -19,7 +19,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.databinding.FragmentFirewallSettingsBinding
 import com.celzero.bravedns.ui.activity.CustomRulesActivity

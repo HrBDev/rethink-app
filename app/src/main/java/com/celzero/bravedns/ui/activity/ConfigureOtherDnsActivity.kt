@@ -19,7 +19,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.core.view.WindowInsetsControllerCompat
-import by.kirich1409.viewbindingdelegate.viewBinding
+import dev.androidbroadcast.vbpd.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.databinding.ActivityConfigureOtherDnsBinding
 import com.celzero.bravedns.service.PersistentState

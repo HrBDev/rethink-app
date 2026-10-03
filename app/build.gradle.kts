@@ -208,7 +208,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             // modified as part of #352, now webview is removed from app, flipping back
             // the setting to true
             isMinifyEnabled = true
@@ -245,11 +245,11 @@ android {
                 signingConfigs.getByName("config")
             }
         }
-        create("leakCanary") {
+        register("leakCanary") {
             matchingFallbacks += listOf("debug")
             initWith(getByName("debug"))
         }
-        create("alpha") {
+        register("alpha") {
             // archive.is/y8uCB
             applicationIdSuffix = ".alpha"
             isMinifyEnabled = true
@@ -261,7 +261,7 @@ android {
                 "proguard-rules.pro"
             )
         }
-        create("releaseDebug") {
+        register("releaseDebug") {
             initWith(getByName("release"))
             isMinifyEnabled = true
             isShrinkResources = true

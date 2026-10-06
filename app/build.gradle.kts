@@ -211,8 +211,9 @@ android {
         release {
             // modified as part of #352, now webview is removed from app, flipping back
             // the setting to true
-            isMinifyEnabled = true
-            isShrinkResources = true
+            optimization {
+                enable = true
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -252,8 +253,9 @@ android {
         register("alpha") {
             // archive.is/y8uCB
             applicationIdSuffix = ".alpha"
-            isMinifyEnabled = true
-            isShrinkResources = true
+            optimization {
+                enable = true
+            }
             signingConfig = signingConfigs.getByName("alpha")
             resValue("string", "app_name", "Rethink(α)")
             proguardFiles(
@@ -263,8 +265,6 @@ android {
         }
         register("releaseDebug") {
             initWith(getByName("release"))
-            isMinifyEnabled = true
-            isShrinkResources = true
             signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

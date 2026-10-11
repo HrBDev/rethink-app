@@ -6,9 +6,6 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.ksp)
-    // rethink-tv fork: Compose Compiler plugin for the `tv` flavor's
-    // Compose-for-TV UI. Safe to apply project-wide — phone variants
-    // contain no @Composable and the plugin then no-ops.
     alias(libs.plugins.kotlinCompose)
     // To generate a BOM in CycloneDX format:
     // ./gradlew cyclonedxBom
@@ -149,6 +146,10 @@ val hasTvReleaseSigningConfig =
         .all { value -> !value.isNullOrEmpty() }
 
 android {
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
+
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     // https://developer.android.com/studio/build/configure-app-module
     namespace = "com.celzero.bravedns"
@@ -528,6 +529,8 @@ dependencies {
     implementation(libs.githubSeancfoleyIpaddress)
 
     testImplementation(libs.junitJunit)
+    testImplementation(libs.androidxComposeUiUiTestJunit4)
+    debugImplementation(libs.androidxComposeUiUiTestManifest)
     testImplementation(libs.androidxWorkWorkTesting)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.androidxTestEspressoEspressoCore)
@@ -600,14 +603,13 @@ dependencies {
 
     implementation(platform(libs.androidxComposeComposeBom))
     implementation(libs.androidxComposeRuntimeRuntime)
-    "tvImplementation"(platform(libs.androidxComposeComposeBomTv))
-    "tvImplementation"(libs.androidxComposeUiUi)
+    implementation(libs.androidxComposeUiUi)
     "tvImplementation"(libs.androidxComposeUiUiToolingPreview)
-    "tvImplementation"(libs.androidxComposeFoundationFoundation)
+    implementation(libs.androidxComposeFoundationFoundation)
     "tvImplementation"(libs.androidxComposeRuntimeRuntimeLivedata)
-    "tvImplementation"(libs.androidxComposeMaterial3Material3)
+    implementation(libs.androidxComposeMaterial3Material3)
     "tvImplementation"(libs.androidxTvTvMaterial)
-    "tvImplementation"(libs.androidxActivityActivityCompose)
+    implementation(libs.androidxActivityActivityCompose)
     "tvImplementation"(libs.androidxLifecycleLifecycleRuntimeCompose)
     "tvImplementation"(libs.androidxLifecycleLifecycleViewmodelCompose)
     "tvImplementation"(libs.insertKoinKoinAndroidxCompose)

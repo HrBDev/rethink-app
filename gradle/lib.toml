@@ -132,9 +132,10 @@ nlDionsegijnKonfettiXml = { module = "nl.dionsegijn:konfetti-xml", version.ref =
 githubBumptechGlideCompilerTv = { module = "com.github.bumptech.glide:compiler", version.ref = "glideCompiler" }
 androidxComposeComposeBom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidxComposeRuntimeRuntime = { module = "androidx.compose.runtime:runtime" }
-androidxComposeComposeBomTv = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidxComposeUiUi = { module = "androidx.compose.ui:ui" }
 androidxComposeUiUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidxComposeUiUiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidxComposeUiUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidxComposeFoundationFoundation = { module = "androidx.compose.foundation:foundation" }
 androidxComposeRuntimeRuntimeLivedata = { module = "androidx.compose.runtime:runtime-livedata" }
 androidxComposeMaterial3Material3 = { module = "androidx.compose.material3:material3" }

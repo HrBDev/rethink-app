@@ -703,6 +703,7 @@
 
     <string name="settings_dns_proxy_dialog_header" translatable="true">Set SOCKS5 Proxy</string>
     <string name="settings_dns_proxy_dialog_app" translatable="true">App</string>
+    <string name="proxy_app_select_from_list">Select an app from the list</string>
     <string name="settings_dns_proxy_dialog_hostname" translatable="true">Hostname</string>
     <string name="settings_dns_proxy_dialog_port_number" translatable="true">Port Number</string>
     <string name="settings_dns_proxy_dialog_username" translatable="true">Username</string>

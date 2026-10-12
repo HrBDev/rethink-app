@@ -6,6 +6,7 @@
  */
 package com.celzero.bravedns.ui.dialog
 
+import android.content.Context
 import android.util.TypedValue
 import androidx.appcompat.R.attr
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +21,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
@@ -69,6 +71,31 @@ internal data class ProxyDialogValues(
 internal fun filterProxyApps(appNames: List<String>, query: String): List<String> =
     appNames.filter { it.contains(query, ignoreCase = true) }
 
+internal fun proxyDialogColorScheme(context: Context): ColorScheme {
+    fun color(attr: Int) = Color(MaterialColors.getColor(context, attr, "Proxy dialog"))
+    val themeValue = TypedValue()
+    val isLightTheme = if (context.theme.resolveAttribute(attr.isLightTheme, themeValue, true)) {
+        themeValue.data != 0
+    } else {
+        true
+    }
+    val base = if (isLightTheme) lightColorScheme() else darkColorScheme()
+    return base.copy(
+        primary = color(attr.colorPrimary),
+        onPrimary = color(com.google.android.material.R.attr.colorOnPrimary),
+        surface = color(com.google.android.material.R.attr.colorSurface),
+        surfaceContainer = color(com.google.android.material.R.attr.colorSurfaceContainer),
+        // Material 3 AlertDialog uses this role for its container background.
+        surfaceContainerHigh = color(com.google.android.material.R.attr.colorSurfaceContainerHigh),
+        surfaceTint = color(attr.colorPrimary),
+        onSurface = color(com.google.android.material.R.attr.colorOnSurface),
+        onSurfaceVariant = color(com.google.android.material.R.attr.colorOnSurfaceVariant),
+        surfaceVariant = color(com.google.android.material.R.attr.colorSurfaceVariant),
+        error = color(attr.colorError),
+        outline = color(com.google.android.material.R.attr.colorOutline),
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ProxyConfigurationDialog(
@@ -88,26 +115,7 @@ internal fun ProxyConfigurationDialog(
         dimensionResource(R.dimen.large_font_text_view).toSp()
     }
     val colors = remember(context) {
-        fun color(attr: Int) = Color(MaterialColors.getColor(context, attr, "Proxy dialog"))
-        val themeValue = TypedValue()
-        val isLightTheme = if (context.theme.resolveAttribute(attr.isLightTheme, themeValue, true)) {
-            themeValue.data != 0
-        } else {
-            true
-        }
-        val base = if (isLightTheme) lightColorScheme() else darkColorScheme()
-        base.copy(
-            primary = color(attr.colorPrimary),
-            onPrimary = color(com.google.android.material.R.attr.colorOnPrimary),
-            surface = color(com.google.android.material.R.attr.colorSurface),
-            surfaceContainer = color(com.google.android.material.R.attr.colorSurfaceContainer),
-            surfaceTint = color(attr.colorPrimary),
-            onSurface = color(com.google.android.material.R.attr.colorOnSurface),
-            onSurfaceVariant = color(com.google.android.material.R.attr.colorOnSurfaceVariant),
-            surfaceVariant = color(com.google.android.material.R.attr.colorSurfaceVariant),
-            error = color(attr.colorError),
-            outline = color(com.google.android.material.R.attr.colorOutline),
-        )
+        proxyDialogColorScheme(context)
     }
     // Credentials remain in memory only, never in saved instance state.
     var values by remember { mutableStateOf(if (appSelectionLocked) initial.copy(appName = appNames.first()) else initial) }

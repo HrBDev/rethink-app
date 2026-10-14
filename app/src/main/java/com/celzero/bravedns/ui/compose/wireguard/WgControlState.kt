@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.view.View
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 
 /** Presentation state only: no View, service or persistence is owned here. */
 class WgControlState(val context: Context? = null, val checkable: Boolean = false) {
@@ -35,6 +35,8 @@ class WgControlState(val context: Context? = null, val checkable: Boolean = fals
     var elevationDp: Float? by mutableStateOf(null)
     var isSelected by mutableStateOf(false)
     var alpha by mutableStateOf(1f)
+    var switchThemeOverlay: Int? = null
+    var buttonTint: Int? by mutableStateOf(null)
     var textColor: Int? by mutableStateOf(null)
     var backgroundColor: Int? by mutableStateOf(null)
     var backgroundTintList: ColorStateList? by mutableStateOf(null)

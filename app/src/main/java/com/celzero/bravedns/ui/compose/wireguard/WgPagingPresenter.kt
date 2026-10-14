@@ -1,10 +1,10 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.wireguard
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.paging.AsyncPagingDataDiffer

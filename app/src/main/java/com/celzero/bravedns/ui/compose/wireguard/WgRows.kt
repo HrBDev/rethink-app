@@ -3,6 +3,11 @@
 package com.celzero.bravedns.ui.compose.wireguard
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,7 +20,13 @@ import com.celzero.bravedns.R
     if (!group.isVisible) return
     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         nodes.filter { it.isVisible }.forEach { node ->
-            Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.secondaryContainer) { WgText(node, Modifier.padding(horizontal = 6.dp, vertical = 3.dp)) }
+            Surface(Modifier.alpha(node.alpha).heightIn(min = 24.dp), shape = RoundedCornerShape(12.dp),
+                color = node.backgroundColor?.let(::Color) ?: MaterialTheme.colorScheme.surface,
+                border = BorderStroke(1.5.dp, Color(node.strokeColor))) {
+                Text(wgAnnotatedText(node.text), Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+                    color = node.textColor?.let(::Color) ?: MaterialTheme.colorScheme.onSurface,
+                    fontSize = node.textSizeSp?.sp ?: 11.sp)
+            }
         }
     }
 }

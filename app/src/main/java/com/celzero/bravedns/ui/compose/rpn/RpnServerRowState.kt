@@ -17,8 +17,8 @@ class RpnServerRowState(context: Context) {
     val relayActionContainer = RpnControlState() .apply { isClickable = true; isFocusable = true }
     val relayIcon = RpnControlState() .apply { visibility = View.GONE; setImageResource(R.drawable.ic_check_circle) ; imageTintList = android.content.res.ColorStateList.valueOf(com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.serverChipTextColor)) }
     val routedAppIcon0 = RpnControlState()
-    val routedAppIcon1 = RpnControlState()
-    val routedAppIcon2 = RpnControlState()
+    val routedAppIcon1 = RpnControlState().apply { visibility = View.GONE }
+    val routedAppIcon2 = RpnControlState().apply { visibility = View.GONE }
     val serverCard = RpnControlState() .apply { isClickable = true; isFocusable = true }
     val tvCountryName = RpnControlState() .apply { setTextColor(com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryTextColor)); textSizeSp = 16f; maxLines = 1 }
     val tvServerIp = RpnControlState() .apply { visibility = View.GONE ; setTextColor(com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryLightColorText)); textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity; maxLines = 1; monospace = true }

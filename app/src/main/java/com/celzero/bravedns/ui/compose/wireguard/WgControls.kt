@@ -82,8 +82,37 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
 @Composable fun WgCheck(node: WgControlState, label: String? = null, switch: Boolean = false, modifier: Modifier = Modifier) {
     if (node.visibility == View.GONE) return
     val m = modifier.wgState(node).then(if (label != null) Modifier.semantics { contentDescription = label } else Modifier)
-    if (switch) Switch(node.isChecked, { node.performClick() }, m, enabled = node.isEnabled && node.isClickable)
-    else Checkbox(node.isChecked, { node.performClick() }, m, enabled = node.isEnabled && node.isClickable)
+    if (switch) Switch(node.isChecked, { node.performClick() }, m, enabled = node.isEnabled && node.isClickable, colors = wgSwitchColors(node))
+    else {
+        val colors = node.buttonTint?.let { tint ->
+            CheckboxDefaults.colors(checkedColor = Color(tint), uncheckedColor = Color(tint), disabledCheckedColor = Color(tint), disabledUncheckedColor = Color(tint))
+        } ?: CheckboxDefaults.colors()
+        Checkbox(node.isChecked, { node.performClick() }, m, enabled = node.isEnabled && node.isClickable, colors = colors)
+    }
+}
+
+@Composable private fun wgSwitchColors(node: WgControlState): SwitchColors {
+    val overlay = node.switchThemeOverlay ?: return SwitchDefaults.colors()
+    val context = LocalContext.current
+    val tints = remember(context, overlay) {
+        val themed = androidx.appcompat.view.ContextThemeWrapper(context, overlay)
+        listOf(com.google.android.material.R.color.mtrl_switch_thumb_tint,
+            com.google.android.material.R.color.mtrl_switch_track_tint,
+            com.google.android.material.R.color.mtrl_switch_track_decoration_tint).map {
+            requireNotNull(androidx.appcompat.content.res.AppCompatResources.getColorStateList(themed, it))
+        }
+    }
+    fun tint(index: Int, enabled: Boolean, checked: Boolean): Color {
+        val states = intArrayOf(if (enabled) android.R.attr.state_enabled else -android.R.attr.state_enabled,
+            if (checked) android.R.attr.state_checked else -android.R.attr.state_checked)
+        return Color(tints[index].getColorForState(states, tints[index].defaultColor))
+    }
+    return SwitchDefaults.colors(
+        checkedThumbColor = tint(0, true, true), checkedTrackColor = tint(1, true, true), checkedBorderColor = tint(2, true, true),
+        uncheckedThumbColor = tint(0, true, false), uncheckedTrackColor = tint(1, true, false), uncheckedBorderColor = tint(2, true, false),
+        disabledCheckedThumbColor = tint(0, false, true), disabledCheckedTrackColor = tint(1, false, true), disabledCheckedBorderColor = tint(2, false, true),
+        disabledUncheckedThumbColor = tint(0, false, false), disabledUncheckedTrackColor = tint(1, false, false), disabledUncheckedBorderColor = tint(2, false, false)
+    )
 }
 
 @Composable fun WgIcon(node: WgControlState, label: String? = null, modifier: Modifier = Modifier) {

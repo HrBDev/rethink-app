@@ -40,6 +40,10 @@ class RethinkEndpointPresenterTest {
         owner = object : LifecycleOwner { override val lifecycle: Lifecycle get() = registry }
         registry = LifecycleRegistry.createUnsafe(owner).apply { currentState = Lifecycle.State.STARTED }
         mockkObject(VpnController, Logger, UIUtils, Utilities)
+        every { VpnController.hasTunnel() } throws AssertionError("Unexpected tunnel read")
+        coEvery { VpnController.getDnsStatus(any()) } throws AssertionError("Unexpected status read")
+        coEvery { VpnController.getDnsIps(any()) } throws AssertionError("Unexpected DNS IP read")
+        every { UIUtils.clipboardCopy(any(), any(), any()) } throws AssertionError("Unexpected clipboard write")
         every { Logger.d(any(), any()) } just Runs
         every { context.getString(R.string.rdns_plus) } returns "Rethink Plus"
         every { context.getString(R.string.copy_clipboard_label) } returns "copy"

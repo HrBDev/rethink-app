@@ -26,7 +26,6 @@ import com.celzero.bravedns.ui.compose.RethinkTheme
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.WgNwStatsAdapter
 import com.celzero.bravedns.data.DataUsageSummary
@@ -37,8 +36,6 @@ import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.viewmodel.WgNwActivityViewModel
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.celzero.bravedns.ui.compose.wireguard.WgAlertDialogBuilder as MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

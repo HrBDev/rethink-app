@@ -3,6 +3,7 @@
 package com.celzero.bravedns.ui.compose.wireguard
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -26,8 +27,11 @@ import com.celzero.bravedns.ui.compose.themeColor
                     Box(Modifier.fillMaxWidth(secondary).fillMaxHeight().background(accent.copy(alpha = .5f)))
                     Box(Modifier.fillMaxWidth(progress).fillMaxHeight().background(accent))
                 }
-                FlowRow(horizontalArrangement = Arrangement.SpaceBetween) { WgText(b.fssUnmeteredDataUsage); WgText(b.fssTotalDataUsage) }
-                WgText(b.fssMeteredDataUsage)
+                FlowRow(horizontalArrangement = Arrangement.SpaceBetween) {
+                    Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) { Box(Modifier.padding(end = 10.dp).size(8.dp).background(accent, CircleShape)); WgText(b.fssUnmeteredDataUsage) }
+                    WgText(b.fssTotalDataUsage)
+                }
+                Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) { Box(Modifier.padding(end = 10.dp).size(8.dp).background(accent.copy(alpha = .5f), CircleShape)); WgText(b.fssMeteredDataUsage) }
             }
             b.statsRecyclerView.adapter?.Content(Modifier.weight(1f))
         }

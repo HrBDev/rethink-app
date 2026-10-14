@@ -81,6 +81,16 @@ presenter = current('ui/compose/blocklists/BlocklistSelectionPresenter.kt')
 for adapter, method in [('LocalSimpleViewAdapter','setLocalPack'),('RemoteSimpleViewAdapter','setRemotePack'),('LocalAdvancedViewAdapter','setLocalTag'),('RemoteAdvancedViewAdapter','setRemoteTag')]:
     assert normalized(body(old('adapter/' + adapter + '.kt'), 'setFileTag')) == normalized(body(presenter, method)), adapter + ' persistence changed'
     count += 1
+# Endpoint presentation keeps the actual selection/edit/status/flag bodies.
+endpoint = current('ui/compose/blocklists/RethinkEndpointPresenter.kt')
+for name in ['updateConnection', 'openEditConfiguration', 'updateDnsStatus', 'updateFlag', 'getBaseUrl', 'stripPort', 'uiCtx']:
+    assert normalized(body(old('adapter/RethinkEndpointAdapter.kt'), name)) == normalized(body(endpoint, name)), 'Rethink endpoint ' + name + ' changed'
+    count += 1
+# Filter actions preserve dismissal/post ordering and retain the original shared filter object.
+filter_source = current('ui/bottomsheet/RethinkPlusFilterBottomSheet.kt')
+assert 'filters = fragmentActivity?.filterObserver()?.value' in filter_source
+assert filter_source.index('this.dismiss()', filter_source.index('state.apply =')) < filter_source.index('postValue(filters)', filter_source.index('state.apply ='))
+assert filter_source.index('postValue(RethinkBlocklistViewModel.Filters())', filter_source.index('state.clear =')) < filter_source.index('this.dismiss()', filter_source.index('state.clear ='))
 # Negative control detects a concrete write regression.
 mutated = presenter.replace('updateFiletagsLocal(tagIds.toSet(), selected)', 'updateFiletagsLocal(tagIds.toSet(), 1 - selected)')
 assert normalized(body(presenter, 'setLocalPack')) != normalized(body(mutated, 'setLocalPack'))

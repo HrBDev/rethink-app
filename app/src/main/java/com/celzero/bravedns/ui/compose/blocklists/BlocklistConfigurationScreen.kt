@@ -160,7 +160,7 @@ import kotlinx.coroutines.flow.Flow
                         row.entries?.let { entries -> AssistChip(onClick = { row.onEntries?.invoke() }, label = { Text(entries) }, modifier = Modifier.padding(start = 8.dp).alpha(.8f).testTag("blocklist-entries-${row.key}")) }
                     }
                 }
-                Checkbox(checked, select, Modifier.padding(end = 8.dp).testTag("blocklist-check-${row.key}"))
+                Checkbox(checked, select, Modifier.padding(end = 12.dp).testTag("blocklist-check-${row.key}"))
             }
         }
     }

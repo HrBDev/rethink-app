@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import xml.etree.ElementTree as ET
 
 BASE = '23cb6dd98805445174bd83b7237ad5f5d2c24ac9'
 ROOT = Path(__file__).resolve().parents[2]
@@ -108,6 +109,7 @@ def check(root, override=None):
                      'androidx.compose.ui.platform.ComposeView', 'android:id="@+id/nav_view"']:
         assert required in layout, f'Framework boundary missing: {required}'
     assert 'BottomNavigationView' not in layout
+    ET.fromstring(layout)
     for path in ['app/src/main/res/navigation/app_navigation.xml', 'app/src/full/res/navigation/app_navigation.xml',
                  'app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt',
                  'app/src/main/res/layout/activity_fragment_host.xml']:

@@ -92,7 +92,8 @@
     "hideErrorLayouts",
     "updateSsidPermissionState",
     "showPermissionDeniedDialog",
-    "logEvent"
+    "logEvent",
+    "updateLockdown"
   ],
   "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt": [
     "handleOnBackPressed",

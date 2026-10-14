@@ -35,13 +35,22 @@ open class HomeNode(val context: Context, val id: Int = 0) {
     var allCaps = false
     var monospace = false
     var click: ((HomeNode) -> Unit)? = null
-    private var checked by mutableStateOf(false)
+    private var checkedValue by mutableStateOf(false)
     internal var onChecked: ((Boolean) -> Unit)? = null
+    private var broadcasting = false
     var isChecked: Boolean
-        get() = checked
-        set(value) { if (checked != value) { checked = value; onChecked?.invoke(value) } }
+        get() = checkedValue
+        set(value) {
+            if (checkedValue == value) return
+            checkedValue = value
+            // CompoundButton's presentation semantics: a reentrant assignment
+            // updates checked state but does not recursively broadcast.
+            if (broadcasting) return
+            broadcasting = true
+            try { onChecked?.invoke(value) } finally { broadcasting = false }
+        }
     fun setOnClickListener(listener: (HomeNode) -> Unit) { isClickable = true; click = listener }
-    fun performClick() { if (isEnabled) click?.invoke(this) }
+    fun performClick() { if (isEnabled && isClickable) click?.invoke(this) }
     fun setText(res: Int) { text = context.getString(res) }
     fun setTextColor(color: Int) { textColor = color }
     fun setBackgroundColor(color: Int) { fillColor = color }

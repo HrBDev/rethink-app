@@ -21,8 +21,6 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.lifecycle.LifecycleOwner
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.adapter.GenericHopAdapter
 import com.celzero.bravedns.adapter.HopItem
 import com.celzero.bravedns.ui.compose.wireguard.*
@@ -48,7 +46,7 @@ open class GenericHopDialog(
         super.onCreate(savedInstanceState)
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        b = WgHopState(activity)
+        b = WgHopState(context)
         setWgContent(activity) { WgHopContent(b) }
         initView()
     }

@@ -130,7 +130,7 @@ import com.celzero.bravedns.util.Utilities.isPrivateDnsActive
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.firestack.backend.Backend
 import com.facebook.shimmer.Shimmer
-import com.google.android.material.snackbar.Snackbar
+import com.celzero.bravedns.ui.compose.chrome.ComposeSnackbarPresenter
 import com.waseemsabir.betterypermissionhelper.BatteryPermissionHelper
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.Dispatchers
@@ -3169,10 +3169,11 @@ class HomeScreenFragment : Fragment() {
                     Logger.i(LOG_TAG_UI, "User accepted notification permission")
                 } else {
                     Logger.w(LOG_TAG_UI, "User rejected notification permission")
-                    Snackbar.make(
+                    ComposeSnackbarPresenter(
                         requireActivity().findViewById<View>(android.R.id.content).rootView,
                         getString(R.string.hsf_notification_permission_failure),
-                        Snackbar.LENGTH_LONG
+                        ComposeSnackbarPresenter.LENGTH_LONG,
+                        appearance = ComposeSnackbarPresenter.Appearance.Material
                     )
                         .show()
                 }

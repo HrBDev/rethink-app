@@ -28,15 +28,12 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import android.content.Context
 import android.content.Intent
 import android.text.format.DateUtils
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.OneWgConfigAdapter.DnsStatusListener
 import com.celzero.bravedns.customdownloader.IpInfoDownloader

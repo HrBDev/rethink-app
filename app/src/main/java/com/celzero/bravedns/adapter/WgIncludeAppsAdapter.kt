@@ -28,17 +28,13 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.ProxyApplicationMapping
 import com.celzero.bravedns.service.FirewallManager

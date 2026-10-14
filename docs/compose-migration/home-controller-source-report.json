@@ -493,11 +493,6 @@
       "passed": true
     },
     {
-      "method": "registerForActivityResult",
-      "check": "exact_body",
-      "passed": true
-    },
-    {
       "method": "hasLocalNetworkPermission",
       "check": "exact_body",
       "passed": true
@@ -553,6 +548,11 @@
       "passed": true
     },
     {
+      "method": "registerForActivityResult",
+      "check": "exact_body_except_native_activity_root_material_snackbar",
+      "passed": true
+    },
+    {
       "method": "showBatteryOptimizationDialog",
       "check": "callbacks_and_order_with_presentation_substitution",
       "passed": true
@@ -580,6 +580,141 @@
     {
       "method": "showLocalNetworkPermissionDialog",
       "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.isDarkThemeOn",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.onDestroyView",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.selectChipForPreset",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.applyPreset",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.load",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.onAppExpandRequested",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.mergeDomains",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.render",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.sumCounts",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.mergeApps",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.showTimeRange",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.onViewCreated",
+      "check": "exact_body_except_recyclerview_layout_manager",
+      "passed": true
+    },
+    {
+      "method": "LogActivityIntervalBottomSheet.setupRangeChips",
+      "check": "native_listener_type_only",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.submit",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.rebuildRows",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.setChildren",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.formatCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.visibleEntries",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.insertChildRows",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.removeStaleChildRows",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.removeChildRows",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.resolveIconForUid",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "AppActivityAdapter.onGroupClicked",
+      "check": "native_chevron_presentation_only",
+      "passed": true
+    },
+    {
+      "file": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomeDialogTest.kt",
+      "check": "no_production_startup_in_tests",
+      "passed": true
+    },
+    {
+      "file": "app/src/test/java/com/celzero/bravedns/ui/compose/home/AppActivityAdapterStateTest.kt",
+      "check": "no_production_startup_in_tests",
+      "passed": true
+    },
+    {
+      "file": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomeContentTest.kt",
+      "check": "no_production_startup_in_tests",
+      "passed": true
+    },
+    {
+      "file": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomePresentationTest.kt",
+      "check": "no_production_startup_in_tests",
       "passed": true
     }
   ],

@@ -19,6 +19,13 @@ class BlocklistSelectionPresenterTest {
     private val fragment = mockk<RethinkBlocklistFragment>()
     @Before fun prepare() {
         mockkObject(RethinkBlocklistManager)
+        // Object mocking otherwise falls through: fail closed for every store boundary.
+        coEvery { RethinkBlocklistManager.updateFiletagsLocal(any(), any()) } throws AssertionError("Unexpected local pack write")
+        coEvery { RethinkBlocklistManager.updateFiletagsRemote(any(), any()) } throws AssertionError("Unexpected remote pack write")
+        coEvery { RethinkBlocklistManager.updateFiletagLocal(any()) } throws AssertionError("Unexpected local tag write")
+        coEvery { RethinkBlocklistManager.updateFiletagRemote(any()) } throws AssertionError("Unexpected remote tag write")
+        coEvery { RethinkBlocklistManager.getSelectedFileTagsLocal() } throws AssertionError("Unexpected local store read")
+        coEvery { RethinkBlocklistManager.getSelectedFileTagsRemote() } throws AssertionError("Unexpected remote store read")
         every { context.getString(any()) } returns "label"
         every { context.getString(any(), *anyVararg()) } returns "count"
         every { fragment.isAdded } returns true
@@ -69,7 +76,7 @@ class BlocklistSelectionPresenterTest {
         verify(exactly = 1) { fragment.updateFileTagList(setOf(8)) }
     }
     @Test fun remoteAdvancedRetainsDetachedCallbackGuard() = runTest {
-        val tag = RethinkRemoteFileTag(null).apply { uname = "fake"; isSelected = true }
+        val tag = RethinkRemoteFileTag(8, "fake", "fake", "", "", null, null, emptyList(), 0, 0, -1).apply { uname = "fake"; isSelected = true }
         every { fragment.isAdded } returns false
         coEvery { RethinkBlocklistManager.updateFiletagRemote(tag) } coAnswers { assertFalse(tag.isSelected) }
         coEvery { RethinkBlocklistManager.getSelectedFileTagsRemote() } returns emptyList()

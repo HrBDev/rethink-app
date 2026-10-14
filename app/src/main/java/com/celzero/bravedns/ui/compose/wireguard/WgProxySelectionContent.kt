@@ -19,8 +19,8 @@ class WgProxySelectorState(context: Context) {
 }
 class WgProxyRowState(context: Context) {
     val lipCcWgParent = WgControlState(context)
-    val proxyNameCc = WgControlState(context).apply { textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity }
-    val proxyDescCc = WgControlState(context).apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryLightColorText); textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity }
+    val proxyNameCc = WgControlState(context).apply { textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view) }
+    val proxyDescCc = WgControlState(context).apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryLightColorText); textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view) }
     val proxyRadioCc = WgControlState(context, checkable = true)
 }
 

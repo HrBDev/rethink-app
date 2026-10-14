@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 package com.celzero.bravedns.adapter
+import androidx.compose.runtime.*
+import com.celzero.bravedns.ui.compose.firewallapps.*
+import com.celzero.bravedns.ui.compose.wireguard.WgControlState
+import com.celzero.bravedns.ui.compose.wireguard.WgAlertDialogBuilder
 
 import android.content.Context
 import android.content.DialogInterface
@@ -38,7 +42,6 @@ import com.celzero.bravedns.database.AppInfo
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
-import com.celzero.bravedns.databinding.ListItemFirewallAppBinding
 import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.FirewallManager.updateFirewallStatus
@@ -61,7 +64,7 @@ class FirewallAppListAdapter(
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner,
     private val eventLogger: EventLogger
-) : PagingDataAdapter<AppInfo, FirewallAppListAdapter.AppListViewHolder>(DIFF_CALLBACK), SectionedAdapter {
+) : FirewallAppsPresenter(DIFF_CALLBACK) {
 
     private val packageManager: PackageManager = context.packageManager
     // private val systemAppColor: Int by lazy { UIUtils.fetchColor(context, R.attr.textColorAccentBad) }
@@ -92,19 +95,16 @@ class FirewallAppListAdapter(
         private val rethinkUid = android.os.Process.myUid()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppListViewHolder {
-        val itemBinding =
-            ListItemFirewallAppBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AppListViewHolder(itemBinding)
+
+
+    @Composable override fun Row(index: Int, appInfo: AppInfo, revision: Int) {
+        val state = remember(appInfo.uid, appInfo.packageName) { FirewallAppRowState() }
+        val holder = remember(state) { AppListViewHolder(state) }
+        LaunchedEffect(appInfo, revision) { holder.update(appInfo) }
+        FirewallAppRowContent(state)
     }
 
-    override fun onBindViewHolder(holder: AppListViewHolder, position: Int) {
-        val appInfo: AppInfo = getItem(position) ?: return
-        holder.update(appInfo)
-    }
-
-    inner class AppListViewHolder(private val b: ListItemFirewallAppBinding) :
-        RecyclerView.ViewHolder(b.root) {
+    inner class AppListViewHolder(private val b: FirewallAppRowState) {
 
         fun update(appInfo: AppInfo) {
             displayDetails(appInfo)
@@ -145,11 +145,11 @@ class FirewallAppListAdapter(
                     b.firewallAppToggleMobileData.visibility = View.VISIBLE
                     // strike through the app name if the app is tombstoned
                     if (appInfo.tombstoneTs > 0) {
-                        b.firewallAppLabelTv.paint.isStrikeThruText = true
+                        b.strikeThrough = true
                         b.firewallAppLabelTv.alpha = ALPHA_DISABLED
                         b.firewallAppIconIv.alpha = ALPHA_DISABLED
                     } else {
-                        b.firewallAppLabelTv.paint.isStrikeThruText = false
+                        b.strikeThrough = false
                     }
                     if (appInfo.uid == rethinkUid) {
                         // do not show the wi-fi and mobile data icons for RethinkDNS
@@ -186,7 +186,7 @@ class FirewallAppListAdapter(
             if (proxy.isEmpty() || (proxy.size == 1 && proxy[0] == ID_NONE)) {
                 return
             }
-            b.firewallAppToggleOther.append("  " + context.getString(R.string.symbol_key))
+            b.firewallAppToggleOther.text = b.firewallAppToggleOther.text.toString() + "  " + context.getString(R.string.symbol_key)
         }
 
         private fun getFirewallText(
@@ -290,7 +290,7 @@ class FirewallAppListAdapter(
                 ContextCompat.getDrawable(context, R.drawable.ic_firewall_wifi_on_grey))
         }
 
-        private fun displayIcon(drawable: Drawable?, mIconImageView: ImageView) {
+        private fun displayIcon(drawable: Drawable?, mIconImageView: WgControlState) {
             val target = drawable ?: Utilities.getDefaultIcon(context) ?: return
             val current = mIconImageView.drawable?.constantState
             if (current != null && current == target.constantState) return
@@ -428,7 +428,7 @@ class FirewallAppListAdapter(
             connStatus: FirewallManager.ConnectionStatus
         ) {
 
-            val builderSingle = MaterialAlertDialogBuilder(context, R.style.App_Dialog_NoDim)
+            val builderSingle = WgAlertDialogBuilder(context, R.style.App_Dialog_NoDim)
 
             builderSingle.setIcon(R.drawable.ic_firewall_block_grey)
             val count = packageList.count()
@@ -461,13 +461,12 @@ class FirewallAppListAdapter(
                     _: Int ->
                 }
 
-            val alertDialog: AlertDialog = builderSingle.create()
-            alertDialog.listView.setOnItemClickListener { _, _, _, _ -> }
+            val alertDialog: android.app.Dialog = builderSingle.create()
             alertDialog.show()
         }
     }
 
-    private fun enableAfterDelay(delay: Long, vararg views: View) {
+    private fun enableAfterDelay(delay: Long, vararg views: WgControlState) {
         for (v in views) v.isEnabled = false
 
         Utilities.delay(delay, lifecycleOwner.lifecycleScope) {
@@ -499,7 +498,7 @@ class FirewallAppListAdapter(
         withContext(Dispatchers.IO) { f() }
     }
 
-    override fun getSectionName(position: Int): String {
+    fun getSectionName(position: Int): String {
         // Check if position is valid to prevent IndexOutOfBoundsException
         if (position !in 0..<itemCount) {
             return ""

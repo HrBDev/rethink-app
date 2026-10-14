@@ -20,12 +20,12 @@ import org.robolectric.annotation.Config
 class WgLegacySearchParityTest {
     @Test fun expandedSearchRestoresItsQueryAndDispatchesTextChange() {
         val context: Context = ContextThemeWrapper(ApplicationProvider.getApplicationContext<Application>(), R.style.AppThemeWhite)
-        val original = SearchView(context).apply { id = 40001; isIconifiedByDefault = false; setQuery("synthetic", false) }
+        val original = SearchView(context).apply { id = 40001; setIconifiedByDefault(false); setQuery("synthetic", false) }
         val hierarchy = SparseArray<Parcelable>()
         original.saveHierarchyState(hierarchy)
         val changes = mutableListOf<String>()
         val restored = SearchView(context).apply {
-            id = 40001; isIconifiedByDefault = false
+            id = 40001; setIconifiedByDefault(false)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String) = true
                 override fun onQueryTextChange(newText: String): Boolean { changes.add(newText); return true }

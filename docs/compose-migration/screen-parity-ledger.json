@@ -1,0 +1,1102 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "status": "Work in progress. Source presence does not establish route parity or completed full migration.",
+  "screens": [
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppListActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/ConfigChangeTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsDetailAccessibilityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsListActivityTest.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/HomeScreenActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/NetworkLogsActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/ProxySettingsActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/ThemeChangeTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/WgMainActivityTest.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragmentTest.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragmentTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragmentTest.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/fdroid/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AdvancedSettingActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AlertsActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AntiCensorshipActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseDomainLogsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseIpLogsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BlockFreeDnsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureRethinkBasicActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConsoleLogActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsDetailActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsListActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FirewallActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/MiscSettingsActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/SmartDnsListActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/UniversalFirewallSettingsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppDomainRulesBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppIpRulesBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BackupRestoreBottomSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BaseBottomSheetDialogFragment.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BlockFreeDnsModeBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomDomainRulesBtmSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomIpRulesBtmSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/HomeScreenSettingBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LocalBlocklistsBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LogActivityIntervalBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkInRethinkWarningBottomSheet.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkListBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkLogBottomSheet.kt",
+      "status": "removed; reference proof required",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkPlusFilterBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerSettingsBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/CustomLanIpDialog.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/DnsCryptRelaysDialog.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/GenericHopDialog.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnProxyHopDialog.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/SubscriptionAnimDialog.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgHopDialog.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "status": "baseline Compose",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConfigureFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsLogFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkLogFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusDashboardFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RulesImportHelper.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SmartDnsListFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityUnitTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityUnitTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/bottomsheet/FirewallRuleApplierLifecycleTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fragment/HomeScreenFragmentTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fragment/RulesImportHelperFuzzTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fragment/RulesImportHelperTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fragment/StatsProgressDialogLifecycleTest.kt",
+      "status": "baseline UI remains",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "status": "native source present; validation pending",
+      "back_state_recreation": "pending",
+      "search_filter": "pending if applicable",
+      "rtl_themes_largetext": "pending",
+      "accessibility": "pending"
+    }
+  ]
+}

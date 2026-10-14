@@ -52,7 +52,7 @@ class WgAddPeerDialog(
         super.onCreate(savedInstanceState)
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        b = WgPeerState(activity)
+        b = WgPeerState(context)
         setWgContent(activity) { WgPeerContent(b) }
         initView()
         setupClickListener()

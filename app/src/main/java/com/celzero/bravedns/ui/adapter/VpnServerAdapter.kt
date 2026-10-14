@@ -101,7 +101,13 @@ class VpnServerAdapter(
             serverGroups.forEach { group -> key(group.key) {
                 val row = remember { ServerRow() }
                 val revision = allRevision to (keyRevisions[group.key] ?: 0)
-                LaunchedEffect(visible, revision) { if (visible) row.bind(group) }
+                var boundRevision by remember { mutableStateOf<Pair<Int, Int>?>(null) }
+                LaunchedEffect(visible, revision) {
+                    if (visible && boundRevision != revision) {
+                        row.bind(group)
+                        boundRevision = revision
+                    }
+                }
                 DisposableEffect(row, owner) {
                     row.attached = true
                     onDispose { row.detach() }

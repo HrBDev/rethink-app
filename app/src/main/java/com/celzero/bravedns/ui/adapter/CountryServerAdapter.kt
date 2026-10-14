@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.unit.dp
@@ -67,8 +68,8 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
 
     private var countries by mutableStateOf(sortCountries(countries), neverEqualPolicy())
     private val expandedCountries = mutableStateMapOf<String, Boolean>()
-    private var proxyStopped by mutableStateOf(false)
-    fun setProxyStopped(stopped: Boolean) { if (proxyStopped != stopped) proxyStopped = stopped }
+    private var proxyStoppedValue by mutableStateOf(false)
+    fun setProxyStopped(stopped: Boolean) { if (proxyStoppedValue != stopped) proxyStoppedValue = stopped }
     fun updateCountries(newCountries: List<CountryItem>) {
         countries = sortCountries(newCountries)
         val newCodes = countries.map { it.countryCode }.toSet()
@@ -112,12 +113,12 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                     item.isFavourite = next
                     countries = countries.toList()
                     listener.onFavouriteToggled(item.countryCode, item.countryName, next)
-                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), null, Modifier.size(20.dp).rpnMotion(star)) }
-                Icon(painterResource(R.drawable.ic_arrow_down_small), null, Modifier.size(20.dp).rotate(arrow))
+                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(20.dp).rpnMotion(star)) }
+                Icon(painterResource(R.drawable.ic_arrow_down_small), stringResource(R.string.server_selection_filter_locations), Modifier.size(20.dp).rotate(arrow))
             }
             if (expanded) item.serverGroups.forEach { group -> key(group.key) {
                 Row(Modifier.fillMaxWidth().clickable {
-                    if (proxyStopped) listener.onProxyStoppedItemTapped() else listener.onCitySelected(group.servers.first(), !group.isEnabled)
+                    if (proxyStoppedValue) listener.onProxyStoppedItemTapped() else listener.onCitySelected(group.servers.first(), !group.isEnabled)
                 }.padding(start = 20.dp, end = 14.dp, top = 8.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
                         Text(group.city.capitalizeWords())
@@ -134,7 +135,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                             }
                         }
                     }
-                    Checkbox(group.isEnabled, null, Modifier.alpha(if (proxyStopped) .4f else 1f), enabled = !proxyStopped)
+                    Checkbox(group.isEnabled, null, Modifier.alpha(if (proxyStoppedValue) .4f else 1f), enabled = !proxyStoppedValue)
                 }
             } }
         }

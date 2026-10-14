@@ -1,0 +1,225 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "recovery_date": "2026-10-14",
+  "note": "Newly reconstructed current files; not surviving prior checkpoint bytes. WgHopDialog is unchanged but audited through its migrated parent.",
+  "deleted": [
+    "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt"
+  ],
+  "files": [
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/WgMainActivityTest.kt",
+      "sha256": "84e7046e2553086d1a3cf2ebc054db90326b827dede7fa688b3668757e9da23f",
+      "bytes": 579
+    },
+    {
+      "path": "app/src/androidTest/java/com/celzero/bravedns/ui/compose/wireguard/WgComposeContentTest.kt",
+      "sha256": "8eced07fa0f8410ca607eb8c0605bc8c20abad0b433d7795ce31ee5f8ad9223c",
+      "bytes": 5590
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "sha256": "d62598cbfb4445b9ef5ac25d804f1bf98b5f76c3496d62910bde87b56a95d2e3",
+      "bytes": 20962
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "sha256": "a8898b10969bf93f1322e645053a138743f728cfb508fdc806fd59e548c89bc7",
+      "bytes": 23799
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "sha256": "0a729512badbd1225b6d6d29447ecb270826536711c1f27e5d9fac72024ecf7d",
+      "bytes": 33717
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "sha256": "15d671ac11c8700df983fc93c13daceb329b1c0136d7aeb91f161ad508704d10",
+      "bytes": 14834
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "sha256": "e1f30d8099ff0e66ca4cfad17f2c55bafcba43f654bb7831e8a79dcfc11aac31",
+      "bytes": 8023
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "sha256": "d23293dce51f3bd9021e788a03b1a0d4ca08c1ba85b1d987ac981537748b960c",
+      "bytes": 5811
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "sha256": "a0afc6ca5a6d3e2fd32afb424c85a3d2edbf6119725ccc06a3c619c36c28f56a",
+      "bytes": 57674
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "sha256": "d131dd9714c8e6cef81293c4ecfeeaa617a9460e19d8cb1a54d072e23d00f28e",
+      "bytes": 10418
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "sha256": "96b8fe68a1e01b9ffccfeb537ae4ac443191242075f79179a7278cae12b82b6c",
+      "bytes": 13689
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "sha256": "90bace60e40e7faff50fb28309cadba396e445d7d88812d54eae8caf14bc34af",
+      "bytes": 20510
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "sha256": "ab2941e0d99daadb8213ece59670d04c275c8db3382b2d298877ce0572f62d71",
+      "bytes": 12135
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "sha256": "1d368aa9d1047c36451428bc4e466e43fe322a9fc7af516dffefac3dadcb5d58",
+      "bytes": 7472
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "sha256": "198c1481c7784525d93a8f1ca770370f3ae27c1fbb3ba3ae0ab9be9b1d63488d",
+      "bytes": 5162
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "sha256": "3835cce5d028436c5d0e18cbc744298c613c9b8934d4fa680130902c57a50981",
+      "bytes": 10981
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDetailContent.kt",
+      "sha256": "ee2a3a90b4dfdbd0288959bd5d4e2b748a49c6b4812efa7f199c82e7394b3b1b",
+      "bytes": 6174
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDialogContent.kt",
+      "sha256": "508de64b884680a66aa9c0a0311a33055edbbee57028d5684737e8695366d177",
+      "bytes": 1677
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgEditors.kt",
+      "sha256": "36b07f3b3eee71f8760003fe97623c00039ab41fbf36419070a5b8f32171050f",
+      "bytes": 3616
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+      "sha256": "36adddcb72a2e6aa01dc4158756652104f49e2bf463b0816f786efed876d5075",
+      "bytes": 3509
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgMainContent.kt",
+      "sha256": "a41af60b91c03bfa7c629706e67bf1f180685dbf26b8a1777ec11ef7422d1588",
+      "bytes": 2799
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgPagingPresenter.kt",
+      "sha256": "48dcdf8a73700f9c6e397c6d16359830373889c0ffc0f26360f35839379beedc",
+      "bytes": 1908
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgProxySelectionContent.kt",
+      "sha256": "35a6cfde63d293d3c38e34a91dd718e05b6d5952cde46c5db19b8c46f2e72e7a",
+      "bytes": 2445
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt",
+      "sha256": "2b9f2dc2e354a881ab170939e00d057a8153fe8dad89b504aea3744cd2ea6206",
+      "bytes": 5585
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgScreenState.kt",
+      "sha256": "0fef458460c1f124b016806036f2822214848677b6c0be7c7e96ad9342c6c300",
+      "bytes": 48832
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidContent.kt",
+      "sha256": "ab7c617be4404943c7f429742ae1660f56ad11effba5f3cec29b1f18afb7b7bd",
+      "bytes": 3764
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgStatsContent.kt",
+      "sha256": "befc9fb167e91a52c9d4f0d2201a7d3614fc27a02dd5715b8ed9a195834e2fef",
+      "bytes": 2371
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/GenericHopDialog.kt",
+      "sha256": "6fea7e6106482fdce4414587f1dfe1de718790e378c9381f10a297b8490643ec",
+      "bytes": 2443
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "sha256": "cf505c15c4ecd8574d313c598b0ac347f78dc1730e014f38e62d269fa3b4cb40",
+      "bytes": 7279
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgHopDialog.kt",
+      "sha256": "e309bcf55bda72e1ae02c3b37fce748377bf8773d026e171b07ea4d9fcbaee19",
+      "bytes": 1980
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "sha256": "a04c67841bd7981e2af73c4dc7aa261916fabbcf9b5115512a12774c7e763ed5",
+      "bytes": 10407
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "sha256": "3b5bffd5c75c98f5d6d0bccf295b2076dba85852548afccafff6c65e4471c463",
+      "bytes": 9253
+    },
+    {
+      "path": "app/src/main/res/values/compose_wireguard_strings.xml",
+      "sha256": "865150edc88b44affc13e88f0ae3dbb214c0752fb681911bc83e75a7312af0f4",
+      "bytes": 219
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgControlStateTest.kt",
+      "sha256": "9860f03260929a42cfb186f56563b272fd2bb7a27dfd73f822b0b6e215887ba9",
+      "bytes": 3457
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgFormRestoreTest.kt",
+      "sha256": "7f2216402183079d759b2cfc66043b61298e2a702dabb9743b8ec6f8eb0df768",
+      "bytes": 1943
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgLegacySearchParityTest.kt",
+      "sha256": "e8a8fe789203e0a007d86f618f5b818f1a3568d368f9c825f3125d7041792068",
+      "bytes": 1753
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidStateTest.kt",
+      "sha256": "da35d881e7e040fd2b43c08cf3f4be28fd07371ddb818c0c57b4733198e3588b",
+      "bytes": 1773
+    },
+    {
+      "path": "docs/compose-migration/wireguard-controller-evidence.json",
+      "sha256": "74ecc85250ab991e4c18b3e5e007eaff27d273505c2d70c2976ec14f7b557c7e",
+      "bytes": 69718
+    },
+    {
+      "path": "docs/compose-migration/wireguard-controller-selection.json",
+      "sha256": "e01a3c08b0a4dffc4e6110971b2f4bc6f76ef0d1b86b30579ba2548ac7a2e529",
+      "bytes": 5679
+    },
+    {
+      "path": "docs/compose-migration/wireguard-parity.md",
+      "sha256": "b773e26fc87acb98a23224234ef09b49175f0b4118f26c1cdcfd4e91a0314279",
+      "bytes": 10851
+    },
+    {
+      "path": "scripts/compose-migration/check-wireguard-control-state.py",
+      "sha256": "9d1a1303ed60a0b35b50b6e27ea1f4d9f55a9b712ea7783fe8a73d3b3a9836df",
+      "bytes": 3909
+    },
+    {
+      "path": "scripts/compose-migration/check-wireguard-controllers.py",
+      "sha256": "00a71eee186a312e525712860f90d71bb65f22fc1d59183e057dab45cc6401ed",
+      "bytes": 4551
+    },
+    {
+      "path": "scripts/compose-migration/check-wireguard-resources.py",
+      "sha256": "8b61025f2e4b357435ca39f690df949a26d451322593cd52ed26785695c85c10",
+      "bytes": 1689
+    }
+  ]
+}

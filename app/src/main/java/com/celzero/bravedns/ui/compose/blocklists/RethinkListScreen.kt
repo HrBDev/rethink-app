@@ -24,6 +24,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
@@ -53,7 +55,7 @@ import kotlinx.coroutines.flow.Flow
             }
             state?.let { b -> item {
                 FlowRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    if (b.lbVersion.visible) SuggestionChip({}, label = { Text(b.lbVersion.text) })
+                    if (b.lbVersion.visible) SuggestionChip({}, enabled = false, label = { Text(b.lbVersion.text) }, colors = SuggestionChipDefaults.suggestionChipColors(disabledContainerColor = themeColor(R.attr.chipBgColorPositive), disabledLabelColor = themeColor(R.attr.chipTextPositive)))
                     UpdateChip(b.bslbCheckUpdateBtn, R.string.rt_chip_check_update, "check")
                     UpdateChip(b.bslbUpdateAvailableBtn, R.string.rt_chip_update_available, "update")
                     UpdateChip(b.bslbRedownloadBtn, R.string.rt_re_download, "redownload")
@@ -64,7 +66,7 @@ import kotlinx.coroutines.flow.Flow
                 }
                 Text(b.frlDesc.text, Modifier.padding(16.dp), color = themeColor(R.attr.primaryLightColorText), fontSize = 14.sp)
             } }
-            items(list.itemCount) { index -> list[index]?.let { endpoint -> RethinkEndpointRow(endpoint, presenter) } }
+            items(list.itemCount) { index -> list[index]?.let { endpoint -> RethinkEndpointRow(endpoint, presenter, if (configure == null) 4.dp else 0.dp) } }
             if (state != null && list.itemCount == 0) item {
                 if (list.loadState.source.refresh is LoadState.Loading) Box(Modifier.fillMaxWidth().padding(24.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
                 if (list.loadState.source.refresh is LoadState.NotLoading) Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -100,18 +102,18 @@ import kotlinx.coroutines.flow.Flow
         Text(stringResource(label), color = themeColor(R.attr.primaryTextColor))
     }
 }
-@Composable private fun RethinkEndpointRow(endpoint: RethinkDnsEndpoint, presenter: RethinkEndpointPresenter) {
+@Composable private fun RethinkEndpointRow(endpoint: RethinkDnsEndpoint, presenter: RethinkEndpointPresenter, spacing: Dp) {
     val bound = remember(System.identityHashCode(endpoint), endpoint.url, endpoint.isActive, endpoint.blocklistCount) { presenter.bind(endpoint) }
     DisposableEffect(bound) { onDispose { bound.dispose() } }
     val label = stringResource(if (endpoint.isActive) R.string.dns_list_item_selected_cd else R.string.dns_list_item_select_cd, endpoint.name)
-    SettingsCard(Modifier.padding(4.dp), contentPadding = 0.dp) {
-        Row(Modifier.fillMaxWidth().semantics { contentDescription = label; selected = endpoint.isActive }.clickable { presenter.select(endpoint) }.padding(start = 12.dp, top = 8.dp, bottom = 8.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            if (bound.rethinkEndpointListUrlFlagText.visible) Text(bound.rethinkEndpointListUrlFlagText.text, Modifier.padding(end = 12.dp), fontSize = 25.sp)
+    SettingsCard(Modifier.padding(spacing), contentPadding = 0.dp, cornerRadius = 12.dp) {
+        Row(Modifier.fillMaxWidth().semantics { contentDescription = label; selected = endpoint.isActive }.clickable { presenter.select(endpoint) }.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            if (bound.rethinkEndpointListUrlFlagText.visible) Text(bound.rethinkEndpointListUrlFlagText.text, Modifier.padding(end = 10.dp).sizeIn(minWidth = 32.dp, minHeight = 32.dp), fontSize = 25.sp)
             Column(Modifier.weight(1f)) {
-                Text(endpoint.name, color = themeColor(R.attr.primaryTextColor))
-                if (bound.rethinkEndpointListUrlExplanation.visible) Text(bound.rethinkEndpointListUrlExplanation.text, color = themeColor(R.attr.primaryLightColorText), style = MaterialTheme.typography.bodySmall)
+                Text(endpoint.name, color = themeColor(R.attr.primaryTextColor), style = MaterialTheme.typography.bodyLarge, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                if (bound.rethinkEndpointListUrlExplanation.visible) Text(bound.rethinkEndpointListUrlExplanation.text, Modifier.padding(top = 2.dp), color = themeColor(R.attr.primaryLightColorText), style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            IconButton(onClick = { presenter.metadata = endpoint }) { Icon(painterResource(if (presenter.editable(endpoint)) R.drawable.ic_edit_icon else R.drawable.ic_info), stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), tint = Color.Unspecified) }
+            IconButton(onClick = { presenter.metadata = endpoint }, modifier = Modifier.padding(end = 4.dp).alpha(.55f)) { Icon(painterResource(if (presenter.editable(endpoint)) R.drawable.ic_edit_icon else R.drawable.ic_info), stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), tint = themeColor(R.attr.primaryTextColor)) }
             RethinkSelection(endpoint.isActive)
         }
     }
@@ -119,7 +121,7 @@ import kotlinx.coroutines.flow.Flow
 @Composable private fun RethinkSelection(selected: Boolean) {
     val opacity by animateFloatAsState(if (selected) 1f else 0f, tween(if (selected) 180 else 160), label = "selection-opacity")
     val scale by animateFloatAsState(if (selected) 1f else .6f, tween(if (selected) 180 else 160), label = "selection-scale")
-    Box(Modifier.size(32.dp, 18.dp), contentAlignment = Alignment.Center) {
+    Box(Modifier.padding(end = 12.dp).size(32.dp, 18.dp), contentAlignment = Alignment.Center) {
         Box(Modifier.size(dimensionResource(R.dimen.selection_orbital_size)).alpha(1f - opacity).border(dimensionResource(R.dimen.selection_orbital_stroke), themeColor(R.attr.primaryTextColor), CircleShape))
         Box(Modifier.size(dimensionResource(R.dimen.selection_pill_width), dimensionResource(R.dimen.selection_pill_height)).alpha(opacity).scale(scale).background(themeColor(R.attr.accentGood), RoundedCornerShape(dimensionResource(R.dimen.selection_pill_radius))), contentAlignment = Alignment.CenterEnd) {
             Box(Modifier.padding(end = dimensionResource(R.dimen.selection_switch_knob_inset)).size(dimensionResource(R.dimen.selection_switch_knob_size)).background(themeColor(R.attr.invertedPrimaryTextColor), CircleShape))

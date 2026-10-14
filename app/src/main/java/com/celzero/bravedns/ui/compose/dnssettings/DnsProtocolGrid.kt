@@ -41,18 +41,19 @@ private data class ProtocolItem(val key: String, val card: DnsProtocolCard, val 
     )
     val columns = if (LocalConfiguration.current.screenWidthDp >= 480) 3 else 2
     Surface(color = themeColor(R.attr.background)) {
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 8.dp, vertical = 16.dp)) {
+            Spacer(Modifier.height(10.dp))
             items.chunked(columns).forEach { line ->
                 Row(Modifier.fillMaxWidth()) {
                     line.forEach { item ->
-                        Box(Modifier.weight(1f).padding(4.dp)) {
+                        Box(Modifier.weight(1f).padding(8.dp)) {
                             SettingsCard(Modifier.aspectRatio(1f), contentPadding = 0.dp) {
                                 val border = with(LocalDensity.current) { item.card.strokeWidth.toDp() }
-                                Box(Modifier.fillMaxSize().then(if (item.card.strokeWidth > 0) Modifier.border(border, Color(item.card.strokeColor), RoundedCornerShape(8.dp)) else Modifier).testTag("dns-protocol-${item.key}").clickable(onClick = item.card.onClick).padding(8.dp), contentAlignment = Alignment.Center) {
+                                Box(Modifier.fillMaxSize().then(if (item.card.strokeWidth > 0) Modifier.border(border, Color(item.card.strokeColor), RoundedCornerShape(8.dp)) else Modifier).testTag("dns-protocol-${item.key}").clickable(onClick = item.card.onClick).padding(12.dp), contentAlignment = Alignment.Center) {
                                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                         BasicText(stringResource(item.title), Modifier.fillMaxWidth().padding(top = 8.dp), style = TextStyle(color = item.titleState.color?.let(::Color) ?: themeColor(R.attr.primaryTextColor), textAlign = TextAlign.Center), maxLines = 1, overflow = TextOverflow.Ellipsis, autoSize = TextAutoSize.StepBased(14.sp, 18.sp, 1.sp))
                                         BasicText(stringResource(item.description), Modifier.fillMaxWidth().padding(top = 4.dp), style = TextStyle(color = item.descriptionState.color?.let(::Color) ?: themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center), maxLines = 2, overflow = TextOverflow.Ellipsis, autoSize = TextAutoSize.StepBased(12.sp, 16.sp, 1.sp))
-                                        Row(Modifier.padding(top = 8.dp)) { item.dots.forEach { Dot(it) } }
+                                        Row(Modifier.padding(top = 8.dp, bottom = 4.dp)) { item.dots.forEach { Dot(it) } }
                                     }
                                 }
                             }

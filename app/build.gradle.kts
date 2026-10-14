@@ -624,6 +624,8 @@ dependencies {
 
     implementation(libs.androidxFragmentFragmentCompose)
     testImplementation(libs.androidxComposeUiTestJunit4)
+    testImplementation(libs.androidxTestEspressoEspressoCore)
+    androidTestImplementation(libs.androidxComposeUiTestJunit4)
     debugImplementation(libs.androidxComposeUiTestManifest)
 
     // for in-app purchases

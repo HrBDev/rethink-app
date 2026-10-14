@@ -21,17 +21,10 @@ import com.celzero.bravedns.ui.compose.RethinkTheme
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
-import android.view.animation.Animation
-import android.view.animation.RotateAnimation
-import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.WgIncludeAppsAdapter
 import com.celzero.bravedns.database.RefreshDatabase
@@ -43,7 +36,6 @@ import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.viewmodel.ProxyAppsMappingViewModel
-import com.google.android.material.chip.Chip
 import com.celzero.bravedns.ui.compose.wireguard.WgAlertDialogBuilder as MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

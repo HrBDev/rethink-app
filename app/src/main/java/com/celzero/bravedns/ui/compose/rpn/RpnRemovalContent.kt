@@ -33,6 +33,6 @@ fun RpnRemovalContent(ui: RpnRemovalState) {
                 }
             } }
         }
-        Button({ ui.btnUnderstand.performClick() }, Modifier.fillMaxWidth().padding(top = 16.dp).height(56.dp).rpnMotion(ui.btnUnderstand), enabled = ui.btnUnderstand.isEnabled) { RpnText(ui.btnUnderstand) }
+        Button({ ui.btnUnderstand.performClick() }, Modifier.fillMaxWidth().padding(top = 16.dp).height(56.dp).rpnMotion(ui.btnUnderstand), enabled = ui.btnUnderstand.isEnabled) { Text(ui.btnUnderstand.text.toString()) }
     }
 }

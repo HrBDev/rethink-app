@@ -56,6 +56,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.*
@@ -153,9 +154,9 @@ private fun RulesCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
     HomeCard(b.fhsCardFirewallRulesCard, modifier.alpha(b.fhsFirewallBadgesRow.alpha).homeTourAnchor(R.id.fhs_card_firewall_ll), wide = wide) {
         Column(Modifier.fillMaxWidth().heightIn(min = if (wide) 80.dp else 84.dp).padding(start = 14.dp, end = 14.dp, top = 10.dp, bottom = 8.dp)) {
             NativePager(b.fhsFirewallRulesPager, Modifier.fillMaxWidth().weight(1f, false)) { page ->
-                Column(Modifier.fillMaxWidth().clickable { pages.onRulePageTapped?.invoke(page) }.padding(vertical = 4.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(pages.counts[page], color = themeColor(R.attr.primaryTextColor), fontFamily = FontFamily.Monospace, fontSize = 24.sp)
-                    Text(pages.labels[page].replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }, color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp, textAlign = TextAlign.Center)
+                Row(Modifier.fillMaxWidth().clickable { pages.onRulePageTapped?.invoke(page) }.padding(start = 10.dp, top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(pages.counts[page], color = themeColor(R.attr.primaryTextColor), fontFamily = FontFamily.Monospace, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                    Text(pages.labels[page].replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }, Modifier.weight(1f).padding(start = 6.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 12.sp)
                 }
             }
             Dots(listOf(b.fhsRulesDot0, b.fhsRulesDot1, b.fhsRulesDot2), wide)
@@ -223,11 +224,17 @@ private fun LogsCard(b: HomePresentation, wide: Boolean) {
     HomeCard(b.fhsCardLogsLl, Modifier.fillMaxWidth().then(transition), wide = wide) {
         Column(Modifier.fillMaxWidth().padding(if (wide) 20.dp else 16.dp)) {
             if (b.fhsLogsPager.isVisible) {
-                NativePager(b.fhsLogsPager, Modifier.fillMaxWidth().heightIn(min = if (wide) 168.dp else 190.dp)) { page ->
-                    if (page == 0) ActivityPage(b.logsPage) else AppsPage(b.topAppsPage)
+                Box(Modifier.fillMaxWidth()) {
+                    NativePager(b.fhsLogsPager, Modifier.fillMaxWidth().heightIn(min = if (wide) 168.dp else 190.dp)) { page ->
+                        if (page == 0) ActivityPage(b.logsPage) else AppsPage(b.topAppsPage)
+                    }
+                    // Like the baseline FrameLayout, transient dots overlay
+                    // the pager and never change the card's measured height.
+                    if (b.fhsLogsDots.isVisible) Box(Modifier.align(Alignment.BottomCenter)) {
+                        Dots(listOf(b.fhsLogsDot0, b.fhsLogsDot1), wide)
+                    }
                 }
             }
-            if (b.fhsLogsDots.isVisible) Dots(listOf(b.fhsLogsDot0, b.fhsLogsDot1), wide)
             if (b.fhsLogsDisabledRow.isVisible) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HomeText(b.fhsLogsDisabledTxt, Modifier.weight(1f))
@@ -291,7 +298,11 @@ private fun ToggleChips(group: HomeToggleGroup, allowed: HomeNode, blocked: Home
     if (!group.isVisible) return
     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
         listOf(allowed, blocked).forEach { node ->
-            FilterChip(selected = node.isChecked, onClick = { group.select(node) }, enabled = group.isEnabled && node.isEnabled, label = { Text(node.text?.toString().orEmpty(), fontSize = 12.sp) }, modifier = Modifier.testTag(node.context.resources.getResourceEntryName(node.id)), colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.homeScreenBtnBackground)))
+            FilterChip(selected = node.isChecked, onClick = { group.select(node) }, enabled = group.isEnabled && node.isEnabled,
+                label = { Text(node.text?.toString().orEmpty(), fontSize = 12.sp) }, modifier = Modifier.testTag(node.context.resources.getResourceEntryName(node.id)),
+                border = androidx.compose.foundation.BorderStroke(1.dp, if (node.isChecked) themeColor(R.attr.colorOutline) else Color.Transparent),
+                colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.homeScreenBtnBackground), selectedContainerColor = themeColor(R.attr.homeScreenBtnBackground),
+                    labelColor = themeColor(R.attr.primaryLightColorText), selectedLabelColor = themeColor(R.attr.primaryTextColor)))
         }
     }
 }
@@ -302,7 +313,7 @@ private fun HomeHeatmapCanvas(grid: HomeHeatmap) {
     val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
     Canvas(Modifier.fillMaxWidth().padding(top = 4.dp).height(60.dp).onSizeChanged { grid.width = it.width; grid.height = it.height }
         .pointerInput(grid) { detectTapGestures { point -> grid.onTouch?.invoke(point.x, point.y); grid.performClick() } }
-        .semantics { contentDescription = grid.contentDescription?.toString().orEmpty(); role = Role.Button; onClick { grid.onKeyboardClick?.invoke(); true } }
+        .semantics(mergeDescendants = true) { contentDescription = grid.contentDescription?.toString().orEmpty(); role = Role.Button; onClick { grid.onKeyboardClick?.invoke(); true } }
         .testTag("home_activity_heatmap")) {
         val alphas = if (grid.light) listOf(0x40, 0x80, 0x80, 0xB3, 0xE6) else listOf(0x24, 0x52, 0x52, 0x85, 0xCC)
         val fractions = listOf(.30f, .78f, .78f, 1f, 1f)
@@ -467,7 +478,7 @@ private fun StartBorder(b: HomePresentation, modifier: Modifier) {
 @Composable
 private fun HomeText(node: HomeNode, modifier: Modifier = Modifier, align: TextAlign? = null, animated: Boolean = false) {
     if (!node.isVisible) return
-    val size = with(LocalDensity.current) { node.textSize.toSp() }
+    val size = (node.textSize / node.context.resources.displayMetrics.scaledDensity).sp
     val text = if (node.allCaps) node.text?.toString()?.uppercase(Locale.getDefault()).orEmpty() else node.text ?: ""
     val color = node.textColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor)
     val font = if (node.monospace) FontFamily.Monospace else FontFamily.SansSerif
@@ -483,7 +494,12 @@ fun homeAnnotatedText(text: CharSequence): AnnotatedString = buildAnnotatedStrin
             is ForegroundColorSpan -> SpanStyle(color = Color(span.foregroundColor))
             is RelativeSizeSpan -> SpanStyle(fontSize = span.sizeChange.em)
             is UnderlineSpan -> SpanStyle(textDecoration = TextDecoration.Underline)
-            is StyleSpan -> when (span.style) { Typeface.BOLD -> SpanStyle(fontWeight = FontWeight.Bold); else -> SpanStyle() }
+            is StyleSpan -> when (span.style) {
+                Typeface.BOLD -> SpanStyle(fontWeight = FontWeight.Bold)
+                Typeface.ITALIC -> SpanStyle(fontStyle = FontStyle.Italic)
+                Typeface.BOLD_ITALIC -> SpanStyle(fontWeight = FontWeight.Bold, fontStyle = FontStyle.Italic)
+                else -> SpanStyle()
+            }
             else -> SpanStyle()
         }
         addStyle(style, text.getSpanStart(span).coerceAtLeast(0), text.getSpanEnd(span).coerceAtMost(text.length))

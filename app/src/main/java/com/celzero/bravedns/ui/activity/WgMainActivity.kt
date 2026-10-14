@@ -30,7 +30,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.OneWgConfigAdapter
 import com.celzero.bravedns.adapter.WgConfigAdapter
@@ -53,7 +52,6 @@ import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastQ
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.celzero.bravedns.viewmodel.WgConfigViewModel
-import com.google.android.material.button.MaterialButton
 import com.celzero.bravedns.ui.compose.wireguard.WgAlertDialogBuilder as MaterialAlertDialogBuilder
 import com.google.zxing.qrcode.QRCodeReader
 import com.journeyapps.barcodescanner.ScanContract

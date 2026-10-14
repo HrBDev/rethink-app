@@ -19,7 +19,7 @@ class WgMainState(context: Context) : WgFormState() {
     }
     val wgNoConfigText = WgControlState(context).apply {
         text = context.getString(R.string.wireguard_no_config_msg)
-        textSizeSp = context.resources.getDimension(R.dimen.heading_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.heading_font_text_view)
     }
     val wgListToggleGroup = WgControlState(context).apply {
     }
@@ -34,7 +34,7 @@ class WgMainState(context: Context) : WgFormState() {
     val wgWireguardDisclaimer = WgControlState(context).apply {
         text = context.getString(R.string.wireguard_disclaimer)
         alpha = 0.7f
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val wgGeneralInterfaceList = WgControlState(context).apply {
@@ -250,12 +250,12 @@ class WgDetailState(context: Context) : WgFormState() {
     }
     val editBtn = WgControlState(context).apply {
         text = context.getString(R.string.rt_edit_dialog_positive)
-        textSizeSp = context.resources.getDimension(R.dimen.heading_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.heading_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val deleteBtn = WgControlState(context).apply {
         text = context.getString(R.string.ci_delete)
-        textSizeSp = context.resources.getDimension(R.dimen.heading_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.heading_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentBad)
     }
     val actionsCard = WgControlState(context).apply {
@@ -303,22 +303,24 @@ class WgDetailState(context: Context) : WgFormState() {
     val lockdownTitleTv = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
         text = context.getString(R.string.firewall_rule_global_lockdown)
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
     }
     val lockdownCheck = WgControlState(context, checkable = true).apply {
+        switchThemeOverlay = R.style.CustomCompoundButtonSwitch
     }
     val catchAllRl = WgControlState(context).apply {
     }
     val catchAllTitleTv = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
         text = context.getString(R.string.catch_all_wg_dialog_title)
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
     }
     val catchAllCheck = WgControlState(context, checkable = true).apply {
+        switchThemeOverlay = R.style.CustomCompoundButtonSwitch
     }
     val oneWgInfoTv = WgControlState(context).apply {
         text = context.getString(R.string.one_wg_dialog_desc)
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val mobileSsidSettingsCard = WgControlState(context).apply {
@@ -335,23 +337,25 @@ class WgDetailState(context: Context) : WgFormState() {
     val useMobileTitleTv = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
         text = context.getString(R.string.wg_setting_use_on_mobile)
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
     }
     val useMobileCheck = WgControlState(context, checkable = true).apply {
+        switchThemeOverlay = R.style.CustomCompoundButtonSwitch
     }
     val ssidFilterRl = WgControlState(context).apply {
     }
     val ssidTitleTv = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
         text = context.getString(R.string.wg_setting_ssid_title)
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
     }
     val ssidDescTv = WgControlState(context).apply {
         text = context.getString(R.string.wg_setting_ssid_desc)
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val ssidCheck = WgControlState(context, checkable = true).apply {
+        switchThemeOverlay = R.style.CustomCompoundButtonSwitch
     }
     val ssidEditGroup = WgControlState(context).apply {
         visibility = View.VISIBLE
@@ -377,12 +381,12 @@ class WgDetailState(context: Context) : WgFormState() {
         visibility = View.GONE
     }
     val ssidPermissionErrorText = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentBad)
     }
     val ssidPermissionErrorAction = WgControlState(context).apply {
         text = context.getString(R.string.ssid_permission_error_action)
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentGood)
         textStyle = 1
     }
@@ -391,12 +395,12 @@ class WgDetailState(context: Context) : WgFormState() {
     }
     val ssidLocationErrorText = WgControlState(context).apply {
         text = context.getString(R.string.ssid_location_error)
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentBad)
     }
     val ssidLocationErrorAction = WgControlState(context).apply {
         text = context.getString(R.string.ssid_location_error_action)
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentGood)
         textStyle = 1
     }
@@ -418,7 +422,7 @@ class WgPeerState(context: Context) : WgFormState() {
     }
     val peerTitle = WgControlState(context).apply {
         text = context.getString(R.string.add_peer)
-        textSizeSp = context.resources.getDimension(R.dimen.extra_large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.extra_large_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.secondaryTextColor)
     }
     val publicKeyLabelLayout = WgControlState(context).apply {
@@ -555,7 +559,7 @@ class WgHopState(context: Context) : WgFormState() {
     val wgHopDialogHeading = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
         text = context.getString(R.string.hop_add_remove_title)
-        textSizeSp = context.resources.getDimension(R.dimen.extra_large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.extra_large_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val wgHopRecyclerView = WgControlState(context).apply {
@@ -564,7 +568,7 @@ class WgHopState(context: Context) : WgFormState() {
     }
     val wgHopDialogOkButton = WgControlState(context).apply {
         text = context.getString(R.string.ada_noapp_dialog_positive)
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
 }
@@ -574,7 +578,7 @@ class WgIncludeAppsState(context: Context) : WgFormState() {
     val wgIncludeAppDialogHeading = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
         text = context.getString(R.string.add_remove_apps)
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val wgIncludeAppDialogSearchLayout = WgControlState(context).apply {
@@ -642,64 +646,78 @@ class WgConfigRowState(context: Context) : WgFormState() {
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
     }
     val protocolInfoChipIpv6 = WgControlState(context).apply {
         text = context.getString(R.string.settings_ip_text_ipv6)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
     }
     val chipSplitTunnel = WgControlState(context).apply {
         text = context.getString(R.string.lbl_split)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
     }
     val chipAmnezia = WgControlState(context).apply {
         text = context.getString(R.string.lbl_amnezia)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
     }
     val chipHopSrc = WgControlState(context).apply {
         text = context.getString(R.string.lbl_hopping)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipHopping = WgControlState(context).apply {
         text = context.getString(R.string.lbl_hop)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
     }
     val chipProperties = WgControlState(context).apply {
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
     }
     val interfaceStatus = WgControlState(context).apply {
         visibility = View.GONE
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
         textStyle = 2
     }
     val interfaceAppsCount = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val interfaceActiveLayout = WgControlState(context).apply {
@@ -707,16 +725,17 @@ class WgConfigRowState(context: Context) : WgFormState() {
     }
     val interfaceActiveUptime = WgControlState(context).apply {
         visibility = View.VISIBLE
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val interfaceActiveRxTx = WgControlState(context).apply {
         ellipsize = true
         visibility = View.VISIBLE
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val interfaceSwitch = WgControlState(context, checkable = true).apply {
+        switchThemeOverlay = R.style.CustomCompoundButtonSwitch
         isClickable = true
         textSizeSp = 16f
         textColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)
@@ -755,30 +774,36 @@ class WgOneConfigRowState(context: Context) : WgFormState() {
         text = context.getString(R.string.settings_ip_text_ipv4)
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val protocolInfoChipIpv6 = WgControlState(context).apply {
         text = context.getString(R.string.settings_ip_text_ipv6)
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipSplitTunnel = WgControlState(context).apply {
         text = context.getString(R.string.lbl_split)
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val interfaceStatus = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
         textStyle = 2
     }
     val interfaceAppsCount = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val interfaceActiveLayout = WgControlState(context).apply {
@@ -786,13 +811,13 @@ class WgOneConfigRowState(context: Context) : WgFormState() {
     }
     val interfaceActiveUptime = WgControlState(context).apply {
         visibility = View.VISIBLE
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val interfaceActiveRxTx = WgControlState(context).apply {
         ellipsize = true
         visibility = View.VISIBLE
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val oneWgCheck = WgControlState(context, checkable = true).apply {
@@ -832,6 +857,7 @@ class WgAppRowState(context: Context) : WgFormState() {
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val wgIncludeAppListCheckbox = WgControlState(context, checkable = true).apply {
+        buttonTint = UIUtils.fetchColor(context, R.attr.accentGood)
     }
 }
 
@@ -887,12 +913,12 @@ class WgHopRowState(context: Context) : WgFormState() {
     }
     val wgHopListNameTv = WgControlState(context).apply {
         ellipsize = true
-        textSizeSp = context.resources.getDimension(R.dimen.extra_large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.extra_large_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
     }
     val wgHopListDescTv = WgControlState(context).apply {
         ellipsize = true
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val chipGroup = WgControlState(context).apply {
@@ -903,58 +929,73 @@ class WgHopRowState(context: Context) : WgFormState() {
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipIpv6 = WgControlState(context).apply {
         text = context.getString(R.string.settings_ip_text_ipv6)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipSplitTunnel = WgControlState(context).apply {
         text = context.getString(R.string.lbl_split)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipAmnezia = WgControlState(context).apply {
         text = context.getString(R.string.lbl_amnezia)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipHopSrc = WgControlState(context).apply {
         text = context.getString(R.string.lbl_hopping)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipHopping = WgControlState(context).apply {
         text = context.getString(R.string.cd_dns_crypt_relay_heading)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val chipProperties = WgControlState(context).apply {
         text = context.getString(R.string.settings_ip_text_ipv4)
         visibility = View.GONE
         isChecked = true
         alpha = 0.8f
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
+        backgroundColor = UIUtils.fetchColor(context, R.attr.homeScreenBtnBackground)
+        strokeColor = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val wgHopListCheckbox = WgControlState(context, checkable = true).apply {
+        buttonTint = UIUtils.fetchColor(context, R.attr.accentGood)
     }
     val wgHopListProgress = WgControlState(context).apply {
         visibility = View.GONE
@@ -965,24 +1006,24 @@ class WgStatsState(context: Context) : WgFormState() {
     val toggleGroup = WgControlState(context).apply {
     }
     val tbRecentToggleBtn = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.defaultToggleBtnTxt)
         isAllCaps = false
     }
     val tbDailyToggleBtn = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.defaultToggleBtnTxt)
         isAllCaps = false
     }
     val tbWeeklyToggleBtn = WgControlState(context).apply {
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.defaultToggleBtnTxt)
         isAllCaps = false
     }
     val tbLogsDisabledTv = WgControlState(context).apply {
         text = context.getString(R.string.no_stats_available)
         visibility = View.VISIBLE
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
     }
     val tbStatsCard = WgControlState(context).apply {
         strokeWidth = (1f * context.resources.displayMetrics.density).toInt()
@@ -995,17 +1036,17 @@ class WgStatsState(context: Context) : WgFormState() {
     }
     val fssUnmeteredDataUsage = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_subheading_text) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_subheading_text)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val fssTotalDataUsage = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_subheading_text) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_subheading_text)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val fssMeteredDataUsage = WgControlState(context).apply {
         applyTextAppearance(context, this, androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead)
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_subheading_text) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_subheading_text)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val statsRecyclerView = WgControlState(context).apply {
@@ -1025,14 +1066,14 @@ class WgStatsRowState(context: Context) : WgFormState() {
     val ssDataUsage = WgControlState(context).apply {
         maxLines = 1
         ellipsize = true
-        textSizeSp = context.resources.getDimension(R.dimen.large_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
         textStyle = 1
     }
     val ssName = WgControlState(context).apply {
         maxLines = 1
         ellipsize = true
-        textSizeSp = context.resources.getDimension(R.dimen.small_font_subheading_text) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.small_font_subheading_text)
         textColor = UIUtils.fetchColor(context, R.attr.primaryLightColorText)
     }
     val ssProgress = WgControlState(context).apply {
@@ -1040,7 +1081,7 @@ class WgStatsRowState(context: Context) : WgFormState() {
     }
     val ssCount = WgControlState(context).apply {
         alpha = 0.85f
-        textSizeSp = context.resources.getDimension(R.dimen.default_font_text_view) / context.resources.displayMetrics.scaledDensity
+        textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view)
         textColor = UIUtils.fetchColor(context, R.attr.primaryTextColor)
     }
     val ssIndicator = WgControlState(context).apply {
@@ -1055,9 +1096,25 @@ private fun applyTextAppearanceAttribute(context: Context, node: WgControlState,
 }
 private fun applyTextAppearance(context: Context, node: WgControlState, style: Int) {
     context.obtainStyledAttributes(style, intArrayOf(android.R.attr.textSize, android.R.attr.textColor, android.R.attr.textStyle)).let {
-        if (it.hasValue(0)) node.textSizeSp = it.getDimension(0, 14f) / context.resources.displayMetrics.scaledDensity
+        if (it.hasValue(0)) {
+            val value = it.peekValue(0)
+            node.textSizeSp = if (value != null && value.type == android.util.TypedValue.TYPE_DIMENSION &&
+                (value.data and android.util.TypedValue.COMPLEX_UNIT_MASK) == android.util.TypedValue.COMPLEX_UNIT_SP) {
+                android.util.TypedValue.complexToFloat(value.data)
+            } else it.getDimension(0, 14f) / context.resources.displayMetrics.scaledDensity
+        }
         if (it.hasValue(1)) node.textColor = it.getColor(1, 0)
         if (it.hasValue(2)) node.textStyle = it.getInt(2, 0)
         it.recycle()
     }
+}
+
+/** Preserve the source sp unit rather than divide already nonlinear-scaled pixels on Android 14+. */
+internal fun wgTextDimensionSp(context: Context, resource: Int): Float {
+    val value = android.util.TypedValue()
+    context.resources.getValue(resource, value, true)
+    return if (value.type == android.util.TypedValue.TYPE_DIMENSION &&
+        (value.data and android.util.TypedValue.COMPLEX_UNIT_MASK) == android.util.TypedValue.COMPLEX_UNIT_SP) {
+        android.util.TypedValue.complexToFloat(value.data)
+    } else context.resources.getDimension(resource) / context.resources.displayMetrics.scaledDensity
 }

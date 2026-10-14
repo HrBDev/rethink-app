@@ -74,7 +74,7 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                     Icon(painterResource(R.drawable.ic_right_arrow_small), null, Modifier.size(17.dp))
                 }
             }
-            Button({ ui.btnResetRpn.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp).height(48.dp).rpnMotion(ui.btnResetRpn), enabled = ui.btnResetRpn.isEnabled) { RpnText(ui.btnResetRpn) }
+            Button({ ui.btnResetRpn.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp).height(48.dp).rpnMotion(ui.btnResetRpn), enabled = ui.btnResetRpn.isEnabled) { Text(ui.btnResetRpn.text.toString()) }
             Text(stringResource(R.string.rpn_restore_confirm_message), Modifier.padding(horizontal = 20.dp).alpha(.6f), style = MaterialTheme.typography.bodySmall)
             RpnSignature(ui.dolphinSignature, Modifier.fillMaxWidth())
         }

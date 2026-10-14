@@ -22,14 +22,9 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
-import android.view.inputmethod.EditorInfo
 import android.widget.Toast
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.celzero.bravedns.R
-import com.celzero.bravedns.adapter.SsidAdapter
 import com.celzero.bravedns.data.SsidItem
 import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.Utilities
@@ -50,7 +45,7 @@ class WgSsidDialog(
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
 
-        b = WgSsidState(activity)
+        b = WgSsidState(context)
         setWgContent(activity) { WgSsidContent(b, if (::ssidAdapter.isInitialized) ssidAdapter else null) }
         setCancelable(false)
         setupDialog()

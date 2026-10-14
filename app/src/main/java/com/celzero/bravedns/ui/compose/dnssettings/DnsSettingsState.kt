@@ -15,13 +15,13 @@ class DnsControl {
     var alpha by mutableStateOf(1f)
     var onClick by mutableStateOf<() -> Unit>({})
     var onCheckedChange: ((DnsControl, Boolean) -> Unit)? = null
-    private var checked by mutableStateOf(false)
+    private var checkedValue by mutableStateOf(false)
     private var broadcasting = false
     var isChecked: Boolean
-        get() = checked
+        get() = checkedValue
         set(value) {
-            if (checked == value) return
-            checked = value
+            if (checkedValue == value) return
+            checkedValue = value
             if (broadcasting) return
             broadcasting = true
             try { onCheckedChange?.invoke(this, value) } finally { broadcasting = false }

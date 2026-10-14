@@ -2,7 +2,7 @@
   "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
   "kind": "selected-controller-token-equality",
   "passed": true,
-  "count": 204,
+  "count": 205,
   "methods": [
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
@@ -583,6 +583,13 @@
       "method": "logEvent",
       "baselineSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
       "currentSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateLockdown",
+      "baselineSha256": "26aa607b7fe2a5bfa435b4203403350eb66b6679c853436e896da71fc74560c7",
+      "currentSha256": "26aa607b7fe2a5bfa435b4203403350eb66b6679c853436e896da71fc74560c7",
       "passed": true
     },
     {

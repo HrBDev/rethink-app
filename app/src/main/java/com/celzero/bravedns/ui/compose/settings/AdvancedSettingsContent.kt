@@ -76,11 +76,12 @@ fun SettingsRow(
     icon: Int,
     modifier: Modifier = Modifier,
     iconAlpha: Float = 1f,
+    verticalPadding: androidx.compose.ui.unit.Dp = 15.dp,
     onClick: (() -> Unit)? = null,
     trailing: @Composable (() -> Unit)? = null,
 ) {
     Row(modifier.fillMaxWidth().then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
-        .padding(vertical = 15.dp), verticalAlignment = Alignment.CenterVertically) {
+        .padding(vertical = verticalPadding), verticalAlignment = Alignment.CenterVertically) {
         Image(painterResource(icon), null, Modifier.padding(5.dp).padding(10.dp).size(24.dp).alpha(iconAlpha))
         Column(Modifier.weight(1f)) {
             Text(title, color = themeColor(R.attr.primaryTextColor), fontSize = 14.sp)
@@ -107,7 +108,7 @@ fun AdvancedSettingsContent(b: AdvancedSettingsState) {
             if (b.settingsPtModeRl.isVisible) SettingsRow("Protocol Translation Mode", b.settingsPtModeDesc.text.toString(),
                 R.drawable.ic_ip_network, iconAlpha = .5f, onClick = { b.settingsPtModeRl.performClick() })
             if (b.settingsGoMaxMemoryLl.isVisible) Column(Modifier.padding(vertical = 15.dp)) {
-                SettingsRow("Go Max Memory Limit", "Set the maximum memory the Go engine can consume", R.drawable.ic_experimental, iconAlpha = .5f)
+                SettingsRow("Go Max Memory Limit", "Set the maximum memory the Go engine can consume", R.drawable.ic_experimental, iconAlpha = .5f, verticalPadding = 0.dp)
                 Slider(b.goMaxMemorySeekbar.progress.toFloat(), { b.goMaxMemorySeekbar.userProgress(it.toInt()) },
                     Modifier.padding(start = 40.dp, end = 20.dp), valueRange = 0f..5f, steps = 4,
                     onValueChangeFinished = { b.goMaxMemorySeekbar.stop() })

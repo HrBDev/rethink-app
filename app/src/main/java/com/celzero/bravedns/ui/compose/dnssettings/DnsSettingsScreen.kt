@@ -39,7 +39,7 @@ fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDn
                     val transition = rememberInfiniteTransition(label = "dns-refresh")
                     transition.animateFloat(0f, 360f, infiniteRepeatable(tween(750, easing = LinearEasing)), label = "rotation").value
                 } else 0f
-                IconButton(onClick = b.dcRefresh.onClick, enabled = b.dcRefresh.isEnabled, modifier = Modifier.testTag("dns-refresh")) { Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.dc_refresh_toast), Modifier.rotate(rotation), tint = Color.Unspecified) }
+                IconButton(onClick = b.dcRefresh.onClick, enabled = b.dcRefresh.isEnabled, modifier = Modifier.testTag("dns-refresh")) { Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.dns_settings_refresh_action), Modifier.rotate(rotation), tint = Color.Unspecified) }
             }
             SettingsCard(Modifier.padding(4.dp), contentPadding = 10.dp, cornerRadius = 8.dp) {
                 DnsChoice(b.networkDnsRb, R.string.network_dns, "network", b.networkDnsInfo.onClick)
@@ -100,7 +100,7 @@ fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDn
             Text(stringResource(label), Modifier.weight(1f), color = themeColor(R.attr.primaryTextColor))
             if (onInfo == null) Icon(painterResource(R.drawable.ic_right_arrow_white), null, tint = Color.Unspecified)
         }
-        if (onInfo != null) IconButton(onClick = onInfo, modifier = Modifier.testTag("dns-system-info")) { Icon(painterResource(R.drawable.ic_info_white_16), stringResource(R.string.network_dns), tint = Color.Unspecified) }
+        if (onInfo != null) IconButton(onClick = onInfo, modifier = Modifier.testTag("dns-system-info")) { Icon(painterResource(R.drawable.ic_info_white_16), stringResource(R.string.dns_settings_system_info_action), tint = Color.Unspecified) }
     }
 }
 

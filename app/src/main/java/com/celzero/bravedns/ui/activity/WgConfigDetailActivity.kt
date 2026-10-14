@@ -31,13 +31,10 @@ import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.text.style.TypefaceSpan
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.WgPeersAdapter
 import com.celzero.bravedns.customdownloader.IpInfoDownloader
@@ -702,7 +699,7 @@ class WgConfigDetailActivity : BaseActivity() {
         }
 
         // uncomment this if we want to show the public key, addresses, listen port and mtu
-        /*b.publicKeyText.text = wgInterface?.getKeyPair()?.getPublicKey()?.base64().orEmpty()
+        /*b.publicKeyText.text = wgInterface?.getKeyPair()?.getPublicKey()?.base64()
 
         if (wgInterface?.getAddresses()?.isEmpty() == true) {
             b.addressesLabel.visibility = View.GONE

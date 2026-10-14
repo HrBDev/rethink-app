@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.chrome.homeNavigationClearance
 import com.celzero.bravedns.ui.compose.themeColor
 import com.celzero.bravedns.ui.compose.wireguard.WgCard
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
@@ -36,7 +37,7 @@ import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 @Composable
 fun AboutContent(b: AboutState) {
     Surface(color = themeColor(R.attr.background)) {
-        LazyColumn(Modifier.fillMaxSize().testTag("about"), contentPadding = PaddingValues(bottom = 60.dp)) {
+        LazyColumn(Modifier.fillMaxSize().testTag("about"), contentPadding = PaddingValues(bottom = homeNavigationClearance(60.dp))) {
             item {
                 Column(Modifier.padding(15.dp)) {
                     Text(if (b.fhsTitleRethink.isAllCaps) b.fhsTitleRethink.text.toString().uppercase() else b.fhsTitleRethink.text.toString(),

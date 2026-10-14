@@ -134,6 +134,31 @@ class SnackbarContractTest {
             registry.remove(R.id.nav_view, owner)
         }
     }
+    @Test fun nativeAnchorResizeRepositionsSnackbarAndDisposalStopsObservation() {
+        val parent = controller.get().findViewById<FrameLayout>(android.R.id.content)
+        parent.layout(0, 0, 360, 800)
+        root.layout(0, 0, 360, 800)
+        val registry = HomeTourAnchors.forActivity(controller.get())
+        val owner = Any()
+        registry.put(R.id.nav_view, owner, RectF(0f, 696f, 360f, 800f), { true }, {})
+        val presenter = ComposeSnackbarPresenter(root, "Resize anchor", -2)
+        try {
+            presenter.show()
+            val params = host(presenter).layoutParams as android.view.ViewGroup.MarginLayoutParams
+            val before = params.bottomMargin
+            registry.put(R.id.nav_view, owner, RectF(0f, 672f, 360f, 800f), { true }, {})
+            assertEquals(before + 24, params.bottomMargin)
+            presenter.dismiss()
+            detach(presenter)
+            val detachedMargin = params.bottomMargin
+            registry.put(R.id.nav_view, owner, RectF(0f, 640f, 360f, 800f), { true }, {})
+            assertEquals(detachedMargin, params.bottomMargin)
+        } finally {
+            registry.remove(R.id.nav_view, owner)
+            presenter.dismiss()
+            detach(presenter)
+        }
+    }
     @Test fun themedInsetsKeepTheOriginalAdditiveEightyPixelLift() {
         SnackbarHelper.show(root, "Insets", -2)
         val host = current()!!.javaClass.getDeclaredField("host").apply { isAccessible = true }.get(current()) as ComposeView

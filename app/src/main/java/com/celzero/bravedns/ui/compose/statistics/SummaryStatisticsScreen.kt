@@ -23,6 +23,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.chrome.homeNavigationClearance
 import com.celzero.bravedns.data.AppConnection
 import com.celzero.bravedns.data.DataUsageSummary
 import com.celzero.bravedns.ui.compose.NoDimDialogWindow
@@ -38,7 +39,7 @@ import com.celzero.bravedns.viewmodel.SummaryStatisticsViewModel.TimeCategory
 @Composable
 internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
     Surface {
-        LazyColumn(Modifier.fillMaxSize().testTag("summary_statistics"), contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 15.dp, bottom = 90.dp)) {
+        LazyColumn(Modifier.fillMaxSize().testTag("summary_statistics"), contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 15.dp, bottom = homeNavigationClearance(90.dp, contentGap = 10.dp))) {
             item {
                 Row(Modifier.fillMaxWidth().padding(bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f).alpha(.5f)) {

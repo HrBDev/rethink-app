@@ -8,7 +8,6 @@ import android.util.TypedValue
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -19,7 +18,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -53,13 +51,22 @@ internal val rootNavigationItems = listOf(
 )
 
 @Composable
-fun HomeBottomNavigation(selectedItem: Int, anchors: HomeTourAnchors, onSelect: (Int) -> Unit) {
+fun HomeBottomNavigation(
+    selectedItem: Int,
+    anchors: HomeTourAnchors,
+    modifier: Modifier = Modifier,
+    windowInsets: WindowInsets = WindowInsets(0, 0, 0, 0),
+    onSelect: (Int) -> Unit,
+) {
     NavigationBar(
-        modifier = Modifier.clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
-        containerColor = themeColor(R.attr.navBarColor),
+        modifier = modifier.testTag("root_navigation").homeTourAnchor(R.id.nav_view, anchors),
+        // Frost deliberately makes the shared nav token translucent. The anchored
+        // bar must still paint a solid backdrop, including its system inset strip.
+        containerColor = themeColor(R.attr.navBarColor).copy(alpha = 1f),
         tonalElevation = 0.dp,
-        // The Activity Compose root applies the original platform bottom inset.
-        windowInsets = WindowInsets(0, 0, 0, 0),
+        // Keep the system strip inside the opaque NavigationBar surface. Padding an
+        // outer, unpainted wrapper left a gap through which destinations could scroll.
+        windowInsets = windowInsets,
     ) {
         rootNavigationItems.forEach { item ->
             NavigationBarItem(

@@ -1,6 +1,6 @@
 {
   "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
-  "checked_at": "2026-10-14T09:45:50.507872+00:00",
+  "checked_at": "2026-10-14T11:09:57.463441+00:00",
   "status": "PASS",
   "source_only": true,
   "unchanged_home_methods": 25,
@@ -10,15 +10,16 @@
     "app/src/full/res/layout/fragment_rethink_basic.xml"
   ],
   "files_sha256": {
-    "app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt": "95262da1aa1007eaf2927dd8de5b60e3a544240929093055692c769ef4b3b764",
+    "app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt": "f640206d9186a0d288b7bfabb8bc67d9350bbacfc183c6d444ed64cca8fe4b8a",
     "app/src/main/java/com/celzero/bravedns/util/UIUtils.kt": "45327085b495872e28114d9fbeb1266bb4f51e21eee9ba6e071781b696c26bfa",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt": "c2f70c2638fc7a4ed679d26b38f441c85c102e04bc7055d9ac9c7f4baae88838",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChromeLayout.kt": "69e682e1f9295a6361e4a83a3bc6f38ca991523e9abc12f92f5ba8eff04b2530",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt": "7bfc834fdc613cac23ba76962c7e0b90c2d2467303678a4ca9983af499ddb7c9",
     "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/ComposeSnackbarPresenter.kt": "fe82c0064b10d53013dc2e823a07a26689faa6c34a238969e0be76665898be00",
     "app/src/main/java/com/celzero/bravedns/ui/compose/ActivityFragmentContainer.kt": "385c1d86ad894bd5430e2d6359811baed77e9307cb22e758d3e59ba99581bba9",
     "app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt": "85d3033105b3ca2c9b948584083e2c251424733642b829c5c2214dcd06ba8186",
     "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureRethinkBasicActivity.kt": "a45caa909cdf132763ecc8e98160f5f6055be9ba8b29e2ae58948ccab934e517",
     "app/src/main/res/values/compose_activity_host_ids.xml": "f5a9fa86fc9881c86bbc8f15de3a98c6d1551125969c7ec1e078e69675fe46ea",
     "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeTourAnchors.kt": "9f814235a5f3df4a8d4816111c263516f83d5bb06fd57d963dafb83475d6dbc2",
-    "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt": "9e69c0ff0d15b88bb346e0003bb60644860c782a9ee027aa2f3e7b54d0449338"
+    "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt": "0783a286130a655f2a157378410e8508919aff339bbd1f1e437d457e296877b7"
   }
 }

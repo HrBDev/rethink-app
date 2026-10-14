@@ -18,6 +18,7 @@ package com.celzero.bravedns.ui.fragment
 import com.celzero.bravedns.ui.compose.rpn.*
 import com.celzero.bravedns.ui.compose.home.HomeTourAnchors
 import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.celzero.bravedns.ui.compose.chrome.navigationOverlapBottomPx
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import android.animation.Animator
@@ -374,23 +375,35 @@ class ServerSelectionFragment : Fragment(),
         isProxyStopped = RpnProxyManager.rpnMode().isNone()
 
         var navBarBottom = 0
-        var nativeNavHeight = 0
-        // Home's floating bar is native Compose. Observe its actual geometry so first layout,
-        // recreation and changing system insets retain the old FAB/list clearance calculation.
-        val stopObservingNavigation = tourAnchors.observeBounds(R.id.nav_view) { bounds ->
-            nativeNavHeight = bounds?.height()?.toInt() ?: 0
-            ui.fabBottomPx = navBarBottom + nativeNavHeight + dpPx(16)
-            ui.scrollBottomPx = if (bounds != null) nativeNavHeight + dpPx(24) else 0
+        val viewLocation = IntArray(2)
+        fun updateNavigationClearance() {
+            val bounds = tourAnchors.find(R.id.nav_view)
+            view.getLocationInWindow(viewLocation)
+            // The Home shell reserves the entire bar, including system insets. Only
+            // actual viewport overlap needs padding; standalone hosts retain their inset.
+            val overlap = if (bounds != null) {
+                navigationOverlapBottomPx(viewLocation[1] + view.height, bounds.top)
+            } else navBarBottom
+            ui.fabBottomPx = overlap + dpPx(16)
+            ui.scrollBottomPx = if (bounds != null) overlap + dpPx(24) else 0
+        }
+        val reposition = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            updateNavigationClearance()
+        }
+        view.addOnLayoutChangeListener(reposition)
+        val stopObservingNavigation = tourAnchors.observeBounds(R.id.nav_view) {
+            updateNavigationClearance()
         }
         viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onDestroy(owner: LifecycleOwner) {
                 stopObservingNavigation()
+                view.removeOnLayoutChangeListener(reposition)
                 owner.lifecycle.removeObserver(this)
             }
         })
         ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
             navBarBottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            ui.fabBottomPx = navBarBottom + nativeNavHeight + dpPx(16)
+            updateNavigationClearance()
             insets
         }
         ViewCompat.requestApplyInsets(view)

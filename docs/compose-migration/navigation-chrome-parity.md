@@ -72,8 +72,8 @@ Executed in this reconstructed checkout:
   docs/compose-migration/navigation-chrome-source-report.json`: PASS. Protects 25 controller
   methods, startup/listener/back/navigation behavior, throttle/identity, the complete
   UIUtils prefix/tail (only one additive presenter import is allowed), and graph/native-host contracts.
-  Eleven deliberate startup, restore, navigation, throttle, prefix and identity mutations
-  are rejected. The JSON records current input hashes and check timestamp.
+  Nineteen deliberate startup, restore, navigation, throttle, prefix, identity, viewport,
+  opacity, inset and listener mutations are rejected. The JSON records current input hashes and check timestamp.
 - `git diff --check`: PASS for the current source check.
 - Current direct-callsite scan found no remaining `Snackbar.make` after the Home group
   migrated its separate notification-denial bar through the same native presenter.
@@ -82,7 +82,7 @@ Authored, not claimed run by this worker:
 
 - Four `HomeScreenActivityDialogTest` production-state tests replace the old tests that
   merely reconstructed unrelated AlertDialogs.
-- Seven `RootChromeContentTest` native renderer tests: menu ID/order/selection/anchors,
+- Eleven `RootChromeContentTest` native renderer tests: menu ID/order/selection/anchors,
   modal button ordering, restore callback order, informational buttons, silent snackbar
   recomposition, distinct action/dismiss semantics, live region, three-line cap and large RTL.
 - `SnackbarContractTest` host/policy tests: native-nav lookup and visibility, durations,
@@ -136,3 +136,42 @@ This worker did not run Gradle or these tests. The existing navigation source gu
 seven negative controls passed after the change. The visual fixture owner is refreshing
 indicator/layout-post settling before interpreting the separate PNG geometry difference;
 no production indicator removal or speculative geometry adjustment was made.
+
+## Anchored navigation correction (2026-10-14)
+
+The user reported a floating navigation bar and scrolling content visible behind it. Source
+inspection confirmed three contributing conditions: the Fragment host filled an overlay Box,
+the bar clipped its top corners, and bottom system padding lived outside the bar's painted
+surface. The original `nav_menu_background.xml` uses `navBarColor`; most themes resolve it
+to an opaque color, but Frost resolves it to translucent `#AA1e1e1e`. The migration's outer
+inset wrapper did not paint it.
+
+- `HomeChromeLayout` now measures the destination in the remaining Column height above the
+  bar, and clips that viewport. There is no guessed or fixed navigation-height spacer.
+- `HomeBottomNavigation` paints the full rectangular area, with platform bottom insets inside
+  the Material NavigationBar surface. Its local color keeps the theme RGB and sets alpha to
+  one, including Frost, without changing the shared theme token. The removal of exposed corner cut-outs is intentional
+  for this user-requested anchored treatment; the baseline screenshot remains an honest
+  comparison rather than being silently updated to declare exact visual parity.
+- The bar's `nav_view` anchor includes the complete painted inset strip. Tab resource IDs,
+  labels, icons, typography, selection callbacks, saved navigation selection, Fragment host
+  identity and graph/back behavior are unchanged.
+- Home's separate renderer removes its old fixed 80dp bottom clearance. RPN now reserves
+  only measured overlap with its own viewport, plus its existing 16dp FAB/24dp scroll gaps.
+  It observes both viewport layout and native bar geometry and disposes both observers.
+- The snackbar's bounds-based anchoring is unchanged; its whole bar/inset boundary remains
+  available through the same registry. The historical additive themed snackbar inset policy
+  was not changed as part of this targeted correction.
+
+Added synthetic renderer cases cover no content/bar overlap during scroll; 0/24/48/0 physical
+pixel inset changes; full-width opaque top corners and system strip in six themes; RTL
+resize, removal and recreation of anchor geometry; framework-only AndroidView/FragmentContainerView
+measurement within the reserved viewport; a nested ComposeView's Home-only clearance
+policy with standalone fallback; and overlap-only child clearance. A
+synthetic ComponentActivity snackbar case checks anchor resize and disposal. None instantiates
+production Application, Activity/Fragment controllers, VPN, account or traffic machinery.
+
+Fresh source checks passed: navigation guard with nineteen negative controls; 221 fixed RPN
+controller/helper bodies; all 522 protected-core files; and `git diff --check`. These are
+source-only results. The new Kotlin/Compose tests are authored but uncompiled and unrun.
+No Gradle, network fetch, installation, device/app runtime or remote write was attempted.

@@ -15,6 +15,7 @@ HOME = 'app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt'
 UTIL = 'app/src/main/java/com/celzero/bravedns/util/UIUtils.kt'
 IMPORT = 'import com.celzero.bravedns.ui.compose.chrome.ComposeSnackbarPresenter\n'
 CHROME = 'app/src/main/java/com/celzero/bravedns/ui/compose/chrome/'
+CHROME_LAYOUT = CHROME + 'HomeChromeLayout.kt'
 HOST = 'app/src/main/java/com/celzero/bravedns/ui/compose/ActivityFragmentContainer.kt'
 FRAGMENT_HOST = 'app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt'
 CONFIGURE_HOST = 'app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureRethinkBasicActivity.kt'
@@ -128,11 +129,31 @@ def check(root, override=None):
         assert 'consumeWindowInsets = false' in host_source, f'Nested Fragment insets consumed: {path}'
     for required in ['id = R.id.container', 'containerId = R.id.fragment_container',
                      'NavHostFragment.create(R.navigation.app_navigation)', 'primaryNavigationHost = true',
-                     'homeTourAnchor(R.id.nav_view, anchors)', 'consumeWindowInsets = false',
+                     'HomeChromeLayout(', 'consumeWindowInsets = false',
                      'WindowInsets.systemBars.only(WindowInsetsSides.Bottom)',
                      'if (navigationListenerInstalled) return',
                      'if (navigationSetupRequested) setupNavigationItemSelectedListener()']:
         assert required in after, f'Native Home host contract missing: {required}'
+    # The measured viewport must stop above the bar, including the system inset strip.
+    # This is a source structure guard, not a substitute for the synthetic geometry tests.
+    shell = read(CHROME_LAYOUT)
+    for required in ['Column(modifier.fillMaxSize().background(themeColor(R.attr.background)))',
+                     'Modifier.weight(1f).fillMaxWidth().clipToBounds().testTag("root_content_viewport")',
+                     'HomeBottomNavigation(selectedItem, anchors, windowInsets = bottomInsets, onSelect = onSelect)',
+                     'LocalHomeNavigationReserved = staticCompositionLocalOf { false }',
+                     'if (LocalHomeNavigationReserved.current) contentGap else legacyPadding',
+                     'CompositionLocalProvider(LocalHomeNavigationReserved provides true)',
+                     '.consumeWindowInsets(bottomInsets)',
+                     'ceil((viewportBottomPx - navigationTopPx).coerceAtLeast(0f)).toInt()']:
+        assert required in shell, f'Anchored Home viewport contract missing: {required}'
+    assert shell.index('content()') < shell.index('HomeBottomNavigation(')
+    assert 'Alignment.BottomCenter' not in block(after, 'private fun installComposeChrome('), 'Bottom bar became an overlay'
+    navigation = block(read(CHROME + 'HomeChrome.kt'), 'fun HomeBottomNavigation(')
+    for required in ['modifier.testTag("root_navigation").homeTourAnchor(R.id.nav_view, anchors)',
+                     'containerColor = themeColor(R.attr.navBarColor).copy(alpha = 1f)', 'tonalElevation = 0.dp',
+                     'windowInsets = windowInsets']:
+        assert required in navigation, f'Opaque inset-bearing bottom bar contract missing: {required}'
+    assert '.clip(' not in navigation, 'Clipped bar corners expose the destination'
     host_source = read(HOST)
     for required in ['FragmentContainerView(context).apply { id = containerId }',
                      'fragmentManager.findFragmentById(containerId) ?: createFragment()',
@@ -161,8 +182,10 @@ def check(root, override=None):
     assert 'findViewById<View>(R.id.nav_view)' not in selection, 'RPN still depends on a removed navigation View'
     for expected in ['tourAnchors.observeBounds(R.id.nav_view)', 'stopObservingNavigation()',
                      'owner.lifecycle.removeObserver(this)',
-                     'ui.fabBottomPx = navBarBottom + nativeNavHeight + dpPx(16)',
-                     'ui.scrollBottomPx = if (bounds != null) nativeNavHeight + dpPx(24) else 0']:
+                     'navigationOverlapBottomPx(viewLocation[1] + view.height, bounds.top)',
+                     'view.addOnLayoutChangeListener(reposition)', 'view.removeOnLayoutChangeListener(reposition)',
+                     'ui.fabBottomPx = overlap + dpPx(16)',
+                     'ui.scrollBottomPx = if (bounds != null) overlap + dpPx(24) else 0']:
         assert expected in selection, f'RPN native navigation-clearance contract missing: {expected}'
     anchors = read(ANCHORS)
     assert 'boundsListeners[id]?.toList()?.forEach' in anchors
@@ -190,15 +213,23 @@ def main():
             (HOME, 'primaryNavigationHost = true', 'primaryNavigationHost = false'),
             (CONFIGURE_HOST, 'supportFragmentManager.findFragmentById(R.id.root_container) ?: fragment(fl)', 'fragment(fl)'),
             (SERVER_SELECTION, 'stopObservingNavigation()', 'Unit'),
+            (SERVER_SELECTION, 'navigationOverlapBottomPx(viewLocation[1] + view.height, bounds.top)', 'bounds.height().toInt()'),
+            (SERVER_SELECTION, 'view.removeOnLayoutChangeListener(reposition)', 'Unit'),
+            (CHROME_LAYOUT, 'Modifier.weight(1f).fillMaxWidth().clipToBounds()', 'Modifier.fillMaxSize()'),
+            (CHROME_LAYOUT, 'LocalHomeNavigationReserved provides true', 'LocalHomeNavigationReserved provides false'),
+            (CHROME_LAYOUT, '.consumeWindowInsets(bottomInsets)', ''),
+            (CHROME + 'HomeChrome.kt', 'containerColor = themeColor(R.attr.navBarColor)', 'containerColor = Color.Transparent'),
+            (CHROME + 'HomeChrome.kt', 'containerColor = themeColor(R.attr.navBarColor).copy(alpha = 1f)', 'containerColor = themeColor(R.attr.navBarColor)'),
+            (CHROME + 'HomeChrome.kt', 'windowInsets = windowInsets', 'windowInsets = WindowInsets(0, 0, 0, 0)'),
         ]:
             source = (args.repo / path).read_text()
             assert old in source
             try: check(args.repo, {path: source.replace(old, new, 1)})
             except AssertionError: continue
             raise AssertionError(f'Negative control escaped: {old}')
-        print('PASS: eleven source guard negative controls')
+        print('PASS: nineteen source guard negative controls')
     if args.report:
-        files = [HOME, UTIL, CHROME + 'HomeChrome.kt', CHROME + 'ComposeSnackbarPresenter.kt', HOST, FRAGMENT_HOST, CONFIGURE_HOST, HOST_IDS, ANCHORS, SERVER_SELECTION]
+        files = [HOME, UTIL, CHROME_LAYOUT, CHROME + 'HomeChrome.kt', CHROME + 'ComposeSnackbarPresenter.kt', HOST, FRAGMENT_HOST, CONFIGURE_HOST, HOST_IDS, ANCHORS, SERVER_SELECTION]
         args.report.write_text(json.dumps({'baseline': BASE, 'checked_at': datetime.now(timezone.utc).isoformat(),
             'status': 'PASS', 'source_only': True, 'unchanged_home_methods': count, 'retired_xml_shells': RETIRED_LAYOUTS,
             'files_sha256': {path: hashlib.sha256((args.repo / path).read_bytes()).hexdigest() for path in files}}, indent=2)+'\n')

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.chrome.homeNavigationClearance
 import com.celzero.bravedns.ui.compose.themeColor
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 
@@ -60,7 +61,7 @@ class ConfigureMenuState(context: Context) {
 @Composable
 fun ConfigureMenuContent(b: ConfigureMenuState) {
     Surface(color = themeColor(R.attr.background)) {
-        Column(Modifier.fillMaxSize().safeDrawingPadding().verticalScroll(rememberScrollState()).padding(bottom = 90.dp)) {
+        Column(Modifier.fillMaxSize().safeDrawingPadding().verticalScroll(rememberScrollState()).padding(bottom = homeNavigationClearance(90.dp, contentGap = 10.dp))) {
             Column(Modifier.padding(start = 20.dp, top = 20.dp, end = 20.dp, bottom = 8.dp)) {
                 val title = b.fhsTitleRethink.text.toString()
                 Text(if (b.fhsTitleRethink.isAllCaps) title.uppercase(LocalConfiguration.current.locales[0]) else title,

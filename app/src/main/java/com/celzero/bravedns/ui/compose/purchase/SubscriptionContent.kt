@@ -21,6 +21,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.chrome.homeNavigationClearance
 import com.celzero.bravedns.ui.compose.rpn.RpnControlState
 import com.celzero.bravedns.ui.compose.rpn.RpnText
 import com.celzero.bravedns.ui.compose.themeColor
@@ -85,7 +86,7 @@ internal class SubscriptionScreenState {
     Surface(Modifier.fillMaxSize()) {
         Scaffold(containerColor = themeColor(R.attr.background), bottomBar = {
             if (state.ctaContainer.isVisible) Surface(Modifier.alpha(entrance.value)) {
-                Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = if (state.hosted) 0.dp else 60.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = if (state.hosted) 0.dp else homeNavigationClearance(60.dp)), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     RpnText(state.cancelPolicy, style = MaterialTheme.typography.bodySmall)
                     PurchaseButton(state.subscribeButton, R.string.get_rpn, "purchase_subscribe", scale(state.subscribeButton))
                     TextButton({ state.btnContactSupport.performClick() }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.contact_support_title)) }

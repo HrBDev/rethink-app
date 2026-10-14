@@ -72,19 +72,20 @@ import kotlin.math.max
 @Composable
 fun HomeContent(b: HomePresentation) {
     val wide = LocalConfiguration.current.screenWidthDp >= 600
-    Column(Modifier.fillMaxSize().background(themeColor(R.attr.background)).padding(bottom = 80.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    // The Activity shell reserves the measured bottom-navigation viewport.
+    Column(Modifier.fillMaxSize().background(themeColor(R.attr.background)), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).widthIn(max = 720.dp).fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 32.dp)) {
             ProtectionRow(b)
             if (wide) {
-                Row(Modifier.fillMaxWidth().padding(top = 12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Row(Modifier.fillMaxWidth().padding(top = 12.dp)) {
                     Column(Modifier.weight(.58f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
-                            DnsCard(b, Modifier.weight(.7f), true)
+                            DnsCard(b, Modifier.weight(.7f).padding(start = 2.dp), true)
                             ThroughputCard(b, Modifier.weight(.3f).fillMaxHeight(), true)
                         }
-                        LogsCard(b, true)
+                        LogsCard(b, true, Modifier.fillMaxWidth().padding(start = 2.dp, end = 8.dp))
                     }
-                    Column(Modifier.weight(.42f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Column(Modifier.weight(.42f).padding(start = 10.dp, end = 2.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         RulesCard(b, Modifier.fillMaxWidth(), true)
                         ProxyCard(b, Modifier.fillMaxWidth(), true)
                         AppsCard(b, true)
@@ -93,14 +94,14 @@ fun HomeContent(b: HomePresentation) {
             } else {
                 Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
                     DnsCard(b, Modifier.weight(.65f), false)
-                    ThroughputCard(b, Modifier.weight(.35f).fillMaxHeight(), false)
+                    ThroughputCard(b, Modifier.weight(.35f).padding(end = 2.dp).fillMaxHeight(), false)
                 }
-                Row(Modifier.fillMaxWidth().heightIn(min = 120.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth().padding(start = 2.dp).heightIn(min = 120.dp), verticalAlignment = Alignment.CenterVertically) {
                     RulesCard(b, Modifier.weight(1f), false)
-                    ProxyCard(b, Modifier.weight(1f), false)
+                    ProxyCard(b, Modifier.weight(1f).padding(end = 2.dp), false)
                 }
-                LogsCard(b, false)
-                AppsCard(b, false)
+                LogsCard(b, false, Modifier.fillMaxWidth().padding(horizontal = 2.dp))
+                AppsCard(b, false, Modifier.fillMaxWidth().padding(horizontal = 2.dp))
             }
         }
         Controls(b, wide)
@@ -117,11 +118,12 @@ private fun ProtectionRow(b: HomePresentation) {
 }
 
 @Composable
-private fun HomeCard(node: HomeNode, modifier: Modifier = Modifier, radius: Dp = 18.dp, wide: Boolean = false, content: @Composable ColumnScope.() -> Unit) {
+private fun HomeCard(node: HomeNode, modifier: Modifier = Modifier, radius: Dp = 18.dp, wide: Boolean = false, elevationOverride: Dp? = null, content: @Composable ColumnScope.() -> Unit) {
     if (!node.isVisible) return
     val shape = RoundedCornerShape(radius)
     val stroke = when (val color = node.strokeColor) { is Int -> color; is ColorStateList -> color.defaultColor; else -> null }
-    var m = modifier.testTag(node.context.resources.getResourceEntryName(node.id)).homeTourAnchor(node.id)
+    var m = modifier.homeTourAnchor(node.id).padding(rememberHomeCardPadding(radius, elevationOverride))
+        .testTag(node.context.resources.getResourceEntryName(node.id))
         .clip(shape).background(themeColor(if (wide) R.attr.colorSurfaceContainer else androidx.cardview.R.attr.cardBackgroundColor))
     if (stroke != null && node.strokeWidth > 0) m = m.border(with(LocalDensity.current) { node.strokeWidth.toDp() }, Color(stroke), shape)
     if (node.click != null) m = m.clickable(enabled = node.isEnabled, onClick = node::performClick)
@@ -151,7 +153,7 @@ private fun ThroughputCard(b: HomePresentation, modifier: Modifier, wide: Boolea
 @Composable
 private fun RulesCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
     val pages = b.fhsFirewallRulesPager.adapter as? HomeRulesPages ?: return
-    HomeCard(b.fhsCardFirewallRulesCard, modifier.alpha(b.fhsFirewallBadgesRow.alpha).homeTourAnchor(R.id.fhs_card_firewall_ll), wide = wide) {
+    HomeCard(b.fhsCardFirewallRulesCard, modifier.alpha(b.fhsFirewallBadgesRow.alpha).homeTourAnchor(R.id.fhs_card_firewall_ll), wide = wide, elevationOverride = 0.dp) {
         Column(Modifier.fillMaxWidth().heightIn(min = if (wide) 80.dp else 84.dp).padding(start = 14.dp, end = 14.dp, top = 10.dp, bottom = 8.dp)) {
             NativePager(b.fhsFirewallRulesPager, Modifier.fillMaxWidth().weight(1f, false)) { page ->
                 Row(Modifier.fillMaxWidth().clickable { pages.onRulePageTapped?.invoke(page) }.padding(start = 10.dp, top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -195,8 +197,8 @@ private fun ProxyCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
 }
 
 @Composable
-private fun AppsCard(b: HomePresentation, wide: Boolean) {
-    HomeCard(b.fhsCardAppsCv, Modifier.fillMaxWidth(), wide = wide) {
+private fun AppsCard(b: HomePresentation, wide: Boolean, modifier: Modifier = Modifier.fillMaxWidth()) {
+    HomeCard(b.fhsCardAppsCv, modifier, wide = wide) {
         FlowRow(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Row(verticalAlignment = Alignment.Bottom) {
                 HomeText(b.fhsCardAllowedApps)
@@ -219,9 +221,9 @@ private fun AppsCard(b: HomePresentation, wide: Boolean) {
 }
 
 @Composable
-private fun LogsCard(b: HomePresentation, wide: Boolean) {
+private fun LogsCard(b: HomePresentation, wide: Boolean, modifier: Modifier = Modifier.fillMaxWidth()) {
     val transition = if (b.animateLogs) Modifier.animateContentSize() else Modifier
-    HomeCard(b.fhsCardLogsLl, Modifier.fillMaxWidth().then(transition), wide = wide) {
+    HomeCard(b.fhsCardLogsLl, modifier.then(transition), wide = wide) {
         Column(Modifier.fillMaxWidth().padding(if (wide) 20.dp else 16.dp)) {
             if (b.fhsLogsPager.isVisible) {
                 Box(Modifier.fillMaxWidth()) {

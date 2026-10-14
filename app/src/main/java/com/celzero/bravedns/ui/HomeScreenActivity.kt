@@ -91,7 +91,7 @@ import com.celzero.bravedns.util.Utilities.isWebsiteFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.celzero.bravedns.ui.compose.RethinkTheme
-import com.celzero.bravedns.ui.compose.chrome.HomeBottomNavigation
+import com.celzero.bravedns.ui.compose.chrome.HomeChromeLayout
 import com.celzero.bravedns.ui.compose.chrome.HomeChromeDialog
 import com.celzero.bravedns.ui.compose.chrome.HomeChromeDialogContent
 import com.celzero.bravedns.ui.compose.chrome.ComposeSnackbarPresenter
@@ -101,21 +101,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.key
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import com.celzero.bravedns.ui.compose.ActivityFragmentContainer
-import com.celzero.bravedns.ui.compose.themeColor
-import com.celzero.bravedns.ui.compose.home.homeTourAnchor
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -157,7 +151,14 @@ class HomeScreenActivity : BaseActivity() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 RethinkTheme {
-                    Box(Modifier.fillMaxSize().background(themeColor(R.attr.background))) {
+                    HomeChromeLayout(
+                        selectedItem = selectedNavigationItem,
+                        anchors = anchors,
+                        onSelect = ::selectBottomNavigationItem,
+                        bottomInsets = if (isAtleastO_MR1()) {
+                            WindowInsets.systemBars.only(WindowInsetsSides.Bottom)
+                        } else WindowInsets(0, 0, 0, 0),
+                    ) {
                         ActivityFragmentContainer(
                             fragmentManager = supportFragmentManager,
                             containerId = R.id.fragment_container,
@@ -169,14 +170,6 @@ class HomeScreenActivity : BaseActivity() {
                                 if (navigationSetupRequested) setupNavigationItemSelectedListener()
                             },
                         )
-                        val bottomInsets = if (isAtleastO_MR1()) {
-                            Modifier.windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Bottom))
-                        } else Modifier
-                        Box(Modifier.align(Alignment.BottomCenter)
-                            .homeTourAnchor(R.id.nav_view, anchors)
-                            .then(bottomInsets)) {
-                            HomeBottomNavigation(selectedNavigationItem, anchors, ::selectBottomNavigationItem)
-                        }
                     }
                     chromeDialogs.forEach { dialog ->
                         key(dialog) { HomeChromeDialogContent(dialog) { chromeDialogs.remove(dialog) } }

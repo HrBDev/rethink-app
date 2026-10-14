@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.controls
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
@@ -172,7 +171,6 @@ internal data class OriginalTabLook(val context: Context, val textAppearance: In
     val paddingStart: Int, val paddingEnd: Int, val paddingTop: Int, val paddingBottom: Int,
     val minWidth: Int, val maxWidth: Int, val multiLineSize: Float, val unboundedRipple: Boolean)
 
-@SuppressLint("ResourceType") // Explicit indices into the fixed source-style attribute array.
 internal fun resolveOriginalTabs(base: Context): OriginalTabLook {
     val overlay = base.obtainOrderedStyledAttributes(R.style.TabbedLayoutDefault, intArrayOf(MaterialR.attr.materialThemeOverlay))
         .let { try { it.getResourceId(0, 0) } finally { it.recycle() } }

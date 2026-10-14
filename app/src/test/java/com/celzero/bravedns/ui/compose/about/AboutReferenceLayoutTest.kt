@@ -37,6 +37,24 @@ import org.robolectric.annotation.GraphicsMode
 class AboutReferenceLayoutTest {
     @get:Rule val compose = createComposeRule()
 
+    @Test fun fullAboutScreenCanScrollPastQuickActionsToTheVersionAndLicense() {
+        var license = ""
+        compose.setContent { ReferenceTheme {
+            val context = LocalContext.current
+            val state = remember { AboutState(context).apply {
+                aboutAppVersion.text = "Synthetic version"
+                tokenTextView.visibility = View.GONE
+            } }
+            license = state.aboutLicense.text.toString()
+            AboutContent(state)
+        } }
+        compose.onNodeWithTag("about").performScrollToNode(hasTestTag("about.telegram"))
+        compose.onNodeWithTag("about.telegram").assertIsDisplayed()
+        compose.onNodeWithTag("about").performScrollToNode(hasText(license))
+        compose.onNodeWithText("Synthetic version").assertIsDisplayed()
+        compose.onNodeWithText(license).assertIsDisplayed()
+    }
+
     @Test fun pairedActionsKeepEqualColumnsAndIndependentRecordedCallbacks() {
         val calls = mutableListOf<String>()
         compose.setContent { ReferenceTheme {

@@ -28,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
@@ -44,6 +45,7 @@ class NetworkAlertDialogBuilder(private val context: Context, private val theme:
     private var title: CharSequence = ""
     private var message: CharSequence = ""
     private var cancelable = true
+    private var maxHeightFraction: Float? = null
     private var icon: Int? = null
     private var rows: List<CharSequence> = emptyList()
     private var choices: Triple<Array<String>, Int, (DialogInterface, Int) -> Unit>? = null
@@ -57,6 +59,11 @@ class NetworkAlertDialogBuilder(private val context: Context, private val theme:
     fun setMessage(value: Int) = setMessage(context.getString(value))
     fun setIcon(value: Int) = apply { icon = value }
     fun setCancelable(value: Boolean) = apply { cancelable = value }
+    /** Cap long lists while keeping the title and actions outside the scrolling body. */
+    fun setMaxHeightFraction(value: Float) = apply {
+        require(value > 0f && value <= 1f)
+        maxHeightFraction = value
+    }
     fun setOnCancelListener(value: (DialogInterface) -> Unit) = apply { cancel = value }
     fun setPositiveButton(value: CharSequence, action: (DialogInterface, Int) -> Unit) = apply { positive = value to action }
     fun setPositiveButton(value: Int, action: (DialogInterface, Int) -> Unit) = setPositiveButton(context.getString(value), action)
@@ -98,7 +105,10 @@ class NetworkAlertDialogBuilder(private val context: Context, private val theme:
         }
         val customOnly = title.isEmpty() && message.isEmpty() && rows.isEmpty() && choices == null && policyAdapter == null && positive == null && negative == null && neutral == null
         dialog.setWgContent(activity) {
-            Surface(modifier = Modifier.testTag("network.dialog"), shape = MaterialTheme.shapes.extraLarge, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
+            val heightLimit = maxHeightFraction?.let {
+                Modifier.heightIn(max = (LocalConfiguration.current.screenHeightDp * it).dp)
+            } ?: Modifier
+            Surface(modifier = heightLimit.testTag("network.dialog"), shape = MaterialTheme.shapes.extraLarge, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
                 Column(Modifier.padding(if (customOnly) 0.dp else 24.dp), verticalArrangement = Arrangement.spacedBy(if (customOnly) 0.dp else 16.dp)) {
                     icon?.let { Icon(painterResource(it), null) }
                     if (title.isNotEmpty()) Text(networkAnnotatedText(title), style = MaterialTheme.typography.headlineSmall)

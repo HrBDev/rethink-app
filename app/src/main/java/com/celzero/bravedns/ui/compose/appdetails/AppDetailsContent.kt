@@ -16,6 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
+import com.celzero.bravedns.ui.compose.utilities.utilityDimensionSp
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
@@ -140,7 +143,12 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
 
 @Composable private fun RuleCount(count:WgControlState,node:WgControlState,label:Int,modifier:Modifier) {
     Surface({node.performClick()},modifier,shape=RoundedCornerShape(12.dp),color=themeColor(R.attr.homeScreenBtnBackground)) {
-        Column(Modifier.padding(10.dp),horizontalAlignment=Alignment.CenterHorizontally){Text(count.text.toString(),fontSize=16.sp,color=themeColor(R.attr.accentGood));Text(stringResource(label),fontSize=12.sp)}
+        Column(Modifier.padding(10.dp),horizontalAlignment=Alignment.CenterHorizontally) {
+            Text(count.text.toString(), color=themeColor(R.attr.accentGood),
+                style=utilityTextStyle(size=utilityDimensionSp(LocalContext.current,R.dimen.extra_large_font_text_view),weight=android.graphics.Typeface.BOLD))
+            Text(stringResource(label), Modifier.padding(top=2.dp), color=themeColor(R.attr.primaryLightColorText),
+                style=utilityTextStyle(size=utilityDimensionSp(LocalContext.current,R.dimen.default_font_text_view)), textAlign=TextAlign.Center)
+        }
     }
 }
 @Composable private fun SwitchRow(sourceId:String,row:WgControlState,switch:WgControlState,title:Int,icon:Int,desc:String) {

@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
@@ -41,6 +45,7 @@ internal fun HomeChromeLayout(
 ) {
     Column(modifier.fillMaxSize().background(themeColor(R.attr.background))) {
         Box(Modifier.weight(1f).fillMaxWidth().clipToBounds().testTag("root_content_viewport")
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
             .consumeWindowInsets(bottomInsets)) {
             CompositionLocalProvider(LocalHomeNavigationReserved provides true) { content() }
         }

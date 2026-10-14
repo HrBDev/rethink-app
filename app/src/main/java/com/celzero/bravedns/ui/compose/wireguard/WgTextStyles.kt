@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.wireguard
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Paint
@@ -34,7 +33,6 @@ internal data class WgTextLook(val style: TextStyle, val colors: ColorStateList,
 
 /** TextView defaults -> source textAppearance -> source attributes -> live presentation overrides.
  * No MaterialTheme text token, View inflation, or retained layout resource participates. */
-@SuppressLint("ResourceType")
 internal fun resolveWgText(context: Context, density: Density, source: String?, node: WgControlState? = null): WgTextLook {
     val spec = source?.let { requireNotNull(wgTextSources[it]) { "Unknown WireGuard text source: $it" } }
     val ids = intArrayOf(android.R.attr.textAppearance, android.R.attr.textSize, android.R.attr.textColor,
@@ -61,7 +59,9 @@ internal fun resolveWgText(context: Context, density: Density, source: String?, 
         val flags = node?.textStyleOverride ?: value(5).getInt(5, Typeface.NORMAL)
         val weight = value(6).getInt(6, -1)
         val fontResource = if (node?.fontFamilyName == null) fontArray.getResourceId(fontIndex, 0) else 0
-        var typeface = if (fontResource != 0) ResourcesCompat.getFont(context, fontResource)?.let { Typeface.create(it, flags) }
+        // Framework TextAppearances may reference a string (for example sans-serif), not
+        // a res/font file. Passing that string ID to getFont crashes About's subtitles.
+        var typeface = if (fontResource != 0 && context.resources.getResourceTypeName(fontResource) == "font") ResourcesCompat.getFont(context, fontResource)?.let { Typeface.create(it, flags) }
             ?: Typeface.create(family, flags) else Typeface.create(family, flags)
         if (android.os.Build.VERSION.SDK_INT >= 28 && weight in 1..1000) typeface = Typeface.create(typeface, weight, flags and Typeface.ITALIC != 0)
         val sizeValue = value(1).peekValue(1)

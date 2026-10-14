@@ -935,6 +935,7 @@ class MiscSettingsActivity : BaseActivity() {
 
     private fun invokeChangeLocaleDialog() {
         val alertBuilder = MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
+        alertBuilder.setMaxHeightFraction(0.6f)
         alertBuilder.setTitle(getString(R.string.settings_locale_dialog_title))
         val languages = getLocaleEntries()
         val items = languages.keys.toTypedArray()

@@ -104,6 +104,29 @@ class NetworkLogsActivityTest {
         }
         compose.waitForIdle()
     }
+    @Test fun logsRespectSystemBarsCutoutAndKeyboardInsets() {
+        launch()
+        val root = host!!.get().findViewById<android.view.ViewGroup>(android.R.id.content).getChildAt(0)
+        listOf(0, 24, 48, 260, 0).forEach { bottom ->
+            val insets = androidx.core.view.WindowInsetsCompat.Builder()
+                .setInsets(androidx.core.view.WindowInsetsCompat.Type.statusBars(), androidx.core.graphics.Insets.of(0, 24, 0, 0))
+                .setInsets(androidx.core.view.WindowInsetsCompat.Type.displayCutout(), androidx.core.graphics.Insets.of(18, 32, 10, 0))
+                .setInsets(androidx.core.view.WindowInsetsCompat.Type.navigationBars(), androidx.core.graphics.Insets.of(0, 0, 0, minOf(bottom, 48)))
+                .setInsets(androidx.core.view.WindowInsetsCompat.Type.ime(), androidx.core.graphics.Insets.of(0, 0, 0, if (bottom > 48) bottom else 0))
+                .build()
+            compose.runOnIdle { androidx.core.view.ViewCompat.dispatchApplyWindowInsets(root, insets) }
+            compose.waitForIdle()
+            val position = IntArray(2)
+            compose.runOnIdle { root.getLocationInWindow(position) }
+            val bounds = compose.onNodeWithTag("network-logs-content").fetchSemanticsNode().boundsInWindow
+            assertEquals(position[0] + 18f, bounds.left, 1f)
+            assertEquals(position[1] + 32f, bounds.top, 1f)
+            assertEquals(position[0] + root.width - 10f, bounds.right, 1f)
+            assertEquals(position[1] + root.height - bottom.toFloat(), bounds.bottom, 1f)
+            assertTrue(compose.onNodeWithTag("log-list").fetchSemanticsNode().boundsInWindow.bottom <= bounds.bottom + 1f)
+        }
+    }
+
     @Test fun testNetworkLogsDisplay() {
         launch()
         compose.onNodeWithTag("log-list").assertIsDisplayed()

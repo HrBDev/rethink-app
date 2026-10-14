@@ -16,6 +16,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentContainerView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.RethinkTheme
 import com.celzero.bravedns.ui.compose.themeColor
@@ -29,8 +32,16 @@ fun dnsFragmentHost(context: Context, rootId: Int, headingId: Int, containerId: 
         id = rootId
         orientation = LinearLayout.VERTICAL
         setBackgroundColor(fetchColor(context, R.attr.background))
+        // This framework bridge owns both the Compose heading and the Fragment viewport.
+        // Reserve safe edges once and pass only the remaining insets to both children.
+        ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
+            val safe = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            view.updatePadding(left = safe.left, top = safe.top, right = safe.right, bottom = safe.bottom)
+            insets.inset(safe.left, safe.top, safe.right, safe.bottom)
+        }
         addView(ComposeView(context).apply {
             id = headingId
+            consumeWindowInsets = false
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent { RethinkTheme { DnsFragmentHeader(title, description) } }
         }, LinearLayout.LayoutParams(-1, -2))

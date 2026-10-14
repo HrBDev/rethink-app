@@ -43,9 +43,13 @@ internal val LogAccelerateDecelerate = Easing { fraction -> ((kotlin.math.cos((f
     val hasDetails = !event.details.isNullOrBlank()
     val icon = when (event.severity) { Severity.LOW -> R.drawable.ic_tick_normal; Severity.MEDIUM -> R.drawable.ic_app_info_accent; Severity.HIGH -> R.drawable.ic_block_accent; Severity.CRITICAL -> R.drawable.ic_block }
     Card(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp).combinedClickable(onClick = { if (hasDetails) expanded = !expanded }, onLongClick = { onCopy(event.message) }).testTag("event-${event.id}"), shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = themeColor(androidx.cardview.R.attr.cardBackgroundColor))) {
-        Row(Modifier.padding(12.dp).height(IntrinsicSize.Min)) {
-            Box(Modifier.width(2.dp).fillMaxHeight().background(color))
-            Column(Modifier.padding(start = 12.dp).weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        // Measure the content normally, then stretch the severity stripe to that height.
+        // IntrinsicSize queries crash when the label uses a subcomposed control.
+        Box(Modifier.padding(12.dp)) {
+            Box(Modifier.matchParentSize()) {
+                Box(Modifier.width(2.dp).fillMaxHeight().background(color))
+            }
+            Column(Modifier.fillMaxWidth().padding(start = 14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.Center) {
                         Icon(painterResource(icon), event.severity.name, Modifier.size(24.dp), tint = color)
@@ -63,7 +67,7 @@ internal val LogAccelerateDecelerate = Easing { fraction -> ((kotlin.math.cos((f
     }
 }
 @Composable fun EventsScreen(state: EventsState, presenter: LogPagingPresenter<Event>, onSearchFocus: () -> Unit, onToggleFilters: () -> Unit, onSeverity: (String) -> Unit, onSource: (EventSource, Boolean) -> Unit, onRefresh: () -> Unit, onDelete: () -> Unit) {
-    Column(Modifier.fillMaxSize().background(themeColor(R.attr.background))) {
+    Column(Modifier.fillMaxSize().background(themeColor(R.attr.background)).safeDrawingPadding()) {
         LogSearchBar(state.logs, stringResource(R.string.search_event_logs), onSearchFocus, filters = {
             if (state.logs.showParentFilters) {
                 val choices = listOf("ALL" to stringResource(R.string.lbl_all).lowercase().replaceFirstChar(Char::titlecase), "LOW" to "Low", "MEDIUM" to "Medium", "HIGH" to "High", "CRITICAL" to "Critical", "SOURCE" to "Source")

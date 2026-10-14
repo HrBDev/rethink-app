@@ -89,7 +89,7 @@ require('search: native edit frame margin / editor36dp / clear width; no added M
                                      'LocalMinimumInteractiveComponentSize provides Dp.Unspecified', 'width(search.clearWidth.dp)']))
 require('search: no production View creation or inflation', not re.search(r'AndroidView\s*\(|LayoutInflater|\.inflate\(|SearchView\s*\(', fields))
 require('search: existing lint corrections preserved', all(x in fields for x in
-        ['@SuppressLint("ResourceType")', 'val textSize =', 'val invalidInputMessage = errorMessage ?: stringResource(',
+        ['val textSize =', 'val invalidInputMessage = errorMessage ?: stringResource(',
          'if (isError) error(invalidInputMessage)', 'colors = colors, shape = resources.shape', 'LocalConfiguration.current']))
 rules = (compose / 'rules/RulesContent.kt').read_text()
 require('rules: source card radius / margin / weights / inherited ordinary typography', all(x in rules for x in

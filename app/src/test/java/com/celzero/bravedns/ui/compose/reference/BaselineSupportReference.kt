@@ -35,7 +35,7 @@ internal object BaselineSupportReference {
             com.google.android.material.R.attr.elevation to "4dp"
         )
         val reference1 = com.google.android.material.appbar.AppBarLayout(reference0.context, reference1Attributes)
-        val reference1LayoutParams = androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams(reference0.context, reference1Attributes)
+        val reference1LayoutParams = reference0.generateLayoutParams(reference1Attributes)
         val reference2Attributes = referenceAttributes(null,
             android.R.attr.id to "@id/collapsing_toolbar",
             android.R.attr.layout_width to "match_parent",
@@ -97,7 +97,7 @@ internal object BaselineSupportReference {
             androidx.coordinatorlayout.R.attr.layout_behavior to "@string/appbar_scrolling_view_behavior"
         )
         val reference5 = androidx.core.widget.NestedScrollView(reference0.context, reference5Attributes)
-        val reference5LayoutParams = androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams(reference0.context, reference5Attributes)
+        val reference5LayoutParams = reference0.generateLayoutParams(reference5Attributes)
         val reference6Attributes = referenceAttributes(null,
             android.R.attr.layout_width to "match_parent",
             android.R.attr.layout_height to "wrap_content",
@@ -513,7 +513,7 @@ internal object BaselineSupportReference {
             android.R.attr.elevation to "8dp"
         )
         val reference41 = android.widget.LinearLayout(reference0.context, reference41Attributes)
-        val reference41LayoutParams = androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams(reference0.context, reference41Attributes)
+        val reference41LayoutParams = reference0.generateLayoutParams(reference41Attributes)
         val reference42Attributes = referenceAttributes("@style/Widget.Material3.Button.OutlinedButton",
             android.R.attr.id to "@id/btn_send_email",
             android.R.attr.layout_width to "match_parent",
@@ -568,7 +568,7 @@ internal object BaselineSupportReference {
             android.R.attr.layout_height to "24dp",
             android.R.attr.layout_marginEnd to "12dp"
         )
-        val reference45 = ProgressBar(reference44.context, reference45Attributes)
+        val reference45 = android.widget.ProgressBar(reference44.context, reference45Attributes)
         val reference45LayoutParams = android.widget.LinearLayout.LayoutParams(reference44.context, reference45Attributes)
         finishReferenceConstruction(reference45)
         reference44.addView(reference45, reference45LayoutParams)

@@ -4,6 +4,7 @@ package com.celzero.bravedns.ui.compose.appdetails
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Typeface
 import android.view.View
 import androidx.compose.foundation.Canvas
@@ -34,6 +35,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
@@ -41,7 +44,7 @@ import com.celzero.bravedns.ui.compose.utilities.utilityDimensionSp
 import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 import com.celzero.bravedns.ui.compose.wireguard.wgAnnotatedText
-import com.google.android.material.R as MaterialR
+import com.google.android.material.progressindicator.LinearProgressIndicatorSpec
 
 @Composable fun AppIpsRowContent(b: AppIpsRowState) = AppConnectionDetailRow(
     b.acdContainer, b.acdFlag, null, b.acdIpAddress, b.acdDomainName, b.acdCount, b.progress, b.acdDownArrowIv)
@@ -133,7 +136,6 @@ private fun Modifier.connectionState(node: WgControlState): Modifier =
         overflow = if (node.ellipsize) TextOverflow.Ellipsis else overflow, textAlign = align)
 }
 
-@SuppressLint("ResourceType") // Fixed indices into an explicit attribute array.
 @Composable private fun connectionTextColor(appearance: Int = 0): Color {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
@@ -145,19 +147,21 @@ private fun Modifier.connectionState(node: WgControlState): Modifier =
     }
 }
 
-@SuppressLint("ResourceType") // Fixed indices into an explicit attribute array.
+/** Material themes can express trackCornerRadius as either a dimension or a fraction. */
+@SuppressLint("RestrictedApi")
+internal fun appConnectionProgressMetrics(context: Context, density: Density, country: Boolean): Pair<Dp, Dp> {
+    if (country) return 3.dp to 2.dp
+    val spec = LinearProgressIndicatorSpec(context, null)
+    return with(density) { spec.trackThickness.toDp() to spec.getTrackCornerRadiusInPx().toDp() }
+}
+
 @Composable private fun AppConnectionProgress(node: WgControlState, country: Boolean) {
     if (node.visibility == View.GONE) return
     val context = LocalContext.current
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     val metrics = remember(context, density, configuration, country) {
-        val attributes = context.obtainOrderedStyledAttributes(null,
-            intArrayOf(MaterialR.attr.trackThickness, MaterialR.attr.trackCornerRadius),
-            MaterialR.attr.linearProgressIndicatorStyle, MaterialR.style.Widget_MaterialComponents_LinearProgressIndicator)
-        try { with(density) {
-            if (country) 3.dp to 2.dp else attributes.getDimension(0, 4.dp.toPx()).toDp() to attributes.getDimension(1, 0f).toDp()
-        } } finally { attributes.recycle() }
+        appConnectionProgressMetrics(context, density, country)
     }
     val fraction = (node.progress.toFloat() / node.max.coerceAtLeast(1)).coerceIn(0f, 1f)
     val track = themeColor(R.attr.background)

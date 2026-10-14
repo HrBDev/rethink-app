@@ -25,6 +25,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.*
 import androidx.compose.ui.unit.dp
 import androidx.fragment.compose.AndroidFragment
@@ -123,7 +124,9 @@ class NetworkLogsActivity : BaseActivity() {
             val scope = rememberCoroutineScope()
             val states = (0 until count).map { page -> key(page) { rememberFragmentState() } }
             val specifications = remember(count) { List(count) { getFragment(it) } }
-            Column(Modifier.fillMaxSize().background(themeColor(R.attr.background))) {
+            // Own insets above the pager so both tabs and every Fragment stay inside the
+            // status bar, cutout, navigation bar and keyboard without per-page spacers.
+            Column(Modifier.fillMaxSize().background(themeColor(R.attr.background)).safeDrawingPadding().testTag("network-logs-content")) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     OriginalTabStrip(pager.currentPage, List(count) { getTabText(it) },
                         onSelect = { page -> scope.launch { pager.animateScrollToPage(page) } },

@@ -24,6 +24,7 @@ import org.robolectric.annotation.Config
 
 /** Native presentation only, plain Application and synthetic text. No application host or backend. */
 @RunWith(RobolectricTestRunner::class)
+@org.robolectric.annotation.GraphicsMode(org.robolectric.annotation.GraphicsMode.Mode.NATIVE)
 @Config(sdk = [35], application = Application::class)
 class LogSearchBarComposeTest {
     // Compose's injected touch events bypass ViewRoot's touch-mode transition. Establish
@@ -73,7 +74,8 @@ class LogSearchBarComposeTest {
 
         compose.runOnIdle { state.resumeGeneration++ }
         editor.assertIsNotFocused().assertTextEquals("restored.test.typed")
-        editor.performTouchInput { click() }
+        // This is a later refocus, not a double-tap selection/magnifier gesture.
+        editor.performTouchInput { advanceEventTime(500); click() }
         editor.assertIsFocused().assertTextEquals("restored.test.typed")
         compose.runOnIdle {
             assertEquals(0, rootClicks)
@@ -121,6 +123,23 @@ class LogSearchBarComposeTest {
             assertEquals(2, rootClicks)
             assertEquals(listOf("", "typed.test"), changes)
         }
+    }
+
+    @Test fun clearKeepsFocusAndImeSearchSubmitsCurrentQuery() {
+        val state = LogScreenState()
+        val submitted = mutableListOf<String>()
+        state.search.submitListener = { submitted += it }
+        show(state) {}
+        val editor = compose.onNodeWithTag("log-search")
+        editor.performClick().performTextInput("example.test")
+        editor.performImeAction()
+        compose.runOnIdle { assertEquals(listOf("example.test"), submitted) }
+        val clear = InstrumentationRegistry.getInstrumentation().targetContext.getString(R.string.fapps_filter_clear_btn)
+        compose.onNodeWithContentDescription(clear).performClick()
+        editor.assertIsFocused().assert(SemanticsMatcher.expectValue(
+            androidx.compose.ui.semantics.SemanticsProperties.EditableText, androidx.compose.ui.text.AnnotatedString("")))
+        editor.performImeAction()
+        compose.runOnIdle { assertEquals(listOf("example.test"), submitted) }
     }
 
     private fun show(state: LogScreenState, onRootSearchClick: () -> Unit) {

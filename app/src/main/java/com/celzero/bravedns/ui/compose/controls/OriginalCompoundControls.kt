@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.controls
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
@@ -219,7 +218,6 @@ internal data class OriginalCompoundLook(
 )
 
 /** Styles are resolved in the widget overlay, rather than substituting the global Compose palette. */
-@SuppressLint("ResourceType") // Fixed source attribute indices, not generated styleable constants.
 internal fun resolveOriginalCompound(context: Context, spec: OriginalCompoundSpec): OriginalCompoundLook {
     val switch = spec.kind == OriginalCompoundKind.MaterialSwitch
     val radio = spec.kind in listOf(OriginalCompoundKind.MaterialRadioButton, OriginalCompoundKind.AppCompatRadioButton)

@@ -106,7 +106,7 @@ import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import com.celzero.bravedns.ui.compose.ActivityFragmentContainer
@@ -156,7 +156,7 @@ class HomeScreenActivity : BaseActivity() {
                         anchors = anchors,
                         onSelect = ::selectBottomNavigationItem,
                         bottomInsets = if (isAtleastO_MR1()) {
-                            WindowInsets.systemBars.only(WindowInsetsSides.Bottom)
+                            WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
                         } else WindowInsets(0, 0, 0, 0),
                     ) {
                         ActivityFragmentContainer(

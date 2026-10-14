@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -80,7 +81,7 @@ class DnsLogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        (view as ComposeView).setContent { RethinkTheme { Content() } }
+        (view as ComposeView).setContent { RethinkTheme { Surface(color = themeColor(R.attr.background), contentColor = themeColor(R.attr.primaryTextColor)) { Content() } } }
         if (arguments != null) {
             val query = arguments?.getString(Constants.SEARCH_QUERY) ?: ""
             fromWireGuardScreen = query.contains(RULES_SEARCH_ID_WIREGUARD)

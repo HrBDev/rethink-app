@@ -4,7 +4,6 @@ package com.celzero.bravedns.ui.compose.wireguard
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
@@ -224,7 +223,6 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
 
 /** Widget colors can override their TextAppearance, including NoDim negative/neutral colors. */
 // These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
-@SuppressLint("ResourceType")
 @Composable private fun wgDialogTextColor(styleAttribute: Int, fallback: Color): Color {
     val context = LocalContext.current
     return remember(context, styleAttribute, fallback) {

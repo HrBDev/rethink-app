@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.controls
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
@@ -179,7 +178,6 @@ internal data class OriginalSliderLook(
     val start: Float, val top: Float, val end: Float, val bottom: Float, val label: OriginalSliderLabelLook?,
 )
 
-@SuppressLint("ResourceType") // Fixed source attribute indices, not generated styleable constants.
 internal fun resolveOriginalSlider(context: Context, spec: OriginalCompoundSpec): OriginalSliderLook {
     val material = spec.kind == OriginalCompoundKind.Slider
     val defaultAttr = if (material) MaterialR.attr.sliderStyle else androidx.appcompat.R.attr.seekBarStyle
@@ -273,7 +271,6 @@ internal fun resolveOriginalSlider(context: Context, spec: OriginalCompoundSpec)
 internal data class OriginalSliderLabelLook(val background: com.google.android.material.shape.MaterialShapeDrawable,
     val paint: android.text.TextPaint, val padding: Float, val minWidth: Float, val minHeight: Float, val windowMargin: Float)
 
-@SuppressLint("ResourceType") // Source labelStyle attribute indices; no View or restricted Tooltip API.
 private fun resolveOriginalSliderLabel(context: Context, style: Int): OriginalSliderLabelLook {
     val a = context.obtainOrderedStyledAttributes(style, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor,
         MaterialR.attr.backgroundTint, android.R.attr.padding, android.R.attr.minWidth, android.R.attr.minHeight,

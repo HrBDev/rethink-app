@@ -43,7 +43,7 @@ data class OriginalProgressOverrides(val indicator: Int? = null, val track: Int?
     val thicknessDp: Float? = null, val radiusDp: Float? = null, val gapDp: Float? = null,
     val stopSizeDp: Float? = null)
 
-@SuppressLint("ResourceType", "RestrictedApi")
+@SuppressLint("RestrictedApi")
 internal fun resolveOriginalLinearProgress(context: Context, source: String, overrides: OriginalProgressOverrides = OriginalProgressOverrides()): LinearProgressIndicatorSpec {
     val style = requireNotNull(originalLinearProgressSources[source]) { "Unknown progress source: $source" }
     val spec = LinearProgressIndicatorSpec(context, null)
@@ -74,9 +74,16 @@ internal fun resolveOriginalLinearProgress(context: Context, source: String, ove
     animate: Boolean = false, visible: Boolean = true) {
     val context = LocalContext.current; val density = LocalDensity.current; val configuration = LocalConfiguration.current
     val spec = remember(context, configuration, source, overrides) { resolveOriginalLinearProgress(context, source, overrides) }
-    val drawable: Drawable = remember(spec, indeterminate) {
-        if (indeterminate) IndeterminateDrawable.createLinearDrawable(context, spec)
-        else DeterminateDrawable.createLinearDrawable(context, spec)
+    // The two Material drawables share a package-private superclass. Keep remember's
+    // inferred return type public, otherwise the generated checkcast fails at runtime.
+    val drawable = remember<Drawable>(spec, indeterminate) {
+        if (indeterminate) {
+            val result: Drawable = IndeterminateDrawable.createLinearDrawable(context, spec)
+            result
+        } else {
+            val result: Drawable = DeterminateDrawable.createLinearDrawable(context, spec)
+            result
+        }
     }
     // MDC sets start/end direction in View.onLayout. Apply the same direction to the Canvas,
     // retaining the spec's own absolute right-to-left handling for direction == 1.
@@ -93,7 +100,7 @@ internal fun resolveOriginalLinearProgress(context: Context, source: String, ove
 }
 
 /** dialog_server_loading's circular source inherits inset, gap, track and corner defaults. */
-@SuppressLint("ResourceType", "RestrictedApi")
+@SuppressLint("RestrictedApi")
 @Composable fun OriginalServerLoadingSpinner(modifier: Modifier = Modifier) {
     val context = LocalContext.current; val density = LocalDensity.current; val configuration = LocalConfiguration.current
     val spec = remember(context, configuration) {
@@ -110,7 +117,6 @@ internal fun resolveOriginalLinearProgress(context: Context, source: String, ove
 }
 
 /** Source ProgressBar uses the platform horizontal drawable and its secondary layer/tints. */
-@SuppressLint("ResourceType")
 @Composable fun OriginalHorizontalProgress(modifier: Modifier = Modifier, progress: Float, secondary: Float,
     visible: Boolean = true) {
     val context = LocalContext.current; val configuration = LocalConfiguration.current; val density = LocalDensity.current

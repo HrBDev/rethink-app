@@ -51,12 +51,13 @@ import kotlinx.coroutines.launch
     LaunchedEffect(b.scrollToTopGeneration){if(b.scrollToTopGeneration>0)scroll.scrollToItem(0)}
     Surface(color=themeColor(R.attr.background)) {
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
-            Row(Modifier.padding(horizontal=12.dp),verticalAlignment=Alignment.CenterVertically) {
+            Row(Modifier.fillMaxWidth().padding(horizontal=12.dp),verticalAlignment=Alignment.CenterVertically) {
                 OriginalTextField(b.ffaSearch.query,{b.ffaSearch.setQuery(it,false)},Modifier.weight(1f).testTag("firewall_search"), style = OriginalFieldStyle.Search,singleLine=true,
+                    leadingIcon={Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_search_api_material),null,Modifier.size(24.dp),tint=themeColor(androidx.appcompat.R.attr.colorControlNormal))},
                     placeholder={Text(stringResource(R.string.lbl_search))},keyboardOptions=KeyboardOptions(imeAction=ImeAction.Search),keyboardActions=KeyboardActions(onSearch={b.ffaSearch.setQuery(b.ffaSearch.query,true)}),
-                    trailingIcon={if(b.ffaSearch.query.isNotEmpty())IconButton({b.ffaSearch.setQuery("",false)}){Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material),stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))}})
-                AppListIcon(b.ffaRefreshList,R.drawable.ic_refresh_white,R.string.refresh_complete)
-                AppListIcon(b.ffaFilterIcon,R.drawable.ic_filter,R.string.fapps_filter_filter_heading)
+                    trailingIcon={if(b.ffaSearch.query.isNotEmpty())IconButton({b.ffaSearch.setQuery("",false)}){Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material),stringResource(R.string.lbl_cancel), Modifier.size(24.dp), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))}})
+                AppListIcon(b.ffaRefreshList,R.drawable.ic_refresh_white,R.string.refresh_complete,themeColor(androidx.appcompat.R.attr.colorControlNormal))
+                AppListIcon(b.ffaFilterIcon,R.drawable.ic_filter,R.string.fapps_filter_filter_heading,themeColor(androidx.appcompat.R.attr.colorControlNormal))
             }
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal=8.dp),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
                 val context=LocalContext.current
@@ -91,7 +92,7 @@ import kotlinx.coroutines.launch
         }
     }
 }
-@Composable private fun AppListIcon(node:AppListControlState,fallback:Int,label:Int) {
+@Composable private fun AppListIcon(node:AppListControlState,fallback:Int,label:Int,tint:Color=Color.Unspecified) {
     val tooltip=rememberTooltipState()
     LaunchedEffect(node.tooltipGeneration){if(node.tooltipGeneration>0)tooltip.show()}
     val rotation=if(node.spinning) {
@@ -99,8 +100,8 @@ import kotlinx.coroutines.launch
         transition.animateFloat(0f,360f,infiniteRepeatable(tween(750,easing=Easing { ((kotlin.math.cos((it + 1f) * Math.PI) / 2.0) + .5).toFloat() })),label="refresh rotation").value
     } else 0f
     TooltipBox(positionProvider=TooltipDefaults.rememberPlainTooltipPositionProvider(),tooltip={PlainTooltip{Text(stringResource(label))}},state=tooltip) {
-        IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.rotate(rotation)) {
-            Icon(painterResource(node.imageRes.takeIf{it!=0}?:fallback),stringResource(label), Modifier.alpha(if (fallback == R.drawable.ic_info_white) .5f else 1f), tint=Color.Unspecified)
+        IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.size(48.dp)) {
+            Icon(painterResource(node.imageRes.takeIf{it!=0}?:fallback),stringResource(label), Modifier.size(24.dp).rotate(rotation).alpha(if (!node.isEnabled && tint != Color.Unspecified) .38f else if (fallback == R.drawable.ic_info_white) .5f else 1f), tint=tint)
         }
     }
 }

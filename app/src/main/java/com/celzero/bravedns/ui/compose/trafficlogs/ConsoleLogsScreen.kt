@@ -57,7 +57,7 @@ internal fun consoleLevelColorAttribute(message: String) = when (message.firstOr
     }
 }
 @Composable fun ConsoleLogsScreen(b: ConsoleLogsState, presenter: LogPagingPresenter<ConsoleLog>, onLevel: (Int) -> Unit, onFileTrace: (Boolean) -> Unit) {
-    Box(Modifier.fillMaxSize().background(themeColor(R.attr.background))) {
+    Box(Modifier.fillMaxSize().background(themeColor(R.attr.background)).safeDrawingPadding()) {
         Column(Modifier.fillMaxSize()) {
             LogSearchBar(b.logs, stringResource(R.string.lbl_search), boxed = false, actions = {
                 if (b.pauseIcon.isVisible) LogAction(b.pauseIcon.imageResource ?: R.drawable.ic_pause, stringResource(if (b.pauseIcon.imageResource == R.drawable.ic_pause) R.string.notification_action_pause_vpn else R.string.notification_action_resume_vpn), { b.pauseIcon.performClick() }, modifier = Modifier.testTag("console-pause"))

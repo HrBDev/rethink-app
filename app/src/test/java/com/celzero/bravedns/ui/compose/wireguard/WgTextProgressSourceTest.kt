@@ -50,6 +50,18 @@ class WgTextProgressSourceTest {
     private fun context(theme: Int = R.style.AppThemeWhite) =
         ContextThemeWrapper(ApplicationProvider.getApplicationContext<Application>(), theme)
 
+    @Test fun defaultTextAppearanceResolvesFrameworkFamilyStringsWithoutLoadingThemAsFonts() {
+        themes.forEach { theme ->
+            val context = context(theme)
+            val native = AppCompatTextView(context)
+            val metrics = context.resources.displayMetrics
+            val actual = resolveWgText(context, Density(metrics.density, metrics.scaledDensity / metrics.density), null)
+            assertEquals(native.textSize / metrics.scaledDensity, actual.style.fontSize.value, .01f)
+            assertEquals(requireNotNull(native.typeface).weight, actual.style.fontWeight!!.weight)
+            assertEquals(native.textColors.defaultColor, actual.colors.defaultColor)
+        }
+    }
+
     @Test fun mediumFamilyTrackingAndSingleLineMatchIndependentNativeFixture() {
         themes.forEach { theme ->
             val context = context(theme)
@@ -57,7 +69,7 @@ class WgTextProgressSourceTest {
                 .addAttribute(android.R.attr.fontFamily, "sans-serif-medium")
                 .addAttribute(android.R.attr.textSize, "16sp")
                 .addAttribute(android.R.attr.letterSpacing, "0.01")
-                .addAttribute(android.R.attr.singleLine, "true")
+                .addAttribute(android.R.attr.maxLines, "1")
                 .addAttribute(android.R.attr.ellipsize, "end").build()
             val native = AppCompatTextView(context, attrs)
             val metrics = context.resources.displayMetrics
@@ -65,9 +77,9 @@ class WgTextProgressSourceTest {
                 "list_item_wg_include_apps:wg_include_app_list_apk_label_tv")
             assertEquals(native.textSize / metrics.scaledDensity, actual.style.fontSize.value, .01f)
             assertEquals(native.letterSpacing, actual.style.letterSpacing.value, .0001f)
-            assertEquals(native.typeface.weight, actual.style.fontWeight!!.weight)
+            assertEquals(requireNotNull(native.typeface).weight, actual.style.fontWeight!!.weight)
             assertEquals(native.maxLines, actual.maxLines)
-            assertTrue(actual.singleLine)
+            assertFalse(actual.singleLine)
         }
     }
 
@@ -156,7 +168,7 @@ class WgTextProgressSourceTest {
         compose.onNodeWithTag("source-text").assertTextEquals("updated")
         compose.onNodeWithTag("source-progress").assert(SemanticsMatcher.expectValue(SemanticsProperties.ProgressBarRangeInfo, ProgressBarRangeInfo(1f, 0f..1f)))
         compose.runOnIdle { progress.visibility = View.INVISIBLE }
-        compose.onNodeWithTag("source-progress").assertDoesNotExist()
+        compose.onNodeWithTag("source-progress").assert(SemanticsMatcher.keyNotDefined(SemanticsProperties.ProgressBarRangeInfo))
         compose.runOnIdle { progress.visibility = View.GONE; text.visibility = View.GONE }
         compose.onNodeWithTag("source-text").assertDoesNotExist()
     }

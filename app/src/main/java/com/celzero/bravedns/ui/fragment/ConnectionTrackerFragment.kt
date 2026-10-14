@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -118,7 +119,7 @@ class ConnectionTrackerFragment : Fragment() {
             }
         }
         initView()
-        (view as ComposeView).setContent { RethinkTheme { Content() } }
+        (view as ComposeView).setContent { RethinkTheme { Surface(color = themeColor(R.attr.background), contentColor = themeColor(R.attr.primaryTextColor)) { Content() } } }
         Logger.v(LOG_TAG_UI, "$TAG, view created from univ? $fromUniversalFirewallScreen, from wg? $fromWireGuardScreen")
     }
 

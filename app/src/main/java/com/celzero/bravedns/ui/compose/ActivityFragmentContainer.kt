@@ -2,6 +2,7 @@
 package com.celzero.bravedns.ui.compose
 
 import androidx.annotation.IdRes
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
@@ -42,7 +43,10 @@ internal fun ActivityFragmentContainer(
     val container = remember(context, fragmentManager, containerId) {
         FragmentContainerView(context).apply { id = containerId }
     }
-    AndroidView(factory = { container }, modifier = modifier)
+    // Own any safe edges not already reserved by the Activity chrome. AndroidView
+    // subtracts this measured padding when dispatching insets to the Fragment, so
+    // nested Compose screens can also request safeDrawing without double padding.
+    AndroidView(factory = { container }, modifier = modifier.safeDrawingPadding())
 
     DisposableEffect(fragmentManager, container, lifecycle) {
         var installed = false

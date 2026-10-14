@@ -50,7 +50,7 @@ import com.celzero.bravedns.viewmodel.SummaryStatisticsViewModel.TimeCategory
 internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
     Surface(color = themeColor(R.attr.background)) {
         LazyColumn(Modifier.fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
+            .safeDrawingPadding()
             .testTag("summary_statistics"),
             contentPadding = PaddingValues(top = 15.dp, bottom = homeNavigationClearance(90.dp, contentGap = 10.dp))) {
             item {
@@ -179,6 +179,8 @@ private fun TrafficUsage(usage: DataUsageSummary?, insights: Boolean) {
     val unmetered = total - usage.meteredDataUsage
     val metered = usage.meteredDataUsage
     val entries = listOf(R.string.ada_app_unmetered to unmetered, R.string.ada_app_metered to metered, R.string.lbl_overall to total)
+    val markerColor = themeColor(R.attr.accentGood)
+    val markerColors = listOf(markerColor, markerColor.copy(alpha = .5f), markerColor)
     // MaterialCardView's theme owns fill, elevation, and compat shadow/corner clearance.
     // The source instance supplies only its 16dp radius and 1dp secondary-text border.
     OriginalCardSurface(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 12.dp)
@@ -202,8 +204,11 @@ private fun TrafficUsage(usage: DataUsageSummary?, insights: Boolean) {
                         Text(Utilities.humanReadableByteCount(bytes, true),
                             Modifier.testTag("stats_usage_value_$index"), maxLines = 1,
                             color = themeColor(R.attr.primaryTextColor), style = valueStyle)
-                        Text(stringResource(label), Modifier.padding(top = 2.dp).testTag("stats_usage_caption_$index"),
-                            color = themeColor(R.attr.primaryLightColorText), style = captionStyle)
+                        Row(Modifier.padding(top = 2.dp).testTag("stats_usage_label_$index"),
+                            horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Text(stringResource(label), Modifier.weight(1f, fill = false).testTag("stats_usage_caption_$index"),
+                                color = themeColor(R.attr.primaryLightColorText), style = captionStyle)
+                        }
                     }
                 }
             }
@@ -215,8 +220,13 @@ private fun TrafficUsage(usage: DataUsageSummary?, insights: Boolean) {
                     modifier = Modifier.fillMaxWidth().testTag("stats_usage_progress"),
                     color = themeColor(R.attr.accentGood), trackColor = themeColor(R.attr.accentGood).copy(alpha = .5f),
                     gapSize = 0.dp, drawStopIndicator = {})
-                entries.forEach { (label, bytes) -> Text(stringResource(R.string.two_argument_colon, stringResource(label),
-                    Utilities.humanReadableByteCount(bytes, true)), Modifier.padding(top = 8.dp)) }
+                entries.forEachIndexed { index, (label, bytes) ->
+                    Row(Modifier.padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically) {
+                        Canvas(Modifier.size(18.dp)) { drawCircle(markerColors[index]) }
+                        Text(stringResource(R.string.two_argument_colon, stringResource(label), Utilities.humanReadableByteCount(bytes, true)))
+                    }
+                }
             }
         }
     }

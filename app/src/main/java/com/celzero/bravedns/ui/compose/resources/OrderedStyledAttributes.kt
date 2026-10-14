@@ -1,7 +1,6 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.resources
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
@@ -20,7 +19,6 @@ internal class AttributeOrder(attributes: IntArray) {
 }
 
 /** Deliberately exposes only the TypedArray operations used by presentation code. */
-@SuppressLint("ResourceType") // Indices are remapped into the sorted resource-ID array.
 internal class OrderedStyledAttributes(private val values: TypedArray, private val order: AttributeOrder) {
     fun hasValue(index: Int) = values.hasValue(order.index(index))
     fun hasValueOrEmpty(index: Int) = values.hasValueOrEmpty(order.index(index))

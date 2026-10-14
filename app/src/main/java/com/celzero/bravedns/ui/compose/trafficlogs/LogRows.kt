@@ -53,7 +53,7 @@ import com.celzero.bravedns.ui.compose.themeColor
                         LogText(b.connectionDomain, Modifier.alpha(.7f), font = light, lines = 1, overflow = TextOverflow.Ellipsis, colorAttr = R.attr.primaryLightColorText)
                     }
                     Box(Modifier.weight(.2f), contentAlignment = Alignment.Center) { LogText(b.connectionResponseTime, font = condensed, lines = 1) }
-                    Box(Modifier.weight(.15f), contentAlignment = Alignment.Center) { Icon(painterResource(R.drawable.ic_keyboard_arrow_down), null) }
+                    Box(Modifier.weight(.15f), contentAlignment = Alignment.Center) { Icon(painterResource(R.drawable.ic_keyboard_arrow_down), null, tint = themeColor(R.attr.primaryTextColor)) }
                 }
                 if (b.connectionSummaryLl.isVisible) Row(Modifier.fillMaxWidth().padding(bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                     LogText(b.connectionDataUsage, Modifier.weight(.65f).padding(start = 8.dp, end = 10.dp), font = light, lines = 1, overflow = TextOverflow.StartEllipsis, colorAttr = R.attr.primaryLightColorText)
@@ -85,7 +85,7 @@ import com.celzero.bravedns.ui.compose.themeColor
                         LogText(b.dnsAppName, Modifier.alpha(.7f), font = light, lines = 1, overflow = TextOverflow.Ellipsis, colorAttr = R.attr.primaryLightColorText)
                     }
                     Box(Modifier.weight(.2f), contentAlignment = Alignment.Center) { LogText(b.dnsWallTime, font = condensed, lines = 1) }
-                    Box(Modifier.weight(.15f), contentAlignment = Alignment.Center) { Icon(painterResource(R.drawable.ic_keyboard_arrow_down), null) }
+                    Box(Modifier.weight(.15f), contentAlignment = Alignment.Center) { Icon(painterResource(R.drawable.ic_keyboard_arrow_down), null, tint = themeColor(R.attr.primaryTextColor)) }
                 }
                 if (b.dnsSummaryLl.isVisible) Row(Modifier.fillMaxWidth().padding(bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                     LogText(b.dnsIps, Modifier.weight(.65f).padding(start = 8.dp, end = 10.dp), font = light, lines = 1, overflow = TextOverflow.StartEllipsis, colorAttr = R.attr.primaryLightColorText)

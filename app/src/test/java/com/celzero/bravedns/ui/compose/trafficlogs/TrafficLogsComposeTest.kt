@@ -75,6 +75,27 @@ class TrafficLogsComposeTest {
         compose.onNodeWithTag("log-filter-HIGH").performClick(); compose.onNodeWithTag("log-filter-HIGH").performClick()
         compose.runOnIdle { assertEquals(listOf("HIGH"), selected); assertEquals(setOf(EventSource.DNS), state.sourceChips) }
     }
+    @Test fun logMessagesUseThemeForegroundOnDarkAndLightBackgrounds() {
+        var style by mutableIntStateOf(R.style.AppTheme)
+        var expected = androidx.compose.ui.graphics.Color.Unspecified
+        compose.setContent {
+            val context = LocalContext.current
+            val themed = remember(style) { ContextThemeWrapper(context, style) }
+            CompositionLocalProvider(LocalContext provides themed) {
+                RethinkTheme {
+                    expected = com.celzero.bravedns.ui.compose.themeColor(R.attr.primaryTextColor)
+                    LogList(LogScreenState().apply { message = "Logs disabled" }, remember { FakePresenter() }, timestamp = { it.timestamp })
+                }
+            }
+        }
+        listOf(R.style.AppTheme, R.style.AppThemeTrueBlack, R.style.AppThemeWhite).forEach { theme ->
+            compose.runOnIdle { style = theme }
+            val layouts = mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
+            compose.onNodeWithText("Logs disabled").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult) { it(layouts) }
+            compose.runOnIdle { assertEquals(expected, layouts.single().layoutInput.style.color) }
+        }
+    }
+
     private class FakePresenter : LogPagingPresenter<Event>(object : DiffUtil.ItemCallback<Event>() {
         override fun areItemsTheSame(oldItem: Event, newItem: Event) = oldItem.id == newItem.id
         override fun areContentsTheSame(oldItem: Event, newItem: Event) = oldItem == newItem

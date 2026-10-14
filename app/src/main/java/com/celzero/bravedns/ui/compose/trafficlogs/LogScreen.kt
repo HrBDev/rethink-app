@@ -106,7 +106,8 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
         filters()
     }
     if (state.showSearch) {
-        if (boxed) Card(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 5.dp), shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = themeColor(androidx.cardview.R.attr.cardBackgroundColor))) { Content() }
+        if (boxed) OriginalCardSurface(Modifier.fillMaxWidth().padding(5.dp).testTag("log-search-card"),
+            cornerRadius = 16.dp, contentColor = themeColor(R.attr.primaryTextColor)) { Content() }
         else Column(Modifier.fillMaxWidth()) { Content() }
     }
 }
@@ -139,10 +140,10 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
         if (state.showList) LazyColumn(Modifier.fillMaxSize().testTag("log-list"), state = list, contentPadding = PaddingValues(bottom = 10.dp)) {
             items(presenter.itemCount, key = { presenter.keyAt(it) }) { presenter.RowAt(it) }
         }
-        state.message?.let { Text(it, Modifier.align(Alignment.TopCenter).padding(24.dp)) }
+        state.message?.let { Text(it, Modifier.align(Alignment.TopCenter).padding(24.dp), color = themeColor(R.attr.primaryTextColor)) }
         if (!state.showList) empty?.invoke()
         if (state.showList && fastScroll) LogFastScroller(list, Modifier.align(Alignment.CenterEnd), thumbColorAttribute)
-        if (showHeader && headerVisible && header.isNotEmpty()) Text(header, Modifier.align(Alignment.TopCenter).padding(top = 10.dp).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(100.dp)).padding(horizontal = 10.dp, vertical = 5.dp), fontSize = logTextSize(R.dimen.default_font_text_view))
+        if (showHeader && headerVisible && header.isNotEmpty()) Text(header, Modifier.align(Alignment.TopCenter).padding(top = 10.dp).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(100.dp)).padding(horizontal = 10.dp, vertical = 5.dp), color = themeColor(R.attr.primaryTextColor), fontSize = logTextSize(R.dimen.default_font_text_view))
     }
 }
 private object NoLogPrefetch : LazyListPrefetchStrategy {

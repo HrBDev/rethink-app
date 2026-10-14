@@ -37,7 +37,7 @@ import org.robolectric.annotation.GraphicsMode
 import kotlin.math.max
 
 /**
- * AUTHORED / UNRUN. Exercises the real Compose→FragmentContainerView→Compose inset bridge with
+ * Exercises the real Compose→FragmentContainerView→Compose inset bridge with
  * a synthetic Activity/Fragment, plain Application, empty paging data and recorded callbacks.
  * No production controller/Application, dependency injection, VPN, store, network or real IME.
  */

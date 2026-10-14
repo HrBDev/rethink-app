@@ -32,7 +32,7 @@ import com.celzero.bravedns.ui.compose.settings.NoDimDialogWindow
 @Composable
 fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDns: (String) -> Unit) {
     Surface(color = themeColor(R.attr.background)) {
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+        Column(Modifier.fillMaxSize().safeDrawingPadding().verticalScroll(rememberScrollState())) {
             Row(Modifier.fillMaxWidth().padding(start = 55.dp, top = 10.dp, end = 20.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(stringResource(R.string.dc_global_heading), Modifier.weight(1f).padding(5.dp).semantics { heading() }, color = themeColor(androidx.appcompat.R.attr.colorPrimary), style = MaterialTheme.typography.titleSmall)
                 IconButton(onClick = b.dcRestoreDefaults.onClick, modifier = Modifier.testTag("dns-restore")) { Icon(painterResource(R.drawable.ic_backup_restore), stringResource(R.string.restore_defaults_dialog_title), tint = Color.Unspecified) }

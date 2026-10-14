@@ -103,15 +103,15 @@ class OriginalCompoundControlsTest {
                 sameColors("$key thumb", native.thumbTintList, look.buttonTint)
                 sameColors("$key track", native.trackTintList, look.trackTint)
                 sameColors("$key decoration", native.trackDecorationTintList, look.trackDecorationTint)
-                assertEquals("$key thumb width", native.thumbDrawable.intrinsicWidth / density, look.thumbWidth, .01f)
-                assertEquals("$key track width", native.trackDrawable.intrinsicWidth / density, look.width, .01f)
+                assertEquals("$key thumb width", requireNotNull(native.thumbDrawable).intrinsicWidth / density, look.thumbWidth, .01f)
+                assertEquals("$key track width", requireNotNull(native.trackDrawable).intrinsicWidth / density, look.width, .01f)
             } else if (spec.buttonCleared) {
                 assertNull("$key cleared", native.buttonDrawable)
                 assertEquals("$key bottom drawable", native.compoundDrawables[3].intrinsicWidth / density, look.width, .01f)
                 assertNull("$key bottom drawable must retain its own tint", look.buttonTint)
             } else {
                 sameColors("$key button", native.buttonTintList, look.buttonTint)
-                assertEquals("$key width", native.buttonDrawable.intrinsicWidth / density, look.width, .01f)
+                assertEquals("$key width", requireNotNull(native.buttonDrawable).intrinsicWidth / density, look.width, .01f)
                 if (native is MaterialCheckBox) sameColors("$key icon", native.buttonIconTintList, look.buttonIconTint)
             }
         } }

@@ -317,7 +317,11 @@ class RootChromeContentTest {
 
     @Composable private fun Theme(theme: Int = R.style.AppThemeWhite, content: @Composable () -> Unit) {
         val context = LocalContext.current
-        val wrapped = remember(context, theme) { ContextThemeWrapper(context, theme) }
+        val wrapped = remember(context, theme) {
+            // Dialog creates a window context from the host Activity, not LocalContext.
+            context.setTheme(theme)
+            ContextThemeWrapper(context, theme)
+        }
         CompositionLocalProvider(LocalContext provides wrapped) { RethinkTheme(content) }
     }
 }

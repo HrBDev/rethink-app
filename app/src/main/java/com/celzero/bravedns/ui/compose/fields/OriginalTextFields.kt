@@ -4,7 +4,6 @@ package com.celzero.bravedns.ui.compose.fields
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Rect
@@ -105,7 +104,6 @@ internal fun searchPlateStateSet(focused: Boolean) =
  * Read the widget's TextAppearance as well as direct attributes. Do not inherit editTextStyle's
  * minimum height or backdrop. All of this is resource lookup; production creates no Views.
  */
-@SuppressLint("ResourceType")
 private fun resolveSearchFieldResources(context: Context, style: OriginalFieldStyle): FieldResources {
     val density = context.resources.displayMetrics.density
     val editor = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance,
@@ -152,7 +150,6 @@ private fun resolveSearchFieldResources(context: Context, style: OriginalFieldSt
 
 /** Resource lookup only. No Views, layout inflation, or theme-independent M3 substitutions. */
 // These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
-@SuppressLint("ResourceType")
 internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle): FieldResources {
     if (style.search) return resolveSearchFieldResources(context, style)
     val density = context.resources.displayMetrics.density
@@ -431,7 +428,6 @@ private fun OriginalSearchDecoration(resources: FieldResources, value: String, f
  */
 @Composable
 // These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
-@SuppressLint("ResourceType")
 fun OriginalSpinner(value: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current

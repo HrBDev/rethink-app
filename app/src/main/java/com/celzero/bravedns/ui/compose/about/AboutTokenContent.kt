@@ -22,11 +22,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
+import com.celzero.bravedns.ui.compose.utilities.utilityDimensionSp
 import com.celzero.bravedns.ui.compose.themeColor
 
 /** Same platform recognizer as the original TextView's OnTouchListener, without a View.
@@ -84,7 +84,9 @@ fun AboutTokenContent(b: AboutState, selectionState: SelectionState = remember {
                     }
                 }
             }
-            .padding(vertical = 10.dp, horizontal = 16.dp), fontSize = 10.sp, fontFamily = FontFamily.Monospace,
+            .padding(vertical = 10.dp, horizontal = 16.dp), style = utilityTextStyle(
+                size = utilityDimensionSp(context, R.dimen.small_font_text_view),
+                family = "monospace", lineExtraDp = 4f),
             color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center)
     }
 }

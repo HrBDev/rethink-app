@@ -41,7 +41,7 @@ private data class ProtocolItem(val key: String, val card: DnsProtocolCard, val 
     )
     val columns = if (LocalConfiguration.current.screenWidthDp >= 480) 3 else 2
     Surface(color = themeColor(R.attr.background)) {
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 8.dp, vertical = 16.dp)) {
+        Column(Modifier.fillMaxSize().safeDrawingPadding().verticalScroll(rememberScrollState()).padding(horizontal = 8.dp, vertical = 16.dp)) {
             Spacer(Modifier.height(10.dp))
             items.chunked(columns).forEach { line ->
                 Row(Modifier.fillMaxWidth()) {

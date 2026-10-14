@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.networksettings
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import com.celzero.bravedns.ui.compose.fields.OriginalSpinner
@@ -338,7 +337,6 @@ fun networkDigitsOnly(value: String, locale: java.util.Locale): String {
 /** Compose text input with the selected Android editTextStyle background, rather than an outlined M3 field. */
 @Composable
 // These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
-@SuppressLint("ResourceType")
 private fun NetworkEditField(state: WgControlState, modifier: Modifier, numeric: Boolean = false,
                              description: String? = null, style: TextStyle = utilityTextStyle()) {
     val context = LocalContext.current

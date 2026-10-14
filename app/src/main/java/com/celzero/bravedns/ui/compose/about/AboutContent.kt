@@ -24,7 +24,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,9 +43,9 @@ import com.celzero.bravedns.ui.compose.wireguard.resolveWgText
 @Composable
 fun AboutContent(b: AboutState) {
     Surface(color = themeColor(R.attr.background)) {
-        // Home owns bottom navigation clearance; About owns the remaining safe drawing edges.
+        // Home consumes its reserved insets; standalone hosts still need every safe edge.
         LazyColumn(Modifier.fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal))
+            .safeDrawingPadding()
             .testTag("about"), contentPadding = PaddingValues(bottom = homeNavigationClearance(60.dp))) {
             item { AboutHeader(b) }
             item { AboutIntroduction(b) }
@@ -219,7 +218,8 @@ private fun AboutRow(node: WgControlState, startMargin: Dp = 16.dp, iconGap: Dp 
 private fun AboutFooter(b: AboutState) {
     Column(Modifier.fillMaxWidth().background(Brush.verticalGradient(listOf(Color.Transparent, themeColor(R.attr.colorSurfaceContainer).copy(alpha = .55f), Color.Transparent)))
         .padding(top = 36.dp, bottom = 64.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(stringResource(R.string.about_mozilla), Modifier.padding(horizontal = 24.dp).alpha(.6f), fontSize = 10.sp,
+        Text(stringResource(R.string.about_mozilla), Modifier.padding(horizontal = 24.dp).alpha(.6f),
+            style = utilityTextStyle(size = utilityDimensionSp(LocalContext.current, R.dimen.small_font_text_view), lineExtraDp = 3f),
             color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center)
         Row(Modifier.padding(top = 20.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             listOf(b.mozillaImg, b.fossImg, b.flossFundsImg).forEach { node ->
@@ -229,10 +229,11 @@ private fun AboutFooter(b: AboutState) {
         }
         SelectionContainer {
             Text(b.aboutAppVersion.text.toString(), Modifier.fillMaxWidth().padding(top = 28.dp, start = 16.dp, end = 16.dp).alpha(.75f),
-                color = themeColor(R.attr.primaryLightColorText), fontSize = 10.sp, fontFamily = FontFamily.Monospace, textAlign = TextAlign.Center)
+                color = themeColor(R.attr.primaryLightColorText),
+                style = utilityTextStyle(size = utilityDimensionSp(LocalContext.current, R.dimen.small_font_text_view), family = "monospace", lineExtraDp = 4f), textAlign = TextAlign.Center)
         }
         if (b.tokenTextView.isVisible) AboutTokenContent(b)
         Text(b.aboutLicense.text.toString(), Modifier.fillMaxWidth().padding(horizontal = 16.dp).alpha(.75f).clickable { b.aboutLicense.performClick() }.padding(top = 8.dp),
-            fontSize = 10.sp, fontFamily = FontFamily.Monospace, color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center)
+            style = utilityTextStyle(size = utilityDimensionSp(LocalContext.current, R.dimen.small_font_text_view), family = "monospace"), color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center)
     }
 }

@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.controls
 
 import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.RectF
@@ -207,7 +206,6 @@ internal data class OriginalControlLook(
  * transparent. Reading the selector in the Activity theme incorrectly paints a filled button.
  * This is style-only theme resolution, with no View or layout construction.
  */
-@SuppressLint("ResourceType") // Fixed TypedArray indices, not generated styleable constants.
 internal fun originalControlContext(context: Context, spec: OriginalControlSpec, defaultAttr: Int,
     defaultStyle: Int): Context {
     val attrs = intArrayOf(MaterialR.attr.materialThemeOverlay, MaterialR.attr.materialSizeOverlay,
@@ -231,7 +229,6 @@ internal fun originalControlContext(context: Context, spec: OriginalControlSpec,
     }
 }
 
-@SuppressLint("ResourceType") // Fixed TypedArray indices, not generated styleable constants.
 internal fun resolveOriginalControl(sourceContext: Context, spec: OriginalControlSpec, density: Density): OriginalControlLook {
     val defaultAttr = when (spec.kind) {
         OriginalControlKind.Chip -> MaterialR.attr.chipStyle

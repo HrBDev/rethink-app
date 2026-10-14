@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.networksettings
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
@@ -344,7 +346,7 @@ private fun NetworkEditField(state: WgControlState, modifier: Modifier, numeric:
     val density = LocalDensity.current
     var focused by remember { mutableStateOf(false) }
     val decoration = remember(context) {
-        val attrs = context.obtainStyledAttributes(null,
+        val attrs = context.obtainOrderedStyledAttributes(null,
             intArrayOf(android.R.attr.background, android.R.attr.textColorHint, android.R.attr.minHeight),
             androidx.appcompat.R.attr.editTextStyle, 0)
         val drawable = attrs.getDrawable(0)?.mutate()

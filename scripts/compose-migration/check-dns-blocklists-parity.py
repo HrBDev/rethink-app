@@ -100,6 +100,9 @@ for path in ['ui/fragment/DnsSettingsFragment.kt','ui/fragment/RethinkListFragme
         assert forbidden not in code, path + ' retains ' + forbidden
 renderer = current('ui/compose/blocklists/BlocklistConfigurationScreen.kt')
 assert 'styleAttribute = com.google.android.material.R.attr.materialCardViewElevatedStyle' in renderer
-assert 'containerColor = themeColor(if (checked) R.attr.selectedCardBg else R.attr.background)' in renderer
+assert 'containerColor = blocklistCardColor(checked)' in renderer
+card_appearance = current('ui/compose/blocklists/BlocklistCardAppearance.kt')
+assert 'themeColor(if (checked) R.attr.selectedCardBg else R.attr.background)' in card_appearance
+assert 'compositeOverlayIfNeeded(fill.toArgb(), elevationPx)' in card_appearance
 assert 'if (b.query.isNotBlank() && !onQuerySubmit(b.query))' in renderer
 print(f'PASS: {count} reconstructed DNS/blocklist protected methods and callbacks match baseline after explicit UI aliases; negative control passed. Source-only.')

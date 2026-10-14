@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.compose.foundation.BorderStroke
@@ -53,8 +55,8 @@ fun OriginalCardSurface(
             com.google.android.material.R.attr.strokeWidth, androidx.cardview.R.attr.contentPadding,
             androidx.cardview.R.attr.contentPaddingLeft, androidx.cardview.R.attr.contentPaddingTop,
             androidx.cardview.R.attr.contentPaddingRight, androidx.cardview.R.attr.contentPaddingBottom)
-        val defaults = context.obtainStyledAttributes(null, attributes, styleAttribute, 0)
-        val explicit = if (style != 0) context.obtainStyledAttributes(style, attributes) else null
+        val defaults = context.obtainOrderedStyledAttributes(null, attributes, styleAttribute, 0)
+        val explicit = if (style != 0) context.obtainOrderedStyledAttributes(style, attributes) else null
         fun values(index: Int) = if (explicit?.hasValue(index) == true) explicit else defaults
         try {
             with(density) {

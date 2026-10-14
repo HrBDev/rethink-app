@@ -1,0 +1,14 @@
+{
+  "status": "SOURCE_ONLY_PASS",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "source_layout": "app/src/main/res/layout/fragment_summary_statistics.xml",
+  "usage_contracts": 22,
+  "mutations_rejected": 19,
+  "files": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt": "8611169c2f254c63fe45e34843472b3661739229c4560384d9643e62567e3b84",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsReferenceLayoutTest.kt": "bad6eb78320f310f271a1c6b59689f2008538e526d00330b71b14f676a1061f9"
+  },
+  "runtime": "UNRUN",
+  "visual": "UNRUN",
+  "limitation": "Source/mutation guard only. No compilation, synthetic test execution, render, device, VPN, or traffic verification."
+}

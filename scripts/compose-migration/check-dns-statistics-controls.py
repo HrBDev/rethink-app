@@ -87,7 +87,8 @@ def check(sources):
         assert token in mode, 'Mode control contract changed: ' + token
     assert 'leadingIcon' not in mode and 'Modifier.size(22.dp)' not in mode, 'Catalog icons must retain source size'
     assert stats.count('.selectableGroup()') >= 2
-    assert stats.count('Arrangement.spacedBy(-dimensionResource(R.dimen.default_stroke_width))') == 2
+    assert stats.count('Arrangement.spacedBy(-dimensionResource(R.dimen.default_stroke_width)') == 2
+    assert 'Arrangement.spacedBy(-dimensionResource(R.dimen.default_stroke_width), Alignment.CenterHorizontally)' in stats
     for identity in ['fss_view_mode_list_btn', 'fss_view_mode_insights_btn', 'fss_filter_btn']:
         e = source_contract('fragment_summary_statistics', identity)
         assert e.get(ANDROID + 'layout_width') == '32dp' and e.get(ANDROID + 'layout_height') == '32dp'

@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
@@ -172,7 +174,7 @@ internal data class OriginalTabLook(val context: Context, val textAppearance: In
 
 @SuppressLint("ResourceType") // Explicit indices into the fixed source-style attribute array.
 internal fun resolveOriginalTabs(base: Context): OriginalTabLook {
-    val overlay = base.obtainStyledAttributes(R.style.TabbedLayoutDefault, intArrayOf(MaterialR.attr.materialThemeOverlay))
+    val overlay = base.obtainOrderedStyledAttributes(R.style.TabbedLayoutDefault, intArrayOf(MaterialR.attr.materialThemeOverlay))
         .let { try { it.getResourceId(0, 0) } finally { it.recycle() } }
     val context = if (overlay == 0) base else ContextThemeWrapper(base, overlay)
     val attrs = intArrayOf(MaterialR.attr.tabTextAppearance, MaterialR.attr.tabSelectedTextAppearance,
@@ -183,11 +185,11 @@ internal fun resolveOriginalTabs(base: Context): OriginalTabLook {
         MaterialR.attr.tabMode, MaterialR.attr.tabGravity, MaterialR.attr.tabContentStart, MaterialR.attr.tabPadding,
         MaterialR.attr.tabPaddingStart, MaterialR.attr.tabPaddingEnd, MaterialR.attr.tabPaddingTop, MaterialR.attr.tabPaddingBottom,
         MaterialR.attr.tabMinWidth, MaterialR.attr.tabMaxWidth, MaterialR.attr.tabUnboundedRipple)
-    val a = context.obtainStyledAttributes(R.style.TabbedLayoutDefault, attrs)
+    val a = context.obtainOrderedStyledAttributes(R.style.TabbedLayoutDefault, attrs)
     try {
         val textAppearance = a.getResourceId(0, R.style.TabTextDefault)
         val selectedAppearance = a.getResourceId(1, textAppearance)
-        val text = context.obtainStyledAttributes(textAppearance, intArrayOf(android.R.attr.textColor, androidx.appcompat.R.attr.textAllCaps))
+        val text = context.obtainOrderedStyledAttributes(textAppearance, intArrayOf(android.R.attr.textColor, androidx.appcompat.R.attr.textAllCaps))
         val colors: ColorStateList?
         val allCaps: Boolean
         try { colors = a.getColorStateList(2) ?: text.getColorStateList(0); allCaps = text.getBoolean(1, false) }

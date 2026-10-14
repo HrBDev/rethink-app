@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.chrome
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.graphics.Typeface
@@ -108,7 +110,7 @@ private fun rootNavigationLabelStyle(selected: Boolean): TextStyle {
 }
 
 internal fun rootNavigationLabelTextStyle(context: Context, density: Density, selected: Boolean): TextStyle {
-    val widget = context.obtainStyledAttributes(MaterialR.style.Widget_Material3_BottomNavigationView,
+    val widget = context.obtainOrderedStyledAttributes(MaterialR.style.Widget_Material3_BottomNavigationView,
         intArrayOf(MaterialR.attr.itemTextAppearanceActive, MaterialR.attr.itemTextAppearanceInactive,
             MaterialR.attr.itemTextAppearanceActiveBoldEnabled, MaterialR.attr.labelFontScalingEnabled))
     val appearance: Int
@@ -119,7 +121,7 @@ internal fun rootNavigationLabelTextStyle(context: Context, density: Density, se
         activeBold = widget.getBoolean(2, true)
         scaleLabels = widget.getBoolean(3, false)
     } finally { widget.recycle() }
-    val attributes = context.obtainStyledAttributes(appearance,
+    val attributes = context.obtainOrderedStyledAttributes(appearance,
         intArrayOf(android.R.attr.textSize, android.R.attr.fontFamily, android.R.attr.textStyle, android.R.attr.letterSpacing))
     try {
         val size = TypedValue()

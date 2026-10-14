@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
@@ -43,10 +45,10 @@ internal fun resolveWgText(context: Context, density: Density, source: String?, 
         android.R.attr.lines, android.R.attr.singleLine, android.R.attr.ellipsize, android.R.attr.gravity,
         android.R.attr.textAlignment, android.R.attr.textAllCaps, androidx.appcompat.R.attr.textAllCaps,
         android.R.attr.alpha)
-    val base = context.obtainStyledAttributes(null, ids, spec?.defaultStyleAttr ?: android.R.attr.textViewStyle, 0)
-    val explicit = spec?.let { context.obtainStyledAttributes(it.style, ids) }
+    val base = context.obtainOrderedStyledAttributes(null, ids, spec?.defaultStyleAttr ?: android.R.attr.textViewStyle, 0)
+    val explicit = spec?.let { context.obtainOrderedStyledAttributes(it.style, ids) }
     fun direct(i: Int) = if (explicit?.hasValue(i) == true) explicit else base
-    val appearance = context.obtainStyledAttributes(node?.textAppearanceStyle ?: direct(0).getResourceId(0, 0), ids)
+    val appearance = context.obtainOrderedStyledAttributes(node?.textAppearanceStyle ?: direct(0).getResourceId(0, 0), ids)
     fun value(i: Int) = when { explicit?.hasValue(i) == true -> explicit; base.hasValue(i) -> base; else -> appearance }
     try {
         val fontArray = when {
@@ -69,7 +71,7 @@ internal fun resolveWgText(context: Context, density: Density, source: String?, 
         val fm = paint.fontMetricsInt
         val extra = node?.lineSpacingExtraDp?.let { with(density) { it.dp.toPx() } } ?: value(8).getDimension(8, 0f)
         val multiplier = node?.lineSpacingMultiplier ?: value(9).getFloat(9, 1f)
-        val lineHeightEnabled = context.obtainStyledAttributes(intArrayOf(MaterialR.attr.textAppearanceLineHeightEnabled)).let {
+        val lineHeightEnabled = context.obtainOrderedStyledAttributes(intArrayOf(MaterialR.attr.textAppearanceLineHeightEnabled)).let {
             try { it.getBoolean(0, true) } finally { it.recycle() }
         }
         val heightArray = when {

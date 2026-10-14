@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import androidx.annotation.AttrRes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -16,7 +18,7 @@ import com.google.android.material.R as MaterialR
 @Composable
 fun themeColor(@AttrRes attribute: Int): Color {
     LocalConfiguration.current
-    val values = LocalContext.current.obtainStyledAttributes(intArrayOf(attribute))
+    val values = LocalContext.current.obtainOrderedStyledAttributes(intArrayOf(attribute))
     return try {
         check(values.hasValue(0)) { "Required Rethink theme color is missing: $attribute" }
         Color(values.getColor(0, android.graphics.Color.TRANSPARENT))

@@ -6560,8 +6560,8 @@
         "val materialOverlay = if (material) overlay(MaterialR.attr.materialThemeOverlay) else 0",
         "val themed = if (materialOverlay != 0) ContextThemeWrapper(context, materialOverlay) else context",
         "val wrapped = if (androidTheme != 0) ContextThemeWrapper(themed, androidTheme) else themed",
-        "val base = wrapped.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)",
-        "val explicit = wrapped.obtainStyledAttributes(spec.style, attrs)",
+        "val base = wrapped.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)",
+        "val explicit = wrapped.obtainOrderedStyledAttributes(spec.style, attrs)",
         "fun array(i: Int) = if (explicit.hasValueOrEmpty(i)) explicit else base"
       ]
     },
@@ -6585,7 +6585,7 @@
         "onValueChangeFinished = onValueChangeFinished, interactionSource = interaction,",
         "val spec = requireNotNull(originalCompoundSpecs[source])",
         "val themed = if (overlay != 0) ContextThemeWrapper(context, overlay) else context",
-        "val explicit = themed.obtainStyledAttributes(spec.style, attrs)",
+        "val explicit = themed.obtainOrderedStyledAttributes(spec.style, attrs)",
         "fun array(i: Int) = if (explicit.hasValueOrEmpty(i)) explicit else base",
         "if (direction == LayoutDirection.Rtl) { native.translate(size.width, 0f); native.scale(-1f, 1f) }"
       ]
@@ -6789,10 +6789,10 @@
         "thumbWidth, thumbHeight, radius, dim(14), trackHeight, dim(23), activeTickRadius, inactiveTickRadius,",
         "val overlay = if (overlayStyle.hasValueOrEmpty(0)) overlayStyle.getResourceId(0, 0) else overlayBase.getResourceId(0, 0)",
         "val themed = if (overlay != 0) ContextThemeWrapper(context, overlay) else context",
-        "val base = themed.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)",
-        "val explicit = themed.obtainStyledAttributes(spec.style, attrs)",
+        "val base = themed.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)",
+        "val explicit = themed.obtainOrderedStyledAttributes(spec.style, attrs)",
         "if (material) resolveOriginalSliderLabel(themed, array(32).getResourceId(32, MaterialR.style.Widget_MaterialComponents_Tooltip)) else null",
-        "private fun resolveOriginalSliderLabel(context: Context, style: Int): OriginalSliderLabelLook { val a = context.obtainStyledAttributes(style, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor, MaterialR.attr.backgroundTint, android.R.attr.padding, android.R.attr.minWidth, android.R.attr.minHeight, android.R.attr.layout_margin))",
+        "private fun resolveOriginalSliderLabel(context: Context, style: Int): OriginalSliderLabelLook { val a = context.obtainOrderedStyledAttributes(style, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor, MaterialR.attr.backgroundTint, android.R.attr.padding, android.R.attr.minWidth, android.R.attr.minHeight, android.R.attr.layout_margin))",
         "val background = com.google.android.material.shape.MaterialShapeDrawable(context, null, 0, style)",
         "val result = OriginalSliderLabelLook(background, paint, a.getDimension(3, 0f), a.getDimension(4, 0f), a.getDimension(5, 0f), a.getDimension(6, 0f))"
       ],

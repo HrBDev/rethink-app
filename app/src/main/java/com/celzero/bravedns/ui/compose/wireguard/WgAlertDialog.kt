@@ -2,6 +2,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
@@ -195,7 +197,7 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
     val measurer = rememberTextMeasurer()
     val text = wgAnnotatedText(title)
     val smallerSize = remember(context, density) {
-        context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textSize), android.R.attr.textAppearanceMedium,
+        context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textSize), android.R.attr.textAppearanceMedium,
             android.R.style.TextAppearance_Medium).let {
             try { with(density) { it.getDimensionPixelSize(0, 0).toFloat().toSp() } } finally { it.recycle() }
         }
@@ -214,7 +216,7 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
     val context = LocalContext.current
     val density = LocalDensity.current
     return remember(context, density, attribute, styleAttribute) {
-        context.obtainStyledAttributes(null, intArrayOf(attribute), styleAttribute, 0).let {
+        context.obtainOrderedStyledAttributes(null, intArrayOf(attribute), styleAttribute, 0).let {
             try { with(density) { it.getDimension(0, 0f).toDp() } } finally { it.recycle() }
         }
     }
@@ -226,10 +228,10 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
 @Composable private fun wgDialogTextColor(styleAttribute: Int, fallback: Color): Color {
     val context = LocalContext.current
     return remember(context, styleAttribute, fallback) {
-        val widget = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textColor, android.R.attr.textAppearance), styleAttribute, 0)
+        val widget = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textColor, android.R.attr.textAppearance), styleAttribute, 0)
         try {
             val appearance = widget.getResourceId(1, 0)
-            val inherited = if (appearance != 0) context.obtainStyledAttributes(appearance, intArrayOf(android.R.attr.textColor)) else null
+            val inherited = if (appearance != 0) context.obtainOrderedStyledAttributes(appearance, intArrayOf(android.R.attr.textColor)) else null
             try {
                 val colors = if (widget.hasValue(0)) widget.getColorStateList(0) else inherited?.getColorStateList(0)
                 colors?.let { Color(it.getColorForState(intArrayOf(android.R.attr.state_enabled), it.defaultColor)) } ?: fallback

@@ -1,10 +1,11 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
-import android.content.res.TypedArray
 import android.graphics.RectF
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -151,10 +152,24 @@ private fun OriginalControl(
                     val checkedIcon = look.checkedIcon.takeIf { selected == true && look.checkedIconVisible }
                     val iconResource = checkedIcon ?: look.icon
                     val resolvedIconTint = iconTintOverride ?: (if (checkedIcon != null) look.checkedIconTint else look.iconTint)?.resolve(states) ?: foreground
-                    val icon: (@Composable () -> Unit)? = leadingIcon ?: iconResource.takeIf { it != 0 }?.let { resource ->
-                        @Composable { Icon(painterResource(resource), null, Modifier.size(look.iconSize.dp), tint = resolvedIconTint) }
+                    val iconPainter = if (leadingIcon == null && iconResource != 0) painterResource(iconResource) else null
+                    if (leadingIcon != null || iconPainter != null) {
+                        // MDC iconSize=0 means the drawable's intrinsic size, not a zero-sized icon.
+                        // Keep independent width/height for non-square drawables. Caller-supplied
+                        // icons retain their own dimensions when the source has no explicit size.
+                        val iconModifier = when {
+                            look.iconSize > 0f -> Modifier.size(look.iconSize.dp)
+                            iconPainter != null -> Modifier.size(
+                                originalIconExtent(iconPainter.intrinsicSize.width, density),
+                                originalIconExtent(iconPainter.intrinsicSize.height, density))
+                            else -> Modifier
+                        }
+                        Box(iconModifier, contentAlignment = Alignment.Center) {
+                            if (leadingIcon != null) leadingIcon()
+                            else if (iconPainter != null) Icon(iconPainter, null, Modifier.fillMaxSize(), tint = resolvedIconTint)
+                        }
+                        if (!spec.iconOnly) Spacer(Modifier.width(look.iconPadding.dp))
                     }
-                    if (icon != null) { Box(Modifier.size(look.iconSize.dp), contentAlignment = Alignment.Center) { icon() }; if (!spec.iconOnly) Spacer(Modifier.width(look.iconPadding.dp)) }
                     content()
                     if (trailingIcon != null) { Spacer(Modifier.width(look.iconPadding.dp)); trailingIcon() }
                 }
@@ -162,6 +177,10 @@ private fun OriginalControl(
         }
     }
 }
+
+/** Intrinsic painter dimensions are physical pixels; explicit style dimensions are already dp. */
+internal fun originalIconExtent(intrinsicPixels: Float, density: Density): Dp =
+    if (intrinsicPixels.isFinite() && intrinsicPixels > 0f) with(density) { intrinsicPixels.toDp() } else 24.dp
 
 private fun ColorStateList?.resolve(states: IntArray): Color =
     this?.let { Color(it.getColorForState(states, it.defaultColor)) } ?: Color.Transparent
@@ -193,8 +212,8 @@ internal fun originalControlContext(context: Context, spec: OriginalControlSpec,
     defaultStyle: Int): Context {
     val attrs = intArrayOf(MaterialR.attr.materialThemeOverlay, MaterialR.attr.materialSizeOverlay,
         android.R.attr.theme, androidx.appcompat.R.attr.theme)
-    val defaults = context.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)
-    val source = context.obtainStyledAttributes(spec.style, attrs)
+    val defaults = context.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)
+    val source = context.obtainOrderedStyledAttributes(spec.style, attrs)
     fun overlay(index: Int): Int = if (attrs[index] in spec.explicitNulls) 0 else
         (if (source.hasValueOrEmpty(index)) source else defaults).getResourceId(index, 0)
     val materialOverlay = overlay(0)
@@ -243,8 +262,8 @@ internal fun resolveOriginalControl(sourceContext: Context, spec: OriginalContro
         MaterialR.attr.checkedIcon, MaterialR.attr.checkedIconVisible, MaterialR.attr.checkedIconTint,
         android.R.attr.elevation, MaterialR.attr.elevation, MaterialR.attr.iconStartPadding, MaterialR.attr.iconEndPadding, android.R.attr.paddingLeft, android.R.attr.paddingRight
     )
-    val base = context.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)
-    val explicit = context.obtainStyledAttributes(spec.style, attrs)
+    val base = context.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)
+    val explicit = context.obtainOrderedStyledAttributes(spec.style, attrs)
     fun explicitlyCleared(index: Int) = attrs[index] in spec.explicitNulls
     fun array(index: Int) = if (explicit.hasValueOrEmpty(index) || explicitlyCleared(index)) explicit else base
     fun has(index: Int) = explicitlyCleared(index) || explicit.hasValueOrEmpty(index) || base.hasValueOrEmpty(index)
@@ -258,7 +277,7 @@ internal fun resolveOriginalControl(sourceContext: Context, spec: OriginalContro
         return if (resource != 0) AppCompatResources.getColorStateList(context, resource)
             else values.getColorStateList(index)
     }
-    val appearance = context.obtainStyledAttributes(res(0), intArrayOf(android.R.attr.textSize, android.R.attr.textColor,
+    val appearance = context.obtainOrderedStyledAttributes(res(0), intArrayOf(android.R.attr.textSize, android.R.attr.textColor,
         android.R.attr.fontFamily, android.R.attr.textStyle, android.R.attr.letterSpacing))
     val fontStyle = if (has(4)) array(4).getInt(4, 0) else appearance.getInt(3, 0)
     val fontArray = if (has(3)) array(3) else appearance
@@ -316,7 +335,7 @@ internal fun resolveOriginalControl(sourceContext: Context, spec: OriginalContro
         insetStart = if (chip) 0f else dim(13), insetEnd = if (chip) 0f else dim(14),
         insetTop = if (chip) 0f else dim(15), insetBottom = if (chip) 0f else dim(16),
         icon = if (chip && array(42).getBoolean(42, false)) res(41) else if (!chip) res(37) else 0,
-        iconSize = if (chip) dim(36, 18f) else dim(38, 18f), iconPadding = if (chip) dim(34, 8f) else dim(39, 8f),
+        iconSize = if (chip) dim(36, 18f) else dim(38), iconPadding = if (chip) dim(34, 8f) else dim(39, 8f),
         iconTint = colors(if (chip) 43 else 40),
         checkedIcon = if (chip) res(46) else 0, checkedIconVisible = chip && array(47).getBoolean(47, false),
         checkedIconTint = if (chip) colors(48) else null, elevation = dim(if (has(49)) 49 else 50)

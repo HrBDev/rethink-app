@@ -1,0 +1,165 @@
+{
+  "title": "Independent source review: three-screen restoration and shared attributes/icons",
+  "reviewed_at_utc": "2026-10-14T16:12:34.137402+00:00",
+  "basis": "Six-screen reference audit plus original XML and current source patch; no new runtime evidence",
+  "head": "cbe1a9f3cb0ef6cdac5d0ced561f67a79c68d001",
+  "decision": "No remaining concrete production-code blocker found in reviewed source snapshot; acceptance remains conditional on compile/lint/runtime and fresh screenshot verification.",
+  "findings": [
+    {
+      "id": "SRC-01",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "Attribute ordering and duplicate mapping",
+      "detail": "AttributeOrder creates a sorted unique query array and maps each original index with binarySearch. All 13 exposed indexed accessors delegate through that mapping; recycle is not indexed. Caller arrays are not mutated. Duplicates share the same queried attribute while keeping all declared indices valid."
+    },
+    {
+      "id": "SRC-02",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "Overloads, precedence, and resource API",
+      "detail": "All three Context overloads preserve style/default-attribute/default-resource inputs. Only query ordering changes; explicit null checks still use the original arrays, and hasValue/hasValueOrEmpty/peekValue retain platform semantics. hasValueOrEmpty is available before project minSdk 23. Class/internal visibility is appropriate for this module. No missing accessor or stale TypedArray-typed consumer was found."
+    },
+    {
+      "id": "SRC-03",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "Mechanical routing",
+      "detail": "15 non-control tracked resolver files compare identically to HEAD after only the helper rename/import and removed TypedArray import are normalized. OriginalControls additionally contains the intended icon change; the new blocklist appearance resolver is also routed. No direct production obtainStyledAttributes call remains under compose outside the wrapper."
+    },
+    {
+      "id": "SRC-04",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "Intrinsic icon sizing",
+      "detail": "Explicit positive icon size stays square in dp. Zero size uses painter intrinsic width and height independently, converts physical pixels to dp, and falls back to 24dp for missing/nonfinite extents. Caller-provided leading icons retain their sizing when no explicit size exists. Icons remain in the original row, with existing tints, checked-icon choice, padding, and handlers."
+    },
+    {
+      "id": "SRC-05",
+      "severity": "medium",
+      "status": "fixed during review",
+      "subject": "Stats API23 locale compatibility",
+      "detail": "An intermediate snapshot used Configuration.locales (API 24). The re-read reviewed snapshot uses ConfigurationCompat.getLocales(configuration)[0] with Locale.getDefault fallback. This resolves the minSdk 23 compatibility issue; it is not a remaining blocker."
+    },
+    {
+      "id": "SRC-06",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "About target contracts and state",
+      "detail": "The patch restores nested description padding/5dp line spacing, native text appearances, inset 16dp rounded .75dp actions, equal support columns and individual captions, and original section rhythm. Dynamic usage/sponsor visibility, flavor-controlled updates, progress, and existing click dispatch remain state-driven. Top/horizontal safeDrawing belongs to the destination; Home still reserves bottom navigation."
+    },
+    {
+      "id": "SRC-07",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "Stats target contracts and mode",
+      "detail": "Source heading/alpha behavior, centered period group, shared INSIGHTS card, three weighted KPI columns/dividers, and native sizes/colors replace the screenshot mismatches. LIST and INSIGHTS remain separate, selected by existing state; totals, filters, time callback, close/detail behavior, and section visibility are retained. No mode was forced to imitate the target."
+    },
+    {
+      "id": "SRC-08",
+      "severity": "none",
+      "status": "accepted by source inspection",
+      "subject": "DNS target contracts and behavior",
+      "detail": "Native elevation overlay is applied to the original checked/background fill choice; no screenshot RGB is hard-coded. Selector/group/row geometry remains source-derived, safe area belongs to the full-screen destination, and the standalone list inset change excludes the bottom sheet. Paging, scroll states, selection, query, apply, discard, and confirmation branches remain intact."
+    },
+    {
+      "id": "SRC-09",
+      "severity": "low",
+      "status": "verification limitation",
+      "subject": "Resource and sizing test oracles",
+      "detail": "Wrapper tests use independent single-attribute platform queries for all three overloads across six themes, including duplicate mapping and unmodified input. Native MaterialButton tests compare minimumHeight and iconSize from the same generated styles. Those assertions validate those properties only: they cannot prove final measured/painted height, text padding, line baseline, outline joining, or screenshot parity. The fixed 32dp icon controls deliberately skip the minimum-height comparison. Compose bounds/native measured-layout comparison is still needed when execution is authorized."
+    },
+    {
+      "id": "SRC-10",
+      "severity": "low",
+      "status": "verification limitation",
+      "subject": "Compile, lint, API matrix and runtime",
+      "detail": "No compiler, Android lint, Robolectric, device, emulator or fresh render was run. ResourceType suppression is localized to remapped TypedArray access; custom wrapper allocation/recycling still requires lint review. Android fixtures currently target API 35, so a minSdk 23 smoke run remains useful. Static string guards detect known changes but do not execute Kotlin or validate all dynamic states."
+    }
+  ],
+  "source_checks_run": [
+    {
+      "command": "python scripts/compose-migration/check-ordered-style-attributes.py --self-test",
+      "result": "PASS_SOURCE_ONLY",
+      "queries": 62,
+      "rejected_mutations": 11
+    },
+    {
+      "command": "python scripts/compose-migration/check-about-reference-layout.py --self-test",
+      "result": "PASS_SOURCE_ONLY",
+      "contracts": 44,
+      "rejected_mutations": 15
+    },
+    {
+      "command": "python scripts/compose-migration/check-stats-reference-layout.py --self-test",
+      "result": "PASS_SOURCE_ONLY",
+      "contracts": 22,
+      "rejected_mutations": 19
+    },
+    {
+      "command": "python scripts/compose-migration/check-blocklist-reference-restoration.py",
+      "result": "PASS_SOURCE_ONLY",
+      "checks": 15,
+      "rejected_mutations": 17
+    },
+    {
+      "command": "python scripts/compose-migration/check-dns-blocklists-parity.py",
+      "result": "PASS_SOURCE_ONLY",
+      "protected_methods_and_callbacks": 131,
+      "negative_control": "PASS"
+    }
+  ],
+  "mechanical_resolver_files": [
+    "app/src/main/java/com/celzero/bravedns/ui/compose/RethinkTheme.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCard.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalProgress.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeCardSpacing.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoContent.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityTypography.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextStyles.kt"
+  ],
+  "reviewed_file_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/resources/OrderedStyledAttributes.kt": "9fdf8313b85f4745f7cdea98158790fc05cff5d44ed331b230ace4a005d39d66",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControls.kt": "930b347e1d1389600458b218e541c9a811da2b2366eb7aad036637520dd82e7a",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt": "d42418544f6e3a7409cfe1a04608f3bec80872fd9f7cb5449b3f40d0b3dfe022",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt": "8611169c2f254c63fe45e34843472b3661739229c4560384d9643e62567e3b84",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt": "1b0682cbe183b272eedf841ac8ceed38faa5020f03e118c0ae31515a72b9b653",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistCardAppearance.kt": "550eeb956ac6ef53c6b47d2f1a5fa59ac7317879fa896bd195ab03e757228add",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt": "e8831ad00ca7822e8047a5834a908921ed61e6a0abc71645a0df095269f7caa1",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/resources/OrderedStyledAttributesTest.kt": "5f46ec676c74d7283d93a43421386bef630f74f98bc93a4b163d392ddcb45ac6",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/controls/OriginalControlsTest.kt": "0b2ccc069eddfd02d21caac97feda4f72c02c5b3bdd84260ec77ca4533716a8f",
+    "scripts/compose-migration/check-ordered-style-attributes.py": "cc9c4205ed81b34bab8600d0bfb74df7694d4c98cb9bbfc40510b375783d155a",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/RethinkTheme.kt": "5e4f587675ade146cb3affb1d399bbe7a9a9159c391fe7aae59a28e6a255ea5d",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt": "6514b358da7c2f2c5ac91e876ce053b0a98d791985f89aa943fc397be1172904",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt": "a3120dee97dd5dfc95628263d4e4b31059928b09ea72ee5141d9b56abe3724cc",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCard.kt": "bee64b43a3f577aa04f44e9dbd832698832855309b1ac76448c11debcfcafa13",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt": "2c7c1e8fd8ccadbb96f3a05087aae2873ae9b31786bc70fda2b5a8aa5b99fc5e",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalProgress.kt": "e016253c1ccaf74289e058e83ef92be32ae01ea18f9be0d7553f865cee927a78",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt": "52b1b35c22273f62f2855e261588345a55ac1cf3fcaf484f42a4b7677c11ba1c",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt": "2f0bf6a7d3579a278f4fae0f4bbfd2d33dd0e6a33bafce7dc9c92ac71e99d1a7",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt": "f73268ec79f6d58e2b811be1c53c8ebfdb4beca621591a3d7a2f0dba641eea9c",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeCardSpacing.kt": "a6c49666c76129091b135b9437cfd7a4fbe51e1c2fc7b8f7aa5b2421932a1af6",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt": "4bceab8271e74f9649a949a8a81580fbaef1ad48005b982997663747b81badf5",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoContent.kt": "11e82075ac66d70aa7ca75f658e714e926ed84ce7fddf8f82bd672754e9308a5",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityTypography.kt": "37025e3bc7f1795f9e726eea33ed6eb589a96c5792eb7a55f37e308f63492360",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt": "acc6a71eff08346577010d7a547661e7f285e3ed3053f92427e5b4595aa9b3b7",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextStyles.kt": "369da6ecc7dc53afcc92563f7fcdf70b7f5fd14fcea2d6659ef64a7118b0a5c8"
+  },
+  "not_run": [
+    "Gradle/Kotlin compilation",
+    "Android lint",
+    "Robolectric/Compose tests",
+    "API23 and API35 execution",
+    "Emulator/device execution",
+    "Corrected rendering/screenshot comparison"
+  ],
+  "production_code_edited_by_reviewer": false,
+  "geometry_fixture_status": "Separate screen Compose geometry/bounds fixtures are authored but unrun; shared helper native tests compare property resolution only."
+}

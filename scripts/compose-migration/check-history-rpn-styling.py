@@ -205,7 +205,7 @@ def validate(src):
              'com.celzero.bravedns.ui.compose.controls.OriginalServerLoadingSpinner()')
     contains('shared_progress', 'linear progress resolves actual MDC defaults before source colors/thickness/radius',
              'val spec = LinearProgressIndicatorSpec(context, null)',
-             'context.obtainStyledAttributes(style, intArrayOf(MaterialR.attr.trackThickness,',
+             'context.obtainOrderedStyledAttributes(style, intArrayOf(MaterialR.attr.trackThickness,',
              'spec.trackThickness = overrides.thicknessDp?.let(::px) ?: if (a.hasValue(0)) a.getDimensionPixelSize(0, spec.trackThickness) else spec.trackThickness',
              'spec.trackCornerRadius = minOf(overrides.radiusDp?.let(::px) ?: a.getDimensionPixelSize(1, 0), spec.trackThickness / 2)',
              'spec.useRelativeTrackCornerRadius = false',

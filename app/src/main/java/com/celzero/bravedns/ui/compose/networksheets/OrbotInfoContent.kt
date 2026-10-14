@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.networksheets
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -54,9 +56,9 @@ fun resolveOrbotInfoTypography(context: Context, description: Boolean): OrbotInf
     val appearance = if (description) androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead else androidx.appcompat.R.style.TextAppearance_AppCompat_Headline
     val dimension = if (description) R.dimen.large_font_text_view else R.dimen.heading_font_text_view
     val attrs = intArrayOf(android.R.attr.fontFamily, android.R.attr.textStyle, android.R.attr.letterSpacing, android.R.attr.typeface, android.R.attr.textFontWeight)
-    val defaults = context.obtainStyledAttributes(null, attrs, android.R.attr.textViewStyle, 0)
-    val widget = context.obtainStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem, attrs)
-    val values = context.obtainStyledAttributes(appearance, attrs)
+    val defaults = context.obtainOrderedStyledAttributes(null, attrs, android.R.attr.textViewStyle, 0)
+    val widget = context.obtainOrderedStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem, attrs)
+    val values = context.obtainOrderedStyledAttributes(appearance, attrs)
     fun indexValue(index: Int) = when { values.hasValue(index) -> values; widget.hasValue(index) -> widget; else -> defaults }
     val flags = indexValue(1).getInt(1, Typeface.NORMAL)
     val family = indexValue(0).getString(0) ?: when (indexValue(3).getInt(3, 1)) { 2 -> "serif"; 3 -> "monospace"; else -> "sans-serif" }
@@ -65,12 +67,12 @@ fun resolveOrbotInfoTypography(context: Context, description: Boolean): OrbotInf
     if (android.os.Build.VERSION.SDK_INT >= 28 && weight >= 0) typeface = Typeface.create(typeface, weight.coerceIn(1, 1000), flags and Typeface.ITALIC != 0)
     val spacing = indexValue(2).getFloat(2, 0f)
     values.recycle(); widget.recycle(); defaults.recycle()
-    val colorValue = context.obtainStyledAttributes(intArrayOf(R.attr.primaryTextColor))
+    val colorValue = context.obtainOrderedStyledAttributes(intArrayOf(R.attr.primaryTextColor))
     val color = colorValue.getColor(0, android.graphics.Color.BLACK)
     colorValue.recycle()
     // SpinnerItem defines relative padding. It takes precedence over the description's
     // android:padding=5dp, which only replaces its absolute/top/bottom padding.
-    val padding = context.obtainStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem,
+    val padding = context.obtainOrderedStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem,
         intArrayOf(android.R.attr.paddingStart, android.R.attr.paddingEnd))
     val density = context.resources.displayMetrics.density
     val fallback = if (description) 5f else 0f

@@ -1,0 +1,45 @@
+{
+  "result": "PASS_SOURCE_ONLY",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "checks": {
+    "screen owns system bar safe area": true,
+    "standalone list owns insets while bottom sheet keeps existing inset owner": true,
+    "centered joined source selector": true,
+    "original tab callbacks and separate scroll states": true,
+    "only list is weighted and scrollable above fixed footer": true,
+    "source section grouping and native bold family preserved": true,
+    "source card spacing radius label and description preserved": true,
+    "selection state direct checkbox and row callbacks preserved": true,
+    "query submit and apply/discard remain distinct": true,
+    "baseline fill attributes retained and native overlay restored": true,
+    "no screenshot RGB or unscaled pixel geometry": true,
+    "screen remains native Compose presentation": true,
+    "appearance remains native Compose presentation": true,
+    "list remains native Compose presentation": true,
+    "synthetic dark-card native oracle and selector/footer regressions authored": true
+  },
+  "negative_controls_rejected": 17,
+  "source_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt": "1b0682cbe183b272eedf841ac8ceed38faa5020f03e118c0ae31515a72b9b653",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistCardAppearance.kt": "550eeb956ac6ef53c6b47d2f1a5fa59ac7317879fa896bd195ab03e757228add",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt": "e8831ad00ca7822e8047a5834a908921ed61e6a0abc71645a0df095269f7caa1",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistsComposeTest.kt": "85f565372834d30328e8e620cc59445274f2214edc0cd81a8d93d8c55dc69965"
+  },
+  "reference_images": [
+    "current image3 (345x747)",
+    "original image4 (756x1688)"
+  ],
+  "reference_findings": [
+    "Selector collapsed into status bar in image3; image4 has a centered full capsule.",
+    "Unchecked cards in image3 lose the dark teal elevation overlay visible in image4.",
+    "Baseline dp/sp sizes retained; differently sized screenshot pixels are not used as dp."
+  ],
+  "unrun": [
+    "Android compilation",
+    "Robolectric synthetic tests",
+    "device rendering",
+    "pixel parity",
+    "TalkBack"
+  ],
+  "limitation": "Source/resource and mutation checks only. Runtime/rendering parity is not established. No toolchain downloads or production execution."
+}

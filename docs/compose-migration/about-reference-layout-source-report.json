@@ -1,0 +1,16 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "pre_change_controller_commit": "cbe1a9f3cb0ef6cdac5d0ced561f67a79c68d001",
+  "kind": "source_only_not_compile_render_or_runtime",
+  "passed": true,
+  "contracts": 44,
+  "negative_controls_rejected": 15,
+  "authored_compose_fixtures": 6,
+  "android_compile": "UNRUN",
+  "compose_bounds_tests": "UNRUN",
+  "device_rendering": "UNRUN",
+  "sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt": "d42418544f6e3a7409cfe1a04608f3bec80872fd9f7cb5449b3f40d0b3dfe022",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/about/AboutReferenceLayoutTest.kt": "e0f44ddb5143d2dfc0611b03ecb6d90415ff34543cbca277a117916c160ed9b0"
+  }
+}

@@ -53,8 +53,8 @@
   },
   "source_sha256": {
     "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt": "22765415ab29897d7a0f477add09a8cb1fd8b68f411be8a447434fd94a5cac52",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt": "9414545efc301f045e548b2c1ee78e8ff9893fcecc5d4ba05e8611d61b06fca9",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt": "0f0890d5762ebd45a9e764a4c49e327260d7626a4a51b8786dcecefab48f1d53",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt": "6514b358da7c2f2c5ac91e876ce053b0a98d791985f89aa943fc397be1172904",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt": "2f0bf6a7d3579a278f4fae0f4bbfd2d33dd0e6a33bafce7dc9c92ac71e99d1a7",
     "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt": "b7cedb9bad5445d143b0657727c0b960da6fda12a33eb0b074dcc56b4595375d",
     "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt": "7f8f64c22edc388e3bb1a6d3dc64343495d03a82e43a9d8e7ad0d8d839a54f2a"
   },

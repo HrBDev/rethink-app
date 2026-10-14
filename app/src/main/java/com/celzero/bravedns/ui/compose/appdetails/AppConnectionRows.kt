@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.appdetails
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.view.View
@@ -136,8 +138,8 @@ private fun Modifier.connectionState(node: WgControlState): Modifier =
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
     return remember(context, configuration, appearance) {
-        val defaults = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor), android.R.attr.textViewStyle, 0)
-        val inherited = context.obtainStyledAttributes(if (appearance != 0) appearance else defaults.getResourceId(0, 0), intArrayOf(android.R.attr.textColor))
+        val defaults = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor), android.R.attr.textViewStyle, 0)
+        val inherited = context.obtainOrderedStyledAttributes(if (appearance != 0) appearance else defaults.getResourceId(0, 0), intArrayOf(android.R.attr.textColor))
         try { Color((if (appearance != 0) inherited.getColorStateList(0) else defaults.getColorStateList(1) ?: inherited.getColorStateList(0))?.defaultColor ?: android.graphics.Color.BLACK) }
         finally { inherited.recycle(); defaults.recycle() }
     }
@@ -150,7 +152,7 @@ private fun Modifier.connectionState(node: WgControlState): Modifier =
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     val metrics = remember(context, density, configuration, country) {
-        val attributes = context.obtainStyledAttributes(null,
+        val attributes = context.obtainOrderedStyledAttributes(null,
             intArrayOf(MaterialR.attr.trackThickness, MaterialR.attr.trackCornerRadius),
             MaterialR.attr.linearProgressIndicatorStyle, MaterialR.style.Widget_MaterialComponents_LinearProgressIndicator)
         try { with(density) {

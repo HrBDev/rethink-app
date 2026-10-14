@@ -2,6 +2,8 @@
 @file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 package com.celzero.bravedns.ui.compose.fields
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
@@ -106,13 +108,13 @@ internal fun searchPlateStateSet(focused: Boolean) =
 @SuppressLint("ResourceType")
 private fun resolveSearchFieldResources(context: Context, style: OriginalFieldStyle): FieldResources {
     val density = context.resources.displayMetrics.density
-    val editor = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textAppearance,
+    val editor = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance,
         android.R.attr.textColor, android.R.attr.textColorHint, android.R.attr.textColorHighlight,
         android.R.attr.padding, android.R.attr.paddingTop, android.R.attr.paddingBottom,
         android.R.attr.includeFontPadding), androidx.appcompat.R.attr.autoCompleteTextViewStyle, 0)
-    val appearance = context.obtainStyledAttributes(editor.getResourceId(0, 0), intArrayOf(
+    val appearance = context.obtainOrderedStyledAttributes(editor.getResourceId(0, 0), intArrayOf(
         android.R.attr.textColor, android.R.attr.textColorHint, android.R.attr.textColorHighlight))
-    val search = context.obtainStyledAttributes(null, intArrayOf(androidx.appcompat.R.attr.queryBackground,
+    val search = context.obtainOrderedStyledAttributes(null, intArrayOf(androidx.appcompat.R.attr.queryBackground,
         androidx.appcompat.R.attr.searchIcon, androidx.appcompat.R.attr.closeIcon),
         androidx.appcompat.R.attr.searchViewStyle, 0)
     // Match TintTypedArray.getDrawable: resource-backed values go through AppCompat's tint manager.
@@ -131,7 +133,7 @@ private fun resolveSearchFieldResources(context: Context, style: OriginalFieldSt
             editor.getDimensionPixelSize(6, allPadding))
         val icon = if (style == OriginalFieldStyle.AppLogSearch) null else drawable(1)
         val close = if (style == OriginalFieldStyle.ServerSearch) AppCompatResources.getDrawable(context, R.drawable.ic_cross) else drawable(2)
-        val cursor = context.obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {
+        val cursor = context.obtainOrderedStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {
             try { it.getColorStateList(0) } finally { it.recycle() }
         }
         return FieldResources(0, background, platePadding,
@@ -156,12 +158,12 @@ internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle):
     val density = context.resources.displayMetrics.density
     val widgetStyle = if (style.outlined) MaterialR.style.Widget_Material3_TextInputLayout_OutlinedBox
         else resolveUtilityStyle(context, MaterialR.attr.textInputStyle)
-    val box = context.obtainStyledAttributes(widgetStyle, intArrayOf(MaterialR.attr.boxBackgroundMode,
+    val box = context.obtainOrderedStyledAttributes(widgetStyle, intArrayOf(MaterialR.attr.boxBackgroundMode,
         MaterialR.attr.boxStrokeColor, MaterialR.attr.boxBackgroundColor, MaterialR.attr.hintTextColor,
         MaterialR.attr.shapeAppearance, MaterialR.attr.shapeAppearanceOverlay,
         MaterialR.attr.boxStrokeWidth, MaterialR.attr.boxStrokeWidthFocused))
     val editStyle = if (style == OriginalFieldStyle.Notes) android.R.attr.editTextStyle else androidx.appcompat.R.attr.editTextStyle
-    val edit = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.background,
+    val edit = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.background,
         android.R.attr.textColor, android.R.attr.textColorHint, android.R.attr.minHeight,
         android.R.attr.paddingLeft, android.R.attr.paddingTop, android.R.attr.paddingRight, android.R.attr.paddingBottom),
         editStyle, 0)
@@ -188,10 +190,10 @@ internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle):
         if (edit.hasValue(6)) padding.right = edit.getDimensionPixelSize(6, padding.right)
         if (edit.hasValue(7)) padding.bottom = edit.getDimensionPixelSize(7, padding.bottom)
     }
-    val cursor = context.obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {
+    val cursor = context.obtainOrderedStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {
         try { it.getColorStateList(0) } finally { it.recycle() }
     }
-    val highlight = context.obtainStyledAttributes(intArrayOf(android.R.attr.textColorHighlight)).let {
+    val highlight = context.obtainOrderedStyledAttributes(intArrayOf(android.R.attr.textColorHighlight)).let {
         try { Color(it.getColor(0, android.graphics.Color.TRANSPARENT)) } finally { it.recycle() }
     }
     return FieldResources(mode, background, padding, edit.getDimension(3, 0f) / density,
@@ -438,7 +440,7 @@ fun OriginalSpinner(value: String, onClick: () -> Unit, modifier: Modifier = Mod
     val pressed by interaction.collectIsPressedAsState()
     val focused by interaction.collectIsFocusedAsState()
     val background = remember(context, configuration) {
-        val attrs = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.background),
+        val attrs = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.background),
             androidx.appcompat.R.attr.spinnerStyle, 0)
         try { attrs.getDrawable(0)?.mutate() } finally { attrs.recycle() }
     }
@@ -446,7 +448,7 @@ fun OriginalSpinner(value: String, onClick: () -> Unit, modifier: Modifier = Mod
         Rect().also { padding ->
             background?.getPadding(padding)
             // Both original adapters use android.R.layout.simple_spinner_dropdown_item.
-            val item = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.paddingLeft, android.R.attr.paddingTop,
+            val item = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.paddingLeft, android.R.attr.paddingTop,
                 android.R.attr.paddingRight, android.R.attr.paddingBottom), android.R.attr.spinnerDropDownItemStyle, 0)
             try {
                 padding.left += item.getDimensionPixelSize(0, 0); padding.top += item.getDimensionPixelSize(1, 0)
@@ -455,7 +457,7 @@ fun OriginalSpinner(value: String, onClick: () -> Unit, modifier: Modifier = Mod
         }
     }
     val colors = remember(context, configuration) {
-        val attrs = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textColor), android.R.attr.spinnerDropDownItemStyle, 0)
+        val attrs = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textColor), android.R.attr.spinnerDropDownItemStyle, 0)
         try { attrs.getColorStateList(0) } finally { attrs.recycle() }
     }
     val color = colors?.fieldColor(enabled, focused) ?: themeColor(R.attr.primaryTextColor)

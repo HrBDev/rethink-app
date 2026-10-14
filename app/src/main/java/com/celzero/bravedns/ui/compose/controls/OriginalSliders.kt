@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
@@ -183,8 +185,8 @@ internal fun resolveOriginalSlider(context: Context, spec: OriginalCompoundSpec)
     val defaultAttr = if (material) MaterialR.attr.sliderStyle else androidx.appcompat.R.attr.seekBarStyle
     val defaultStyle = if (material) MaterialR.style.Widget_MaterialComponents_Slider else androidx.appcompat.R.style.Widget_AppCompat_SeekBar
     val overlayAttrs = intArrayOf(MaterialR.attr.materialThemeOverlay)
-    val overlayStyle = context.obtainStyledAttributes(spec.style, overlayAttrs)
-    val overlayBase = context.obtainStyledAttributes(null, overlayAttrs, defaultAttr, defaultStyle)
+    val overlayStyle = context.obtainOrderedStyledAttributes(spec.style, overlayAttrs)
+    val overlayBase = context.obtainOrderedStyledAttributes(null, overlayAttrs, defaultAttr, defaultStyle)
     val overlay = if (overlayStyle.hasValueOrEmpty(0)) overlayStyle.getResourceId(0, 0) else overlayBase.getResourceId(0, 0)
     overlayStyle.recycle(); overlayBase.recycle()
     val themed = if (overlay != 0) ContextThemeWrapper(context, overlay) else context
@@ -198,8 +200,8 @@ internal fun resolveOriginalSlider(context: Context, spec: OriginalCompoundSpec)
         MaterialR.attr.thumbWidth, MaterialR.attr.thumbHeight, MaterialR.attr.thumbTrackGapSize,
         MaterialR.attr.trackCornerSize, MaterialR.attr.trackInsideCornerSize, MaterialR.attr.trackStopIndicatorSize,
         MaterialR.attr.tickRadiusActive, MaterialR.attr.tickRadiusInactive, MaterialR.attr.labelStyle)
-    val base = themed.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)
-    val explicit = themed.obtainStyledAttributes(spec.style, attrs)
+    val base = themed.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)
+    val explicit = themed.obtainOrderedStyledAttributes(spec.style, attrs)
     fun array(i: Int) = if (explicit.hasValueOrEmpty(i)) explicit else base
     fun drawable(i: Int): Drawable? { val id = array(i).getResourceId(i, 0); return (if (id != 0) AppCompatResources.getDrawable(themed, id) else array(i).getDrawable(i))?.mutate() }
     fun tint(i: Int): ColorStateList? {
@@ -273,10 +275,10 @@ internal data class OriginalSliderLabelLook(val background: com.google.android.m
 
 @SuppressLint("ResourceType") // Source labelStyle attribute indices; no View or restricted Tooltip API.
 private fun resolveOriginalSliderLabel(context: Context, style: Int): OriginalSliderLabelLook {
-    val a = context.obtainStyledAttributes(style, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor,
+    val a = context.obtainOrderedStyledAttributes(style, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor,
         MaterialR.attr.backgroundTint, android.R.attr.padding, android.R.attr.minWidth, android.R.attr.minHeight,
         android.R.attr.layout_margin))
-    val appearance = context.obtainStyledAttributes(a.getResourceId(0, 0), intArrayOf(android.R.attr.textSize,
+    val appearance = context.obtainOrderedStyledAttributes(a.getResourceId(0, 0), intArrayOf(android.R.attr.textSize,
         android.R.attr.textColor, android.R.attr.fontFamily, android.R.attr.textStyle, android.R.attr.letterSpacing,
         androidx.appcompat.R.attr.fontFamily, android.R.attr.typeface))
     val fontStyle = appearance.getInt(3, android.graphics.Typeface.NORMAL)

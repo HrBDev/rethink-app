@@ -1,6 +1,15 @@
 package com.celzero.bravedns.ui.compose.blocklists
 
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.view.ContextThemeWrapper
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.R as MaterialR
+import com.celzero.bravedns.ui.compose.RethinkTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.test.*
@@ -21,7 +30,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.Assert.*
 
-/** Native content only, with empty paging flows and recording callbacks. */
+/** Native content only, with empty/synthetic paging flows and recording callbacks.
+ * Screenshot-restoration tests are AUTHORED, UNRUN: no Gradle, device, production Application,
+ * controller, service, persistent store, tunnel or traffic is started by this work. */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -32,6 +43,73 @@ class BlocklistsComposeTest {
         val pages = remember { MutableStateFlow<PagingData<BlocklistRow>>(PagingData.empty()) }
         BlocklistConfigurationScreen(s, pages, pages, LocalLifecycleOwner.current, { s.selectedAdvanced = it; s.showAdvanced = it }, change, submit, filter)
     }
+    @Composable private fun ReferenceDarkTheme(content: @Composable () -> Unit) {
+        val base = LocalContext.current
+        val context = remember(base) { ContextThemeWrapper(base, R.style.AppTheme) }
+        CompositionLocalProvider(LocalContext provides context) { RethinkTheme(content) }
+    }
+
+    /** Independent native oracle: MaterialCardView applies its own MaterialShapeDrawable
+     * elevation overlay. Comparing raw R.attr.background would bless the reported regression. */
+    @Test fun darkUncheckedCardRetainsNativeElevatedTealSurface() {
+        var expected = Color.Unspecified
+        var page = Color.Unspecified
+        compose.setContent { ReferenceDarkTheme {
+            val context = LocalContext.current
+            page = themeColor(R.attr.background)
+            expected = remember(context, page) {
+                val native = MaterialCardView(context, null, MaterialR.attr.materialCardViewElevatedStyle)
+                val attrs = context.obtainStyledAttributes(intArrayOf(R.attr.background))
+                try { native.setCardBackgroundColor(attrs.getColor(0, 0)) } finally { attrs.recycle() }
+                val bitmap = Bitmap.createBitmap(180, 100, Bitmap.Config.ARGB_8888)
+                native.layout(0, 0, 180, 100)
+                native.draw(Canvas(bitmap))
+                Color(bitmap.getPixel(90, 50)).also { bitmap.recycle() }
+            }
+            BlocklistSelectionRow(row(), false, emptySet())
+        } }
+        val pixels = compose.onNodeWithTag("blocklist-row-pack:fake:1").captureToImage().toPixelMap()
+        assertNotEquals("Native elevated dark card must differ from the flat page", page, expected)
+        assertEquals(expected, pixels[pixels.width / 2, pixels.height - 3])
+    }
+
+    @Test fun selectorKeepsCenteredFullHeightJoinedSegments() {
+        val s = BlocklistConfigurationState()
+        var density = 1f
+        compose.setContent { DnsUiTestTheme { density = LocalDensity.current.density; Configuration(s) } }
+        compose.onNodeWithTag("blocklist-tab-simple").assertWidthIsAtLeast(125.dp).assertHeightIsAtLeast(48.dp).assertIsSelected()
+        compose.onNodeWithTag("blocklist-tab-advanced").assertWidthIsAtLeast(125.dp).assertHeightIsAtLeast(48.dp).assertIsNotSelected()
+        val left = compose.onNodeWithTag("blocklist-tab-simple").fetchSemanticsNode().boundsInRoot
+        val right = compose.onNodeWithTag("blocklist-tab-advanced").fetchSemanticsNode().boundsInRoot
+        val group = compose.onNodeWithTag("blocklist-tabs").fetchSemanticsNode().boundsInRoot
+        assertEquals(group.center.x, (left.left + right.right) / 2f, 1f)
+        assertEquals("Source stroke overlaps once", density, left.right - right.left, 1f)
+        compose.onNodeWithTag("blocklist-tab-advanced").performClick().assertIsSelected()
+        compose.onNodeWithTag("blocklist-tab-simple").assertIsNotSelected()
+    }
+
+    @Test fun fullHeightFooterStaysBelowScrollViewportAndDispatchesDistinctActions() {
+        val calls = mutableListOf<String>()
+        val s = BlocklistConfigurationState().apply {
+            lbBlocklistApplyBtn.text = "Apply (RDNS Plus)"
+            lbBlocklistApplyBtn.onClick = { calls += "apply" }
+            lbBlocklistCancelBtn.onClick = { calls += "discard" }
+        }
+        var density = 1f
+        compose.setContent { DnsUiTestTheme { density = LocalDensity.current.density; Configuration(s) } }
+        compose.onNodeWithTag("blocklist-actions").assertHeightIsAtLeast(48.dp)
+        val actions = compose.onNodeWithTag("blocklist-actions").fetchSemanticsNode().boundsInRoot
+        val viewport = compose.onNodeWithTag("blocklist-list").fetchSemanticsNode().boundsInRoot
+        val cancel = compose.onNodeWithTag("blocklist-cancel").fetchSemanticsNode().boundsInRoot
+        val apply = compose.onNodeWithTag("blocklist-apply").fetchSemanticsNode().boundsInRoot
+        assertTrue(viewport.bottom <= actions.top)
+        assertEquals((actions.width - density) * .4f, cancel.width, 1f)
+        assertEquals((actions.width - density) * .6f, apply.width, 1f)
+        compose.onNodeWithTag("blocklist-cancel").performClick()
+        compose.onNodeWithTag("blocklist-apply").performClick()
+        compose.runOnIdle { assertEquals(listOf("discard", "apply"), calls) }
+    }
+
     @Test fun rowAndCheckboxDispatchOnceEachAndSelectedFillMatchesTheme() {
         val writes = mutableListOf<Boolean>(); val row = row(select = writes::add); var selectedColor = Color.Unspecified
         compose.setContent { DnsUiTestTheme { selectedColor = themeColor(R.attr.selectedCardBg); BlocklistSelectionRow(row, true, emptySet()) } }

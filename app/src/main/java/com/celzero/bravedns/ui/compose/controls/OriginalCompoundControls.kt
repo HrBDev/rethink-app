@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
@@ -240,18 +242,18 @@ internal fun resolveOriginalCompound(context: Context, spec: OriginalCompoundSpe
         androidx.appcompat.R.attr.switchMinWidth, android.R.attr.paddingHorizontal, android.R.attr.paddingVertical,
         MaterialR.attr.materialThemeOverlay, android.R.attr.theme, android.R.attr.background, MaterialR.attr.rippleColor)
     fun overlay(attr: Int): Int {
-        val a = context.obtainStyledAttributes(spec.style, intArrayOf(attr))
-        val b = context.obtainStyledAttributes(null, intArrayOf(attr), defaultAttr, defaultStyle)
+        val a = context.obtainOrderedStyledAttributes(spec.style, intArrayOf(attr))
+        val b = context.obtainOrderedStyledAttributes(null, intArrayOf(attr), defaultAttr, defaultStyle)
         val result = if (a.hasValueOrEmpty(0)) a.getResourceId(0, 0) else b.getResourceId(0, 0)
         a.recycle(); b.recycle(); return result
     }
     val material = spec.kind in listOf(OriginalCompoundKind.MaterialSwitch, OriginalCompoundKind.MaterialCheckBox, OriginalCompoundKind.MaterialRadioButton)
     val materialOverlay = if (material) overlay(MaterialR.attr.materialThemeOverlay) else 0
     val themed = if (materialOverlay != 0) ContextThemeWrapper(context, materialOverlay) else context
-    val androidTheme = context.obtainStyledAttributes(spec.style, intArrayOf(android.R.attr.theme)).let { try { it.getResourceId(0, 0) } finally { it.recycle() } }
+    val androidTheme = context.obtainOrderedStyledAttributes(spec.style, intArrayOf(android.R.attr.theme)).let { try { it.getResourceId(0, 0) } finally { it.recycle() } }
     val wrapped = if (androidTheme != 0) ContextThemeWrapper(themed, androidTheme) else themed
-    val base = wrapped.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)
-    val explicit = wrapped.obtainStyledAttributes(spec.style, attrs)
+    val base = wrapped.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)
+    val explicit = wrapped.obtainOrderedStyledAttributes(spec.style, attrs)
     fun array(i: Int) = if (explicit.hasValueOrEmpty(i)) explicit else base
     fun has(i: Int) = array(i).hasValue(i)
     fun tint(i: Int): ColorStateList? {

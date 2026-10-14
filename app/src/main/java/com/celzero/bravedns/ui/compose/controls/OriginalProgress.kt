@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -45,7 +47,7 @@ data class OriginalProgressOverrides(val indicator: Int? = null, val track: Int?
 internal fun resolveOriginalLinearProgress(context: Context, source: String, overrides: OriginalProgressOverrides = OriginalProgressOverrides()): LinearProgressIndicatorSpec {
     val style = requireNotNull(originalLinearProgressSources[source]) { "Unknown progress source: $source" }
     val spec = LinearProgressIndicatorSpec(context, null)
-    val a = context.obtainStyledAttributes(style, intArrayOf(MaterialR.attr.trackThickness,
+    val a = context.obtainOrderedStyledAttributes(style, intArrayOf(MaterialR.attr.trackThickness,
         MaterialR.attr.trackCornerRadius, MaterialR.attr.indicatorColor, MaterialR.attr.trackColor,
         MaterialR.attr.indicatorTrackGapSize, MaterialR.attr.trackStopIndicatorSize))
     val density = context.resources.displayMetrics.density
@@ -96,7 +98,7 @@ internal fun resolveOriginalLinearProgress(context: Context, source: String, ove
     val context = LocalContext.current; val density = LocalDensity.current; val configuration = LocalConfiguration.current
     val spec = remember(context, configuration) {
         CircularProgressIndicatorSpec(context, null).apply {
-            val a = context.obtainStyledAttributes(R.style.OriginalWgProgress_dialog_server_loading_server_loading_spinner,
+            val a = context.obtainOrderedStyledAttributes(R.style.OriginalWgProgress_dialog_server_loading_server_loading_spinner,
                 intArrayOf(MaterialR.attr.indicatorSize, MaterialR.attr.trackThickness))
             try { indicatorSize = a.getDimensionPixelSize(0, indicatorSize); trackThickness = a.getDimensionPixelSize(1, trackThickness) }
             finally { a.recycle() }
@@ -113,7 +115,7 @@ internal fun resolveOriginalLinearProgress(context: Context, source: String, ove
     visible: Boolean = true) {
     val context = LocalContext.current; val configuration = LocalConfiguration.current; val density = LocalDensity.current
     val look = remember(context, configuration) {
-        val a = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.progressDrawable, android.R.attr.minHeight,
+        val a = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.progressDrawable, android.R.attr.minHeight,
             android.R.attr.maxHeight, android.R.attr.progressTint, android.R.attr.secondaryProgressTint,
             android.R.attr.progressBackgroundTint, android.R.attr.mirrorForRtl), android.R.attr.progressBarStyleHorizontal, 0)
         try {

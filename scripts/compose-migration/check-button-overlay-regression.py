@@ -13,7 +13,7 @@ def check(overrides=None):
  def read(p):return overrides.get(p,(ROOT/p).read_text())
  s=read(CONTROL);test=read(TEST);generator=read(GENERATOR)
  contracts=[
-  ('component context precedes attribute reads',s.index('val context = originalControlContext(')<s.index('val base = context.obtainStyledAttributes')),
+  ('component context precedes attribute reads',s.index('val context = originalControlContext(')<s.index('val base = context.obtainOrderedStyledAttributes')),
   ('material overlay precedes size then client overlay',s.index('ContextThemeWrapper(context, materialOverlay).also')<s.index('wrapped.theme.applyStyle(sizeOverlay, true)')<s.index('wrapped.theme.applyStyle(clientOverlay, true)')),
   ('size overlays apply to buttons', 'if (spec.kind == OriginalControlKind.Button) overlay(1) else 0' in s),
   ('framework theme does not inherit default component style','val androidOverlay = source.getResourceId(2, 0)' in s and 'val appOverlay = source.getResourceId(3, 0)' in s),

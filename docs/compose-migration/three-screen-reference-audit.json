@@ -1,0 +1,246 @@
+{
+  "title": "Three-screen reference audit",
+  "review_date_utc": "2026-10-14",
+  "original_baseline_commit": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "pre_restoration_compose_commit": "cbe1a9f",
+  "evidence_kind": "Six user-supplied screenshots, all visually inspected; original XML and pre-restoration Compose source inspection",
+  "matches": [
+    {
+      "screen": "about",
+      "current": 1,
+      "target": 6
+    },
+    {
+      "screen": "stats",
+      "current": 2,
+      "target": 5
+    },
+    {
+      "screen": "dns",
+      "current": 3,
+      "target": 4
+    }
+  ],
+  "images": [
+    {
+      "number": 1,
+      "width": 325,
+      "height": 724,
+      "role": "current"
+    },
+    {
+      "number": 2,
+      "width": 344,
+      "height": 707,
+      "role": "current"
+    },
+    {
+      "number": 3,
+      "width": 345,
+      "height": 747,
+      "role": "current"
+    },
+    {
+      "number": 4,
+      "width": 756,
+      "height": 1688,
+      "role": "target"
+    },
+    {
+      "number": 5,
+      "width": 756,
+      "height": 1688,
+      "role": "target"
+    },
+    {
+      "number": 6,
+      "width": 756,
+      "height": 1688,
+      "role": "target"
+    }
+  ],
+  "normalization": {
+    "method": "For approximate geometric comparison only, multiply current pixel measures by 756/current_width. Do not infer Android dp, device density, font scale, system insets, or crop from that ratio.",
+    "common_width_px": 756,
+    "bounds_precision": "Approximate visual edges, typically \u00b12 current pixels / \u00b13 target pixels; color samples may vary with image encoding."
+  },
+  "findings": [
+    {
+      "id": "SH-01",
+      "screen": "shared",
+      "classification": "confirmed visual regression",
+      "area": "Segmented-control height and outline",
+      "current_evidence": "Stats period control: 13px high (28.6 at common width), x14..258 / 344; DNS selector: 15px (32.9), x72..272 / 345.",
+      "target_evidence": "Stats: 74px high, x104..651 / 756; DNS: 75px, x149..606 / 756. Both have rounded exterior ends and visible outlines/dividers.",
+      "restoration_contract": "Restore source Material3 outlined-button minimum visual height, padding, stroke, and joined end caps; do not globally scale every control.",
+      "source": "OriginalControls.kt; baseline toggleButtonStyle/toggleButtonNoStyle and both screen XML controls"
+    },
+    {
+      "id": "SH-02",
+      "screen": "shared",
+      "classification": "confirmed visual regression with capture qualification",
+      "area": "System-bar overlap and top spacing",
+      "current_evidence": "DNS top selector occupies y4..19 while status icons occupy the same band. Stats screenshot has no visible status bar; About does.",
+      "target_evidence": "Targets have a blank upper band before content; no visible status glyph overlap.",
+      "restoration_contract": "Respect real host insets once. Do not hard-code the target absolute Y or add duplicate per-screen status padding.",
+      "source": "Host/chrome inset handling; captures alone cannot establish density or exact crop"
+    },
+    {
+      "id": "SH-03",
+      "screen": "shared",
+      "classification": "normalization guardrail",
+      "area": "Text, icons, and background scale",
+      "current_evidence": "Current page RGB mode #1a1b1e. About body and DNS titles/check boxes look small in raw images, but are broadly similar after width normalization.",
+      "target_evidence": "Target page RGB mode #1a1b1f. Target images are 756px wide; current images are only 325\u2013345px.",
+      "restoration_contract": "Do not treat a 1-channel RGB difference or raw-pixel size difference as a redesign requirement. Verify font family, weight, line spacing, and component-relative spacing instead.",
+      "source": "Pixel samples and all six screenshots"
+    },
+    {
+      "id": "AB-01",
+      "screen": "about",
+      "classification": "confirmed visual regression",
+      "area": "Card outer and inner spacing",
+      "current_evidence": "Card x7..310, y75..290: normalized x16.3..721.1; first text x15 gives ~18.6px inset from card.",
+      "target_evidence": "Card x38..718, y255..881; first text x86 gives ~48px inset.",
+      "restoration_contract": "Restore source 16dp card margins and original themed card clearance; body inner 6dp container + 20dp text padding.",
+      "source": "AboutContent.kt; baseline fragment_about.xml"
+    },
+    {
+      "id": "AB-02",
+      "screen": "about",
+      "classification": "confirmed visual regression",
+      "area": "Paragraph line spacing and vertical rhythm",
+      "current_evidence": "Line step approximately 13px (30.2 normalized); three paragraphs packed into card y86..240.",
+      "target_evidence": "Line step approximately 39px; distinct paragraph gaps and larger top/bottom inset.",
+      "restoration_contract": "Restore original Subhead body styling with 5dp extra line spacing, first-text 10dp top margin/padding, paragraph 20dp bottom margins, and usage 10dp bottom margin.",
+      "source": "AboutDescription; baseline fragment_about.xml"
+    },
+    {
+      "id": "AB-03",
+      "screen": "about",
+      "classification": "confirmed visual regression",
+      "area": "Sponsor outline, margins, and icon grouping",
+      "current_evidence": "Sponsor nearly flush with card: x8..309,y250..289, roughly 4px corner radius.",
+      "target_evidence": "Sponsor inset x67..688,y762..852, rounded ~32px corners; heart left and centered label.",
+      "restoration_contract": "Use original 16dp-radius/0.75dp-stroke drawable contract, 16dp side/bottom margins, 10dp top margin, and original compound-icon/text padding.",
+      "source": "AboutRow; baseline rectangle_border_background.xml and fragment_about.xml"
+    },
+    {
+      "id": "AB-04",
+      "screen": "about",
+      "classification": "confirmed visual regression",
+      "area": "Contact action grouping",
+      "current_evidence": "Telegram and Bug report each occupy a full-width row, vertically stacked with captions.",
+      "target_evidence": "Equal-width adjacent columns x38..369 and x387..719; each caption immediately below its own action.",
+      "restoration_contract": "Restore 0.5/0.5 horizontal columns with 20dp outer and 5dp inner margins. Keep crash progress and handlers in their original column.",
+      "source": "AboutContent.kt contact Column; baseline fragment_about.xml horizontal LinearLayout"
+    },
+    {
+      "id": "AB-05",
+      "screen": "about",
+      "classification": "confirmed visual regression with flavor qualification",
+      "area": "App section alignment and visible extent",
+      "current_evidence": "Section left x43 (~100 normalized), row text x46 (~107), icons around x12 (~28). Links appears in current viewport.",
+      "target_evidence": "Section x120, row text x125, icons around x47. App update is visible; Links is below the viewport.",
+      "restoration_contract": "Restore source row/section padding and larger preceding content flow. Do not force app-update visibility or remove Links.",
+      "source": "AboutSection/AboutRow; AboutFragment.initView hides updates for F-Droid"
+    },
+    {
+      "id": "ST-01",
+      "screen": "stats",
+      "classification": "confirmed visual regression",
+      "area": "Brand typography",
+      "current_evidence": "Lowercase rethink with default headline styling.",
+      "target_evidence": "Spaced uppercase RETHINK, muted, matching About branding.",
+      "restoration_contract": "Restore original HomeScreen heading style, smallcaps family, all-caps behavior, 0.25em spacing, resource size, and alpha; preserve alpha-build text behavior.",
+      "source": "SummaryStatisticsScreen header; baseline TextAppearance.Heading.HomeScreen"
+    },
+    {
+      "id": "ST-02",
+      "screen": "stats",
+      "classification": "confirmed visual regression",
+      "area": "Period selector horizontal alignment",
+      "current_evidence": "Three-segment group begins x14/344 (4.1%); width about244/344 (70.9%).",
+      "target_evidence": "Group x104/756 (13.8%); width547/756 (72.4%), centered.",
+      "restoration_contract": "Center the source-sized 100dp-minimum segments rather than stretching them or left-aligning their scroll container.",
+      "source": "SummaryStatisticsScreen LazyRow; baseline toggle group"
+    },
+    {
+      "id": "ST-03",
+      "screen": "stats",
+      "classification": "confirmed visual regression",
+      "area": "Mode and filter glyphs",
+      "current_evidence": "Top-right shows blank selected/unselected rectangles and a blank dark circle.",
+      "target_evidence": "List, chart, and filter glyphs are readable, with outlines.",
+      "restoration_contract": "Restore existing ic_view_list, ic_view_chart, and ic_filter resources and source tints inside original 32dp controls; preserve selected mode.",
+      "source": "OriginalControls icon rendering and generated original_control_styles.xml"
+    },
+    {
+      "id": "ST-04",
+      "screen": "stats",
+      "classification": "state difference plus source-confirmed presentation gap",
+      "area": "Traffic summary grouping and surface",
+      "current_evidence": "Screenshot 2 selects LIST: stacked label/value rows and horizontal usage bar. Pre-restoration Compose INSIGHTS source used independent FlowRow tiles.",
+      "target_evidence": "Screenshot 5 selects INSIGHTS: one rounded card x42..714,y368..495, three equal columns, bold value above muted caption, two cyan vertical dividers; fill approximately #25262a.",
+      "restoration_contract": "Do not force persisted mode or replace valid LIST presentation. Restore the shared INSIGHTS card, 18sp bold values/11sp captions, and original card fill/compat clearance when INSIGHTS is selected.",
+      "source": "Baseline fss_list_container and fss_insights_container; pre-restoration TrafficUsage branches"
+    },
+    {
+      "id": "DN-01",
+      "screen": "dns",
+      "classification": "confirmed visual regression",
+      "area": "Unselected card fill",
+      "current_evidence": "Unchecked simple rows use near-page #1a1b1e fill, so their bodies almost disappear.",
+      "target_evidence": "Unchecked simple cards have a clear dark-teal fill, dominant approximate #182629.",
+      "restoration_contract": "Preserve original background/selectedCardBg choice and apply the original MaterialCardView elevation overlay; do not hard-code screenshot RGB or change selection semantics.",
+      "source": "BlocklistSelectionRow raw fill; original simple/advanced adapters set background or selectedCardBg; MaterialCardView elevated style supplies native overlay"
+    },
+    {
+      "id": "DN-02",
+      "screen": "dns",
+      "classification": "small geometry mismatch; no blanket scaling",
+      "area": "Row geometry, stripe, and checkbox",
+      "current_evidence": "First card roughly x13..330,y97..155: normalized width694.6,height127.1. Text begins x31, ~39.4 normalized inset; next-row gap about14px (~30.7).",
+      "target_evidence": "First card x22..734,y374..510: width712,height136. Text begins x63, inset41; next-row gap23.",
+      "restoration_contract": "Keep source 12dp/6dp card margins, 6dp edge stripe, 16dp text margins, 16dp corners and 48dp checkbox target. Review font padding/line height rather than enlarging all text/icons.",
+      "source": "BlocklistSelectionRow; baseline simple-item XML"
+    },
+    {
+      "id": "DN-03",
+      "screen": "dns",
+      "classification": "confirmed visual flow difference, partly upstream",
+      "area": "Section grouping and lower visible content",
+      "current_evidence": "Security title y35 (~76.7 normalized), first card y97 (~212.6); Privacy follows five rows; Extremeprivacy is visible before footer.",
+      "target_evidence": "Security title around y236, first card y374; Privacy begins after five rows; Apple is last mostly visible row.",
+      "restoration_contract": "Restore selector height/inset and source group padding first. Keep group order, blocklist counts, and offscreen rows; visible row count is not data loss evidence.",
+      "source": "BlocklistConfigurationScreen; baseline group 12dp vertical padding and 4dp description gap"
+    }
+  ],
+  "non_regressions_and_unknowns": [
+    "Stats current screenshot is LIST and target is INSIGHTS; mode is persisted runtime state, not a requested logic change.",
+    "About usage days and sponsor cost differ (25/$0.67 versus 121/$3.23); retain live calculation.",
+    "About update-row absence is consistent with existing F-Droid visibility condition; screenshot alone does not establish build flavor.",
+    "Different status/nav bar crops, screenshot aspect ratios, density, and font scale prevent absolute full-frame pixel equivalence claims.",
+    "Both Stats screenshots show zero traffic and otherwise empty content; no missing-data inference is justified.",
+    "Extra About Links or DNS Extremeprivacy content in the current viewport follows geometry/scroll capacity; do not remove content.",
+    "No touch interaction, accessibility tree, semantics, screen-reader behavior, dynamic font size, build result, or corrected runtime rendering was tested."
+  ],
+  "verification_status": {
+    "all_six_inputs_visually_inspected": true,
+    "production_edited_by_this_review": false,
+    "source_only_review": true,
+    "build_run": false,
+    "device_run": false,
+    "corrected_render_visually_verified": false
+  },
+  "acceptance_checklist": [
+    "Render matching build flavor, theme, locale, font scale, window size, and runtime mode, or document unavoidable differences.",
+    "Compare About 1\u21926, Stats 2\u21925, DNS 3\u21924; for Stats explicitly select INSIGHTS for target comparison and separately retain LIST behavior.",
+    "Check shared control outlined silhouettes, proper glyphs, text baseline, and safe insets without duplicate padding.",
+    "Check About card body leading/insets, sponsor frame, two-column support grouping, and correct conditional rows.",
+    "Check Stats centered period selector and single three-column INSIGHTS card while preserving filter/time/mode handlers and usage calculations.",
+    "Check DNS unchecked/checked surfaces, stripes, section rhythm, row/checkbox geometry, scrolling and fixed footer; preserve paging/selection/apply/discard behavior.",
+    "Do not call source checks or a compile success visual verification; a fresh corrected screenshot set remains required."
+  ],
+  "source_restoration_review": "three-screen-source-review.md; source-only acceptance, corrected rendering still unverified"
+}

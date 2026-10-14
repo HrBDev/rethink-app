@@ -48,6 +48,37 @@ class OriginalControlsTest {
     private fun radius(key: String) =
         (look(key).shape.createOutline(Size(160f, 48f), LayoutDirection.Ltr, density) as Outline.Rounded).roundRect.topLeftCornerRadius.x
 
+    @Test fun screenshotSegmentHeightsAndIconSizesMatchTheNativeSourceWidgets() {
+        val keys = listOf("fragment_summary_statistics:tb_recent_toggle_btn",
+            "fragment_summary_statistics:tb_daily_toggle_btn", "fragment_summary_statistics:tb_weekly_toggle_btn",
+            "fragment_summary_statistics:fss_view_mode_list_btn", "fragment_summary_statistics:fss_view_mode_insights_btn",
+            "fragment_summary_statistics:fss_filter_btn", "fragment_rethink_blocklist:lb_simple_toggle_btn",
+            "fragment_rethink_blocklist:lb_adv_toggle_btn")
+        themes.forEach { theme -> keys.forEach { key ->
+            val themed = context(theme)
+            val spec = originalControlSpecs.getValue(key)
+            val attrs = Robolectric.buildAttributeSet()
+                .setStyleAttribute("@style/" + themed.resources.getResourceEntryName(spec.style)).build()
+            val native = MaterialButton(themed, attrs)
+            val actual = resolveOriginalControl(themed, spec, density)
+            val pixelsPerDp = themed.resources.displayMetrics.density
+            if (spec.visualHeight == 0f) assertEquals("$key minimum height",
+                native.minimumHeight / pixelsPerDp, actual.height, .01f)
+            assertEquals("$key icon size (zero means intrinsic)", native.iconSize / pixelsPerDp, actual.iconSize, .01f)
+            native.icon?.let { icon ->
+                assertTrue("$key must retain its source icon", actual.icon != 0)
+                assertTrue(icon.intrinsicWidth > 0)
+                assertTrue(icon.intrinsicHeight > 0)
+            }
+        } }
+    }
+
+    @Test fun intrinsicIconBoundsSurviveDensityAndNonSquareDrawables() {
+        assertEquals(24.dp, originalIconExtent(48f, Density(2f)))
+        assertEquals(16.dp, originalIconExtent(32f, Density(2f)))
+        assertEquals(24.dp, originalIconExtent(Float.NaN, Density(2f)))
+    }
+
     @Test fun distinctFamiliesKeepOriginalCornersHeightsAndTextSizes() {
         assertEquals(12f, radius("@action"), 0f)
         assertEquals(24f, look("@action").height, 0f)

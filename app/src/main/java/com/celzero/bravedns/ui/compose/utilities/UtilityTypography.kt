@@ -1,5 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
+
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
 import android.graphics.Typeface
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
@@ -17,12 +19,12 @@ fun utilityTextStyle(appearance: Int = 0, size: Float? = null, family: String? =
     val density = LocalDensity.current
     return remember(context, density, appearance, size, family, weight, spacing, lineExtraDp, defaultStyleAttribute) {
         val ids = intArrayOf(android.R.attr.textSize, android.R.attr.fontFamily, android.R.attr.textStyle, android.R.attr.letterSpacing, android.R.attr.textFontWeight)
-        val defaultAppearance = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textAppearance), defaultStyleAttribute, 0).let {
+        val defaultAppearance = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance), defaultStyleAttribute, 0).let {
             try { it.getResourceId(0, 0) } finally { it.recycle() }
         }
-        val inherited = context.obtainStyledAttributes(defaultAppearance, ids)
-        val widget = context.obtainStyledAttributes(null, ids, defaultStyleAttribute, 0)
-        val explicit = if (appearance != 0) context.obtainStyledAttributes(appearance, ids) else null
+        val inherited = context.obtainOrderedStyledAttributes(defaultAppearance, ids)
+        val widget = context.obtainOrderedStyledAttributes(null, ids, defaultStyleAttribute, 0)
+        val explicit = if (appearance != 0) context.obtainOrderedStyledAttributes(appearance, ids) else null
         fun values(index: Int) = when { explicit?.hasValue(index) == true -> explicit; widget.hasValue(index) -> widget; else -> inherited }
         val sizeValue = values(0).peekValue(0)
         val textSize = size ?: if (sizeValue?.type == android.util.TypedValue.TYPE_DIMENSION &&

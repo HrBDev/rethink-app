@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.home
 
+import com.celzero.bravedns.ui.compose.resources.obtainOrderedStyledAttributes
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -36,7 +38,7 @@ internal fun rememberHomeCardPadding(radius: Dp, elevationOverride: Dp? = null):
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     return remember(context, density, configuration, radius, elevationOverride) {
-        val values = context.obtainStyledAttributes(
+        val values = context.obtainOrderedStyledAttributes(
             null,
             intArrayOf(
                 androidx.cardview.R.attr.cardUseCompatPadding,
@@ -71,7 +73,7 @@ internal fun rememberHomeCardElevation(override: Dp?): Dp {
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
     return remember(context, density, configuration, override) {
-        override ?: context.obtainStyledAttributes(null, intArrayOf(androidx.cardview.R.attr.cardElevation),
+        override ?: context.obtainOrderedStyledAttributes(null, intArrayOf(androidx.cardview.R.attr.cardElevation),
             com.google.android.material.R.attr.materialCardViewStyle, 0).let { values ->
             try { with(density) { values.getDimension(0, 0f).toDp() } } finally { values.recycle() }
         }

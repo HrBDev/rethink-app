@@ -256,13 +256,13 @@
     ]
   },
   "production_file_sha256": {
-    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCard.kt": "8d2174cc06c02308758241992d84a7f39d6c21c338567fad12d70d86fae1d5eb",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCard.kt": "bee64b43a3f577aa04f44e9dbd832698832855309b1ac76448c11debcfcafa13",
     "app/src/main/java/com/celzero/bravedns/ui/compose/settings/SettingsComponents.kt": "7076bcf563cffa0ff083a4844f8c68d1caeb578d4fcb5c522cab11412c68615f",
     "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt": "d93ad72a717f90ee52edf064c652c479a9ebc907b43fd1f8b1faa66f31da6379",
     "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt": "cc304b02b4075322f675c17326cde031f5dabb527b7e5b3ac72cbd64a79694f3",
     "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDetailContent.kt": "3d25c21a555753a52b8cb23a439283100f6f367671faab0cc39a838980404aef",
     "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgStatsContent.kt": "42b78cbad492f7f3dd28c06136dfe808ffd8b4c9652a29918dcb9fbb4fe788b0",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt": "37a1f7ddf2b16934d82106a6a9058a68a7ee6abf7223853bc3cafcab700b2ee2"
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt": "d42418544f6e3a7409cfe1a04608f3bec80872fd9f7cb5449b3f40d0b3dfe022"
   },
   "runtime": "NOT_RUN_TOOLCHAIN_UNAVAILABLE",
   "remaining_gates": [

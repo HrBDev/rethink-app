@@ -49,7 +49,9 @@ import kotlinx.coroutines.flow.Flow
     val flow = remember(pages, owner) { pages.flowWithLifecycle(owner.lifecycle) }
     val list = flow.collectAsLazyPagingItems()
     Surface(color = themeColor(R.attr.background)) {
-        LazyColumn(Modifier.fillMaxWidth()) {
+        // The standalone activity delegates insets to this screen; the bottom sheet
+        // already owns its window insets and must not receive another full-screen pad.
+        LazyColumn(Modifier.fillMaxWidth().then(if (state != null) Modifier.safeDrawingPadding() else Modifier)) {
             if (configure != null) item {
                 Text("RethinkDNS List", Modifier.padding(16.dp).semantics { heading() }, fontSize = 20.sp, color = themeColor(R.attr.primaryLightColorText))
                 Text("Click here to configure blocklists.", Modifier.fillMaxWidth().clickable(onClick = configure).padding(16.dp), fontSize = 14.sp, color = themeColor(R.attr.primaryTextColor))

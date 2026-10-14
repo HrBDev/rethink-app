@@ -16,6 +16,10 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 CHECKS = [
     ('check-about-controllers.py', []),
+    ('check-about-reference-layout.py', ['--self-test']),
+    ('check-blocklist-reference-restoration.py', ['--self-test']),
+    ('check-ordered-style-attributes.py', ['--self-test']),
+    ('check-stats-reference-layout.py', ['--self-test']),
     ('check-apps-controller-parity.py', []),
     ('check-binding-removal.py', ['--self-test']),
     ('check-button-overlay-regression.py', ['--self-test']),

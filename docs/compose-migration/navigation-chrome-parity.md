@@ -12,21 +12,23 @@ presentation, native snackbar renderer/queue, their tests, and the FragmentHost 
 HomeScreenFragment, the shared HomeTourAnchors registry and TourOverlayController are owned
 by the separate Home reconstruction group.
 
-- `full/res/layout/activity_home_screen.xml` remains a framework-only shell. Its container,
-  FragmentContainerView ID, defaultNavHost and `app_navigation` graph are unchanged.
-  `nav_view` is a ComposeView retaining its ID, bottom gravity, generic View visibility,
-  measurement and the original Activity bottom-inset listener. It wraps no legacy UI.
+- Home now has a native Compose Activity root. The former XML shell is deleted. A single
+  programmatic, framework-only `FragmentContainerView` retains its stable resource ID and
+  Activity-owned NavHost/graph state; it renders no visible legacy controls. Native Compose
+  owns the background, bottom navigation, inset spacing and transient dialogs. See
+  [Native Activity hosts](native-activity-hosts.md) for the exact compatibility exception.
 - HomeBottomNavigation draws the five original menu items with their original order,
   resource IDs, labels and icons. Native items register window bounds through the shared
-  `HomeTourAnchors.forActivity(activity)` / `homeTourAnchor` API. Home/RPN/tour integration
-  therefore needs no invisible proxy views. The registry rejects hidden host bounds.
-- FragmentHostActivity and its XML remain byte-identical: the layout is already only a
-  FragmentContainerView. FragmentManager still owns restoration, extras and back stack.
-- Snackbar ComposeViews are attached to the nearest existing CoordinatorLayout, or the
-  decor FrameLayout used by the old helper fallback. This is a transient window boundary.
-  The same-ID nav is located as a generic View, preventing a ComposeView cast crash. The
-  recursive legacy-type fallback only discovers an existing custom-ID host; it creates
-  no BottomNavigationView.
+  `HomeTourAnchors.forActivity(activity)` / `homeTourAnchor` API. The bar also registers its
+  own bounds under `nav_view`, enabling snackbar positioning without an invisible proxy View.
+- FragmentHostActivity and ConfigureRethinkBasicActivity now have native Compose roots and
+  stable-ID framework-only fragment containers. Their XML shells are deleted. FragmentManager
+  still owns restoration, extras and back stack. All three roots preserve delivery of platform
+  insets to their nested Fragment ComposeViews.
+- Snackbar ComposeViews attach to the nearest existing CoordinatorLayout or window content
+  FrameLayout. The Home fallback respects BaseActivity's capped Compose content width and uses
+  native bottom-bar bounds. Other hosts retain generic-View/legacy-nav discovery compatibility;
+  discovery never creates a BottomNavigationView.
 
 ## Behavior preserved in the reconstruction
 
@@ -69,8 +71,8 @@ Executed in this reconstructed checkout:
 - `python scripts/compose-migration/check-navigation-chrome.py --self-test --report
   docs/compose-migration/navigation-chrome-source-report.json`: PASS. Protects 25 controller
   methods, startup/listener/back/navigation behavior, throttle/identity, the complete
-  UIUtils prefix/tail (only one additive presenter import is allowed), and graph/host XML.
-  Seven deliberate startup, restore, navigation, throttle, prefix and identity mutations
+  UIUtils prefix/tail (only one additive presenter import is allowed), and graph/native-host contracts.
+  Eleven deliberate startup, restore, navigation, throttle, prefix and identity mutations
   are rejected. The JSON records current input hashes and check timestamp.
 - `git diff --check`: PASS for the current source check.
 - Current direct-callsite scan found no remaining `Snackbar.make` after the Home group
@@ -83,15 +85,16 @@ Authored, not claimed run by this worker:
 - Seven `RootChromeContentTest` native renderer tests: menu ID/order/selection/anchors,
   modal button ordering, restore callback order, informational buttons, silent snackbar
   recomposition, distinct action/dismiss semantics, live region, three-line cap and large RTL.
-- Nine `SnackbarContractTest` host/policy tests: native-nav lookup and visibility, durations,
+- `SnackbarContractTest` host/policy tests: native-nav lookup and visibility, durations,
   global duplicate throttle/forceShow, stale identity, action reentry/replacement, manual
-  dismissal, shared active/pending queue, additive insets and pre-Q accessibility timeout.
+  dismissal, shared active/pending queue, additive insets, pre-Q accessibility timeout, and native Home
+  anchor/expanded-window capped margins.
 - All new renderer/host tests explicitly use plain `android.app.Application`; host tests
   use only a synthetic ComponentActivity. No production Activity, Fragment, services,
   updater, restore worker, preferences, accounts or VPN are launched by these fixtures.
 
-No Gradle was run by this worker because the coordinator owns serial compilation/test
-execution. The earlier successful untouched-baseline build does not validate this patch.
+No Gradle was run for the native-host changes: the recovered workspace lacks the required
+SDK/cache/toolchain and the denied endpoint was not retried. The earlier successful untouched-baseline build does not validate this patch.
 No installation, app launch, VPN/traffic action, permission change, account operation,
 commit or remote publication occurred in this reconstruction group.
 

@@ -21,10 +21,36 @@ import java.util.WeakHashMap
 class HomeTourAnchors {
     private data class Anchor(val owner: Any, val bounds: RectF, val isShown: () -> Boolean, val reveal: suspend () -> Unit)
     private val anchors = mutableMapOf<Int, Anchor>()
+    private val boundsListeners = mutableMapOf<Int, MutableSet<(RectF?) -> Unit>>()
     fun find(targetId: Int): RectF? = anchors[targetId]?.takeIf { it.isShown() }?.bounds?.let(::RectF)?.takeUnless { it.isEmpty }
     suspend fun reveal(targetId: Int) { anchors[targetId]?.takeIf { it.isShown() }?.reveal?.invoke() }
-    internal fun put(id: Int, owner: Any, bounds: RectF, isShown: () -> Boolean, reveal: suspend () -> Unit) { anchors[id] = Anchor(owner, bounds, isShown, reveal) }
-    internal fun remove(id: Int, owner: Any) { if (anchors[id]?.owner === owner) anchors.remove(id) }
+    /** Observe native geometry without a placeholder View; callers dispose with their UI lifetime. */
+    fun observeBounds(id: Int, listener: (RectF?) -> Unit): () -> Unit {
+        boundsListeners.getOrPut(id) { mutableSetOf() }.add(listener)
+        listener(find(id))
+        return {
+            boundsListeners[id]?.let { listeners ->
+                listeners.remove(listener)
+                if (listeners.isEmpty()) boundsListeners.remove(id)
+            }
+        }
+    }
+    internal fun put(id: Int, owner: Any, bounds: RectF, isShown: () -> Boolean, reveal: suspend () -> Unit) {
+        val before = find(id)
+        anchors[id] = Anchor(owner, RectF(bounds), isShown, reveal)
+        notifyBoundsChanged(id, before)
+    }
+    internal fun remove(id: Int, owner: Any) {
+        if (anchors[id]?.owner !== owner) return
+        val before = find(id)
+        anchors.remove(id)
+        notifyBoundsChanged(id, before)
+    }
+    private fun notifyBoundsChanged(id: Int, before: RectF?) {
+        val after = find(id)
+        if (before == after) return
+        boundsListeners[id]?.toList()?.forEach { it(after?.let(::RectF)) }
+    }
     companion object {
         private val activityAnchors = WeakHashMap<Activity, HomeTourAnchors>()
         fun forActivity(activity: Activity): HomeTourAnchors = activityAnchors.getOrPut(activity) { HomeTourAnchors() }

@@ -138,7 +138,7 @@
     "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
     "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
     "original_test_count": 1,
-    "current_test_count": 3,
+    "current_test_count": 5,
     "missing_original_method_names": [],
     "prior_worker_native_method_replacements": {},
     "unmapped_original_method_names": []
@@ -147,7 +147,7 @@
     "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
     "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
     "original_test_count": 1,
-    "current_test_count": 2,
+    "current_test_count": 5,
     "missing_original_method_names": [],
     "prior_worker_native_method_replacements": {},
     "unmapped_original_method_names": []

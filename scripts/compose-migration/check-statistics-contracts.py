@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Baseline statistics controller guard. Source equivalence is not Android/runtime/visual parity."""
-import argparse,hashlib,json,re,subprocess
+import argparse,hashlib,importlib.util,json,re,subprocess
 from pathlib import Path
 BASE='23cb6dd98805445174bd83b7237ad5f5d2c24ac9'
 ROOT=Path(__file__).resolve().parents[2]
@@ -57,8 +57,14 @@ def check(current):
  assert 'SectionFilter.entries.forEach { setChecked(it, it in target, notify) }' in model
  assert 'if (next.isEmpty()) return' in model
  assert 'SectionFilter.entries.forEach { setChecked(it, true, true) }' in model
- test=(ROOT/'app/src/androidTest/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragmentTest.kt').read_text()
- assert '@Ignore(' in test and 'root_nav_${R.id.summaryStatisticsFragment}' in test
+ test_path='app/src/test/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragmentTest.kt'
+ spec=importlib.util.spec_from_file_location('original_test_guard',Path(__file__).with_name('check-original-test-relocation.py'))
+ tests=importlib.util.module_from_spec(spec);spec.loader.exec_module(tests)
+ obligation=tests.verify_file(test_path.replace('/test/','/androidTest/'),test_path,{})
+ assert not obligation['missing_original_method_names'], 'Statistics original @Test obligation missing'
+ test=(ROOT/test_path).read_text()
+ assert not re.search(r'@(?:org\.junit\.)?Ignore\b',tests.mask(test)), 'Statistics host obligation ignored'
+ assert 'root_nav_${R.id.summaryStatisticsFragment}' in test and 'stats_time_0' in test
  return records
 
 def main():
@@ -73,6 +79,6 @@ def main():
    else:raise AssertionError('negative control passed')
  result={'baseline':BASE,'status':'PASS','source_only':True,'methods':records,'sha256':{PREFIX+k:hashlib.sha256(v.encode()).hexdigest() for k,v in current.items()}}
  if a.report:a.report.write_text(json.dumps(result,indent=2)+'\n')
- print(f'PASS: {len(records)} baseline-equivalent methods, exact route/query contracts, six-chip multi-select restoration, native renderer boundary and original pending integration contract.')
+ print(f'PASS: {len(records)} baseline-equivalent methods, exact route/query contracts, six-chip multi-select restoration, native renderer boundary and relocated original @Test obligation.')
  print('Not Android typechecking, test execution or visual/runtime parity.')
 if __name__=='__main__':main()

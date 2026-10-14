@@ -2,6 +2,7 @@
 package com.celzero.bravedns.ui.compose.chrome
 
 import android.app.Application
+import android.graphics.RectF
 import android.view.View
 import android.view.accessibility.AccessibilityManager
 import android.widget.FrameLayout
@@ -11,6 +12,7 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.home.HomeTourAnchors
 import com.celzero.bravedns.util.SnackbarHelper
 import org.junit.After
 import org.junit.Assert.*
@@ -102,6 +104,35 @@ class SnackbarContractTest {
         assertNotNull(host(second).parent)
         second.dismiss(); detach(second)
         assertNull(presenterField("active")); assertNull(presenterField("pending"))
+    }
+    @Test fun nativeHomeAnchorKeepsSnackbarAboveBarAndInsideCappedContent() {
+        val parent = controller.get().findViewById<FrameLayout>(android.R.id.content)
+        parent.layout(0, 0, 1_000, 800)
+        root.layout(0, 0, 1_000, 800)
+        val nativeRoot = ComposeView(root.context).apply { id = R.id.container }
+        root.addView(nativeRoot)
+        nativeRoot.layout(200, 0, 800, 800)
+        val registry = HomeTourAnchors.forActivity(controller.get())
+        val owner = Any()
+        registry.put(R.id.nav_view, owner, RectF(200f, 700f, 800f, 800f), { true }, {})
+        try {
+            assertNull(ComposeSnackbarPresenter.findBottomNavView(nativeRoot))
+            val presenter = ComposeSnackbarPresenter(nativeRoot, "Native anchor", -2)
+            presenter.show()
+            invoke(presenter, "position")
+            val params = host(presenter).layoutParams as android.view.ViewGroup.MarginLayoutParams
+            val horizontal = root.resources.getDimensionPixelSize(R.dimen.snackbar_horizontal_margin)
+            val vertical = root.resources.getDimensionPixelSize(R.dimen.snackbar_bottom_margin)
+            assertEquals(200 + horizontal, params.leftMargin)
+            assertEquals(200 + horizontal, params.rightMargin)
+            val dispatchedInset = presenter.javaClass.getDeclaredField("insetBottom")
+                .apply { isAccessible = true }.getInt(presenter)
+            assertEquals(100 + vertical * 2 + dispatchedInset, params.bottomMargin)
+            presenter.dismiss()
+            detach(presenter)
+        } finally {
+            registry.remove(R.id.nav_view, owner)
+        }
     }
     @Test fun themedInsetsKeepTheOriginalAdditiveEightyPixelLift() {
         SnackbarHelper.show(root, "Insets", -2)

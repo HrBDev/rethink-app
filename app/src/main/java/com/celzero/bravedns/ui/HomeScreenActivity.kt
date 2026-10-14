@@ -34,10 +34,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
@@ -104,7 +101,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.key
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import com.celzero.bravedns.ui.compose.ActivityFragmentContainer
+import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.home.homeTourAnchor
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -115,10 +126,13 @@ import java.util.Calendar
 import java.util.concurrent.TimeUnit
 import kotlin.time.Duration.Companion.milliseconds
 
-class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
+class HomeScreenActivity : BaseActivity() {
     private var selectedNavigationItem by mutableIntStateOf(R.id.homeScreenFragment)
     private var selectNavigationItem: ((Int) -> Boolean)? = null
     private val chromeDialogs = mutableStateListOf<HomeChromeDialog>()
+    private var navigationHost: NavHostFragment? = null
+    private var navigationSetupRequested = false
+    private var navigationListenerInstalled = false
 
     private fun selectBottomNavigationItem(itemId: Int) {
         // The former reselected listener is a no-op, including programmatic selection.
@@ -136,17 +150,40 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             "compose_bottom_navigation_selection", R.id.homeScreenFragment
         ) ?: R.id.homeScreenFragment
         val anchors = HomeTourAnchors.forActivity(this)
-        findViewById<ComposeView>(R.id.nav_view).apply {
+        setContentView(ComposeView(this).apply {
+            id = R.id.container
+            // Destination ComposeViews still receive and handle their own platform insets.
+            consumeWindowInsets = false
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 RethinkTheme {
-                    HomeBottomNavigation(selectedNavigationItem, anchors, ::selectBottomNavigationItem)
+                    Box(Modifier.fillMaxSize().background(themeColor(R.attr.background))) {
+                        ActivityFragmentContainer(
+                            fragmentManager = supportFragmentManager,
+                            containerId = R.id.fragment_container,
+                            modifier = Modifier.fillMaxSize(),
+                            primaryNavigationHost = true,
+                            createFragment = { NavHostFragment.create(R.navigation.app_navigation) },
+                            onFragmentReady = { fragment ->
+                                navigationHost = fragment as NavHostFragment
+                                if (navigationSetupRequested) setupNavigationItemSelectedListener()
+                            },
+                        )
+                        val bottomInsets = if (isAtleastO_MR1()) {
+                            Modifier.windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Bottom))
+                        } else Modifier
+                        Box(Modifier.align(Alignment.BottomCenter)
+                            .homeTourAnchor(R.id.nav_view, anchors)
+                            .then(bottomInsets)) {
+                            HomeBottomNavigation(selectedNavigationItem, anchors, ::selectBottomNavigationItem)
+                        }
+                    }
                     chromeDialogs.forEach { dialog ->
                         key(dialog) { HomeChromeDialogContent(dialog) { chromeDialogs.remove(dialog) } }
                     }
                 }
             }
-        }
+        })
     }
 
     private val persistentState by inject<PersistentState>()
@@ -170,16 +207,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         theme.applyStyle(getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
         super.onCreate(savedInstanceState)
         installComposeChrome(savedInstanceState)
-
-        if (isAtleastO_MR1()) {
-            Logger.vv(LOG_TAG_UI, "Setting up window insets for Android 27+")
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.nav_view)) { view, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                view.updatePadding(bottom = systemBars.bottom) // Add bottom padding to keep icons visible
-                insets
-                WindowInsetsCompat.CONSUMED
-            }
-        }
 
         if (isAtleastQ()) {
             val controller = WindowInsetsControllerCompat(window, window.decorView)
@@ -878,17 +905,13 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         }
 
     private fun setupNavigationItemSelectedListener() {
-        val btmNavView = findViewById<ComposeView>(R.id.nav_view) ?: run {
-            Logger.w(LOG_TAG_UI, "setupNavigationItemSelectedListener: Compose navigation host not found")
-            return
-        }
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container) as? NavHostFragment
-        val navController = navHostFragment?.navController ?: run {
-            Logger.w(LOG_TAG_UI, "setupNavigationItemSelectedListener: NavController not found")
-            return
-        }
+        navigationSetupRequested = true
+        // Composition can attach after onCreate. Install exactly once when the stable NavHost
+        // is available, without changing the startup/controller call order below onCreate.
+        if (navigationListenerInstalled) return
+        val navController = navigationHost?.navController ?: return
+        val btmNavView = findViewById<View>(R.id.container)
+        navigationListenerInstalled = true
 
         val homeId = R.id.homeScreenFragment
 

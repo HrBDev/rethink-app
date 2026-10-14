@@ -15,6 +15,17 @@ HOME = 'app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt'
 UTIL = 'app/src/main/java/com/celzero/bravedns/util/UIUtils.kt'
 IMPORT = 'import com.celzero.bravedns.ui.compose.chrome.ComposeSnackbarPresenter\n'
 CHROME = 'app/src/main/java/com/celzero/bravedns/ui/compose/chrome/'
+HOST = 'app/src/main/java/com/celzero/bravedns/ui/compose/ActivityFragmentContainer.kt'
+FRAGMENT_HOST = 'app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt'
+CONFIGURE_HOST = 'app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureRethinkBasicActivity.kt'
+HOST_IDS = 'app/src/main/res/values/compose_activity_host_ids.xml'
+ANCHORS = 'app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeTourAnchors.kt'
+SERVER_SELECTION = 'app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt'
+RETIRED_LAYOUTS = [
+    'app/src/full/res/layout/activity_home_screen.xml',
+    'app/src/main/res/layout/activity_fragment_host.xml',
+    'app/src/full/res/layout/fragment_rethink_basic.xml',
+]
 TOKENS = re.compile(r'"""[\s\S]*?"""|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|/\*[\s\S]*?\*/|//[^\n]*|[{}]')
 
 
@@ -57,8 +68,14 @@ def check(root, override=None):
     ]
     for name in protected:
         assert block(before, f'fun {name}(') == block(after, f'fun {name}('), f'Home controller changed: {name}'
-    assert block(before, 'override fun onCreate(') == block(after, 'override fun onCreate(').replace(
-        '\n        installComposeChrome(savedInstanceState)', ''), 'Startup call order changed'
+    # Only rendering/inset installation moved into the Compose root. Keep every controller
+    # startup call and its order byte-for-byte; this does not establish runtime timing parity.
+    old_startup = block(before, 'override fun onCreate(')
+    old_insets = block(old_startup, 'if (isAtleastO_MR1())')
+    old_startup = old_startup.replace('        ' + old_insets + '\n\n', '')
+    new_startup = block(after, 'override fun onCreate(').replace(
+        '\n        installComposeChrome(savedInstanceState)', '')
+    assert old_startup == new_startup, 'Startup controller call order changed'
     assert block(before, 'object : AppUpdater.InstallStateListener') == block(after, 'object : AppUpdater.InstallStateListener'), 'Updater listener changed'
     old_back = block(before, 'private fun handleOnBackPressed(').replace(
         'val btmNavView = findViewById<BottomNavigationView>(R.id.nav_view)\n                            btmNavView.selectedItemId = homeId',
@@ -103,17 +120,53 @@ def check(root, override=None):
     for path in [CHROME + 'HomeChrome.kt', CHROME + 'ComposeSnackbarPresenter.kt']:
         for legacy in ['AndroidView(', 'LayoutInflater', 'Snackbar.make(']:
             assert legacy not in read(path), f'Legacy renderer remains in {path}: {legacy}'
-    layout = read('app/src/full/res/layout/activity_home_screen.xml')
-    for required in ['androidx.fragment.app.FragmentContainerView', 'android:id="@+id/fragment_container"',
-                     'app:defaultNavHost="true"', 'app:navGraph="@navigation/app_navigation"',
-                     'androidx.compose.ui.platform.ComposeView', 'android:id="@+id/nav_view"']:
-        assert required in layout, f'Framework boundary missing: {required}'
-    assert 'BottomNavigationView' not in layout
-    ET.fromstring(layout)
-    for path in ['app/src/main/res/navigation/app_navigation.xml', 'app/src/full/res/navigation/app_navigation.xml',
-                 'app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt',
-                 'app/src/main/res/layout/activity_fragment_host.xml']:
-        if (root / path).exists(): assert baseline(root, path) == read(path), f'Framework graph/host changed: {path}'
+    for path in [HOME, FRAGMENT_HOST, CONFIGURE_HOST]:
+        host_source = read(path)
+        assert ' : BaseActivity()' in host_source, f'XML constructor remains: {path}'
+        assert 'R.layout.' not in host_source, f'XML Activity rendering remains: {path}'
+        assert 'ActivityFragmentContainer(' in host_source, f'Compose Fragment boundary missing: {path}'
+        assert 'consumeWindowInsets = false' in host_source, f'Nested Fragment insets consumed: {path}'
+    for required in ['id = R.id.container', 'containerId = R.id.fragment_container',
+                     'NavHostFragment.create(R.navigation.app_navigation)', 'primaryNavigationHost = true',
+                     'homeTourAnchor(R.id.nav_view, anchors)', 'consumeWindowInsets = false',
+                     'WindowInsets.systemBars.only(WindowInsetsSides.Bottom)',
+                     'if (navigationListenerInstalled) return',
+                     'if (navigationSetupRequested) setupNavigationItemSelectedListener()']:
+        assert required in after, f'Native Home host contract missing: {required}'
+    host_source = read(HOST)
+    for required in ['FragmentContainerView(context).apply { id = containerId }',
+                     'fragmentManager.findFragmentById(containerId) ?: createFragment()',
+                     '.add(container, it, fragmentTag(it))', 'fragmentManager.onContainerAvailable(container)',
+                     'setPrimaryNavigationFragment(fragment)', 'fragmentManager.isStateSaved',
+                     'lifecycle.removeObserver(observer)']:
+        assert required in host_source, f'Stable FragmentManager host contract missing: {required}'
+    assert 'commitNowAllowingStateLoss' not in host_source
+    assert 'LayoutInflater' not in host_source and 'R.layout.' not in host_source
+    for path in RETIRED_LAYOUTS:
+        assert not (root / path).exists(), f'Retired Activity XML shell remains: {path}'
+    ids = ET.fromstring(read(HOST_IDS))
+    assert {'fragment_container', 'root_container', 'nav_view'} <= {e.attrib['name'] for e in ids}
+    for path in ['app/src/main/res/navigation/app_navigation.xml', 'app/src/full/res/navigation/app_navigation.xml']:
+        if (root / path).exists(): assert baseline(root, path) == read(path), f'Framework graph changed: {path}'
+    for marker in ['fun createIntent(', 'private fun handleOnBackPressed(', 'override fun onSaveInstanceState(']:
+        assert block(baseline(root, FRAGMENT_HOST), marker) == block(read(FRAGMENT_HOST), marker), f'FragmentHost contract changed: {marker}'
+    for marker in ['private fun fragment(', 'private fun createBundle(', 'private fun updateBundle(']:
+        assert block(baseline(root, CONFIGURE_HOST), marker) == block(read(CONFIGURE_HOST), marker), f'Blocklist argument contract changed: {marker}'
+    assert 'supportFragmentManager.findFragmentById(R.id.root_container) ?: fragment(fl)' in read(CONFIGURE_HOST)
+    assert 'composeAnchors?.find(R.id.nav_view)' in presenter, 'Native snackbar anchor disconnected'
+    assert 'composeActivityRoot?.addOnLayoutChangeListener(reposition)' in presenter
+    assert 'params.setMargins(left, params.topMargin, right, bottom)' in presenter
+    assert 'stopObservingNavigation?.invoke()' in presenter
+    selection = read(SERVER_SELECTION)
+    assert 'findViewById<View>(R.id.nav_view)' not in selection, 'RPN still depends on a removed navigation View'
+    for expected in ['tourAnchors.observeBounds(R.id.nav_view)', 'stopObservingNavigation()',
+                     'owner.lifecycle.removeObserver(this)',
+                     'ui.fabBottomPx = navBarBottom + nativeNavHeight + dpPx(16)',
+                     'ui.scrollBottomPx = if (bounds != null) nativeNavHeight + dpPx(24) else 0']:
+        assert expected in selection, f'RPN native navigation-clearance contract missing: {expected}'
+    anchors = read(ANCHORS)
+    assert 'boundsListeners[id]?.toList()?.forEach' in anchors
+    assert 'if (anchors[id]?.owner !== owner) return' in anchors
     return len(protected)
 
 
@@ -133,17 +186,21 @@ def main():
             (UTIL, 'private const val THROTTLE_MS = 30_000L', 'private const val THROTTLE_MS = 1L'),
             (UTIL, 'object UIUtils {', 'object UIUtils { /* unrelated change */'),
             (UTIL, 'if (current === dismissed)', 'if (current != null)'),
+            (HOST, 'fragmentManager.findFragmentById(containerId) ?: createFragment()', 'createFragment()'),
+            (HOME, 'primaryNavigationHost = true', 'primaryNavigationHost = false'),
+            (CONFIGURE_HOST, 'supportFragmentManager.findFragmentById(R.id.root_container) ?: fragment(fl)', 'fragment(fl)'),
+            (SERVER_SELECTION, 'stopObservingNavigation()', 'Unit'),
         ]:
             source = (args.repo / path).read_text()
             assert old in source
             try: check(args.repo, {path: source.replace(old, new, 1)})
             except AssertionError: continue
             raise AssertionError(f'Negative control escaped: {old}')
-        print('PASS: seven source guard negative controls')
+        print('PASS: eleven source guard negative controls')
     if args.report:
-        files = [HOME, UTIL, CHROME + 'HomeChrome.kt', CHROME + 'ComposeSnackbarPresenter.kt', 'app/src/full/res/layout/activity_home_screen.xml']
+        files = [HOME, UTIL, CHROME + 'HomeChrome.kt', CHROME + 'ComposeSnackbarPresenter.kt', HOST, FRAGMENT_HOST, CONFIGURE_HOST, HOST_IDS, ANCHORS, SERVER_SELECTION]
         args.report.write_text(json.dumps({'baseline': BASE, 'checked_at': datetime.now(timezone.utc).isoformat(),
-            'status': 'PASS', 'source_only': True, 'unchanged_home_methods': count,
+            'status': 'PASS', 'source_only': True, 'unchanged_home_methods': count, 'retired_xml_shells': RETIRED_LAYOUTS,
             'files_sha256': {path: hashlib.sha256((args.repo / path).read_bytes()).hexdigest() for path in files}}, indent=2)+'\n')
     print(f'PASS: {count} unchanged Home controller methods; startup/listener/back/navigation/throttle/prefix and framework boundaries checked')
     print('Source preservation only. Not Android compilation, runtime, visual or accessibility parity.')

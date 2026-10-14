@@ -61,9 +61,12 @@ def check():
   code=file.read_text()
   if not re.search(r'application\s*=\s*Application::class',code):errors.append('Missing plain Application isolation: '+str(file))
   if 'createComposeRule' in code and '@GraphicsMode(GraphicsMode.Mode.NATIVE)' not in code:errors.append('Missing native graphics fixture: '+str(file))
- # The Alerts adapter is wholly inactive in the baseline. Do not turn it into an action source.
+ # The Alerts adapter is wholly commented out in the pinned baseline. The explicit
+ # binding-removal request removes that dead implementation rather than enabling it.
  rel='adapter/AlertAdapter.kt'
- if subprocess.check_output(['git','show',BASE+':'+P+rel],cwd=ROOT)!=(ROOT/P/rel).read_bytes():errors.append('Disabled AlertAdapter changed')
+ dormant=subprocess.check_output(['git','show',BASE+':'+P+rel],cwd=ROOT)
+ assert hashlib.sha256(dormant).hexdigest()=='2f60874fc70de764f17603492ef739d38b73502cb126b585d845e924e3cadba9'
+ if (ROOT/P/rel).exists():errors.append('Disabled binding-backed AlertAdapter was reintroduced')
  return {'status':'FAIL' if errors else 'PASS','baseline':BASE,'reconstruction':'Fresh source after workspace loss; no old validation reused','verified_methods':len(records),'protected_dependencies':len(protected),'methods':records,'errors':errors,'limitation':'Source preservation only, not compilation, runtime, visual or service parity.'}
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--self-test',action='store_true');p.add_argument('--report');a=p.parse_args()

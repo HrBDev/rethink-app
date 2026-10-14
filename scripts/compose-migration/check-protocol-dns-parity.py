@@ -64,7 +64,89 @@ editors = (ROOT / JAVA / 'ui/compose/dns/DnsEndpointEditors.kt').read_text()
 assert 'rememberSaveable' not in editors and 'NoDimDialogWindow()' in editors
 assert 'ip.trim()' in editors and '!insecure' in editors
 screen = (ROOT / JAVA / 'ui/compose/dns/DnsEndpointScreen.kt').read_text()
-assert 'repeatOnLifecycle(Lifecycle.State.STARTED)' in screen and 'delay(1_000L)' in screen
+def binds_without_lifecycle_restarts(source):
+    body = function(source, 'DnsEndpointRow')
+    required = [
+        'var description by remember(item) { mutableStateOf(item.initialDescription) }',
+        'DisposableEffect(item, owner, ioDispatcher)',
+        'val statusJob = owner.lifecycleScope.launch',
+        'val readDescription = item.description ?: return@launch',
+        'if (item.pollStatus && !owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) break',
+        'launch {\n                    val value = withContext(ioDispatcher) { readDescription() }',
+        'if (owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) description = value',
+        'if (!item.pollStatus) break',
+        'delay(1_000L)',
+        'val flagJob = owner.lifecycleScope.launch',
+        'val value = withContext(ioDispatcher) { item.flag() }',
+        'if (owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) flag = value',
+        'onDispose { statusJob.cancel(); flagJob.cancel() }',
+    ]
+    return (all(text in body for text in required)
+            and 'repeatOnLifecycle(' not in body
+            and body.count('readDescription()') == 1
+            and body.count('item.flag()') == 1
+            and 'DnsEndpointRow(rememberDnsEndpointRow(it, row))' in source
+            and 'remember(DnsEndpointSourceIdentity(endpoint), row) { row(endpoint) }' in source
+            and 'endpoint === other.endpoint' in source)
+
+assert binds_without_lifecycle_restarts(screen), 'DNS row must keep bind-lifetime effects'
+# These narrow controls reject resume-driven retries, incomplete bind keys, missing tick guards
+# and an uncancelled outgoing row. They do not alter any protected controller comparison.
+for original, replacement in [
+    ('DisposableEffect(item, owner, ioDispatcher)', 'DisposableEffect(item.id, owner, ioDispatcher)'),
+    ('if (item.pollStatus && !owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) break', 'if (false) break'),
+    ('launch {\n                    val value = withContext(ioDispatcher) { readDescription() }', 'run {\n                    val value = withContext(ioDispatcher) { readDescription() }'),
+    ('var description by remember(item) { mutableStateOf(item.initialDescription) }', 'var description by remember(item) { mutableStateOf<String?>(null) }'),
+    ('val flagJob = owner.lifecycleScope.launch', 'val flagJob = owner.lifecycleScope.launch { owner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) }; val unused = owner.lifecycleScope.launch'),
+    ('onDispose { statusJob.cancel(); flagJob.cancel() }', 'onDispose { statusJob.cancel() }'),
+    ('DnsEndpointRow(rememberDnsEndpointRow(it, row))', 'DnsEndpointRow(row(it))'),
+    ('endpoint === other.endpoint', 'endpoint == other.endpoint'),
+    ('remember(DnsEndpointSourceIdentity(endpoint), row)', 'remember(DnsEndpointSourceIdentity(endpoint))'),
+]:
+    mutated = screen.replace(original, replacement, 1)
+    assert mutated != screen and not binds_without_lifecycle_restarts(mutated), 'DNS row lifecycle negative-control must fail'
+# The six original protocol adapters fetch flags in displayDetails (bind), not on START.
+for adapter in ['DohEndpointAdapter', 'DoTEndpointAdapter', 'ODoHEndpointAdapter',
+                'DnsCryptEndpointAdapter', 'DnsCryptRelayEndpointAdapter', 'DnsProxyEndpointAdapter']:
+    old = baseline(JAVA / f'adapter/{adapter}.kt')
+    assert 'io { updateFlag(endpoint) }' in function(old, 'displayDetails'), adapter
+    assert 'repeatOnLifecycle' not in old, adapter
+    if adapter not in ['DnsCryptRelayEndpointAdapter', 'DnsProxyEndpointAdapter']:
+        tick = function(old, 'updateSelectedStatus')
+        assert '?.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED) == false' in tick, adapter
+        assert 'statusCheckJob?.cancel()' in tick, adapter
+row_presenter = (ROOT / JAVA / 'ui/compose/dns/DnsEndpointPresenter.kt').read_text()
+def keeps_the_bound_description_branch(source):
+    branch = function(source, 'bindDnsEndpointDescription')
+    row_body = function(source, 'row')
+    return (all(text in branch for text in [
+                'if (!selected) return DnsEndpointDescriptionState()',
+                'return if (canPoll()) DnsEndpointDescriptionState(read = status, poll = true)',
+                'else DnsEndpointDescriptionState(initial = selectedLabel())'])
+            and branch.count('canPoll()') == 1
+            and all(text in row_body for text in [
+                'val boundDescription = if (polling) bindDnsEndpointDescription(',
+                'canPoll = { VpnController.hasTunnel() && !appConfig.isSmartDnsEnabled() }',
+                'status = ::dnsStatus',
+                ') else DnsEndpointDescriptionState(read = description)',
+                'boundDescription.poll, relay', 'boundDescription.read,',
+                'initialDescription = boundDescription.initial'])
+            and row_body.count('VpnController.hasTunnel()') == 1
+            and row_body.count('appConfig.isSmartDnsEnabled()') == 1)
+
+assert keeps_the_bound_description_branch(row_presenter), 'DNS status/static branch must be captured at bind'
+for original, replacement in [
+    ('if (!selected) return DnsEndpointDescriptionState()', 'if (false) return DnsEndpointDescriptionState()'),
+    ('DnsEndpointDescriptionState(read = status, poll = true)', 'DnsEndpointDescriptionState(read = { if (canPoll()) status() else selectedLabel() }, poll = true)'),
+    ('status = ::dnsStatus', 'status = { if (VpnController.hasTunnel()) dnsStatus() else null }'),
+]:
+    mutated = row_presenter.replace(original, replacement, 1)
+    assert mutated != row_presenter and not keeps_the_bound_description_branch(mutated), 'DNS bind-branch negative-control must fail'
+assert 'relay = true, polling = false' in row_presenter
+assert 'description = if (e.isSelected && !appConfig.isSmartDnsEnabled()) ::dnsStatus else null' in row_presenter
+assert 'directIp = true, polling = false' in row_presenter
+smart = (ROOT / JAVA / 'ui/compose/dns/SmartDnsContent.kt').read_text()
+assert 'description = null' in smart and 'initialDescription = if (selected) selectedLabel else null' in smart
 assert 'flowWithLifecycle(owner.lifecycle, Lifecycle.State.STARTED)' in screen
 presenter = (ROOT / JAVA / 'ui/compose/dns/DnsEndpointPresenter.kt').read_text()
 for name in ['handleDoHChanges','handleDoTChanges','handleODoHChanges','handleDnscryptChanges','handleDnsrelayChanges','handleDnsProxyChanges',

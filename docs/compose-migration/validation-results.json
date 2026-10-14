@@ -1,74 +1,97 @@
 {
-  "as_of": "2026-10-14T07:04:30Z",
-  "release_status": "full source reconstruction; acceptance incomplete, not production ready",
-  "verified_remote_commit": "1563c53735d5efb800e5b1f7366c2aa24a75f3a6",
+  "as_of": "2026-10-14T09:42:00Z",
+  "release_status": "Binding removal in progress; latest changes uncompiled; final acceptance incomplete",
+  "verified_remote_commit": "87b3b9975afdb59492bc92cf97b9560cdd725330",
   "results": [
     {
       "log": "baseline-compile-current-proxy.log",
       "sha256": "5b9be463da80397fe78fa4f7d025134edd8aa836b5a9f8796def8e4a6e785264",
       "outcome": "passed",
-      "scope": "Pinned baseline fdroidFullDebug main Kotlin"
+      "scope": "Pinned baseline fdroidFullDebug main Kotlin",
+      "retained_log_status": "not retained after workspace reset"
     },
     {
       "log": "first-groups-safe-tests-1.log",
       "sha256": "d677689d8087dc843ccb016132dc071fb3b2516e0b6a576bc2f5ca9800d95936",
       "outcome": "passed",
-      "scope": "Earlier partial snapshot: 30 explicitly selected plain-Application state/search tests"
+      "scope": "Earlier partial snapshot: 30 explicitly selected plain-Application state/search tests",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "second-groups-safe-render-tests.log",
       "sha256": "ceaf950b35ae0e7c38216232d61df0ccbfda40f441651bb5de8aa08d490ad8ed",
       "outcome": "failed",
-      "scope": "46 tests: 44 passed, 2 failed (heatmap semantics, legacy font metrics)"
+      "scope": "46 tests: 44 passed, 2 failed (heatmap semantics, legacy font metrics)",
+      "retained_log_status": "not retained after workspace reset"
     },
     {
       "log": "second-groups-native-render-tests.log",
       "sha256": "2a324d99af3e74d0c42a8ac90a4aba4a9483cd8546c9f6e2c6c1a336d8cd04b8",
       "outcome": "failed",
-      "scope": "46 tests: 45 passed, 1 failed (test invoked touch instead of accessibility action)"
+      "scope": "46 tests: 45 passed, 1 failed (test invoked touch instead of accessibility action)",
+      "retained_log_status": "not retained after workspace reset"
     },
     {
       "log": "second-groups-native-render-tests-2.log",
       "sha256": "508a93e440ad4ed2e32ae6b9d4fa13323636717587070d550e15fca0d51c8f80",
       "outcome": "passed",
-      "scope": "46 selected tests at remote tree 0e886c94a123351398058cdb3825c26314d1098a"
+      "scope": "46 selected tests at remote tree 0e886c94a123351398058cdb3825c26314d1098a",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "third-groups-compile-3.log",
       "sha256": "abd89bd9fd78d418489b24ed0a9d66841354dc048131f03b0569e63a894b8f0e",
       "outcome": "passed",
-      "scope": "Third frozen snapshot plus documented compiler fixes: main, unit-test and Android-test Kotlin compilation"
+      "scope": "Third frozen snapshot plus documented compiler fixes: main, unit-test and Android-test Kotlin compilation",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "third-groups-safe-content-tests-2.log",
       "sha256": "b0151eeb82bf2e5d3e48b2d8b3ed47d6bfffbdb46abcc49f54565d57f2fb3417",
       "outcome": "failed",
-      "scope": "126 selected tests: 125 passed, one About gesture fixture failed; subsequent fix awaiting rerun"
+      "scope": "126 selected tests: 125 passed, one About gesture fixture failed; subsequent fix awaiting rerun",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "full-source-compile-2.log",
       "sha256": "574d04444d0046d56ce05de3f92ec97d19a0c16ff7a6e44a2bc6bdbeab290880",
       "outcome": "passed",
-      "scope": "Full reconstructed fdroidFullDebug production Kotlin"
+      "scope": "Full reconstructed fdroidFullDebug production Kotlin",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "full-source-content-visual-tests.log",
       "sha256": "eb7cf709f538ff20ec490d34066f7925307e05bdf6279dbf0673930c34fa24cd",
       "outcome": "failed",
-      "scope": "86 selected tests: 68 passed, 18 failed; actual 48 XML/native image pairs captured before fixes"
+      "scope": "86 selected tests: 68 passed, 18 failed; actual 48 XML/native image pairs captured before fixes",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "safe-welcome-host-tests.log",
       "sha256": "7dc5bbacec0e41c81f444ce80d1cc1490ebf57b3d62349d3c64b13e8835f8e09",
       "outcome": "failed",
-      "scope": "20 isolated Welcome tests failed before host creation in MockK self-attach setup"
+      "scope": "20 isolated Welcome tests failed before host creation in MockK self-attach setup",
+      "retained_log_status": "verified in Library version 6 recovery"
     },
     {
       "log": "full-source-compile-7.log",
       "sha256": "bcdbf04b698aa276dad2a024a9c3ef24f8e75c3ba46fe7434cbfaf8a2058497a",
       "outcome": "passed",
-      "scope": "Snapshot f84a752925cfd424db8bbf8de8760e873ae914c8 plus three compile-only corrections: all main, unit, Android-test Kotlin compile"
+      "scope": "Snapshot f84a752925cfd424db8bbf8de8760e873ae914c8 plus three compile-only corrections: all main, unit, Android-test Kotlin compile",
+      "retained_log_status": "verified in Library version 6 recovery"
     }
   ],
-  "in_progress": "Reviewed actual-host tests with corrected isolated launcher; corrected content/rendering reruns; complete variant compilation; independent source audit. Intentional newer Material cosmetic differences accepted, regressions in visible content/actions/contrast/clipping/state/RTL/a11y remain gates."
+  "in_progress": "Reviewed actual-host tests with corrected isolated launcher; corrected content/rendering reruns; complete variant compilation; independent source audit. Intentional newer Material cosmetic differences accepted, regressions in visible content/actions/contrast/clipping/state/RTL/a11y remain gates.",
+  "historical_as_of": "2026-10-14T07:04:30Z",
+  "verified_remote_tree": "1949435b20c49bb03ec06123c27f913a4974882b",
+  "recovered_source_envelope_sha256": "e7b89a0d41f650816063ca2c39b57963bfb3d9a4a4b6f79e5c8cf081411164fb",
+  "current_results_apply_to_latest_binding_removal": false,
+  "lost_terminal_result": {
+    "run": "final-content-tests-1.log",
+    "declared_methods": 399,
+    "source_envelope_sha256": "e7b89a0d41f650816063ca2c39b57963bfb3d9a4a4b6f79e5c8cf081411164fb",
+    "result": "unknown; rerun required"
+  },
+  "current_toolchain_status": "Java17, SDK, Gradle caches and isolated launcher absent after reset; Google endpoint policy denial remains active",
+  "artifact_limits": "Final rendering PNGs were not uploaded and were lost. Earlier logs remain verified only where individually marked. Historical compilation/results do not validate current host changes."
 }

@@ -302,7 +302,6 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         buildConfig = true
         compose = true
         resValues = true
@@ -508,9 +507,6 @@ dependencies {
     download(libs.huAutsoftKrate)
     implementation(libs.huAutsoftKrate)
 
-    // viewBinding without reflection
-    "fullImplementation"(libs.devAndroidbroadcastVbpd)
-
     // add ":debug" suffix to the dependency to include debug symbols
     download(firestackDependency())
     "websiteImplementation"(firestackDependency())
@@ -594,7 +590,6 @@ dependencies {
     "tvImplementation"(libs.githubBumptechGlideOkhttp3Integration) { exclude(group = "glide-parent") }
     "kspTv"(libs.githubBumptechGlideCompilerTv)
     "tvImplementation"(libs.facebookShimmerShimmer)
-    "tvImplementation"(libs.devAndroidbroadcastVbpd)
     "tvImplementation"(libs.androidxNavigationNavigationFragmentKtx)
     "tvImplementation"(libs.androidxNavigationNavigationUiKtx)
     "tvImplementation"(libs.androidxBiometricBiometric)

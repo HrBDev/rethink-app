@@ -45,6 +45,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.celzero.bravedns.ui.compose.home.HomeTourAnchors
 import com.celzero.bravedns.ui.compose.themeColor
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.math.abs
@@ -97,6 +98,7 @@ class ComposeSnackbarPresenter(
             var candidate: View? = view
             while (candidate != null) {
                 if (candidate is CoordinatorLayout) return candidate
+                if (candidate is FrameLayout && candidate.id == android.R.id.content) return candidate
                 candidate = candidate.parent as? View
             }
             return view.rootView as? FrameLayout ?: error("No window container for snackbar")
@@ -105,7 +107,14 @@ class ComposeSnackbarPresenter(
 
     private val handler = Handler(Looper.getMainLooper())
     private val parent = bestParent(view)
+    // BaseActivity caps its content child at 600dp. Retain that horizontal boundary when
+    // native Home chrome uses the window content FrameLayout rather than a CoordinatorLayout.
+    private val composeActivityRoot = view.rootView.findViewById<View>(R.id.container)
+        ?.takeIf { it is ComposeView }
     private val nav = if (appearance == Appearance.Themed) findBottomNavView(view) else null
+    private val composeAnchors = if (appearance == Appearance.Themed)
+        HomeTourAnchors.forContext(view.context) else null
+    private var stopObservingNavigation: (() -> Unit)? = null
     private val hasAction = actionLabel != null && action != null
     private val host = ComposeView(view.context)
     private var dismissed = false
@@ -148,7 +157,9 @@ class ComposeSnackbarPresenter(
             )
         }
         parent.addView(host, params)
+        stopObservingNavigation = composeAnchors?.observeBounds(R.id.nav_view) { position() }
         parent.addOnLayoutChangeListener(reposition)
+        composeActivityRoot?.addOnLayoutChangeListener(reposition)
         nav?.addOnLayoutChangeListener(reposition)
         ViewCompat.setOnApplyWindowInsetsListener(host) { _, insets ->
             val navigationBottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
@@ -187,6 +198,9 @@ class ComposeSnackbarPresenter(
         handler.removeCallbacks(timeout)
         host.animate().cancel()
         parent.removeOnLayoutChangeListener(reposition)
+        stopObservingNavigation?.invoke()
+        stopObservingNavigation = null
+        composeActivityRoot?.removeOnLayoutChangeListener(reposition)
         nav?.removeOnLayoutChangeListener(reposition)
         if (pending === this) pending = null
         if (active === this) {
@@ -232,16 +246,34 @@ class ComposeSnackbarPresenter(
         val resources = view.resources
         val hMargin = if (appearance == Appearance.Themed)
             resources.getDimensionPixelSize(R.dimen.snackbar_horizontal_margin) else (8 * resources.displayMetrics.density).toInt()
+        // Home's bottom bar is now a native Compose node, so discover its window bounds
+        // through the same Activity registry used by the tour instead of adding a dummy View.
+        val composeNavBounds = composeAnchors?.find(R.id.nav_view)
         val baseBottom = if (appearance == Appearance.Themed)
-            resources.getDimensionPixelSize(R.dimen.snackbar_bottom_margin) * (if (nav != null) 2 else 1) else 0
+            resources.getDimensionPixelSize(R.dimen.snackbar_bottom_margin) *
+                (if (nav != null || composeNavBounds != null) 2 else 1) else 0
         val navOffset = if (nav?.isShown == true) {
             val parentAt = IntArray(2); val navAt = IntArray(2)
             parent.getLocationInWindow(parentAt); nav.getLocationInWindow(navAt)
             (parentAt[1] + parent.height - navAt[1]).coerceAtLeast(0)
+        } else if (composeNavBounds != null) {
+            val parentAt = IntArray(2)
+            parent.getLocationInWindow(parentAt)
+            (parentAt[1] + parent.height - composeNavBounds.top.toInt()).coerceAtLeast(0)
         } else 0
         val bottom = baseBottom + navOffset + insetBottom
-        if (params.leftMargin != hMargin || params.rightMargin != hMargin || params.bottomMargin != bottom) {
-            params.setMargins(hMargin, params.topMargin, hMargin, bottom)
+        var left = hMargin
+        var right = hMargin
+        composeActivityRoot?.takeIf { it.isShown && it.width > 0 }?.let { root ->
+            val parentAt = IntArray(2)
+            val rootAt = IntArray(2)
+            parent.getLocationInWindow(parentAt)
+            root.getLocationInWindow(rootAt)
+            left += (rootAt[0] - parentAt[0]).coerceAtLeast(0)
+            right += (parentAt[0] + parent.width - rootAt[0] - root.width).coerceAtLeast(0)
+        }
+        if (params.leftMargin != left || params.rightMargin != right || params.bottomMargin != bottom) {
+            params.setMargins(left, params.topMargin, right, bottom)
             host.layoutParams = params
         }
     }

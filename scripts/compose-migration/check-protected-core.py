@@ -16,8 +16,20 @@ for path in paths:
     same=old==new
     results.append({'path':path,'sha256':hashlib.sha256(old).hexdigest(),'unchanged':same})
     if not same:changed.append(path)
-pins=tomllib.loads(git('show',BASE+':gradle/lib.toml').decode())['versions']==tomllib.loads((ROOT/'gradle/lib.toml').read_text())['versions']
-report={'baseline':BASE,'count':len(results),'unchanged':not changed,'changed':changed,'versionPinsUnchanged':pins,'files':results}
+baseline_catalog=tomllib.loads(git('show',BASE+':gradle/lib.toml').decode())
+current_catalog=tomllib.loads((ROOT/'gradle/lib.toml').read_text())
+# The explicit request to remove UI binding also removes its unused dependency.
+# Every other original version and library alias must still match exactly.
+removed_versions={'viewbinding': '2.0.4'}
+removed_libraries={'devAndroidbroadcastVbpd': {'module': 'dev.androidbroadcast.vbpd:vbpd', 'version': {'ref': 'viewbinding'}}}
+assert all(baseline_catalog['versions'].get(k)==v for k,v in removed_versions.items())
+assert all(baseline_catalog['libraries'].get(k)==v for k,v in removed_libraries.items())
+expected_versions={k:v for k,v in baseline_catalog['versions'].items() if k not in removed_versions}
+pins=current_catalog['versions']==expected_versions
+aliases=all(current_catalog['libraries'].get(k)==v for k,v in baseline_catalog['libraries'].items() if k not in removed_libraries)
+binding_removed=not any(k in current_catalog['libraries'] for k in removed_libraries)
+plugins=current_catalog['plugins']==baseline_catalog['plugins']
+report={'baseline':BASE,'count':len(results),'unchanged':not changed,'changed':changed,'retainedVersionPinsUnchanged':pins,'retainedLibraryAliasesUnchanged':aliases,'pluginAliasesUnchanged':plugins,'authorizedRemovedVersions':removed_versions,'authorizedRemovedLibraries':removed_libraries,'bindingAliasRemoved':binding_removed,'files':results}
 (ROOT/'docs/compose-migration/protected-core-report.json').write_text(json.dumps(report,indent=2)+'\n')
-print('Protected',len(results),'files; changed:',changed,'; dependency version pins unchanged:',pins)
-sys.exit(0 if not changed and pins else 1)
+print('Protected',len(results),'files; changed:',changed,'; retained dependency pins/aliases unchanged:',pins and aliases and plugins,'; obsolete binding alias removed:',binding_removed)
+sys.exit(0 if not changed and pins and aliases and plugins and binding_removed else 1)

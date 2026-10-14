@@ -1,3 +1,5 @@
+> Historical checkpoint audit. The later binding-removal source changes supersede its framework-host inventory; see [binding-removal-audit.md](binding-removal-audit.md), [binding-removal-review.md](binding-removal-review.md), and [validation-status.md](validation-status.md). This document does not validate the newer, uncompiled host changes.
+
 # Independent migration coverage audit 2
 
 Initial audit: 2026-10-14 07:12–07:31 UTC; scoped F1/F2 follow-up: 07:41–07:48 UTC. **Independent source audit completed; final migration acceptance is not established.**

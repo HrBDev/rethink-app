@@ -58,7 +58,7 @@ fun HomeBottomNavigation(selectedItem: Int, anchors: HomeTourAnchors, onSelect: 
         modifier = Modifier.clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
         containerColor = themeColor(R.attr.navBarColor),
         tonalElevation = 0.dp,
-        // The same-ID Activity host still applies the original platform bottom inset.
+        // The Activity Compose root applies the original platform bottom inset.
         windowInsets = WindowInsets(0, 0, 0, 0),
     ) {
         rootNavigationItems.forEach { item ->

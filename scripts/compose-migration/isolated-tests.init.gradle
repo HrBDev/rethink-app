@@ -1,0 +1,139 @@
+/* Source-reviewed preparation only. The checked-in manifest blocks runtime execution. */
+import groovy.json.JsonSlurper
+import java.security.MessageDigest
+import org.gradle.api.tasks.testing.Test
+
+def digest = { File file ->
+    MessageDigest hash = MessageDigest.getInstance('SHA-256')
+    file.withInputStream { input ->
+        byte[] buffer = new byte[65536]
+        int count
+        while ((count = input.read(buffer)) != -1) hash.update(buffer, 0, count)
+    }
+    hash.digest().encodeHex().toString()
+}
+def fail = { String message -> throw new GradleException('Compose migration test boundary: ' + message) }
+
+gradle.beforeSettings { settings ->
+    File root = settings.settingsDir.canonicalFile
+    Map properties = gradle.startParameter.projectProperties
+    ['JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS'].each { name ->
+        if (System.getenv(name)) fail('Sanitize inherited ' + name + ' before starting Gradle.')
+    }
+    if (gradle.startParameter.configurationCacheRequested) fail('Use --no-configuration-cache for this reviewed launcher.')
+    if (!gradle.startParameter.offline) fail('Only --offline execution is permitted.')
+    if (properties['android.builder.sdkDownload'] != 'false' ||
+        properties['org.gradle.java.installations.auto-download'] != 'false') {
+        fail('Explicitly disable Android SDK and Java toolchain automatic downloads.')
+    }
+    if (gradle.startParameter.taskNames != [':app:testFdroidFullDebugUnitTest']) {
+        fail('Request only :app:testFdroidFullDebugUnitTest with exact reviewed --tests filters.')
+    }
+    File manifestFile = new File(root, 'docs/compose-migration/binding-removal-safety-allowlist.json')
+    String expectedManifest = properties['composeMigrationManifestSha256']
+    if (!(expectedManifest ==~ /[0-9a-f]{64}/) || !manifestFile.isFile() ||
+        digest(manifestFile) != expectedManifest) fail('Missing or mismatched explicitly reviewed manifest SHA-256.')
+    def manifest = new JsonSlurper().parse(manifestFile)
+    // A source review alone is not an execution clearance. This stays BLOCKED in the WIP.
+    if (manifest.runtime_clearance?.status != 'REVIEWED') {
+        fail('Toolchain/runtime artifact revalidation is still blocked; do not bypass this gate.')
+    }
+    def checkedSource = { String relative, String expected ->
+        File file = new File(root, relative).canonicalFile
+        if (!file.toPath().startsWith(root.toPath()) || !file.isFile() ||
+            !(expected ==~ /[0-9a-f]{64}/) || digest(file) != expected) {
+            fail('Source/launcher pin mismatch: ' + relative)
+        }
+        file
+    }
+    if (manifest.launcher_pin?.path != 'scripts/compose-migration/isolated-tests.init.gradle') {
+        fail('Missing exact isolated launcher pin.')
+    }
+    checkedSource(manifest.launcher_pin.path, manifest.launcher_pin.sha256)
+    if (!manifest.configuration_pins) fail('Missing build/toolchain configuration pins.')
+    manifest.configuration_pins.each { checkedSource(it.path, it.sha256) }
+    if (manifest.source_tree_pin?.root != 'app/src') fail('Unexpected source-envelope scope.')
+    List sourceFiles = []
+    new File(root, 'app/src').eachFileRecurse { if (it.isFile()) sourceFiles.add(it) }
+    def relativePath = { File file -> root.toPath().relativize(file.toPath()).toString().replace('\\', '/') }
+    sourceFiles.sort { a, b -> relativePath(a) <=> relativePath(b) }
+    MessageDigest sourceHash = MessageDigest.getInstance('SHA-256')
+    sourceFiles.each { file ->
+        if (!file.canonicalFile.toPath().startsWith(new File(root, 'app/src').canonicalFile.toPath())) {
+            fail('Source symlink escapes the reviewed source tree.')
+        }
+        sourceHash.update((relativePath(file) + '\u0000' + digest(file) + '\n').getBytes('UTF-8'))
+    }
+    if (sourceFiles.size() != manifest.source_tree_pin.file_count ||
+        sourceHash.digest().encodeHex().toString() != manifest.source_tree_pin.sha256) {
+        fail('Current source tree differs from the reviewed envelope.')
+    }
+    Set allowed = manifest.allowed_classes as Set
+    if (!allowed || allowed.any { !(it ==~ /[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*)+/) }) {
+        fail('Allowlist must contain exact fully qualified class names, without wildcards.')
+    }
+    if ((manifest.class_details.collect { it.class_name } as Set) != allowed) {
+        fail('Every selected class must have an exact reviewed source pin.')
+    }
+    manifest.class_details.each { checkedSource(it.source_path, it.sha256) }
+
+    def checkedArtifact = { String property, String expected ->
+        String path = properties[property]
+        if (!path) fail('Missing explicit local artifact path: ' + property)
+        File file = new File(path).canonicalFile
+        if (!file.isFile() || digest(file) != expected) fail('Artifact hash mismatch: ' + property)
+        file
+    }
+    File mockito = checkedArtifact('composeMigrationMockitoJar',
+        'ae295bebd5d11fab97ab297815dc7617188b86003cbce3dfd5c0d5c3a6cc4a0c')
+    File byteBuddy = checkedArtifact('composeMigrationByteBuddyJar',
+        'd91e2d6d1b777687ab14a52b18b08aca32c4c91274131c99907674c661402a76')
+    String runtimePath = properties['composeMigrationAndroidRuntimeDir']
+    if (!runtimePath) fail('A reviewed local Robolectric Android runtime directory is required.')
+    File runtimeDir = new File(runtimePath).canonicalFile
+    def runtimePins = manifest.runtime_clearance.android_runtime_jars
+    if (!runtimeDir.isDirectory() || !runtimePins) fail('Android runtime artifacts have not been pinned.')
+    runtimePins.each { pin ->
+        if (pin.file_name != new File(pin.file_name).name || !(pin.sha256 ==~ /[0-9a-f]{64}/)) {
+            fail('Invalid local Android runtime artifact pin.')
+        }
+        File jar = new File(runtimeDir, pin.file_name)
+        if (!jar.isFile() || digest(jar) != pin.sha256) fail('Android runtime artifact mismatch: ' + pin.file_name)
+    }
+    Set actualRuntimeJars = runtimeDir.listFiles().findAll { it.isFile() && it.name.endsWith('.jar') }.collect { it.name } as Set
+    if (actualRuntimeJars != (runtimePins.collect { it.file_name } as Set)) fail('Unreviewed Android runtime JAR in local directory.')
+
+    gradle.taskGraph.whenReady { graph ->
+        List tests = graph.allTasks.findAll { it instanceof Test }
+        if (tests.size() != 1 || tests[0].path != ':app:testFdroidFullDebugUnitTest') {
+            fail('Unexpected JVM test task in task graph.')
+        }
+        Test task = tests[0]
+        Set requested = task.filter.commandLineIncludePatterns as Set
+        if (!requested || !allowed.containsAll(requested) || task.filter.includePatterns || task.filter.excludePatterns) {
+            fail('Only explicit exact reviewed command-line class filters are permitted.')
+        }
+        if (task.javaLauncher.get().metadata.languageVersion.asInt() != 17) fail('Tests require reviewed Java 17.')
+        if (task.jvmArgs.any { it.startsWith('-javaagent:') || it.startsWith('-agentlib:') ||
+                it.startsWith('-agentpath:') || it.contains('allowAttachSelf=true') }) {
+            fail('Unexpected pre-existing agent or self-attachment override.')
+        }
+        File parent = new File(root, 'build/compose-migration-test-homes')
+        if (!parent.canonicalFile.toPath().startsWith(root.toPath())) fail('Synthetic home escapes project directory.')
+        parent.mkdirs()
+        File home = java.nio.file.Files.createTempDirectory(parent.toPath(), 'isolated-').toFile()
+        File visual = new File(root, 'build/outputs/compose-migration-visual').canonicalFile
+        if (!visual.toPath().startsWith(root.toPath())) fail('Visual output escapes project directory.')
+        visual.mkdirs()
+        task.maxParallelForks = 1
+        task.forkEvery = 0
+        task.jvmArgs('-javaagent:' + mockito.absolutePath, '-javaagent:' + byteBuddy.absolutePath)
+        task.systemProperty('jdk.attach.allowAttachSelf', 'false')
+        task.systemProperty('user.home', home.absolutePath)
+        task.systemProperty('robolectric.offline', 'true')
+        task.systemProperty('robolectric.dependency.dir', runtimeDir.absolutePath)
+        task.systemProperty('rethink.visual.output', visual.absolutePath)
+        task.environment('RETHINK_VISUAL_OUTPUT', visual.absolutePath)
+        task.testLogging { events 'passed', 'skipped', 'failed'; exceptionFormat 'full' }
+    }
+}

@@ -50,7 +50,9 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.celzero.bravedns.R
@@ -371,10 +373,24 @@ class ServerSelectionFragment : Fragment(),
 
         isProxyStopped = RpnProxyManager.rpnMode().isNone()
 
+        var navBarBottom = 0
+        var nativeNavHeight = 0
+        // Home's floating bar is native Compose. Observe its actual geometry so first layout,
+        // recreation and changing system insets retain the old FAB/list clearance calculation.
+        val stopObservingNavigation = tourAnchors.observeBounds(R.id.nav_view) { bounds ->
+            nativeNavHeight = bounds?.height()?.toInt() ?: 0
+            ui.fabBottomPx = navBarBottom + nativeNavHeight + dpPx(16)
+            ui.scrollBottomPx = if (bounds != null) nativeNavHeight + dpPx(24) else 0
+        }
+        viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) {
+                stopObservingNavigation()
+                owner.lifecycle.removeObserver(this)
+            }
+        })
         ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
-            val navBarBottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            val navViewHeight = requireActivity().findViewById<View>(R.id.nav_view)?.height ?: 0
-            ui.fabBottomPx = navBarBottom + navViewHeight + dpPx(16)
+            navBarBottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            ui.fabBottomPx = navBarBottom + nativeNavHeight + dpPx(16)
             insets
         }
         ViewCompat.requestApplyInsets(view)
@@ -400,15 +416,6 @@ class ServerSelectionFragment : Fragment(),
         } else {
             ui.fabStopProxy.visibility  = View.VISIBLE
             ui.fabStartProxy.visibility = View.GONE
-        }
-
-        // Apply bottom padding so the last list item is not hidden behind the
-        // BottomNavigationView (which floats over the fragment container).
-        requireActivity().findViewById<View>(R.id.nav_view)?.let { navView ->
-            navView.post {
-                if (!isAdded) return@post
-                ui.scrollBottomPx = navView.height + dpPx(24)
-            }
         }
 
         animateHeaderEntry()

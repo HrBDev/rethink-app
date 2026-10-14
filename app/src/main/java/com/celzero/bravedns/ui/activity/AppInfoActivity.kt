@@ -38,7 +38,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -104,7 +103,6 @@ import com.celzero.bravedns.viewmodel.SummaryStatisticsViewModel
 import com.celzero.firestack.backend.Backend
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -1440,8 +1438,6 @@ class AppInfoActivity : BaseActivity() {
             this.getString(R.string.ctbs_block_other_apps, appInfo.appName, count.toString())
         )
 
-        val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1)
-        arrayAdapter.addAll(packageList)
         builderSingle.setCancelable(false)
 
         builderSingle.setItems(packageList.toTypedArray(), null)

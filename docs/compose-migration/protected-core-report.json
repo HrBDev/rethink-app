@@ -3,7 +3,21 @@
   "count": 522,
   "unchanged": true,
   "changed": [],
-  "versionPinsUnchanged": true,
+  "retainedVersionPinsUnchanged": true,
+  "retainedLibraryAliasesUnchanged": true,
+  "pluginAliasesUnchanged": true,
+  "authorizedRemovedVersions": {
+    "viewbinding": "2.0.4"
+  },
+  "authorizedRemovedLibraries": {
+    "devAndroidbroadcastVbpd": {
+      "module": "dev.androidbroadcast.vbpd:vbpd",
+      "version": {
+        "ref": "viewbinding"
+      }
+    }
+  },
+  "bindingAliasRemoved": true,
   "files": [
     {
       "path": "app/src/androidTest/java/com/celzero/bravedns/AntiCensorshipActivityTest.kt",

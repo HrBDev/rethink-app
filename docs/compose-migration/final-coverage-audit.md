@@ -1,3 +1,5 @@
+> Historical checkpoint audit. The later binding-removal source changes supersede its framework-host inventory; see [binding-removal-audit.md](binding-removal-audit.md), [binding-removal-review.md](binding-removal-review.md), and [validation-status.md](validation-status.md). This document does not validate the newer, uncompiled host changes.
+
 # Independent coverage audit of reconstructed UI
 
 Audit window: 2026-10-14 05:59–06:05 UTC. Source census: 06:05 UTC. Repository: `HrBDev/rethink-app`, original `gradle-improvements` commit `23cb6dd98805445174bd83b7237ad5f5d2c24ac9`. All conclusions below come from the reconstructed checkout and freshly read original Git blobs. **No evidence or pass from the lost checkpoint is reused.** Concurrent migrations were active; this is a dated source snapshot, not final acceptance.

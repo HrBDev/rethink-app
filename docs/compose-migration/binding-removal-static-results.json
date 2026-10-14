@@ -1,0 +1,271 @@
+{
+  "as_of_utc": "2026-10-14T09:54:00Z",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "source_only": true,
+  "compiled_or_tests_executed": false,
+  "status": "PASS",
+  "checks_run": 24,
+  "checks_passed": 24,
+  "source_tree_pin_before": {
+    "file_count": 1562,
+    "sha256": "d185fb5cc04a8932c77baf2b2f8eadc440a67294b58ecdca731479b192630a36"
+  },
+  "source_tree_pin_after": {
+    "file_count": 1562,
+    "sha256": "d185fb5cc04a8932c77baf2b2f8eadc440a67294b58ecdca731479b192630a36"
+  },
+  "limitations": "Static checks only. Current source remains uncompiled; runtime clearance is blocked. Historical aggregate retained separately.",
+  "checks": [
+    {
+      "script": "docs/compose-migration/check_home_controller.py",
+      "arguments": [
+        "--report",
+        "../recovery/static-reports/temporary-check_home_controller.json"
+      ],
+      "exit_code": 0,
+      "output": "Home source guard: 144/144 checks passed; not runtime evidence\n",
+      "script_sha256": "c0bb3b6411bbe8bfe20f2edb43ae19c1754d0309edcd2889ac8857fa43729339",
+      "script_unchanged_during_run": true,
+      "seconds": 9.78
+    },
+    {
+      "script": "scripts/compose-migration/check-about-controllers.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS 81 About/diagnostic protected bodies and collection/format sections; no runtime/compilation claim\n",
+      "script_sha256": "ccdb83fc5c7918d4a2f60bfe996c0201ed872d1fbca60d59986b373bf4c9bd28",
+      "script_unchanged_during_run": true,
+      "seconds": 0.35
+    },
+    {
+      "script": "scripts/compose-migration/check-apps-controller-parity.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: 67 complete protected command methods byte-identical to pinned baseline. No invocation/runtime claim.\n",
+      "script_sha256": "8eb7c38e40d57cb5433e38efb115295bcdb3e331f8ff218c0ab8b4774b0c6861",
+      "script_unchanged_during_run": true,
+      "seconds": 0.09
+    },
+    {
+      "script": "scripts/compose-migration/check-custom-rules-contracts.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: 19 unchanged controller methods, 9 unchanged rule data/manager boundaries; native-source and transient-state guards passed.\nSource-only; not compilation, tests, or visual/runtime parity.\n",
+      "script_sha256": "005e8ab15abd70ce966e4f88a5d4bc5888066a6536e1a75173a8e78ae3607d3c",
+      "script_unchanged_during_run": true,
+      "seconds": 0.14
+    },
+    {
+      "script": "scripts/compose-migration/check-dns-blocklists-parity.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: 131 reconstructed DNS/blocklist protected methods and callbacks match baseline after explicit UI aliases; negative control passed. Source-only.\n",
+      "script_sha256": "0badd891737e19a38c97850343ee56d855cb0e57ac65fd664c2c56e5dd4c020e",
+      "script_unchanged_during_run": true,
+      "seconds": 0.26
+    },
+    {
+      "script": "scripts/compose-migration/check-dns-retired-renderers.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: five retired blocklist adapter definitions/imports/constructors absent across app/src; negative control passed.\n",
+      "script_sha256": "729c7c0d13b8bab4fbb21b648677e3a0f7ea64a80a2296aaae2f51482906a99e",
+      "script_unchanged_during_run": true,
+      "seconds": 1.86
+    },
+    {
+      "script": "scripts/compose-migration/check-navigation-chrome.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-navigation-chrome.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: eleven source guard negative controls\nPASS: 25 unchanged Home controller methods; startup/listener/back/navigation/throttle/prefix and framework boundaries checked\nSource preservation only. Not Android compilation, runtime, visual or accessibility parity.\n",
+      "script_sha256": "894befa200a9e5926e75f0439d0b9185342c161edc01115f547208fa7a54f076",
+      "script_unchanged_during_run": true,
+      "seconds": 0.34
+    },
+    {
+      "script": "scripts/compose-migration/check-network-settings-controllers.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS 117 pinned baseline method bodies; only the XML policy row renderer excluded. Not runtime or rendering validation.\n",
+      "script_sha256": "db03d9c561a9bd60312b439fcff98f70dbd7437899b956b5e100b72d495befb7",
+      "script_unchanged_during_run": true,
+      "seconds": 0.96
+    },
+    {
+      "script": "scripts/compose-migration/check-network-settings-layouts.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS 6 pinned layouts; 294 native tagged controls. Not runtime or screenshot validation.\n",
+      "script_sha256": "a3a77f200308ae64f3444d367551738cfd61355a417731a3c6721dafa705c22f",
+      "script_unchanged_during_run": true,
+      "seconds": 0.1
+    },
+    {
+      "script": "scripts/compose-migration/check-network-sheet-controllers.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS 64 protected baseline network-sheet bodies; not runtime or visual verification\n",
+      "script_sha256": "8e1f629bef501c3d6c9621f7a517e3f54a1d5f350e2f0c455fda30bde75d9908",
+      "script_unchanged_during_run": true,
+      "seconds": 0.14
+    },
+    {
+      "script": "scripts/compose-migration/check-notification-ui-boundary.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: notification trampoline byte-identical except two dialog renderer substitutions; all routing, security, permission and lifecycle code preserved.\n",
+      "script_sha256": "81b96980cf292da0a18530a208cc9f407866464f8570753f3f872655a847f462",
+      "script_unchanged_during_run": true,
+      "seconds": 0.05
+    },
+    {
+      "script": "scripts/compose-migration/check-original-test-relocation.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-original-test-relocation.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 99 original test sources, 16 relocated; 1475 original @Test declarations retained and 7 explicitly mapped native replacements; 86 app/settings manifest cases. Source coverage only, no tests executed.\n",
+      "script_sha256": "fdbc6cbe5ad9db47fe017b20e73696c9ff5b97dccc1175982638cfc1d171f0c7",
+      "script_unchanged_during_run": true,
+      "seconds": 1.83
+    },
+    {
+      "script": "scripts/compose-migration/check-protected-core.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "Protected 522 files; changed: [] ; retained dependency pins/aliases unchanged: True ; obsolete binding alias removed: True\n",
+      "script_sha256": "71884745a81fdd9835ff107c5d49882ee8dd3fa396068b95351d88e9fce8911e",
+      "script_unchanged_during_run": true,
+      "seconds": 1.89
+    },
+    {
+      "script": "scripts/compose-migration/check-protocol-dns-parity.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: protocol insert/URL validators and BlockFree controller bodies exactly match pinned base; transient dialogs, lifecycle sources, action entry points, chip restoration, retired renderers and isolated test scope checked.\n",
+      "script_sha256": "96e2a2098b337d1a79b059b277cdae3008b1006892a0889e3caaff4a2c98c7f0",
+      "script_unchanged_during_run": true,
+      "seconds": 2.05
+    },
+    {
+      "script": "scripts/compose-migration/check-purchase-controllers.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-purchase-controllers.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: changed argument, string and duplicate-callback negative controls\nPASS: 211 exact and 26 narrowly adapted purchase/graphics method bodies\n",
+      "script_sha256": "ca9acb8cc6be68356ef0569062a7186e66adbfa89d74d78b00b86254085236b1",
+      "script_unchanged_during_run": true,
+      "seconds": 1.81
+    },
+    {
+      "script": "scripts/compose-migration/check-rpn-configuration-controllers.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-rpn-configuration-controllers.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS: 73 exact and 8 narrowly adapted controller bodies; hop wrappers retained; retired renderers unreferenced\n",
+      "script_sha256": "e2204fe8331e5af1f91ad316f45d43a2f78ba1d2d391c213f3dad8c2b937ff76",
+      "script_unchanged_during_run": true,
+      "seconds": 0.69
+    },
+    {
+      "script": "scripts/compose-migration/check-rpn-controller-parity.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: 221 fixed named controller/helper bodies match pinned baseline after documented presentation-only normalization.\n",
+      "script_sha256": "b8b9af7e8e135e881e3d67025bf8272c469f89831daf6eb04587157044e1aa41",
+      "script_unchanged_during_run": true,
+      "seconds": 0.15
+    },
+    {
+      "script": "scripts/compose-migration/check-settings-controllers.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS 79 protected settings/menu/mode-sheet bodies; not compilation or runtime parity\n",
+      "script_sha256": "692c394f64086c3adabc560ded67cd5bae5bd5e6c712937aec12d0218cade8f1",
+      "script_unchanged_during_run": true,
+      "seconds": 0.14
+    },
+    {
+      "script": "scripts/compose-migration/check-statistics-contracts.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-statistics-contracts.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 32 baseline-equivalent methods, exact route/query contracts, six-chip multi-select restoration, native renderer boundary and relocated original @Test obligation.\nNot Android typechecking, test execution or visual/runtime parity.\n",
+      "script_sha256": "fe24347bfa36456fd6c58f3163e866205ac8f1103ed48a62e786c382abac316e",
+      "script_unchanged_during_run": true,
+      "seconds": 0.14
+    },
+    {
+      "script": "scripts/compose-migration/check-traffic-log-controllers.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS: 161 pinned callback/helper bodies and native-rendering boundaries; not runtime parity.\n",
+      "script_sha256": "726fcc1f7faf640373f28505bf7b60b1f70ebd33552518e3bca092974a3fe2df",
+      "script_unchanged_during_run": true,
+      "seconds": 0.43
+    },
+    {
+      "script": "scripts/compose-migration/check-utility-controllers.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-utility-controllers.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: changed literal, argument, ordering and duplicate callback negative controls\nPASS: 116 exact/narrowly adapted utility controller bodies; 7 protected dependencies\n",
+      "script_sha256": "025a9068445dfca8ab4491f980c23dd6d0d63ba36571e7fcf31c799eeeb5f59c",
+      "script_unchanged_during_run": true,
+      "seconds": 0.22
+    },
+    {
+      "script": "scripts/compose-migration/check-wireguard-controllers.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "../recovery/static-reports/temporary-check-wireguard-controllers.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: extractor whitespace/comment/braces, literal-space, mutation and missing-method controls\nPASS: 205 unchanged selected WireGuard controller bodies. Not typechecking, Android compilation, lifecycle/rendering or service tests.\n",
+      "script_sha256": "00a71eee186a312e525712860f90d71bb65f22fc1d59183e057dab45cc6401ed",
+      "script_unchanged_during_run": true,
+      "seconds": 0.4
+    },
+    {
+      "script": "scripts/compose-migration/check-wireguard-resources.py",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "PASS: local resource names in 30 WG Kotlin files; XML parse successful. Not Android resource linking or compilation.\n",
+      "script_sha256": "8b61025f2e4b357435ca39f690df949a26d451322593cd52ed26785695c85c10",
+      "script_unchanged_during_run": true,
+      "seconds": 0.36
+    },
+    {
+      "script": "scripts/compose-migration/check-binding-removal.py",
+      "arguments": [
+        "--self-test",
+        "--report",
+        "docs/compose-migration/binding-removal-report.json"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 35 in-memory positive/negative controls\nPASS: 779 production source files across 5 source sets; 186 retained XML layouts; 0 violations\nStatic source evidence only; no Android build, runtime or visual parity result.\n",
+      "script_sha256": "61226ba66482eb09f34a837c31ee26682ccb19c8924d32bc85afb2997401a5e4",
+      "script_unchanged_during_run": true,
+      "seconds": 7.33
+    }
+  ]
+}

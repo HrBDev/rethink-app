@@ -1,0 +1,1750 @@
+{
+  "schema_version": 1,
+  "review_kind": "cumulative_source_only_binding_removal_delta",
+  "review_date_utc": "2026-10-14",
+  "source_review_complete": true,
+  "execution_status": "BLOCKED_TOOLCHAIN_AND_ARTIFACT_REVALIDATION_REQUIRED",
+  "runtime_clearance": {
+    "status": "BLOCKED",
+    "android_runtime_jars": [],
+    "reason": "Replacement launcher source is reviewed, but no Java17/Android SDK/cached runtime artifacts, approved local Gradle distribution, or test-process environment has been revalidated. Do not alter this gate without independent runtime review."
+  },
+  "baseline_git_object": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "comparison_git_object": "87b3b9975afdb59492bc92cf97b9560cdd725330",
+  "source_tree_pin": {
+    "root": "app/src",
+    "file_count": 1562,
+    "sha256": "d185fb5cc04a8932c77baf2b2f8eadc440a67294b58ecdca731479b192630a36",
+    "algorithm": "SHA-256 of concatenated records sorted lexically by complete relative POSIX path string from repository root: path + NUL + lowercase file SHA-256 + LF; regular files under app/src; UTF-8"
+  },
+  "allowed_class_count": 81,
+  "declared_test_method_count": 569,
+  "allowed_classes": [
+    "com.celzero.bravedns.ui.CoreNavigationTest",
+    "com.celzero.bravedns.ui.HomeScreenActivityDialogInstrumentedTest",
+    "com.celzero.bravedns.ui.HomeScreenActivityDialogTest",
+    "com.celzero.bravedns.ui.activity.AppInfoActivityTest",
+    "com.celzero.bravedns.ui.activity.AppListActivityTest",
+    "com.celzero.bravedns.ui.activity.ConfigChangeTest",
+    "com.celzero.bravedns.ui.activity.DnsDetailAccessibilityTest",
+    "com.celzero.bravedns.ui.activity.DnsDetailNavigationTest",
+    "com.celzero.bravedns.ui.activity.DnsListActivityTest",
+    "com.celzero.bravedns.ui.activity.FirewallActivityTest",
+    "com.celzero.bravedns.ui.activity.MiscSettingsActivityRobolectricTest",
+    "com.celzero.bravedns.ui.activity.NetworkLogsActivityTest",
+    "com.celzero.bravedns.ui.activity.ProxySettingsActivityTest",
+    "com.celzero.bravedns.ui.activity.ThemeChangeTest",
+    "com.celzero.bravedns.ui.activity.WelcomeActivityTest",
+    "com.celzero.bravedns.ui.compose.about.AboutContentComposeTest",
+    "com.celzero.bravedns.ui.compose.about.AboutPresentationTest",
+    "com.celzero.bravedns.ui.compose.appdetails.AppDetailsReconstructionTest",
+    "com.celzero.bravedns.ui.compose.blocklists.BlocklistSelectionPresenterTest",
+    "com.celzero.bravedns.ui.compose.blocklists.BlocklistsComposeTest",
+    "com.celzero.bravedns.ui.compose.blocklists.RethinkEndpointPresenterTest",
+    "com.celzero.bravedns.ui.compose.chrome.HomeChromeDialogPolicyTest",
+    "com.celzero.bravedns.ui.compose.chrome.RootChromeContentTest",
+    "com.celzero.bravedns.ui.compose.chrome.RootNavigationTypographyTest",
+    "com.celzero.bravedns.ui.compose.chrome.SnackbarContractTest",
+    "com.celzero.bravedns.ui.compose.dns.BlockFreeChipGroupTest",
+    "com.celzero.bravedns.ui.compose.dns.DnsEndpointLifecycleComposeTest",
+    "com.celzero.bravedns.ui.compose.dns.DnsProtocolContentComposeTest",
+    "com.celzero.bravedns.ui.compose.dnssettings.DnsControlTest",
+    "com.celzero.bravedns.ui.compose.dnssettings.DnsProtocolGridComposeTest",
+    "com.celzero.bravedns.ui.compose.dnssettings.DnsSettingsChoicesComposeTest",
+    "com.celzero.bravedns.ui.compose.dnssettings.DnsSettingsComposeTest",
+    "com.celzero.bravedns.ui.compose.firewallapps.FirewallAppsReconstructionTest",
+    "com.celzero.bravedns.ui.compose.home.AppActivityAdapterStateTest",
+    "com.celzero.bravedns.ui.compose.home.HomeContentTest",
+    "com.celzero.bravedns.ui.compose.home.HomeDialogTest",
+    "com.celzero.bravedns.ui.compose.home.HomePresentationTest",
+    "com.celzero.bravedns.ui.compose.home.HomeTourBoundsTest",
+    "com.celzero.bravedns.ui.compose.hosts.ActivityFragmentContainerTest",
+    "com.celzero.bravedns.ui.compose.networksettings.NetworkSettingsComposeTest",
+    "com.celzero.bravedns.ui.compose.networksettings.NetworkSettingsStateTest",
+    "com.celzero.bravedns.ui.compose.networksheets.NetworkSheetContentTest",
+    "com.celzero.bravedns.ui.compose.networksheets.NetworkSheetStateTest",
+    "com.celzero.bravedns.ui.compose.networksheets.OrbotInfoTypographyTest",
+    "com.celzero.bravedns.ui.compose.purchase.PurchaseContentTest",
+    "com.celzero.bravedns.ui.compose.rpn.RpnControlStateTest",
+    "com.celzero.bravedns.ui.compose.rpnconfig.RpnConfigurationComposeTest",
+    "com.celzero.bravedns.ui.compose.rpnconfig.RpnConfigurationDialogTest",
+    "com.celzero.bravedns.ui.compose.rpnconfig.RpnSsidStateTest",
+    "com.celzero.bravedns.ui.compose.rules.CustomLanIpContentTest",
+    "com.celzero.bravedns.ui.compose.rules.CustomLanIpStateTest",
+    "com.celzero.bravedns.ui.compose.rules.CustomRuleActionsTest",
+    "com.celzero.bravedns.ui.compose.rules.RulesContentTest",
+    "com.celzero.bravedns.ui.compose.rules.RulesPageStateTest",
+    "com.celzero.bravedns.ui.compose.settings.SettingsStateParityTest",
+    "com.celzero.bravedns.ui.compose.settings.SingleSettingsFragmentHostTest",
+    "com.celzero.bravedns.ui.compose.statistics.BlocklistAppsContentTest",
+    "com.celzero.bravedns.ui.compose.statistics.PagedStatisticsTitleSelectionTest",
+    "com.celzero.bravedns.ui.compose.statistics.StatisticsContentTest",
+    "com.celzero.bravedns.ui.compose.statistics.StatisticsMaterialReferenceTest",
+    "com.celzero.bravedns.ui.compose.statistics.StatisticsSelectionParityTest",
+    "com.celzero.bravedns.ui.compose.statistics.SummaryStatisticsRouteTest",
+    "com.celzero.bravedns.ui.compose.theme.RethinkTypographyReferenceTest",
+    "com.celzero.bravedns.ui.compose.trafficlogs.LogSearchBarComposeTest",
+    "com.celzero.bravedns.ui.compose.trafficlogs.LogSearchStateTest",
+    "com.celzero.bravedns.ui.compose.trafficlogs.LogSearchViewReferenceTest",
+    "com.celzero.bravedns.ui.compose.trafficlogs.TrafficLogFragmentControllerTest",
+    "com.celzero.bravedns.ui.compose.trafficlogs.TrafficLogsComposeTest",
+    "com.celzero.bravedns.ui.compose.utilities.UtilityContentTest",
+    "com.celzero.bravedns.ui.compose.utilities.UtilityStateTest",
+    "com.celzero.bravedns.ui.compose.utilities.UtilityTypographyTest",
+    "com.celzero.bravedns.ui.compose.visual.ContentVisualParityTest",
+    "com.celzero.bravedns.ui.compose.visual.WgAlertVisualParityTest",
+    "com.celzero.bravedns.ui.compose.wireguard.WgControlStateTest",
+    "com.celzero.bravedns.ui.compose.wireguard.WgFormRestoreTest",
+    "com.celzero.bravedns.ui.compose.wireguard.WgLegacySearchParityTest",
+    "com.celzero.bravedns.ui.compose.wireguard.WgRichTextTest",
+    "com.celzero.bravedns.ui.compose.wireguard.WgSsidStateTest",
+    "com.celzero.bravedns.ui.fragment.DnsSettingsFragmentTest",
+    "com.celzero.bravedns.ui.fragment.FirewallSettingsFragmentTest",
+    "com.celzero.bravedns.ui.fragment.SummaryStatisticsFragmentTest"
+  ],
+  "class_details": [
+    {
+      "class_name": "com.celzero.bravedns.ui.CoreNavigationTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/CoreNavigationTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "66393337ff858232d1c4bea2e5ce115374378c96299e5eb0ccb7fc003f3e8d5d",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "testBottomNavigation",
+        "reselectionDoesNotReplaceCurrentFragmentAndBackReturnsHomeThenFinishes"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.HomeScreenActivityDialogInstrumentedTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/HomeScreenActivityDialogInstrumentedTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "d8d3a68aee76cdc09fcaaeee58052d0b8db9e3dd78b23c6f183f28e0af72d90e",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "testModalUpdateDialog_CannotBeDismissedByTappingOutside",
+        "testDismissibleDialog_CanBeDismissed",
+        "testUpdateDialog_HasBothButtons",
+        "testButtonClick_DismissesDialog",
+        "testModalDialog_StaysOpenWithoutButtonClick",
+        "testNegativeButton_WorksCorrectly",
+        "testInformationalDialog_OnlyHasOkButton"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.HomeScreenActivityDialogTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/HomeScreenActivityDialogTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "5c5234701bd15205a970df15d9d32056076b0c439b4489446a488c67964355bd",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "test update available dialog is modal and has correct buttons for website",
+        "test update available dialog is modal and has correct buttons for Play Store",
+        "test up-to-date dialog is dismissible with only OK button",
+        "test error dialog is dismissible",
+        "test quota exceeded dialog is dismissible",
+        "test modal dialog cannot be dismissed by tapping outside",
+        "test dismissible dialog can be dismissed by tapping outside",
+        "test button clicks work correctly"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.AppInfoActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "5eda39bd46d5e23fb4b98e1a808571d449823a7d63a0a85003eafca26577e6df",
+      "declared_test_methods": 29,
+      "test_method_names": [
+        "testLaunchesSuccessfullyWithValidUid",
+        "testLaunchWithInvalidUid",
+        "testUiElementsAreDisplayedWithValidData",
+        "testUiElementsContentAndInteractions",
+        "testAppSettingsToggleStates",
+        "testRecyclerViewsAreInitialized",
+        "testActivityHandlesConfigurationChanges",
+        "testLaunchWithMissingUidExtra",
+        "testLaunchWithNegativeUid",
+        "testLaunchWithZeroUid",
+        "testLaunchWithVeryLargeUid",
+        "testLaunchWithSystemAppUid",
+        "testActivityStateWithMultipleIntents",
+        "testActivityLifecycleStates",
+        "testMemoryPressureHandling",
+        "testActivityWithEmptyIntentExtras",
+        "testActivityErrorRecovery",
+        "testActivityLaunchPerformance",
+        "testUiRenderingPerformance",
+        "testMultipleActivityInstancesPerformance",
+        "testConfigurationChangePerformance",
+        "testMemoryUsageStability",
+        "testScrollingPerformance",
+        "testInteractionResponseTimes",
+        "ownUid_warningDefersQueries_andBackFinishesWithoutCommands",
+        "unknownUid_excludeRuleIsDisabled_withoutIssuingCommands",
+        "emptySyntheticLogs_hideSections_andViewModeToggle",
+        "ruleCounts_reemitThroughActualLifecycleObservers",
+        "customRulesNavigation_preservesTabAndUidWithoutLaunchingTarget"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.AppListActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppListActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "551d0fe9bc2c8391a8a98c3225a7f00c02a2de759a923e8c9b79fc023af84b4e",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "testAppListDisplay",
+        "emptyMemoryPagingKeepsNativeListMounted",
+        "actualActivityRecreationRestoresSearchText"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.ConfigChangeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/ConfigChangeTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "b7a4c8d6cbf62a24b3aeee21f646caa6075adbc9105ecb90d38a82c30ad44cc1",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "testHomeScreenStateRetentionOnRotation",
+        "selectedDestinationAndHighlightSurviveActualRecreation"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.DnsDetailAccessibilityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailAccessibilityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "8653b7d8640b1472e262e07269d86b6aec1daa6aaf0608e554fc64b70e24b6c1",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "testDnsDetailAccessibility"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.DnsDetailNavigationTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "b0acc8ce8eef564f242af03e69bc947dea636f07eccf62fae0098a55ea970112",
+      "declared_test_methods": 5,
+      "test_method_names": [
+        "testDnsTabsDisplay",
+        "customDnsChoicePreservesActivityRouteWithoutLaunchingDestination",
+        "actualHostRecreationRestoresNativeDnsPage",
+        "settingsPageFollowsActivityPauseAndResumeWithoutReplacement",
+        "backFinishesTheSettingsHostWithoutLaunchingAnotherActivity"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.DnsListActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsListActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "414274c92f7280362ee9d2e7cb349aca2935d636f159f388fba66c2c07f6e423",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "testDnsOptionsDisplay",
+        "protocolRoutesKeepTheirExactInputExtrasWithoutStartingDestinations",
+        "nativeGridRemainsMountedAfterActualSavedInstanceRecreation"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.FirewallActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "343197808360ae3617fdb2014b82a70b4a4eb683cf63adfbb7f94afafb43107b",
+      "declared_test_methods": 5,
+      "test_method_names": [
+        "testFirewallActivityDisplay",
+        "actualFirewallHostRecreationRetainsItsNativePage",
+        "settingsPageFollowsActivityPauseAndResumeWithoutReplacement",
+        "pauseStatusAfterRecreationDispatchesExactlyOnePauseDestination",
+        "backFinishesTheSettingsHostWithoutLaunchingAnotherActivity"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.MiscSettingsActivityRobolectricTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "02107b7a4bba1d8282df312bd55c01498e5df7b404cc351bca5b73ad7c4b7efa",
+      "declared_test_methods": 64,
+      "test_method_names": [
+        "activityCreation_withMockedDependencies_doesNotCrash",
+        "activityFullLifecycle_createStartResumePauseStop_doesNotCrash",
+        "activityClass_isAssignableFromActivity",
+        "koinModule_persistentState_isMockInstance",
+        "koinModule_allDependencies_areResolvable",
+        "onSaveInstanceState_persistsThemeChangedFlagTrue",
+        "onSaveInstanceState_persistsThemeChangedFlagFalse",
+        "onCreate_withSavedInstanceState_restoresThemeChangedTrue",
+        "onCreate_withoutSavedInstanceState_isThemeChangedStartsFalse",
+        "backPress_withThemeChanged_setsThemeChangedResult",
+        "backPress_withoutThemeChange_doesNotSetThemeChangedResult",
+        "enableLogsRl_click_togglesEnableLogsSwitch",
+        "enableLogsSwitch_checkedTrue_setsLogsEnabled",
+        "enableLogsSwitch_checkedFalse_setsLogsEnabledFalse",
+        "autoStartRl_click_togglesAutoStartSwitch",
+        "autoStartSwitch_checkedTrue_setsPrefAutoStartBootUp",
+        "ipInfoRl_click_togglesDvIpInfoSwitch",
+        "dvIpInfoSwitch_checkedTrue_setsDownloadIpInfo",
+        "tombstoneAppRl_click_togglesTombstoneAppSwitch",
+        "tombstoneAppSwitch_checkedTrue_setsTombstoneApps",
+        "tombstoneAppSwitch_checked_triggersRefreshDatabase",
+        "tombstoneAppSwitch_toggle_thenActivityDestroyed_doesNotCrash",
+        "persistentNotificationRl_click_togglesSwitch",
+        "persistentNotificationSwitch_checkedTrue_setsPersistentNotification",
+        "pcapRl_click_createsAlertDialog",
+        "pcapDialog_dismiss_closesWithoutCrash",
+        "themeRl_click_createsAlertDialog",
+        "notificationRl_click_createsAlertDialog",
+        "goLogRl_click_createsAlertDialog",
+        "taskerRl_click_createsAlertDialog",
+        "showAppTriggerPackageDialog_isDisplayed",
+        "showAppTriggerPackageDialog_negativeButton_doesNotTriggerCallback",
+        "importExportRl_whenActivityIsFinishing_doesNotShowBottomSheet",
+        "invokeImportExport_whenActivityIsDestroyed_doesNotShowBottomSheet",
+        "onResume_api28_notificationSectionIsHidden",
+        "onResume_api28_bubbleSectionIsHidden",
+        "fdroidFlavour_firebaseSectionIsGone",
+        "displayPcapUi_noneMode_showsOptionOneText",
+        "displayPcapUi_logcatMode_showsOptionTwoText",
+        "displayPcapUi_externalFileMode_showsOptionThreeText",
+        "displayNotificationActionUi_pauseStop_showsDesc1",
+        "displayNotificationActionUi_dnsFirewall_showsDesc2",
+        "displayNotificationActionUi_none_showsDesc3",
+        "displayAppThemeUi_systemDefault_showsTheme1Text",
+        "displayAppThemeUi_light_showsTheme2Text",
+        "displayAppThemeUi_dark_showsTheme3Text",
+        "pcapRl_afterClick_isDisabledImmediately",
+        "themeRl_afterClick_isDisabledImmediately",
+        "notificationRl_afterClick_isDisabledImmediately",
+        "goLogRl_afterClick_isDisabledImmediately",
+        "pcapDialog_activityDestroyedWhileShowing_doesNotCrash",
+        "themeDialog_activityDestroyedWhileShowing_doesNotCrash",
+        "notificationDialog_activityDestroyedWhileShowing_doesNotCrash",
+        "setFirebaseUserId_withValidToken_doesNotThrow",
+        "setFirebaseUserId_withEmptyToken_doesNotThrow",
+        "activityRecreation_preservesThemeChangedFlag",
+        "pcapRl_rapidDoubleClick_onlyOneDialogCreated",
+        "enableLogsSwitch_initialState_trueWhenLogsEnabled",
+        "autoStartSwitch_initialState_trueWhenPrefAutoStartBootUpTrue",
+        "dvIpInfoSwitch_initialState_trueWhenDownloadIpInfoTrue",
+        "tombstoneSwitch_initialState_trueWhenTombstoneAppsTrue",
+        "tombstoneSwitch_toggleAfterPause_doesNotCrash",
+        "biometricUnavailable_hidesNativeRow_withoutRequestingAuthentication",
+        "biometricChoice_immediate_writesOnce_andOnlyRecordsAliasChange"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.NetworkLogsActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/NetworkLogsActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "8afd8ce518bdbf9943a6b1552222c1fb6d5a8ddb6f6e0b1e54419ec33afd1801",
+      "declared_test_methods": 4,
+      "test_method_names": [
+        "testNetworkLogsDisplay",
+        "actualNetworkFragmentTransitionsToEmptyAfterMemoryOnlyPagingEmission",
+        "nativeTabsMountActualDnsFragmentWithoutTouchingAnyService",
+        "actualHostRestoresEditedQueryRatherThanReapplyingIntentText"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.ProxySettingsActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/ProxySettingsActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "ecc584559015acc671c94e5e72b446acde1c4bc68656156bcc5d977c1da905dc",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "testProxySettingsDisplay"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.ThemeChangeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/ThemeChangeTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "79c5215fd64ab2bb1ad56c07ee07c15f1adfa7998d4ade128b5c378bd983372d",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "testThemeChangeRecreation"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.activity.WelcomeActivityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "eabf2b329388619e3263176b3e6396a65bd722ec0f074be6d93bb0c31681c3fa",
+      "declared_test_methods": 20,
+      "test_method_names": [
+        "testPersistentState_MockBehavior",
+        "testWelcomeActivity_CanBeCreated",
+        "testWelcomeActivity_KoinIntegration",
+        "testLaunchHomeScreen",
+        "testIsDarkThemeOn",
+        "testWelcomeActivity_MockInteractions",
+        "testLayoutsArray",
+        "testPersistentStateInjection",
+        "testBackPressHandling",
+        "testPageChangeListener_LastPageBehavior",
+        "testViewPager2_ButtonVisibilityOnLastPage",
+        "testViewPager2_ButtonVisibilityOnFirstPage",
+        "testSkipButton_LaunchesHomeScreen",
+        "testNextButton_AdvancesPage",
+        "testNextButton_OnLastPage_LaunchesHomeScreen",
+        "testWelcomePagerAdapter_ItemCount",
+        "actualActivitySaveRestoreRetainsPageWithoutCompleting",
+        "allStoredThemesRecreateTheActualHostAndRetainOnboardingPage",
+        "testWelcomeOnboardingFlow",
+        "testSkipButton"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.about.AboutContentComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/about/AboutContentComposeTest.kt",
+      "sha256": "d5eebe93fba3b7c42a55d2528a56d1b3e20c6757853b3a6c939c6ab3cdc6d497",
+      "declared_test_methods": 16,
+      "test_method_names": [
+        "stackTabsSwapLargeLazyContentAndRetappingResetsToTheFirstLine",
+        "metricAndProcTabsKeepTextAndInitialSelection",
+        "statsRowTapHighlightsAndCopyUsesOnlyRecordedSelection",
+        "databaseTableClicksOnlyInvokeFakeCallbacksAndProgressTextRecomposes",
+        "fileTrailingActionsNeverToggleSelectionOrPerformActualFileWork",
+        "disabledSendAndProgressDoNotDispatchUntilEnabled",
+        "autoDnsRowsAreCheckedLockedAndCannotInvokeSelection",
+        "manualDnsRowDispatchesExactlyOneSelectionCallback",
+        "modeButtonsUseRecordingListenerWithoutPersistence",
+        "ordinaryDiagnosticSelectionAndTabsAreNotSavedAcrossRecreation",
+        "diagnosticButtonsDispatchExactIdentifiersAndLabels",
+        "tokenTapAndDoubleTapUseSeparateFakeActions",
+        "tokenDoubleTapWinsBeforeWordSelectionButLongPressStillSelects",
+        "contributorsCloseControlDoesNotDispatchDialogButtons",
+        "descriptiveCopyRendersUnderWhiteBlackPlusAndFrostThemes",
+        "aboutShowsDebugAndSponsorVisibilityFromObservableState"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "about"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.about.AboutPresentationTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/about/AboutPresentationTest.kt",
+      "sha256": "b5974d39c5c88add07daf2081bf6b7b60c7c2d9d7d4471ac1f9b2d11baada60b",
+      "declared_test_methods": 13,
+      "test_method_names": [
+        "initialAboutVisibilityMatchesXmlAndDoesNotProbeServices",
+        "titleAndTokenDispatchOnlyTheirAssignedCallbacks",
+        "allAboutActionsRemainIndependentlyAddressable",
+        "stackTabsStartAtJvmWhileProcTabsStartAtMetricsAndRetapResetsScrollEpoch",
+        "statsCopyIncludesAllByDefaultAndSelectedRowsInSourceOrder",
+        "databaseDumpTextRemainsAppendableWithoutOpeningAnyDatabase",
+        "dialogActionPrecedesDismissAndCannotBeRepeated",
+        "refreshCanExplicitlyDismissBeforeItsCallbackStartsReplacement",
+        "cancelDoesNotInvokeAnyPositiveAction",
+        "fileRowsContainOnlyDisplayMetadataAndExplicitRecordingCallbacks",
+        "fileChecksRestoreChangedOnlyInLayoutOrderWithoutRestoringFilePayloads",
+        "dnsToggleDispatchesOldUncheckedBeforeNewCheckedAndIgnoresRetap",
+        "dnsModeRestoreRoutesThroughSameChangedOnlyListener"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "about"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.appdetails.AppDetailsReconstructionTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsReconstructionTest.kt",
+      "sha256": "0c5ac305e41434fe619e66f9f1d12c0261b61a6a96b78d945f9e710153e49c2d",
+      "declared_test_methods": 9,
+      "test_method_names": [
+        "selfWarningGatesAllRulesAndProceedDispatchesOnce",
+        "sixFirewallActionsRemainDistinctAndCompositionIsSilent",
+        "unavailablePackageDisablesExcludeAction",
+        "notesTypingDoesNotSaveAndCancelOnlyCallsCancel",
+        "notesSaveOnlyDispatchesAtButton",
+        "middlePasteLimitPreservesSuffixAndSurrogatePairs",
+        "searchEqualityAndSubmissionMatchSearchViewCallbacks",
+        "restorationDispatchesOnlyAfterListenerInstallationAndResumeClear",
+        "topFiveDonutKeepsLegacyNormalization"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "appdetails"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.blocklists.BlocklistSelectionPresenterTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistSelectionPresenterTest.kt",
+      "sha256": "df5028fd6008414e490572657b9494e1bffa4942c1e9966b46b6bbd72aa265ae",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "localPackDeduplicatesWritesThenReadsThenPublishesExactlyOnce",
+        "remotePackDeselectionUsesZeroAndRemoteStore",
+        "detachedHostStillPersistsAndReadsWithoutPublishing",
+        "packCheckRequiresEveryTagWithoutWriting",
+        "localAdvancedMutatesOriginalEntityBeforeWrite",
+        "remoteAdvancedRetainsDetachedCallbackGuard"
+      ],
+      "runner": "plain_junit",
+      "review_group": "blocklists"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.blocklists.BlocklistsComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistsComposeTest.kt",
+      "sha256": "22ce2034655c66fc0c43081d10cb702e883adbed048a38abbf6f9a5ee4880334",
+      "declared_test_methods": 11,
+      "test_method_names": [
+        "rowAndCheckboxDispatchOnceEachAndSelectedFillMatchesTheme",
+        "entryLinkIsIndependentOfSelection",
+        "persistedTagEmissionRefreshesOptimisticPackCheck",
+        "tabsShowSearchOnlyInAdvanced",
+        "queryChangeAndSubmissionAreSeparateAndBlankSubmitIgnored",
+        "filterReselectDoesNotDispatchTwice",
+        "inFlightDownloadDisablesStartButNotCancel",
+        "threeWayPromptAndBackRemainDistinct",
+        "localDeleteCannotDismissByBack",
+        "lockdownBackDoesNotRunNegativeDownloadAction",
+        "subgroupMutationAndExplicitApplyClearAreIndependent"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "blocklists"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.blocklists.RethinkEndpointPresenterTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/blocklists/RethinkEndpointPresenterTest.kt",
+      "sha256": "50560781f9e011e231efaea366b02a5aa2fce406d7134be3f85d48e3f569570d",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "selectionMutatesBeforeExactManagerCall",
+        "reselectIsStillAnActionEachTime",
+        "constructionAndMetadataOpenHaveNoServiceReads",
+        "editabilityUsesNameRatherThanCustomFlag",
+        "copyRetainsUrlLabelAndToastOrder",
+        "editWithoutTunnelOnlyShowsGuardToast",
+        "editWithFakeTunnelKeepsDestinationAndExactExtras"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "blocklists"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.chrome.HomeChromeDialogPolicyTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/chrome/HomeChromeDialogPolicyTest.kt",
+      "sha256": "08f349f781d431a6ed8b141a7efdf46dae212356723d61b7fc80e23c303bff97",
+      "declared_test_methods": 4,
+      "test_method_names": [
+        "modalDismissDoesNothingUntilExplicitAction",
+        "positiveRunsBeforeDismissAndOnlyOnce",
+        "informationDismissDoesNotPerformButtonAction",
+        "stackedDialogsKeepIndependentIdentity"
+      ],
+      "runner": "plain_junit",
+      "review_group": "chrome"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.chrome.RootChromeContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/chrome/RootChromeContentTest.kt",
+      "sha256": "8edffab80cf2ce0a987d797d5e0d4a56b0d55542f8996e424f3e2ad8d1f644b6",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "fiveTabsRetainOrderIdsSelectedStateAndWindowAnchors",
+        "updateModalRendersExplicitChoicesAndPostponesBeforeDismissal",
+        "restoreIsSilentUntilExplicitPositiveAndEmitsOrderedCallbacksOnce",
+        "informationHasOnlyOk",
+        "snackbarRecompositionIsSilentAndActionIsDistinctFromDismiss",
+        "actionlessSnackbarHasNoActionAndClampsToThreeMessageLines",
+        "largeRtlSnackbarKeepsActionAvailableWithoutWritesDuringComposition"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "chrome"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.chrome.RootNavigationTypographyTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/chrome/RootNavigationTypographyTest.kt",
+      "sha256": "5b4737c1642e017f581a6be2cf65063c7d4c18816ee6dac205cdbcd2a487e02d",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "labelsMatchPinnedWidgetFaceSizeSpacingAndPaddingAcrossThemesAndFontScales"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "chrome"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.chrome.SnackbarContractTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/chrome/SnackbarContractTest.kt",
+      "sha256": "894bfec521be7a648a23d1fb47f3c038cd7b91523234e3682c46ebc73e28c169",
+      "declared_test_methods": 10,
+      "test_method_names": [
+        "durationsRetainMaterialAndCustomMilliseconds",
+        "nativeNavIsFoundWithoutBottomNavigationCastAndHiddenNavIsIgnored",
+        "throttleIsGlobalAcrossViewsAndSurvivesDismissal",
+        "oldDismissalCannotClearNewIdentity",
+        "actionClearsCurrentBeforeCallbackAndCannotEraseCallbackReplacement",
+        "manualDismissIsIdempotentAndNeverInvokesAction",
+        "helperAndUpdateAppearancesShareSingleActiveLatestPendingQueue",
+        "nativeHomeAnchorKeepsSnackbarAboveBarAndInsideCappedContent",
+        "themedInsetsKeepTheOriginalAdditiveEightyPixelLift",
+        "preQTouchExplorationKeepsActionableMessagesIndefinite"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "chrome"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dns.BlockFreeChipGroupTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dns/BlockFreeChipGroupTest.kt",
+      "sha256": "873afc784cf951d33847a128790c67494cb81a7d27335701aca644e907c10c88",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "sevenStableIdsHaveExactlyTheXmlOrder",
+        "initializationDoesNotDispatchAndSelectionRemainsRequired",
+        "eachDistinctClickDispatchesExactlyOneSingleSelection",
+        "recreationRestorationDispatchesTheInstalledCallbackOnce",
+        "restoredAllDoesNotAddAnInitializationCallback",
+        "rowSubmissionAndKeyChangeDoNotDispatchSelectionCallbacks"
+      ],
+      "runner": "plain_junit",
+      "review_group": "dns"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dns.DnsEndpointLifecycleComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointLifecycleComposeTest.kt",
+      "sha256": "54cdbc8968dc95e14059667c1952d491b22d34b08265eb0b309ffd2550564549",
+      "declared_test_methods": 17,
+      "test_method_names": [
+        "inactivePollTickTerminatesUntilAnIncomingRowRebinds",
+        "stopAndStartBetweenTicksDoesNotFetchTheFlagOrAddAnEarlyPoll",
+        "oneShotRowsDoNotWaitForStartOrReplayOnResume",
+        "staticSelectedLabelIsRenderedBeforeAnyIoDispatchWhileStopped",
+        "staticBranchCannotTurnIntoAStatusReadAfterTheBindGuardChanges",
+        "pollingBranchKeepsReadingStatusWithoutRecheckingTheBindGuard",
+        "unselectedBindDoesNotEvaluateTheGuardLabelOrStatus",
+        "pollingRowBoundWhileStoppedFetchesOnlyItsFlagAndDoesNotStartLater",
+        "flagInFlightSurvivesStopButItsStoppedResultIsNotPublishedOrReplayed",
+        "pendingDescriptionDoesNotDelayTheInactiveTickOrRestartThePoll",
+        "selectionAndAddressChangesBindAgainWithRetainedCallbacks",
+        "unrelatedRecompositionDoesNotRebindAnUnchangedRow",
+        "parentRedrawDoesNotManufactureNewCallbacksFromTheSamePagedEntity",
+        "equalIdPagedReplacementStillBindsChangedDataAndCallbacks",
+        "replacingTheFactoryRebindsTheSameSourceEntityWithItsNewCallbacks",
+        "replacingOrRemovingARowCancelsItsInFlightWork",
+        "destroyingTheOwnerCancelsPendingFlagWorkWithoutACompositionChange"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "dns"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dns.DnsProtocolContentComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dns/DnsProtocolContentComposeTest.kt",
+      "sha256": "f5b30445328588f592ec2db78d9c51614a4e8972ac6abe1ccdfb24dcc296ab43",
+      "declared_test_methods": 10,
+      "test_method_names": [
+        "trailingInfoDoesNotSelectTheRow",
+        "dohFieldsReachTheCallbackWithoutExtraTrimmingOrValidation",
+        "dotKeepsTheBlankInitialUrlAndOptionalIpField",
+        "odohDoesNotRequireOrTransformTheOptionalProxy",
+        "ordinaryEditorDismissesOnRecreationInsteadOfSavingDraftPayload",
+        "proxyLockdownDisablesForwarderToggleAndKeepsInputUnnormalized",
+        "blockFreeChipsAndRowsDispatchOnlyTheirRecordingCallbacks",
+        "dnsCryptModeChangeUsesTheMatchingIndexWithoutDroppingTheStamp",
+        "relayRowIsIndependentlyToggleable",
+        "smartSelectionRequiresBothTheStoredSelectionAndActiveSmartMode"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "dns"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dnssettings.DnsControlTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dnssettings/DnsControlTest.kt",
+      "sha256": "d76e3f3a123fd118f07c033b54971c86804739ad7c3542324ea8e40a025b382c",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "initializationBeforeListenersHasNoWrites",
+        "sameValueIsSuppressedAndChangesDispatchOnce",
+        "sameWidgetReentrantMutationChangesCheckWithoutRedispatch",
+        "crossWidgetCallbacksRemainNestedInOriginalOrder",
+        "disabledControlStillAcceptsProgrammaticWrites",
+        "callbackFailureReleasesReentrancyGuard",
+        "stableRestoreOrderMatchesXmlHierarchy"
+      ],
+      "runner": "plain_junit",
+      "review_group": "dnssettings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dnssettings.DnsProtocolGridComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dnssettings/DnsProtocolGridComposeTest.kt",
+      "sha256": "ecd61e966a7d3d87e8a5cbb099b6551397f091ea9621de18505c44491844e2f8",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "allSixProtocolDestinationsRemainReachable"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "dnssettings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dnssettings.DnsSettingsChoicesComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsChoicesComposeTest.kt",
+      "sha256": "aa57b10058965c9b72f971966e9a9ad8dcf3096c85fabfee0ec2c8a31331d3c4",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "allFourChoicesAndSystemInformationAreExposed"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "dnssettings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.dnssettings.DnsSettingsComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsComposeTest.kt",
+      "sha256": "03093cf4aab6b6dec60dfc30f1545090735a24b926d598980b1104df601eb780",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "renderingDoesNotWriteAndTenSwitchesDispatchExactlyOnce",
+        "proxyRowAndDirectSwitchKeepSeparateLogCardinality",
+        "temporarilyDisabledSwitchDoesNotDisableEnclosingRow",
+        "allFourRadioRoutesRemainIndependentActionsAndReselects",
+        "restoreBackAndCancelDoNotConfirm",
+        "systemDnsCopyDoesNotSelectAndRefreshCanBeDisabled",
+        "rtlLargeFontAndHiddenLocalFlavorRemainReachable"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "dnssettings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.firewallapps.FirewallAppsReconstructionTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsReconstructionTest.kt",
+      "sha256": "14e020aed0efb41d28ff8f3158974a5097cac27f0d1940a2ef7f55472bc047d8",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "filterDraftChangesWaitForApply",
+        "unchangedFilterAndSortReselectionIsSilent",
+        "firewallChipReselectionDoesNotRefilter",
+        "rowWifiAndMobileHaveSeparateDisabledStates",
+        "ownUidPresentationOmitsBothNetworkControls",
+        "clearRemainsItsOwnExplicitCallback"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "firewallapps"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.home.AppActivityAdapterStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/home/AppActivityAdapterStateTest.kt",
+      "sha256": "272ab2899b723fc66c702aa58d68d7743d693f9068a42cb33cb32d6e79af6918",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "submitIsSilentAndExpansionRequestsOnceUntilCollapsed",
+        "lateChildrenCacheWhileCollapsedAndNextExpansionDoesNotReload",
+        "newWindowClearsCachedChildrenAndRequestsFreshData",
+        "childCapAndReplacementNeverDuplicateOldRows",
+        "absentSummaryCannotRequestAnExpansion",
+        "cachedEmptyGroupDoesNotReloadOnAnotherExpansion"
+      ],
+      "runner": "plain_junit",
+      "review_group": "home"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.home.HomeContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomeContentTest.kt",
+      "sha256": "f684b0e6297a934bd1573bb6a787c58cb4ad72f62d159c61b90e48761dc81220",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "disabledStartDoesNothingAndEnabledTapDispatchesExactlyOnce",
+        "cardCallbacksStayIndependentAndRecompositionIsSilent",
+        "logsToggleOnlyDispatchesChangedSelection",
+        "gridSemanticClickUsesLatestWindowRatherThanStaleTouchCoordinates",
+        "wideRtlLargeTextKeepsPauseAndModeActionsAccessible",
+        "intervalAppExpansionUsesOnlySuppliedRecordsAndCallbacks"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "home"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.home.HomeDialogTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomeDialogTest.kt",
+      "sha256": "2c07dce9867e1487310bdf59607a8103c38ede07e93a5dc1549253b2fb122935",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "repeatedPositiveThenNegativeDispatchesOnlyTheFirstTerminalAction",
+        "noncancelableDialogIgnoresOutsideAndBackButRetainsNegativeAction",
+        "cancellationIsTerminalOnlyForThisDialog",
+        "actionRunsBeforeDismissAndReplacementSurvives",
+        "failedActionStillDismissesAndCannotBeRepeated",
+        "unrelatedButtonCannotInvokeAnAction"
+      ],
+      "runner": "plain_junit",
+      "review_group": "home"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.home.HomePresentationTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomePresentationTest.kt",
+      "sha256": "042fdba7eb62ff7eed02dbf517a88667a00649589994b4a35a0ca6c18bd069d7",
+      "declared_test_methods": 10,
+      "test_method_names": [
+        "requiredChipSelectionDispatchesOnceAndDoesNotDeselect",
+        "restoredHistogramChipIsSelectedBeforeListenerWithoutReload",
+        "reentrantCheckedAssignmentUpdatesStateWithoutRecursiveBroadcast",
+        "disabledNodeCannotDispatchAndClickDoesNotToggle",
+        "freshPresentationResetsPerViewWarningsAndDialogs",
+        "visibilityOnlyChangesPresentation",
+        "histogramSubmitClearsSelectionBeforeNewTap",
+        "pagerDispatchIsBoundedAndCallbackCanBeRemoved",
+        "rangeSelectionEmitsOldFalseThenNewTrueAndIgnoresSameSelection",
+        "hiddenTourOwnerIsNotAnAnchorAndStaleDisposalDoesNotRemoveReplacement"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "home"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.home.HomeTourBoundsTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomeTourBoundsTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "binding_removal_delta",
+      "sha256": "26df0bf0290e72a73b0f97a654ffc581ab13baf186fe10f3048ca613332db556",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "reportsInitialAndChangedBoundsButSkipsUnchangedGeometry",
+        "staleOwnerCannotClearNewBoundsAndRemovalReportsAbsence"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.hosts.ActivityFragmentContainerTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/hosts/ActivityFragmentContainerTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "binding_removal_delta",
+      "sha256": "522817bd39124e786a6491f5325e6e989d2719f7d20a5a7c762104a782fdb25d",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "sameResourceIdAndPrimaryFragmentSurviveRecomposition",
+        "activityRecreationRestoresFragmentStateAndArguments",
+        "savedStateFromPreComposeStableIdHostReconnectsWithoutReplacement"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.networksettings.NetworkSettingsComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksettings/NetworkSettingsComposeTest.kt",
+      "sha256": "bc5cfe5ef476bd7a8cdbb13a910b8d6eec56658d6bf7387e2e5d13fb48e02668",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "rowClickAndSwitchClickEachDispatchOneOriginalTransition",
+        "disabledProxyRowsAndControlsDoNotInvokeCallbacks",
+        "httpEditorHidesSocksOnlyFieldsAndKeepsHostEditable",
+        "hiddenFeatureRowsDoNotLeaveInteractiveChildren",
+        "restoredDescriptionsCanChangeWithoutRecreatingControllerListeners",
+        "rtlLargeTextKeepsLastTunnelRouteReachable",
+        "nativeLockdownReviewIncludesSyntheticConflictAndConditionalControls",
+        "selectorInterceptionShowsOneAttemptAndDoesNotOpenMenu"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "networksettings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.networksettings.NetworkSettingsStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksettings/NetworkSettingsStateTest.kt",
+      "sha256": "e28ca8283e9335451c8ad52cf648b72772ddafe3c606d943ff7dbc2f0a6419a9",
+      "declared_test_methods": 17,
+      "test_method_names": [
+        "miscellaneousRestoreReplaysChecksInOriginalHierarchyOrder",
+        "restoredNestedCorrectionSuppressesSelfRecursion",
+        "originalRowAndCompoundButtonListenersRemainIndependent",
+        "programmaticToggleInvokesChangeBeforeOriginalClickListener",
+        "tunnelSliderProgrammaticRestorationRetainsCallbacks",
+        "sliderGestureOrderingAndChangedValueSemanticsMatchSeekBar",
+        "keyboardAndAccessibilityProgressDoNotInventTouchCallbacks",
+        "tappingUnchangedSliderStillStartsAndStopsGesture",
+        "proxyChecksRestoreSocksBeforeHttpWithoutPersistingRefreshAnimation",
+        "refreshIsIdentitySpecificAndDuplicateStartsDoNotDuplicateAnimation",
+        "spinnerPreservesDefaultExplicitAndBlockedSelections",
+        "dialogEditorDefaultsAreNotPersistedWithActivityState",
+        "originalStyledSwitchOverlayAndHiddenDefaultsAreRetained",
+        "originalSettingIdsAppearOnlyOnceInNativeHierarchy",
+        "legacyDimensionsAndNativePolicyEditorKindsRemainDistinct",
+        "clickableLinkAndStyleSpansSurviveNativeTextConversion",
+        "numericProxyPortFiltersPastedNonDigitsLikeOriginalInputType"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "networksettings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.networksheets.NetworkSheetContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContentTest.kt",
+      "sha256": "2a6b76da674bce79bb01e639b044687fe9ec7a88f0a7a47ac8abc2978a706c36",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "orbotRowAndRadioKeepDistinctCallbacksAndHiddenBoth",
+        "loadingAndPreQVisibilityPreventInputWithoutHidingStatus",
+        "backupAndRestoreEmitOnlyExplicitSeparateCallbacks",
+        "warningChoicesRemainDistinctUnderRtlLargeTextAndFrost",
+        "countryRowAndRadioDispatchOnceEachAndRenderSelectionFromSource",
+        "informationUsesXmlTypographyAndCloseIsOnlyCallback",
+        "infoLongTextCanScrollWithoutTruncationUnderRtlLargeText",
+        "infoUsesBaselineLineStepAndFirstStrongDirectionAtNonlinearFontScale"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "networksheets"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.networksheets.NetworkSheetStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetStateTest.kt",
+      "sha256": "b1e67587b67ea29f667ce6fce843fd298162aa580fafb52244156bb1fec58ba0",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "radioChecksBeforeClickAndDoesNotToggleOffOrSetSelected",
+        "rowClickDoesNotPretoggleButRadioClickDoes",
+        "loadingClickGateAndPermanentlyHiddenBothRemainDistinct",
+        "restoresIndependentChecksInXmlOrderWithoutStartingAnimation",
+        "backupRestoresOnlySelectableVersionAndNeverCallsActions",
+        "countrySelectionIsReadAtRebindAndEveryExplicitClickDispatchesOnce"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "networksheets"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.networksheets.OrbotInfoTypographyTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoTypographyTest.kt",
+      "sha256": "f7e4320912dd731d54592c4978a9c77723888907ccf26a485dfb24438ce4cbb6",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "actualXmlTypographyMatchesAtNormalAndLargeScalesAcrossThemes",
+        "infoTextPreservesUnderlineItalicAndParagraphTextWithoutMakingLinksActions"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "networksheets"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.purchase.PurchaseContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/purchase/PurchaseContentTest.kt",
+      "sha256": "13928579a8dd5d4f8978bf30bfa7c3ac0174695be5dc5a1d5cd5df173c27e244",
+      "declared_test_methods": 10,
+      "test_method_names": [
+        "processingRecompositionIsSilentAndTapsDispatchOnceEach",
+        "hiddenProcessingActionsCannotRun",
+        "refundFlightDisablesActionsAndRetryDispatchesOnce",
+        "entitlementResetIsExplicitAndDisabledWhileRunning",
+        "transientConfirmationCancelIsSilentAndConfirmRunsOnce",
+        "planSelectionNeverPurchases",
+        "checkoutRendererCannotGenerateKeysAndRequiresExplicitPaymentTap",
+        "largeRtlErrorStillExposesSupport",
+        "pagingOnlyUsesSuppliedRecordsAndPreservesRecordKeys",
+        "historyRetryIsExplicitAndCannotReadARepository"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "purchase"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rpn.RpnControlStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rpn/RpnControlStateTest.kt",
+      "sha256": "f5390b9cf2bc32dd937123ee869a62ad76690b49ee895a6cabe22046767eabae",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "initializationBeforeListenerIsSilent",
+        "quietListenerRemovalDoesNotWrite",
+        "reentrantAssignmentDoesNotBroadcastTwice",
+        "rowDispatchTogglesExactlyOnce",
+        "disabledAndNonClickableControlsIgnoreTaps",
+        "clickDoesNotImplicitlyToggleCheckedState",
+        "requiredChoiceDoesNotDeselectSameOption",
+        "configurationCallbackWritesOnlyForNewTrueSelection"
+      ],
+      "runner": "plain_junit",
+      "review_group": "rpn"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rpnconfig.RpnConfigurationComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigurationComposeTest.kt",
+      "sha256": "85e2f430af874c403bfced822db4342d5da2235155e620ee8ce94363dc1cbc37",
+      "declared_test_methods": 16,
+      "test_method_names": [
+        "recompositionDoesNotDispatch",
+        "catchAllRowAndSwitchDispatchExactlyOnceEach",
+        "hopRowIsInertWhileItsSwitchWorks",
+        "disabledRefreshAndHiddenHopHaveNoActiveActions",
+        "headerCanCollapseAndExpandByDirectDragAtTop",
+        "headerDragCancellationDoesNotSnapOrDispatchRefresh",
+        "headerChildTapSurvivesSubSlopMovement",
+        "fullyCollapsedHeroRemovesInvisibleTouchTargets",
+        "bypassRowAndSwitchDoNotDoubleDispatch",
+        "bulkTogglePrecedesConfirmationAndProgrammaticSyncDoesNotClick",
+        "searchClearKeepsFilterAndDoesNotSubmit",
+        "whitespaceSearchImeDoesNotSubmit",
+        "ssidRadioOptionsRemainEnabledOnEmptyInput",
+        "rtlLargeFontSsidSaveAndCancelDispatchSeparately",
+        "winActionRemainsRepeatable",
+        "detailRestoreUsesSameValueSuppression"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rpnconfig"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rpnconfig.RpnConfigurationDialogTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigurationDialogTest.kt",
+      "sha256": "34e86b9d068083820987f1e1d803a4b5562c4e5503c0c5f49606062a1ec795c7",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "ssidSaveCallsCallbackThenDismissesOnceWithUnchangedOrder",
+        "ssidCancelNeverSaves",
+        "nullNegativeCallbackDismissesWithoutPositiveDispatch"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rpnconfig"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rpnconfig.RpnSsidStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidStateTest.kt",
+      "sha256": "378dfd1f89c0bc65de40bf97d9578efd78588544affb708b50e14f523fc90d31",
+      "declared_test_methods": 10,
+      "test_method_names": [
+        "defaultsAreConnectAndExact",
+        "emptyInputDoesNotChangeDraftOrSelections",
+        "duplicateNamesIgnoreCaseEvenWithDifferentTypes",
+        "exactDuplicateDoesNotClearEditorOrScroll",
+        "allFourCombinationsKeepRadioSelectionsAfterAdd",
+        "trimAndAppendDoNotAddWireGuardLengthLimit",
+        "repeatingAddOnClearedTextNeverInsertsAgain",
+        "reusingAnIndexStillRequestsScrolling",
+        "restoresEditableFieldsButDoesNotNewlyPersistUnsavedItems",
+        "storageRoundTripRetainsActualDataFormatAndListOrder"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rpnconfig"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rules.CustomLanIpContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContentTest.kt",
+      "sha256": "1051b73ec8ac751e41f9f0f7d18c193627d234b691d996c6eb075e5475cde4f4",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "allSixPairsAndBothActionsArePresentWithFakeCallbacks",
+        "disabledAutoFieldsDoNotEditAndManualCallbackEnablesThem"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rules"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rules.CustomLanIpStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpStateTest.kt",
+      "sha256": "640a1dda72ec267919e2f8ccb3ac9bc850daaf127df859d2c3b52e05037f3a69",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "openingResetsChangedFlagBeforeReadingModeAndDoesNotSaveMode",
+        "savingAutoPreservesSavedAddressesAndSignalsOnlyModeChange",
+        "manualSaveTrimsAndPersistsSixPairsInOriginalOrder",
+        "invalidOrIncompletePairKeepsDraftAndDoesNotWrite",
+        "switchingBackToManualReloadsSavedValuesAndBlankPairsRemainAllowed",
+        "validatorsKeepPrivateUlaAndInclusivePrefixBounds"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rules"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rules.CustomRuleActionsTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rules/CustomRuleActionsTest.kt",
+      "sha256": "a2d19eb18bc198a0651862e1f2c1d21b6717aa1d9ad928069d0b44a880e615f4",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "invalidAndNonCidrIpsNeverWriteAndKeepDraftOpen",
+        "globalAndAppAllowKeepDifferentStatusesAndParserPort",
+        "ipEditUsesOriginalEntityUidAndRetainsText",
+        "invalidDomainsAndWildcardsHaveSeparateErrorsWithoutWrites",
+        "onlyDomainEditTrimsBeforeExtractionAndBothDialogsStayOpen",
+        "deleteSelectionOverridesUidOrAllAndClearOrderMatchesBaseline",
+        "importOnlyWritesAfterConfirmAndDuplicateClickIsIgnored",
+        "releaseImportEntryPointsCannotReadOrWrite"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rules"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rules.RulesContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rules/RulesContentTest.kt",
+      "sha256": "ae90ccf3bb1f7a9f5c6c2d10b5dbfbca9dd976ef3bf463c93bfc703dbca488fb",
+      "declared_test_methods": 5,
+      "test_method_names": [
+        "invalidIpCallbackKeepsDraftOpenAndTypingClearsError",
+        "wildcardPrefixSelectsTypeButOrdinaryEditorDoesNotSurviveRecreation",
+        "cancelNeverDispatchesDelete",
+        "largeRtlEditorExposesAllActions",
+        "globalIpDetailsExposeBypassAndHideAppTrust"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rules"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.rules.RulesPageStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/rules/RulesPageStateTest.kt",
+      "sha256": "178bb90a401701a2d63eb99c506de8b9e3f41762e46e126d3b03a395c80d4887",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "headersFollowPagingUidTransitionsWithoutClientSorting",
+        "selectionStaysActiveWhenLastItemIsUnchecked",
+        "rowKeysIncludeUidPortProtocolButNotMutableStatus",
+        "allowMappingRetainsGlobalBypassAndPerAppTrust",
+        "resumeResetsBeforeFocusAndSuppressesSubsequentUnchangedEmptyCallbacks",
+        "firstEmptyResumeDispatchesLikeNewSearchView",
+        "queryChangesAreImmediateAndOnlySubmitRejectsAsciiBlank",
+        "saverRetainsOnlyQueryAndDropsAllOrdinaryDialogSelectionState"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "rules"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.settings.SettingsStateParityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/settings/SettingsStateParityTest.kt",
+      "sha256": "0bfc5a1e66bd0a16c28f1dc66b8b4c62e916ee0601a8ab7af6da45b3ab8d9863",
+      "declared_test_methods": 8,
+      "test_method_names": [
+        "advancedRestoresChecksAfterListenerRegistrationWithoutPersistingTransientLabels",
+        "unchangedRestoredChecksDoNotDispatch",
+        "sliderProgrammaticRestoreIsSilentAndUserChangesAreBounded",
+        "homeRadiosRestoreIndependentCheckedValuesInXmlOrder",
+        "homeNestedUnchecksPreserveCompoundButtonBroadcasting",
+        "blockFreeRestoreDoesNotPersistOrInvokeRows",
+        "universalBackgroundSwitchUserClickTogglesBeforeCallback",
+        "antiCensorshipIndependentRadiosPreserveNestedCallbacks"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "settings"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.settings.SingleSettingsFragmentHostTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/settings/SingleSettingsFragmentHostTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "binding_removal_delta",
+      "sha256": "735ae394b53d8915a03118fb25776cafcb2dc4bdf24a3a01858bea9fcd244f45",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "legacyPagerBundleAdoptsTheSameRestoredPageWithoutDuplicateLifecycleCallbacks",
+        "migratedPageRetainsStateAndSingleOwnershipOnTheNextRecreation"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.statistics.BlocklistAppsContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/BlocklistAppsContentTest.kt",
+      "sha256": "857d0d3aa24108aeecbe696b579063983a9244a647dfee654ddea610d7a044b8",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "expandedDomainsCacheWhileCollapsedAndSubmissionResetsThem",
+        "lateFetchFromPreviousTagSubmissionCannotPopulateTheReplacementGroup"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "statistics"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.statistics.PagedStatisticsTitleSelectionTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/PagedStatisticsTitleSelectionTest.kt",
+      "sha256": "b07c417c207cfacdc5abc51c85db571ccd4d274b179cb781cda80b4418ae23cd",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "domainHeadingSupportsNativeSelectionAndCopy",
+        "ipHeadingSupportsNativeSelectionAndCopy",
+        "asnHeadingSupportsNativeSelectionAndCopy",
+        "blocklistHeadingCopiesWithoutSubtitleChipsOrRows",
+        "copyingUpdatedHeadingAfterEmptyTransitionUsesCurrentText",
+        "sharedScreenTitleRemainsNonSelectableUnlessCallerOptsIn"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "statistics"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.statistics.StatisticsContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/StatisticsContentTest.kt",
+      "sha256": "1ce7fca9cf8fa6e1b8a9dadf87adac139cbed7fe17ee3e9c407428fca5f93cc4",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "summaryModesDispatchOnlyAChangeAndTimeChipsKeepAllThreeRoutes",
+        "summaryDetailAndCloseCancelConfirmHaveSeparateExactCallbacks",
+        "summaryFilterPreservesIndependentSelectionsAndHiddenProviderOnSelectAll",
+        "selectionRequiredSurvivesClickAndRtlLargeText",
+        "rpnLoadingContentEmptyErrorAndLogActionRemainSeparate",
+        "pagedScreenRetainsHeaderAndFakeRowOrderAcrossEmptyTransition"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "statistics"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.statistics.StatisticsMaterialReferenceTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/StatisticsMaterialReferenceTest.kt",
+      "sha256": "3f276bc6f15d4296562502aae9ef72d08c60f7cb92bba06cd750b4c15d19f41c",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "realSixChipHierarchyRestorationMatchesNativeReplayIncludingHiddenProvider",
+        "actualSelectionRequiredLastUncheckIsSilentAndSelectAllIncludesHiddenChild",
+        "actualBlocklistListenerRechecksLastTagAndRefetchesExactlyOnce"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "statistics"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.statistics.StatisticsSelectionParityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/StatisticsSelectionParityTest.kt",
+      "sha256": "8ba6cc98ad3a8c6215c8fd32ff061d80745f97b5fa40697e62bdf7bfa7953098",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "all4096SeedAndSavedStatePairsReplayEveryChildInXmlOrder",
+        "selectAllPublishesEachNewCheckIncludingHiddenProviderAndStopsWhenAlreadyChecked",
+        "lastSelectedSummaryChipDoesNotPublishAndIndependentChipsRemainSelected",
+        "hiddenProviderAffectsRestorationButNotTheVisibleBadgeDenominator",
+        "blocklistTagFallbackPreservesLastSelectionAndOriginalTagOrder",
+        "sectionOrderFeatureGatesAndAllElevenMetricMappingsRemainDistinct",
+        "donutRenormalizesTheVisibleFiveSlicesAndHandlesZero"
+      ],
+      "runner": "plain_junit",
+      "review_group": "statistics"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.statistics.SummaryStatisticsRouteTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsRouteTest.kt",
+      "sha256": "2b4bb2fbef9a72974a2027b3b4fd3840a092f87eae34305bbb625abd8c0509a3",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "allAggregateRowTypesPreserveDestinationExtraNamesValuesAndTimeCategory",
+        "scopedBlocklistIncludesSelectedUidRatherThanRowUid",
+        "topActiveConnectionRoutesDirectlyWithOnlyItsUid"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "statistics"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.theme.RethinkTypographyReferenceTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/theme/RethinkTypographyReferenceTest.kt",
+      "sha256": "90c5dad36f3537f8382c9ae6f80bbb54e0836181e8cd9db684c19b9ef880323e",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "allFifteenStylesMatchExistingAppearancesAcrossThemesAndNonlinearFontScaling"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "theme"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.trafficlogs.LogSearchBarComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/trafficlogs/LogSearchBarComposeTest.kt",
+      "sha256": "5c31d3dc4416d7c89217c0a8f4db06417c843413d8edc5c3f53976b7f00adf8f",
+      "declared_test_methods": 4,
+      "test_method_names": [
+        "editorTapPreservesRoutedQueryAndTypingDoesNotExpandSearch",
+        "editorRefocusAfterResumePreservesRestoredAndTypedQueries",
+        "typingIntoEmptyEditorDoesNotDispatchRootSearchCallback",
+        "explicitSearchAffordanceExpandsOnceAndFocusesEditor"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "trafficlogs"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.trafficlogs.LogSearchStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/trafficlogs/LogSearchStateTest.kt",
+      "sha256": "0ca883b943365d5f67584a603b08b57cf02546eaf829a0ff50687440e972fe5c",
+      "declared_test_methods": 5,
+      "test_method_names": [
+        "argumentBeforeListenerDoesNotSeedFlowAndEqualRestoreDoesNotDeliver",
+        "dnsArgumentAfterListenerDeliversChangeThenSubmitAndRestoredDraftLast",
+        "disabledListenerStillTracksOldQueryAndEmptySubmissionsAreSuppressed",
+        "expandResetsOnlyOnceAndResumeClearDoesNotEmitTwice",
+        "requiredCheckCallbackIsNotRedeliveredForEqualValuesAndClickTogglesBeforeListener"
+      ],
+      "runner": "plain_junit",
+      "review_group": "trafficlogs"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.trafficlogs.LogSearchViewReferenceTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/trafficlogs/LogSearchViewReferenceTest.kt",
+      "sha256": "e7ce0c894ee9b17fa78f4911cfc6096356da5b6871712ece4221895070fd5e05",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "alreadyVisibleEditorFocusAndClickPreserveRoutedQueryWithoutRootCallback",
+        "refocusingAlreadyVisibleEditorPreservesRestoredQuery",
+        "rootClickRunsActionExpansionAndClearsOnlyTheFirstTime"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "trafficlogs"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.trafficlogs.TrafficLogFragmentControllerTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/trafficlogs/TrafficLogFragmentControllerTest.kt",
+      "sha256": "f240c99d7a32e3d1a021d985cac0df3ff92869d9077c0a64d01c9d831d600c47",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "networkArgumentThenInitialEmptyFlowResetIsPreserved",
+        "restoredNetworkTextOverridesArgumentOnlyAfterListenerInstallation",
+        "equalNetworkRestoreDoesNotAccidentallySeedInitialFlow",
+        "dnsArgumentAndResumeKeepOriginalOrder",
+        "disabledDnsRestorationNeverDispatchesThroughAnUninstalledListener",
+        "wireguardNetworkHasNoSearchCollectorAndDnsRpnSetsOnlyItsScope",
+        "blockedSelectionRetainsExistingChildQueryCategory"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "trafficlogs"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.trafficlogs.TrafficLogsComposeTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/trafficlogs/TrafficLogsComposeTest.kt",
+      "sha256": "449bf78c96e757981a4eb4d59b735bd0bc60d8c1daf9ca047a65495922012849",
+      "declared_test_methods": 5,
+      "test_method_names": [
+        "levelAndTraceApplyImmediatelyAndCancelOnlyDismisses",
+        "fakeEventExpandsCollapsesAndCopiesOnlyItsMessage",
+        "disabledDomainRowCannotDispatchAndCompositionNeverWrites",
+        "pagingKeepsOrderAndCardinalityAfterInsertion",
+        "hiddenSourceChecksRemainSeparateFromSeveritySelection"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "trafficlogs"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.utilities.UtilityContentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/utilities/UtilityContentTest.kt",
+      "sha256": "59d0b660e36af9e48d305753649b4a0eaa2e3ad3b86ab76ed494d759d5a02234",
+      "declared_test_methods": 14,
+      "test_method_names": [
+        "welcomeRapidNextUsesRequestedIndexBeforeAnimationSettles",
+        "welcomeSkipCompletesExactlyOnce",
+        "bubbleRowActionsRetainTheExactSyntheticObjectAndTapCount",
+        "tcpTrueFalseReentrantDispatchIsChangedOnly",
+        "supportCategoriesAreExclusiveAndCanBeClearedWithoutSending",
+        "supportDirectHeaderDragCollapsesAndLargeRtlBottomActionIsReachable",
+        "disabledSupportButtonNeverDispatchesAndLoadingRemainsVisible",
+        "inactivePingAllowsAutoActionWithoutCustomInput",
+        "sponsorChipDispatchIsSingleAndSameSelectedChipCanClear",
+        "sponsorUnavailableBillingShowsOnlyStripeAction",
+        "sponsorSuccessOnlyCompletesWhenContinueIsTapped",
+        "reachabilitySaveTestResetAndModesDispatchOnlyTheirOwnCallbacks",
+        "disabledReachabilityModeNeverDispatchesAndFieldsRetainEditedText",
+        "pauseReleaseAndCancellationStopTheRepeatState"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "utilities"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.utilities.UtilityStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/utilities/UtilityStateTest.kt",
+      "sha256": "0ea548ce3a253decc8303c37bab00230ab79a5948a49542d4c845e8af968a4e3",
+      "declared_test_methods": 7,
+      "test_method_names": [
+        "descriptionLimitPreservesSuffixAndDoesNotSplitSurrogatePairs",
+        "invalidNativeFontWeightsHaveSemanticFallbacks",
+        "sameCheckedValueAndSynchronousReversalDoNotDuplicateCallback",
+        "deferredTcpReversalDoesBroadcastTheSecondFalseValue",
+        "sliderDistinguishesProgrammaticRestorationFromUserInput",
+        "fieldAndSwitchStateRestoresWithoutLosingTextOrSelection",
+        "allowedExpiryAndBlockedTimeBoundariesMatchBaseline"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "utilities"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.utilities.UtilityTypographyTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/utilities/UtilityTypographyTest.kt",
+      "sha256": "5380cad5e68acf9e5ae7c11be1570d23eaf479d800deb3a6d555f21f7a8e4eca",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "sponsorSuccessTitleMatchesTheRealXmlTextView",
+        "sponsorSuccessBodyMatchesXmlBodySizeAndSpacing",
+        "supportSectionUsesItsXmlAppearanceBoldAndLetterSpacing",
+        "supportUnstyledAttachmentTitleUsesThemeTextViewDefault",
+        "reachabilityInputMatchesXmlEditTextDefaultAppearance",
+        "sponsorLargeFontPreservesRawSpAndRenderedLineStep"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "utilities"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.visual.ContentVisualParityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/ContentVisualParityTest.kt",
+      "sha256": "eb41ec45aec45bc5dcd65a11d3406ef759a42dd941bfdb4f0993494366546ba8",
+      "declared_test_methods": 4,
+      "test_method_names": [
+        "supportCapturedAgainstRetainedXmlAcrossConfigurations",
+        "sponsorSuccessCapturedAgainstRetainedXmlAcrossConfigurations",
+        "orbotInfoCapturedAgainstRetainedXmlAcrossConfigurations",
+        "rootNavigationCapturedAgainstBaselineWidgetAcrossConfigurations"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "visual"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.visual.WgAlertVisualParityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/WgAlertVisualParityTest.kt",
+      "sha256": "9610d5d2cd85c0fea25d1c3c5fcca51a086be36351b624628cb3513a3754596f",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "defaultConfirmationCapturesAndMeasuresTheActualSharedBuilder",
+        "noDimConfirmationCapturesAndMeasuresTheActualSharedBuilder"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "visual"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.wireguard.WgControlStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgControlStateTest.kt",
+      "sha256": "9860f03260929a42cfb186f56563b272fd2bb7a27dfd73f822b0b6e215887ba9",
+      "declared_test_methods": 10,
+      "test_method_names": [
+        "checkedListenerRunsBeforeClick",
+        "settingSameCheckedStateIsSilent",
+        "reentrantRollbackNotifiesOnlyOnce",
+        "callOnClickDoesNotToggleMobileOnlyRow",
+        "programmaticClickDoesNotConsultEnabled",
+        "ordinaryActionDoesNotToggle",
+        "nullCheckedListenerStopsDispatch",
+        "checkedListenerFailureDoesNotLeaveBroadcastingLatched",
+        "listenerCanBeReplacedWithoutDispatch",
+        "editTextSetTextNotifiesForRepeatedContent"
+      ],
+      "runner": "plain_junit",
+      "review_group": "wireguard"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.wireguard.WgFormRestoreTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgFormRestoreTest.kt",
+      "sha256": "7f2216402183079d759b2cfc66043b61298e2a702dabb9743b8ec6f8eb0df768",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "interfaceDraftRestoresEmptyAndNonEmptyEditableFields",
+        "peerRestoreDispatchesKeepaliveWatcher",
+        "absentStateDoesNotOverwriteInitializedValues"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "wireguard"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.wireguard.WgLegacySearchParityTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgLegacySearchParityTest.kt",
+      "sha256": "55d45978af092a597ad8eac8b0291079030494cee430ca628c5878872034f946",
+      "declared_test_methods": 1,
+      "test_method_names": [
+        "expandedSearchRestoresItsQueryAndDispatchesTextChange"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "wireguard"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.wireguard.WgRichTextTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgRichTextTest.kt",
+      "sha256": "1e85e3462cbf35e4415237df0f9335eb5706982f74b130f30ce7fe63bb34ba4f",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "nullAndPlainTextRemainLiteral",
+        "boldItalicPreservesBothFlagsAndRange",
+        "explicitColoursAndDecorationsSurvive"
+      ],
+      "runner": "robolectric_plain_application",
+      "review_group": "wireguard"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.compose.wireguard.WgSsidStateTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidStateTest.kt",
+      "sha256": "da35d881e7e040fd2b43c08cf3f4be28fd07371ddb818c0c57b4733198e3588b",
+      "declared_test_methods": 6,
+      "test_method_names": [
+        "appendPreservesOrder",
+        "exactDuplicateIsIgnored",
+        "presenterKeepsDifferentTypeUntilControllerResolvesIt",
+        "removeOnlyFirstEqualEntry",
+        "missingRemovalDoesNotChangeList",
+        "returnedListIsAnIndependentSnapshot"
+      ],
+      "runner": "plain_junit",
+      "review_group": "wireguard"
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.fragment.DnsSettingsFragmentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragmentTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "c7fe2e4534fa003791da8724113edae561c478a516db983b01f7bc69e3591b5b",
+      "declared_test_methods": 3,
+      "test_method_names": [
+        "testDnsSettingsDisplay",
+        "restoreDialogCancelDoesNotWriteSettingsOrInitializeAnyManager",
+        "selectedNetworkDnsOpensSyntheticServerInfoAndDismisses"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.fragment.FirewallSettingsFragmentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragmentTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "8ac52a5b9c2ce6d23440e7dd8f0768000142483dfb5a54ff9fdd19659b3e6870",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "testFirewallSettingsDisplay",
+        "universalChoiceDispatchesExactlyOneDestinationWithoutLaunchingIt"
+      ]
+    },
+    {
+      "class_name": "com.celzero.bravedns.ui.fragment.SummaryStatisticsFragmentTest",
+      "source_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragmentTest.kt",
+      "runner": "robolectric_plain_application",
+      "review_group": "actual_host",
+      "sha256": "a31eed9550f160b76b2ac59f65e5b6e05d3d9d6630b5efa086d9b4373f749521",
+      "declared_test_methods": 2,
+      "test_method_names": [
+        "testStatisticsDisplay",
+        "timeSelectionRecreationReattachesWithoutChangingSelectedTime"
+      ]
+    }
+  ],
+  "configuration_pins": [
+    {
+      "path": "build.gradle.kts",
+      "sha256": "9c39d70c6f9eaefb2a846582971302ca23b96dca4c3ed917f30eeba86318f4f9"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "2b6c106492442af9d75d7718542018edfd80acabbbb2967741c07f627d3f6ad7"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "eaf7434d04039aed24c854f18023256f5f96a677e0297cb4732edf321808c032"
+    },
+    {
+      "path": "gradle/lib.toml",
+      "sha256": "6289d8946555d26dd6b2f549b425c0b198d6ba23ae87e90445a3668335c6d067"
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "0fef20adcecc4347b9560278bff78cac8c2ee12125edd358d97936f79ab6c700"
+    },
+    {
+      "path": "benchmark/build.gradle.kts",
+      "sha256": "27d74efb3143c7f41be848bdc17acfc04c33934050256523f68fa10209f24c2b"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "e74d4f107d2feab989b9a041a02e2d2b85567ff48415c9c7add5ecc19abd19f9"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d"
+    },
+    {
+      "path": "gradlew",
+      "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59"
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8"
+    },
+    {
+      "path": "app/src/test/resources/robolectric.properties",
+      "sha256": "6ae1084a7fd7bdeb5f088095fdab7f6fbeb00da60f4691a4045a9247b1dc3d72"
+    },
+    {
+      "path": "app/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker",
+      "sha256": "fafc5d3383454d6db81ae934e97b8f980bdb27623acda63a3300ddd7bd279ddc"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseDomainsAdapter.kt",
+      "sha256": "0b3ec828a1afabe2b67e35b6f19ed8148bb805657db493e40403aa165e629619"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallAppListAdapter.kt",
+      "sha256": "bb54193cfc5f4f769c566114d6690c717f6f88a3aa92df4488d9dfad9ba615b1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "sha256": "a6627031d822922502b1e6a4de3a5a0e79e658395c7daff201e5a5a013e7b21a"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/BaseActivity.kt",
+      "sha256": "2fb1f541dcd5daf944f9e0e4748020f43e6df39f0f40bb8eaa4c59a4f5ab4c49"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt",
+      "sha256": "95262da1aa1007eaf2927dd8de5b60e3a544240929093055692c769ef4b3b764"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AlertsActivity.kt",
+      "sha256": "c0313a83677902ae2305f2741d8018a29bd74e41cadcf07ae381ea24318146de"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "sha256": "85abeced846a3d2909c9a72bfd5c18e34cb1d25d7738cfcc7bdf6782481a58f6"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "sha256": "f92cdb2400327caa09d248bd1e9f72f155533b08ee60dad175b0211c6a241115"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseDomainLogsActivity.kt",
+      "sha256": "8648f8e961420627aeeeb938bf7d9f9811b0e4fd9587e1699a891f67bd8a5759"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseIpLogsActivity.kt",
+      "sha256": "9e67f7a319a9ddc3be7e1ed8d6fd218dfcbe1d7fb872d40ad56d84a1de9bfdd8"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureRethinkBasicActivity.kt",
+      "sha256": "a45caa909cdf132763ecc8e98160f5f6055be9ba8b29e2ae58948ccab934e517"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsDetailActivity.kt",
+      "sha256": "67b59ff88489e9cc0d08708532880f32e5b158b72aa9ebe314c1553229ca1456"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FirewallActivity.kt",
+      "sha256": "27df8cbacc6d88ec7ed9b640e571ceb5afcab0b7069bb8d1f8029c5a5e476326"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FragmentHostActivity.kt",
+      "sha256": "85d3033105b3ca2c9b948584083e2c251424733642b829c5c2214dcd06ba8186"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/ActivityFragmentContainer.kt",
+      "sha256": "385c1d86ad894bd5430e2d6359811baed77e9307cb22e758d3e59ba99581bba9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/ComposeSnackbarPresenter.kt",
+      "sha256": "fe82c0064b10d53013dc2e823a07a26689faa6c34a238969e0be76665898be00"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt",
+      "sha256": "c2f70c2638fc7a4ed679d26b38f441c85c102e04bc7055d9ac9c7f4baae88838"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeTourAnchors.kt",
+      "sha256": "9f814235a5f3df4a8d4816111c263516f83d5bb06fd57d963dafb83475d6dbc2"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/SingleSettingsFragmentHost.kt",
+      "sha256": "41d42bbe946fa8b2783bf418cff1e8dbc28beb0c9889c6e984e14dd774e3128c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
+      "sha256": "9e69c0ff0d15b88bb346e0003bb60644860c782a9ee027aa2f3e7b54d0449338"
+    },
+    {
+      "path": "app/src/main/res/values/compose_activity_host_ids.xml",
+      "sha256": "f5a9fa86fc9881c86bbc8f15de3a98c6d1551125969c7ec1e078e69675fe46ea"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailAccessibilityTest.kt",
+      "sha256": "8653b7d8640b1472e262e07269d86b6aec1daa6aaf0608e554fc64b70e24b6c1"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
+      "sha256": "b0acc8ce8eef564f242af03e69bc947dea636f07eccf62fae0098a55ea970112"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
+      "sha256": "343197808360ae3617fdb2014b82a70b4a4eb683cf63adfbb7f94afafb43107b"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/chrome/SnackbarContractTest.kt",
+      "sha256": "894bfec521be7a648a23d1fb47f3c038cd7b91523234e3682c46ebc73e28c169"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/home/HomeTourBoundsTest.kt",
+      "sha256": "26df0bf0290e72a73b0f97a654ffc581ab13baf186fe10f3048ca613332db556"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/hosts/ActivityFragmentContainerTest.kt",
+      "sha256": "522817bd39124e786a6491f5325e6e989d2719f7d20a5a7c762104a782fdb25d"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/settings/SingleSettingsFragmentHostTest.kt",
+      "sha256": "735ae394b53d8915a03118fb25776cafcb2dc4bdf24a3a01858bea9fcd244f45"
+    }
+  ],
+  "fixture_pins": [
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fixture/SafeDnsHostFixture.kt",
+      "sha256": "fcb4931346d3fdb720f64d69ef4f155719165d0b74f84c9479ccc5e5d46d598c"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fixture/SafeFirewallHostFixture.kt",
+      "sha256": "79a0ecaba0773a7a8f25e97e7227170ead688a379adc0be3fe17bf42bc3b00a6"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/fixture/SafeRootHostFixture.kt",
+      "sha256": "6d47f453e2795fd3075152b775ed2d67c4a47380ce1f693c6e0c184fa95b0301"
+    }
+  ],
+  "non_test_helper_files": [
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/dnssettings/DnsUiTestTheme.kt",
+      "sha256": "ffb2455eb76e6cf523a83f45fc6135a04856b936e96b73048ea7329058923b73"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/VisualParityHarness.kt",
+      "sha256": "46100c282c62e52f558268ed1a7ee050ec51c13a27e1db97244194278dd52181"
+    }
+  ],
+  "launcher_pin": {
+    "path": "scripts/compose-migration/isolated-tests.init.gradle",
+    "sha256": "55a6aaff0dd45eb8f54c0b3d5f10faf496259a1d0c912f777da2c139892f354c"
+  },
+  "historical_review_pins": [
+    {
+      "path": "docs/compose-migration/content-test-safety-allowlist.json",
+      "sha256": "4ada98079e931f9be13937a4255183cb5cb904ecc9161377a1ac151c0ce14e98"
+    },
+    {
+      "path": "docs/compose-migration/host-safety-review.md",
+      "sha256": "1ae1ac77b5310234cde5d22a362799957b835d5b58f958d2bc3200b8529b9cbb"
+    },
+    {
+      "path": "docs/compose-migration/content-test-safety-review.md",
+      "sha256": "6bc67b2176d4aa723dab9e45f870df79e9c0a04d2e7e8523e70b1688fbcdebcc"
+    }
+  ],
+  "historical_artifact_pins": [
+    {
+      "coordinate": "org.mockito:mockito-core:5.23.0",
+      "path": "/workspace/scratch/a9ec32c7322a/rethink-compose/toolchain/gradle-user-home/caches/modules-2/files-2.1/org.mockito/mockito-core/5.23.0/a5cf3cf244300e4cd05f779827cf50d373a8460e/mockito-core-5.23.0.jar",
+      "sha256": "ae295bebd5d11fab97ab297815dc7617188b86003cbce3dfd5c0d5c3a6cc4a0c"
+    },
+    {
+      "coordinate": "net.bytebuddy:byte-buddy-agent:1.18.2",
+      "path": "/workspace/scratch/a9ec32c7322a/rethink-compose/toolchain/gradle-user-home/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.2/62f38a6faf7f069d661b79a07d566f504b0b20c4/byte-buddy-agent-1.18.2.jar",
+      "sha256": "d91e2d6d1b777687ab14a52b18b08aca32c4c91274131c99907674c661402a76"
+    },
+    {
+      "coordinate": "io.mockk:mockk-agent-jvm:1.14.11",
+      "path": "/workspace/scratch/a9ec32c7322a/rethink-compose/toolchain/gradle-user-home/caches/modules-2/files-2.1/io.mockk/mockk-agent-jvm/1.14.11/e1e1acc201dc6ec3bfb9d2d8f10e5960eda3c9f0/mockk-agent-jvm-1.14.11.jar",
+      "sha256": "bb3af4f281c8d5d50141cad9d1a1f8dde9d2bd695b68054777830957708ea0b4"
+    },
+    {
+      "coordinate": "org.robolectric:robolectric:4.17",
+      "path": "/workspace/scratch/a9ec32c7322a/rethink-compose/toolchain/gradle-user-home/caches/modules-2/files-2.1/org.robolectric/robolectric/4.17/31a19773cc1daf1be0f77769497371ddf18a518f/robolectric-4.17.jar",
+      "sha256": "69e5bc128ba8d1fbb09d36bfb8a617018d6a3a418f77d44b36e7aca6747f14ea"
+    }
+  ],
+  "conditions": [
+    "Use only exact fully qualified class names in allowed_classes; no package wildcard or unfiltered Test task.",
+    "Fresh isolated local JVM process(es), plain android.app.Application for every Robolectric class; no device/instrumented execution or production RethinkDnsApplication construction/onCreate.",
+    "Do not mix with any unreviewed classes, existing production Koin graph, actual services, real database, account, credentials, tunnel, user traffic or persisted user data. The separately source-pinned host review must be revalidated independently before combining it.",
+    "Retain all current synthetic callbacks, constructor-free mocks, dispatchers, lifecycle bounds, empty/no-value paging fixtures, ordering and cleanup. Test/helper/production/dependency/launcher drift requires re-review.",
+    "UtilityContentTest may reach Logger.e -> VpnController.writeConsoleLog only with the initial null rvpn service. Logger state/Koin must be fresh; this is a null-safe no-op, never permission for a service or real database.",
+    "Use the exact reviewed Mockito and Byte Buddy startup-agent arguments in the opt-in launcher; no dynamic attach flags, OS/security/network changes, native application backend or unreviewed agent.",
+    "Visual output must be workspace-local. Unset rethink.visual.output and RETHINK_VISUAL_OUTPUT or set the effective value to an explicit directory beneath this task workspace; no user-data or external output path.",
+    "Robolectric native graphics, shadowed package/keyboard/window/clipboard/toast/accessibility operations and ordinary test reports/PNG/JSON/temp output are permitted within the isolated test workspace. No real export/permission/account/network operation is covered.",
+    "For the final additive run, use existing cached dependencies/offline mode only. This review does not authorize retrying a denied artifact-download destination.",
+    "This cumulative source review revalidates the original 18 actual-host classes only for their exact pinned methods and preserved fixture boundaries; no additional host integration is implied.",
+    "Root Home tests must install strict Koin and the restrictive FragmentFactory before onCreate. First-run, upgrades, Firebase and updates remain gated off. Do not click Rethink+ because account checking precedes FragmentFactory navigation.",
+    "DNS connected-name LiveData stays nonemitting; no real native Backend constant, latency, WireguardManager, restore, refresh, settings change, blocklist download or permission flow is permitted. DNS-list and Proxy-host fixtures retain their original no-onResume caps.",
+    "Root/Summary/AppList/network-log paging stays empty or nonemitting. The historical AppInfo exception remains limited to its strict synthetic DAO data, constructor-free mocks, startup-job joins and intercepted row/backend boundaries.",
+    "Misc settings retain original API28/API33 restrictions, strict fakes, intercepted Firebase/biometric/launcher boundaries, and no real theme/file/permission/import/export/account effects.",
+    "The seven binding-removal changed/new test classes use only their pinned synthetic framework, strict fake, geometry, lifecycle and shadow-Intent actions. No real ServerSelectionFragment, ConfigureRethinkBasicActivity controller path or RPN account manager is newly authorized.",
+    "Current runtime_clearance.status is BLOCKED. Do not change it to REVIEWED without an independent execution-environment and artifact review, including SHA-pinned local Android runtime jars, approved Java17, compile SDK, Gradle distribution and premain dependencies.",
+    "The Gradle wrapper must not bootstrap/download a missing distribution. Verify its approved local distribution before invoking ./gradlew; --offline is parsed only after wrapper startup.",
+    "No runtime operation, network/install request, service, native application backend, VPN, traffic, actual account, permission or backup/export is authorized by preparing this manifest. Missing artifacts and the denied Google endpoint remain blockers."
+  ],
+  "test_execution_performed_by_reviewer": false,
+  "gradle_or_kotlin_compilation_performed_by_reviewer": false,
+  "not_covered": [
+    "Package wildcard or arbitrary future tests",
+    "Android device/emulator instrumentation",
+    "Production app startup, real Home or WireGuard host startup",
+    "Real VPN, firestack/Go backend, packet traffic, resolver, socket or URL requests",
+    "Actual DB/account/billing/import/export/permission/security actions",
+    "Passing results, complete coverage, functional parity or screenshot parity certification",
+    "Runtime clearance or permission to bypass missing artifacts, unverified launcher setup, network/install restrictions or blocked destinations."
+  ],
+  "launcher_source_review": {
+    "reviewed": true,
+    "compiled_or_executed": false,
+    "behavior": "Before-settings exact manifest/runtime/source/task/offline gates. Current BLOCKED manifest aborts before project/plugin evaluation. Post-clearance task graph accepts only exact reviewed F-Droid test classes, Java17, hash-pinned premain/runtime artifacts, synthetic user.home and workspace-only visual output; denies injected agents and unreviewed tasks."
+  }
+}

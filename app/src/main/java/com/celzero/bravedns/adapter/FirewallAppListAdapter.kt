@@ -27,7 +27,6 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -52,7 +51,6 @@ import com.celzero.bravedns.ui.activity.AppInfoActivity.Companion.INTENT_PACKAGE
 import com.celzero.bravedns.ui.activity.AppInfoActivity.Companion.INTENT_UID
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.getIcon
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView.SectionedAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -436,9 +434,6 @@ class FirewallAppListAdapter(
                 context.getString(
                     R.string.ctbs_block_other_apps, appInfo.appName, count.toString()))
 
-            val arrayAdapter =
-                ArrayAdapter<String>(context, android.R.layout.simple_list_item_activated_1)
-            arrayAdapter.addAll(packageList)
             builderSingle.setCancelable(false)
 
             builderSingle.setItems(packageList.toTypedArray(), null)

@@ -28,7 +28,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -285,9 +284,7 @@ class WgIncludeAppsAdapter(
                 }
 
             builderSingle.setTitle(title)
-            val arrayAdapter =
-                ArrayAdapter<String>(context, android.R.layout.simple_list_item_activated_1)
-            arrayAdapter.addAll(packageList)
+
             builderSingle.setCancelable(false)
 
             // show list just for information, we operate on all uids for this package

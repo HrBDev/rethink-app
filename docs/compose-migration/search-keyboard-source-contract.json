@@ -1,0 +1,20 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "declared_appcompat_version": "1.8.0",
+  "app_xml": "app/src/main/res/layout/fragment_server_selection.xml#search_bar",
+  "app_ime_options": "actionSearch",
+  "upstream_commit": "5e1cddb861d7c49fda89354edbcf1637b43af064",
+  "upstream_path": "appcompat/appcompat/src/main/res/layout/abc_search_view.xml",
+  "upstream_blob_sha": "33d25d9ec40b10fc7a1b6cf5b615252dba1b802c",
+  "upstream_url": "https://github.com/androidx/androidx/blob/5e1cddb861d7c49fda89354edbcf1637b43af064/appcompat/appcompat/src/main/res/layout/abc_search_view.xml",
+  "upstream_last_path_change_utc": "2019-11-11T17:27:44Z",
+  "current_file_matches_historical_blob": true,
+  "editor_attributes": {
+    "imeOptions": "actionSearch",
+    "inputType": "text|textAutoComplete|textNoSuggestions"
+  },
+  "compose_keyboard_options_blob": "805d40939e4ef0a4017169fa01fcf8aa654b2266",
+  "compose_android_input_translation_blob": "60a6cc937350fa525e6477265e3a1900f4b494be",
+  "limitation": "Compose autoCorrectEnabled=false omits TYPE_TEXT_FLAG_AUTO_CORRECT; it does not add native TYPE_TEXT_FLAG_NO_SUGGESTIONS or TYPE_TEXT_FLAG_AUTO_COMPLETE. No bit-for-bit EditorInfo parity is claimed.",
+  "verification": "Read-only GitHub source verification and static source guards only; no Android artifacts or runtime execution."
+}

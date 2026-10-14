@@ -31,6 +31,8 @@ import com.celzero.bravedns.ui.compose.rpn.*
 import com.celzero.bravedns.util.SnackbarHelper.capitalizeWords
 import java.util.Locale
 import android.view.animation.AccelerateDecelerateInterpolator
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
+import android.graphics.Typeface
 
 /** Native presenter; the original grouping and callback contract is retained. */
 class CountryServerAdapter(countries: List<CountryItem>, private val listener: CitySelectionListener) {
@@ -97,7 +99,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                 if (letter != previous) Text(letter,
                     Modifier.fillMaxWidth().padding(start = 4.dp, end = 4.dp, top = 14.dp, bottom = 4.dp),
                     color = themeColor(R.attr.primaryLightColorText),
-                    style = countryTextStyle(11.sp).copy(fontWeight = FontWeight.Bold, letterSpacing = .1.em))
+                    style = countryTextStyle(11.sp, family = "sans-serif-medium", bold = true, spacing = .1f))
                 previous = letter
                 key(item.countryCode) { Country(item) }
             }
@@ -117,8 +119,8 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                     Text(item.flagEmoji, maxLines = 1, style = countryTextStyle(12.sp, includeFontPadding = false))
                     Text(item.countryCode.uppercase(LocalLocale.current.platformLocale), Modifier.fillMaxWidth(),
                         color = themeColor(R.attr.primaryLightColorText), maxLines = 1, overflow = TextOverflow.Ellipsis,
-                        style = countryTextStyle(rpnDimensionSp(R.dimen.mini_font_text_view), includeFontPadding = false)
-                            .copy(fontWeight = FontWeight.Bold, letterSpacing = .02.em, textAlign = TextAlign.Center))
+                        style = countryTextStyle(rpnDimensionSp(R.dimen.mini_font_text_view), includeFontPadding = false, bold = true, spacing = .02f)
+                            .copy(textAlign = TextAlign.Center))
                 }
                 Column(Modifier.weight(1f).padding(start = 13.dp, end = 10.dp)) {
                     Text(item.countryName, Modifier.fillMaxWidth(), color = themeColor(R.attr.primaryTextColor),
@@ -148,7 +150,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                         Column(Modifier.weight(1f)) {
                             Text(group.city.capitalizeWords(), color = themeColor(R.attr.primaryTextColor),
                                 maxLines = 1, overflow = TextOverflow.Ellipsis,
-                                style = countryTextStyle(15.sp).copy(fontWeight = FontWeight.Medium))
+                                style = countryTextStyle(15.sp, family = "sans-serif-medium"))
                             if (group.serverCount > 1) Text(pluralStringResource(R.plurals.server_count, group.serverCount, group.serverCount),
                                 Modifier.padding(top = 2.dp), color = themeColor(R.attr.primaryLightColorText), style = countryTextStyle(12.sp))
                         }
@@ -157,7 +159,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                                 val (label, attr) = loadInfo(group.avgLoad)
                                 Box(Modifier.padding(end = 5.dp).size(7.dp).background(themeColor(attr), CircleShape))
                                 Text(label, Modifier.padding(end = 8.dp), color = themeColor(attr),
-                                    style = countryTextStyle(12.sp).copy(fontWeight = FontWeight.Medium))
+                                    style = countryTextStyle(12.sp, family = "sans-serif-medium"))
                             }
                             if (group.avgLink > 0) {
                                 val (label, attr) = speedInfo(group.avgLink)
@@ -176,9 +178,10 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
         }
     }
 
-    private fun countryTextStyle(size: androidx.compose.ui.unit.TextUnit, includeFontPadding: Boolean = true) = TextStyle(
-        fontSize = size, fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Normal, letterSpacing = 0.sp,
-        platformStyle = PlatformTextStyle(includeFontPadding = includeFontPadding))
+    @Composable private fun countryTextStyle(size: androidx.compose.ui.unit.TextUnit, includeFontPadding: Boolean = true,
+        family: String? = null, bold: Boolean = false, spacing: Float? = null) = utilityTextStyle(
+        size = size.value, family = family, weight = if (bold) Typeface.BOLD else null, spacing = spacing)
+        .copy(platformStyle = PlatformTextStyle(includeFontPadding = includeFontPadding))
 
     private fun speedInfo(linkMbps: Int): Pair<String, Int> {
         val formatted: String

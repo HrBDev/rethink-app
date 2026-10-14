@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.about
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import android.content.Context
 import android.os.Bundle
 import androidx.compose.animation.core.animateFloatAsState
@@ -10,6 +12,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -24,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.controls.OriginalButton
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 
 /** Changed-only single-selection events in MaterialButtonToggleGroup order. */
@@ -61,14 +65,20 @@ fun DnsRecordTypesContent(b: DnsRecordTypesState) {
             DiagnosticSheetHandle()
             Text(stringResource(R.string.cd_allowed_dns_record_types_heading), Modifier.padding(horizontal = 25.dp, vertical = 10.dp), fontSize = 16.sp, color = themeColor(R.attr.primaryLightColorText))
             Text(stringResource(R.string.cd_allowed_dns_record_types_desc), Modifier.padding(horizontal = 25.dp).padding(bottom = 10.dp), fontSize = 12.sp, color = themeColor(R.attr.primaryLightColorText))
-            Row(Modifier.fillMaxWidth().padding(horizontal = 25.dp).padding(top = 5.dp, bottom = 15.dp)) {
+            Row(Modifier.fillMaxWidth().padding(horizontal = 25.dp).padding(top = 5.dp, bottom = 15.dp).selectableGroup(),
+                horizontalArrangement = Arrangement.spacedBy((-1).dp)) {
                 listOf(R.id.drbs_auto_mode_btn to b.drbsAutoModeBtn, R.id.drbs_manual_mode_btn to b.drbsManualModeBtn).forEach { (id, node) ->
                     val selected = b.drbsModeToggleGroup.checkedButtonId == id
-                    Surface(Modifier.weight(1f).selectable(selected, role = Role.RadioButton) { b.drbsModeToggleGroup.check(id) }.testTag(if (id == R.id.drbs_auto_mode_btn) "dnsrecords.auto" else "dnsrecords.manual"),
-                        color = node.backgroundTintList?.defaultColor?.let(::Color) ?: MaterialTheme.colorScheme.surfaceVariant,
-                        shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)) {
-                        Text(node.text.toString(), Modifier.padding(horizontal = 12.dp, vertical = 14.dp), textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                            color = node.textColor?.let(::Color) ?: themeColor(R.attr.defaultToggleBtnTxt))
+                    val automatic = id == R.id.drbs_auto_mode_btn
+                    OriginalButton(
+                        source = "bottom_sheet_dns_record_types:" + if (automatic) "drbs_auto_mode_btn" else "drbs_manual_mode_btn",
+                        onClick = { b.drbsModeToggleGroup.check(id) },
+                        modifier = Modifier.weight(1f).testTag(if (automatic) "dnsrecords.auto" else "dnsrecords.manual"),
+                        enabled = node.isEnabled && node.isClickable,
+                        selected = selected, segmentIndex = if (automatic) 0 else 1, segmentCount = 2,
+                        contentColor = node.textColor?.let(::Color), backgroundTint = node.backgroundTintList,
+                    ) {
+                        Text(node.text.toString(), textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                     }
                 }
             }
@@ -85,7 +95,7 @@ fun DnsRecordTypeRow(row: DnsRecordRowState) {
     Row(Modifier.fillMaxWidth().alpha(if (row.locked) .6f else 1f)
         .toggleable(row.selected, enabled = !row.locked, role = Role.Checkbox) { row.onSelect() }.testTag("dnsrecords.${row.name}")
         .padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Checkbox(row.selected, null, enabled = !row.locked, colors = diagnosticCheckboxColors())
+        OriginalCheckbox("item_dns_record_type:item_dns_record_type_checkbox", row.selected, null, enabled = !row.locked)
         Column(Modifier.weight(1f).padding(start = 12.dp)) {
             Text(row.name, fontSize = 14.sp, color = themeColor(R.attr.primaryTextColor))
             Text(row.description, fontSize = 12.sp, color = themeColor(R.attr.primaryLightColorText))

@@ -1,0 +1,337 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "pre_edit_checkpoint": "f07b51b6fb2528d55b396aed62bbb9b700893c70",
+  "verification_kind": "source-only, not Kotlin compilation or visual equivalence",
+  "checks": [
+    {
+      "name": "history icon beside text, original circle/icon sizes and spacing",
+      "passed": true
+    },
+    {
+      "name": "history divider thickness/inset/theme",
+      "passed": true
+    },
+    {
+      "name": "server order title/status then type/test then date/order/token sequence",
+      "passed": true
+    },
+    {
+      "name": "purchase badge/transition precede timestamp, reason and hidden token",
+      "passed": true
+    },
+    {
+      "name": "timestamp timer and source maximum lines/fades/monospace",
+      "passed": true
+    },
+    {
+      "name": "shared weighted card wraps uncarded lazy items",
+      "passed": true
+    },
+    {
+      "name": "history rows are not individually carded",
+      "passed": true
+    },
+    {
+      "name": "summary horizontal grouping and XML metrics",
+      "passed": true
+    },
+    {
+      "name": "empty/error centered paddings and original opacity/type metrics",
+      "passed": true
+    },
+    {
+      "name": "server fetch progress and distinct signature alpha",
+      "passed": true
+    },
+    {
+      "name": "server skeleton exact icon/text/trailing shape dimensions",
+      "passed": true
+    },
+    {
+      "name": "purchase skeleton five vertical source cards",
+      "passed": true
+    },
+    {
+      "name": "RPN five server skeleton rows and original list padding",
+      "passed": true
+    },
+    {
+      "name": "server history four server rows and purchase-specific variant",
+      "passed": true
+    },
+    {
+      "name": "RPN shimmer timing/alpha and no live animation when stopped",
+      "passed": true
+    },
+    {
+      "name": "add-tile dash pattern with outer margin before minimum height",
+      "passed": true
+    },
+    {
+      "name": "add-tile original single-line medium tracked label",
+      "passed": true
+    },
+    {
+      "name": "plain two-column source grid with equal-height rows and no invented gap",
+      "passed": true
+    },
+    {
+      "name": "source content card style, watermark and recent-app icon layering",
+      "passed": true
+    },
+    {
+      "name": "country avatar source metrics and font padding",
+      "passed": true
+    },
+    {
+      "name": "alphabet section original typography and padding",
+      "passed": true
+    },
+    {
+      "name": "plain country grouping, inset divider and nested rows",
+      "passed": true
+    },
+    {
+      "name": "country rows have no added card borders/background",
+      "passed": true
+    },
+    {
+      "name": "favourite action callback unchanged",
+      "passed": true
+    },
+    {
+      "name": "city selection/stopped callback unchanged",
+      "passed": true
+    },
+    {
+      "name": "country speedInfo body unchanged",
+      "passed": true
+    },
+    {
+      "name": "country loadInfo body unchanged",
+      "passed": true
+    },
+    {
+      "name": "country sectionLetter body unchanged",
+      "passed": true
+    },
+    {
+      "name": "watermark bind exactly one source assignment: ui.flagWatermark.setFlagDrawable(",
+      "passed": true
+    },
+    {
+      "name": "watermark bind exactly one source assignment: ui.flagWatermark.setFlagText(group.flagEmoji)",
+      "passed": true
+    },
+    {
+      "name": "entire VPN adapter unchanged except the two watermark presentation assignments",
+      "passed": true
+    },
+    {
+      "name": "watermark flagCenter drawing body byte-exact from baseline",
+      "passed": true
+    },
+    {
+      "name": "watermark buildMask drawing body byte-exact from baseline",
+      "passed": true
+    },
+    {
+      "name": "watermark drawFlag drawing body byte-exact from baseline",
+      "passed": true
+    },
+    {
+      "name": "watermark source constants, native drawing and RTL",
+      "passed": true
+    },
+    {
+      "name": "dimension references retain qualifier and font scaling",
+      "passed": true
+    },
+    {
+      "name": "history bold resolves the source medium family with native bold face",
+      "passed": true
+    },
+    {
+      "name": "progress title/status/hint resolve exact source typography",
+      "passed": true
+    },
+    {
+      "name": "progress track source colors/inset/caps without modern gap/stop decoration",
+      "passed": true
+    },
+    {
+      "name": "unchanged existing RPN helper: rpnProgressDialog",
+      "passed": true
+    },
+    {
+      "name": "unchanged existing RPN helper: RpnText",
+      "passed": true
+    },
+    {
+      "name": "unchanged existing RPN helper: OriginalRpnText",
+      "passed": true
+    },
+    {
+      "name": "removed-server source frame/text/card geometry",
+      "passed": true
+    },
+    {
+      "name": "removal sheet original horizontal header, list, and primary spacing",
+      "passed": true
+    },
+    {
+      "name": "removal action callback still exactly one explicit call",
+      "passed": true
+    },
+    {
+      "name": "ping circle/padding/medium/bold/single-line source styles",
+      "passed": true
+    },
+    {
+      "name": "ping retains source single-line layout at every font scale",
+      "passed": true
+    },
+    {
+      "name": "ping adapter data/submission unchanged",
+      "passed": true
+    },
+    {
+      "name": "ping outcome/data expressions unchanged",
+      "passed": true
+    },
+    {
+      "name": "premium loading original hero/title/four features/two plans sequence",
+      "passed": true
+    },
+    {
+      "name": "premium loading clips its fixed-height source blocks to original themed viewport",
+      "passed": true
+    },
+    {
+      "name": "plan card selection and pulse unchanged",
+      "passed": true
+    },
+    {
+      "name": "header skeleton source shape/margins/timing/alpha",
+      "passed": true
+    },
+    {
+      "name": "subscription banner skeleton source composition and pinned library defaults",
+      "passed": true
+    },
+    {
+      "name": "header skeletons wired without generic fractional lines",
+      "passed": true
+    },
+    {
+      "name": "generic RPN line skeleton removed",
+      "passed": true
+    },
+    {
+      "name": "owned renderers do not inflate XML or instantiate a View",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerTile.kt",
+      "mutation": "floatArrayOf(1.dp.toPx(), 1.dp.toPx())",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "mutation": "countryTextStyle(26.sp, includeFontPadding = false)",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryScreen.kt",
+      "mutation": "index -> Card { row(index) }",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnLoadingSkeletons.kt",
+      "mutation": "width(100.dp).height(14.dp)",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "mutation": "ui.flagWatermark.setFlagText(\"\")",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnComponents.kt",
+      "mutation": "size = 20f, family = \"sans-serif-medium\"",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnRemovalContent.kt",
+      "mutation": "Modifier.size(28.dp)",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/PurchasePlans.kt",
+      "mutation": "fillMaxWidth().height(120.dp)",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt",
+      "mutation": "maxLines = 2",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnHeaderSkeletons.kt",
+      "mutation": "width(60.dp).height(10.dp)",
+      "rejected": true
+    }
+  ],
+  "baseline_layout_sha256": {
+    "app/src/main/res/layout/activity_purchase_history.xml": "7d118950bdb2d0040899e49bb4a4645d8e5c2173f090402e6eadc078d8d7def0",
+    "app/src/main/res/layout/activity_server_order_history.xml": "99502f7179d770afdd20f002248c864703c4021b9bea7bb303f5c8e2deccaf4a",
+    "app/src/main/res/layout/list_item_purchase_history.xml": "896c6a1a1324246a829ccd46eda29101a80baeeda646e1463180ee8f5a40b780",
+    "app/src/main/res/layout/list_item_server_order.xml": "9fd885ef67e2b8928f7b7653e04db667f6cbc0bce3b01e72b2556386695a03bd",
+    "app/src/main/res/layout/list_item_shimmer_card.xml": "f34bccb673613b8b69a7bfae51a3bfb41442e5bfebc12b4eeee38a878be43cda",
+    "app/src/main/res/layout/list_item_shimmer_server_row.xml": "ba2e5efafe9e961ac52b07c4a4f950d3c8e142fd1a1f20504fed040f5ffeb62e",
+    "app/src/main/res/layout/list_item_country_card.xml": "1b3ed19af557986ac438f9d6f6d7e711d77a6db9eb1d04e3b888e469c23983f1",
+    "app/src/main/res/layout/item_server_group.xml": "30cc1a460a0bc6b16b31421f9fda09f2fb2e336202522009d212f6e3add51e07",
+    "app/src/main/res/layout/item_section_header.xml": "39508489169601784bfef1d9793ca88ab41170a42754a0a2f7deffa0001569dd",
+    "app/src/main/res/layout/list_item_vpn_server_add.xml": "1b5f059c298a937a01833afd54b2064d23d9e17d8602ee55c5ae9c92ac884db4",
+    "app/src/main/res/layout/list_item_vpn_server.xml": "b8eea41ed7255812f5fe8ebb05390877243e7b2db7ad8cac71236fd36754ad1a",
+    "app/src/main/res/layout/fragment_server_selection.xml": "31b0a534953574b9902a28473cb20624b5e31a349e4772c22f39b0a799c570dd",
+    "app/src/main/res/layout/dialog_server_loading.xml": "5ddecacc339f2f483c4676a047586ab52b232b9a17bd2452988d77dbe4f7871c",
+    "app/src/main/res/layout/item_removed_server.xml": "c83116e1bfab508237751c05b3688d5cbc1efba1c9fa015e011a686c726bd242",
+    "app/src/main/res/layout/bottomsheet_server_removal_notification.xml": "e9e2ffdd76761078375530e6b6a5b01699d24761115f3c5a232bb51029916a73",
+    "app/src/main/res/layout/item_ping_test_history.xml": "a667440d7ddaf3ec5b030db7131d6d28186502c057b73b18e821a4cfc75cf8aa",
+    "app/src/main/res/layout/shimmer_subscription_loading.xml": "aac37be90fff1fb49d80b6a9c0c443aa2a96e64859dec313e6789d7e1d93bb7d",
+    "app/src/main/res/layout/fragment_rethink_plus_premium.xml": "ba41909abf5627d6730dd8db4a244a9228a6bd6363422d26691afb1b0e3b6081"
+  },
+  "source_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryRowContent.kt": "da75caa79b9acd7257a91be7ea2fa09217174d4fa91f7d659408c2b48aab9d9f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryScreen.kt": "e9ea4c456486183c88afda7932b2f57715bba5040bf24820cdc5f7c197836253",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerTile.kt": "6b5c74c676cda164a1b95c6c95f6cda5ea45a4c95358875b602a3f9f8d7a6533",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnLoadingSkeletons.kt": "e2a4f8e1f8794494815f0096261507b9a25f622c2111267f9d287a785a0e3758",
+    "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt": "9544e190a769965af281f125776a2763c83dc2ffddc348f961d68c3793d9df94",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt": "35a1d46e37821ae1eab20a2634b55b7a12eb732f050970e6a2d8ad77979f8e3e",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt": "b8188c257508fc4a52b5af91a69952d4cc7654604dfbf5877ae25fb40f87a883",
+    "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt": "1178e894493f920de3e10f3d19f01c5f052ac7cccaea1445105ba7fbff43d4d3",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerRowState.kt": "7ecae27f0ad947ac0f777c005951bfe01266ef7f6891b79662f429c605933cc8",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSourceTypography.kt": "b87a401b7a0f7bff98326decb006fc4f90fe597e430ce2eab2c22d1f16add0c9",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnComponents.kt": "3552464c06b7039222c134389e751dd7b957cc9e0be4b63730092519a631fa8f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnRemovalContent.kt": "a7d11089702fc965a3d81c861900237d024d9f1af40afeef3c02a4d88aef36dd",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnHeaderSkeletons.kt": "373977846c02651632226746a29e182e40a10d3126e9fc3fce2cd2fb82bc77c5",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/PurchasePlans.kt": "312d8739cbf7cb929fe10e2f77526bcebd5a0f18c12549b56c6164855985261e",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/SubscriptionContent.kt": "dbd31cbce03168edd58409df305825e4b6de64e0e7d65944bcd77eb665de75f5",
+    "app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt": "2f17947b55f56b6a632a11c80c35f9a0817d15bf40d35cf010b53d1c7358ce6e"
+  },
+  "unrun": [
+    "Android/Kotlin compilation",
+    "Compose/Robolectric tests",
+    "device/screenshots",
+    "TalkBack/RTL/font-scale visual checks"
+  ],
+  "remaining_limits": [
+    "Material and framework implicit defaults require approved runtime reference comparison.",
+    "History collapsing toolbar scrim/parallax/title placement remains a separate source/runtime gate.",
+    "Shimmer placeholder composition/timing/alpha are guarded, but exact library sweep/dropoff/tilt and stopped-frame appearance require visual comparison.",
+    "Progress-window chrome and exact Material progress animation curves require runtime comparison; the source text/track defaults and geometry are restored."
+  ]
+}

@@ -1,6 +1,7 @@
 {
   "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
   "native_checkpoint": "e2b97de59cc854de74010c096ceffbaed6cb4a55",
+  "preserved_user_lint": "154065c0467f9f47be5acf8b58fc15e6bdca8a31",
   "verification": "static source only; no build, runtime or screenshot verification",
   "mapped_baseline_instances": 96,
   "audited_native_files": 18,

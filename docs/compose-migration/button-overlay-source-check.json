@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "source_only": true,
+  "contracts": 21,
+  "negative_controls": 11,
+  "compile": "not_run",
+  "runtime": "not_run"
+}

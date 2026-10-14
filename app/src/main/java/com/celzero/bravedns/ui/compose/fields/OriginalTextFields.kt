@@ -32,7 +32,9 @@ import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
@@ -42,6 +44,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -83,13 +86,73 @@ internal data class FieldResources(
     val mode: Int, val background: Drawable?, val padding: Rect, val minHeight: Float,
     val text: ColorStateList?, val hint: ColorStateList?, val stroke: ColorStateList?,
     val fill: ColorStateList?, val cursor: ColorStateList?, val highlight: Color, val shape: RoundedCornerShape,
-    val strokeWidth: Float, val focusedStrokeWidth: Float
+    val strokeWidth: Float, val focusedStrokeWidth: Float, val search: SearchFieldResources? = null
 )
+
+/** abc_search_view separates the leading magnifier from the tinted query plate. */
+internal data class SearchFieldResources(
+    val editorPadding: Rect, val includeFontPadding: Boolean, val icon: Drawable?,
+    val iconSlotWidth: Float, val iconStartMargin: Float, val clearWidth: Float
+)
+
+// SearchView.updateFocusedState forwards focused/empty state, not the editor's enabled state.
+internal fun searchPlateStateSet(focused: Boolean) =
+    if (focused) intArrayOf(android.R.attr.state_focused) else intArrayOf()
+
+/** SearchAutoComplete uses autoCompleteTextViewStyle, with an explicitly null editor background.
+ * Read the widget's TextAppearance as well as direct attributes. Do not inherit editTextStyle's
+ * minimum height or backdrop. All of this is resource lookup; production creates no Views.
+ */
+@SuppressLint("ResourceType")
+private fun resolveSearchFieldResources(context: Context, style: OriginalFieldStyle): FieldResources {
+    val density = context.resources.displayMetrics.density
+    val editor = context.obtainStyledAttributes(null, intArrayOf(android.R.attr.textAppearance,
+        android.R.attr.textColor, android.R.attr.textColorHint, android.R.attr.textColorHighlight,
+        android.R.attr.padding, android.R.attr.paddingTop, android.R.attr.paddingBottom,
+        android.R.attr.includeFontPadding), androidx.appcompat.R.attr.autoCompleteTextViewStyle, 0)
+    val appearance = context.obtainStyledAttributes(editor.getResourceId(0, 0), intArrayOf(
+        android.R.attr.textColor, android.R.attr.textColorHint, android.R.attr.textColorHighlight))
+    val search = context.obtainStyledAttributes(null, intArrayOf(androidx.appcompat.R.attr.queryBackground,
+        androidx.appcompat.R.attr.searchIcon, androidx.appcompat.R.attr.closeIcon),
+        androidx.appcompat.R.attr.searchViewStyle, 0)
+    // Match TintTypedArray.getDrawable: resource-backed values go through AppCompat's tint manager.
+    fun drawable(index: Int): Drawable? {
+        val id = search.getResourceId(index, 0)
+        return (if (id != 0) AppCompatResources.getDrawable(context, id) else search.getDrawable(index))?.mutate()
+    }
+    try {
+        val background = drawable(0)
+        val platePadding = Rect().also { background?.getPadding(it) }
+        val allPadding = editor.getDimensionPixelSize(4, 0)
+        val editorPadding = if (style == OriginalFieldStyle.ServerSearch) Rect(0, 0, 0, 0) else Rect(
+            context.resources.getDimensionPixelSize(androidx.appcompat.R.dimen.abc_dropdownitem_text_padding_left),
+            editor.getDimensionPixelSize(5, allPadding),
+            context.resources.getDimensionPixelSize(androidx.appcompat.R.dimen.abc_dropdownitem_text_padding_right),
+            editor.getDimensionPixelSize(6, allPadding))
+        val icon = if (style == OriginalFieldStyle.AppLogSearch) null else drawable(1)
+        val close = if (style == OriginalFieldStyle.ServerSearch) AppCompatResources.getDrawable(context, R.drawable.ic_cross) else drawable(2)
+        val cursor = context.obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {
+            try { it.getColorStateList(0) } finally { it.recycle() }
+        }
+        return FieldResources(0, background, platePadding,
+            if (style == OriginalFieldStyle.ServerSearch) 40f else
+                context.resources.getDimension(androidx.appcompat.R.dimen.abc_search_view_preferred_height) / density,
+            editor.getColorStateList(1) ?: appearance.getColorStateList(0),
+            editor.getColorStateList(2) ?: appearance.getColorStateList(1), null, null, cursor,
+            Color(if (editor.hasValue(3)) editor.getColor(3, 0) else appearance.getColor(2, 0)),
+            RoundedCornerShape(0.dp), 0f, 0f,
+            SearchFieldResources(editorPadding, style != OriginalFieldStyle.ServerSearch && editor.getBoolean(7, true),
+                icon, context.resources.getDimension(androidx.appcompat.R.dimen.abc_dropdownitem_icon_width) / density,
+                context.resources.getDimension(androidx.appcompat.R.dimen.abc_dropdownitem_text_padding_left) / density,
+                (close?.intrinsicWidth?.takeIf { it > 0 }?.div(density) ?: 24f) + 16f))
+    } finally { search.recycle(); appearance.recycle(); editor.recycle() }
+}
 
 /** Resource lookup only. No Views, layout inflation, or theme-independent M3 substitutions. */
 // These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
 @SuppressLint("ResourceType")
 internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle): FieldResources {
+    if (style.search) return resolveSearchFieldResources(context, style)
     val density = context.resources.displayMetrics.density
     val widgetStyle = if (style.outlined) MaterialR.style.Widget_Material3_TextInputLayout_OutlinedBox
         else resolveUtilityStyle(context, MaterialR.attr.textInputStyle)
@@ -105,10 +168,7 @@ internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle):
     val mode = if (style.materialBox) box.getInt(0, if (style.outlined) 2 else 1) else 0
     val stroke = box.getColorStateList(1)
     val fill = box.getColorStateList(2)
-    val searchText = if (style.search) context.obtainStyledAttributes(intArrayOf(android.R.attr.textColorPrimary, android.R.attr.textColorHint)).let {
-        try { it.getColorStateList(0) to it.getColorStateList(1) } finally { it.recycle() }
-    } else null
-    val hint = searchText?.second ?: if (style.materialBox) box.getColorStateList(3) ?: edit.getColorStateList(2) else edit.getColorStateList(2)
+    val hint = if (style.materialBox) box.getColorStateList(3) ?: edit.getColorStateList(2) else edit.getColorStateList(2)
     val shapeModel = ShapeAppearanceModel.builder(context, box.getResourceId(4, 0), box.getResourceId(5, 0)).build()
     val bounds = RectF(0f, 0f, 1000f * density, 56f * density)
     fun corner(size: com.google.android.material.shape.CornerSize) = (style.radiusDp ?: (size.getCornerSize(bounds) / density)).dp
@@ -117,10 +177,6 @@ internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle):
     val background = when {
         style == OriginalFieldStyle.Lan || style == OriginalFieldStyle.WgInlineSsid -> AppCompatResources.getDrawable(context, R.drawable.edittext_default)?.mutate()
         style == OriginalFieldStyle.TransparentSearch || style.materialBox -> null
-        style.search -> context.obtainStyledAttributes(null, intArrayOf(androidx.appcompat.R.attr.queryBackground),
-            androidx.appcompat.R.attr.searchViewStyle, androidx.appcompat.R.style.Widget_AppCompat_SearchView).let {
-                try { it.getDrawable(0)?.mutate() } finally { it.recycle() }
-            }
         else -> edit.getDrawable(0)?.mutate()
     }
     val padding = Rect().also { background?.getPadding(it) }
@@ -139,8 +195,22 @@ internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle):
         try { Color(it.getColor(0, android.graphics.Color.TRANSPARENT)) } finally { it.recycle() }
     }
     return FieldResources(mode, background, padding, edit.getDimension(3, 0f) / density,
-        searchText?.first ?: edit.getColorStateList(1), hint, stroke, fill, cursor, highlight, shape,
+        edit.getColorStateList(1), hint, stroke, fill, cursor, highlight, shape,
         box.getDimension(6, density) / density, box.getDimension(7, 2 * density) / density).also { edit.recycle(); box.recycle() }
+}
+
+/** abc_search_view.xml defaults to actionSearch and textNoSuggestions. Fill only unset search
+ * options: callers still own explicit IME actions, autocorrection, keyboard type and callbacks.
+ * Compose exposes autocorrection here, not the native textAutoComplete/noSuggestions bit pair.
+ */
+internal fun originalFieldKeyboardOptions(style: OriginalFieldStyle, options: KeyboardOptions): KeyboardOptions {
+    if (!style.search) return options
+    return options.copy(
+        imeAction = if (options.imeAction == ImeAction.Unspecified) ImeAction.Search else options.imeAction,
+        autoCorrectEnabled = options.autoCorrectEnabled ?: false,
+        // KeyboardOptions.copy does not default these two arguments to the receiver's values.
+        showKeyboardOnFocus = options.showKeyboardOnFocus,
+        hintLocales = options.hintLocales)
 }
 
 @Composable
@@ -157,7 +227,7 @@ fun OriginalTextField(value: String, onValueChange: (String) -> Unit, modifier: 
     OriginalField(value, modifier, style, enabled, textStyle, label, placeholder, leadingIcon, trailingIcon, supportingText,
         isError, errorMessage, visualTransformation, singleLine, expandedHint) { fieldModifier, resolvedText, cursor, interaction, decoration ->
         BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,
-            keyboardOptions, keyboardActions, singleLine, maxLines, minLines, visualTransformation,
+            originalFieldKeyboardOptions(style, keyboardOptions), keyboardActions, singleLine, maxLines, minLines, visualTransformation,
             interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)
     }
 }
@@ -173,7 +243,7 @@ fun OriginalTextField(value: TextFieldValue, onValueChange: (TextFieldValue) -> 
     OriginalField(value.text, modifier, style, enabled, textStyle, null, placeholder, null, null, null,
         false, null, VisualTransformation.None, singleLine, true) { fieldModifier, resolvedText, cursor, interaction, decoration ->
         BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,
-            keyboardOptions, keyboardActions, singleLine, maxLines, minLines, VisualTransformation.None,
+            originalFieldKeyboardOptions(style, keyboardOptions), keyboardActions, singleLine, maxLines, minLines, VisualTransformation.None,
             interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)
     }
 }
@@ -204,18 +274,18 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
     val appearance = if (style == OriginalFieldStyle.Dns || style == OriginalFieldStyle.DnsProxy)
         resolveUtilityStyle(context, MaterialR.attr.textAppearanceBodyLarge) else 0
     val textSize = style.textSizeSp ?: if (style == OriginalFieldStyle.Rule) utilityDimensionSp(context, R.dimen.large_font_text_view)
-        else if (style.search) 16f else null
-    val baseText = utilityTextStyle(appearance = appearance, size = textSize,
-        family = if (style.search) "sans-serif" else null,
+        else null
+    val baseText = if (style.search) originalSearchTextStyle(style) else utilityTextStyle(
+        appearance = appearance, size = textSize,
         defaultStyleAttribute = if (style == OriginalFieldStyle.Notes) android.R.attr.editTextStyle else androidx.appcompat.R.attr.editTextStyle)
     val resolvedText = baseText.merge(textStyle).copy(
         color = if (textStyle.color != Color.Unspecified) textStyle.color else foreground,
-        platformStyle = PlatformTextStyle(includeFontPadding = style != OriginalFieldStyle.ServerSearch))
+        platformStyle = PlatformTextStyle(includeFontPadding = resources.search?.includeFontPadding ?: true))
     val invalidInputMessage = errorMessage ?: stringResource(R.string.compose_field_invalid_input)
-    // Minimum touch bounds grow naturally with font scale and multiline content. No fixed field height.
+    // Keep source search dimensions separate from generic text-input minimum heights.
     val fieldModifier = modifier
         .then(if (resources.mode == 2 && label != null) Modifier.padding(top = 8.dp) else Modifier)
-        .heightIn(min = maxOf(if (style.materialBox) 56f else 48f, resources.minHeight).dp)
+        .heightIn(min = (if (style.search) resources.minHeight else maxOf(if (style.materialBox) 56f else 48f, resources.minHeight)).dp)
         .semantics {
             originalFieldFamily = style.name
             if (isError) error(invalidInputMessage)
@@ -273,6 +343,8 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
                     container = { TextFieldDefaults.Container(enabled, isError, interaction, colors = colors, shape = resources.shape,
                         focusedIndicatorLineThickness = resources.focusedStrokeWidth.dp, unfocusedIndicatorLineThickness = resources.strokeWidth.dp) })
             }
+        } else if (style.search) {
+            OriginalSearchDecoration(resources, value, focused, resolvedText, hint, leading, trailing, placeholder ?: label, inner)
         } else {
             val padding = resources.padding
             Row(Modifier.fillMaxWidth().drawBehind {
@@ -285,8 +357,6 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
                 end = with(density) { padding.right.toDp() }, bottom = with(density) { padding.bottom.toDp() }),
                 verticalAlignment = Alignment.CenterVertically) {
                 if (leading != null) leading()
-                else if (style == OriginalFieldStyle.Search) Icon(painterResource(R.drawable.ic_search), null,
-                    Modifier.padding(horizontal = 8.dp).size(24.dp), tint = hint)
                 Box(Modifier.weight(1f).heightIn(min = 32.dp), contentAlignment = Alignment.CenterStart) {
                     if (value.isEmpty()) CompositionLocalProvider(LocalContentColor provides hint) { ProvideTextStyle(resolvedText.copy(color = hint)) { (placeholder ?: label)?.invoke() } }
                     inner()
@@ -295,6 +365,58 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
             }
         }
     }
+    }
+}
+
+@Composable
+internal fun originalSearchTextStyle(style: OriginalFieldStyle): TextStyle = utilityTextStyle(
+    size = style.textSizeSp, defaultStyleAttribute = androidx.appcompat.R.attr.autoCompleteTextViewStyle)
+
+/** Compose equivalent of the uniconified abc_search_view edit frame and query plate. */
+@Composable
+private fun OriginalSearchDecoration(resources: FieldResources, value: String, focused: Boolean,
+    text: TextStyle, hint: Color, leading: (@Composable () -> Unit)?, trailing: (@Composable () -> Unit)?,
+    placeholder: (@Composable () -> Unit)?, inner: @Composable () -> Unit) {
+    val search = checkNotNull(resources.search)
+    val density = LocalDensity.current
+    val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    fun Rect.asPadding() = with(density) { PaddingValues(
+        start = (if (rtl) right else left).toDp(), top = top.toDp(),
+        end = (if (rtl) left else right).toDp(), bottom = bottom.toDp()) }
+    // Native clear/search slots have their own dimensions; M3's 48dp minimum changes the layout.
+    CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
+        Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min).heightIn(min = resources.minHeight.dp)
+            .padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+            if (leading != null || search.icon != null) {
+                Box(Modifier.padding(start = search.iconStartMargin.dp).width(search.iconSlotWidth.dp)
+                    .fillMaxHeight(), contentAlignment = Alignment.Center) {
+                    if (leading != null) leading() else search.icon?.let { icon ->
+                        Box(Modifier.size(with(density) { icon.intrinsicWidth.toDp() }, with(density) { icon.intrinsicHeight.toDp() })
+                            .drawBehind {
+                                icon.setBounds(0, 0, size.width.toInt(), size.height.toInt())
+                                drawIntoCanvas { icon.draw(it.nativeCanvas) }
+                            })
+                    }
+                }
+            }
+            Row(Modifier.weight(1f).fillMaxHeight().drawBehind {
+                resources.background?.let { drawable ->
+                    drawable.state = searchPlateStateSet(focused)
+                    drawable.setBounds(0, 0, size.width.toInt(), size.height.toInt())
+                    drawIntoCanvas { drawable.draw(it.nativeCanvas) }
+                }
+            }.padding(resources.padding.asPadding()), verticalAlignment = Alignment.CenterVertically) {
+                Box(Modifier.weight(1f).heightIn(min = 36.dp).padding(search.editorPadding.asPadding()),
+                    contentAlignment = Alignment.CenterStart) {
+                    if (value.isEmpty()) CompositionLocalProvider(LocalContentColor provides hint) {
+                        ProvideTextStyle(text.copy(color = hint)) { placeholder?.invoke() }
+                    }
+                    inner()
+                }
+                if (value.isNotEmpty() && trailing != null) Box(Modifier.width(search.clearWidth.dp).fillMaxHeight(),
+                    contentAlignment = Alignment.Center) { trailing() }
+            }
+        }
     }
 }
 

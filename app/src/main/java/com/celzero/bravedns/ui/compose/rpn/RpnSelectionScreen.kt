@@ -96,13 +96,13 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
                                 RpnHeatmap(ui)
                             }
                         }
-                        if (ui.shimmerHeader.isVisible) RpnShimmer(ui.shimmerHeader, 46.dp, listOf(.48f to 10.dp, .8f to 26.dp))
+                        if (ui.shimmerHeader.isVisible) RpnHeaderLoadingSkeleton(ui.shimmerHeader.shimmerRunning)
                         if (ui.subscriptionBanner.isVisible) Row(Modifier.fillMaxWidth().rpnMotion(ui.subscriptionBanner).padding(top = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                             RpnText(ui.tvExpiryLabel, style = MaterialTheme.typography.bodySmall)
                             RpnText(ui.tvExpiryDate, Modifier.weight(1f).padding(start = 6.dp), MaterialTheme.typography.bodySmall)
                             RpnText(ui.tvDaysRemaining, style = MaterialTheme.typography.labelSmall)
                         }
-                        if (ui.shimmerSubscriptionBanner.isVisible) RpnShimmer(ui.shimmerSubscriptionBanner, 40.dp, listOf(.45f to 20.dp, .25f to 12.dp))
+                        if (ui.shimmerSubscriptionBanner.isVisible) RpnSubscriptionLoadingSkeleton(ui.shimmerSubscriptionBanner.shimmerRunning)
                     }
                     if (ui.registrationProgressBar.isVisible) LinearProgressIndicator(Modifier.fillMaxWidth().padding(top = 4.dp))
                     if (ui.quickSettingsRow.isVisible) BoxWithConstraints(Modifier.fillMaxWidth().padding(top = 10.dp, bottom = 12.dp).rpnMotion(ui.quickSettingsRow)) {
@@ -133,13 +133,21 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
                         Box(Modifier.size(16.dp, 6.dp).rpnMotion(dot).background(dot.backgroundTintList?.defaultColor?.let(::Color) ?: themeColor(R.attr.accentGood), RoundedCornerShape(3.dp)))
                     }
                 }
-                if (ui.searchCard.isVisible) Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 10.dp).onGloballyPositioned { searchY = it.positionInParent().y.toInt() }.rpnMotion(ui.searchCard).clip(RoundedCornerShape(16.dp)).background(themeColor(R.attr.colorSurfaceVariant)).padding(horizontal = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Icon(painterResource(R.drawable.ic_search), null, Modifier.size(18.dp))
-                    OriginalTextField(ui.searchBar.query, { restoredQuery = it; ui.searchBar.setQuery(it) }, Modifier.weight(1f).padding(horizontal = 8.dp).heightIn(min = 40.dp).focusRequester(focus).onFocusChanged { ui.searchBar.onFocusChanged(it.hasFocus) },
-                        style = OriginalFieldStyle.ServerSearch, enabled = ui.searchBar.isEnabled, singleLine = true, textStyle = TextStyle(fontSize = 14.sp, color = themeColor(R.attr.primaryTextColor)),
-                        placeholder = { Text(stringResource(R.string.server_selection_search_hint), fontSize = 14.sp, color = themeColor(R.attr.primaryLightColorText)) })
-                    if (ui.searchBar.query.isNotEmpty()) IconButton({ ui.searchBar.setQuery("") }, Modifier.size(32.dp), enabled = ui.searchBar.isEnabled) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(16.dp), tint = Color.Unspecified) }
-                    RpnIconButton(ui.searchFilterBtn, R.drawable.ic_filter, R.string.server_selection_filter_locations, 36.dp)
+                if (ui.searchCard.isVisible) OriginalCardSurface(
+                    Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 10.dp)
+                        .onGloballyPositioned { searchY = it.positionInParent().y.toInt() }.rpnMotion(ui.searchCard),
+                    style = R.style.RethinkPlus_ContentCard) {
+                    Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(horizontal = 8.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically) {
+                        OriginalTextField(ui.searchBar.query, { restoredQuery = it; ui.searchBar.setQuery(it) },
+                            Modifier.weight(1f).height(40.dp).focusRequester(focus).onFocusChanged { ui.searchBar.onFocusChanged(it.hasFocus) },
+                            style = OriginalFieldStyle.ServerSearch, enabled = ui.searchBar.isEnabled, singleLine = true,
+                            placeholder = { Text(stringResource(R.string.server_selection_search_hint)) },
+                            trailingIcon = { if (ui.searchBar.query.isNotEmpty()) IconButton({ ui.searchBar.setQuery("") }, Modifier.size(32.dp), enabled = ui.searchBar.isEnabled) {
+                                Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(16.dp), tint = Color.Unspecified)
+                            } })
+                        RpnIconButton(ui.searchFilterBtn, R.drawable.ic_filter, R.string.server_selection_filter_locations, 36.dp)
+                    }
                 }
                 if (ui.serverCountLayout.isVisible) Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     RpnText(ui.tvServerCount, Modifier.weight(1f), MaterialTheme.typography.titleMedium)
@@ -229,18 +237,6 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
         } }
     }
 }
-@Composable private fun RpnShimmer(state: RpnControlState, height: Dp, lines: List<Pair<Float, Dp>>) {
-    val transition = rememberInfiniteTransition(label = "RPN loading shimmer")
-    val offset by transition.animateFloat(-1f, 2f, infiniteRepeatable(tween(1000, easing = LinearEasing)), label = "shimmer highlight")
-    val base = themeColor(R.attr.primaryLightColorText).copy(alpha = .12f)
-    Column(Modifier.fillMaxWidth().height(height).padding(vertical = 8.dp), verticalArrangement = Arrangement.SpaceBetween) {
-        lines.forEach { (width, h) -> Canvas(Modifier.fillMaxWidth(width).height(h)) {
-            val x = if (state.shimmerRunning) offset * size.width else 0f
-            drawRoundRect(Brush.linearGradient(listOf(base, base.copy(alpha = .3f), base), Offset(x - size.width, 0f), Offset(x + size.width, size.height)), cornerRadius = androidx.compose.ui.geometry.CornerRadius(4.dp.toPx()))
-        } }
-    }
-}
-
 /** Nested-scroll pull distance is unscaled; SwipeRefreshLayout's .5 drag rate applies only to its touch fallback. */
 internal fun rpnPullSpinnerOffset(distance: Float, trigger: Float, slingshot: Float, diameter: Float): Float {
     val drag = min(1f, abs(distance / trigger))

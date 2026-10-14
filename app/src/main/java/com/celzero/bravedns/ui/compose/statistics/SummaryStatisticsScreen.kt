@@ -2,9 +2,9 @@
 package com.celzero.bravedns.ui.compose.statistics
 
 import com.celzero.bravedns.ui.compose.controls.*
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -13,12 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -31,6 +34,7 @@ import com.celzero.bravedns.ui.compose.NoDimDialogWindow
 import com.celzero.bravedns.ui.compose.appdetails.AppCountryMap
 import com.celzero.bravedns.ui.compose.appdetails.appDonutSweeps
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 import com.celzero.bravedns.ui.fragment.SummaryStatisticsFragment.SummaryStatisticsType as Type
 import com.celzero.bravedns.ui.stats.StatsInsightsMath
 import com.celzero.bravedns.ui.stats.StatsViewMode
@@ -47,18 +51,25 @@ internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
                         Text(stringResource(if (state.alpha) R.string.app_name_alpha else R.string.app_name_small_case), style = MaterialTheme.typography.headlineLarge)
                         Text(stringResource(R.string.about_title_desc), style = MaterialTheme.typography.bodySmall)
                     }
-                    StatsModeButton(state.mode == StatsViewMode.LIST, R.drawable.ic_view_list, R.string.cd_stats_switch_to_list, "stats_mode_list") { state.onMode(StatsViewMode.LIST) }
-                    StatsModeButton(state.mode == StatsViewMode.INSIGHTS, R.drawable.ic_view_chart, R.string.cd_stats_switch_to_insights, "stats_mode_insights") { state.onMode(StatsViewMode.INSIGHTS) }
-                    Box {
+                    // The original 32dp buttons share a 1dp stroke and squared inner corners.
+                    Row(Modifier.padding(start = 8.dp).heightIn(min = 48.dp).selectableGroup(),
+                        horizontalArrangement = Arrangement.spacedBy(-dimensionResource(R.dimen.default_stroke_width)),
+                        verticalAlignment = Alignment.CenterVertically) {
+                        StatsModeButton(state.mode == StatsViewMode.LIST, R.string.cd_stats_switch_to_list, "stats_mode_list") { state.onMode(StatsViewMode.LIST) }
+                        StatsModeButton(state.mode == StatsViewMode.INSIGHTS, R.string.cd_stats_switch_to_insights, "stats_mode_insights") { state.onMode(StatsViewMode.INSIGHTS) }
+                    }
+                    Box(Modifier.padding(start = 8.dp)) {
                         val filterDescription = stringResource(R.string.ssv_filter_heading)
                         OriginalButton("fragment_summary_statistics:fss_filter_btn", onClick = state.onFilter,
                             modifier = Modifier.testTag("stats_filter").semantics { contentDescription = filterDescription }) { }
                         statisticsFilterBadge(state.filters, state.providersAvailable)?.let { count ->
-                            Badge(Modifier.align(Alignment.BottomEnd).animateContentSize()) { Text(count.toString()) }
+                            // The button's 32dp source bounds are centered in its 48dp touch target;
+                            // source badge margins are 2dp from that visual bottom/end.
+                            StatsFilterBadge(count, Modifier.align(Alignment.BottomEnd).padding(end = 10.dp, bottom = 10.dp))
                         }
                     }
                 }
-                LazyRow(horizontalArrangement = Arrangement.spacedBy((-1).dp)) {
+                LazyRow(Modifier.fillMaxWidth().selectableGroup(), horizontalArrangement = Arrangement.spacedBy(-dimensionResource(R.dimen.default_stroke_width))) {
                     items(TimeCategory.entries.size) { index ->
                         val tc = TimeCategory.entries[index]
                         val amount = when (tc) { TimeCategory.ONE_HOUR -> "1"; TimeCategory.TWENTY_FOUR_HOUR -> "24"; TimeCategory.SEVEN_DAYS -> "7" }
@@ -74,8 +85,12 @@ internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
                     item(key = "header_${type.tid}") {
                         Row(Modifier.padding(top = 20.dp).testTag("stats_section_${type.tid}"), verticalAlignment = Alignment.CenterVertically) {
                             Text(stringResource(statisticsTitle(type)), Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
-                            if (type == Type.TOP_ACTIVE_CONNS) OriginalButton("fragment_summary_statistics:fss_close_conns_chip", onClick = state.onClose, modifier = Modifier.testTag("stats_close_all")) { Text(stringResource(R.string.close_all)) }
-                            OriginalButton("fragment_summary_statistics:fss_active_apps_chip", onClick = { state.onDetail(type) }, modifier = Modifier.testTag("stats_detail_${type.tid}")) { Text(stringResource(R.string.ssv_see_more)) }
+                            if (type == Type.TOP_ACTIVE_CONNS) {
+                                OriginalButton("fragment_summary_statistics:" + if (state.mode == StatsViewMode.INSIGHTS) "fss_ia_close_conns_chip" else "fss_close_conns_chip",
+                                    onClick = state.onClose, modifier = Modifier.testTag("stats_close_all")) { Text(stringResource(R.string.close_all)) }
+                                Spacer(Modifier.width(6.dp))
+                            }
+                            OriginalButton(statisticsDetailSource(type, state.mode), onClick = { state.onDetail(type) }, modifier = Modifier.testTag("stats_detail_${type.tid}")) { Text(stringResource(R.string.ssv_see_more)) }
                         }
                     }
                     if (state.mode == StatsViewMode.INSIGHTS) item(key = "insights_${type.tid}") { SummaryInsights(type, section.items) }
@@ -92,15 +107,53 @@ internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
 }
 
 @Composable
-private fun StatsModeButton(selected: Boolean, icon: Int, description: Int, tag: String, onClick: () -> Unit) {
+private fun StatsModeButton(selected: Boolean, description: Int, tag: String, onClick: () -> Unit) {
     val label = stringResource(description)
     OriginalButton("fragment_summary_statistics:" + if (tag == "stats_mode_list") "fss_view_mode_list_btn" else "fss_view_mode_insights_btn",
         onClick = { if (!selected) onClick() }, modifier = Modifier.testTag(tag).semantics { contentDescription = label },
-        selected = selected, segmentIndex = if (tag == "stats_mode_list") 0 else 1, segmentCount = 2,
+        selected = selected, segmentIndex = if (tag == "stats_mode_list") 0 else 1, segmentCount = 2, grouped = true,
         containerColor = themeColor(if (selected) R.attr.accentGood else R.attr.defaultToggleBtnBg),
-        leadingIcon = { Icon(painterResource(icon), null, Modifier.size(22.dp), tint = themeColor(if (selected) R.attr.homeScreenHeaderTextColor else R.attr.defaultToggleBtnTxt)) }) { }
+        iconTint = themeColor(if (selected) R.attr.homeScreenHeaderTextColor else R.attr.defaultToggleBtnTxt)) { }
 
 }
+/** Each action retains its own XML instance, including positive/negative chip overrides. */
+internal fun statisticsDetailSource(type: Type, mode: StatsViewMode): String = "fragment_summary_statistics:" +
+    if (mode == StatsViewMode.INSIGHTS) when (type) {
+        Type.TOP_ACTIVE_CONNS -> "fss_ia_active_conns_chip"
+        Type.MOST_CONNECTED_APPS -> "fss_ia_allowed_apps_chip"
+        Type.MOST_BLOCKED_APPS -> "fss_ia_blocked_apps_chip"
+        Type.MOST_CONTACTED_COUNTRIES -> "fss_ia_countries_chip"
+        Type.MOST_CONNECTED_ASN -> "fss_ia_asn_allowed_chip"
+        Type.MOST_BLOCKED_ASN -> "fss_ia_asn_blocked_chip"
+        Type.MOST_BLOCKED_BLOCKLISTS -> "fss_ia_blocklists_chip"
+        Type.MOST_CONTACTED_DOMAINS -> "fss_ia_domains_allowed_chip"
+        Type.MOST_BLOCKED_DOMAINS -> "fss_ia_domains_blocked_chip"
+        Type.MOST_CONTACTED_IPS -> "fss_ia_ips_allowed_chip"
+        Type.MOST_BLOCKED_IPS -> "fss_ia_ips_blocked_chip"
+    } else when (type) {
+        Type.TOP_ACTIVE_CONNS -> "fss_active_apps_chip"
+        Type.MOST_CONNECTED_APPS -> "fss_app_info_chip"
+        Type.MOST_BLOCKED_APPS -> "fss_app_info_chip_second"
+        Type.MOST_CONTACTED_COUNTRIES -> "fss_countries_logs_chip"
+        Type.MOST_CONNECTED_ASN -> "fss_asn_chip"
+        Type.MOST_BLOCKED_ASN -> "fss_asn_chip_second"
+        Type.MOST_BLOCKED_BLOCKLISTS -> "fss_blocklist_chip"
+        Type.MOST_CONTACTED_DOMAINS -> "fss_dns_logs_chip"
+        Type.MOST_BLOCKED_DOMAINS -> "fss_dns_logs_chip_second"
+        Type.MOST_CONTACTED_IPS -> "fss_network_logs_chip"
+        Type.MOST_BLOCKED_IPS -> "fss_network_logs_chip_second"
+    }
+
+@Composable
+private fun StatsFilterBadge(count: Int, modifier: Modifier = Modifier) {
+    val badgeColor = colorResource(R.color.accentBad)
+    Box(modifier.sizeIn(minWidth = 16.dp, minHeight = 16.dp)
+        .drawBehind { drawOval(badgeColor) }.padding(horizontal = 4.dp),
+        contentAlignment = Alignment.Center) {
+        Text(count.toString(), color = Color.White, style = utilityTextStyle(size = 9f, weight = android.graphics.Typeface.BOLD))
+    }
+}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TrafficUsage(usage: DataUsageSummary?, insights: Boolean) {

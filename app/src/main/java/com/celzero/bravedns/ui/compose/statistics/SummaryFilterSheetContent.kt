@@ -27,7 +27,7 @@ internal fun SummaryFilterSheetContent(selection: SummaryFilterSelection, provid
                 Text(stringResource(R.string.ssv_filter_heading), Modifier.weight(1f).padding(start = 8.dp), style = MaterialTheme.typography.titleMedium)
                 OriginalButton("bottom_sheet_summary_stats_filter:ssfc_select_all", onClick = selection::selectAll, modifier = Modifier.testTag("stats_filter_select_all")) { Text(stringResource(R.string.lbl_select_all)) }
             }
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            FlowRow(Modifier.fillMaxWidth().padding(top = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 SectionFilter.entries.forEach { filter ->
                     if (filter != SectionFilter.PROVIDERS || providers) {
                         val label = when (filter) {
@@ -38,11 +38,20 @@ internal fun SummaryFilterSheetContent(selection: SummaryFilterSelection, provid
                             SectionFilter.DOMAINS -> R.string.ssv_filter_domains
                             SectionFilter.IPS -> R.string.ssv_filter_ips
                         }
-                        OriginalChip("bottom_sheet_summary_stats_filter:fss_filter_apps_chip", selected = filter in selection.selected, onClick = { selection.toggle(filter) }, label = { Text(stringResource(label)) }, modifier = Modifier.testTag("stats_filter_${filter.tid}"))
+                        OriginalChip(statisticsFilterSource(filter), selected = filter in selection.selected, onClick = { selection.toggle(filter) }, label = { Text(stringResource(label)) }, modifier = Modifier.padding(3.dp).testTag("stats_filter_${filter.tid}"))
                     }
                 }
             }
             OriginalButton("bottom_sheet_summary_stats_filter:ssfc_apply", onClick = onApply, modifier = Modifier.fillMaxWidth().padding(top = 12.dp).testTag("stats_filter_apply")) { Text(stringResource(R.string.lbl_apply)) }
         }
     }
+}
+
+internal fun statisticsFilterSource(filter: SectionFilter): String = "bottom_sheet_summary_stats_filter:" + when (filter) {
+    SectionFilter.APPS -> "fss_filter_apps_chip"
+    SectionFilter.COUNTRIES -> "fss_filter_countries_chip"
+    SectionFilter.PROVIDERS -> "fss_filter_providers_chip"
+    SectionFilter.BLOCKLISTS -> "fss_filter_blocklist_chip"
+    SectionFilter.DOMAINS -> "fss_filter_domains_chip"
+    SectionFilter.IPS -> "fss_filter_ips_chip"
 }

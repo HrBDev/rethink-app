@@ -5,7 +5,7 @@ import com.celzero.bravedns.R
 import com.google.android.material.R as MaterialR
 
 internal enum class OriginalControlKind { Button, Chip, Text }
-internal data class OriginalControlSpec(val style: Int, val kind: OriginalControlKind, val visualHeight: Float = 0f, val localShapeOverride: Boolean = false, val visualWidth: Float = 0f, val explicitNulls: Set<Int> = emptySet())
+internal data class OriginalControlSpec(val style: Int, val kind: OriginalControlKind, val visualHeight: Float = 0f, val localShapeOverride: Boolean = false, val visualWidth: Float = 0f, val explicitNulls: Set<Int> = emptySet(), val iconOnly: Boolean = false)
 
 /** Generated baseline source keys; style resources resolve in the current Android theme. */
 internal val originalControlSpecs = mapOf(
@@ -29,8 +29,8 @@ internal val originalControlSpecs = mapOf(
     "activity_app_details:aad_ia_ips_chip" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_ia_ips_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "activity_app_details:aad_ips_chip" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_ips_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "activity_app_details:aad_rethink_warning_proceed" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_rethink_warning_proceed, OriginalControlKind.Text, 0f, false, 0f, emptySet()),
-    "activity_app_details:aad_view_mode_insights_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_view_mode_insights_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
-    "activity_app_details:aad_view_mode_list_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_view_mode_list_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
+    "activity_app_details:aad_view_mode_insights_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_view_mode_insights_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
+    "activity_app_details:aad_view_mode_list_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_details_aad_view_mode_list_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
     "activity_app_wise_domain_logs:tb_daily_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_wise_domain_logs_tb_daily_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "activity_app_wise_domain_logs:tb_recent_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_wise_domain_logs_tb_recent_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "activity_app_wise_domain_logs:tb_weekly_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_activity_app_wise_domain_logs_tb_weekly_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
@@ -119,7 +119,7 @@ internal val originalControlSpecs = mapOf(
     "bottomsheet_server_settings:btn_config_auto" to OriginalControlSpec(R.style.OriginalControl_bottomsheet_server_settings_btn_config_auto, OriginalControlKind.Button, 36.0f, false, 0f, emptySet()),
     "bottomsheet_server_settings:btn_config_manual" to OriginalControlSpec(R.style.OriginalControl_bottomsheet_server_settings_btn_config_manual, OriginalControlKind.Button, 36.0f, false, 0f, emptySet()),
     "bottomsheet_server_settings:btn_reset_rpn" to OriginalControlSpec(R.style.OriginalControl_bottomsheet_server_settings_btn_reset_rpn, OriginalControlKind.Button, 48.0f, false, 0f, emptySet()),
-    "bottomsheet_server_settings:refresh_btn" to OriginalControlSpec(R.style.OriginalControl_bottomsheet_server_settings_refresh_btn, OriginalControlKind.Button, 38.0f, false, 38.0f, emptySet()),
+    "bottomsheet_server_settings:refresh_btn" to OriginalControlSpec(R.style.OriginalControl_bottomsheet_server_settings_refresh_btn, OriginalControlKind.Button, 38.0f, false, 38.0f, emptySet(), iconOnly = true),
     "bottomsheet_server_settings:split_dns_enable_btn" to OriginalControlSpec(R.style.OriginalControl_bottomsheet_server_settings_split_dns_enable_btn, OriginalControlKind.Button, 36.0f, false, 0f, emptySet()),
     "dialog_add_custom_domain:dacd_block_btn" to OriginalControlSpec(R.style.OriginalControl_dialog_add_custom_domain_dacd_block_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "dialog_add_custom_domain:dacd_cancel_btn" to OriginalControlSpec(R.style.OriginalControl_dialog_add_custom_domain_dacd_cancel_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
@@ -193,9 +193,9 @@ internal val originalControlSpecs = mapOf(
     "fragment_server_selection:error_report_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_error_report_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "fragment_server_selection:error_reset_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_error_reset_btn, OriginalControlKind.Button, 44.0f, false, 0f, emptySet()),
     "fragment_server_selection:error_retry_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_error_retry_btn, OriginalControlKind.Button, 48.0f, false, 0f, emptySet()),
-    "fragment_server_selection:search_filter_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_search_filter_btn, OriginalControlKind.Button, 36.0f, false, 36.0f, emptySet()),
-    "fragment_server_selection:settings_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_settings_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
-    "fragment_server_selection:support_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_support_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
+    "fragment_server_selection:search_filter_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_search_filter_btn, OriginalControlKind.Button, 36.0f, false, 36.0f, emptySet(), iconOnly = true),
+    "fragment_server_selection:settings_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_settings_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
+    "fragment_server_selection:support_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_server_selection_support_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
     "fragment_sponsor:chip_10" to OriginalControlSpec(R.style.OriginalControl_fragment_sponsor_chip_10, OriginalControlKind.Chip, 0f, false, 0f, emptySet()),
     "fragment_sponsor:chip_25" to OriginalControlSpec(R.style.OriginalControl_fragment_sponsor_chip_25, OriginalControlKind.Chip, 0f, false, 0f, emptySet()),
     "fragment_sponsor:chip_5" to OriginalControlSpec(R.style.OriginalControl_fragment_sponsor_chip_5, OriginalControlKind.Chip, 0f, false, 0f, emptySet()),
@@ -213,7 +213,7 @@ internal val originalControlSpecs = mapOf(
     "fragment_summary_statistics:fss_countries_logs_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_countries_logs_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "fragment_summary_statistics:fss_dns_logs_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_dns_logs_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "fragment_summary_statistics:fss_dns_logs_chip_second" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_dns_logs_chip_second, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
-    "fragment_summary_statistics:fss_filter_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_filter_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
+    "fragment_summary_statistics:fss_filter_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_filter_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
     "fragment_summary_statistics:fss_ia_active_conns_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_ia_active_conns_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "fragment_summary_statistics:fss_ia_allowed_apps_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_ia_allowed_apps_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "fragment_summary_statistics:fss_ia_asn_allowed_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_ia_asn_allowed_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
@@ -228,8 +228,8 @@ internal val originalControlSpecs = mapOf(
     "fragment_summary_statistics:fss_ia_ips_blocked_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_ia_ips_blocked_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "fragment_summary_statistics:fss_network_logs_chip" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_network_logs_chip, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
     "fragment_summary_statistics:fss_network_logs_chip_second" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_network_logs_chip_second, OriginalControlKind.Chip, 0f, false, 0f, setOf(MaterialR.attr.chipSurfaceColor)),
-    "fragment_summary_statistics:fss_view_mode_insights_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_view_mode_insights_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
-    "fragment_summary_statistics:fss_view_mode_list_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_view_mode_list_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet()),
+    "fragment_summary_statistics:fss_view_mode_insights_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_view_mode_insights_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
+    "fragment_summary_statistics:fss_view_mode_list_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_fss_view_mode_list_btn, OriginalControlKind.Button, 32.0f, false, 32.0f, emptySet(), iconOnly = true),
     "fragment_summary_statistics:tb_daily_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_tb_daily_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "fragment_summary_statistics:tb_recent_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_tb_recent_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "fragment_summary_statistics:tb_weekly_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_summary_statistics_tb_weekly_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
@@ -238,8 +238,8 @@ internal val originalControlSpecs = mapOf(
     "fragment_wg_nw_stats:tb_weekly_toggle_btn" to OriginalControlSpec(R.style.OriginalControl_fragment_wg_nw_stats_tb_weekly_toggle_btn, OriginalControlKind.Button, 0f, false, 0f, emptySet()),
     "item_allowed_app:allowed_remove_btn" to OriginalControlSpec(R.style.OriginalControl_item_allowed_app_allowed_remove_btn, OriginalControlKind.Button, 34.0f, false, 0f, emptySet()),
     "item_blocked_app:blocked_app_allow_btn" to OriginalControlSpec(R.style.OriginalControl_item_blocked_app_blocked_app_allow_btn, OriginalControlKind.Button, 34.0f, false, 0f, emptySet()),
-    "item_bug_report_file:item_file_delete_btn" to OriginalControlSpec(R.style.OriginalControl_item_bug_report_file_item_file_delete_btn, OriginalControlKind.Button, 40.0f, false, 40.0f, emptySet()),
-    "item_bug_report_file:item_file_view_btn" to OriginalControlSpec(R.style.OriginalControl_item_bug_report_file_item_file_view_btn, OriginalControlKind.Button, 40.0f, false, 40.0f, emptySet()),
+    "item_bug_report_file:item_file_delete_btn" to OriginalControlSpec(R.style.OriginalControl_item_bug_report_file_item_file_delete_btn, OriginalControlKind.Button, 40.0f, false, 40.0f, emptySet(), iconOnly = true),
+    "item_bug_report_file:item_file_view_btn" to OriginalControlSpec(R.style.OriginalControl_item_bug_report_file_item_file_view_btn, OriginalControlKind.Button, 40.0f, false, 40.0f, emptySet(), iconOnly = true),
     "item_chip_filter:(anonymous)" to OriginalControlSpec(R.style.OriginalControl_item_chip_filter__anonymous_, OriginalControlKind.Chip, 0f, false, 0f, emptySet()),
     "item_event:event_type_chip" to OriginalControlSpec(R.style.OriginalControl_item_event_event_type_chip, OriginalControlKind.Chip, 0f, false, 0f, emptySet()),
     "item_removed_server:removal_badge" to OriginalControlSpec(R.style.OriginalControl_item_removed_server_removal_badge, OriginalControlKind.Chip, 0f, false, 0f, emptySet()),

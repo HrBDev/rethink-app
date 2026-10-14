@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -121,7 +122,10 @@ internal class SubscriptionScreenState {
                 }
                 Column(Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)) { plans() }
             }
-            if (state.loadingContainer.isVisible) Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())) { PurchaseShimmer(running = state.shimmerRunning) }
+            if (state.loadingContainer.isVisible) Box(Modifier.fillMaxSize().padding(padding)
+                .background(themeColor(R.attr.background)).clipToBounds()) {
+                PurchaseShimmer(Modifier.fillMaxWidth().wrapContentHeight(Alignment.Top, unbounded = true), running = state.shimmerRunning)
+            }
             if (state.errorContainer.isVisible) Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 state.errorIcon.imageRes?.let { Icon(painterResource(it), null, Modifier.size(64.dp)) }
                 RpnText(state.errorTitle, style = MaterialTheme.typography.headlineSmall)

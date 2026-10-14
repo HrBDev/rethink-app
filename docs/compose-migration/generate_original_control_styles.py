@@ -4,7 +4,7 @@ import json,re,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 DATA=json.loads((ROOT/'docs/compose-migration/component-style-restoration-inventory.json').read_text())
-KEEP={'textAppearance','textSize','textColor','fontFamily','textStyle','letterSpacing','minWidth','minHeight','padding','paddingHorizontal','paddingVertical','paddingStart','paddingEnd','paddingLeft','paddingRight','paddingTop','paddingBottom','insetLeft','insetRight','insetTop','insetBottom','background','backgroundTint','cornerRadius','strokeWidth','strokeColor','rippleColor','shapeAppearance','shapeAppearanceOverlay','chipCornerRadius','chipMinHeight','chipMinTouchTargetSize','chipBackgroundColor','chipSurfaceColor','chipStrokeWidth','chipStrokeColor','chipStartPadding','chipEndPadding','textStartPadding','textEndPadding','chipIconSize','chipIconVisible','chipIcon','chipIconTint','icon','iconSize','iconPadding','iconTint','checkedIcon','checkedIconVisible','checkedIconTint','textAllCaps','elevation','checkable'}
+KEEP={'textAppearance','textSize','textColor','fontFamily','textStyle','letterSpacing','minWidth','minHeight','padding','paddingHorizontal','paddingVertical','paddingStart','paddingEnd','paddingLeft','paddingRight','paddingTop','paddingBottom','insetLeft','insetRight','insetTop','insetBottom','background','backgroundTint','cornerRadius','strokeWidth','strokeColor','rippleColor','shapeAppearance','shapeAppearanceOverlay','chipCornerRadius','chipMinHeight','chipMinTouchTargetSize','chipBackgroundColor','chipSurfaceColor','chipStrokeWidth','chipStrokeColor','chipStartPadding','chipEndPadding','textStartPadding','textEndPadding','chipIconSize','chipIconVisible','chipIcon','chipIconTint','icon','iconSize','iconPadding','iconTint','checkedIcon','checkedIconVisible','checkedIconTint','textAllCaps','elevation','checkable','materialThemeOverlay','materialSizeOverlay','theme'}
 # The unqualified baseline layout owns styling; wide layout changes are layout worker scope.
 components={}
 for c in DATA['baseline_components']+DATA['baseline_action_like_text_image_candidates']:
@@ -28,6 +28,8 @@ for key,c in sorted(components.items()):
  for k,v in c['attributes'].items():
   if ':' not in k or k.startswith('tools:') or k.split(':')[-1] not in KEEP: continue
   nameattr=k[4:] if k.startswith('app:') else k
+  # Preserve the user's lint fix: MaterialButton's icon tint is a Material attribute.
+  if c['tag']=='MaterialButton' and nameattr=='android:iconTint': nameattr='iconTint'
   ET.SubElement(style,'item',{'name':nameattr}).text=v
  kind='Chip' if c['tag']=='Chip' else 'Button' if c['tag'] in ('MaterialButton','Button','AppCompatButton') else 'Text'
  height=c['attributes'].get('android:layout_height','')
@@ -37,9 +39,10 @@ for key,c in sorted(components.items()):
  w=float(width[:-2]) if width.endswith('dp') else 0
  inherited={k.removeprefix('app:'):v for k,v in c.get('local_style_plus_layout_attributes',{}).items()}
  inherited.update({k.removeprefix('app:'):v for k,v in c['attributes'].items()})
- nulls=[('android.R.attr.'+k.split(':')[-1]) if k.startswith('android:') else ('MaterialR.attr.'+k) for k,v in inherited.items() if v=='@null' and k.split(':')[-1] in KEEP and not k.startswith('tools:')]
+ nulls=[('android.R.attr.'+k.split(':')[-1]) if k.startswith('android:') else ('MaterialR.attr.'+k) for k,v in inherited.items() if v in ('@null','@empty') and k.split(':')[-1] in KEEP and not k.startswith('tools:')]
  null_expression='setOf('+', '.join(sorted(set(nulls)))+')' if nulls else 'emptySet()'
- lines.append(f'    "{key}" to OriginalControlSpec(R.style.{name}, OriginalControlKind.{kind}, {h}f, {str('app:shapeAppearance' in c['attributes'] or 'app:shapeAppearanceOverlay' in c['attributes']).lower()}, {w}f, {null_expression}),')
+ icon_only = ', iconOnly = true' if w > 0 and c['attributes'].get('app:icon') and not c['attributes'].get('android:text') else ''
+ lines.append(f'    "{key}" to OriginalControlSpec(R.style.{name}, OriginalControlKind.{kind}, {h}f, {str('app:shapeAppearance' in c['attributes'] or 'app:shapeAppearanceOverlay' in c['attributes']).lower()}, {w}f, {null_expression}{icon_only}),')
 # Programmatic Chip(context) constructions in baseline ServerSelectionFragment:3262,3610.
 for key,items in {
  "@rpn_filter": {"chipMinHeight":"40dp", "chipStartPadding":"12dp", "chipEndPadding":"12dp", "chipStrokeWidth":"1dp", "checkedIconVisible":"false", "chipBackgroundColor":"@color/original_rpn_filter_fill", "chipStrokeColor":"@color/original_rpn_filter_stroke", "android:textColor":"@color/original_rpn_filter_text"},
@@ -71,7 +74,7 @@ import com.celzero.bravedns.R
 import com.google.android.material.R as MaterialR
 
 internal enum class OriginalControlKind { Button, Chip, Text }
-internal data class OriginalControlSpec(val style: Int, val kind: OriginalControlKind, val visualHeight: Float = 0f, val localShapeOverride: Boolean = false, val visualWidth: Float = 0f, val explicitNulls: Set<Int> = emptySet())
+internal data class OriginalControlSpec(val style: Int, val kind: OriginalControlKind, val visualHeight: Float = 0f, val localShapeOverride: Boolean = false, val visualWidth: Float = 0f, val explicitNulls: Set<Int> = emptySet(), val iconOnly: Boolean = false)
 
 /** Generated baseline source keys; style resources resolve in the current Android theme. */
 internal val originalControlSpecs = mapOf(

@@ -46,7 +46,7 @@
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomRuleActions.kt": "33fb3429a22196360b40016eb0617c5f3ecddd885f928198e74acb33c9055956",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomRulePort.kt": "75efb038dcd3c1c80dfd12b06758b23a019bb9169d90772c70f02adab43da1c0",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt": "a0583e3971fc9859f099aff8d05e85c75ed4839dcf9ba8b0b8c096c8e6364eef",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt": "04b47ec08a3310ea6bc3dde84471063353293604e33c84397ac97f6ab390bbc4"
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt": "ebedf52662db0b0bb594fb55b657df7d3918c56733a1935aeb44cf4191cd4300"
   },
   "limitation": "Source-only; not compilation, tests, or visual/runtime parity."
 }

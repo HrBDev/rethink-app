@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.controls
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.TypedArray
@@ -42,6 +43,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.unit.*
 import androidx.core.content.res.ResourcesCompat
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.view.ContextThemeWrapper
 import com.google.android.material.R as MaterialR
 import com.google.android.material.shape.ShapeAppearanceModel
 
@@ -55,9 +58,10 @@ fun OriginalButton(
     source: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true,
     selected: Boolean? = null, contentColor: Color? = null, containerColor: Color? = null,
     backgroundTint: ColorStateList? = null, segmentIndex: Int? = null, segmentCount: Int = 1,
-    leadingIcon: (@Composable () -> Unit)? = null, content: @Composable RowScope.() -> Unit
+    leadingIcon: (@Composable () -> Unit)? = null, iconTint: Color? = null, grouped: Boolean = false,
+    content: @Composable RowScope.() -> Unit
 ) = OriginalControl(source, onClick, modifier, enabled, selected, contentColor, containerColor,
-    backgroundTint, leadingIcon = leadingIcon, segmentIndex = segmentIndex, segmentCount = segmentCount, content = content)
+    backgroundTint, leadingIcon = leadingIcon, segmentIndex = segmentIndex, segmentCount = segmentCount, iconTintOverride = iconTint, grouped = grouped, content = content)
 
 @Composable
 fun OriginalChip(
@@ -83,7 +87,8 @@ private fun OriginalControl(
     source: String, onClick: () -> Unit, modifier: Modifier, enabled: Boolean, selected: Boolean?,
     contentColor: Color?, containerColor: Color?, backgroundTint: ColorStateList?,
     leadingIcon: (@Composable () -> Unit)? = null, trailingIcon: (@Composable () -> Unit)? = null,
-    interactive: Boolean = true, segmentIndex: Int? = null, segmentCount: Int = 1, content: @Composable RowScope.() -> Unit
+    interactive: Boolean = true, segmentIndex: Int? = null, segmentCount: Int = 1,
+    iconTintOverride: Color? = null, grouped: Boolean = false, content: @Composable RowScope.() -> Unit
 ) {
     val context = LocalContext.current
     val spec = requireNotNull(originalControlSpecs[source]) { "Missing original control style: $source" }
@@ -119,25 +124,37 @@ private fun OriginalControl(
     else Modifier.selectable(selected, enabled = enabled, role = if (spec.kind == OriginalControlKind.Chip) Role.Checkbox else Role.RadioButton, interactionSource = interaction,
         indication = null, onClick = onClick)
     // Keep the compact visual silhouette inside an accessible touch target, not a 48dp filled pill.
-    Box(modifier.then(if (interactive) Modifier.minimumInteractiveComponentSize() else Modifier).then(clickModifier), contentAlignment = Alignment.Center,
-        propagateMinConstraints = true) {
-        val visual = Modifier.wrapContentHeight().heightIn(min = look.height.dp).then(if (spec.visualWidth > 0f) Modifier.width(spec.visualWidth.dp) else Modifier.widthIn(min = look.minWidth.dp))
+    // Joined native segments cannot each insert a 48dp layout spacer: that separates the
+    // source 32dp visuals. Compose selectable still uses the platform minimum touch hit slop.
+    // Standalone controls keep an explicit 48dp target without passing that minimum to paint.
+    BoxWithConstraints(modifier.then(if (interactive && !grouped && segmentCount <= 1)
+        Modifier.minimumInteractiveComponentSize() else Modifier).then(clickModifier), contentAlignment = Alignment.Center) {
+        val callerMinWidth = with(density) { constraints.minWidth.toDp() }
+        val visual = Modifier.wrapContentHeight()
+            .then(if (spec.iconOnly && spec.visualHeight > 0f) Modifier.height(spec.visualHeight.dp)
+                else Modifier.heightIn(min = look.height.dp))
+            .then(if (spec.visualWidth > 0f) Modifier.width(spec.visualWidth.dp)
+                else Modifier.widthIn(min = maxOf(look.minWidth.dp, callerMinWidth)))
             .padding(start = look.insetStart.dp, end = look.insetEnd.dp, top = look.insetTop.dp, bottom = look.insetBottom.dp)
             .shadow(look.elevation.dp, shape, clip = false)
             .then(if (background != null) Modifier.drawOriginalBackground(background, states)
                 else Modifier.clip(shape).background(fill, shape).then(if (look.strokeWidth > 0f) Modifier.border(BorderStroke(look.strokeWidth.dp, stroke), shape) else Modifier))
-            .clip(shape).then(if (interactive) Modifier.indication(interaction, ripple(color = look.ripple.resolve(states))) else Modifier)
-            .padding(start = look.paddingStart.dp, end = look.paddingEnd.dp, top = look.paddingTop.dp, bottom = look.paddingBottom.dp)
+            .then(if (background == null) Modifier.clip(shape) else Modifier)
+            .then(if (interactive && look.ripple != null) Modifier.indication(interaction, ripple(color = look.ripple.resolve(states))) else Modifier)
+            // MaterialButton recenters an icon-only compound drawable even when inherited
+            // text padding exceeds a small fixed width. Do not collapse its icon to zero.
+            .then(if (spec.iconOnly) Modifier else Modifier.padding(start = look.paddingStart.dp,
+                end = look.paddingEnd.dp, top = look.paddingTop.dp, bottom = look.paddingBottom.dp))
         CompositionLocalProvider(LocalContentColor provides foreground) {
             ProvideTextStyle(look.textStyle.copy(color = foreground)) {
                 Row(visual, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                     val checkedIcon = look.checkedIcon.takeIf { selected == true && look.checkedIconVisible }
                     val iconResource = checkedIcon ?: look.icon
-                    val iconTint = if (checkedIcon != null) look.checkedIconTint else look.iconTint
+                    val resolvedIconTint = iconTintOverride ?: (if (checkedIcon != null) look.checkedIconTint else look.iconTint)?.resolve(states) ?: foreground
                     val icon: (@Composable () -> Unit)? = leadingIcon ?: iconResource.takeIf { it != 0 }?.let { resource ->
-                        @Composable { Icon(painterResource(resource), null, Modifier.size(look.iconSize.dp), tint = iconTint?.resolve(states) ?: foreground) }
+                        @Composable { Icon(painterResource(resource), null, Modifier.size(look.iconSize.dp), tint = resolvedIconTint) }
                     }
-                    if (icon != null) { Box(Modifier.size(look.iconSize.dp), contentAlignment = Alignment.Center) { icon() }; Spacer(Modifier.width(look.iconPadding.dp)) }
+                    if (icon != null) { Box(Modifier.size(look.iconSize.dp), contentAlignment = Alignment.Center) { icon() }; if (!spec.iconOnly) Spacer(Modifier.width(look.iconPadding.dp)) }
                     content()
                     if (trailingIcon != null) { Spacer(Modifier.width(look.iconPadding.dp)); trailingIcon() }
                 }
@@ -166,7 +183,48 @@ internal data class OriginalControlLook(
     val checkedIconTint: ColorStateList?, val elevation: Float
 )
 
-internal fun resolveOriginalControl(context: Context, spec: OriginalControlSpec, density: Density): OriginalControlLook {
+/** MDC resolves materialThemeOverlay, then materialSizeOverlay, before reading colors/shapes.
+ * In MDC 1.14 a TextButton background selector reads colorContainer; its overlay makes that
+ * transparent. Reading the selector in the Activity theme incorrectly paints a filled button.
+ * This is style-only theme resolution, with no View or layout construction.
+ */
+@SuppressLint("ResourceType") // Fixed TypedArray indices, not generated styleable constants.
+internal fun originalControlContext(context: Context, spec: OriginalControlSpec, defaultAttr: Int,
+    defaultStyle: Int): Context {
+    val attrs = intArrayOf(MaterialR.attr.materialThemeOverlay, MaterialR.attr.materialSizeOverlay,
+        android.R.attr.theme, androidx.appcompat.R.attr.theme)
+    val defaults = context.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)
+    val source = context.obtainStyledAttributes(spec.style, attrs)
+    fun overlay(index: Int): Int = if (attrs[index] in spec.explicitNulls) 0 else
+        (if (source.hasValueOrEmpty(index)) source else defaults).getResourceId(index, 0)
+    val materialOverlay = overlay(0)
+    val sizeOverlay = if (spec.kind == OriginalControlKind.Button) overlay(1) else 0
+    // Android/app theme never falls back to the component's default style (MDC contract).
+    val androidOverlay = source.getResourceId(2, 0)
+    val appOverlay = source.getResourceId(3, 0)
+    source.recycle(); defaults.recycle()
+    if (materialOverlay == 0 || context is ContextThemeWrapper && context.themeResId == materialOverlay)
+        return context
+    return ContextThemeWrapper(context, materialOverlay).also { wrapped ->
+        if (sizeOverlay != 0) wrapped.theme.applyStyle(sizeOverlay, true)
+        val clientOverlay = if (androidOverlay != 0) androidOverlay else appOverlay
+        if (clientOverlay != 0) wrapped.theme.applyStyle(clientOverlay, true)
+    }
+}
+
+@SuppressLint("ResourceType") // Fixed TypedArray indices, not generated styleable constants.
+internal fun resolveOriginalControl(sourceContext: Context, spec: OriginalControlSpec, density: Density): OriginalControlLook {
+    val defaultAttr = when (spec.kind) {
+        OriginalControlKind.Chip -> MaterialR.attr.chipStyle
+        OriginalControlKind.Button -> MaterialR.attr.materialButtonStyle
+        OriginalControlKind.Text -> android.R.attr.textViewStyle
+    }
+    val defaultStyle = when (spec.kind) {
+        OriginalControlKind.Chip -> MaterialR.style.Widget_MaterialComponents_Chip_Action
+        OriginalControlKind.Button -> MaterialR.style.Widget_MaterialComponents_Button
+        OriginalControlKind.Text -> 0
+    }
+    val context = originalControlContext(sourceContext, spec, defaultAttr, defaultStyle)
     val attrs = intArrayOf(
         android.R.attr.textAppearance, android.R.attr.textSize, android.R.attr.textColor, android.R.attr.fontFamily,
         android.R.attr.textStyle, android.R.attr.letterSpacing, android.R.attr.minWidth, android.R.attr.minHeight,
@@ -185,19 +243,21 @@ internal fun resolveOriginalControl(context: Context, spec: OriginalControlSpec,
         MaterialR.attr.checkedIcon, MaterialR.attr.checkedIconVisible, MaterialR.attr.checkedIconTint,
         android.R.attr.elevation, MaterialR.attr.elevation, MaterialR.attr.iconStartPadding, MaterialR.attr.iconEndPadding, android.R.attr.paddingLeft, android.R.attr.paddingRight
     )
-    val defaultAttr = when (spec.kind) {
-        OriginalControlKind.Chip -> MaterialR.attr.chipStyle
-        OriginalControlKind.Button -> MaterialR.attr.materialButtonStyle
-        OriginalControlKind.Text -> android.R.attr.textViewStyle
-    }
-    val base = context.obtainStyledAttributes(null, attrs, defaultAttr, 0)
+    val base = context.obtainStyledAttributes(null, attrs, defaultAttr, defaultStyle)
     val explicit = context.obtainStyledAttributes(spec.style, attrs)
     fun explicitlyCleared(index: Int) = attrs[index] in spec.explicitNulls
     fun array(index: Int) = if (explicit.hasValueOrEmpty(index) || explicitlyCleared(index)) explicit else base
     fun has(index: Int) = explicitlyCleared(index) || explicit.hasValueOrEmpty(index) || base.hasValueOrEmpty(index)
     fun dim(index: Int, fallback: Float = 0f) = array(index).getDimension(index, fallback * context.resources.displayMetrics.density) / context.resources.displayMetrics.density
     fun res(index: Int, fallback: Int = 0) = array(index).getResourceId(index, fallback)
-    fun colors(index: Int): ColorStateList? = array(index).getColorStateList(index)
+    fun colors(index: Int): ColorStateList? {
+        if (explicitlyCleared(index)) return null
+        val values = array(index)
+        val resource = values.getResourceId(index, 0)
+        // Match MaterialResources: resolve theme-sensitive selectors in the component overlay.
+        return if (resource != 0) AppCompatResources.getColorStateList(context, resource)
+            else values.getColorStateList(index)
+    }
     val appearance = context.obtainStyledAttributes(res(0), intArrayOf(android.R.attr.textSize, android.R.attr.textColor,
         android.R.attr.fontFamily, android.R.attr.textStyle, android.R.attr.letterSpacing))
     val fontStyle = if (has(4)) array(4).getInt(4, 0) else appearance.getInt(3, 0)
@@ -225,19 +285,30 @@ internal fun resolveOriginalControl(context: Context, spec: OriginalControlSpec,
     // MDC 1.14 ChipDrawable.loadFromAttributes applies chipCornerRadius after shapeAppearance;
     // setChipCornerRadius uses shapeAppearanceModel.withCornerSize(radius). Preserve both inputs,
     // including the explicit 1dp overlay, but inherit the same final radius precedence as MDC.
-    val radius = if (chip && has(26)) dim(26)
-        else if (!chip && has(20)) dim(20) else null
+    val radius = if (chip && has(26) && !explicitlyCleared(26)) dim(26)
+        else if (!chip && has(20) && !explicitlyCleared(20)) dim(20) else null
     val shape: Shape = radius?.let { androidx.compose.foundation.shape.RoundedCornerShape(it.dp) } ?: OriginalMaterialShape(model)
     val padding = dim(8)
     val horizontal = dim(44, padding)
     val vertical = dim(45, padding)
+    val sourceBackground = if (explicit.hasValue(17) && !explicitlyCleared(17)) {
+        val resource = explicit.getResourceId(17, 0)
+        (if (resource != 0) AppCompatResources.getDrawable(context, resource) else explicit.getDrawable(17))?.mutate()
+    } else null
+    // With a real android:background MDC marks the managed background overwritten. Its
+    // shape/stroke/ripple are no longer rendered; the drawable owns these states instead.
+    val overwrittenButton = spec.kind == OriginalControlKind.Button && sourceBackground != null
     val result = OriginalControlLook(
-        fill = if (spec.kind == OriginalControlKind.Text) null else colors(if (chip) 28 else if (has(18)) 18 else 19),
+        fill = if (spec.kind == OriginalControlKind.Text) null else colors(if (chip) 28 else 19),
         surface = if (chip) colors(29) else null,
         textColor = colors(2) ?: appearance.getColorStateList(1),
-        stroke = colors(if (chip) 31 else 22), ripple = colors(23), strokeWidth = dim(if (chip) 30 else 21),
-        shape = shape, background = if (explicit.hasValueOrEmpty(17) && !explicitlyCleared(17)) explicit.getDrawable(17)?.mutate() else null,
-        drawableTint = if (explicit.hasValueOrEmpty(18) && !explicitlyCleared(18)) explicit.getColorStateList(18) else null,
+        stroke = if (overwrittenButton) null else colors(if (chip) 31 else 22),
+        ripple = if (overwrittenButton) null else colors(23),
+        strokeWidth = if (overwrittenButton) 0f else dim(if (chip) 30 else 21),
+        shape = shape, background = sourceBackground,
+        // MaterialButtonHelper uses Material backgroundTint even with an overwritten drawable.
+        // Framework backgroundTint belongs to plain TextView backgrounds, not managed buttons.
+        drawableTint = if (spec.kind == OriginalControlKind.Button) colors(19) else colors(18),
         textStyle = textStyle, height = if (spec.visualHeight > 0f) spec.visualHeight else dim(if (chip) 27 else 7), minWidth = if (chip) 0f else dim(6),
         paddingStart = if (chip) dim(32) + dim(34) else dim(9, dim(53, horizontal)),
         paddingEnd = if (chip) dim(33) + dim(35) else dim(10, dim(54, horizontal)),

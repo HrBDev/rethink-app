@@ -1,0 +1,139 @@
+{
+  "source_commit": "47c6f155aa5313dfe0a5003837b40ebfb70ab6b4",
+  "compile": "not_run",
+  "runtime": "not_run",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-button-overlay-regression.py",
+        "--self-test"
+      ],
+      "exit": 0,
+      "stdout": "{\"passed\": true, \"source_only\": true, \"contracts\": 21, \"negative_controls\": 11, \"compile\": \"not_run\", \"runtime\": \"not_run\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-search-source-styling.py"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"baseline\": \"23cb6dd98805445174bd83b7237ad5f5d2c24ac9\",\n  \"verification\": \"static source only; no Android/toolchain/runtime execution\",\n  \"independent_reference_tests\": \"OriginalSearchStyleReferenceTest authored and UNRUN\",\n  \"checks\": [\n    {\n      \"check\": \"domain: baseline MaterialCardView / 16dp radius / 4dp margin\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"domain: baseline search 90 percent weight\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"ip: baseline MaterialCardView / 16dp radius / 4dp margin\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"ip: baseline search 90 percent weight\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: baseline ContentCard source style\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: baseline row 8dp horizontal / 6dp vertical padding\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: baseline explicit actionSearch\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: baseline SearchView exact 40dp / native close icon\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: baseline card fill / corner / elevation\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: baseline 14sp / no font padding / zero editor padding; plate retained\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: isolated SearchAutoComplete resource style, not editTextStyle\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: AppCompat tint loader preserves literal/null fallback\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: server editor zero padding and root 40dp\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: typography uses autoCompleteTextViewStyle without hardcoded 16sp\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: standard field minimum does not override server 40dp\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: magnifier precedes separate weighted query plate background\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: plate follows SearchView focused/empty state\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: native edit frame margin / editor36dp / clear width; no added M3 min target\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: no production View creation or inflation\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: existing lint corrections preserved\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"rules: source card radius / margin / weights / inherited ordinary typography\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: source card style / padding / exact 40dp SearchView\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"server: clear remains inside search plate; no substituted fill or external magnifier\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"search: primitive defaults honor unset values and preserve both callback paths\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects unwired editor overload\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects explicit Default action overwritten\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects explicit autocorrection overwritten\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects non-search options changed\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects explicit focus preference dropped\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects explicit locale hints dropped\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"negative control rejects caller KeyboardActions replaced\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"native default XML proof pins historical blob and exact Search/no-suggestions values\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"independent native oracle checks actual editor action and flags, not helper-derived expectations\",\n      \"passed\": true\n    },\n    {\n      \"check\": \"unrun Compose semantics cover default Search, explicit Done, both overloads and callback counts\",\n      \"passed\": true\n    }\n  ],\n  \"passed\": true,\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-dns-statistics-controls.py",
+        "--self-test"
+      ],
+      "exit": 0,
+      "stdout": "PASS: 47 source instances; 22 baseline destination/style mappings; 13 negative mutations rejected.\nPinned source/resource and callback guard only. No runtime or pixel equivalence claim.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-original-controls.py"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"verification\": \"Static source/resource checks only; Kotlin and synthetic tests NOT compiled or executed\",\n  \"baseline\": \"23cb6dd98805445174bd83b7237ad5f5d2c24ac9\",\n  \"catalog_source_keys\": 284,\n  \"generated_style_resources\": 271,\n  \"explicit_null_overrides_checked\": 48,\n  \"logged_callbacks_checked\": 117,\n  \"synthetic_test_methods_authored_not_executed\": 11,\n  \"passed\": true,\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-original-fields.py"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"baseline\": \"23cb6dd98805445174bd83b7237ad5f5d2c24ac9\",\n  \"native_checkpoint\": \"e2b97de59cc854de74010c096ceffbaed6cb4a55\",\n  \"preserved_user_lint\": \"154065c0467f9f47be5acf8b58fc15e6bdca8a31\",\n  \"verification\": \"static source only; no build, runtime or screenshot verification\",\n  \"mapped_baseline_instances\": 96,\n  \"audited_native_files\": 18,\n  \"audited_native_calls\": 21,\n  \"passed\": true,\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-history-rpn-styling.py"
+      ],
+      "exit": 0,
+      "stdout": "PASS: 57 source styling/controller assertions; 10 rejected mutations. Compilation/runtime not run.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-statistics-row-styles.py",
+        "--self-test"
+      ],
+      "exit": 0,
+      "stdout": "{\"passed\": true, \"source_only\": true, \"baseline\": \"23cb6dd98805445174bd83b7237ad5f5d2c24ac9\", \"layouts\": 4, \"source_contracts\": 13, \"negative_controls\": 9, \"compile\": \"not_run\", \"runtime\": \"not_run\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-statistics-contracts.py"
+      ],
+      "exit": 0,
+      "stdout": "PASS: 32 baseline-equivalent methods, exact route/query contracts, six-chip multi-select restoration, native renderer boundary and relocated original @Test obligation.\nNot Android typechecking, test execution or visual/runtime parity.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-protocol-dns-parity.py"
+      ],
+      "exit": 0,
+      "stdout": "PASS: protocol insert/URL validators and BlockFree controller bodies exactly match pinned base; transient dialogs, lifecycle sources, action entry points, chip restoration, retired renderers and isolated test scope checked.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-custom-rules-contracts.py"
+      ],
+      "exit": 0,
+      "stdout": "PASS: 19 unchanged controller methods, 9 unchanged rule data/manager boundaries; native-source and transient-state guards passed.\nSource-only; not compilation, tests, or visual/runtime parity.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "docs/xml-layout-removal/check_dns_source_styles.py"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"status\": \"passed_source_only\",\n  \"checks\": \"exact catalog integration, callback state unchanged, source flag variants and header typography\",\n  \"negative_mutations_rejected\": 7,\n  \"runtime\": \"not_run_toolchain_unavailable\",\n  \"production_file_sha256\": {\n    \"app/src/main/java/com/celzero/bravedns/ui/compose/about/DnsRecordTypesContent.kt\": \"aa72ee29067395b1265a85a8477194826ec671ae8a97017157e090b7a209b71f\",\n    \"app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt\": \"3ffa7ed45a4a0d32db6598d73640ca75c3e4755491753f3ecbf1728c9825a2c2\",\n    \"app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointPresenter.kt\": \"ae17a069473528850f5614104e1299e116f4d98b340f9b59632317fb0e091dac\",\n    \"app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsFragmentHost.kt\": \"33ddd69a51d1575829970ef9f51a31e101271092a0627a9fc46dd3d65a4a4d5a\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-protected-core.py"
+      ],
+      "exit": 0,
+      "stdout": "Protected 522 files; changed: [] ; retained dependency pins/aliases unchanged: True ; obsolete binding alias removed: True\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/compose-migration/check-binding-removal.py",
+        "--allow-retained-layouts",
+        "--self-test"
+      ],
+      "exit": 0,
+      "stdout": "PASS: 40 in-memory positive/negative controls\nMode: PRE_REMOVAL_AUDIT_NOT_FINAL\nPASS: 790 production source files across 5 source sets; 186 retained XML layouts; 0 violations\nStatic source evidence only; no Android build, runtime or visual parity result.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

@@ -150,7 +150,7 @@ class OriginalTextFieldsTest {
             }
         }
         families.forEach { style ->
-            compose.onNodeWithTag(style.name).performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
+            compose.onNodeWithTag(style.name).performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(if (style == OriginalFieldStyle.ServerSearch) 40.dp else 48.dp)
                 .assert(SemanticsMatcher.expectValue(OriginalFieldFamily, style.name))
                 .assert(hasSetTextAction())
         }

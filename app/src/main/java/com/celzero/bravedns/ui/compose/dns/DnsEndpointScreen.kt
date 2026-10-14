@@ -42,6 +42,7 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.NoDimDialogWindow
 import com.celzero.bravedns.ui.compose.settings.SettingsCard
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -137,7 +138,7 @@ private class DnsEndpointSourceIdentity(private val endpoint: Any) {
             selected = item.selected; contentDescription = announcement
             if (item.relay) toggleableState = if (item.selected) ToggleableState.On else ToggleableState.Off
         }.clickable(role = if (item.relay) Role.Checkbox else Role.RadioButton, onClick = item.onSelect).padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-            flag?.let { Text(it, Modifier.padding(end = 5.dp), fontSize = 25.sp) }
+            flag?.let { DnsEndpointFlag(it, item.flagStyle) }
             Column(Modifier.weight(1f)) {
                 Text(item.name, style = MaterialTheme.typography.bodyLarge, color = themeColor(R.attr.primaryTextColor), maxLines = 2, overflow = TextOverflow.Ellipsis)
                 description?.takeIf(String::isNotEmpty)?.let { Text(it, Modifier.padding(top = 2.dp), style = MaterialTheme.typography.bodyMedium, color = themeColor(R.attr.primaryLightColorText), maxLines = 1, overflow = TextOverflow.Ellipsis) }
@@ -147,6 +148,16 @@ private class DnsEndpointSourceIdentity(private val endpoint: Any) {
             }
             DnsSelectionIndicator(item.selected, Modifier.padding(start = 4.dp, end = 12.dp))
         }
+    }
+}
+
+/** A flag keeps its source minimum slot; proxy rows use their explicit AppCompat appearance. */
+@Composable internal fun DnsEndpointFlag(flag: String, style: DnsEndpointFlagStyle) {
+    Box(Modifier.padding(end = 5.dp).sizeIn(minWidth = 32.dp, minHeight = 32.dp), contentAlignment = Alignment.Center) {
+        Text(flag, textAlign = TextAlign.Center,
+            style = if (style == DnsEndpointFlagStyle.Proxy)
+                utilityTextStyle(appearance = androidx.appcompat.R.style.TextAppearance_AppCompat_Headline)
+            else utilityTextStyle(size = 25f))
     }
 }
 
@@ -174,7 +185,7 @@ private class DnsEndpointSourceIdentity(private val endpoint: Any) {
             Column(Modifier.padding(10.dp)) {
                 Text(stringResource(R.string.cd_dnscrypt_relay_heading), Modifier.padding(horizontal = 20.dp, vertical = 5.dp), color = themeColor(R.attr.accentGood), style = MaterialTheme.typography.titleMedium)
                 DnsEndpointList(entries, row, R.string.dns_crypt_empty_state_title, R.string.dns_crypt_empty_state_desc, Modifier.weight(1f), 8)
-                OriginalButton("@dialog_negative", onDismiss, Modifier.align(Alignment.End)) { Text(stringResource(R.string.lbl_dismiss), color = themeColor(R.attr.accentGood)) }
+                OriginalButton("dialog_dnscrypt_relays:custom_dialog_ok_button", onDismiss, Modifier.align(Alignment.End).padding(start = 10.dp, end = 10.dp, bottom = 10.dp)) { Text(stringResource(R.string.lbl_dismiss)) }
             }
         }
     }

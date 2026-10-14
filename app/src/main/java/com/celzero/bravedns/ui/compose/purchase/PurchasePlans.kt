@@ -53,7 +53,25 @@ internal data class PurchasePlan(val id: String, val title: String, val price: S
         drawContent()
         val start = (phase * 3f - 1f) * size.width
         drawRect(Brush.linearGradient(listOf(Color.Black.copy(alpha = .85f), Color.Black.copy(alpha = .35f), Color.Black.copy(alpha = .85f)), start = androidx.compose.ui.geometry.Offset(start, 0f), end = androidx.compose.ui.geometry.Offset(start + size.width, 0f)), blendMode = BlendMode.DstIn)
-    }, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        repeat(2) { Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) { repeat(2) { Box(Modifier.weight(1f).height(120.dp).background(MaterialTheme.colorScheme.onSurface, RoundedCornerShape(16.dp))) } } }
+    }) {
+        // shimmer_subscription_loading: hero, title, four features, plans title, two plan blocks.
+        SubscriptionPlaceholder(Modifier.fillMaxWidth().height(200.dp))
+        Spacer(Modifier.height(24.dp))
+        SubscriptionPlaceholder(Modifier.width(150.dp).height(24.dp))
+        Spacer(Modifier.height(16.dp))
+        repeat(4) { index ->
+            SubscriptionPlaceholder(Modifier.fillMaxWidth().height(80.dp))
+            Spacer(Modifier.height(if (index == 3) 24.dp else 8.dp))
+        }
+        SubscriptionPlaceholder(Modifier.width(120.dp).height(24.dp))
+        Spacer(Modifier.height(16.dp))
+        repeat(2) {
+            SubscriptionPlaceholder(Modifier.fillMaxWidth().height(120.dp))
+            Spacer(Modifier.height(8.dp))
+        }
     }
+}
+
+@Composable private fun SubscriptionPlaceholder(modifier: Modifier) {
+    Box(modifier.background(themeColor(R.attr.primaryTextColor), RoundedCornerShape(12.dp)))
 }

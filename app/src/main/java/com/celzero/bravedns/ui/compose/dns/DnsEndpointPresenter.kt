@@ -24,13 +24,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /** Immutable row snapshot. Lazy rows never retain or mutate a recycled ViewHolder. */
+internal enum class DnsEndpointFlagStyle { Standard, Proxy }
+
 internal data class DnsEndpointRowState(
     val id: Int, val name: String, val selected: Boolean, val deletable: Boolean,
     val address: String, val pollStatus: Boolean = false, val relay: Boolean = false,
     val description: (suspend () -> String?)?, val flag: suspend () -> String?,
     val onSelect: () -> Unit, val onInfo: () -> Unit,
     // Static text belongs to the bind itself and does not dispatch an asynchronous read.
-    val initialDescription: String? = null
+    val initialDescription: String? = null,
+    val flagStyle: DnsEndpointFlagStyle = DnsEndpointFlagStyle.Standard,
 )
 
 internal data class DnsEndpointDescriptionState(
@@ -169,7 +172,8 @@ internal class DnsEndpointPresenter(
                         .setPositiveButton(R.string.lbl_delete) { _, _ -> io { delete(); ui { toast(success) } } }
                         .setNegativeButton(R.string.lbl_cancel) { _, _ -> }.show()
                 } else io(info)
-            }, initialDescription = boundDescription.initial)
+            }, initialDescription = boundDescription.initial,
+            flagStyle = if (directIp) DnsEndpointFlagStyle.Proxy else DnsEndpointFlagStyle.Standard)
     }
 
     private suspend fun metadata(title: String, message: String, copy: String?, noDim: Boolean = false, ip: Boolean = false) {

@@ -19,9 +19,9 @@
     "Ping": "Explicit outlined family; four16dp corners;15sp input. Error supporting text, enabled conjunction, URI/Done retained.",
     "Support": "Explicit outlined family; four12dp corners;14sp input,5-10lines and1000-character filter/counter retained.",
     "RpnSsid": "Inherited textInputStyle box mode;12dp corners,15sp input,16dp padding; never force outline.",
-    "Search": "SearchView queryBackground state drawable,16sp sans-serif, search affordance and existing trailing clear callbacks; no floating outline. Rules app-specific searches retain14sp override.",
-    "AppLogSearch": "SearchView queryBackground; programmatic14sp override; XML explicitly null search/search-hint icons.",
-    "ServerSearch": "SearchView queryBackground; programmatic14sp/no-font-padding override; original surrounding search-card/icons retained. Touch target can grow beyond baseline40dp at large font scale.",
+    "Search": "SearchAutoComplete autoCompleteTextViewStyle typography and state colors; AppCompat-tinted queryBackground belongs only to the inner query plate. Preserve edit-frame margins, native magnifier/clear slots and editor padding. Rules app-specific searches retain14sp override, ordinary searches inherit their source style.",
+    "AppLogSearch": "SearchAutoComplete resources with programmatic14sp override; XML null search/search-hint icons; native edit-frame padding and tinted inner query plate retained.",
+    "ServerSearch": "SearchAutoComplete resources with programmatic14sp/no-font-padding/zero-editor-padding overrides. Source40dp root inside RethinkPlus.ContentCard (cardBackgroundColor,16dp radius,0dp elevation),8dp horizontal/6dp vertical row padding. Query background retained; ic_cross clear is inside the plate.",
     "TransparentSearch": "Transparent AppCompatEditText14sp with primaryTextColor/light hint, inside original12dp-corner card60dp minimum; no field outline.",
     "Spinner": "Original Spinner backdrop resolves spinnerStyle. Both baseline adapters use android.R.layout.simple_spinner_dropdown_item, so selected item typography/padding resolve spinnerDropDownItemStyle. Existing app chooser dialog/menu and selection callbacks remain owned by call sites."
   },

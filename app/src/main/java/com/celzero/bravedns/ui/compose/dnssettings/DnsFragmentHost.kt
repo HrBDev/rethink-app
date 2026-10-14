@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -18,6 +19,8 @@ import androidx.fragment.app.FragmentContainerView
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.RethinkTheme
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.utilities.utilityDimensionSp
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 import com.celzero.bravedns.util.UIUtils.fetchColor
 
 /** Framework-only lifecycle/navigation host. No legacy screen is embedded in Compose. */
@@ -36,7 +39,11 @@ fun dnsFragmentHost(context: Context, rootId: Int, headingId: Int, containerId: 
 
 @Composable private fun DnsFragmentHeader(title: String, description: String?) {
     Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp)) {
-        Text(title, Modifier.padding(top = 10.dp).padding(5.dp).semantics { heading() }, style = MaterialTheme.typography.titleMedium, color = themeColor(androidx.appcompat.R.attr.colorPrimary))
-        description?.let { Text(it, Modifier.padding(5.dp), fontSize = 14.sp, color = themeColor(R.attr.primaryLightColorText)) }
+        Text(title, Modifier.padding(top = 10.dp).padding(5.dp).semantics { heading() },
+            style = utilityTextStyle(appearance = com.google.android.material.R.style.TextAppearance_Material3_TitleMedium),
+            color = themeColor(androidx.appcompat.R.attr.colorPrimary))
+        description?.let { Text(it, Modifier.padding(5.dp),
+            style = utilityTextStyle(size = utilityDimensionSp(LocalContext.current, R.dimen.small_font_subheading_text)),
+            color = themeColor(R.attr.primaryLightColorText)) }
     }
 }

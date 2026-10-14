@@ -96,12 +96,19 @@ internal fun <T : Serializable> RulesPage(domain: Boolean, uid: Int, rules: Cust
                 Text(stringResource(if (domain) R.string.cd_no_rules_text else R.string.ci_no_rules_text), fontSize = 18.sp)
                 Image(painterResource(R.drawable.illustrations_no_record), null, Modifier.width(220.dp).padding(top = 30.dp))
             } else Column(Modifier.fillMaxSize()) {
-                Row(Modifier.fillMaxWidth().padding(4.dp), verticalAlignment = Alignment.CenterVertically) {
-                    OriginalTextField(state.query, { updateRulesSearch(state, it, onQuery) }, Modifier.weight(1f).testTag("rules_search"), style = OriginalFieldStyle.Search, textStyle = androidx.compose.ui.text.TextStyle(fontSize = if (name != null) 14.sp else 16.sp),
-                        singleLine = true, placeholder = { Text(hint, fontSize = if (name != null) 14.sp else 16.sp) },
-                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = { submitRulesSearch(state, onQuery) }),
-                        trailingIcon = { if (state.query.isNotEmpty()) IconButton({ updateRulesSearch(state, "", onQuery) }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn)) } })
-                    IconButton({ state.deleteOpen = true }, Modifier.testTag("rules_delete")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }
+                OriginalCardSurface(Modifier.fillMaxWidth().padding(4.dp), cornerRadius = 16.dp) {
+                    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), verticalAlignment = Alignment.CenterVertically) {
+                        OriginalTextField(state.query, { updateRulesSearch(state, it, onQuery) }, Modifier.weight(.9f).testTag("rules_search"), style = OriginalFieldStyle.Search, textStyle = androidx.compose.ui.text.TextStyle(fontSize = if (name != null) 14.sp else TextUnit.Unspecified),
+                            singleLine = true, placeholder = { Text(hint, fontSize = if (name != null) 14.sp else TextUnit.Unspecified) },
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = { submitRulesSearch(state, onQuery) }),
+                            trailingIcon = { if (state.query.isNotEmpty()) IconButton({ updateRulesSearch(state, "", onQuery) }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal)) } })
+                        Box(Modifier.weight(.1f).fillMaxHeight().clickable(
+                            interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+                            indication = null, role = Role.Button) { state.deleteOpen = true }
+                            .testTag("rules_delete").padding(7.dp), contentAlignment = Alignment.Center) {
+                            Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified)
+                        }
+                    }
                 }
                 LazyColumn(Modifier.fillMaxSize().testTag("rules_list"), state = list, contentPadding = PaddingValues(bottom = 150.dp)) {
                     items(rows.itemCount, key = rows.itemKey { ruleKey(it) }) { index ->

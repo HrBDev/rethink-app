@@ -15,9 +15,12 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.google.android.material.button.MaterialButton
+import org.robolectric.Robolectric
 import com.google.android.material.R as MaterialR
 import org.junit.Assert.*
 import org.junit.Rule
@@ -67,6 +70,70 @@ class OriginalControlsTest {
             assertTrue("$key text", result.textStyle.fontSize.value > 0f)
             assertTrue("$key stroke", result.strokeWidth >= 0f)
         } }
+    }
+
+    /** Independent oracle: the real MDC widget constructor applies its own overlays and
+     * selectors. It does not call the Compose resolver or use a snapshot of its output. */
+    @Test fun materialButtonSelectorsMatchNativeWidgetsIncludingAlphaThemes() {
+        val states = listOf(
+            intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_enabled, android.R.attr.state_checked),
+            intArrayOf(-android.R.attr.state_enabled, -android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed),
+            intArrayOf(android.R.attr.state_enabled, android.R.attr.state_focused))
+        val overlays = listOf(0, R.style.ThemeOverlay_App_AlphaLight, R.style.ThemeOverlay_App_AlphaDark)
+        themes.forEach { theme -> overlays.forEach { overlay ->
+            val themed = context(theme)
+            if (overlay != 0) themed.theme.applyStyle(overlay, true)
+            originalControlSpecs.filterValues { it.kind == OriginalControlKind.Button }.forEach { (key, spec) ->
+                val attrs = Robolectric.buildAttributeSet()
+                    .setStyleAttribute("@style/" + themed.resources.getResourceEntryName(spec.style)).build()
+                val native = MaterialButton(themed, attrs)
+                val actual = resolveOriginalControl(themed, spec, density)
+                if (actual.background != null) {
+                    assertNotNull("$key custom background must survive", native.background)
+                    assertEquals("$key custom background class", native.background.javaClass, actual.background.javaClass)
+                    assertNull("$key must not add a managed ripple over a custom background", actual.ripple)
+                    assertNull("$key must not add a managed stroke over a custom background", actual.stroke)
+                    assertEquals(0f, actual.strokeWidth, 0f)
+                }
+                states.forEach { state ->
+                    fun color(list: android.content.res.ColorStateList?) = list?.getColorForState(state, list.defaultColor) ?: 0
+                    assertEquals("$key fill theme=$theme overlay=$overlay state=${state.toList()}",
+                        color(native.backgroundTintList), color(actual.fill))
+                    assertEquals("$key text", color(native.textColors), color(actual.textColor))
+                    assertEquals("$key stroke", color(native.strokeColor), color(actual.stroke))
+                    assertEquals("$key ripple", color(native.rippleColor), color(actual.ripple))
+                }
+            }
+        } }
+    }
+
+    @Test fun textAndDialogButtonsStayTransparentWhileFilledButtonsKeepTheirSourceFill() {
+        val normal = intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_checked)
+        val disabled = intArrayOf(-android.R.attr.state_enabled, -android.R.attr.state_checked)
+        themes.forEach { theme ->
+            listOf("@text", "@dialog", "@dialog_positive", "@dialog_negative", "@dialog_neutral", "@outlined").forEach { key ->
+                listOf(normal, disabled).forEach { state ->
+                    val fill = look(key, theme).fill
+                    assertEquals("$key must not become a filled purple button", 0,
+                        android.graphics.Color.alpha(fill?.getColorForState(state, fill.defaultColor) ?: 0))
+                }
+            }
+            val filled = requireNotNull(look("@filled", theme).fill)
+            assertTrue(android.graphics.Color.alpha(filled.getColorForState(normal, filled.defaultColor)) > 0)
+        }
+    }
+
+    @Test fun compactGroupedButtonsKeepSourceBoundsAndActions() {
+        var calls = 0
+        compose.setContent { TestTheme {
+            OriginalButton("fragment_summary_statistics:fss_view_mode_list_btn", { calls++ },
+                Modifier.testTag("grouped"), selected = true, grouped = true) {}
+        } }
+        compose.onNodeWithTag("grouped").assertWidthIsEqualTo(32.dp)
+            .assertHeightIsEqualTo(32.dp).assertIsSelected().performClick()
+        compose.runOnIdle { assertEquals(1, calls) }
     }
 
     @Test fun nativeTypefaceWeightAndRawSpSurviveLargerFontScale() {

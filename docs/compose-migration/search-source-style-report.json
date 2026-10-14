@@ -1,0 +1,145 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "verification": "static source only; no Android/toolchain/runtime execution",
+  "independent_reference_tests": "OriginalSearchStyleReferenceTest authored and UNRUN",
+  "checks": [
+    {
+      "check": "domain: baseline MaterialCardView / 16dp radius / 4dp margin",
+      "passed": true
+    },
+    {
+      "check": "domain: baseline search 90 percent weight",
+      "passed": true
+    },
+    {
+      "check": "ip: baseline MaterialCardView / 16dp radius / 4dp margin",
+      "passed": true
+    },
+    {
+      "check": "ip: baseline search 90 percent weight",
+      "passed": true
+    },
+    {
+      "check": "server: baseline ContentCard source style",
+      "passed": true
+    },
+    {
+      "check": "server: baseline row 8dp horizontal / 6dp vertical padding",
+      "passed": true
+    },
+    {
+      "check": "server: baseline explicit actionSearch",
+      "passed": true
+    },
+    {
+      "check": "server: baseline SearchView exact 40dp / native close icon",
+      "passed": true
+    },
+    {
+      "check": "server: baseline card fill / corner / elevation",
+      "passed": true
+    },
+    {
+      "check": "server: baseline 14sp / no font padding / zero editor padding; plate retained",
+      "passed": true
+    },
+    {
+      "check": "search: isolated SearchAutoComplete resource style, not editTextStyle",
+      "passed": true
+    },
+    {
+      "check": "search: AppCompat tint loader preserves literal/null fallback",
+      "passed": true
+    },
+    {
+      "check": "search: server editor zero padding and root 40dp",
+      "passed": true
+    },
+    {
+      "check": "search: typography uses autoCompleteTextViewStyle without hardcoded 16sp",
+      "passed": true
+    },
+    {
+      "check": "search: standard field minimum does not override server 40dp",
+      "passed": true
+    },
+    {
+      "check": "search: magnifier precedes separate weighted query plate background",
+      "passed": true
+    },
+    {
+      "check": "search: plate follows SearchView focused/empty state",
+      "passed": true
+    },
+    {
+      "check": "search: native edit frame margin / editor36dp / clear width; no added M3 min target",
+      "passed": true
+    },
+    {
+      "check": "search: no production View creation or inflation",
+      "passed": true
+    },
+    {
+      "check": "search: existing lint corrections preserved",
+      "passed": true
+    },
+    {
+      "check": "rules: source card radius / margin / weights / inherited ordinary typography",
+      "passed": true
+    },
+    {
+      "check": "server: source card style / padding / exact 40dp SearchView",
+      "passed": true
+    },
+    {
+      "check": "server: clear remains inside search plate; no substituted fill or external magnifier",
+      "passed": true
+    },
+    {
+      "check": "search: primitive defaults honor unset values and preserve both callback paths",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects unwired editor overload",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects explicit Default action overwritten",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects explicit autocorrection overwritten",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects non-search options changed",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects explicit focus preference dropped",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects explicit locale hints dropped",
+      "passed": true
+    },
+    {
+      "check": "negative control rejects caller KeyboardActions replaced",
+      "passed": true
+    },
+    {
+      "check": "native default XML proof pins historical blob and exact Search/no-suggestions values",
+      "passed": true
+    },
+    {
+      "check": "independent native oracle checks actual editor action and flags, not helper-derived expectations",
+      "passed": true
+    },
+    {
+      "check": "unrun Compose semantics cover default Search, explicit Done, both overloads and callback counts",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

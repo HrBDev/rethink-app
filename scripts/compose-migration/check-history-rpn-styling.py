@@ -28,6 +28,12 @@ FILES = {
     'vpn': UI + 'adapter/VpnServerAdapter.kt',
     'row_state': UI + 'compose/rpn/RpnServerRowState.kt',
     'type': UI + 'compose/rpn/RpnSourceTypography.kt',
+    'progress': UI + 'compose/rpn/RpnComponents.kt',
+    'removal': UI + 'compose/rpn/RpnRemovalContent.kt',
+    'header_loading': UI + 'compose/rpn/RpnHeaderSkeletons.kt',
+    'plans': UI + 'compose/purchase/PurchasePlans.kt',
+    'subscription': UI + 'compose/purchase/SubscriptionContent.kt',
+    'ping': 'app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt',
 }
 NS = {'a': 'http://schemas.android.com/apk/res/android', 'm': 'http://schemas.android.com/apk/res-auto'}
 
@@ -53,7 +59,9 @@ XML = [
     'activity_purchase_history', 'activity_server_order_history', 'list_item_purchase_history',
     'list_item_server_order', 'list_item_shimmer_card', 'list_item_shimmer_server_row',
     'list_item_country_card', 'item_server_group', 'item_section_header', 'list_item_vpn_server_add',
-    'list_item_vpn_server', 'fragment_server_selection'
+    'list_item_vpn_server', 'fragment_server_selection', 'dialog_server_loading',
+    'item_removed_server', 'bottomsheet_server_removal_notification', 'item_ping_test_history',
+    'shimmer_subscription_loading', 'fragment_rethink_plus_premium'
 ]
 
 def validate(src):
@@ -112,7 +120,7 @@ def validate(src):
              'padding(6.dp).heightIn(min = 80.dp)', 'val stroke = 1.dp.toPx()',
              'PathEffect.dashPathEffect(floatArrayOf(6.dp.toPx(), 4.dp.toPx()))', 'CornerRadius(16.dp.toPx())')
     contains('tile', 'add-tile original single-line medium tracked label',
-             'tileTextStyle(11.sp).copy(fontWeight = FontWeight.Medium, letterSpacing = .02.em)', 'maxLines = 1')
+             'tileTextStyle(11.sp, family = "sans-serif-medium").copy(letterSpacing = .02.em)', 'maxLines = 1')
     contains('tile', 'plain two-column source grid with equal-height rows and no invented gap',
              'val cell = (constraints.maxWidth / 2)', 'it.maxIntrinsicHeight(cell)',
              'Constraints.fixed(cell, heights[index / 2])', 'child.placeRelative(column * cell, y)',
@@ -124,10 +132,10 @@ def validate(src):
     contains('country', 'country avatar source metrics and font padding',
              'size(36.dp).background(themeColor(R.attr.colorSurfaceVariant), CircleShape)',
              'countryTextStyle(12.sp, includeFontPadding = false)', 'rpnDimensionSp(R.dimen.mini_font_text_view)',
-             'letterSpacing = .02.em', 'padding(start = 13.dp, end = 10.dp)')
+             'spacing = .02f', 'padding(start = 13.dp, end = 10.dp)')
     contains('country', 'alphabet section original typography and padding',
              'padding(start = 4.dp, end = 4.dp, top = 14.dp, bottom = 4.dp)',
-             'countryTextStyle(11.sp).copy(fontWeight = FontWeight.Bold, letterSpacing = .1.em)')
+             'countryTextStyle(11.sp, family = "sans-serif-medium", bold = true, spacing = .1f)')
     contains('country', 'plain country grouping, inset divider and nested rows',
              'HorizontalDivider(Modifier.padding(start = 53.dp)',
              'padding(start = 14.dp, end = 4.dp, bottom = 6.dp)',
@@ -159,9 +167,63 @@ def validate(src):
              'CARD_TILT_DEGREES = -35f', 'CARD_MASK_RADIUS_FACTOR = 5f', 'if (rtl) 0f else w',
              'canvas.saveLayer(0f, 0f, w, h, null)', 'drawContext.canvas.nativeCanvas')
     contains('type', 'dimension references retain qualifier and font scaling',
-             'LocalContext.current.resources.getDimension(id)', 'with(LocalDensity.current) { pixels.toSp() }')
+             'utilityDimensionSp(LocalContext.current, id).sp')
+    contains('row', 'history bold resolves the source medium family with native bold face',
+             'fontFamilyName = "sans-serif-medium"',
+             'weight = if (control.bold || fontWeight == FontWeight.Bold) Typeface.BOLD else Typeface.NORMAL',
+             'style = utilityTextStyle(')
+    contains('progress', 'progress title/status/hint resolve exact source typography',
+             'utilityTextStyle(size = 17f, family = "sans-serif-medium", weight = Typeface.BOLD)',
+             'R.dimen.default_font_text_view', 'R.dimen.small_font_text_view', 'minLines = 2')
+    contains('progress', 'progress track source colors/inset/caps without modern gap/stop decoration',
+             'sourceProgressLook(circular = false)', 'sourceProgressLook(circular = true)',
+             'Modifier.size(56.dp + spinner.inset * 2).padding(spinner.inset)',
+             'height(3.dp)', 'strokeCap = androidx.compose.ui.graphics.StrokeCap.Round, gapSize = 0.dp, drawStopIndicator = {}',
+             'linearProgressIndicatorStyle', 'circularProgressIndicatorStyle', 'android.R.attr.disabledAlpha')
+    for name in ['rpnProgressDialog', 'RpnText', 'OriginalRpnText']:
+        check('unchanged existing RPN helper: '+name,
+              compact(block(src['progress'], 'fun '+name)) == compact(block(git(BEFORE, FILES['progress']), 'fun '+name)))
+    contains('removal', 'removed-server source frame/text/card geometry',
+             'Modifier.size(40.dp)', 'utilityTextStyle(size = 24f)', 'padding(start = 12.dp)',
+             'utilityTextStyle(size = 16f, weight = Typeface.BOLD)', 'utilityTextStyle(size = 13f)',
+             'Modifier.padding(top = 4.dp).alpha(.6f)', 'maxLines = 1', 'TextOverflow.Ellipsis',
+             'cornerRadius = 16.dp, elevation = 0.dp, border = BorderStroke(1.dp, themeColor(R.attr.chipBgColorNeutral))')
+    contains('removal', 'removal sheet original horizontal header, list, and primary spacing',
+             'Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top)', 'cornerRadius = 32.dp, elevation = 0.dp',
+             'Color(0xFF4CAF50), Color(0xFF2196F3), Color(0xFF9C27B0)', 'tint = Color.White',
+             'heightIn(max = 200.dp)', 'padding(top = 24.dp).height(56.dp)', '{ ui.btnUnderstand.performClick() }')
+    check('removal action callback still exactly one explicit call', src['removal'].count('ui.btnUnderstand.performClick()') == 1)
+    contains('ping', 'ping circle/padding/medium/bold/single-line source styles',
+             'padding(horizontal = 16.dp, vertical = 12.dp)', 'shape = CircleShape', 'size(32.dp).padding(8.dp)',
+             'utilityTextStyle(size = 14.5f, family = "sans-serif-medium")', 'TextOverflow.MiddleEllipsis',
+             'utilityTextStyle(size = 13f, family = "sans-serif-medium", weight = Typeface.BOLD)',
+             'utilityTextStyle(size = 11.5f, family = "sans-serif-medium")', 'Column(Modifier.padding(start = 8.dp)')
+    check('ping retains source single-line layout at every font scale', 'val large' not in src['ping'] and src['ping'].count('maxLines = 1') == 4)
+    old_ping = git(BEFORE, FILES['ping'])
+    check('ping adapter data/submission unchanged', block(old_ping, 'class PingTestHistoryAdapter') == block(src['ping'], 'class PingTestHistoryAdapter'))
+    check('ping outcome/data expressions unchanged', all(line.strip() in src['ping'] for line in old_ping.splitlines()
+          if any(x in line for x in ['val outcome =', 'val color =', 'val text =', 'val time ='])))
+    contains('plans', 'premium loading original hero/title/four features/two plans sequence',
+             'fillMaxWidth().height(200.dp)', 'width(150.dp).height(24.dp)', 'repeat(4)',
+             'fillMaxWidth().height(80.dp)', 'if (index == 3) 24.dp else 8.dp',
+             'width(120.dp).height(24.dp)', 'fillMaxWidth().height(120.dp)', 'RoundedCornerShape(12.dp)')
+    contains('subscription', 'premium loading clips its fixed-height source blocks to original themed viewport',
+             '.background(themeColor(R.attr.background)).clipToBounds()',
+             'PurchaseShimmer(Modifier.fillMaxWidth().wrapContentHeight(Alignment.Top, unbounded = true)')
+    check('plan card selection and pulse unchanged', block(git(BEFORE, FILES['plans']), 'fun PurchasePlanCard') == block(src['plans'], 'fun PurchasePlanCard'))
+    contains('header_loading', 'header skeleton source shape/margins/timing/alpha',
+             'padding(top = 4.dp)', 'sourceShimmerModifier(running, 1200, .12f, .35f)',
+             'width(80.dp).height(10.dp)', 'Spacer(Modifier.weight(1f).height(10.dp))', 'width(60.dp).height(26.dp)')
+    contains('header_loading', 'subscription banner skeleton source composition and pinned library defaults',
+             'Shimmer.AlphaHighlightBuilder().build()', 'defaults.baseColor', 'defaults.highlightColor', 'defaults.animationDuration',
+             'padding(top = 8.dp).height(40.dp)', '.padding(8.dp)', 'Modifier.size(20.dp)', 'Spacer(Modifier.width(8.dp))',
+             'Modifier.weight(1f).height(12.dp)')
+    contains('selection', 'header skeletons wired without generic fractional lines',
+             'RpnHeaderLoadingSkeleton(ui.shimmerHeader.shimmerRunning)',
+             'RpnSubscriptionLoadingSkeleton(ui.shimmerSubscriptionBanner.shimmerRunning)')
+    check('generic RPN line skeleton removed', 'fun RpnShimmer' not in src['selection'])
     check('owned renderers do not inflate XML or instantiate a View',
-          all(not re.search(r'AndroidView\s*\(|LayoutInflater|\.inflate\s*\(', src[x]) for x in ['row','screen','tile','loading','watermark','type']))
+          all(not re.search(r'AndroidView\s*\(|LayoutInflater|\.inflate\s*\(', src[x]) for x in ['row','screen','tile','loading','watermark','type','removal','header_loading','plans']))
     return results
 
 
@@ -181,7 +243,12 @@ def main():
                  ('country', 'countryTextStyle(12.sp, includeFontPadding = false)', 'countryTextStyle(26.sp, includeFontPadding = false)'),
                  ('screen', 'index -> row(index)', 'index -> Card { row(index) }'),
                  ('loading', 'width(120.dp).height(14.dp)', 'width(100.dp).height(14.dp)'),
-                 ('vpn', 'ui.flagWatermark.setFlagText(group.flagEmoji)', 'ui.flagWatermark.setFlagText("")')]
+                 ('vpn', 'ui.flagWatermark.setFlagText(group.flagEmoji)', 'ui.flagWatermark.setFlagText("")'),
+                 ('progress', 'size = 17f, family = "sans-serif-medium"', 'size = 20f, family = "sans-serif-medium"'),
+                 ('removal', 'Modifier.size(40.dp)', 'Modifier.size(28.dp)'),
+                 ('plans', 'fillMaxWidth().height(200.dp)', 'fillMaxWidth().height(120.dp)'),
+                 ('ping', 'maxLines = 1', 'maxLines = 2'),
+                 ('header_loading', 'width(80.dp).height(10.dp)', 'width(60.dp).height(10.dp)')]
     mutation_results = []
     for key, old, new in mutations:
         changed = dict(src)
@@ -195,7 +262,7 @@ def main():
               'remaining_limits': ['Material and framework implicit defaults require approved runtime reference comparison.',
                   'History collapsing toolbar scrim/parallax/title placement remains a separate source/runtime gate.',
                   'Shimmer placeholder composition/timing/alpha are guarded, but exact library sweep/dropoff/tilt and stopped-frame appearance require visual comparison.',
-                  'RPN header/subscription skeletons and premium subscription loading layout are outside this bounded row/history fix.']}
+                  'Progress-window chrome and exact Material progress animation curves require runtime comparison; the source text/track defaults and geometry are restored.']}
     if args.report:
         output = Path(args.report)
         output.parent.mkdir(parents=True, exist_ok=True)

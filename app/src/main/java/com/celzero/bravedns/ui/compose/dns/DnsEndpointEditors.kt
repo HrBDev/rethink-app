@@ -57,7 +57,8 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
     LaunchedEffect(Unit) { name = withContext(Dispatchers.IO) { suggestedName() } }
     val title = if (kind == DnsServerKind.DOH) stringResource(R.string.cd_doh_dialog_heading) else
         stringResource(R.string.two_argument_space, stringResource(R.string.lbl_add).replaceFirstChar(Char::titlecase), defaultName)
-    DnsEditorDialog(title, onDismiss, { error = onApply(name, url, ip.trim(), proxy, !insecure) }) {
+    DnsEditorDialog(title, onDismiss, { error = onApply(name, url, ip.trim(), proxy, !insecure) },
+        if (kind == DnsServerKind.ODOH) DnsEditorButtons.ODOH else DnsEditorButtons.DOH) {
         DnsField(name, { name = it }, stringResource(R.string.cd_doh_dialog_resolver_name), "dns_name")
         if (kind == DnsServerKind.ODOH) DnsField(proxy, { proxy = it }, stringResource(R.string.settings_proxy_header).replaceFirstChar(Char::uppercase) + stringResource(R.string.lbl_optional), "dns_proxy", KeyboardType.Uri)
         DnsField(url, { url = it }, stringResource(R.string.cd_doh_dialog_resolver_url), "dns_url", KeyboardType.Uri)
@@ -85,7 +86,7 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
         serverIndex = indices.first; relayIndex = indices.second
         name = resources.getString(R.string.cd_dns_crypt_name, serverIndex.toString())
     }
-    DnsEditorDialog(stringResource(R.string.cd_dns_crypt_dialog_heading), onDismiss, { error = onApply(name, stamp, description, relay) }) {
+    DnsEditorDialog(stringResource(R.string.cd_dns_crypt_dialog_heading), onDismiss, { error = onApply(name, stamp, description, relay) }, DnsEditorButtons.CRYPT) {
         Column(Modifier.selectableGroup()) {
             DnsRadio(stringResource(R.string.cd_dns_crypt_resolver_heading), !relay) { relay = false; name = resources.getString(R.string.cd_dns_crypt_name, serverIndex.toString()) }
             DnsRadio(stringResource(R.string.cd_dns_crypt_relay_heading), relay) { relay = true; name = resources.getString(R.string.cd_dns_crypt_relay_name, relayIndex.toString()) }
@@ -110,7 +111,7 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
     var forwardApps by remember { mutableStateOf(initialForwardApps) }
     var showApps by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
-    DnsEditorDialog(stringResource(R.string.dns_proxy_dialog_header_dns), onDismiss, { error = onApply(name, appNames[appIndex], ip, port, forwardApps) }) {
+    DnsEditorDialog(stringResource(R.string.dns_proxy_dialog_header_dns), onDismiss, { error = onApply(name, appNames[appIndex], ip, port, forwardApps) }, DnsEditorButtons.PROXY) {
         if (lockdown) OriginalButton("dialog_set_dns_proxy:dialog_dns_proxy_lockdown_desc", onVpnSettings) { Text(stringResource(R.string.settings_lock_down_mode_desc)) }
         Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
             Text(stringResource(R.string.settings_dns_proxy_dialog_app), Modifier.weight(.3f),
@@ -130,7 +131,16 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
         } }, confirmButton = { OriginalButton("@dialog_positive", { showApps = false }) { Text(stringResource(R.string.lbl_cancel)) } })
 }
 
-@Composable private fun DnsEditorDialog(title: String, onDismiss: () -> Unit, onApply: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
+/** Keep each custom dialog's TextButton.Dialog style rather than the app alert-button alias.
+ * DoT deliberately shares dialog_set_custom_doh with DoH, as it did before migration. */
+private enum class DnsEditorButtons(val cancelSource: String, val applySource: String) {
+    DOH("dialog_set_custom_doh:dialog_custom_url_cancel_btn", "dialog_set_custom_doh:dialog_custom_url_ok_btn"),
+    ODOH("dialog_set_custom_odoh:dialog_custom_url_cancel_btn", "dialog_set_custom_odoh:dialog_custom_url_ok_btn"),
+    CRYPT("dialog_set_dns_crypt:dialog_dns_crypt_cancel_btn", "dialog_set_dns_crypt:dialog_dns_crypt_ok_btn"),
+    PROXY("dialog_set_dns_proxy:dialog_dns_proxy_cancel_btn", "dialog_set_dns_proxy:dialog_dns_proxy_apply_btn"),
+}
+
+@Composable private fun DnsEditorDialog(title: String, onDismiss: () -> Unit, onApply: () -> Unit, buttons: DnsEditorButtons, content: @Composable ColumnScope.() -> Unit) {
     Dialog(onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         NoDimDialogWindow()
         Surface(Modifier.imePadding().padding(16.dp).widthIn(max = 600.dp).fillMaxWidth(), shape = RoundedCornerShape(20.dp)) {
@@ -138,8 +148,8 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
                 Text(title, Modifier.padding(bottom = 12.dp), style = MaterialTheme.typography.titleMedium)
                 Column(Modifier.weight(1f, false).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    OriginalButton("@dialog_negative", onDismiss, Modifier.testTag("dns_editor_cancel")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.accentGood)) }
-                    OriginalButton("@dialog_positive", onApply, Modifier.testTag("dns_editor_add")) { Text(stringResource(R.string.lbl_add), color = themeColor(R.attr.accentGood)) }
+                    OriginalButton(buttons.cancelSource, onDismiss, Modifier.testTag("dns_editor_cancel")) { Text(stringResource(R.string.lbl_cancel)) }
+                    OriginalButton(buttons.applySource, onApply, Modifier.testTag("dns_editor_add")) { Text(stringResource(R.string.lbl_add)) }
                 }
             }
         }

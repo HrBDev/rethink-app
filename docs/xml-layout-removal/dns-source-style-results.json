@@ -1,0 +1,12 @@
+{
+  "status": "passed_source_only",
+  "checks": "exact catalog integration, callback state unchanged, source flag variants and header typography",
+  "negative_mutations_rejected": 7,
+  "runtime": "not_run_toolchain_unavailable",
+  "production_file_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/DnsRecordTypesContent.kt": "aa72ee29067395b1265a85a8477194826ec671ae8a97017157e090b7a209b71f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt": "3ffa7ed45a4a0d32db6598d73640ca75c3e4755491753f3ecbf1728c9825a2c2",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointPresenter.kt": "ae17a069473528850f5614104e1299e116f4d98b340f9b59632317fb0e091dac",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsFragmentHost.kt": "33ddd69a51d1575829970ef9f51a31e101271092a0627a9fc46dd3d65a4a4d5a"
+  }
+}

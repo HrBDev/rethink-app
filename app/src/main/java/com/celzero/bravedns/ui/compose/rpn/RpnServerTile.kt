@@ -38,6 +38,7 @@ import androidx.core.graphics.drawable.toBitmap
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
 import com.celzero.bravedns.ui.compose.controls.OriginalCardSurface
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 
 /** All keys share one composition scope, so moving a tile to another row does not restart its jobs. */
 @Composable
@@ -67,17 +68,17 @@ fun RpnServerTile(ui: RpnServerRowState, isAuto: Boolean) {
             Column(Modifier.fillMaxWidth().padding(start = 12.dp, end = 8.dp, top = 8.dp, bottom = 10.dp)) {
                 // Status follows the title's height, not the taller independently anchored remove icon.
                 RpnText(ui.tvCountryName, Modifier.fillMaxWidth().padding(end = 32.dp),
-                    tileTextStyle(16.sp).copy(fontWeight = FontWeight.Medium, letterSpacing = .01.em))
+                    tileTextStyle(16.sp, family = "sans-serif-medium").copy(letterSpacing = .01.em))
                 Row(Modifier.padding(top = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     if (ui.ivStatusCheck.isVisible) RpnImage(ui.ivStatusCheck, Modifier.padding(end = 4.dp).size(10.dp).alpha(.75f))
                     RpnText(ui.tvServerStatus, Modifier.padding(end = 4.dp), tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view)).copy(textAlign = TextAlign.Center))
-                    RpnText(ui.tvServerIp, style = tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view)).copy(fontFamily = FontFamily.Monospace, letterSpacing = .02.em))
+                    RpnText(ui.tvServerIp, style = tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view), family = "monospace").copy(letterSpacing = .02.em))
                 }
                 if (isAuto) Column(Modifier.padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) { Apps(ui); Recent(ui) }
                 else Row(Modifier.padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.Top) { Apps(ui); Recent(ui) }
                 if (ui.relayActionContainer.visibility != android.view.View.GONE) RpnTileChip(ui.relayActionContainer, Modifier.padding(top = 10.dp)) {
-                    RpnText(ui.relayAction, style = tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view))
-                        .copy(fontWeight = FontWeight.Medium, letterSpacing = .02.em, textAlign = TextAlign.Center))
+                    RpnText(ui.relayAction, style = tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view), family = "sans-serif-medium")
+                        .copy(letterSpacing = .02.em, textAlign = TextAlign.Center))
                     if (ui.relayIcon.visibility != android.view.View.GONE) RpnImage(ui.relayIcon, Modifier.padding(start = 4.dp).size(10.dp).rpnVisibility(ui.relayIcon))
                 }
             }
@@ -88,12 +89,12 @@ fun RpnServerTile(ui: RpnServerRowState, isAuto: Boolean) {
         }
     }
 }
-private fun tileTextStyle(size: androidx.compose.ui.unit.TextUnit) = TextStyle(fontSize = size,
-    fontFamily = FontFamily.SansSerif, letterSpacing = 0.sp, platformStyle = PlatformTextStyle(includeFontPadding = true))
+@Composable private fun tileTextStyle(size: androidx.compose.ui.unit.TextUnit, family: String? = null) =
+    utilityTextStyle(size = size.value, family = family)
 
 @Composable private fun Apps(ui: RpnServerRowState) {
     RpnTileChip(ui.appsActionContainer) {
-        RpnText(ui.appsAction, Modifier.width(44.dp), tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view)).copy(fontWeight = FontWeight.Medium, letterSpacing = .02.em, textAlign = TextAlign.Center))
+        RpnText(ui.appsAction, Modifier.width(44.dp), tileTextStyle(rpnDimensionSp(R.dimen.small_font_text_view), family = "sans-serif-medium").copy(letterSpacing = .02.em, textAlign = TextAlign.Center))
         Icon(painterResource(R.drawable.ic_right_arrow_small), null, Modifier.padding(start = 4.dp).size(11.dp), tint = themeColor(R.attr.serverChipTextColor))
     }
 }
@@ -107,7 +108,7 @@ private fun tileTextStyle(size: androidx.compose.ui.unit.TextUnit) = TextStyle(f
             }
         }
         if (ui.lastRoutedAppFallbackIcon.isVisible) RpnImage(ui.lastRoutedAppFallbackIcon, Modifier.size(12.dp))
-        RpnText(ui.lastRoutedAppAction, Modifier.padding(start = 4.dp).width(32.dp).basicMarquee(iterations = Int.MAX_VALUE), tileTextStyle(10.sp).copy(fontWeight = FontWeight.Medium, letterSpacing = .02.em))
+        RpnText(ui.lastRoutedAppAction, Modifier.padding(start = 4.dp).width(32.dp).basicMarquee(iterations = Int.MAX_VALUE), tileTextStyle(10.sp, family = "sans-serif-medium").copy(letterSpacing = .02.em))
     }
 }
 @Composable private fun RpnTileChip(state: RpnControlState, modifier: Modifier = Modifier, compact: Boolean = false, content: @Composable RowScope.() -> Unit) {
@@ -143,6 +144,6 @@ private fun tileTextStyle(size: androidx.compose.ui.unit.TextUnit) = TextStyle(f
         Icon(painterResource(R.drawable.ic_add), null, Modifier.size(26.dp).alpha(.8f), tint = themeColor(R.attr.primaryLightColorText))
         Text(stringResource(R.string.server_selection_add_tile), Modifier.padding(top = 6.dp).alpha(.8f),
             color = themeColor(R.attr.primaryLightColorText), maxLines = 1, overflow = TextOverflow.Clip,
-            style = tileTextStyle(11.sp).copy(fontWeight = FontWeight.Medium, letterSpacing = .02.em))
+            style = tileTextStyle(11.sp, family = "sans-serif-medium").copy(letterSpacing = .02.em))
     }
 }

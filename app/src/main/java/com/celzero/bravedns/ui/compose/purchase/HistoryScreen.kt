@@ -22,6 +22,8 @@ import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.TextStyle
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
+import android.graphics.Typeface
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -68,7 +70,7 @@ internal class HistoryScreenState {
                     if (scroll.state.collapsedFraction < .99f) HistoryText(state.tvHeroSubtitle,
                         Modifier.alpha(.7f * (1f - scroll.state.collapsedFraction)),
                         fontSize = if (server) rpnDimensionSp(R.dimen.mini_font_text_view) else 13.sp,
-                        fontFamily = if (server) FontFamily.Monospace else FontFamily.SansSerif,
+                        fontFamilyName = if (server) "monospace" else "sans-serif",
                         color = themeColor(if (server) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor), maxLines = 1)
                 }
             }, expandedHeight = 180.dp, scrollBehavior = scroll)
@@ -128,7 +130,7 @@ internal class HistoryScreenState {
                 HistoryStaticText(stringResource(R.string.payment_history_summary_subtitle), Modifier.padding(top = 2.dp), fontSize = 12)
             }
             HistoryText(state.tvEntryCount, Modifier.widthIn(min = 32.dp), fontSize = 22.sp,
-                color = themeColor(R.attr.accentGood), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                color = themeColor(R.attr.accentGood), fontWeight = FontWeight.Bold, fontFamilyName = "sans-serif-medium", textAlign = TextAlign.Center)
         }
     }
 }
@@ -158,7 +160,7 @@ internal class HistoryScreenState {
 
 @Composable private fun HistoryStaticText(text: String, modifier: Modifier = Modifier, fontSize: Int,
     color: androidx.compose.ui.graphics.Color = themeColor(R.attr.primaryLightColorText), bold: Boolean = false, align: TextAlign = TextAlign.Start) {
-    Text(text, modifier, color = color, style = TextStyle(fontSize = fontSize.sp,
-        fontFamily = FontFamily.SansSerif, fontWeight = if (bold) FontWeight.Bold else FontWeight.Normal,
-        letterSpacing = 0.sp, textAlign = align, platformStyle = PlatformTextStyle(includeFontPadding = true)))
+    Text(text, modifier, color = color, style = utilityTextStyle(size = fontSize.toFloat(),
+        family = if (bold) "sans-serif-medium" else "sans-serif", weight = if (bold) Typeface.BOLD else Typeface.NORMAL,
+        spacing = 0f).copy(textAlign = align))
 }

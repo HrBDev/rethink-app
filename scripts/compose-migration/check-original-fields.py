@@ -11,6 +11,7 @@ import subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 CHECKPOINT = 'e2b97de59cc854de74010c096ceffbaed6cb4a55'
 BASELINE = '23cb6dd98805445174bd83b7237ad5f5d2c24ac9'
+USER_LINT = '154065c0467f9f47be5acf8b58fc15e6bdca8a31'
 COMPOSE = ROOT / 'app/src/main/java/com/celzero/bravedns/ui/compose'
 PRIMITIVE = COMPOSE / 'fields/OriginalTextFields.kt'
 
@@ -72,6 +73,18 @@ def main():
         if re.search(r'(?<!\w)(?:OutlinedTextField|TextField)\s*\(', current): errors.append(f'stock field: {rel}')
         old = subprocess.run(['git', 'show', f'{CHECKPOINT}:{rel}'], cwd=ROOT, text=True, capture_output=True)
         if old.returncode or not calls(old.stdout): continue
+        if rel == 'app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt':
+            # The user's pinned lint commit captures composition-aware Locale outside the callback.
+            # Admit exactly that expression change, and verify it independently against their blob.
+            before = 'networkDigitsOnly(it, context.resources.configuration.locales[0])'
+            after = 'networkDigitsOnly(it, locale)'
+            expected = old.stdout.replace(before, after)
+            lint = subprocess.check_output(['git', 'show', f'{USER_LINT}:{rel}'], cwd=ROOT, text=True)
+            if before not in old.stdout or call_records(lint) != call_records(expected):
+                errors.append('pinned user locale correction no longer matches field baseline')
+            if 'val locale = LocalLocale.current.platformLocale' not in current:
+                errors.append('composition-aware field locale capture removed')
+            old.stdout = expected
         if calls(old.stdout) != calls(current): errors.append(f'value/onValueChange drift: {rel}')
         if behavior_calls(old.stdout) != behavior_calls(current): errors.append(f'keyboard/editor behavior argument drift: {rel}')
         audited.append({'path': rel, 'call_sites': sum(calls(current).values()), 'value_and_change_callbacks_unchanged': calls(old.stdout) == calls(current),
@@ -92,7 +105,7 @@ def main():
     for row in mapping['baseline_instances']:
         if not (ROOT / row['renderer_file']).exists(): errors.append(f'missing renderer {row}')
         elif not re.search(r'fun\s+(?:<[^>]+>\s+)?' + row['renderer_function'] + r'\s*\(', (ROOT / row['renderer_file']).read_text()): errors.append(f'missing renderer function {row["renderer_function"]}')
-    report = {'baseline': BASELINE, 'native_checkpoint': CHECKPOINT, 'verification': 'static source only; no build, runtime or screenshot verification',
+    report = {'baseline': BASELINE, 'native_checkpoint': CHECKPOINT, 'preserved_user_lint': USER_LINT, 'verification': 'static source only; no build, runtime or screenshot verification',
               'mapped_baseline_instances': len(actual), 'audited_native_files': len(audited),
               'audited_native_calls': sum(x['call_sites'] for x in audited), 'callback_checks': audited,
               'passed': not errors, 'errors': errors}

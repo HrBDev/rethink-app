@@ -16,7 +16,15 @@ for name in re.findall(r'(?<!\.)R\.style\.(OriginalControl_\w+)',catalog):
 for p in (ROOT/'app/src/main/java').rglob('*.kt'):
  for match in re.finditer(r'(?:OriginalButton|OriginalChip|OriginalLabel)\("([^"$]+)"\s*,|\bsource\s*=\s*"([^"$]+)"',p.read_text()):
   key=match[1] or match[2]
-  if ':' in key and key not in keys:errors.append(f'missing key {key} in {p.relative_to(ROOT)}')
+  if ':' in key and key not in keys:
+   # One source uses a closed two-way choice. Check both full keys, never accept the prefix
+   # as a catalog item or silently skip an arbitrary dynamic expression.
+   tail=p.read_text()[match.end():]
+   choice=re.match(r'\s*\+\s*if \(automatic\) \"([^\"]+)\" else \"([^\"]+)\"',tail)
+   if key=='bottom_sheet_dns_record_types:' and choice:
+    for suffix in choice.groups():
+     if key+suffix not in keys:errors.append(f'missing dynamic key {key+suffix} in {p.relative_to(ROOT)}')
+   else:errors.append(f'missing key {key} in {p.relative_to(ROOT)}')
 
 # Validate per-style null metadata, including inherited local style values.
 inv=json.loads((DOC/'component-style-restoration-inventory.json').read_text())
@@ -37,7 +45,7 @@ required=['spec.explicitNulls','hasValueOrEmpty','LocalConfiguration.current','L
  'getColorForState','checkedIconVisible','checkedIconTint','minimumInteractiveComponentSize',
  'interactive = false','Role.RadioButton','OriginalSegmentShape','LayoutDirection.Ltr',
  'complexToFloat(sizeValue.data)','utilityResolvedWeight','constantState?.newDrawable',
- 'if (spec.visualHeight > 0f) spec.visualHeight','if (chip && has(26))',
+ 'if (spec.visualHeight > 0f) spec.visualHeight','if (chip && has(26) && !explicitlyCleared(26))',
  'Modifier.indication(interaction','indication = null']
 for token in required:
  if token not in primitive:errors.append('missing safeguard '+token)

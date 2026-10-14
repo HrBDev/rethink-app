@@ -24,6 +24,8 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.controls.OriginalLabel
 import com.celzero.bravedns.ui.compose.rpn.*
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
+import android.graphics.Typeface
 
 class HistoryRowState {
     val tvTimestamp = RpnControlState()
@@ -63,7 +65,7 @@ class HistoryRowState {
     fontSize: TextUnit = 12.sp,
     color: Color = themeColor(R.attr.primaryLightColorText),
     fontWeight: FontWeight = FontWeight.Normal,
-    fontFamily: FontFamily = FontFamily.SansSerif,
+    fontFamilyName: String = "sans-serif",
     maxLines: Int = Int.MAX_VALUE,
     textAlign: TextAlign = TextAlign.Start
 ) {
@@ -71,11 +73,10 @@ class HistoryRowState {
     Text(control.text.toString(), modifier.rpnVisibility(control).rpnMotion(control),
         color = control.foregroundColor?.let(::Color) ?: color,
         maxLines = minOf(control.maxLines, maxLines), overflow = TextOverflow.Ellipsis,
-        style = TextStyle(fontSize = control.textSizeSp?.sp ?: fontSize,
-            fontWeight = if (control.bold) FontWeight.Bold else fontWeight,
-            fontFamily = if (control.monospace) FontFamily.Monospace else fontFamily,
-            letterSpacing = 0.sp, textAlign = textAlign,
-            platformStyle = PlatformTextStyle(includeFontPadding = true)))
+        style = utilityTextStyle(size = control.textSizeSp ?: fontSize.value,
+            weight = if (control.bold || fontWeight == FontWeight.Bold) Typeface.BOLD else Typeface.NORMAL,
+            family = if (control.monospace) "monospace" else fontFamilyName,
+            spacing = 0f).copy(textAlign = textAlign))
 }
 
 @Composable fun HistoryRowContent(state: HistoryRowState, server: Boolean) {
@@ -103,7 +104,7 @@ class HistoryRowState {
 @Composable private fun ServerOrderText(state: HistoryRowState) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         HistoryText(state.tvProductName, Modifier.weight(1f), fontSize = rpnDimensionSp(R.dimen.large_font_text_view),
-            color = themeColor(R.attr.primaryTextColor), fontWeight = FontWeight.Bold, maxLines = 1)
+            color = themeColor(R.attr.primaryTextColor), fontWeight = FontWeight.Bold, fontFamilyName = "sans-serif-medium", maxLines = 1)
         HistoryChip("list_item_server_order:tv_status_chip", state.tvStatusChip, Modifier.padding(start = 8.dp))
     }
     Row(Modifier.fillMaxWidth().padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -113,9 +114,9 @@ class HistoryRowState {
     HistoryText(state.tvDatePrimary, Modifier.padding(top = 6.dp), fontSize = rpnDimensionSp(R.dimen.default_font_text_view))
     HistoryText(state.tvDateSecondary, Modifier.padding(top = 2.dp), fontSize = rpnDimensionSp(R.dimen.default_font_text_view))
     HistoryText(state.tvOrderId, Modifier.padding(top = 4.dp).alpha(.7f), fontSize = 11.sp,
-        fontFamily = FontFamily.Monospace, maxLines = 1)
+        fontFamilyName = "monospace", maxLines = 1)
     HistoryText(state.tvToken, Modifier.padding(top = 2.dp).alpha(.5f), fontSize = rpnDimensionSp(R.dimen.small_font_subheading_text),
-        fontFamily = FontFamily.Monospace, maxLines = 1)
+        fontFamilyName = "monospace", maxLines = 1)
 }
 
 @Composable private fun PurchaseHistoryText(state: HistoryRowState) {
@@ -128,5 +129,5 @@ class HistoryRowState {
         HistoryText(state.tvTimestamp, Modifier.padding(start = 4.dp))
     }
     HistoryText(state.tvReason, Modifier.fillMaxWidth().padding(top = 4.dp), maxLines = 2)
-    HistoryText(state.tvPurchaseToken, Modifier.padding(top = 4.dp), fontSize = 11.sp, fontFamily = FontFamily.Monospace)
+    HistoryText(state.tvPurchaseToken, Modifier.padding(top = 4.dp), fontSize = 11.sp, fontFamilyName = "monospace")
 }

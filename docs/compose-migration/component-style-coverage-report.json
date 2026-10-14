@@ -1,0 +1,902 @@
+{
+  "kind": "Current-source residual widget guard; not compilation, runtime or visual validation",
+  "passed": true,
+  "production_source_sets_discovered": [
+    "alpha",
+    "fdroid",
+    "full",
+    "main",
+    "play",
+    "tv",
+    "website"
+  ],
+  "production_files_by_source_set": {
+    "fdroid": 23,
+    "main": 659,
+    "play": 34,
+    "tv": 31,
+    "website": 32
+  },
+  "baseline_unchanged_file_exemptions": [
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/apps/RpnBypassAppsScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "ebce0b5bf26763c68efec22902bfa24ca4f4152493e0a7f83a36dd67839299b3",
+      "current_sha256": "ebce0b5bf26763c68efec22902bfa24ca4f4152493e0a7f83a36dd67839299b3",
+      "raw_control_count": 3,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/apps/RpnBypassAppsScreen.kt",
+          "line": 192,
+          "component": "FilterChip",
+          "nearest_function": "runBulk",
+          "call": "FilterChip(label = \"All\", selected = filter == Filter.ALL,\n                    onClick = { filter = Filter.ALL })",
+          "call_sha256": "317ba11c7fbf806d68346d76647c2f6735c9bec2c364c7924f5459829f64a8b2"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/apps/RpnBypassAppsScreen.kt",
+          "line": 194,
+          "component": "FilterChip",
+          "nearest_function": "runBulk",
+          "call": "FilterChip(label = \"Bypassed\", selected = filter == Filter.BYPASSED,\n                    onClick = { filter = Filter.BYPASSED })",
+          "call_sha256": "aa1b21980b3b9b3752afaba30bf3c3ac50a127002012f1bf0c9964fb44c6a445"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/apps/RpnBypassAppsScreen.kt",
+          "line": 196,
+          "component": "FilterChip",
+          "nearest_function": "runBulk",
+          "call": "FilterChip(label = \"Not bypassed\", selected = filter == Filter.NOT_BYPASSED,\n                    onClick = { filter = Filter.NOT_BYPASSED })",
+          "call_sha256": "2c82bc4802672f02eb8e287e4d45a03da8fd0ab45e1d50956929b5c820fb89f6"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/common/Onboarding.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "0d08b86c6a01a4e3f82db908ac31091cec368868e48c6db6ae9b19aa7936309f",
+      "current_sha256": "0d08b86c6a01a4e3f82db908ac31091cec368868e48c6db6ae9b19aa7936309f",
+      "raw_control_count": 1,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/common/Onboarding.kt",
+          "line": 113,
+          "component": "Button",
+          "nearest_function": "WelcomeBanner",
+          "call": "Button(onClick = state.markSeen) {\n                Text(\"Got it\")\n            }",
+          "call_sha256": "fa6126400b1014d63dc6228652e051637dbb58a42e747744da93f5c4599e010b"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/dns/OdohAddScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "ebc175fc893e4080fbfd9b58920cd9b926db1297d693701bfb187f12d6fe23ea",
+      "current_sha256": "ebc175fc893e4080fbfd9b58920cd9b926db1297d693701bfb187f12d6fe23ea",
+      "raw_control_count": 1,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/dns/OdohAddScreen.kt",
+          "line": 171,
+          "component": "OutlinedTextField",
+          "nearest_function": "FormField",
+          "call": "OutlinedTextField(\n            value = value,\n            onValueChange = onValueChange,\n            placeholder = { M3Text(hint, style = MaterialTheme.typography.bodyMedium) },\n            singleLine = true,\n            modifier = Modifier.fillMaxWidth(),\n        )",
+          "call_sha256": "ebaa8e3d78fbe56aac6ed947f74473e46e89921bd1923575c01dcace8d4868a5"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/home/HomeScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "374659e7cf3abafc96f887a8e40d7d752519c67fa7cdad48f803fc8e3e5886d3",
+      "current_sha256": "374659e7cf3abafc96f887a8e40d7d752519c67fa7cdad48f803fc8e3e5886d3",
+      "raw_control_count": 1,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/home/HomeScreen.kt",
+          "line": 275,
+          "component": "Button",
+          "nearest_function": "ToggleRow",
+          "call": "Button(\n            onClick = onClick,\n            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),\n            modifier = Modifier.focusRequester(focusRequester),\n        ) {\n            Text(\n                text = if (isOn) \"Stop protection\" else \"Start protection\",\n                style = MaterialTheme.typography.titleMedium,\n            )\n        }",
+          "call_sha256": "10153a5d49260cc94ea69f6a0016b24825fdfd07895ea368680f05c201b6c6b0"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/logs/LogsScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "ef8a4da4769963a23eedee68587d3a2cb7ef9af656368df08c64e41a096dbf21",
+      "current_sha256": "ef8a4da4769963a23eedee68587d3a2cb7ef9af656368df08c64e41a096dbf21",
+      "raw_control_count": 1,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/logs/LogsScreen.kt",
+          "line": 260,
+          "component": "BasicTextField",
+          "nearest_function": "SearchField",
+          "call": "BasicTextField(\n            value = query,\n            onValueChange = onQueryChange,\n            singleLine = true,\n            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),\n            textStyle = MaterialTheme.typography.bodyLarge.copy(\n                color = if (hasFocus) MaterialTheme.colorScheme.onPrimaryContainer\n                else MaterialTheme.colorScheme.onSurface,\n            ),\n            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),\n            modifier = Modifier\n                .fillMaxWidth()\n                .heightIn(min = 56.dp)\n                .focusable()\n                .onFocusChanged { hasFocus = it.isFocused }\n                .padding(horizontal = 16.dp, vertical = 16.dp),\n            decorationBox = { innerTextField ->\n                if (query.isBlank()) {\n                    Text(\n                        text = \"Search app, domain, IP, rule\u2026\",\n                        color = if (hasFocus) MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)\n                        else MaterialTheme.colorScheme.onSurfaceVariant,\n                        style = MaterialTheme.typography.bodyLarge,\n                    )\n                }\n                innerTextField()\n            },\n        )",
+          "call_sha256": "c38cb7dfaf1ddf354ceb4315655742f5ec00e6d61a4d5c3b3a9cb84621d9d870"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "de4705329c9f0fbe04cc6eaafa228b5fde24c77778006bfd513a07d40ea0f37f",
+      "current_sha256": "de4705329c9f0fbe04cc6eaafa228b5fde24c77778006bfd513a07d40ea0f37f",
+      "raw_control_count": 6,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+          "line": 134,
+          "component": "OutlinedTextField",
+          "nearest_function": "ProxyEditorScreen",
+          "call": "OutlinedTextField(\n                value = host,\n                onValueChange = { host = it.trim() },\n                label = { Text(\"Host or IP\") },\n                singleLine = true,\n                keyboardOptions = KeyboardOptions(\n                    keyboardType = KeyboardType.Uri,\n                    imeAction = ImeAction.Next,\n                ),\n                modifier = Modifier.fillMaxWidth(),\n            )",
+          "call_sha256": "432b71e567e54951b2215d128b675b8306fd0bd081dffebb65347bd02eb0952c"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+          "line": 145,
+          "component": "OutlinedTextField",
+          "nearest_function": "ProxyEditorScreen",
+          "call": "OutlinedTextField(\n                value = port,\n                onValueChange = { v -> port = v.filter { it.isDigit() }.take(5) },\n                label = { Text(\"Port\") },\n                singleLine = true,\n                keyboardOptions = KeyboardOptions(\n                    keyboardType = KeyboardType.Number,\n                    imeAction = ImeAction.Next,\n                ),\n                modifier = Modifier.fillMaxWidth(),\n            )",
+          "call_sha256": "d806627a144bfac36e91e7d1f0e736b6b9d2ad24c1e90f78464f7b68b9a408c5"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+          "line": 156,
+          "component": "OutlinedTextField",
+          "nearest_function": "ProxyEditorScreen",
+          "call": "OutlinedTextField(\n                value = user,\n                onValueChange = { user = it },\n                label = { Text(\"Username (optional)\") },\n                singleLine = true,\n                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),\n                modifier = Modifier.fillMaxWidth(),\n            )",
+          "call_sha256": "afc750e4a11b35f71ccf559f6d2d94c0d0803b8291ab922ccbe14309aa0e904f"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+          "line": 164,
+          "component": "OutlinedTextField",
+          "nearest_function": "ProxyEditorScreen",
+          "call": "OutlinedTextField(\n                value = pass,\n                onValueChange = { pass = it },\n                label = { Text(\"Password (optional)\") },\n                singleLine = true,\n                visualTransformation = PasswordVisualTransformation(),\n                keyboardOptions = KeyboardOptions(\n                    keyboardType = KeyboardType.Password,\n                    imeAction = ImeAction.Done,\n                ),\n                modifier = Modifier.fillMaxWidth(),\n            )",
+          "call_sha256": "cad70093669d803ba5a442fcfe6d4414ca74a40edfc3a533bf07e9e99010752b"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+          "line": 179,
+          "component": "Button",
+          "nearest_function": "ProxyEditorScreen",
+          "call": "Button(onClick = {\n                    val p = port.toIntOrNull() ?: 0\n                    if (host.isBlank() || p <= 0 || p > 65535) {\n                        Toast.makeText(context, \"Enter a valid host and port (1\u201365535).\", Toast.LENGTH_SHORT).show()\n                        return@Button\n                    }\n                    scope.launch(Dispatchers.IO) {\n                        val ep = existing?.also {\n                            it.proxyIP = host\n                            it.proxyPort = p\n                            it.userName = user.ifBlank { null }\n                            it.password = pass.ifBlank { null }\n                            it.isSelected = true\n                            it.modifiedDataTime = System.currentTimeMillis()\n                        } ?: ProxyEndpoint(\n                            id = 0,\n                            proxyName = \"custom-${kind.name.lowercase()}\",\n                            proxyMode = when (kind) {\n                                ProxyEditorKind.SOCKS5 -> 0\n                                ProxyEditorKind.HTTP -> 1\n                            },\n                            proxyType = ProxyEndpoint.DEFAULT_PROXY_TYPE,\n                            proxyAppName = null,\n                            proxyIP = host,\n                            proxyPort = p,\n                            userName = user.ifBlank { null },\n                            password = pass.ifBlank { null },\n                            isSelected = true,\n                            isCustom = true,\n                            isUDP = false,\n                            modifiedDataTime = System.currentTimeMillis(),\n                            latency = 0,\n                        )\n                        when (kind) {\n                            ProxyEditorKind.SOCKS5 -> appConfig.updateCustomSocks5Proxy(ep)\n                            ProxyEditorKind.HTTP -> appConfig.updateCustomHttpProxy(ep)\n                        }\n                        withContext(Dispatchers.Main) {\n                            existing = ep\n                            enabled = true\n                            Toast.makeText(context, \"Saved \u2014 proxy is active.\", Toast.LENGTH_SHORT).show()\n                        }\n                    }\n                }) {\n                    Text(if (enabled) \"Save\" else \"Save and enable\")\n                }",
+          "call_sha256": "105ce6cc64b5fa5de6814bf803f2197e5fa519f93303633fdc4d34eeb0b22d00"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+          "line": 226,
+          "component": "Button",
+          "nearest_function": "ProxyEditorScreen",
+          "call": "Button(onClick = {\n                        scope.launch(Dispatchers.IO) {\n                            val type = when (kind) {\n                                ProxyEditorKind.SOCKS5 -> AppConfig.ProxyType.SOCKS5\n                                ProxyEditorKind.HTTP -> AppConfig.ProxyType.HTTP\n                            }\n                            appConfig.removeProxy(type, AppConfig.ProxyProvider.CUSTOM)\n                            withContext(Dispatchers.Main) {\n                                enabled = false\n                                Toast.makeText(context, \"Disabled.\", Toast.LENGTH_SHORT).show()\n                            }\n                        }\n                    }) {\n                        Text(\"Disable\")\n                    }",
+          "call_sha256": "60060dcb22c9470c091199a8041da5c70249a1f800713665cfdd11eef182001f"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgImportScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "55c85c69a995dcd2919e3839bfc87fef7ddc24be2eb0c35f6341b68a9cbdf5cc",
+      "current_sha256": "55c85c69a995dcd2919e3839bfc87fef7ddc24be2eb0c35f6341b68a9cbdf5cc",
+      "raw_control_count": 2,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgImportScreen.kt",
+          "line": 158,
+          "component": "OutlinedTextField",
+          "nearest_function": "WgImportScreen",
+          "call": "OutlinedTextField(\n                    value = tunnelName,\n                    onValueChange = { tunnelName = it },\n                    placeholder = { M3Text(\"e.g. mullvad-us-nyc\") },\n                    singleLine = true,\n                    modifier = Modifier.fillMaxWidth(),\n                )",
+          "call_sha256": "6649b20d2ef9558fb695c080cc9e5a2137e9055c5bf5c89f75d2fa1b93b42b58"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgImportScreen.kt",
+          "line": 174,
+          "component": "OutlinedTextField",
+          "nearest_function": "WgImportScreen",
+          "call": "OutlinedTextField(\n                    value = configText,\n                    onValueChange = { configText = it },\n                    placeholder = {\n                        M3Text(\n                            \"[Interface]\\nPrivateKey = \u2026\\nAddress = 10.0.0.2/32\\n\\n[Peer]\\nPublicKey = \u2026\\nEndpoint = host:port\\nAllowedIPs = 0.0.0.0/0\",\n                        )\n                    },\n                    modifier = Modifier\n                        .fillMaxWidth()\n                        .heightIn(min = 220.dp, max = 360.dp),\n                )",
+          "call_sha256": "40630d9b5bbd18114c11625ef83dcb95c880bf2eb4daf7d4c8244e7b8251d5d4"
+        }
+      ]
+    },
+    {
+      "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgIncludeAppsScreen.kt",
+      "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+      "baseline_sha256": "da7e14d27effcabeadb3f398a006dda01498fd0d8ef3b003e0a327878cbedb34",
+      "current_sha256": "da7e14d27effcabeadb3f398a006dda01498fd0d8ef3b003e0a327878cbedb34",
+      "raw_control_count": 3,
+      "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance.",
+      "raw_calls": [
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgIncludeAppsScreen.kt",
+          "line": 218,
+          "component": "FilterChip",
+          "nearest_function": "runBulk",
+          "call": "FilterChip(label = \"All\", selected = filter == Filter.ALL,\n                    onClick = { filter = Filter.ALL })",
+          "call_sha256": "317ba11c7fbf806d68346d76647c2f6735c9bec2c364c7924f5459829f64a8b2"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgIncludeAppsScreen.kt",
+          "line": 220,
+          "component": "FilterChip",
+          "nearest_function": "runBulk",
+          "call": "FilterChip(label = \"Included\", selected = filter == Filter.INCLUDED,\n                    onClick = { filter = Filter.INCLUDED })",
+          "call_sha256": "4d5a30737e1c8ee84b77077e786216e48e1dc0845a57c650371eaa43aa3a0f96"
+        },
+        {
+          "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgIncludeAppsScreen.kt",
+          "line": 222,
+          "component": "FilterChip",
+          "nearest_function": "runBulk",
+          "call": "FilterChip(label = \"Not included\", selected = filter == Filter.NOT_INCLUDED,\n                    onClick = { filter = Filter.NOT_INCLUDED })",
+          "call_sha256": "494da9ff89e93fb8ea6aa1305037f2dd0fe322e226792725b3d72fcf2e5ad000"
+        }
+      ]
+    }
+  ],
+  "invalid_unchanged_file_exemptions": [],
+  "stale_unchanged_file_exemptions": [],
+  "raw_unreviewed_calls": [],
+  "raw_unreviewed_counts": {},
+  "allowed_primitive_calls": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+      "line": 130,
+      "component": "IconButton",
+      "nearest_function": "init",
+      "call": "IconButton(::openConsoleLogActivity, Modifier.padding(end = 15.dp, bottom = 5.dp)) { Icon(painterResource(R.drawable.ic_android_icon), stringResource(R.string.console_log_title), Modifier.alpha(.7f), tint = Color.Unspecified) }",
+      "call_sha256": "546147df2189386a99bd2aca2d074fd58969f9503d0fa90428f3f05e9a5dacae",
+      "allow_reason": "Plain app-log toolbar affordance; restored original drawable colors, 0.7 alpha and bottom margin rather than imposing a filled button.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_network_logs.xml#app_logs: AppCompatImageView, ic_android_icon, alpha0.7, end 15dp, bottom 5dp."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 108,
+      "component": "IconButton",
+      "nearest_function": "Country",
+      "call": "IconButton({\n                    val next = !item.isFavourite\n                    star.animate().scaleX(1.35f).scaleY(1.35f).setDuration(120).setInterpolator(AccelerateDecelerateInterpolator()).withEndAction {\n                        star.animate().scaleX(1f).scaleY(1f).setDuration(100).setInterpolator(AccelerateDecelerateInterpolator()).start()\n                    }.start()\n                    item.isFavourite = next\n                    countries = countries.toList()\n                    listener.onFavouriteToggled(item.countryCode, item.countryName, next)\n                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(32.dp).rpnMotion(star)) }",
+      "call_sha256": "d544aa77b02e9435653907348fc96a8c6389c3ffbf6fb7b4a9acc5345b054d62",
+      "allow_reason": "Plain favourite ImageView action, not a chip/button surface. Restored 32dp artwork (48 minus 2 \u00d7 8); retained original drawable state choice, scale animation, content description and listener.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/list_item_country_card.xml#iv_favourite: 48dp ImageView, 8dp padding, borderless selectable background, ic_star_outline. CountryServerAdapter replaces with filled star when favourite and animates scale."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "line": 91,
+      "component": "IconButton",
+      "nearest_function": "AboutDialogContent",
+      "call": "IconButton(closeAction, Modifier.align(Alignment.End).size(30.dp)) {\n                com.celzero.bravedns.ui.compose.utilities.utilityImage(android.R.drawable.ic_menu_close_clear_cancel, Modifier.size(30.dp), stringResource(R.string.close))\n            }",
+      "call_sha256": "954bf0a77f874022b3a19424ab72e52386281e05b704e13ed1a65cf37a5478be",
+      "allow_reason": "Restored native 30dp close artwork and 30dp control for contributors. No dialog text-button style applies to this existing close image.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/dialog_info_rules_layout.xml#info_rules_dialog_cancel_img: 30dp platform ic_menu_close_clear_cancel; AboutFragment.showContributors uses that layout and dismiss listener."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/BugReportFilesContent.kt",
+      "line": 99,
+      "component": "IconButton",
+      "nearest_function": "BugReportFileRow",
+      "call": "IconButton(row.onOpen, Modifier.size(40.dp).testTag(\"bugreport.open.${row.key}\")) { Icon(painterResource(R.drawable.ic_visibility), stringResource(R.string.about_bug_report), Modifier.size(20.dp), tint = themeColor(R.attr.primaryTextColor)) }",
+      "call_sha256": "8bf774ba1c2e7cda945529bf8502ca16f3bf7ccefbdb55fc0a65ca93acd9ddc3",
+      "allow_reason": "Already matches the explicit 40dp icon-control/20dp glyph and source tint. Plain M3 IconButton is appropriate for this exact source IconButton style; descriptions and row callbacks retained.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/item_bug_report_file.xml#item_file_view_btn: Widget.Material3.Button.IconButton, 40dp bounds, 20dp icon, primaryTextColor tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/BugReportFilesContent.kt",
+      "line": 100,
+      "component": "IconButton",
+      "nearest_function": "BugReportFileRow",
+      "call": "IconButton(row.onDelete, Modifier.size(40.dp).testTag(\"bugreport.delete.${row.key}\")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), Modifier.size(20.dp), tint = themeColor(R.attr.accentBad)) }",
+      "call_sha256": "57e273962b5c24e8601758a5eefb15cdc05c17bd3b0637558d768e6e8a35f645",
+      "allow_reason": "Already matches the explicit 40dp icon-control/20dp glyph and source tint. Plain M3 IconButton is appropriate for this exact source IconButton style; descriptions and row callbacks retained.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/item_bug_report_file.xml#item_file_delete_btn: Widget.Material3.Button.IconButton, 40dp bounds, 20dp icon, accentBad tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt",
+      "line": 56,
+      "component": "IconButton",
+      "nearest_function": "AppDetailsContent",
+      "call": "IconButton({b.aadAppInfoIcon.performClick()}, Modifier.size(40.dp)) { Icon(painterResource(R.drawable.ic_info_white),stringResource(R.string.about_settings_app_info), Modifier.size(24.dp), tint = themeColor(R.attr.primaryLightColorText)) }",
+      "call_sha256": "e5c948369444b9fe8ab0130ffaf6b2f8ebbf06946321540481b1b9a86ab008e6",
+      "allow_reason": "Restored 40dp control, 24dp glyph and source primaryLightColorText tint; existing app-info callback and accessible description retained.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/activity_app_details.xml#aad_app_info_icon: 40dp ImageView, 8dp padding, ic_info_white, primaryLightColorText, about_settings_app_info description."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+      "line": 70,
+      "component": "IconButton",
+      "nearest_function": "AppLogsContent",
+      "call": "IconButton({b.awlSearch.setQuery(\"\",false)}){Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material),stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))}",
+      "call_sha256": "c551f57ac325c685b9e8216d7a2f1c1a7c8711e3b59e5d61729a7b7750d4b681",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_app_wise_domain_logs.xml and activity_app_wise_ip_logs.xml#awl_search: uniconified AppCompat SearchView with search icon hidden; default clear icon."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+      "line": 71,
+      "component": "IconButton",
+      "nearest_function": "AppLogsContent",
+      "call": "IconButton({b.awlDelete.performClick()}){Icon(painterResource(R.drawable.ic_delete),stringResource(R.string.ada_delete_logs_dialog_title), Modifier.alpha(.5f), tint = Color.Unspecified)}",
+      "call_sha256": "24087c301b938f90d1f843780ee695303d2fa9d62164cc3e157319c453a4cd22",
+      "allow_reason": "Restored source0.5 alpha and vector colors on existing delete icon; retains controller visibility and log-delete confirmation callback.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_app_wise_domain_logs.xml and activity_app_wise_ip_logs.xml#awl_delete: ic_delete ImageView, alpha0.5, padding 10dp, min 24dp."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+      "line": 78,
+      "component": "IconButton",
+      "nearest_function": "BlocklistConfigurationScreen",
+      "call": "IconButton(onClick = { b.query = \"\"; onQueryChange(\"\") }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal)) }",
+      "call_sha256": "988040a4ce74adb8e85203cf717cb8c4219b08ff53bd72e362b581d3aba58213",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_rethink_blocklist.xml#lb_adv_search_sv: uniconified AppCompat SearchView, default clear icon."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+      "line": 79,
+      "component": "IconButton",
+      "nearest_function": "BlocklistConfigurationScreen",
+      "call": "IconButton(onClick = b.lbAdvSearchFilterIcon.onClick, modifier = Modifier.testTag(\"blocklist-filter\")) { Icon(painterResource(R.drawable.ic_filter), stringResource(R.string.rt_filter_hint), tint = Color.Unspecified) }",
+      "call_sha256": "d0ab0fc4e4de3d15a1ae433bbca42a19595c667dabb85827e5ad388404c80c7f",
+      "allow_reason": "Existing unfilled filter affordance already retains original drawable colors via Color.Unspecified and original callback/description. A text-button or filled icon style would change the baseline.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_rethink_blocklist.xml#lb_adv_search_filter_icon: AppCompatImageView, ic_filter, padding 5dp, no explicit tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt",
+      "line": 117,
+      "component": "IconButton",
+      "nearest_function": "RethinkEndpointRow",
+      "call": "IconButton(onClick = { presenter.metadata = endpoint }, modifier = Modifier.padding(end = 4.dp).alpha(.55f)) { Icon(painterResource(if (presenter.editable(endpoint)) R.drawable.ic_edit_icon else R.drawable.ic_info), stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), Modifier.size(24.dp), tint = themeColor(R.attr.primaryTextColor)) }",
+      "call_sha256": "4ef62376d76acab25b0f108e5ff65bd43e72df4996da773859a5e91cf0ee1c96",
+      "allow_reason": "Restored explicit 24dp painted icon (the info drawable has 48dp intrinsic bounds); retained0.55 alpha, primaryTextColor, end 4dp, editable-state image selection and callback.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/rethink_endpoint_list_item.xml#rethink_endpoint_list_action_image: 48dp ImageView, 12dp padding, primaryTextColor, alpha0.55, end 4dp."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt",
+      "line": 64,
+      "component": "FloatingActionButton",
+      "nearest_function": "DnsEndpointScreen",
+      "call": "FloatingActionButton(onClick = onAdd, modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp)) {\n            Icon(painterResource(R.drawable.ic_fab_without_border), stringResource(R.string.lbl_create), Modifier.size(24.dp))\n        }",
+      "call_sha256": "885d2fe7be00182ebc667e9ff67eff9b8ab2f177060626a33df46e887d05d552",
+      "allow_reason": "Current normal Material3 FAB uses the same default family, 24dp source plus glyph, Create description and 16dp end/bottom margins. All five hosts share this style; no arbitrary button/chip substitution.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/fragment_doh_list.xml, fragment_dot_list.xml, fragment_odoh_list.xml, fragment_dns_crypt_list.xml, fragment_dns_proxy_list.xml: normal FAB, 16dp margins, ic_fab_without_border, lbl_create; Material3 theme defaults without local fill/shape overrides."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt",
+      "line": 145,
+      "component": "IconButton",
+      "nearest_function": "DnsEndpointRow",
+      "call": "IconButton(item.onInfo, Modifier.testTag(\"dns_endpoint_info_${item.id}\")) {\n                Icon(painterResource(if (item.deletable) R.drawable.ic_fab_uninstall else R.drawable.ic_info), stringResource(if (item.deletable) R.string.lbl_delete else R.string.bsct_meta_info), Modifier.size(24.dp), tint = themeColor(R.attr.primaryTextColor).copy(alpha = .55f))\n            }",
+      "call_sha256": "e09410c63089b1facae199c870f134badc8f9df57e383d0b7e3c66b10228201c",
+      "allow_reason": "Existing 48dp icon affordance with 24dp glyph and source tint/0.55 alpha already matches source geometry. Retains info/delete choice and endpoint callback; not an ordinary styled button.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/dns_crypt_endpoint_list_item.xml#dns_crypt_endpoint_list_info_image and dns_proxy_list_item.xml#dns_proxy_list_action_image; app/src/main/res/layout/list_item_endpoint.xml#endpoint_info_img [DoH/DoT/ODoH]: 48dp ImageView, 12dp padding, primaryTextColor, alpha0.55, borderless ripple."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt",
+      "line": 38,
+      "component": "IconButton",
+      "nearest_function": "DnsSettingsScreen",
+      "call": "IconButton(onClick = b.dcRestoreDefaults.onClick, modifier = Modifier.testTag(\"dns-restore\")) { Icon(painterResource(R.drawable.ic_backup_restore), stringResource(R.string.restore_defaults_dialog_title), tint = Color.Unspecified) }",
+      "call_sha256": "27a805e862cbb9ef68ec17a57f217bdf549d3ebd9f29fa87b765e125e3679a13",
+      "allow_reason": "Existing plain icon resource is rendered with Color.Unspecified, retaining its source theme colors/intrinsic size. Refresh enabled/rotation and information callbacks remain unchanged; no button/chip fill should be added.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_dns_configure.xml#dc_restore_defaults: AppCompatImageView, original ic_backup_restore/ic_refresh_white/ic_info_white_16, source padding5/5/10dp, no explicit tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt",
+      "line": 43,
+      "component": "IconButton",
+      "nearest_function": "DnsSettingsScreen",
+      "call": "IconButton(onClick = b.dcRefresh.onClick, enabled = b.dcRefresh.isEnabled, modifier = Modifier.testTag(\"dns-refresh\")) { Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.dns_settings_refresh_action), Modifier.rotate(rotation), tint = Color.Unspecified) }",
+      "call_sha256": "49e815ef79cf68b94bac9612a008fb214ea4f24320c69eb49417937de1479535",
+      "allow_reason": "Existing plain icon resource is rendered with Color.Unspecified, retaining its source theme colors/intrinsic size. Refresh enabled/rotation and information callbacks remain unchanged; no button/chip fill should be added.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_dns_configure.xml#dc_refresh: AppCompatImageView, original ic_backup_restore/ic_refresh_white/ic_info_white_16, source padding5/5/10dp, no explicit tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt",
+      "line": 104,
+      "component": "IconButton",
+      "nearest_function": "DnsChoice",
+      "call": "IconButton(onClick = onInfo, modifier = Modifier.testTag(\"dns-system-info\")) { Icon(painterResource(R.drawable.ic_info_white_16), stringResource(R.string.dns_settings_system_info_action), tint = Color.Unspecified) }",
+      "call_sha256": "52f8b295b5ea27f798bc730d83b04df19928d3646c6546506d41a223edbbe189",
+      "allow_reason": "Existing plain icon resource is rendered with Color.Unspecified, retaining its source theme colors/intrinsic size. Refresh enabled/rotation and information callbacks remain unchanged; no button/chip fill should be added.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_dns_configure.xml#network_dns_info: AppCompatImageView, original ic_backup_restore/ic_refresh_white/ic_info_white_16, source padding5/5/10dp, no explicit tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt",
+      "line": 155,
+      "component": "BasicTextField",
+      "nearest_function": "OriginalTextField",
+      "call": "BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,\n            keyboardOptions, keyboardActions, singleLine, maxLines, minLines, visualTransformation,\n            interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)",
+      "call_sha256": "4d81af39b50a38357e09bb2cbf4db0f7ea409b19804b176f11ab5c9a301e4bed",
+      "allow_reason": "Dedicated source-style renderer internals"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt",
+      "line": 171,
+      "component": "BasicTextField",
+      "nearest_function": "OriginalTextField",
+      "call": "BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,\n            keyboardOptions, keyboardActions, singleLine, maxLines, minLines, VisualTransformation.None,\n            interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)",
+      "call_sha256": "0203578d794f0c481d623f53b6a9e676ab41a3f71f9ec7e7fd60e0c487884822",
+      "allow_reason": "Dedicated source-style renderer internals"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsContent.kt",
+      "line": 57,
+      "component": "IconButton",
+      "nearest_function": "FirewallAppsContent",
+      "call": "IconButton({b.ffaSearch.setQuery(\"\",false)}){Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material),stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))}",
+      "call_sha256": "d4762173b9c660ea899b69fa8fa6369c790fc93c9b4bd0f1f9ef2f37f4af5b97",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/activity_app_list.xml#ffa_search: uniconified AppCompat SearchView."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsContent.kt",
+      "line": 102,
+      "component": "IconButton",
+      "nearest_function": "AppListIcon",
+      "call": "IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.rotate(rotation)) {\n            Icon(painterResource(node.imageRes.takeIf{it!=0}?:fallback),stringResource(label), Modifier.alpha(if (fallback == R.drawable.ic_info_white) .5f else 1f), tint=Color.Unspecified)\n        }",
+      "call_sha256": "1920f730b08787c51742d4c99fb7df2828552ca0d9ed70c267379b248ae1eefb",
+      "allow_reason": "Source images intentionally use their own multi-color resources; retained Color.Unspecified and restored0.5 alpha for info only. Existing refresh animation/enabled handling retained. No shared filled style applied to heterogeneous firewall-state artwork.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/activity_app_list.xml: listed toolbar actions are unfilled AppCompatImageViews with original themed/state-specific drawables; ffa_app_info_icon has alpha0.5."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsContent.kt",
+      "line": 121,
+      "component": "IconButton",
+      "nearest_function": "FirewallAppRowContent",
+      "call": "IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.size(48.dp).border(.1.dp, themeColor(R.attr.colorOutline), androidx.compose.foundation.shape.RoundedCornerShape(12.dp)).testTag(\"firewall_row_network_$i\")) {\n                    Box(Modifier.size(24.dp).semanticsLabel(stringResource(label))){DrawableImage(node.drawable,Modifier.fillMaxSize())}\n                }",
+      "call_sha256": "61d2bb3396ffc90dfac7c76d9020931bd57ff302bd66b7f5956d3b4439e7d658",
+      "allow_reason": "Restored missing original rounded outline around both 48dp network icon controls.24dp state drawable and existing visibility/enabled/listener behavior remain intact.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/list_item_firewall_app.xml: 48dp controls, 12dp image padding, bg_firewall_action_outlined; app/src/main/res/drawable/bg_firewall_action_outlined.xml: transparent rectangle, 0.1dp colorOutline stroke, 12dp corners."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "line": 262,
+      "component": "IconButton",
+      "nearest_function": "NetworkContent",
+      "call": "IconButton({ state!!.performClick() }, m.rotate(angle), enabled = state!!.isEnabled && state.isClickable) { icon() }",
+      "call_sha256": "5f7e552c515e88e20b08f97b78ab26d05be52cc9d4859dd2273e9fc66a727652",
+      "allow_reason": "Reviewed shared primitive for the named existing ImageView actions. Actual drawable and optional state tint are painted by Image; source node geometry, visibility, enabled/clickable state and refresh rotation remain authoritative. No filled button style is introduced.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/fragment_proxy_configure.xml#rpn_refresh, #wg_refresh and #settings_activity_orbot_img, #settings_activity_wireguard_img; app/src/full/res/layout/activity_tunnel_settings.xml#settings_activity_connectivity_checks_img; app/src/full/res/layout/activity_misc_settings.xml#settings_biometric_img; current ProxySettingsState/MiscSettingsState/TunnelSettingsState explicitly retain source image resources, padding, alpha, background and dimensions."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "line": 351,
+      "component": "BasicTextField",
+      "nearest_function": "NetworkEditField",
+      "call": "BasicTextField(state.text.toString(), {\n        state.setText(if (numeric) networkDigitsOnly(it, context.resources.configuration.locales[0]) else it)\n    }, modifier.heightIn(min = maxOf(48.dp, with(density) { decoration.third.second.toDp() }))\n        .semantics { originalFieldFamily = OriginalFieldStyle.Network.name }\n        .onFocusChanged { focused = it.isFocused }\n        .then(if (description != null) Modifier.semantics { contentDescription = description } else Modifier)\n        .drawBehind {\n            decoration.first?.let { drawable ->\n                drawable.state = states\n                drawable.setBounds(0, 0, size.width.toInt(), size.height.toInt())\n                drawIntoCanvas { drawable.draw(it.nativeCanvas) }\n            }\n        }.padding(start = with(density) { padding.left.toDp() }, top = with(density) { padding.top.toDp() },\n            end = with(density) { padding.right.toDp() }, bottom = with(density) { padding.bottom.toDp() }),\n        enabled = state.isEnabled, maxLines = state.maxLines,\n        textStyle = style.copy(color = foreground), cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),\n        visualTransformation = if (state.isPassword) PasswordVisualTransformation() else VisualTransformation.None,\n        keyboardOptions = KeyboardOptions(keyboardType = if (state.isPassword) KeyboardType.Password else if (numeric) KeyboardType.Number else KeyboardType.Text),\n        decorationBox = { field ->\n            Box {\n                if (state.text.isEmpty()) Text(state.hint.toString(), style = style, color = hintColor)\n                field()\n            }\n        })",
+      "call_sha256": "113d7595992e06cce5dd49cac9ccba2300d899a52c3705e446b0a33bf1bc6501",
+      "allow_reason": "Original Android drawable field primitive; checked separately by check-original-fields.py"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContent.kt",
+      "line": 61,
+      "component": "IconButton",
+      "nearest_function": "OrbotSheetContent",
+      "call": "IconButton(onClick = { b.orbotInfoIcon.performClick() }, modifier = Modifier.padding(start = 10.dp)) {\n                    Image(painterResource(R.drawable.ic_info_white), stringResource(R.string.orbot_explanation), Modifier.size(24.dp))\n                }",
+      "call_sha256": "1485ae20ff07269a3540daaf3703fe0e0301273427e1f425be680031356681a9",
+      "allow_reason": "Already paints original 24dp Image without a Material tint and preserves 10dp start margin/description/listener. IconButton supplies interaction only, no filled/outlined control.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/bottom_sheet_orbot.xml#orbot_info_icon: 24dp ImageView, ic_info_white, start 10dp, orbot_explanation description."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoContent.kt",
+      "line": 103,
+      "component": "IconButton",
+      "nearest_function": "OrbotInfoContent",
+      "call": "IconButton(onDismiss, Modifier.align(Alignment.End)) {\n                com.celzero.bravedns.ui.compose.utilities.utilityImage(android.R.drawable.ic_menu_close_clear_cancel, Modifier.size(30.dp), stringResource(R.string.lbl_dismiss))\n            }",
+      "call_sha256": "e77719d246b0ecf65b1edf647f886bd5013d0845deaffb95088a2d19c37fc2a3",
+      "allow_reason": "Restored untinted native 30dp platform close artwork. This is the existing close-image affordance; dismiss semantics remain unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/dialog_info_rules_layout.xml#info_rules_dialog_cancel_img: 30dp native close icon; original Orbot explanation dialog uses this layout."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnExcludeContent.kt",
+      "line": 40,
+      "component": "IconButton",
+      "nearest_function": "RpnExcludeContent",
+      "call": "IconButton({ ui.btnClearSearch.performClick() }, Modifier.rpnVisibility(ui.btnClearSearch).rpnMotion(ui.btnClearSearch)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(20.dp), tint = themeColor(R.attr.primaryTextColor)) }",
+      "call_sha256": "af2c0138af9e1e4e875c6c702cd3bc0ce4d057670e2bc7a616c71f2ab5b69bd3",
+      "allow_reason": "Restored 20dp glyph and source primaryTextColor; retained visibility/motion alpha and clear callback. Plain embedded clear action, not a styled filled button.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/bottomsheet_auto_exclude_countries.xml#btn_clear_search: 36dp ImageView, 8dp padding, ic_cross, primaryTextColor, initial invisible alpha0."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+      "line": 141,
+      "component": "IconButton",
+      "nearest_function": "RpnSelectionScreen",
+      "call": "IconButton({ ui.searchBar.setQuery(\"\") }, Modifier.size(32.dp), enabled = ui.searchBar.isEnabled) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(16.dp), tint = Color.Unspecified) }",
+      "call_sha256": "b438121135be24a3f05e8edb82bcbc2df8b4cf88a2376e630fc7d118539f4d20",
+      "allow_reason": "Preserves the source-specific 16dp ic_cross rather than standard search Close artwork. Removed inherited Material tint; retained query callback and enabled state.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_server_selection.xml#search_bar: 40dp SearchView, explicit app: closeIcon=ic_cross (16dp native resource)."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+      "line": 159,
+      "component": "FloatingActionButton",
+      "nearest_function": "RpnSelectionScreen",
+      "call": "FloatingActionButton({ ui.fabStopProxy.performClick() }, Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = with(density) { ui.fabBottomPx.toDp() }).rpnMotion(ui.fabStopProxy),\n                containerColor = themeColor(androidx.appcompat.R.attr.colorError), contentColor = Color.White,\n                elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 8.dp)) {\n                Icon(painterResource(R.drawable.ic_stop), ui.fabStopProxy.contentDescription?.toString() ?: stringResource(R.string.server_settings_stop_proxies), Modifier.size(24.dp))\n            }",
+      "call_sha256": "ac342d97b0071021c172fb7fdf3fc26e0974d56f09a5b8f434aaec3d1ae23d63",
+      "allow_reason": "Restored error fill, white 24dp icon, 8dp base elevation and fallback source description. Existing visibility/motion positioning and stop callback unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_server_selection.xml#fab_stop_proxy: normal FAB, colorError fill, white ic_stop, elevation 8dp, stop-proxies description."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+      "line": 164,
+      "component": "ExtendedFloatingActionButton",
+      "nearest_function": "RpnSelectionScreen",
+      "call": "ExtendedFloatingActionButton(onClick = { ui.fabStartProxy.performClick() },\n                modifier = Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = with(density) { ui.fabBottomPx.toDp() }).rpnMotion(ui.fabStartProxy),\n                containerColor = themeColor(R.attr.accentGood), contentColor = themeColor(R.attr.homeScreenHeaderTextColor),\n                elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 8.dp),\n                icon = { Icon(painterResource(R.drawable.ic_vpn), null, Modifier.size(24.dp), tint = Color.White) },\n                text = { Text(ui.fabStartProxy.text.toString()) })",
+      "call_sha256": "2776bc065202fe9dc9949aae4a668021fc4f3bc79cd62a7c409e4f5267a0db1a",
+      "allow_reason": "Restored success fill, text color, missing 24dp VPN icon and 8dp base elevation. Existing start text, visibility/motion and callback preserved.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_server_selection.xml#fab_start_proxy: ExtendedFloatingActionButton, accentGood fill, homeScreenHeaderTextColor, white ic_vpn, elevation 8dp."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt",
+      "line": 75,
+      "component": "IconButton",
+      "nearest_function": "RpnBypassContent",
+      "call": "IconButton({ search(\"\"); searchFocus.requestFocus(); keyboard?.show() }, Modifier.testTag(\"rpn.bypass.clear\")) {\n                            Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.lbl_dismiss), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))\n                        }",
+      "call_sha256": "dc78a2435ee0aac162b795827464ac526a653e8cfb46406688c6f8d168e42ecd",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_rpn_bypass_apps.xml#rpn_bypass_search_view: uniconified AppCompat SearchView."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt",
+      "line": 78,
+      "component": "IconButton",
+      "nearest_function": "RpnBypassContent",
+      "call": "IconButton({ b.rpnBypassRefreshList.performClick() }, enabled = b.rpnBypassRefreshList.isEnabled, modifier = Modifier.testTag(\"rpn.bypass.refresh\")) {\n                        Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.wg_compose_refresh), Modifier.rotate(angle), tint = Color.Unspecified)\n                    }",
+      "call_sha256": "52ffc1487c6b509e20399181c939282381847b0a5b16b724bcafb11f2a40f1de",
+      "allow_reason": "Restored native drawable colors on unfilled refresh action. Retains source refresh rotation and disabled state/callback.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_rpn_bypass_apps.xml#rpn_bypass_refresh_list: ic_refresh_white AppCompatImageView, padding 7dp, no explicit tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigContent.kt",
+      "line": 103,
+      "component": "IconButton",
+      "nearest_function": "RpnConfigContent",
+      "call": "IconButton({ b.ssidEditBtn.performClick() }, enabled = b.ssidEditBtn.isEnabled, modifier = Modifier.size(32.dp).alpha(b.ssidEditBtn.alpha).testTag(\"rpn.config.ssidEdit\")) {\n                            Icon(painterResource(R.drawable.ic_edit_icon_grey), stringResource(R.string.rt_edit_dialog_positive), Modifier.size(20.dp), tint = Color.Unspecified)\n                        }",
+      "call_sha256": "6330cf337f029935dd0ccd9489c3ff385d73c29f9950ad856588c45a2ccd6c33",
+      "allow_reason": "Restored 32dp visual bounds and 20dp glyph with original resource colors; retained state-owned0.65 alpha, enabled and listener.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_rpn_config_detail.xml#ssid_edit_btn: 32dp ImageView, 6dp padding, alpha0.65, ic_edit_icon_grey, borderless ripple."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+      "line": 101,
+      "component": "IconButton",
+      "nearest_function": "RpnSsidContent",
+      "call": "IconButton({ delete(item) }, Modifier.testTag(\"rpn.ssid.delete.$index\")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }",
+      "call_sha256": "bcc88c05e23c1ed973a6d799a044fba1a416c0062ac138960d1aa9bcf735b910",
+      "allow_reason": "Restored original vector colors on shared SSID delete affordance. Existing item deletion callback and description remain unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/item_ssid.xml#deleteSsidBtn: AppCompatImageButton, ic_delete, selectableItemBackgroundBorderless, lbl_delete."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RuleDetailsContent.kt",
+      "line": 49,
+      "component": "IconButton",
+      "nearest_function": "RuleDetailsContent",
+      "call": "IconButton({ deleteOpen = true }, Modifier.testTag(\"rule_detail_delete\")) { Icon(painterResource(R.drawable.ic_delete_small), stringResource(R.string.lbl_delete), Modifier.size(24.dp).alpha(if (domain) .8f else 1f), tint = themeColor(R.attr.accentBad)) }",
+      "call_sha256": "18cc36dca8a02f956fca5926a190710053e554d53a884b84bc91b9fd314cafce",
+      "allow_reason": "Restored destructive accentBad, 24dp geometry and domain-only 0.8 alpha. Original confirmation callback retained.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/bottom_sheet_custom_domains.xml: anonymous 24dp ic_delete_small tinted accentBad alpha0.8; bottom_sheet_custom_ips.xml: anonymous 24dp ic_delete_small tinted accentBad without alpha override."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "line": 103,
+      "component": "IconButton",
+      "nearest_function": "RulesPage",
+      "call": "IconButton({ updateRulesSearch(state, \"\", onQuery) }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn)) }",
+      "call_sha256": "e41857f1ef41310d26b47b7bee6ca5d05781a42b49d9bc69f505a412092d87ac",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/fragment_custom_domain.xml#cda_search_view and fragment_custom_ip.xml#cip_search_view: uniconified AppCompat SearchViews."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "line": 104,
+      "component": "IconButton",
+      "nearest_function": "RulesPage",
+      "call": "IconButton({ state.deleteOpen = true }, Modifier.testTag(\"rules_delete\")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }",
+      "call_sha256": "c8bfc48cc5e1e7eab09792db86145bfbd5e55f85ddce5a9a54fb2acca2f5a846",
+      "allow_reason": "Restored native resource colors by removing arbitrary Material content tint; retains original delete-dialog behavior, description and plain icon affordance.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/fragment_custom_domain.xml#cda_search_delete_icon and fragment_custom_ip.xml#cip_search_delete_icon: unfilled ic_delete ImageView with 7dp padding."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "line": 127,
+      "component": "SmallFloatingActionButton",
+      "nearest_function": "RulesPage",
+      "call": "SmallFloatingActionButton({ picker.launch(arrayOf(\"text/plain\")) }, Modifier.testTag(\"rules_import\")) { Icon(painterResource(R.drawable.ic_import_conf), stringResource(R.string.import_rules_fab_desc)) }",
+      "call_sha256": "e5b41dac5b4bc49c3548594b18590d333c4dc86e87ee3b77a4b78717cda914b4",
+      "allow_reason": "Original mini FAB is the 40dp Material3 small-FAB family. Retains source icon/description and caller visibility rules; Add now explicitly uses the 24dp standard FAB image box.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/fragment_custom_domain.xml and fragment_custom_ip.xml#cda/cip_import_fab: mini FAB, source ic_import_conf/import_rules_fab_desc, Material3 theme default surface."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "line": 128,
+      "component": "SmallFloatingActionButton",
+      "nearest_function": "RulesPage",
+      "call": "SmallFloatingActionButton({ state.openEditor() }, Modifier.testTag(\"rules_add\")) { Icon(painterResource(R.drawable.ic_fab_without_border), stringResource(R.string.lbl_create), Modifier.size(24.dp)) }",
+      "call_sha256": "b1209c1d2b3806badc526a509287d0585d14646632e6f946fcfa433200719996",
+      "allow_reason": "Original mini FAB is the 40dp Material3 small-FAB family. Retains source icon/description and caller visibility rules; Add now explicitly uses the 24dp standard FAB image box.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/fragment_custom_domain.xml and fragment_custom_ip.xml#cda/cip_add_fab: mini FAB, source ic_fab_without_border/lbl_create, Material3 theme default surface."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "line": 252,
+      "component": "IconButton",
+      "nearest_function": "CustomRuleRow",
+      "call": "IconButton(onEdit) { Icon(painterResource(R.drawable.ic_edit_icon_grey), stringResource(R.string.compose_rule_edit), Modifier.size(24.dp).alpha(.5f), tint = Color.Unspecified) }",
+      "call_sha256": "ac9ca6c2228eec010d5c83ed7f401e4af507c719c3bd074af5e999ddece6cd6f",
+      "allow_reason": "Restored 24dp source artwork, 0.5 alpha and native vector colors. Existing edit callback/description preserved; not a text/button surface.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/list_item_custom_domain.xml#custom_domain_edit_icon and list_item_custom_ip.xml#custom_ip_edit_icon: 24dp ic_edit_icon_grey, alpha0.5."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "line": 253,
+      "component": "IconButton",
+      "nearest_function": "CustomRuleRow",
+      "call": "IconButton(onDetails) { Icon(painterResource(R.drawable.ic_arrow_down_small), stringResource(R.string.compose_rule_details), Modifier.alpha(.5f), tint = Color.Unspecified) }",
+      "call_sha256": "3fa8863f1d92f1165ea13fb6944a80b2bc6a99de7dcd38cf78594f586d2cb1ad",
+      "allow_reason": "Restored source0.5 alpha/native drawable colors on the plain details arrow; retains existing details callback and intrinsic glyph size.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/list_item_custom_domain.xml#custom_domain_expand_icon and list_item_custom_ip.xml#custom_ip_expand_icon: wrap-content ic_arrow_down_small, alpha0.5, padding 5dp."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/ModeSheets.kt",
+      "line": 90,
+      "component": "IconButton",
+      "nearest_function": "HomeModeContent",
+      "call": "IconButton({ b.bsHomeScreenRefreshIcon.performClick() }, Modifier.align(Alignment.CenterEnd).padding(end = 10.dp).size(38.dp), enabled = b.bsHomeScreenRefreshIcon.isEnabled) {\n                    Icon(painterResource(R.drawable.ic_refresh), stringResource(R.string.server_settings_refresh_servers), Modifier.padding(8.dp).rotate(degrees), tint = themeColor(R.attr.primaryTextColor))\n                }",
+      "call_sha256": "312f2c3d4f3db1b665468e7ee4bb4b23dc6c3db50ef168a5e3f3b6671c3447df",
+      "allow_reason": "Existing 38dp refresh affordance already carries source geometry, tint, padding and animation/enablement. It is an ImageView action, not a filled control.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/bottom_sheet_home_screen.xml#bs_home_screen_refresh_icon: 38dp AppCompatImageView, 8dp padding, ic_refresh, primaryTextColor, end 10dp, borderless selectable background."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/ConsoleLogsScreen.kt",
+      "line": 72,
+      "component": "ExtendedFloatingActionButton",
+      "nearest_function": "ConsoleLogsScreen",
+      "call": "ExtendedFloatingActionButton(onClick = { b.fabShareLog.performClick() }, modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 16.dp).testTag(\"console-email\"), containerColor = themeColor(R.attr.buttonBackground), contentColor = themeColor(R.attr.homeScreenHeaderTextColor)) { Text(b.fabShareLog.text?.toString().orEmpty()) }",
+      "call_sha256": "659d02111cbb7c398e30f46e8568a74a57db93f90efe498fe332014c519cbee8",
+      "allow_reason": "Existing text-only Material3 extended FAB already has explicit source colors, centering and bottom 16dp. No icon is invented; email label and listener preserved.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/activity_console_log.xml#fab_share_log: ExtendedFloatingActionButton, text-only, buttonBackground fill, homeScreenHeaderTextColor, bottom 16dp, centered."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogDetailsContent.kt",
+      "line": 56,
+      "component": "IconButton",
+      "nearest_function": "LogInfoDialog",
+      "call": "IconButton(onDismiss, Modifier.size(30.dp)) { com.celzero.bravedns.ui.compose.utilities.utilityImage(android.R.drawable.ic_menu_close_clear_cancel, Modifier.size(30.dp), stringResource(R.string.lbl_cancel)) }",
+      "call_sha256": "0bc59de765ea98942261dec56dc7e823bfabf15ea056322cf4e94c2d0e29f880",
+      "allow_reason": "Restored exact native close artwork at 30dp instead of substituting a Material Close glyph. Dismiss callback unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/dialog_info_rules_layout.xml and dialog_ip_details_layout.xml#info_rules_dialog_cancel_img: 30dp platform close image."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "line": 97,
+      "component": "IconButton",
+      "nearest_function": "Content",
+      "call": "IconButton({ onSearchFocus(); editorFocus.requestFocus(); keyboard?.show() }, Modifier.testTag(\"log-search-open\")) {\n                        Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_search_api_material), stringResource(R.string.lbl_search), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))\n                    }",
+      "call_sha256": "6e6d1f12ec1aa9fa012d760abc78543f47e618fd8a95a637df0bb619c7bca375",
+      "allow_reason": "Source SearchView search affordance retained as an unfilled icon target. Restored AppCompat search drawable/colorControlNormal; only existing explicit search-open callback clears/opens search, editor refocus behavior unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_dns_logs.xml#query_list_search; app/src/full/res/layout/fragment_connection_tracker.xml#connection_search; app/src/full/res/layout/activity_console_log.xml#search_view; app/src/main/res/layout/activity_events.xml#events_search: uniconified AppCompat SearchViews."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "line": 103,
+      "component": "IconButton",
+      "nearest_function": "Content",
+      "call": "IconButton({ state.search.setQuery(\"\") }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal)) }",
+      "call_sha256": "7d9ad8891364e439348b17fcbecb85c0d13b3672a70e6093d2aa60ea6c5996d4",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/fragment_dns_logs.xml#query_list_search; app/src/full/res/layout/fragment_connection_tracker.xml#connection_search; app/src/full/res/layout/activity_console_log.xml#search_view; app/src/main/res/layout/activity_events.xml#events_search: uniconified AppCompat SearchViews."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "line": 114,
+      "component": "IconButton",
+      "nearest_function": "LogAction",
+      "call": "IconButton(onClick, modifier, enabled) { Icon(painterResource(icon), description, Modifier.size(24.dp), tint = Color.Unspecified) }",
+      "call_sha256": "69cc60d02973a174e7e2db9f469f08c2cd784448fc84a4fc5f8ce0939f4cd4bd",
+      "allow_reason": "Reviewed shared toolbar ImageView primitive. Removed unintended uniform Material tint so source vector paths/theme colors survive; 24dp glyph box, descriptions, refresh rotation/enablement and original callbacks retained.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/activity_console_log.xml#pause_icon, #search_filter_icon, #console_log_share, #console_log_delete and app/src/main/res/layout/activity_events.xml toolbar ImageViews use original ic_pause/ic_filter/ic_share/ic_delete/ic_refresh_white resources."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt",
+      "line": 47,
+      "component": "IconButton",
+      "nearest_function": "BubbleScreen",
+      "call": "IconButton(fix.onClick, Modifier.size(48.dp).clip(androidx.compose.foundation.shape.RoundedCornerShape(16.dp)).background(themeColor(R.attr.background)).testTag(\"bubble.quick.${fix.label}\").semantics { selected = fix.active }) {\n                            utilityImage(fix.drawable, Modifier.size(48.dp).padding(iconPadding).alpha(if (fix.active) 1f else .4f), label, themeColor(if (fix.active) R.attr.accentGood else R.attr.primaryLightColorText))\n                        }",
+      "call_sha256": "b44058828b21f0f4e78d0fcd7374ee20ab9c7ea3b14d21367df44a2c4f6b28da",
+      "allow_reason": "Restored density-correct 8px icon padding, 48dp visual target, 12dp spacing and 16dp background. Retained active/inactive tint/alpha, selection semantics, tooltip and callbacks. Uses an icon affordance, not a filled text button.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt#addQuickFixIcon: 48dp ImageView, 12dp end margin, 8physical-pixel padding, bg_card_ripple; active accentGood alpha1, inactive primaryLightColorText alpha0.4. app/src/main/res/drawable/bg_card_ripple.xml: background with 16dp corners."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/PauseScreen.kt",
+      "line": 34,
+      "component": "IconButton",
+      "nearest_function": "PauseScreen",
+      "call": "IconButton({ ui.pacStopIv.performClick() }, Modifier.size(80.dp).testTag(ui.pacStopIv.tag)) { UtilityImage(ui.pacStopIv, Modifier.size(80.dp), stringResource(R.string.notification_action_resume_vpn), tagged = false) }",
+      "call_sha256": "ed637a901d21e42f57fb59c2d3c4f0d548980f81ead773be7f6eef3c3eb8e6b0",
+      "allow_reason": "Original 80dp stop/resume artwork is painted by UtilityImage at 80dp; IconButton only contributes touch/keyboard semantics. No chip/button surface conversion needed.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/full/res/layout/activity_pause.xml#pac_stop_iv: 80dp AppCompatImageView, ic_stop."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "line": 81,
+      "component": "BasicTextField",
+      "nearest_function": "ProbeField",
+      "call": "BasicTextField(field.text.toString(), { field.text = it }, Modifier.weight(1f).heightIn(min = 48.dp).testTag(field.tag).semantics { contentDescription = label; originalFieldFamily = \"ReachabilityRectangle\" }.onFocusChanged { focused = it.isFocused }\n            .drawBehind { field.background?.let { background -> drawIntoCanvas { canvas -> background.state = intArrayOf(if (field.isEnabled) android.R.attr.state_enabled else -android.R.attr.state_enabled, if (focused) android.R.attr.state_focused else -android.R.attr.state_focused); background.setBounds(0, 0, size.width.toInt(), size.height.toInt()); background.draw(canvas.nativeCanvas) } } }\n            .padding(with(density) { padding.left.toDp() }, with(density) { padding.top.toDp() }, with(density) { padding.right.toDp() }, with(density) { padding.bottom.toDp() }),\n            enabled = field.isEnabled, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),\n            cursorBrush = SolidColor(cursor), textStyle = utilityTextStyle(defaultStyleAttribute = android.R.attr.editTextStyle).copy(color = color))",
+      "call_sha256": "e55562770539cb6aea19bce4734e4845a5bc88ff07d7eb7a2c9edc42b82ea3ef",
+      "allow_reason": "Original Android drawable field primitive; checked separately by check-original-fields.py"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "line": 142,
+      "component": "IconButton",
+      "nearest_function": "WgIcon",
+      "call": "IconButton({ node.performClick() }, m, enabled = node.isEnabled && node.isClickable) { content() }",
+      "call_sha256": "0685b58cf2ceadaf88e200dd6819caaa727c99d5ee7e27b852ef91fe350f084e",
+      "allow_reason": "Reviewed generic click wrapper only for these existing WireGuard ImageView actions. Restored native vector colors when state has no explicit tint; retained alpha, visibility, enabled/clickable and existing descriptions. Passive app artwork does not enter the IconButton branch.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_wg_detail.xml#ssid_ok_btn, #ssid_edit_btn; dialog_wg_apps.xml#wg_refresh_list; list_item_wg_peers.xml#peer_edit, #peer_delete: unfilled ImageViews with 24dp source artwork; ssid_edit_btn alpha0.5."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDetailContent.kt",
+      "line": 100,
+      "component": "ExtendedFloatingActionButton",
+      "nearest_function": "WgDetailContent",
+      "call": "ExtendedFloatingActionButton(onClick = { b.addPeerFab.performClick() },\n                modifier = Modifier.align(Alignment.BottomEnd).padding(end = 25.dp, bottom = 40.dp),\n                containerColor = themeColor(R.attr.chipColorBgNormal), contentColor = themeColor(R.attr.primaryTextColor),\n                icon = { Icon(painterResource(R.drawable.ic_add), null, Modifier.size(24.dp), tint = Color.Unspecified) },\n                text = { Text(b.addPeerFab.text.toString()) })",
+      "call_sha256": "ddc5f7ef02e7f81ea3a3d0458f159a22626a79a2526af3af6c4ea386ead73ae3",
+      "allow_reason": "Restored explicit source fill, text color, original-color 24dp icon and source end/bottom margins. Baseline M3 extended-FAB family remains; peer callback unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_wg_detail.xml#add_peer_fab: ExtendedFloatingActionButton, chipColorBgNormal, primaryTextColor, ic_add, transparent ADD tint, end 25dp, bottom 40dp."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgEditors.kt",
+      "line": 29,
+      "component": "IconButton",
+      "nearest_function": "WgEditorContent",
+      "call": "IconButton({ b.privateKeyTextLayout.onEndIconClick?.invoke() }) { Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.wg_compose_generate_key), tint = com.celzero.bravedns.ui.compose.themeColor(R.attr.colorOnSurfaceVariant)) }",
+      "call_sha256": "9512b4545d81f12a9d74981c57accdad8549d53b0abcca531513033df8a76ec1",
+      "allow_reason": "This is the text-field custom end icon; retains its existing key-generation listener and semantic label. Uses source M3 text-field end-icon onSurfaceVariant tint instead of inheriting arbitrary surrounding text color.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_wg_config_editor.xml#private_key_text_layout: OutlinedBox TextInputLayout, custom endIconMode, ic_refresh_white."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+      "line": 41,
+      "component": "IconButton",
+      "nearest_function": "WgIncludeAppsContent",
+      "call": "IconButton({\n                            b.wgIncludeAppDialogSearchView.setText(\"\")\n                            requester.requestFocus(); keyboard?.show()\n                        }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn), tint = com.celzero.bravedns.ui.compose.themeColor(androidx.appcompat.R.attr.colorControlNormal)) }",
+      "call_sha256": "6928dbb25a6fc17681b969f19214eff533bc4066e05e12bfbf04d327cc841087",
+      "allow_reason": "Source AppCompat SearchView (iconifiedByDefault=false) supplies an embedded clear affordance, not a separately styled filled/outlined button. Retained query callback/focus behavior; restored AppCompat clear artwork and colorControlNormal tint.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/dialog_wg_apps.xml#wg_include_app_dialog_search_view: AppCompat SearchView, uniconified, default clear icon."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgMainContent.kt",
+      "line": 46,
+      "component": "ExtendedFloatingActionButton",
+      "nearest_function": "WgMainContent",
+      "call": "ExtendedFloatingActionButton(\n                        onClick = { node.performClick() },\n                        containerColor = if (node === b.deleteAllFab) colorResource(R.color.accentBadLight) else themeColor(R.attr.chipColorBgNormal),\n                        contentColor = themeColor(R.attr.primaryTextColor),\n                        icon = {\n                            // XML uses transparent ADD tint, which preserves the drawable's own colors.\n                            utilityImage(when (node) { b.deleteAllFab -> android.R.drawable.ic_menu_delete; b.qrCodeFab -> R.drawable.ic_qr_code_scanner; b.importFab -> R.drawable.ic_import_conf; else -> R.drawable.ic_add }, Modifier.size(24.dp))\n                        },\n                        text = { Text(node.text.toString()) })",
+      "call_sha256": "58a18adadd982c33e697ec0cca902800760c9d6f97cbffcdd4d3d8668067b4ae",
+      "allow_reason": "Keep Material3 extended-FAB primitive (same baseline theme family). Restored per-action source fill, text color and 24dp native-color icon including destructive delete distinction; labels, visibility and callbacks unchanged. Transparent ADD preserves underlying drawable colors, not an invisible icon.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_wireguard_main.xml#create_fab, #import_fab, #qr_code_fab, #delete_all_fab: ExtendedFloatingActionButton; chipColorBgNormal except accentBadLight delete; primaryTextColor; icons ic_add, ic_import_conf, ic_qr_code_scanner, android: ic_menu_delete; transparent ADD icon tint."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgMainContent.kt",
+      "line": 56,
+      "component": "FloatingActionButton",
+      "nearest_function": "WgMainContent",
+      "call": "FloatingActionButton({ b.wgAddFab.performClick() }, Modifier.testTag(\"wg_add_fab\")) {\n                    Icon(painterResource(R.drawable.ic_fab_without_border), stringResource(R.string.lbl_create), Modifier.size(24.dp))\n                }",
+      "call_sha256": "c0dee12130cfa57a00ceef762768c5e0ce0e22c8b1e4b13b89b77b7d17c8de8e",
+      "allow_reason": "Normal Material3 FAB with source plus artwork; restored 24dp image box and original Create description. Default Material3 FAB surface remains appropriate, not an ordinary button style.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_wireguard_main.xml#wg_add_fab: normal FloatingActionButton, ic_fab_without_border, lbl_create; app themes inherit Theme.Material3 and do not override floatingActionButtonStyle."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidContent.kt",
+      "line": 61,
+      "component": "IconButton",
+      "nearest_function": "WgSsidContent",
+      "call": "IconButton({ presenter.onDelete(item) }) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }",
+      "call_sha256": "bd969a46426a058a25f4d7568fe7df5a4cf6830194fcbcda45a47f0577c7c348",
+      "allow_reason": "Plain row delete icon; removed unintended Material content tint to preserve original vector colors. Existing click/description unchanged.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/item_ssid.xml#deleteSsidBtn: AppCompatImageButton, ic_delete, selectableItemBackgroundBorderless, lbl_delete."
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/tour/TourOverlayController.kt",
+      "line": 228,
+      "component": "IconButton",
+      "nearest_function": "mix",
+      "call": "IconButton(onClick = ::skipTour, modifier = Modifier.size(32.dp)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.tour_btn_skip), Modifier.size(24.dp), tint = themeColor(R.attr.primaryLightColorText)) }",
+      "call_sha256": "5f271c88a9013b7c9b14b163f9ae1dabd5eeecb9b20693d8e817bf09d3e41b25",
+      "allow_reason": "Retained 32dp control; restored 24dp painted glyph and source tint. This closes/skips the tour and is not a text/chip style.",
+      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/view_tour_tooltip.xml#tour_close_btn: 32dp AppCompatImageButton, 4dp padding, ic_cross, primaryLightColorText, borderless ripple."
+    }
+  ],
+  "manual_obligations": [
+    {
+      "id": "app-details-action-chips",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt",
+      "required_renderer": "OriginalButton",
+      "source_keys": [
+        "activity_app_details:",
+        "aad_close_conns_chip"
+      ],
+      "reason": "Custom Surface formerly flattened all source Action chips into18dp positive48dp controls; negative Close All must remain distinct.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    },
+    {
+      "id": "wireguard-passive-chips",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt",
+      "required_renderer": "OriginalLabel",
+      "source_keys": [],
+      "reason": "Custom WgChips Surface must retain per-source family and runtime stroke/fill rather than hardcoded border.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    },
+    {
+      "id": "event-type-badge",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/EventsScreen.kt",
+      "required_renderer": "OriginalLabel",
+      "source_keys": [
+        "item_event:event_type_chip"
+      ],
+      "reason": "Source Assist Chip16dp24dp LabelSmall was custom Surface.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    },
+    {
+      "id": "blockfree-type-badge",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/BlockFreeDnsContent.kt",
+      "required_renderer": "OriginalLabel",
+      "source_keys": [
+        "list_item_block_free_dns:bfd_item_type_chip"
+      ],
+      "reason": "Source6dp24dp10sp noninteractive Chip has no minimum-touch expansion.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    },
+    {
+      "id": "country-speed-chip",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "required_renderer": "OriginalLabel",
+      "source_keys": [
+        "item_server_group:chip_link_speed"
+      ],
+      "reason": "Source24dp11sp passive Chip collapsed into Text with arbitrary8dp background.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    },
+    {
+      "id": "removed-server-badge",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnRemovalContent.kt",
+      "required_renderer": "OriginalLabel",
+      "source_keys": [
+        "item_removed_server:removal_badge"
+      ],
+      "reason": "Baseline negative removal badge was entirely absent.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    },
+    {
+      "id": "checkout-plans-control",
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/CheckoutContent.kt",
+      "required_renderer": "OriginalLabel",
+      "source_keys": [
+        "activity_checkout_proxy:(anonymous)"
+      ],
+      "reason": "Visible anonymous plans MaterialButton was entirely absent; preserve baseline passive/nonlistener behavior rather than inventing a click.",
+      "status": "renderer_and_source_reference_present_needs_visual_check"
+    }
+  ],
+  "unused_exception_indexes": [],
+  "ambiguous_exception_matches": {},
+  "button_chip_ledger_entries": 117,
+  "known_legacy_unassigned_definition": {
+    "source_key": "dialog_sponsor_info:dialog_sponsor_info_sponsor",
+    "status": "No baseline/current controller reference identified; not treated as integrated live UI or resurrected"
+  },
+  "limits": [
+    "Explicit source key/renderer references prove linkage only.",
+    "Per-instance state colors, geometry and callback semantics require source review and later approved runtime checks.",
+    "Icon/FAB calls remain unreviewed unless a specific baseline-backed exception is recorded.",
+    "The static legacy sponsor-info layout has no identified controller reference and is not resurrected."
+  ]
+}

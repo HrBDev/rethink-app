@@ -1,6 +1,9 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.rules
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.content.Context
 import android.view.View
 import androidx.compose.foundation.layout.*
@@ -39,11 +42,9 @@ internal class LanFields(context: Context) {
 @Composable internal fun CustomLanIpContent(fields: LanFields) {
     Surface(color = MaterialTheme.colorScheme.background) {
         Column(Modifier.widthIn(max = 600.dp).fillMaxWidth().verticalScroll(rememberScrollState()).imePadding().padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+            FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy((-1).dp, Alignment.CenterHorizontally)) {
                 listOf(fields.autoToggleBtn, fields.manualToggleBtn).forEachIndexed { index, node ->
-                    Button({ node.performClick() }, Modifier.testTag(if (index == 0) "lan_auto" else "lan_manual"), colors = ButtonDefaults.buttonColors(
-                        containerColor = node.backgroundTintList?.defaultColor?.let(::Color) ?: MaterialTheme.colorScheme.primary,
-                        contentColor = node.textColor?.let(::Color) ?: MaterialTheme.colorScheme.onPrimary)) { Text(node.text.toString()) }
+                    OriginalButton("dialog_custom_lan_ip:" + if (index == 0) "auto_toggle_btn" else "manual_toggle_btn", { node.performClick() }, Modifier.testTag(if (index == 0) "lan_auto" else "lan_manual"), selected = node.isChecked, segmentIndex = index, segmentCount = 2, contentColor = node.textColor?.let(::Color), backgroundTint = node.backgroundTintList) { Text(node.text.toString()) }
                 }
             }
             WgText(fields.modeDesc)
@@ -51,8 +52,8 @@ internal class LanFields(context: Context) {
             LanGroup(stringResource(R.string.custom_lan_ip_router), "router", fields.routerIpv4, fields.routerIpv4Prefix, fields.routerIpv6, fields.routerIpv6Prefix)
             LanGroup(stringResource(R.string.dns_mode_info_title), "dns", fields.dnsIpv4, fields.dnsIpv4Prefix, fields.dnsIpv6, fields.dnsIpv6Prefix)
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton({ fields.resetButton.performClick() }, Modifier.testTag("lan_reset"), enabled = fields.resetButton.isEnabled) { Text(fields.resetButton.text.toString()) }
-                TextButton({ fields.saveButton.performClick() }, Modifier.testTag("lan_save"), enabled = fields.saveButton.isEnabled) { Text(fields.saveButton.text.toString()) }
+                OriginalButton("dialog_custom_lan_ip:reset_button", { fields.resetButton.performClick() }, Modifier.testTag("lan_reset"), enabled = fields.resetButton.isEnabled) { Text(fields.resetButton.text.toString()) }
+                OriginalButton("dialog_custom_lan_ip:save_button", { fields.saveButton.performClick() }, Modifier.testTag("lan_save"), enabled = fields.saveButton.isEnabled) { Text(fields.saveButton.text.toString()) }
             }
             if (fields.errorText.visibility == View.VISIBLE) Text(fields.errorText.text.toString(), Modifier.testTag("lan_error").semantics { liveRegion = LiveRegionMode.Polite }, color = MaterialTheme.colorScheme.error)
         }
@@ -64,9 +65,9 @@ internal class LanFields(context: Context) {
     LanPair(v6, p6, stringResource(R.string.settings_ip_text_ipv6), "${tag}_v6")
 }
 @Composable private fun LanPair(ip: WgControlState, prefix: WgControlState, label: String, tag: String) {
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedTextField(ip.text.toString(), { ip.setText(it) }, Modifier.weight(3f).testTag("lan_$tag"), enabled = ip.isEnabled, label = { Text(label) }, singleLine = true)
-        OutlinedTextField(prefix.text.toString(), { prefix.setText(it.filter(Char::isDigit)) }, Modifier.weight(1f).testTag("lan_${tag}_prefix"), enabled = prefix.isEnabled,
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+        OriginalTextField(ip.text.toString(), { ip.setText(it) }, Modifier.weight(2f).testTag("lan_$tag"), style = OriginalFieldStyle.Lan, enabled = ip.isEnabled, label = { Text(label) }, singleLine = true)
+        OriginalTextField(prefix.text.toString(), { prefix.setText(it.filter(Char::isDigit)) }, Modifier.weight(1f).testTag("lan_${tag}_prefix"), style = OriginalFieldStyle.Lan, enabled = prefix.isEnabled,
             label = { Text(stringResource(R.string.lbl_prefix)) }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), singleLine = true)
     }
 }

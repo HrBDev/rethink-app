@@ -1,5 +1,6 @@
 package com.celzero.bravedns.ui.compose.blocklists
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -51,8 +52,8 @@ import com.celzero.bravedns.ui.compose.themeColor
                     Text(prompt.title, style = MaterialTheme.typography.headlineSmall, color = themeColor(R.attr.primaryTextColor))
                     Text(prompt.message, Modifier.padding(vertical = 16.dp), color = themeColor(R.attr.primaryTextColor))
                     FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                        TextButton(onClick = { b.prompt = null; prompt.cancel() }, Modifier.testTag("local-dialog-cancel")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.secondaryTextColor)) }
-                        TextButton(onClick = { b.prompt = null; prompt.confirm() }, Modifier.testTag("local-dialog-confirm")) { Text(prompt.positive, color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
+                        OriginalButton("@dialog_negative", onClick = { b.prompt = null; prompt.cancel() }, Modifier.testTag("local-dialog-cancel")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.secondaryTextColor)) }
+                        OriginalButton("@dialog_positive", onClick = { b.prompt = null; prompt.confirm() }, Modifier.testTag("local-dialog-confirm")) { Text(prompt.positive, color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
                     }
                 }
             }

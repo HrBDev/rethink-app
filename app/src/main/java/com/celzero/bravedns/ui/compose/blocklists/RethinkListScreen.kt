@@ -1,5 +1,6 @@
 package com.celzero.bravedns.ui.compose.blocklists
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -55,7 +56,7 @@ import kotlinx.coroutines.flow.Flow
             }
             state?.let { b -> item {
                 FlowRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    if (b.lbVersion.visible) SuggestionChip({}, enabled = false, label = { Text(b.lbVersion.text) }, colors = SuggestionChipDefaults.suggestionChipColors(disabledContainerColor = themeColor(R.attr.chipBgColorPositive), disabledLabelColor = themeColor(R.attr.chipTextPositive)))
+                    if (b.lbVersion.visible) OriginalChip("fragment_rethink_list:lb_version", selected = false, selectable = false, onClick = {}, enabled = false, label = { Text(b.lbVersion.text) })
                     UpdateChip(b.bslbCheckUpdateBtn, R.string.rt_chip_check_update, "check")
                     UpdateChip(b.bslbUpdateAvailableBtn, R.string.rt_chip_update_available, "update")
                     UpdateChip(b.bslbRedownloadBtn, R.string.rt_re_download, "redownload")
@@ -83,8 +84,8 @@ import kotlinx.coroutines.flow.Flow
                     Text(endpoint.name, style = MaterialTheme.typography.headlineSmall, color = themeColor(R.attr.primaryTextColor))
                     Text(endpoint.url + "\n\n" + endpoint.desc, Modifier.padding(vertical = 16.dp), color = themeColor(R.attr.primaryTextColor))
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                        TextButton(onClick = { presenter.copy(endpoint); presenter.metadata = null }) { Text(stringResource(R.string.dns_info_neutral), color = themeColor(R.attr.secondaryTextColor)) }
-                        TextButton(onClick = { if (presenter.editable(endpoint)) presenter.edit(endpoint); presenter.metadata = null }) { Text(stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
+                        OriginalButton("@dialog_positive", onClick = { presenter.copy(endpoint); presenter.metadata = null }) { Text(stringResource(R.string.dns_info_neutral), color = themeColor(R.attr.secondaryTextColor)) }
+                        OriginalButton("@dialog_positive", onClick = { if (presenter.editable(endpoint)) presenter.edit(endpoint); presenter.metadata = null }) { Text(stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
                     }
                 }
             }
@@ -94,7 +95,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Composable private fun UpdateChip(state: RethinkChipState, label: Int, key: String) {
     if (!state.visible) return
-    AssistChip(onClick = state.onClick, enabled = state.isEnabled, modifier = Modifier.testTag("rethink-$key"), label = { Text(stringResource(label), color = themeColor(R.attr.chipTextPositive)) }, leadingIcon = if (state.isChipIconVisible) ({ CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp, color = themeColor(R.attr.chipTextPositive)) }) else null)
+    OriginalChip("fragment_rethink_list:" + when (key) { "update" -> "bslb_update_available_btn"; "check" -> "bslb_check_update_btn"; else -> "bslb_redownload_btn" }, selected = false, selectable = false, onClick = state.onClick, enabled = state.isEnabled, modifier = Modifier.testTag("rethink-$key"), label = { Text(stringResource(label), color = themeColor(R.attr.chipTextPositive)) }, leadingIcon = if (state.isChipIconVisible) ({ CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp, color = themeColor(R.attr.chipTextPositive)) }) else null)
 }
 @Composable private fun RethinkChoice(control: DnsControl, label: Int, key: String) {
     Row(Modifier.testTag("rethink-$key").clickable(role = Role.RadioButton) { control.isChecked = true; control.onClick() }.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -113,7 +114,7 @@ import kotlinx.coroutines.flow.Flow
                 Text(endpoint.name, color = themeColor(R.attr.primaryTextColor), style = MaterialTheme.typography.bodyLarge, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 if (bound.rethinkEndpointListUrlExplanation.visible) Text(bound.rethinkEndpointListUrlExplanation.text, Modifier.padding(top = 2.dp), color = themeColor(R.attr.primaryLightColorText), style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            IconButton(onClick = { presenter.metadata = endpoint }, modifier = Modifier.padding(end = 4.dp).alpha(.55f)) { Icon(painterResource(if (presenter.editable(endpoint)) R.drawable.ic_edit_icon else R.drawable.ic_info), stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), tint = themeColor(R.attr.primaryTextColor)) }
+            IconButton(onClick = { presenter.metadata = endpoint }, modifier = Modifier.padding(end = 4.dp).alpha(.55f)) { Icon(painterResource(if (presenter.editable(endpoint)) R.drawable.ic_edit_icon else R.drawable.ic_info), stringResource(if (presenter.editable(endpoint)) R.string.rt_edit_dialog_positive else R.string.dns_info_positive), Modifier.size(24.dp), tint = themeColor(R.attr.primaryTextColor)) }
             RethinkSelection(endpoint.isActive)
         }
     }

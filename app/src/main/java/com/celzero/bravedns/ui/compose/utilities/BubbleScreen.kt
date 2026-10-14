@@ -1,6 +1,9 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -36,12 +39,13 @@ data class BubbleQuickFix(val drawable: Int, val label: Int, val active: Boolean
                     Text(stringResource(R.string.firewall_bubble_subtitle), style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Body2), color = themeColor(R.attr.primaryLightColorText))
                 }
             }
-            item("quick-fixes") { LazyRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            item("quick-fixes") { LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 items(ui.quickFixes, key = { it.label }) { fix ->
                     val label = stringResource(fix.label)
+                    val iconPadding = with(LocalDensity.current) { 8.toDp() }
                     TooltipBox(TooltipDefaults.rememberPlainTooltipPositionProvider(), { PlainTooltip { Text(label) } }, rememberTooltipState()) {
-                        IconButton(fix.onClick, Modifier.sizeIn(minWidth = 48.dp, minHeight = 48.dp).testTag("bubble.quick.${fix.label}").semantics { selected = fix.active }) {
-                            utilityImage(fix.drawable, Modifier.size(32.dp).alpha(if (fix.active) 1f else .4f), label, themeColor(if (fix.active) R.attr.accentGood else R.attr.primaryLightColorText))
+                        IconButton(fix.onClick, Modifier.size(48.dp).clip(androidx.compose.foundation.shape.RoundedCornerShape(16.dp)).background(themeColor(R.attr.background)).testTag("bubble.quick.${fix.label}").semantics { selected = fix.active }) {
+                            utilityImage(fix.drawable, Modifier.size(48.dp).padding(iconPadding).alpha(if (fix.active) 1f else .4f), label, themeColor(if (fix.active) R.attr.accentGood else R.attr.primaryLightColorText))
                         }
                     }
                 }
@@ -101,9 +105,9 @@ data class BubbleQuickFix(val drawable: Int, val label: Int, val active: Boolean
                     Text(line, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption), color = themeColor(if (bad) R.attr.accentBad else R.attr.accentGood))
                     if (time != null) Text(time, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption), color = themeColor(R.attr.primaryLightColorText))
                 }
-                if (!large) TextButton(click, Modifier.testTag(tag).semantics { contentDescription = "$action $name" }) { Text(action) }
+                if (!large) OriginalButton(if (blocked) "item_blocked_app:blocked_app_allow_btn" else "item_allowed_app:allowed_remove_btn", click, Modifier.testTag(tag).semantics { contentDescription = "$action $name" }) { Text(action) }
             }
-            if (large) TextButton(click, Modifier.align(Alignment.End).testTag(tag).semantics { contentDescription = "$action $name" }) { Text(action) }
+            if (large) OriginalButton(if (blocked) "item_blocked_app:blocked_app_allow_btn" else "item_allowed_app:allowed_remove_btn", click, Modifier.align(Alignment.End).testTag(tag).semantics { contentDescription = "$action $name" }) { Text(action) }
         }
     }
 }

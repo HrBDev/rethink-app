@@ -1,5 +1,6 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.firewallapps
+import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.app.Dialog
 import android.view.Window
@@ -39,21 +40,21 @@ class FirewallFilterState {
         Text(stringResource(R.string.fapps_filter_filter_heading),fontSize=16.sp)
         FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             listOf(R.string.lbl_all,R.string.fapps_filter_parent_installed,R.string.fapps_filter_parent_system).forEachIndexed{i,label->
-                FilterChip(b.parent==i,{b.selectParent(i)},label={Text(stringResource(label))},modifier=Modifier.testTag("firewall_parent_$i"))
+                OriginalChip("item_chip_filter:(anonymous)", b.parent==i, {b.selectParent(i)}, label={Text(stringResource(label))}, modifier=Modifier.testTag("firewall_parent_$i"))
             }
         }
         Text(stringResource(R.string.fapps_filter_categories_heading),fontSize=16.sp)
         FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-            b.categories.forEach{category->FilterChip(category in b.selectedCategories,{b.selectCategory(category,category !in b.selectedCategories)},label={Text(category)},modifier=Modifier.testTag("firewall_category_$category"))}
+            b.categories.forEach{category->OriginalChip("item_chip_filter:(anonymous)", category in b.selectedCategories, {b.selectCategory(category,category !in b.selectedCategories)}, label={Text(category)}, modifier=Modifier.testTag("firewall_category_$category"))}
         }
         Text(stringResource(R.string.fapps_filter_sort_heading),fontSize=16.sp)
         FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             val labels=listOf(R.string.fapps_filter_sort_name,R.string.fapps_filter_sort_package,R.string.fapps_filter_sort_uid)
-            AppListActivity.SortOption.entries.forEachIndexed{i,sort->FilterChip(b.sort==sort,{b.selectSort(sort)},label={Text(stringResource(labels[i]))},modifier=Modifier.testTag("firewall_sort_${sort.name}"))}
+            AppListActivity.SortOption.entries.forEachIndexed{i,sort->OriginalChip("item_chip_filter:(anonymous)", b.sort==sort, {b.selectSort(sort)}, label={Text(stringResource(labels[i]))}, modifier=Modifier.testTag("firewall_sort_${sort.name}"))}
         }
         FlowRow(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.End) {
-            TextButton({b.fsClear.performClick()},Modifier.testTag("firewall_filter_clear")){Text(stringResource(R.string.fapps_filter_clear_btn))}
-            TextButton({b.fsApply.performClick()},Modifier.testTag("firewall_filter_apply")){Text(stringResource(R.string.lbl_apply))}
+            OriginalButton("bottom_sheet_firewall_sort_filter:fs_clear", {b.fsClear.performClick()}, Modifier.testTag("firewall_filter_clear")){Text(stringResource(R.string.fapps_filter_clear_btn))}
+            OriginalButton("bottom_sheet_firewall_sort_filter:fs_apply", {b.fsApply.performClick()}, Modifier.testTag("firewall_filter_apply")){Text(stringResource(R.string.lbl_apply))}
         }
     }
 }
@@ -75,7 +76,7 @@ fun showFirewallInfoDialog(activity:Activity) {
                         Row(Modifier.padding(top=10.dp),verticalAlignment=Alignment.CenterVertically){Icon(painterResource(icon),null,Modifier.padding(5.dp));Text(stringResource(text),Modifier.padding(5.dp),fontSize=14.sp)}
                     }
                 }
-                TextButton({dialog.dismiss()},Modifier.align(Alignment.End)){Text(stringResource(R.string.fapps_info_dialog_positive_btn))}
+                OriginalButton("@dialog_positive", {dialog.dismiss()}, Modifier.align(Alignment.End)){Text(stringResource(R.string.fapps_info_dialog_positive_btn))}
             }
         }
     }

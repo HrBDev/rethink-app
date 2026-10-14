@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.trafficlogs
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.view.View
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -84,8 +85,8 @@ internal fun consoleLevelColorAttribute(message: String) = when (message.firstOr
                 }
                 Row(Modifier.fillMaxWidth().clickable { onFileTrace(!fileTrace) }.padding(horizontal = 20.dp, vertical = 8.dp).testTag("console-file-trace"), verticalAlignment = Alignment.CenterVertically) { Checkbox(fileTrace, null); Text(stringResource(R.string.console_log_include_file_trace), Modifier.padding(start = 8.dp)) }
                 FlowRow(Modifier.fillMaxWidth().padding(horizontal = 16.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    TextButton(dismiss, colors = ButtonDefaults.textButtonColors(contentColor = themeColor(R.attr.secondaryTextColor))) { Text(stringResource(R.string.lbl_cancel)) }
-                    TextButton(dismiss) { Text(stringResource(R.string.fapps_info_dialog_positive_btn)) }
+                    OriginalButton("@dialog_negative", dismiss) { Text(stringResource(R.string.lbl_cancel)) }
+                    OriginalButton("@dialog_positive", dismiss) { Text(stringResource(R.string.fapps_info_dialog_positive_btn)) }
                 }
             }
         }

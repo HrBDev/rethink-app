@@ -30,6 +30,18 @@ fun RpnText(state: RpnControlState, modifier: Modifier = Modifier, style: TextSt
         color = state.foregroundColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor))
 }
 
+/** A button/chip label inherits its source style, with only actual controller overrides applied. */
+@Composable
+fun OriginalRpnText(state: RpnControlState) {
+    if (state.visibility == android.view.View.GONE) return
+    val style = androidx.compose.material3.LocalTextStyle.current
+    Text(state.text.toString(), Modifier.rpnVisibility(state).rpnMotion(state), maxLines = state.maxLines,
+        overflow = TextOverflow.Ellipsis, color = state.foregroundColor?.let(::Color) ?: androidx.compose.material3.LocalContentColor.current,
+        style = style.copy(fontSize = state.textSizeSp?.sp ?: style.fontSize,
+            fontWeight = if (state.bold) FontWeight.Bold else style.fontWeight,
+            fontFamily = if (state.monospace) FontFamily.Monospace else style.fontFamily))
+}
+
 fun Modifier.rpnHeroBackground(): Modifier = composed {
     val start = themeColor(R.attr.serverHeaderGradientStart)
     val center = themeColor(R.attr.serverHeaderGradientCenter)

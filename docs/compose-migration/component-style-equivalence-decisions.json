@@ -1,0 +1,155 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "decisions": [
+    {
+      "representative": "activity_app_details:aad_active_conns_chip",
+      "renderer_path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt",
+      "equivalent_source_keys": [
+        "activity_app_details:aad_active_conns_chip",
+        "activity_app_details:aad_countries_chip",
+        "activity_app_details:aad_asn_chip",
+        "activity_app_details:aad_blocked_asn_chip",
+        "activity_app_details:aad_blocklist_chip",
+        "activity_app_details:aad_domains_chip",
+        "activity_app_details:aad_blocked_domains_chip",
+        "activity_app_details:aad_ips_chip",
+        "activity_app_details:aad_blocked_ips_chip"
+      ],
+      "variant": "baseline-variant-088",
+      "contract": {
+        "external_parent": [
+          "Widget.Material3.Chip.Assist"
+        ],
+        "tag": "Chip",
+        "visual": {
+          "android:layout_height": "wrap_content",
+          "android:layout_width": "wrap_content",
+          "android:textColor": "?attr/chipTextPositive",
+          "android:textSize": "11sp",
+          "chipBackgroundColor": "?attr/chipBgColorPositive",
+          "chipCornerRadius": "12dp",
+          "chipIconSize": "15dp",
+          "chipMinHeight": "24dp",
+          "chipMinTouchTargetSize": "30dp",
+          "chipSurfaceColor": "@null"
+        }
+      },
+      "scope": "Source style plus nonpositional component attrs. Labels/callbacks/visibility and positioning remain instance-specific; no runtime equivalence claim.",
+      "review": "Compared pinned baseline styles+attributes. AppDetails list11sp and insights12sp intentionally remain separate representatives."
+    },
+    {
+      "representative": "activity_app_details:aad_ia_active_conns_chip",
+      "renderer_path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt",
+      "equivalent_source_keys": [
+        "activity_app_details:aad_ia_active_conns_chip",
+        "activity_app_details:aad_ia_countries_chip",
+        "activity_app_details:aad_ia_asn_chip",
+        "activity_app_details:aad_ia_blocked_asn_chip",
+        "activity_app_details:aad_ia_blocklist_chip",
+        "activity_app_details:aad_ia_domains_chip",
+        "activity_app_details:aad_ia_blocked_domains_chip",
+        "activity_app_details:aad_ia_ips_chip",
+        "activity_app_details:aad_ia_blocked_ips_chip"
+      ],
+      "variant": "baseline-variant-089",
+      "contract": {
+        "external_parent": [
+          "Widget.Material3.Chip.Assist"
+        ],
+        "tag": "Chip",
+        "visual": {
+          "android:layout_height": "wrap_content",
+          "android:layout_width": "wrap_content",
+          "android:textColor": "?attr/chipTextPositive",
+          "android:textSize": "@dimen/default_font_text_view",
+          "chipBackgroundColor": "?attr/chipBgColorPositive",
+          "chipCornerRadius": "12dp",
+          "chipIconSize": "15dp",
+          "chipMinHeight": "24dp",
+          "chipMinTouchTargetSize": "30dp",
+          "chipSurfaceColor": "@null"
+        }
+      },
+      "scope": "Source style plus nonpositional component attrs. Labels/callbacks/visibility and positioning remain instance-specific; no runtime equivalence claim.",
+      "review": "Compared pinned baseline styles+attributes. AppDetails list11sp and insights12sp intentionally remain separate representatives."
+    },
+    {
+      "representative": "fragment_summary_statistics:fss_active_apps_chip",
+      "renderer_path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+      "equivalent_source_keys": [
+        "fragment_summary_statistics:fss_active_apps_chip",
+        "fragment_summary_statistics:fss_app_info_chip",
+        "fragment_summary_statistics:fss_app_info_chip_second",
+        "fragment_summary_statistics:fss_countries_logs_chip",
+        "fragment_summary_statistics:fss_asn_chip",
+        "fragment_summary_statistics:fss_asn_chip_second",
+        "fragment_summary_statistics:fss_blocklist_chip",
+        "fragment_summary_statistics:fss_dns_logs_chip",
+        "fragment_summary_statistics:fss_dns_logs_chip_second",
+        "fragment_summary_statistics:fss_network_logs_chip",
+        "fragment_summary_statistics:fss_network_logs_chip_second",
+        "fragment_summary_statistics:fss_ia_active_conns_chip",
+        "fragment_summary_statistics:fss_ia_allowed_apps_chip",
+        "fragment_summary_statistics:fss_ia_blocked_apps_chip",
+        "fragment_summary_statistics:fss_ia_countries_chip",
+        "fragment_summary_statistics:fss_ia_asn_allowed_chip",
+        "fragment_summary_statistics:fss_ia_asn_blocked_chip",
+        "fragment_summary_statistics:fss_ia_blocklists_chip",
+        "fragment_summary_statistics:fss_ia_domains_allowed_chip",
+        "fragment_summary_statistics:fss_ia_domains_blocked_chip",
+        "fragment_summary_statistics:fss_ia_ips_allowed_chip",
+        "fragment_summary_statistics:fss_ia_ips_blocked_chip"
+      ],
+      "variant": "baseline-variant-089",
+      "contract": {
+        "external_parent": [
+          "Widget.Material3.Chip.Assist"
+        ],
+        "tag": "Chip",
+        "visual": {
+          "android:layout_height": "wrap_content",
+          "android:layout_width": "wrap_content",
+          "android:textColor": "?attr/chipTextPositive",
+          "android:textSize": "@dimen/default_font_text_view",
+          "chipBackgroundColor": "?attr/chipBgColorPositive",
+          "chipCornerRadius": "12dp",
+          "chipIconSize": "15dp",
+          "chipMinHeight": "24dp",
+          "chipMinTouchTargetSize": "30dp",
+          "chipSurfaceColor": "@null"
+        }
+      },
+      "scope": "Source style plus nonpositional component attrs. Labels/callbacks/visibility and positioning remain instance-specific; no runtime equivalence claim.",
+      "review": "Compared pinned baseline styles+attributes. AppDetails list11sp and insights12sp intentionally remain separate representatives."
+    },
+    {
+      "representative": "fragment_summary_statistics:fss_close_conns_chip",
+      "renderer_path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+      "equivalent_source_keys": [
+        "fragment_summary_statistics:fss_close_conns_chip",
+        "fragment_summary_statistics:fss_ia_close_conns_chip"
+      ],
+      "variant": "baseline-variant-087",
+      "contract": {
+        "external_parent": [
+          "Widget.Material3.Chip.Assist"
+        ],
+        "tag": "Chip",
+        "visual": {
+          "android:layout_height": "wrap_content",
+          "android:layout_width": "wrap_content",
+          "android:textColor": "?attr/chipTextNegative",
+          "android:textSize": "@dimen/default_font_text_view",
+          "chipBackgroundColor": "?attr/chipBgColorNegative",
+          "chipCornerRadius": "12dp",
+          "chipIconSize": "15dp",
+          "chipMinHeight": "24dp",
+          "chipMinTouchTargetSize": "30dp",
+          "chipSurfaceColor": "@null"
+        }
+      },
+      "scope": "Source style plus nonpositional component attrs. Labels/callbacks/visibility and positioning remain instance-specific; no runtime equivalence claim.",
+      "review": "Compared pinned baseline styles+attributes. AppDetails list11sp and insights12sp intentionally remain separate representatives."
+    }
+  ]
+}

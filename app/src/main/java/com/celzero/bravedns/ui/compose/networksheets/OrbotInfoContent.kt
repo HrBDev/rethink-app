@@ -101,7 +101,7 @@ fun OrbotInfoContent(title: String, description: CharSequence, onDismiss: () -> 
     Surface(color = MaterialTheme.colorScheme.surfaceContainerHigh, shape = MaterialTheme.shapes.extraLarge) {
         Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(20.dp)) {
             IconButton(onDismiss, Modifier.align(Alignment.End)) {
-                Icon(painterResource(android.R.drawable.ic_menu_close_clear_cancel), stringResource(R.string.lbl_dismiss), Modifier.size(30.dp))
+                com.celzero.bravedns.ui.compose.utilities.utilityImage(android.R.drawable.ic_menu_close_clear_cancel, Modifier.size(30.dp), stringResource(R.string.lbl_dismiss))
             }
             Text(title, Modifier.testTag("orbot_info_title").padding(start = heading.paddingStartDp.dp, end = heading.paddingEndDp.dp), color = Color(heading.color), style = heading.textStyle())
             SelectionContainer(Modifier.padding(top = 10.dp)) {

@@ -1,6 +1,10 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.dns
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalSpinner
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -107,12 +111,15 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
     var showApps by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
     DnsEditorDialog(stringResource(R.string.dns_proxy_dialog_header_dns), onDismiss, { error = onApply(name, appNames[appIndex], ip, port, forwardApps) }) {
-        if (lockdown) TextButton(onVpnSettings) { Text(stringResource(R.string.settings_lock_down_mode_desc)) }
-        Text(stringResource(R.string.settings_dns_proxy_dialog_app), style = MaterialTheme.typography.labelLarge)
-        OutlinedButton({ showApps = true }, Modifier.fillMaxWidth().testTag("dns_app")) { Text(appNames[appIndex]) }
-        DnsField(name, { name = it }, stringResource(R.string.dns_proxy_name), "dns_name")
-        DnsField(ip, { ip = it }, stringResource(R.string.dns_proxy_ip_address), "dns_ip")
-        DnsField(port, { port = it }, stringResource(R.string.dns_proxy_port), "dns_port", KeyboardType.Number)
+        if (lockdown) OriginalButton("dialog_set_dns_proxy:dialog_dns_proxy_lockdown_desc", onVpnSettings) { Text(stringResource(R.string.settings_lock_down_mode_desc)) }
+        Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(stringResource(R.string.settings_dns_proxy_dialog_app), Modifier.weight(.3f),
+                style = MaterialTheme.typography.bodyLarge, color = themeColor(R.attr.primaryTextColor))
+            OriginalSpinner(appNames[appIndex], { showApps = true }, Modifier.weight(.7f).testTag("dns_app"))
+        }
+        DnsField(name, { name = it }, stringResource(R.string.dns_proxy_name), "dns_name", fieldStyle = OriginalFieldStyle.DnsProxy)
+        DnsField(ip, { ip = it }, stringResource(R.string.dns_proxy_ip_address), "dns_ip", fieldStyle = OriginalFieldStyle.DnsProxy)
+        DnsField(port, { port = it }, stringResource(R.string.dns_proxy_port), "dns_port", KeyboardType.Number, fieldStyle = OriginalFieldStyle.DnsProxy)
         DnsError(error)
         DnsCheck(stringResource(R.string.settings_exclude_proxy_apps_heading), forwardApps, { forwardApps = it }, "dns_forward_apps", !lockdown)
     }
@@ -120,7 +127,7 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
         title = { Text(stringResource(R.string.settings_dns_proxy_dialog_app)) },
         text = { LazyColumn(Modifier.fillMaxWidth().heightIn(max = 400.dp).selectableGroup()) {
             itemsIndexed(appNames) { index, label -> DnsRadio(label, index == appIndex) { appIndex = index; showApps = false } }
-        } }, confirmButton = { TextButton({ showApps = false }) { Text(stringResource(R.string.lbl_cancel)) } })
+        } }, confirmButton = { OriginalButton("@dialog_positive", { showApps = false }) { Text(stringResource(R.string.lbl_cancel)) } })
 }
 
 @Composable private fun DnsEditorDialog(title: String, onDismiss: () -> Unit, onApply: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
@@ -131,15 +138,21 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
                 Text(title, Modifier.padding(bottom = 12.dp), style = MaterialTheme.typography.titleMedium)
                 Column(Modifier.weight(1f, false).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onDismiss, Modifier.testTag("dns_editor_cancel")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.accentGood)) }
-                    TextButton(onApply, Modifier.testTag("dns_editor_add")) { Text(stringResource(R.string.lbl_add), color = themeColor(R.attr.accentGood)) }
+                    OriginalButton("@dialog_negative", onDismiss, Modifier.testTag("dns_editor_cancel")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.accentGood)) }
+                    OriginalButton("@dialog_positive", onApply, Modifier.testTag("dns_editor_add")) { Text(stringResource(R.string.lbl_add), color = themeColor(R.attr.accentGood)) }
                 }
             }
         }
     }
 }
-@Composable private fun DnsField(value: String, onValue: (String) -> Unit, label: String, tag: String, keyboard: KeyboardType = KeyboardType.Text, singleLine: Boolean = true) {
-    OutlinedTextField(value, onValue, Modifier.fillMaxWidth().testTag(tag), label = { Text(label) }, singleLine = singleLine, maxLines = if (singleLine) 1 else 3, keyboardOptions = KeyboardOptions(keyboardType = keyboard, autoCorrectEnabled = false))
+@Composable private fun DnsField(value: String, onValue: (String) -> Unit, label: String, tag: String, keyboard: KeyboardType = KeyboardType.Text, singleLine: Boolean = true, fieldStyle: OriginalFieldStyle = OriginalFieldStyle.Dns) {
+    val editor: @Composable (Modifier) -> Unit = { modifier ->
+        OriginalTextField(value, onValue, modifier.testTag(tag), style = fieldStyle, label = { Text(label) }, singleLine = singleLine, maxLines = if (singleLine) 1 else 3, keyboardOptions = KeyboardOptions(keyboardType = keyboard, autoCorrectEnabled = false))
+    }
+    if (fieldStyle == OriginalFieldStyle.DnsProxy) Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(label, Modifier.weight(.3f), style = MaterialTheme.typography.bodyLarge, color = themeColor(R.attr.primaryTextColor))
+        editor(Modifier.weight(.7f))
+    } else editor(Modifier.fillMaxWidth())
 }
 @Composable private fun DnsCheck(label: String, checked: Boolean, onCheck: (Boolean) -> Unit, tag: String, enabled: Boolean = true) {
     Row(Modifier.fillMaxWidth().testTag(tag).toggleable(value = checked, enabled = enabled, role = Role.Checkbox, onValueChange = onCheck).padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {

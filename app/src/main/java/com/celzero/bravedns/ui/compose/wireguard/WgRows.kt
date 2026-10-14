@@ -16,18 +16,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
 
-@Composable private fun WgChips(group: WgControlState, vararg nodes: WgControlState) {
+@Composable private fun WgChips(group: WgControlState, source: String, vararg nodes: WgControlState) {
     if (!group.isVisible) return
+    val ids = if (source == "list_item_wg_hop") listOf("chip_ipv4", "chip_ipv6", "chip_split_tunnel", "chip_amnezia", "chip_hop_src", "chip_hopping", "chip_properties")
+        else listOf("protocol_info_chip_ipv4", "protocol_info_chip_ipv6", "chip_split_tunnel", "chip_amnezia", "chip_hop_src", "chip_hopping", "chip_properties")
     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        nodes.filter { it.isVisible }.forEach { node ->
-            Surface(Modifier.alpha(node.alpha).heightIn(min = 24.dp), shape = RoundedCornerShape(12.dp),
-                color = node.backgroundColor?.let(::Color) ?: MaterialTheme.colorScheme.surface,
-                border = BorderStroke(1.5.dp, Color(node.strokeColor))) {
-                Text(wgAnnotatedText(node.text), Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-                    color = node.textColor?.let(::Color) ?: MaterialTheme.colorScheme.onSurface,
-                    fontSize = node.textSizeSp?.sp ?: 11.sp)
+        nodes.forEachIndexed { index, node -> if (node.isVisible) {
+            com.celzero.bravedns.ui.compose.controls.OriginalLabel("$source:${ids[index]}", Modifier.alpha(node.alpha),
+                selected = node.isChecked, contentColor = node.textColor?.let(::Color),
+                containerColor = node.backgroundColor?.let(::Color), backgroundTint = node.backgroundTintList) {
+                Text(wgAnnotatedText(node.text))
             }
-        }
+        } }
     }
 }
 
@@ -36,7 +36,7 @@ import com.celzero.bravedns.R
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) { WgText(b.interfaceFlagText); WgText(b.interfaceNameText, Modifier.weight(1f)); WgText(b.interfaceIdText) }
-                WgChips(b.protocolInfoChipGroup, b.protocolInfoChipIpv4, b.protocolInfoChipIpv6, b.chipSplitTunnel, b.chipAmnezia, b.chipHopSrc, b.chipHopping, b.chipProperties)
+                WgChips(b.protocolInfoChipGroup, "list_item_wg_general_interface", b.protocolInfoChipIpv4, b.protocolInfoChipIpv6, b.chipSplitTunnel, b.chipAmnezia, b.chipHopSrc, b.chipHopping, b.chipProperties)
                 WgText(b.interfaceStatus)
                 WgText(b.interfaceAppsCount)
                 if (b.interfaceActiveLayout.isVisible) { WgText(b.interfaceActiveUptime); WgText(b.interfaceActiveRxTx) }
@@ -51,7 +51,7 @@ import com.celzero.bravedns.R
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) { WgText(b.interfaceFlagText); WgText(b.interfaceNameText, Modifier.weight(1f)); WgText(b.interfaceIdText) }
-                WgChips(b.protocolInfoChipGroup, b.protocolInfoChipIpv4, b.protocolInfoChipIpv6, b.chipSplitTunnel)
+                WgChips(b.protocolInfoChipGroup, "list_item_wg_one_interface", b.protocolInfoChipIpv4, b.protocolInfoChipIpv6, b.chipSplitTunnel)
                 WgText(b.interfaceStatus)
                 WgText(b.interfaceAppsCount)
                 if (b.interfaceActiveLayout.isVisible) { WgText(b.interfaceActiveUptime); WgText(b.interfaceActiveRxTx) }
@@ -76,7 +76,7 @@ import com.celzero.bravedns.R
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 WgText(b.wgHopListNameTv); WgText(b.wgHopListDescTv)
-                WgChips(b.chipGroup, b.chipIpv4, b.chipIpv6, b.chipSplitTunnel, b.chipAmnezia, b.chipHopSrc, b.chipHopping, b.chipProperties)
+                WgChips(b.chipGroup, "list_item_wg_hop", b.chipIpv4, b.chipIpv6, b.chipSplitTunnel, b.chipAmnezia, b.chipHopSrc, b.chipHopping, b.chipProperties)
             }
             WgCheck(b.wgHopListCheckbox, b.wgHopListNameTv.text.toString())
         }

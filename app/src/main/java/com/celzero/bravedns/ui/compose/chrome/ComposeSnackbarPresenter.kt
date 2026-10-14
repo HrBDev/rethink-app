@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.chrome
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -342,7 +343,7 @@ internal fun NativeSnackbarContent(
             Text(message, Modifier.weight(1f).padding(vertical = 14.dp), color = foreground,
                 fontSize = 14.sp, maxLines = if (themed) 3 else 2, overflow = TextOverflow.Ellipsis)
             if (actionLabel != null) {
-                TextButton(onClick = onAction, modifier = Modifier.testTag("native_snackbar_action")) {
+                OriginalButton("@text", onClick = onAction, modifier = Modifier.testTag("native_snackbar_action")) {
                     Text(actionLabel, color = actionForeground, fontSize = 14.sp)
                 }
             }

@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.home
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.res.ColorStateList
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -240,7 +241,7 @@ private fun LogsCard(b: HomePresentation, wide: Boolean, modifier: Modifier = Mo
             if (b.fhsLogsDisabledRow.isVisible) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     HomeText(b.fhsLogsDisabledTxt, Modifier.weight(1f))
-                    if (b.fhsLogsEnableChip.isVisible) TextButton(onClick = b.fhsLogsEnableChip::performClick) { HomeText(b.fhsLogsEnableChip) }
+                    if (b.fhsLogsEnableChip.isVisible) OriginalButton("fragment_home_screen:fhs_logs_enable_chip", onClick = b.fhsLogsEnableChip::performClick) { HomeText(b.fhsLogsEnableChip) }
                 }
             }
         }
@@ -300,11 +301,7 @@ private fun ToggleChips(group: HomeToggleGroup, allowed: HomeNode, blocked: Home
     if (!group.isVisible) return
     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
         listOf(allowed, blocked).forEach { node ->
-            FilterChip(selected = node.isChecked, onClick = { group.select(node) }, enabled = group.isEnabled && node.isEnabled,
-                label = { Text(node.text?.toString().orEmpty(), fontSize = 12.sp) }, modifier = Modifier.testTag(node.context.resources.getResourceEntryName(node.id)),
-                border = androidx.compose.foundation.BorderStroke(1.dp, if (node.isChecked) themeColor(R.attr.colorOutline) else Color.Transparent),
-                colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.homeScreenBtnBackground), selectedContainerColor = themeColor(R.attr.homeScreenBtnBackground),
-                    labelColor = themeColor(R.attr.primaryLightColorText), selectedLabelColor = themeColor(R.attr.primaryTextColor)))
+            OriginalChip((if (node.id == R.id.fhs_logs_allowed_chip || node.id == R.id.fhs_logs_blocked_chip) "view_home_logs_activity:" else "view_home_logs_apps:") + node.context.resources.getResourceEntryName(node.id), selected = node.isChecked, onClick = { group.select(node) }, enabled = group.isEnabled && node.isEnabled, label = { Text(node.text?.toString().orEmpty()) }, modifier = Modifier.testTag(node.context.resources.getResourceEntryName(node.id)))
         }
     }
 }

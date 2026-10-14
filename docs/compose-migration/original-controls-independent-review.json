@@ -1,0 +1,33 @@
+{
+  "review": "independent source-only control guard negative controls",
+  "rejected_mutations": [
+    "selector_state_resolution",
+    "explicit_null_handling",
+    "minimum_touch_target",
+    "passive_semantics",
+    "font_scaling",
+    "drawable_tint_reset",
+    "view_inflation",
+    "plain_application_test"
+  ],
+  "count": 8,
+  "compile_runtime": "not run",
+  "source_pins": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControls.kt",
+      "sha256": "aeef2d037e84b53ace7f2e9b6f8f520e7fd0eeeec3eeb54220e6516b71d92601"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControlCatalog.kt",
+      "sha256": "6f29d1d8202b8cf1c4c63eb04c2db50738fe8c690540e1a9f617bbae104ca9c2"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/controls/OriginalControlsTest.kt",
+      "sha256": "f2d505ca4085a5a276a70a3346b5c03b51c7651c3b49e692e1cb44eb0f608828"
+    },
+    {
+      "path": "scripts/compose-migration/check-original-controls.py",
+      "sha256": "eaf20c222b2e411ac54f70ce34e1af4079c9f053e73bcfa24e0bce8404967042"
+    }
+  ]
+}

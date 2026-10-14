@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.statistics
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.view.View
 import androidx.compose.foundation.layout.*
@@ -58,9 +59,8 @@ fun RpnStatisticsContent(b: RpnStatisticsPresentation) {
             }
             if (b.rpnStatsTopApps.isVisible) b.rpnStatsTopApps.adapter?.let { adapter -> repeat(adapter.itemCount) { adapter.Row(it) } }
             if (b.rpnStatsTopAppsEmpty.isVisible) Text(stringResource(R.string.rpn_stats_empty), Modifier.padding(top = 4.dp).alpha(.7f).testTag("rpn_stats_empty"), style = MaterialTheme.typography.bodySmall)
-            if (b.rpnStatsViewLogs.isVisible) OutlinedButton(onClick = { b.rpnStatsViewLogs.performClick() }, modifier = Modifier.fillMaxWidth().padding(top = 26.dp).heightIn(min = 48.dp).alpha(.75f).testTag("rpn_stats_logs"),
-                shape = RoundedCornerShape(24.dp), colors = ButtonDefaults.outlinedButtonColors(contentColor = themeColor(R.attr.accentGood))) {
-                Icon(painterResource(R.drawable.ic_logs), null, Modifier.size(20.dp)); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.rpn_stats_view_logs))
+            if (b.rpnStatsViewLogs.isVisible) OriginalButton("bottomsheet_rpn_stats:rpn_stats_view_logs", onClick = { b.rpnStatsViewLogs.performClick() }, modifier = Modifier.fillMaxWidth().padding(top = 26.dp).heightIn(min = 48.dp).alpha(.75f).testTag("rpn_stats_logs")) {
+                Text(stringResource(R.string.rpn_stats_view_logs))
             }
         }
         if (b.rpnStatsError.isVisible) Text(stringResource(R.string.rpn_stats_no_active_proxy), Modifier.padding(20.dp).alpha(.7f))

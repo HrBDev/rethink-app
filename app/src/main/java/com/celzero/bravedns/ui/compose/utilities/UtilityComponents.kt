@@ -57,9 +57,11 @@ fun Modifier.utilityHeroBackground(): Modifier {
 }
 
 @Composable
-fun UtilityButton(control: UtilityControl, modifier: Modifier = Modifier) {
-    if (control.isVisible) TextButton(onClick = { control.performClick() }, enabled = control.isEnabled,
-        modifier = modifier.testTag(control.tag), colors = ButtonDefaults.textButtonColors(contentColor = control.textColor?.let(::Color) ?: themeColor(R.attr.accentGood))) {
-        Text(control.text.toString(), style = utilityTextStyle(control.textAppearance, control.fontSize, control.fontFamily, control.fontStyle, control.letterSpacing))
+fun UtilityButton(control: UtilityControl, modifier: Modifier = Modifier, source: String) {
+    if (control.isVisible) com.celzero.bravedns.ui.compose.controls.OriginalButton(source,
+        onClick = { control.performClick() }, enabled = control.isEnabled,
+        modifier = modifier.testTag(control.tag), contentColor = control.textColor?.let(::Color),
+        backgroundTint = control.backgroundTintList) {
+        Text(control.text.toString())
     }
 }

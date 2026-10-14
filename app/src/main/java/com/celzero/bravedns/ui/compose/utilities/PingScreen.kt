@@ -1,5 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
@@ -71,15 +74,14 @@ import com.celzero.bravedns.ui.compose.themeColor
                 }
             }
             HorizontalDivider(Modifier.padding(vertical = 16.dp), color = themeColor(R.attr.colorSurfaceVariant).copy(alpha = .25f))
-            OutlinedTextField(ui.reachInput.text.toString(), { ui.reachInput.text = it }, Modifier.fillMaxWidth().testTag(ui.reachInput.tag),
+            OriginalTextField(ui.reachInput.text.toString(), { ui.reachInput.text = it }, Modifier.fillMaxWidth().testTag(ui.reachInput.tag), style = OriginalFieldStyle.Ping,
                 enabled = ui.reachInput.isEnabled && ui.reachInputLayout.isEnabled, singleLine = true,
                 label = { Text(ui.reachInputLayout.hint.toString()) }, textStyle = utilityTextStyle(size = 15f),
-                isError = ui.reachInputLayout.error != null, supportingText = ui.reachInputLayout.error?.let { error -> { Text(error.toString()) } },
-                shape = RoundedCornerShape(16.dp), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri, imeAction = ImeAction.Done),
+                isError = ui.reachInputLayout.error != null, errorMessage = ui.reachInputLayout.error?.toString(), supportingText = ui.reachInputLayout.error?.let { error -> { Text(error.toString()) } },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri, imeAction = ImeAction.Done),
                 keyboardActions = KeyboardActions(onDone = { ui.reachInput.dispatchDone() }))
             UtilityText(ui.rpnInactiveNote, Modifier.padding(top = 8.dp))
-            Button({ ui.pingButton.performClick() }, enabled = ui.pingButton.isEnabled, modifier = Modifier.fillMaxWidth().padding(top = 16.dp).heightIn(min = 52.dp).testTag(ui.pingButton.tag),
-                colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.serverHeaderGradientEnd), contentColor = themeColor(R.attr.primaryTextColor)), shape = RoundedCornerShape(26.dp)) {
+            OriginalButton("activity_ping_test:ping_button", { ui.pingButton.performClick() }, enabled = ui.pingButton.isEnabled, modifier = Modifier.fillMaxWidth().padding(top = 16.dp).heightIn(min = 52.dp).testTag(ui.pingButton.tag)) {
                 Text(ui.pingButton.text.toString(), style = utilityTextStyle(size = 16f, spacing = .02f))
             }
         }

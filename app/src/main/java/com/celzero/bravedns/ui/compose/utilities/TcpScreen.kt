@@ -27,7 +27,7 @@ import com.celzero.bravedns.ui.compose.themeColor
                         UtilityText(ui.enableUdpRelay, Modifier.weight(1f))
                         Checkbox(ui.enableUdpRelay.isChecked, { ui.enableUdpRelay.isChecked = it }, Modifier.testTag(ui.enableUdpRelay.tag).semantics { contentDescription = "Enable UDP Relay" })
                     }
-                    UtilityButton(ui.tcpProxyAddApps)
+                    UtilityButton(ui.tcpProxyAddApps, source = "activity_tcp_proxy:tcp_proxy_add_apps")
                     if (ui.tcpErrorRl.isVisible) UtilityText(ui.tcpErrorTv)
                 }
             }

@@ -1,0 +1,66 @@
+[
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/apps/RpnBypassAppsScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "ebce0b5bf26763c68efec22902bfa24ca4f4152493e0a7f83a36dd67839299b3",
+    "current_sha256": "ebce0b5bf26763c68efec22902bfa24ca4f4152493e0a7f83a36dd67839299b3",
+    "raw_control_count": 3,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/common/Onboarding.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "0d08b86c6a01a4e3f82db908ac31091cec368868e48c6db6ae9b19aa7936309f",
+    "current_sha256": "0d08b86c6a01a4e3f82db908ac31091cec368868e48c6db6ae9b19aa7936309f",
+    "raw_control_count": 1,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/dns/OdohAddScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "ebc175fc893e4080fbfd9b58920cd9b926db1297d693701bfb187f12d6fe23ea",
+    "current_sha256": "ebc175fc893e4080fbfd9b58920cd9b926db1297d693701bfb187f12d6fe23ea",
+    "raw_control_count": 1,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/home/HomeScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "374659e7cf3abafc96f887a8e40d7d752519c67fa7cdad48f803fc8e3e5886d3",
+    "current_sha256": "374659e7cf3abafc96f887a8e40d7d752519c67fa7cdad48f803fc8e3e5886d3",
+    "raw_control_count": 1,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/logs/LogsScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "ef8a4da4769963a23eedee68587d3a2cb7ef9af656368df08c64e41a096dbf21",
+    "current_sha256": "ef8a4da4769963a23eedee68587d3a2cb7ef9af656368df08c64e41a096dbf21",
+    "raw_control_count": 1,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/ProxyEditorScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "de4705329c9f0fbe04cc6eaafa228b5fde24c77778006bfd513a07d40ea0f37f",
+    "current_sha256": "de4705329c9f0fbe04cc6eaafa228b5fde24c77778006bfd513a07d40ea0f37f",
+    "raw_control_count": 6,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgImportScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "55c85c69a995dcd2919e3839bfc87fef7ddc24be2eb0c35f6341b68a9cbdf5cc",
+    "current_sha256": "55c85c69a995dcd2919e3839bfc87fef7ddc24be2eb0c35f6341b68a9cbdf5cc",
+    "raw_control_count": 2,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  },
+  {
+    "path": "app/src/tv/java/com/celzero/bravedns/tv/ui/proxy/WgIncludeAppsScreen.kt",
+    "baseline_revision": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+    "baseline_sha256": "da7e14d27effcabeadb3f398a006dda01498fd0d8ef3b003e0a327878cbedb34",
+    "current_sha256": "da7e14d27effcabeadb3f398a006dda01498fd0d8ef3b003e0a327878cbedb34",
+    "raw_control_count": 3,
+    "reason": "This exact TV file already used Compose at the pinned baseline and is byte-identical. It was not part of the phone XML-to-Compose style change. Any byte change removes this bounded exemption; no TV-directory blanket allowance."
+  }
+]

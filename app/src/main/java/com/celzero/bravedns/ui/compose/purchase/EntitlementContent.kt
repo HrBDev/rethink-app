@@ -1,5 +1,6 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.purchase
+import com.celzero.bravedns.ui.compose.controls.OriginalButton
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -40,11 +41,11 @@ internal class EntitlementUiState {
         state.rows.forEach { row -> PurchaseDetail(row.label, row.value); if (row.divider) HorizontalDivider() }
         if (state.restoreVisible) {
             Text(stringResource(R.string.rpn_restore_confirm_message))
-            Button(onRestore, enabled = state.restoreEnabled, modifier = Modifier.fillMaxWidth().alpha(state.restoreAlpha).testTag("entitlement_restore")) {
+            OriginalButton("bottomsheet_entitlement_detail:btn_restore", onRestore, enabled = state.restoreEnabled, modifier = Modifier.fillMaxWidth().alpha(state.restoreAlpha).testTag("entitlement_restore")) {
                 Text(state.restoreLabel ?: stringResource(R.string.rpn_restore_confirm_title))
             }
         }
         RpnSignature(state.signature, Modifier.fillMaxWidth())
-        TextButton(onDismiss, Modifier.fillMaxWidth()) { Text(stringResource(R.string.lbl_dismiss)) }
+        OriginalButton("bottomsheet_entitlement_detail:btn_dismiss", onDismiss, Modifier.fillMaxWidth()) { Text(stringResource(R.string.lbl_dismiss)) }
     }
 }

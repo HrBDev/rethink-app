@@ -2,6 +2,11 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 package com.celzero.bravedns.ui.compose.rules
 
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.content.Intent
 import android.text.format.DateUtils
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -92,11 +97,11 @@ internal fun <T : Serializable> RulesPage(domain: Boolean, uid: Int, rules: Cust
                 Image(painterResource(R.drawable.illustrations_no_record), null, Modifier.width(220.dp).padding(top = 30.dp))
             } else Column(Modifier.fillMaxSize()) {
                 Row(Modifier.fillMaxWidth().padding(4.dp), verticalAlignment = Alignment.CenterVertically) {
-                    OutlinedTextField(state.query, { updateRulesSearch(state, it, onQuery) }, Modifier.weight(1f).testTag("rules_search"),
+                    OriginalTextField(state.query, { updateRulesSearch(state, it, onQuery) }, Modifier.weight(1f).testTag("rules_search"), style = OriginalFieldStyle.Search, textStyle = androidx.compose.ui.text.TextStyle(fontSize = if (name != null) 14.sp else 16.sp),
                         singleLine = true, placeholder = { Text(hint, fontSize = if (name != null) 14.sp else 16.sp) },
                         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = { submitRulesSearch(state, onQuery) }),
-                        trailingIcon = { if (state.query.isNotEmpty()) TextButton({ updateRulesSearch(state, "", onQuery) }) { Text(stringResource(R.string.fapps_filter_clear_btn)) } })
-                    IconButton({ state.deleteOpen = true }, Modifier.testTag("rules_delete")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete)) }
+                        trailingIcon = { if (state.query.isNotEmpty()) IconButton({ updateRulesSearch(state, "", onQuery) }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn)) } })
+                    IconButton({ state.deleteOpen = true }, Modifier.testTag("rules_delete")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }
                 }
                 LazyColumn(Modifier.fillMaxSize().testTag("rules_list"), state = list, contentPadding = PaddingValues(bottom = 150.dp)) {
                     items(rows.itemCount, key = rows.itemKey { ruleKey(it) }) { index ->
@@ -120,7 +125,7 @@ internal fun <T : Serializable> RulesPage(domain: Boolean, uid: Int, rules: Cust
             }
             Column(Modifier.align(Alignment.BottomEnd).padding(30.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 if (DEBUG) SmallFloatingActionButton({ picker.launch(arrayOf("text/plain")) }, Modifier.testTag("rules_import")) { Icon(painterResource(R.drawable.ic_import_conf), stringResource(R.string.import_rules_fab_desc)) }
-                if (appSpecific) SmallFloatingActionButton({ state.openEditor() }, Modifier.testTag("rules_add")) { Icon(painterResource(R.drawable.ic_fab_without_border), stringResource(R.string.lbl_create)) }
+                if (appSpecific) SmallFloatingActionButton({ state.openEditor() }, Modifier.testTag("rules_add")) { Icon(painterResource(R.drawable.ic_fab_without_border), stringResource(R.string.lbl_create), Modifier.size(24.dp)) }
             }
         }
     }
@@ -139,14 +144,14 @@ internal fun <T : Serializable> RulesPage(domain: Boolean, uid: Int, rules: Cust
                 RuleRadioOption(stringResource(if (!domain && uid == Constants.UID_EVERYBODY) R.string.bypass_universal else R.string.ci_trust_rule), !state.importBlock) { state.importBlock = false }
             }
             RuleButtons {
-                TextButton(state::dismissImport) { Text(stringResource(R.string.lbl_cancel)) }
-                TextButton(actions::importConfirmed, Modifier.testTag("rules_import_confirm")) { Text(stringResource(R.string.import_rules_btn)) }
+                OriginalButton("dialog_import_confirm:dic_cancel_btn", state::dismissImport) { Text(stringResource(R.string.lbl_cancel)) }
+                OriginalButton("dialog_import_confirm:dic_import_btn", actions::importConfirmed, Modifier.testTag("rules_import_confirm")) { Text(stringResource(R.string.import_rules_btn)) }
             }
         }
     }
     state.importSummary?.let { summary -> RuleDialog(stringResource(R.string.import_rules_complete_title), { state.importSummary = null }) {
         Text(summary)
-        RuleButtons { TextButton({ state.importSummary = null }) { Text(stringResource(R.string.fapps_info_dialog_positive_btn)) } }
+        RuleButtons { OriginalButton("dialog_info_rules_layout:info_rules_dialog_ok_btn", { state.importSummary = null }) { Text(stringResource(R.string.fapps_info_dialog_positive_btn)) } }
     } }
 }
 
@@ -155,20 +160,20 @@ internal fun RuleEditor(domain: Boolean, uid: Int, state: RulesPageState, onSubm
     RuleDialog(stringResource(if (domain) R.string.cd_dialog_title else R.string.ci_dialog_title), { state.editorOpen = false }, titleSize = 14.sp) {
         Text(stringResource(if (domain) R.string.cd_dialog_desc else R.string.ci_dialog_desc), fontSize = 11.sp)
         if (domain) RuleButtons {
-            FilterChip(state.domainType == DomainRulesManager.DomainType.DOMAIN, { state.domainType = DomainRulesManager.DomainType.DOMAIN }, { Text(stringResource(R.string.lbl_domain), fontSize = 12.sp) })
-            FilterChip(state.domainType == DomainRulesManager.DomainType.WILDCARD, { state.domainType = DomainRulesManager.DomainType.WILDCARD }, { Text(stringResource(R.string.lbl_wildcard), fontSize = 12.sp) })
+            OriginalChip("dialog_add_custom_domain:dacd_domain_chip", state.domainType == DomainRulesManager.DomainType.DOMAIN, { state.domainType = DomainRulesManager.DomainType.DOMAIN }, { Text(stringResource(R.string.lbl_domain), fontSize = 12.sp) })
+            OriginalChip("dialog_add_custom_domain:dacd_wildcard_chip", state.domainType == DomainRulesManager.DomainType.WILDCARD, { state.domainType = DomainRulesManager.DomainType.WILDCARD }, { Text(stringResource(R.string.lbl_wildcard), fontSize = 12.sp) })
         }
         val hint = if (domain) stringResource(R.string.cd_dialog_edittext_hint, stringResource(if (state.domainType == DomainRulesManager.DomainType.WILDCARD) R.string.lbl_wildcard else R.string.lbl_domain)) else stringResource(R.string.ci_dialog_edittext_hint)
-        OutlinedTextField(state.input, {
+        OriginalTextField(state.input, {
             state.input = it
             if (domain) state.domainType = if (it.startsWith("*") || it.startsWith(".")) DomainRulesManager.DomainType.WILDCARD else DomainRulesManager.DomainType.DOMAIN else state.error = null
-        }, Modifier.fillMaxWidth().testTag("rule_input"), label = { Text(hint) }, textStyle = MaterialTheme.typography.bodyMedium,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri), isError = state.error != null)
+        }, Modifier.fillMaxWidth().testTag("rule_input"), style = OriginalFieldStyle.Rule, label = { Text(hint) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri), isError = state.error != null, errorMessage = state.error?.let { stringResource(it) })
         state.error?.let { Text(stringResource(it), Modifier.semantics { liveRegion = LiveRegionMode.Polite }.testTag("rule_error"), color = MaterialTheme.colorScheme.error) }
         RuleButtons {
-            TextButton({ state.editorOpen = false }, Modifier.testTag("rule_editor_done")) { Text(stringResource(R.string.fapps_info_dialog_positive_btn)) }
-            TextButton({ onSubmit(false) }, Modifier.testTag("rule_allow")) { Text(stringResource(if (!domain && uid == Constants.UID_EVERYBODY) R.string.bypass_universal else R.string.ci_trust_rule)) }
-            TextButton({ onSubmit(true) }, Modifier.testTag("rule_block")) { Text(stringResource(R.string.block)) }
+            OriginalButton(if (domain) "dialog_add_custom_domain:dacd_cancel_btn" else "dialog_add_custom_ip:daci_cancel_btn", { state.editorOpen = false }, Modifier.testTag("rule_editor_done")) { Text(stringResource(R.string.fapps_info_dialog_positive_btn)) }
+            OriginalButton(if (domain) "dialog_add_custom_domain:dacd_trust_btn" else "dialog_add_custom_ip:daci_trust_btn", { onSubmit(false) }, Modifier.testTag("rule_allow")) { Text(stringResource(if (!domain && uid == Constants.UID_EVERYBODY) R.string.bypass_universal else R.string.ci_trust_rule)) }
+            OriginalButton(if (domain) "dialog_add_custom_domain:dacd_block_btn" else "dialog_add_custom_ip:daci_block_btn", { onSubmit(true) }, Modifier.testTag("rule_block")) { Text(stringResource(R.string.block)) }
         }
     }
 }
@@ -186,8 +191,8 @@ internal fun RuleEditor(domain: Boolean, uid: Int, state: RulesPageState, onSubm
 @Composable internal fun RuleButtons(content: @Composable FlowRowScope.() -> Unit) { FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, content = content) }
 @Composable internal fun RuleConfirmDialog(title: String, message: String, confirm: String, onConfirm: () -> Unit, onCancel: () -> Unit, onDismiss: () -> Unit) {
     RuleDialog(title, onDismiss) { Text(message); RuleButtons {
-        TextButton(onCancel, Modifier.testTag("rule_delete_cancel")) { Text(stringResource(R.string.lbl_cancel)) }
-        TextButton(onConfirm, Modifier.testTag("rule_delete_confirm")) { Text(confirm) }
+        OriginalButton("@dialog_negative", onCancel, Modifier.testTag("rule_delete_cancel")) { Text(stringResource(R.string.lbl_cancel)) }
+        OriginalButton("@dialog_positive", onConfirm, Modifier.testTag("rule_delete_confirm")) { Text(confirm) }
     } }
 }
 @Composable internal fun RuleRadioOption(label: String, selected: Boolean, onClick: () -> Unit) {
@@ -221,7 +226,7 @@ internal data class RuleAppMetadata(val name: String = "", val icon: ImageBitmap
     val app = rememberRuleApp(uid, domain)
     Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
         RuleAppIcon(app.icon); Text(app.name, Modifier.weight(1f).padding(horizontal = 8.dp), fontSize = 16.sp)
-        TextButton(onMore) { Text(stringResource(R.string.ssv_see_more)) }
+        OriginalButton(if (domain) "list_item_custom_all_domain:custom_domain_see_more_chip" else "list_item_custom_all_ip:custom_ip_see_more_chip", onMore) { Text(stringResource(R.string.ssv_see_more)) }
     }
 }
 @Composable internal fun rememberRuleFlag(ip: CustomIp): String {
@@ -244,8 +249,8 @@ internal data class RuleAppMetadata(val name: String = "", val icon: ImageBitmap
         if (item is CustomIp) Text(rememberRuleFlag(item), Modifier.padding(end = 8.dp), fontSize = 30.sp)
         Column(Modifier.weight(1f)) { Text(title, fontSize = 16.sp); RuleStatusDescription(domain, status, modified, if (domain && !header) R.string.ci_trust_rule else R.string.ci_trust_txt, true) }
         RuleStatusBadge(domain, status)
-        IconButton(onEdit) { Icon(painterResource(R.drawable.ic_edit_icon_grey), stringResource(R.string.compose_rule_edit)) }
-        IconButton(onDetails) { Icon(painterResource(R.drawable.ic_arrow_down_small), stringResource(R.string.compose_rule_details)) }
+        IconButton(onEdit) { Icon(painterResource(R.drawable.ic_edit_icon_grey), stringResource(R.string.compose_rule_edit), Modifier.size(24.dp).alpha(.5f), tint = Color.Unspecified) }
+        IconButton(onDetails) { Icon(painterResource(R.drawable.ic_arrow_down_small), stringResource(R.string.compose_rule_details), Modifier.alpha(.5f), tint = Color.Unspecified) }
     }
 }
 @Composable internal fun RuleStatusDescription(domain: Boolean, status: Int, modified: Long, trust: Int = R.string.ci_trust_txt, italic: Boolean = false) {

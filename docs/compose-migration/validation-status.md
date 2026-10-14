@@ -1,18 +1,28 @@
 # Compose migration validation status — 2026-10-14
 
-**Work in progress. Not production ready. The latest binding-removal changes have not been compiled or executed.**
+**Work in progress. Not production ready. Binding removal and the latest layout/component-style corrections have not been compiled or executed.**
+
+## Current regression corrections
+
+- Anchored opaque navigation and restored Home card gutters are durably checkpointed at `28435219d19d902862336a84fe734dcb584fa7dd`, tree `f219b14ab7767f5b1b4704c69612d280aa02c83d`. Its GitHub Actions run list was empty; there is no CI build result for that commit.
+- This subsequent source checkpoint restores original chip/button/field families and stateful resources, segmented controls, passive badges, icon/FAB overrides, and the omitted Checkout plans/removal-badge labels. It retains native Compose, callbacks and business logic. See `original-controls-restoration.md`, `original-fields-restoration.md`, `component-style-restoration-review.md` and `icon-affordance-audit.json`.
+- All 27 source/controller guards passed against an unchanged 1,576-file `app/src` envelope, SHA-256 `b99f1104df77f5b3c754fc64a6e4a0ee7c6377193e8f9842795a3e0df1d6a547`. The separate whole-production component coverage guard passes: no unreviewed direct calls or unresolved manual linkage obligations; 53 exact reviewed icon/FAB calls and eight byte-identical original TV files are explicit exceptions.
+- Coverage describes source linkage, not visual equivalence. The 284 source-style keys, 271 generated styles, 96 XML field mappings, 117 preserved callback expressions, and 213 planned variant fixtures must not be counted as rendered passes.
+- The cumulative safety manifest now contains 84 exact classes / 598 methods and keeps runtime clearance BLOCKED. New layout, field, control and passive-badge tests are authored only. The full current allowlist still requires toolchain/artifact revalidation, compilation and execution.
+- The 115-original-phone-root ledger continues to mark unverified gates explicitly. Actual Fragment/NavHost inset-policy propagation, all-route visual/accessibility acceptance, and the existing wide Home logs-to-apps bottom-barrier layout gap remain unresolved.
+
 
 ## Durable source recovery
 
 - Pinned upstream base: `23cb6dd98805445174bd83b7237ad5f5d2c24ac9` (`gradle-improvements`).
-- Verified WIP checkpoint: `87b3b9975afdb59492bc92cf97b9560cdd725330`, tree `1949435b20c49bb03ec06123c27f913a4974882b`.
+- Historical recovery checkpoint: `87b3b9975afdb59492bc92cf97b9560cdd725330`, tree `1949435b20c49bb03ec06123c27f913a4974882b`.
 - After a workspace reset, all 1,782 source files were recovered and checked against their Git blob hashes. The recovered 1,460-file production/content-test envelope is `e7b89a0d41f650816063ca2c39b57963bfb3d9a4a4b6f79e5c8cf081411164fb`.
 - Library version 6 archive was independently verified as SHA-256 `1275dd10f406ab2605eade25a2754077e50d9fea2f1c529ebfc64df903fb6441`. It retains earlier source and logs, while the newer source was recovered from GitHub's completed tree upload.
 - The last upload's final documentation/script chunk never ran. Three missing guard scripts have since been restored to their recorded exact hashes. Historical reports are retained as historical, not current acceptance results.
 
 ## Results observed before the reset
 
-These results do **not** validate the newer binding-removal edits.
+These results do **not** validate the newer binding-removal, layout or component-style edits.
 
 - Pinned baseline F-Droid Full main compilation passed.
 - The final pre-reset F-Droid Full production, unit-test and Android-test Kotlin compilation, plus F-Droid TV production Kotlin compilation, passed. Earlier successful build logs are retained in Library version 6; the final build log itself was lost.
@@ -27,7 +37,7 @@ The previous checkpoint still had two generated-binding Activity shells: DNS Det
 
 The user explicitly requested removal of binding. The current work replaces those shells, removes unused binding dependencies and dormant binding code, and performs a whole-source renderer audit in addition to the 115-original-phone-root ledger. Framework-only Fragment containers and system-owned window/notification resources are identified separately. See `binding-removal-audit.md` and `binding-removal-review.md` for the current source checks and any unresolved findings.
 
-Intentional Material 3 appearance and spacing changes are accepted. Missing content/actions, clipping, unreadable contrast, RTL/large-text/accessibility, navigation/state and business-logic regressions remain failures.
+The user subsequently requested restoration of original chip, button and field styling; that overrides the earlier broad acceptance of newer Material appearance for these controls. Other intentional Material spacing changes are not automatically failures. Missing content/actions, clipping, unreadable contrast, RTL/large-text/accessibility, navigation/state and business-logic regressions remain failures.
 
 ## Build blockers and remaining acceptance
 

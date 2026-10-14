@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.home
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.FlowRow
@@ -70,7 +71,7 @@ fun HomeDialogs(presentation: HomePresentation) {
                 NoDimDialogWindow()
                 FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     dialog.buttons.sortedBy { when (it.which) { -3 -> 0; -2 -> 1; else -> 2 } }.forEach { action ->
-                        TextButton(onClick = { dialog.choose(action) }) { Text(action.label.toString()) }
+                        OriginalButton(when (action.which) { -2 -> "@dialog_negative"; -3 -> "@dialog_neutral"; else -> "@dialog_positive" }, onClick = { dialog.choose(action) }) { Text(action.label.toString()) }
                     }
                 }
             },

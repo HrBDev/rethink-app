@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.text.style.BackgroundColorSpan
@@ -82,10 +84,14 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
     }.toAnnotatedString()
 }
 
-@Composable fun WgAction(node: WgControlState, modifier: Modifier = Modifier) {
+@Composable fun WgAction(node: WgControlState, modifier: Modifier = Modifier, source: String) {
     if (node.visibility == View.GONE) return
-    TextButton(onClick = { node.performClick() }, enabled = node.isEnabled && node.isClickable,
-        modifier = modifier.wgState(node), colors = ButtonDefaults.textButtonColors(contentColor = node.textColor?.let(::Color) ?: MaterialTheme.colorScheme.primary)) { Text(if (node.isAllCaps) node.text.toString().uppercase() else node.text.toString()) }
+    com.celzero.bravedns.ui.compose.controls.OriginalButton(source,
+        onClick = { node.performClick() }, enabled = node.isEnabled && node.isClickable,
+        modifier = modifier.wgState(node), contentColor = node.textColor?.let(::Color),
+        backgroundTint = node.backgroundTintList) {
+        Text(wgAnnotatedText(if (node.isAllCaps) node.text.toString().uppercase() else node.text))
+    }
 }
 
 @Composable fun WgCheck(node: WgControlState, label: String? = null, switch: Boolean = false, modifier: Modifier = Modifier) {
@@ -131,7 +137,7 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
         if (node.drawable != null) {
             val bitmap = remember(node.drawable) { node.drawable!!.toBitmap(width = 96, height = 96).asImageBitmap() }
             Image(bitmap, label, Modifier.size(40.dp))
-        } else node.imageResource?.let { Icon(painterResource(it), label, Modifier.size(24.dp), tint = node.textColor?.let(::Color) ?: LocalContentColor.current) }
+        } else node.imageResource?.let { Icon(painterResource(it), label, Modifier.size(24.dp), tint = node.textColor?.let(::Color) ?: Color.Unspecified) }
     }
     if (node.hasClickListener) IconButton({ node.performClick() }, m, enabled = node.isEnabled && node.isClickable) { content() }
     else Box(m) { content() }
@@ -165,12 +171,17 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
 }
 
 @Composable fun WgField(node: WgControlState, label: CharSequence, modifier: Modifier = Modifier, readOnly: Boolean = false,
-                        keyboard: KeyboardType = KeyboardType.Text, maxLines: Int = 4, onDone: (() -> Unit)? = node.onEditorDone, trailing: (@Composable () -> Unit)? = null) {
+                        keyboard: KeyboardType = KeyboardType.Text, maxLines: Int = 4, textAlign: androidx.compose.ui.text.style.TextAlign = androidx.compose.ui.text.style.TextAlign.Start, fieldStyle: OriginalFieldStyle = OriginalFieldStyle.WgEditor, expandedHint: Boolean = true, onDone: (() -> Unit)? = node.onEditorDone, trailing: (@Composable () -> Unit)? = null) {
     if (node.visibility == View.GONE) return
-    OutlinedTextField(node.text.toString(), { node.setText(it) }, modifier.fillMaxWidth().wgState(node), enabled = node.isEnabled,
+    OriginalTextField(node.text.toString(), { node.setText(it) }, modifier.fillMaxWidth().wgState(node)
+        .then(if (fieldStyle == OriginalFieldStyle.WgEditor) Modifier.padding(4.dp).padding(top = 15.dp) else Modifier)
+        .then(if (fieldStyle == OriginalFieldStyle.WgInlineSsid) Modifier.semantics { contentDescription = label.toString() } else Modifier),
+        style = fieldStyle, expandedHint = expandedHint, enabled = node.isEnabled,
+        textStyle = androidx.compose.ui.text.TextStyle(textAlign = textAlign, color = node.textColor?.let(::Color) ?: Color.Unspecified,
+            fontSize = node.textSizeSp?.sp ?: androidx.compose.ui.unit.TextUnit.Unspecified),
         readOnly = readOnly, label = { Text(label.toString()) }, placeholder = { Text(node.hint.toString()) },
         visualTransformation = if (node.isPassword) PasswordVisualTransformation() else VisualTransformation.None,
-        maxLines = maxLines, shape = RoundedCornerShape(8.dp), trailingIcon = trailing,
+        maxLines = maxLines, trailingIcon = trailing,
         keyboardOptions = KeyboardOptions(keyboardType = if (node.isPassword) KeyboardType.Password else keyboard, autoCorrectEnabled = !node.noSuggestions, imeAction = if (onDone != null) ImeAction.Done else if (node.imeNext) ImeAction.Next else ImeAction.Default),
         keyboardActions = KeyboardActions(onDone = { onDone?.invoke() }))
 }

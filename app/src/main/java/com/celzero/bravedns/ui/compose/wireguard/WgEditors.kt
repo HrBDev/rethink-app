@@ -26,16 +26,16 @@ import com.celzero.bravedns.R
             WgText(b.interfaceTitle)
             WgField(b.interfaceNameText, b.interfaceNameLayout.hint)
             WgField(b.privateKeyText, b.privateKeyTextLayout.hint, trailing = {
-                IconButton({ b.privateKeyTextLayout.onEndIconClick?.invoke() }) { Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.wg_compose_generate_key)) }
+                IconButton({ b.privateKeyTextLayout.onEndIconClick?.invoke() }) { Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.wg_compose_generate_key), tint = com.celzero.bravedns.ui.compose.themeColor(R.attr.colorOnSurfaceVariant)) }
             })
             Box {
-                WgField(b.publicKeyText, b.publicKeyLabelLayout.hint, readOnly = true, maxLines = 1)
+                WgField(b.publicKeyText, b.publicKeyLabelLayout.hint, expandedHint = false, readOnly = true, maxLines = 1)
                 Box(Modifier.matchParentSize().clickable { b.publicKeyText.performClick() })
             }
-            WgEditorPair({ WgField(b.addressesLabelText, b.addressesLabelLayout.hint, it) }, { WgField(b.listenPortText, b.listenPortLabelLayout.hint, it, keyboard = KeyboardType.Number) })
-            WgEditorPair({ WgField(b.dnsServersText, b.dnsServersLabelLayout.hint, it) }, { WgField(b.mtuText, b.mtuLabelLayout.hint, it, keyboard = KeyboardType.Number) })
+            WgEditorPair({ WgField(b.addressesLabelText, b.addressesLabelLayout.hint, it) }, { WgField(b.listenPortText, b.listenPortLabelLayout.hint, it, expandedHint = false, textAlign = androidx.compose.ui.text.style.TextAlign.Center, keyboard = KeyboardType.Number) })
+            WgEditorPair({ WgField(b.dnsServersText, b.dnsServersLabelLayout.hint, it, expandedHint = false) }, { WgField(b.mtuText, b.mtuLabelLayout.hint, it, expandedHint = false, textAlign = androidx.compose.ui.text.style.TextAlign.Center, keyboard = KeyboardType.Number) })
             WgText(b.amzProps)
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { WgAction(b.dismissBtn); WgAction(b.saveTunnel) }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { WgAction(b.dismissBtn, source = "activity_wg_config_editor:dismiss_btn"); WgAction(b.saveTunnel, source = "activity_wg_config_editor:save_tunnel") }
         }
     }
 }
@@ -45,14 +45,14 @@ import com.celzero.bravedns.R
         Column(Modifier.fillMaxSize().safeDrawingPadding().imePadding().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             WgText(b.peerTitle)
             WgField(b.peerPublicKey, b.publicKeyLabelLayout.hint)
-            WgField(b.peerPresharedKey, b.preSharedKeyLabelLayout.hint)
-            WgField(b.peerPersistentKeepAlive, b.persistentKeepaliveLabelLayout.hint, keyboard = KeyboardType.Number)
+            WgField(b.peerPresharedKey, b.preSharedKeyLabelLayout.hint, expandedHint = false)
+            WgField(b.peerPersistentKeepAlive, b.persistentKeepaliveLabelLayout.hint, expandedHint = false, keyboard = KeyboardType.Number)
             WgText(b.keepAliveHint)
             WgField(b.peerEndpoint, b.endpointLabelLayout.hint)
             WgField(b.peerAllowedIps, b.allowedIpsLabelLayout.hint, maxLines = 12)
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                WgAction(b.customDialogDismissButton)
-                WgAction(b.customDialogOkButton)
+                WgAction(b.customDialogDismissButton, source = "dialog_wg_add_peer:custom_dialog_dismiss_button")
+                WgAction(b.customDialogOkButton, source = "dialog_wg_add_peer:custom_dialog_ok_button")
                 if (b.customDialogOkProgress.isVisible) CircularProgressIndicator(Modifier.size(24.dp))
             }
         }

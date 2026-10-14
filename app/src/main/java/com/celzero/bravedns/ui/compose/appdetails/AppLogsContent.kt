@@ -1,5 +1,9 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.appdetails
+import androidx.compose.ui.draw.alpha
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.appcompat.widget.SearchView
 import androidx.compose.foundation.gestures.stopScroll
 import androidx.compose.foundation.layout.*
@@ -60,17 +64,17 @@ class AppLogsState {
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
             Row(Modifier.fillMaxWidth().padding(horizontal=10.dp,vertical=8.dp),verticalAlignment=Alignment.CenterVertically) {
                 DrawableImage(b.awlAppDetailIcon1.drawable,Modifier.size(32.dp))
-                OutlinedTextField(b.awlSearch.query,{b.awlSearch.setQuery(it,false)},Modifier.weight(1f),enabled=b.awlSearch.isEnabled,
+                OriginalTextField(b.awlSearch.query,{b.awlSearch.setQuery(it,false)},Modifier.weight(1f), style = OriginalFieldStyle.AppLogSearch,enabled=b.awlSearch.isEnabled,
                     placeholder={Text(b.awlSearch.queryHint.toString(),fontSize=14.sp)},singleLine=true,
                     keyboardOptions=KeyboardOptions(imeAction=ImeAction.Search),keyboardActions=KeyboardActions(onSearch={b.awlSearch.setQuery(b.awlSearch.query,true)}),
-                    trailingIcon={if(b.awlSearch.query.isNotEmpty())IconButton({b.awlSearch.setQuery("",false)}){Icon(Icons.Default.Close,stringResource(R.string.lbl_cancel))}})
-                if(b.awlDelete.isVisible)IconButton({b.awlDelete.performClick()}){Icon(painterResource(R.drawable.ic_delete),stringResource(R.string.ada_delete_logs_dialog_title))}
+                    trailingIcon={if(b.awlSearch.query.isNotEmpty())IconButton({b.awlSearch.setQuery("",false)}){Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material),stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))}})
+                if(b.awlDelete.isVisible)IconButton({b.awlDelete.performClick()}){Icon(painterResource(R.drawable.ic_delete),stringResource(R.string.ada_delete_logs_dialog_title), Modifier.alpha(.5f), tint = Color.Unspecified)}
             }
-            if(b.toggleGroup.isVisible)FlowRow(Modifier.padding(horizontal=12.dp),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                b.timeButtons.forEachIndexed{i,node->FilterChip(b.selectedTime==i,{b.onTime(i)},label={Text(node.text.toString())})}
+            if(b.toggleGroup.isVisible)FlowRow(Modifier.padding(horizontal=12.dp),horizontalArrangement=Arrangement.spacedBy((-1).dp)) {
+                b.timeButtons.forEachIndexed{i,node->OriginalChip("activity_app_wise_ip_logs:" + listOf("tb_recent_toggle_btn", "tb_daily_toggle_btn", "tb_weekly_toggle_btn")[i], b.selectedTime==i, {b.onTime(i)}, segmentIndex=i, segmentCount=3, contentColor=node.textColor?.let { androidx.compose.ui.graphics.Color(it) }, backgroundTint=node.backgroundTintList, label={Text(node.text.toString())})}
             }
             b.awlRecyclerConnection.adapter?.let { adapter ->
-                LazyColumn(Modifier.weight(1f),state=scroll){items(adapter.itemCount){adapter.RowAt(it)}}
+                LazyColumn(Modifier.weight(1f), style = OriginalFieldStyle.AppLogSearch,state=scroll){items(adapter.itemCount){adapter.RowAt(it)}}
             }
         }
     }

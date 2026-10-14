@@ -2,6 +2,9 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,9 +29,9 @@ import com.celzero.bravedns.R
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
             WgText(b.wgIncludeAppDialogHeading, Modifier.padding(16.dp))
             Row(Modifier.padding(horizontal = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-                OutlinedTextField(b.wgIncludeAppDialogSearchView.text.toString(), { b.wgIncludeAppDialogSearchView.setText(it) },
+                OriginalTextField(b.wgIncludeAppDialogSearchView.text.toString(), { b.wgIncludeAppDialogSearchView.setText(it) },
                     Modifier.weight(1f).focusRequester(requester), singleLine = true,
-                    placeholder = { Text(stringResource(R.string.search_proxy_add_apps)) },
+                    style = OriginalFieldStyle.Search, placeholder = { Text(stringResource(R.string.search_proxy_add_apps)) },
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                     keyboardActions = KeyboardActions(onSearch = {
                         val query = b.wgIncludeAppDialogSearchView.text.toString()
@@ -38,13 +41,13 @@ import com.celzero.bravedns.R
                         if (b.wgIncludeAppDialogSearchView.text.isNotEmpty()) IconButton({
                             b.wgIncludeAppDialogSearchView.setText("")
                             requester.requestFocus(); keyboard?.show()
-                        }) { Icon(painterResource(android.R.drawable.ic_menu_close_clear_cancel), stringResource(R.string.fapps_filter_clear_btn)) }
+                        }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn), tint = com.celzero.bravedns.ui.compose.themeColor(androidx.appcompat.R.attr.colorControlNormal)) }
                     })
                 if (b.wgRefreshList.isIndeterminate) CircularProgressIndicator(Modifier.padding(12.dp).size(24.dp))
                 else WgIcon(b.wgRefreshList, stringResource(R.string.wg_compose_refresh))
             }
             FlowRow(Modifier.padding(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                b.filters.forEach { chip -> FilterChip(chip.isChecked, { chip.isChecked = true }, label = { Text(chip.text.toString()) }) }
+                b.filters.forEach { chip -> OriginalChip("item_chip_filter:(anonymous)", chip.isChecked, { chip.isChecked = true }, label = { Text(chip.text.toString()) }) }
             }
             FlowRow(Modifier.padding(horizontal = 12.dp)) {
                 listOf(b.wgIncludeAppBulkCheck, b.wgIncludeAppDeselectAllCheck).forEach { node ->

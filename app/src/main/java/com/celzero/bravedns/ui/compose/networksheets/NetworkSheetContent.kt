@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.networksheets
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.graphics.Camera
 import android.graphics.Matrix
 import android.view.View
@@ -54,14 +55,14 @@ fun OrbotSheetContent(b: OrbotSheetState) {
             SheetHandle(bottom = 20)
             Row(Modifier.fillMaxWidth().padding(5.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                 OrbotImage(b)
-                AssistChip(onClick = { b.bsOrbotApp.performClick() }, label = {
+                OriginalChip("bottom_sheet_orbot:bs_orbot_app", selected = false, selectable = false, onClick = { b.bsOrbotApp.performClick() }, label = {
                     Text(stringResource(R.string.settings_orbot_header), color = themeColor(R.attr.primaryTextColor), style = utilityTextStyle(size = dimen(R.dimen.heading_font_text_view)))
                 }, modifier = Modifier.padding(start = 5.dp).weight(1f, fill = false))
                 IconButton(onClick = { b.orbotInfoIcon.performClick() }, modifier = Modifier.padding(start = 10.dp)) {
                     Image(painterResource(R.drawable.ic_info_white), stringResource(R.string.orbot_explanation), Modifier.size(24.dp))
                 }
             }
-            TextButton({ b.includeApplications.performClick() }, Modifier.fillMaxWidth(), colors = ButtonDefaults.textButtonColors(contentColor = themeColor(R.attr.secondaryTextColor))) {
+            OriginalButton("bottom_sheet_orbot:include_applications", { b.includeApplications.performClick() }, Modifier.fillMaxWidth()) {
                 Text(b.includeApplications.text.toString(), style = utilityTextStyle(size = dimen(R.dimen.large_font_text_view)))
             }
             Text(b.orbotStatus.text.toString(), Modifier.align(Alignment.CenterHorizontally).padding(15.dp).semantics { liveRegion = LiveRegionMode.Polite },

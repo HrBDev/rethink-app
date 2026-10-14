@@ -1,0 +1,36 @@
+{
+  "review": "independent source-only field parser negative controls",
+  "rejected_mutations": [
+    "value",
+    "callback",
+    "enabled",
+    "readonly",
+    "singleline",
+    "maxlines",
+    "minlines",
+    "password",
+    "imeoption",
+    "imeaction"
+  ],
+  "count": 10,
+  "presentation_only_rename_control_preserved": true,
+  "compile_runtime": "not run",
+  "source_pins": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt",
+      "sha256": "a0f35f97b31e6eb2d765eecf3f608a9fc4ff5629375ff47bb399b48bff31bec2"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFieldsTest.kt",
+      "sha256": "9efc408541fda2b6bc651c0b9cdedc5f300ee19acc00880396722974485e35ae"
+    },
+    {
+      "path": "scripts/compose-migration/check-original-fields.py",
+      "sha256": "1c86f4dacc3b8ef6e2f7fd31072c54fe8a1f1babf92beb216673286a0dc55c1a"
+    },
+    {
+      "path": "docs/compose-migration/original-field-style-map.json",
+      "sha256": "60045453f296f86c51eb4dbe1a4fcbc7f8fa28bf84d657f0d402977a2aeea57c"
+    }
+  ]
+}

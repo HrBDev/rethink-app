@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
@@ -66,13 +67,13 @@ fun WelcomeScreen(state: WelcomeUiState, finish: () -> Unit) {
         }
         HorizontalDivider(color = themeColor(R.attr.divider))
         Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-            if (state.currentItem < 3) TextButton(finish, Modifier.testTag("welcome.skip")) { Text(stringResource(R.string.skip), color = themeColor(R.attr.primaryLightColorText)) }
+            if (state.currentItem < 3) OriginalButton("activity_welcome:btn_skip", finish, Modifier.testTag("welcome.skip")) { Text(stringResource(R.string.skip), color = themeColor(R.attr.primaryLightColorText)) }
             else Spacer(Modifier.width(64.dp))
             Row(Modifier.weight(1f), horizontalArrangement = Arrangement.Center) {
                 repeat(4) { index -> Box(Modifier.padding(horizontal = 4.dp).size(8.dp).background(themeColor(R.attr.svgStrokeColor).copy(alpha = if (state.currentItem == index) 1f else 80f/255), CircleShape)
                     .semantics { selected = state.currentItem == index; contentDescription = "${index + 1} / 4" }) }
             }
-            TextButton({ state.next(finish) }, Modifier.testTag("welcome.next")) { Text(stringResource(if (state.currentItem == 3) R.string.finish else R.string.next)) }
+            OriginalButton("activity_welcome:btn_next", { state.next(finish) }, Modifier.testTag("welcome.next")) { Text(stringResource(if (state.currentItem == 3) R.string.finish else R.string.next)) }
         }
     }
 }

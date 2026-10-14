@@ -1,0 +1,120 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "native_checkpoint": "e2b97de59cc854de74010c096ceffbaed6cb4a55",
+  "verification": "static source only; no build, runtime or screenshot verification",
+  "mapped_baseline_instances": 96,
+  "audited_native_files": 18,
+  "audited_native_calls": 21,
+  "callback_checks": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsDialogs.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsContent.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "call_sites": 2,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnExcludeContent.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "call_sites": 2,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "call_sites": 2,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/PingScreen.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+      "call_sites": 1,
+      "value_and_change_callbacks_unchanged": true,
+      "keyboard_and_editor_arguments_unchanged": true
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

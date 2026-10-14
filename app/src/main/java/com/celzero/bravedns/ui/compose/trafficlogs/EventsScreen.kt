@@ -48,7 +48,7 @@ internal val LogAccelerateDecelerate = Easing { fraction -> ((kotlin.math.cos((f
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.Center) {
                         Icon(painterResource(icon), event.severity.name, Modifier.size(24.dp), tint = color)
-                        Surface(shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surfaceContainer) { Text(event.eventType.name.replace("_", " "), Modifier.padding(horizontal = 8.dp, vertical = 4.dp), style = MaterialTheme.typography.labelSmall) }
+                        com.celzero.bravedns.ui.compose.controls.OriginalLabel("item_event:event_type_chip") { Text(event.eventType.name.replace("_", " ")) }
                         Text(event.severity.name, Modifier.background(color).padding(horizontal = 10.dp, vertical = 4.dp), color = Color.White, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelSmall)
                     }
                     if (hasDetails) Icon(painterResource(R.drawable.ic_arrow_down), null, Modifier.size(24.dp).rotate(rotation), tint = themeColor(R.attr.svgStrokeColor))

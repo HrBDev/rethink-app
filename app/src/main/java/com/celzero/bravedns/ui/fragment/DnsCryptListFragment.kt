@@ -15,6 +15,7 @@
  */
 package com.celzero.bravedns.ui.fragment
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +71,7 @@ class DnsCryptListFragment : Fragment() {
                 R.string.dns_crypt_empty_state_title, R.string.dns_crypt_empty_state_desc, { adding = true }, header = {
                     Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text(stringResource(R.string.cd_dns_crypt_title), Modifier.weight(1f), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
-                        OutlinedButton(onClick = {
+                        OriginalButton("fragment_dns_crypt_list:add_relay_btn", onClick = {
                             if (!isAdded && requireActivity().isFinishing) Logger.w(Logger.LOG_TAG_UI, "DnsCrypt relay, Fragment not added to activity")
                             else relays = true
                         }) { Text(stringResource(R.string.cd_dnscrypt_relay_heading)) }

@@ -1,5 +1,8 @@
 package com.celzero.bravedns.ui.compose.rpn
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -29,10 +32,13 @@ fun RpnExcludeContent(ui: RpnExcludeState, filtered: List<CountryItem>, all: Lis
             Column(Modifier.padding(start = 14.dp)) { Text(stringResource(R.string.auto_exclude_cc_title), fontSize = 20.sp); Text(stringResource(R.string.auto_exclude_cc_subtitle), Modifier.alpha(.7f), fontSize = 13.sp) }
         }
         RpnSettingsCard { RpnText(ui.tvMinInfo, Modifier.padding(12.dp), MaterialTheme.typography.bodySmall) }
-        OutlinedTextField(ui.query, { restoredQuery = it; ui.setQuery(it) }, Modifier.fillMaxWidth().padding(horizontal = 16.dp), singleLine = true,
+        Surface(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+            shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp), color = themeColor(androidx.cardview.R.attr.cardBackgroundColor)) {
+        OriginalTextField(ui.query, { restoredQuery = it; ui.setQuery(it) }, Modifier.fillMaxWidth().heightIn(min = 60.dp).padding(start = 12.dp, end = 4.dp), style = OriginalFieldStyle.TransparentSearch, singleLine = true,
             placeholder = { Text(stringResource(R.string.auto_exclude_cc_search_hint)) },
             leadingIcon = { Icon(painterResource(R.drawable.ic_search), null, Modifier.size(18.dp)) },
-            trailingIcon = { if (ui.btnClearSearch.visibility != android.view.View.GONE) IconButton({ ui.btnClearSearch.performClick() }, Modifier.rpnVisibility(ui.btnClearSearch).rpnMotion(ui.btnClearSearch)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(18.dp)) } })
+            trailingIcon = { if (ui.btnClearSearch.visibility != android.view.View.GONE) IconButton({ ui.btnClearSearch.performClick() }, Modifier.rpnVisibility(ui.btnClearSearch).rpnMotion(ui.btnClearSearch)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(20.dp), tint = themeColor(R.attr.primaryTextColor)) } })
+        }
         if (ui.actionRow.isVisible) RpnText(ui.tvSelectedCount, Modifier.padding(horizontal = 20.dp, vertical = 12.dp), MaterialTheme.typography.bodySmall)
         Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState())) {
             RpnSettingsCard {
@@ -54,6 +60,6 @@ fun RpnExcludeContent(ui: RpnExcludeState, filtered: List<CountryItem>, all: Lis
                 }
             }
         }
-        Button({ ui.btnDone.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp).height(52.dp)) { RpnText(ui.btnDone) }
+        OriginalButton("bottomsheet_auto_exclude_countries:btn_done", { ui.btnDone.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp).height(52.dp)) { OriginalRpnText(ui.btnDone) }
     }
 }

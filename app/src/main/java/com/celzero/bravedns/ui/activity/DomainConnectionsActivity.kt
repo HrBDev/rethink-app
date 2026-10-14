@@ -15,6 +15,7 @@
  */
 package com.celzero.bravedns.ui.activity
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -156,8 +157,7 @@ class DomainConnectionsActivity : BaseActivity(){
                 @OptIn(ExperimentalLayoutApi::class)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     tags.forEachIndexed { index, tag ->
-                        FilterChip(selected = tag in selectedBlocklistTags, onClick = { toggleTag(tag) },
-                            label = { Text(tag) }, modifier = Modifier.testTag("blocklist_tag_$index"))
+                        OriginalChip("item_chip_filter:(anonymous)", selected = tag in selectedBlocklistTags, onClick = { toggleTag(tag) }, label = { Text(tag) }, modifier = Modifier.testTag("blocklist_tag_$index"))
                     }
                 }
             }, extraCount = groups?.itemCount ?: 0, extraRow = { groups?.GroupAt(it) })

@@ -1,6 +1,11 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.networksettings
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalSpinner
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
+import com.celzero.bravedns.ui.compose.fields.originalFieldFamily
 import android.os.Bundle
 import android.view.View
 import android.view.MotionEvent
@@ -259,7 +264,7 @@ fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing:
         }
         NetworkKind.SWITCH, NetworkKind.CHECK -> WgCheck(state!!, node.description?.toString(), node.kind == NetworkKind.SWITCH, m)
         NetworkKind.RADIO -> RadioButton(state!!.isChecked, { state.performClick() }, m, enabled = state.isEnabled)
-        NetworkKind.BUTTON -> TextButton({ state!!.performClick() }, m, enabled = state!!.isEnabled && state.isClickable) {
+        NetworkKind.BUTTON -> OriginalButton("dialog_set_proxy:" + node.key.substringAfterLast('.'), { state!!.performClick() }, m, enabled = state!!.isEnabled && state.isClickable) {
             Text(networkAnnotatedText(state.text), color = state.textColor?.let(::Color) ?: MaterialTheme.colorScheme.primary, style = utilityTextStyle(node.appearance, resolvedTextSize, node.fontFamily, node.textWeight, node.letterSpacing))
         }
         NetworkKind.FIELD -> NetworkEditField(state!!, m.fillMaxWidth(), node.numeric, node.description?.toString(),
@@ -278,7 +283,7 @@ fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing:
             val spinner = node.spinner!!
             var expanded by remember { mutableStateOf(false) }
             Box(m.alpha(spinner.alpha).pointerInteropFilter { spinner.dispatchTouch(it) }) {
-                TextButton({ expanded = true }) { Text(spinner.selectedItem.orEmpty()) }
+                OriginalSpinner(spinner.selectedItem.orEmpty(), { expanded = true })
                 DropdownMenu(expanded, { expanded = false }) {
                     spinner.items.forEachIndexed { index, item -> DropdownMenuItem({ Text(item) }, { spinner.setSelection(index); expanded = false }) }
                 }
@@ -297,16 +302,12 @@ fun NetworkTaskerContent(context: android.content.Context, input: WgControlState
         SelectionContainer {
             Text(context.getString(R.string.adv_tasker_dialog_msg), Modifier.padding(start = px(50), top = px(40), end = px(50)), style = utilityTextStyle(size = 16f))
         }
-        BoxWithConstraints(Modifier.fillMaxWidth().padding(start = px(50), top = px(40), end = px(50), bottom = px(40))) {
-            // The original multiline editor explicitly enabled horizontal scrolling.
-            BasicTextField(input.text.toString(), { input.setText(it) },
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            // The original multiline editor explicitly enabled horizontal scrolling and px padding.
+            OriginalTextField(input.text.toString(), { input.setText(it) },
                 Modifier.horizontalScroll(remember { ScrollState(0) }).widthIn(min = maxWidth),
-                textStyle = utilityTextStyle().copy(color = themeColor(R.attr.primaryTextColor)),
-                cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-                decorationBox = { field -> Box {
-                    if (input.text.isEmpty()) Text(input.hint.toString(), color = themeColor(R.attr.primaryLightColorText))
-                    field()
-                } })
+                style = OriginalFieldStyle.Tasker,
+                placeholder = { Text(input.hint.toString()) })
         }
         SelectionContainer {
             Text(context.getString(R.string.adv_tasker_dialog_instructions), Modifier.padding(start = px(50), top = px(40), end = px(50)), style = utilityTextStyle(size = 16f))
@@ -349,7 +350,8 @@ private fun NetworkEditField(state: WgControlState, modifier: Modifier, numeric:
     val padding = decoration.second
     BasicTextField(state.text.toString(), {
         state.setText(if (numeric) networkDigitsOnly(it, context.resources.configuration.locales[0]) else it)
-    }, modifier.defaultMinSize(minHeight = with(density) { decoration.third.second.toDp() })
+    }, modifier.heightIn(min = maxOf(48.dp, with(density) { decoration.third.second.toDp() }))
+        .semantics { originalFieldFamily = OriginalFieldStyle.Network.name }
         .onFocusChanged { focused = it.isFocused }
         .then(if (description != null) Modifier.semantics { contentDescription = description } else Modifier)
         .drawBehind {

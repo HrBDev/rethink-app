@@ -1,6 +1,9 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.Orientation
@@ -60,12 +63,12 @@ fun SupportScreen(ui: SupportUiState) {
                     Column(Modifier.padding(16.dp)) {
                         SupportLabel(R.string.support_issue_category_label, 13f, secondary = true, modifier = Modifier.padding(bottom = 8.dp))
                         FlowRow(Modifier.padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            ui.categories.filter { it.isVisible }.forEach { chip -> FilterChip(chip.isChecked, { ui.selectCategory(chip) }, label = { Text(chip.text.toString(), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_LabelLarge)) }, modifier = Modifier.testTag(chip.tag)) }
+                            ui.categories.filter { it.isVisible }.forEach { chip -> OriginalChip("activity_customer_support:chip_payment", chip.isChecked, { ui.selectCategory(chip) }, label = { Text(chip.text.toString(), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_LabelLarge)) }, modifier = Modifier.testTag(chip.tag)) }
                         }
-                        OutlinedTextField(ui.etDescription.text.toString(), { ui.etDescription.text = utilityLengthLimitedInput(ui.etDescription.text.toString(), it, ui.etDescription.maxLength) },
-                            Modifier.fillMaxWidth().testTag(ui.etDescription.tag), minLines = 5, maxLines = 10,
+                        OriginalTextField(ui.etDescription.text.toString(), { ui.etDescription.text = utilityLengthLimitedInput(ui.etDescription.text.toString(), it, ui.etDescription.maxLength) },
+                            Modifier.fillMaxWidth().testTag(ui.etDescription.tag), style = OriginalFieldStyle.Support, minLines = 5, maxLines = 10,
                             keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(capitalization = androidx.compose.ui.text.input.KeyboardCapitalization.Sentences),
-                            label = { Text(ui.tilDescription.hint.toString()) }, isError = ui.tilDescription.error != null,
+                            label = { Text(ui.tilDescription.hint.toString()) }, isError = ui.tilDescription.error != null, errorMessage = ui.tilDescription.error?.toString(),
                             supportingText = {
                                 Row(Modifier.fillMaxWidth()) {
                                     Text(ui.tilDescription.error?.toString().orEmpty(), Modifier.weight(1f))
@@ -74,7 +77,7 @@ fun SupportScreen(ui: SupportUiState) {
                                         color = themeColor(if (ui.etDescription.text.length > 1000) androidx.appcompat.R.attr.colorError else R.attr.primaryLightColorText),
                                         style = utilityTextStyle(size = 12f))
                                 }
-                            }, shape = RoundedCornerShape(12.dp),
+                            },
                             textStyle = utilityTextStyle(size = 14f).copy(color = themeColor(R.attr.primaryTextColor)))
                     }
                 }
@@ -93,8 +96,7 @@ fun SupportScreen(ui: SupportUiState) {
             }
             Surface(color = themeColor(com.google.android.material.R.attr.colorSurface), shadowElevation = 8.dp) {
                 Column(Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    OutlinedButton({ ui.btnSendEmail.performClick() }, enabled = ui.btnSendEmail.isEnabled,
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(ui.btnSendEmail.tag)) {
+                    OriginalButton("activity_customer_support:btn_send_email", { ui.btnSendEmail.performClick() }, enabled = ui.btnSendEmail.isEnabled, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(ui.btnSendEmail.tag)) {
                         Text(ui.btnSendEmail.text.toString(), style = utilityTextStyle(size = 16f), color = themeColor(R.attr.accentGood))
                     }
                     SupportLabel(R.string.support_privacy_note, 10f, secondary = true, lineExtraDp = 3f, centered = true, modifier = Modifier.padding(top = 6.dp, start = 4.dp, end = 4.dp, bottom = 4.dp).alpha(.8f))

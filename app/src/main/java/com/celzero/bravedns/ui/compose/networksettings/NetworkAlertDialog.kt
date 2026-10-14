@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.networksettings
 
+import com.celzero.bravedns.ui.compose.controls.*
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 import com.celzero.bravedns.ui.compose.wireguard.setWgContent
 import androidx.compose.runtime.Composable
@@ -131,7 +132,7 @@ class NetworkAlertDialogBuilder(private val context: Context, private val theme:
                             positive to DialogInterface.BUTTON_POSITIVE).forEach { (button, which) ->
                             button?.let { (label, action) ->
                                 val color = if (theme == R.style.App_Dialog_NoDim && which != DialogInterface.BUTTON_POSITIVE) themeColor(R.attr.secondaryTextColor) else MaterialTheme.colorScheme.primary
-                                TextButton({ dispatchButton(action, which) }, enabled = dialog.getButton(which).isEnabled, colors = ButtonDefaults.textButtonColors(contentColor = color)) { Text(label.toString()) }
+                                OriginalButton(when (which) { android.content.DialogInterface.BUTTON_NEGATIVE -> "@dialog_negative"; android.content.DialogInterface.BUTTON_NEUTRAL -> "@dialog_neutral"; else -> "@dialog_positive" }, { dispatchButton(action, which) }, enabled = dialog.getButton(which).isEnabled) { Text(label.toString()) }
                             }
                         }
                     }

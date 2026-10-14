@@ -14,8 +14,8 @@ import com.celzero.bravedns.ui.compose.themeColor
 @Composable fun WgStatsContent(b: WgStatsState) {
     Surface(color = MaterialTheme.colorScheme.background) {
         Column(Modifier.fillMaxSize()) {
-            FlowRow(Modifier.padding(12.dp), horizontalArrangement = Arrangement.Center) {
-                WgToggle(b.tbRecentToggleBtn); WgToggle(b.tbDailyToggleBtn); WgToggle(b.tbWeeklyToggleBtn)
+            FlowRow(Modifier.padding(12.dp), horizontalArrangement = Arrangement.spacedBy((-1).dp, androidx.compose.ui.Alignment.CenterHorizontally)) {
+                WgToggle(b.tbRecentToggleBtn, source = "fragment_wg_nw_stats:tb_recent_toggle_btn"); WgToggle(b.tbDailyToggleBtn, source = "fragment_wg_nw_stats:tb_daily_toggle_btn"); WgToggle(b.tbWeeklyToggleBtn, source = "fragment_wg_nw_stats:tb_weekly_toggle_btn")
             }
             WgText(b.tbLogsDisabledTv, Modifier.padding(16.dp))
             WgCard(b.tbStatsCard, Modifier.padding(horizontal = 12.dp)) {

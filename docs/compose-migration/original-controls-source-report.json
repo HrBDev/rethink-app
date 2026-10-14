@@ -1,0 +1,11 @@
+{
+  "verification": "Static source/resource checks only; Kotlin and synthetic tests NOT compiled or executed",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "catalog_source_keys": 284,
+  "generated_style_resources": 271,
+  "explicit_null_overrides_checked": 48,
+  "logged_callbacks_checked": 117,
+  "synthetic_test_methods_authored_not_executed": 8,
+  "passed": true,
+  "errors": []
+}

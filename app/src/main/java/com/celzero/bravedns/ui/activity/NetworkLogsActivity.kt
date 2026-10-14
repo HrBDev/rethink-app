@@ -15,6 +15,8 @@ limitations under the License.
 */
 
 package com.celzero.bravedns.ui.activity
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.alpha
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -125,7 +127,7 @@ class NetworkLogsActivity : BaseActivity() {
                     PrimaryTabRow(pager.currentPage, Modifier.weight(1f)) {
                         repeat(count) { page -> Tab(pager.currentPage == page, { scope.launch { pager.animateScrollToPage(page) } }, text = { Text(getTabText(page)) }) }
                     }
-                    IconButton(::openConsoleLogActivity, Modifier.padding(end = 15.dp)) { Icon(painterResource(R.drawable.ic_android_icon), stringResource(R.string.console_log_title)) }
+                    IconButton(::openConsoleLogActivity, Modifier.padding(end = 15.dp, bottom = 5.dp)) { Icon(painterResource(R.drawable.ic_android_icon), stringResource(R.string.console_log_title), Modifier.alpha(.7f), tint = Color.Unspecified) }
                 }
                 HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth()) { page ->
                     val specification = specifications[page]

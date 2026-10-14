@@ -113,7 +113,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                     item.isFavourite = next
                     countries = countries.toList()
                     listener.onFavouriteToggled(item.countryCode, item.countryName, next)
-                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(20.dp).rpnMotion(star)) }
+                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(32.dp).rpnMotion(star)) }
                 Icon(painterResource(R.drawable.ic_arrow_down_small), stringResource(R.string.server_selection_filter_locations), Modifier.size(20.dp).rotate(arrow))
             }
             if (expanded) item.serverGroups.forEach { group -> key(group.key) {
@@ -126,7 +126,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                             if (group.avgLink > 0) {
                                 val (label, attr) = speedInfo(group.avgLink)
-                                Text(label, Modifier.background(themeColor(if (group.avgLink >= 10_000) attr else R.attr.chipColorBgNormal), RoundedCornerShape(8.dp)).padding(horizontal = 6.dp, vertical = 3.dp), style = MaterialTheme.typography.labelSmall)
+                                com.celzero.bravedns.ui.compose.controls.OriginalLabel("item_server_group:chip_link_speed", containerColor = themeColor(if (group.avgLink >= 10_000) attr else R.attr.chipColorBgNormal)) { Text(label) }
                             }
                             if (group.avgLoad > 0) {
                                 val (label, attr) = loadInfo(group.avgLoad)

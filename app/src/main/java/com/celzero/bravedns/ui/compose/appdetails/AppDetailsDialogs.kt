@@ -1,5 +1,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.appdetails
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.app.Activity
 import android.app.Dialog
 import android.view.Window
@@ -52,11 +55,11 @@ fun showAppNotesDialog(activity:Activity,draft:AppNotesDraft,onSave:()->Unit,onC
     Surface(shape=MaterialTheme.shapes.extraLarge,color=MaterialTheme.colorScheme.surfaceContainerHigh) {
         Column(Modifier.padding(24.dp).imePadding()) {
             Text(stringResource(R.string.lbl_notes),style=MaterialTheme.typography.headlineSmall)
-            OutlinedTextField(draft.value,{draft.value=filterAppNotes(draft.value,it)},Modifier.fillMaxWidth().weight(1f,false).testTag("app_notes_input"),minLines=4,maxLines=10,placeholder={Text(stringResource(R.string.hint_notes))})
+            OriginalTextField(draft.value,{draft.value=filterAppNotes(draft.value,it)},Modifier.fillMaxWidth().weight(1f,false).testTag("app_notes_input"), style = OriginalFieldStyle.Notes,minLines=4,maxLines=10,placeholder={Text(stringResource(R.string.hint_notes))})
             Text(stringResource(R.string.ctbs_note_char_counter,draft.text.length,500),Modifier.align(Alignment.End))
             FlowRow(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.End) {
-                TextButton(onCancel,Modifier.testTag("app_notes_cancel"),colors=ButtonDefaults.textButtonColors(contentColor=themeColor(R.attr.secondaryTextColor))){Text(stringResource(R.string.lbl_cancel))}
-                TextButton(onSave,Modifier.testTag("app_notes_save")){Text(stringResource(R.string.lbl_save))}
+                OriginalButton("@dialog_negative", onCancel, Modifier.testTag("app_notes_cancel")){Text(stringResource(R.string.lbl_cancel))}
+                OriginalButton("@dialog_positive", onSave, Modifier.testTag("app_notes_save")){Text(stringResource(R.string.lbl_save))}
             }
         }
     }
@@ -68,7 +71,7 @@ fun showAppDetailsPackageDialog(activity:Activity,apps:List<String>,onItem:(Int)
             Column(Modifier.padding(24.dp)) {
                 Text(stringResource(R.string.about_settings_app_info),style=MaterialTheme.typography.headlineSmall)
                 Column(Modifier.weight(1f,false).verticalScroll(rememberScrollState())){apps.forEachIndexed{i,name->Text(name,Modifier.fillMaxWidth().clickable{onItem(i)}.padding(vertical=12.dp))}}
-                TextButton({dialog.dismiss()},Modifier.align(Alignment.End)){Text(stringResource(R.string.ada_noapp_dialog_positive))}
+                OriginalButton("@dialog_positive", {dialog.dismiss()}, Modifier.align(Alignment.End)){Text(stringResource(R.string.ada_noapp_dialog_positive))}
             }
         }
     };dialog.show()

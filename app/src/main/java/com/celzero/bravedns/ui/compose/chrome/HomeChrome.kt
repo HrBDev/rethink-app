@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.chrome
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Build
@@ -176,12 +177,12 @@ fun HomeChromeDialogContent(dialog: HomeChromeDialog, onDismiss: () -> Unit) {
         title = { Text(dialog.title) },
         text = { NoDimDialogWindow(); Text(dialog.message) },
         confirmButton = {
-            TextButton(onClick = { dialog.positive(onDismiss) }, modifier = Modifier.testTag("root_dialog_positive")) {
+            OriginalButton("@dialog_positive", onClick = { dialog.positive(onDismiss) }, modifier = Modifier.testTag("root_dialog_positive")) {
                 Text(dialog.positiveLabel)
             }
         },
         dismissButton = if (dialog.negativeLabel == null) null else ({
-            TextButton(onClick = { dialog.negative(onDismiss) }, modifier = Modifier.testTag("root_dialog_negative")) {
+            OriginalButton("@dialog_negative", onClick = { dialog.negative(onDismiss) }, modifier = Modifier.testTag("root_dialog_negative")) {
                 Text(dialog.negativeLabel)
             }
         }),

@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.dns
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.view.View
 import androidx.compose.foundation.BorderStroke
@@ -82,7 +83,7 @@ internal class BlockFreeDnsListState(selectedKey: String, val onItemSelected: (B
             val labels = listOf("All", "Rethink", "DoH", "DoT", "DNSCrypt", "ODoH", "DNS Proxy")
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).selectableGroup().padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 b.bfdFilterChipGroup.ids.forEachIndexed { index, id ->
-                    FilterChip(b.bfdFilterChipGroup.checkedId == id, { b.bfdFilterChipGroup.check(id) }, { Text(labels[index]) }, Modifier.testTag("blockfree-filter-$id"))
+                    OriginalChip("activity_block_free_dns:" + context.resources.getResourceEntryName(id), b.bfdFilterChipGroup.checkedId == id, { b.bfdFilterChipGroup.check(id) }, { Text(labels[index]) }, Modifier.testTag("blockfree-filter-$id"))
                 }
             }
             HorizontalDivider(Modifier.padding(horizontal = 8.dp), thickness = .5.dp, color = themeColor(R.attr.divider))
@@ -94,9 +95,7 @@ internal class BlockFreeDnsListState(selectedKey: String, val onItemSelected: (B
                             Column(Modifier.weight(1f)) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Text(item.name, Modifier.weight(1f, false), fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                    Surface(Modifier.padding(start = 10.dp), shape = RoundedCornerShape(6.dp), color = themeColor(R.attr.chipBgColorPositive)) {
-                                        Text(item.type.label, Modifier.padding(horizontal = 8.dp, vertical = 3.dp), fontSize = 10.sp, color = Color.White)
-                                    }
+                                    OriginalLabel("list_item_block_free_dns:bfd_item_type_chip", Modifier.padding(start = 10.dp)) { Text(item.type.label) }
                                 }
                                 Text(if (item.type == BlockFreeDnsType.SYSTEM) "Underlying network's DNS" else item.url, Modifier.padding(top = 10.dp), color = themeColor(R.attr.primaryLightColorText), maxLines = 1, overflow = TextOverflow.Ellipsis)
                             }

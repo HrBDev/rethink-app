@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.home
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
@@ -96,15 +97,10 @@ fun LogIntervalContent(b: LogIntervalPresentation) {
         Box(Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp, bottom = 14.dp).size(60.dp, 3.dp).background(themeColor(R.attr.border)))
         Text(b.bsLaiRange.text?.toString().orEmpty(), Modifier.padding(top = 4.dp), color = themeColor(R.attr.colorOnSurfaceVariant), fontSize = 14.sp)
         if (b.bsLaiRangeCard.isVisible) {
-            Row(Modifier.fillMaxWidth().padding(top = 14.dp).clip(RoundedCornerShape(22.dp)).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(22.dp))) {
-                listOf(b.bsLaiChip10m, b.bsLaiChip1h, b.bsLaiChip24h).forEach { node ->
+            Row(Modifier.fillMaxWidth().padding(top = 14.dp).clip(RoundedCornerShape(22.dp)).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(22.dp)), horizontalArrangement = Arrangement.spacedBy((-1).dp)) {
+                listOf(b.bsLaiChip10m, b.bsLaiChip1h, b.bsLaiChip24h).forEachIndexed { index, node ->
                     val selected = b.bsLaiRangeGroup.checkedId == node.id
-                    FilterChip(selected = selected, onClick = { b.bsLaiRangeGroup.check(node.id) },
-                        label = { Text(node.text?.toString().orEmpty(), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 13.sp, fontWeight = FontWeight.Bold) },
-                        modifier = Modifier.weight(1f).heightIn(min = 38.dp).testTag(node.context.resources.getResourceEntryName(node.id)), shape = RoundedCornerShape(0.dp),
-                        border = BorderStroke(1.dp, if (selected) themeColor(androidx.appcompat.R.attr.colorPrimary) else Color.Transparent),
-                        colors = FilterChipDefaults.filterChipColors(containerColor = Color.Transparent, selectedContainerColor = themeColor(androidx.appcompat.R.attr.colorPrimary),
-                            labelColor = themeColor(R.attr.primaryLightColorText), selectedLabelColor = themeColor(com.google.android.material.R.attr.colorOnPrimary)))
+                    OriginalChip("bottom_sheet_log_activity_interval:" + node.context.resources.getResourceEntryName(node.id), selected = selected, onClick = { b.bsLaiRangeGroup.check(node.id) }, label = { Text(node.text?.toString().orEmpty(), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 13.sp, fontWeight = FontWeight.Bold) }, segmentIndex = index, segmentCount = 3, modifier = Modifier.weight(1f).heightIn(min = 38.dp).testTag(node.context.resources.getResourceEntryName(node.id)))
                 }
             }
         }

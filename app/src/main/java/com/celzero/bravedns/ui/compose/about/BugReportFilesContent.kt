@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.about
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -79,10 +80,8 @@ fun BugReportFilesContent(b: BugReportFilesState) {
                 }
             }
             HorizontalDivider(Modifier.padding(horizontal = 15.dp), color = themeColor(R.attr.border))
-            TextButton({ b.brbsSendButton.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 15.dp, vertical = 10.dp).heightIn(min = 48.dp).alpha(b.brbsSendButton.alpha).testTag("bugreport.send"),
-                enabled = b.brbsSendButton.isEnabled, colors = ButtonDefaults.textButtonColors(contentColor = themeColor(R.attr.secondaryTextColor))) {
-                Icon(painterResource(R.drawable.ic_mail), null, Modifier.size(20.dp))
-                Text(b.brbsSendButton.text.toString(), Modifier.padding(start = 10.dp))
+            OriginalButton("bottom_sheet_bug_report_files:brbs_send_button", { b.brbsSendButton.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 15.dp, vertical = 10.dp).heightIn(min = 48.dp).alpha(b.brbsSendButton.alpha).testTag("bugreport.send"), enabled = b.brbsSendButton.isEnabled) {
+                Text(b.brbsSendButton.text.toString())
             }
         }
     }

@@ -2,6 +2,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,6 +14,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.celzero.bravedns.ui.compose.themeColor
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -59,7 +63,7 @@ import com.celzero.bravedns.R
                         if (b.shimmerClientInfo.isVisible) WgClientShimmer()
                         WgText(b.valueIpv4); WgText(b.valueIpv6)
                     }
-                    FlowRow(horizontalArrangement = Arrangement.End) { WgAction(b.editBtn); WgAction(b.deleteBtn) }
+                    FlowRow(horizontalArrangement = Arrangement.End) { WgAction(b.editBtn, source = "activity_wg_detail:edit_btn"); WgAction(b.deleteBtn, source = "activity_wg_detail:delete_btn") }
                 }
                 WgCard(b.actionsCard) {
                     Text(stringResource(R.string.lbl_actions))
@@ -82,18 +86,22 @@ import com.celzero.bravedns.R
                     WgSetting(b.useMobileRl, b.useMobileTitleTv, stringResource(R.string.wg_setting_use_on_mobile_desc), b.useMobileCheck)
                     WgSetting(b.ssidFilterRl, b.ssidTitleTv, b.ssidDescTv.text.toString(), b.ssidCheck)
                     if (b.ssidEditGroup.isVisible) Row {
-                        WgField(b.ssidEditText, stringResource(R.string.lbl_ssid), Modifier.weight(1f))
+                        WgField(b.ssidEditText, stringResource(R.string.lbl_ssid), Modifier.weight(1f), fieldStyle = OriginalFieldStyle.WgInlineSsid)
                         WgIcon(b.ssidOkBtn, stringResource(R.string.lbl_save))
                     }
                     if (b.ssidDisplayGroup.isVisible) Row(verticalAlignment = Alignment.CenterVertically) {
                         WgText(b.ssidValueTv, Modifier.weight(1f)); WgIcon(b.ssidEditBtn, stringResource(R.string.rt_edit_dialog_positive))
                     }
-                    if (b.ssidPermissionErrorLayout.isVisible) { WgText(b.ssidPermissionErrorText); WgAction(b.ssidPermissionErrorAction) }
-                    if (b.ssidLocationErrorLayout.isVisible) { WgText(b.ssidLocationErrorText); WgAction(b.ssidLocationErrorAction) }
+                    if (b.ssidPermissionErrorLayout.isVisible) { WgText(b.ssidPermissionErrorText); WgAction(b.ssidPermissionErrorAction, source = "activity_wg_detail:ssid_permission_error_action") }
+                    if (b.ssidLocationErrorLayout.isVisible) { WgText(b.ssidLocationErrorText); WgAction(b.ssidLocationErrorAction, source = "activity_wg_detail:ssid_location_error_action") }
                 }
                 b.peersList.adapter?.Content(Modifier.fillMaxWidth())
             }
-            ExtendedFloatingActionButton({ b.addPeerFab.performClick() }, Modifier.align(Alignment.BottomEnd).padding(16.dp)) { Text(b.addPeerFab.text.toString()) }
+            ExtendedFloatingActionButton(onClick = { b.addPeerFab.performClick() },
+                modifier = Modifier.align(Alignment.BottomEnd).padding(end = 25.dp, bottom = 40.dp),
+                containerColor = themeColor(R.attr.chipColorBgNormal), contentColor = themeColor(R.attr.primaryTextColor),
+                icon = { Icon(painterResource(R.drawable.ic_add), null, Modifier.size(24.dp), tint = Color.Unspecified) },
+                text = { Text(b.addPeerFab.text.toString()) })
         }
     }
 }

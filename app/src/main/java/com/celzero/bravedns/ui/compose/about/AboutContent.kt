@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 package com.celzero.bravedns.ui.compose.about
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -61,7 +62,7 @@ fun AboutContent(b: AboutState) {
                         Text(stringResource(R.string.sponsor_community_sponsor), Modifier.padding(top = 12.dp), style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
                         Text(stringResource(R.string.sponsor_about_thanks), Modifier.padding(top = 8.dp), color = themeColor(R.attr.colorOnSurfaceVariant), textAlign = TextAlign.Center)
                         Text(b.aboutSponsorSince.text.toString(), Modifier.padding(top = 4.dp), style = MaterialTheme.typography.bodySmall, color = themeColor(R.attr.colorOnSurfaceVariant))
-                        TextButton({ b.aboutSponsorAgain.performClick() }) { Text(b.aboutSponsorAgain.text.toString(), style = MaterialTheme.typography.labelSmall) }
+                        OriginalButton("fragment_about:about_sponsor_again", { b.aboutSponsorAgain.performClick() }) { Text(b.aboutSponsorAgain.text.toString()) }
                     }
                 }
             }

@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -163,9 +164,7 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
                                     val primary = MaterialTheme.colorScheme.primary
                                     val color = if (ColorUtils.calculateContrast(primary.compositeOver(surface).toArgb(), surface.toArgb()) >= 4.5)
                                         primary else MaterialTheme.colorScheme.onSurface
-                                    TextButton({ dispatchButton(action, which) }, Modifier.padding(start = 8.dp).defaultMinSize(minWidth = 64.dp, minHeight = 48.dp),
-                                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 10.dp),
-                                        colors = ButtonDefaults.textButtonColors(contentColor = color)) {
+                                    OriginalButton(when (which) { android.content.DialogInterface.BUTTON_NEGATIVE -> "@dialog_negative"; android.content.DialogInterface.BUTTON_NEUTRAL -> "@dialog_neutral"; else -> "@dialog_positive" }, { dispatchButton(action, which) }, Modifier.padding(start = 8.dp).defaultMinSize(minWidth = 64.dp, minHeight = 48.dp)) {
                                         Text(wgAnnotatedText(label), style = style, maxLines = 1, overflow = TextOverflow.Ellipsis)
                                     }
                                 }

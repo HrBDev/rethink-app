@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.rpnconfig
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
@@ -54,10 +55,7 @@ fun RpnConfigContent(b: RpnConfigState, headerState: TopAppBarState = rememberTo
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) { WgText(b.configNameText); WgText(b.tvHeroCity) }
                         Column(horizontalAlignment = Alignment.End) {
-                            AssistChip(onClick = { b.refreshChip.performClick() }, enabled = b.refreshChip.isEnabled && b.refreshChip.isClickable,
-                                modifier = Modifier.alpha(b.refreshChip.alpha).testTag("rpn.config.refresh"),
-                                label = { Text(b.refreshChip.text.toString(), fontSize = 11.sp) },
-                                leadingIcon = { Icon(painterResource(R.drawable.ic_refresh_white), null, Modifier.size(18.dp).rotate(b.refreshRotation)) })
+                            OriginalChip("activity_rpn_config_detail:refresh_chip", selected = false, selectable = false, onClick = { b.refreshChip.performClick() }, enabled = b.refreshChip.isEnabled && b.refreshChip.isClickable, modifier = Modifier.alpha(b.refreshChip.alpha).testTag("rpn.config.refresh"), label = { Text(b.refreshChip.text.toString(), fontSize = 11.sp) }, leadingIcon = { Icon(painterResource(R.drawable.ic_refresh_white), null, Modifier.size(18.dp).rotate(b.refreshRotation)) })
                             if (b.chipHeroStats.isVisible) Surface(shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.background) {
                                 WgText(b.chipHeroStats, Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
                             }
@@ -102,15 +100,15 @@ fun RpnConfigContent(b: RpnConfigState, headerState: TopAppBarState = rememberTo
                     ConfigSetting("ssid", b.ssidFilterRl, b.ssidCheck, b.ssidTitleTv, b.ssidDescTv.text.toString())
                     if (b.ssidDisplayGroup.isVisible) Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                         WgText(b.ssidValueTv, Modifier.weight(1f))
-                        IconButton({ b.ssidEditBtn.performClick() }, enabled = b.ssidEditBtn.isEnabled, modifier = Modifier.alpha(b.ssidEditBtn.alpha).testTag("rpn.config.ssidEdit")) {
-                            Icon(painterResource(R.drawable.ic_edit_icon_grey), stringResource(R.string.rt_edit_dialog_positive))
+                        IconButton({ b.ssidEditBtn.performClick() }, enabled = b.ssidEditBtn.isEnabled, modifier = Modifier.size(32.dp).alpha(b.ssidEditBtn.alpha).testTag("rpn.config.ssidEdit")) {
+                            Icon(painterResource(R.drawable.ic_edit_icon_grey), stringResource(R.string.rt_edit_dialog_positive), Modifier.size(20.dp), tint = Color.Unspecified)
                         }
                     }
                     if (b.ssidPermissionErrorLayout.isVisible) Row(verticalAlignment = Alignment.CenterVertically) {
-                        WgText(b.ssidPermissionErrorText, Modifier.weight(1f)); WgAction(b.ssidPermissionErrorAction)
+                        WgText(b.ssidPermissionErrorText, Modifier.weight(1f)); WgAction(b.ssidPermissionErrorAction, source = "activity_rpn_config_detail:ssid_permission_error_action")
                     }
                     if (b.ssidLocationErrorLayout.isVisible) Row(verticalAlignment = Alignment.CenterVertically) {
-                        WgText(b.ssidLocationErrorText, Modifier.weight(1f)); WgAction(b.ssidLocationErrorAction)
+                        WgText(b.ssidLocationErrorText, Modifier.weight(1f)); WgAction(b.ssidLocationErrorAction, source = "activity_rpn_config_detail:ssid_location_error_action")
                     }
                 }
                 RpnSignature(b.dolphinSignature, Modifier.fillMaxWidth())

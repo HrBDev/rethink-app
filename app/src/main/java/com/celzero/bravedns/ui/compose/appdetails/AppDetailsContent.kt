@@ -1,6 +1,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.appdetails
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -41,7 +42,7 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
                 Icon(painterResource(R.drawable.ic_loopback),null,Modifier.size(56.dp))
                 Text(stringResource(R.string.app_info_rethink_warning_title),Modifier.padding(top=24.dp).semantics{heading()},fontSize=18.sp)
                 Text(stringResource(R.string.app_info_rethink_warning_desc),Modifier.padding(top=16.dp),fontSize=14.sp,textAlign=TextAlign.Center,lineHeight=20.3.sp)
-                TextButton({b.aadRethinkWarningProceed.performClick()},Modifier.padding(top=32.dp).testTag("app_warning_proceed")) { Text(stringResource(R.string.app_info_rethink_warning_proceed)) }
+                OriginalButton("activity_app_details:aad_rethink_warning_proceed", {b.aadRethinkWarningProceed.performClick()}, Modifier.padding(top=32.dp).testTag("app_warning_proceed")) { Text(stringResource(R.string.app_info_rethink_warning_proceed)) }
             }
             if(b.aadAppParentRl.isVisible) {
                 Row(Modifier.fillMaxWidth().padding(start=20.dp,end=12.dp,top=20.dp,bottom=8.dp),verticalAlignment=Alignment.CenterVertically) {
@@ -52,11 +53,11 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
                         Text(wgAnnotatedText(b.aadFirewallStatus.text),Modifier.padding(top=6.dp),fontSize=14.sp)
                         Text(b.aadDataUsageStatus.text.toString(),fontSize=12.sp)
                     }
-                    IconButton({b.aadAppInfoIcon.performClick()}) { Icon(painterResource(R.drawable.ic_info_white),stringResource(R.string.about_settings_app_info)) }
+                    IconButton({b.aadAppInfoIcon.performClick()}, Modifier.size(40.dp)) { Icon(painterResource(R.drawable.ic_info_white),stringResource(R.string.about_settings_app_info), Modifier.size(24.dp), tint = themeColor(R.attr.primaryLightColorText)) }
                 }
                 Row(Modifier.fillMaxWidth().padding(horizontal=20.dp),verticalAlignment=Alignment.CenterVertically) {
                     Text(stringResource(R.string.ada_firewall_title),Modifier.weight(1f).semantics { heading() },fontSize=14.sp)
-                    Chip(stringResource(R.string.lbl_notes),b.aadNotesChip)
+                    Chip(stringResource(R.string.lbl_notes),b.aadNotesChip, "aad_notes_chip")
                 }
                 Surface(Modifier.padding(horizontal=8.dp,vertical=12.dp),shape=RoundedCornerShape(16.dp),color=themeColor(CardR.attr.cardBackgroundColor)) {
                     Column {
@@ -104,8 +105,8 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
                     if(if(insights) items.isNotEmpty() else section.heading.isVisible) {
                         FlowRow(Modifier.fillMaxWidth().padding(start=20.dp,end=12.dp,top=16.dp),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                             Text(stringResource(section.type.title),Modifier.weight(1f).align(Alignment.CenterVertically).semantics{heading()},fontSize=14.sp)
-                            if(!insights && section.type==AppInsightsSection.ACTIVE_CONNS) Chip(stringResource(R.string.close_all),b.aadCloseConnsChip)
-                            Chip(stringResource(R.string.ssv_see_more),if(insights)section.insightsMore else section.more)
+                            if(!insights && section.type==AppInsightsSection.ACTIVE_CONNS) Chip(stringResource(R.string.close_all),b.aadCloseConnsChip, "aad_close_conns_chip")
+                            Chip(stringResource(R.string.ssv_see_more),if(insights)section.insightsMore else section.more, if (insights) "aad_ia_active_conns_chip" else "aad_active_conns_chip")
                         }
                     }
                     if(insights) { if(items.isNotEmpty()) AppDetailsInsights(section.type,items) }
@@ -116,17 +117,27 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
     }
 }
 @Composable private fun ModeButton(selected:Boolean,icon:Int,label:Int,onClick:()->Unit) {
-    IconButton(onClick,Modifier.semantics{this.selected=selected}) {
-        Surface(shape=RoundedCornerShape(2.dp),color=themeColor(if(selected)R.attr.accentGood else R.attr.defaultToggleBtnBg)) {
-            Icon(painterResource(icon),stringResource(label),Modifier.padding(4.dp).size(24.dp),tint=themeColor(if(selected)R.attr.homeScreenHeaderTextColor else R.attr.defaultToggleBtnTxt))
+    val description = stringResource(label)
+    OriginalButton("activity_app_details:" + if (icon == R.drawable.ic_view_list) "aad_view_mode_list_btn" else "aad_view_mode_insights_btn",
+        onClick, Modifier.semantics { contentDescription = description }, selected = selected,
+        segmentIndex = if (icon == R.drawable.ic_view_list) 0 else 1, segmentCount = 2,
+        containerColor = themeColor(if(selected)R.attr.accentGood else R.attr.defaultToggleBtnBg),
+        leadingIcon = { Icon(painterResource(icon),null,Modifier.size(24.dp),tint=themeColor(if(selected)R.attr.homeScreenHeaderTextColor else R.attr.defaultToggleBtnTxt)) }) { }
+
+}
+@Composable private fun Chip(label:String,node:WgControlState, sourceId:String) {
+    // aad_notes_chip is a MaterialCardView, not a Chip: retain its 18dp card silhouette.
+    if (sourceId == "aad_notes_chip") {
+        Surface({node.performClick()}, shape=RoundedCornerShape(18.dp), color=themeColor(R.attr.homeScreenBtnBackground)) {
+            Text(label, Modifier.padding(horizontal=14.dp, vertical=8.dp), color=themeColor(R.attr.primaryTextColor),
+                style=com.celzero.bravedns.ui.compose.utilities.utilityTextStyle(size=12f, family="sans-serif-medium"))
         }
+        return
     }
+    OriginalButton("activity_app_details:$sourceId", {node.performClick()}, enabled = node.isEnabled && node.isClickable,
+        contentColor = node.textColor?.let { androidx.compose.ui.graphics.Color(it) }, backgroundTint = node.backgroundTintList) { Text(label) }
 }
-@Composable private fun Chip(label:String,node:WgControlState) {
-    Surface({node.performClick()},shape=RoundedCornerShape(18.dp),color=themeColor(R.attr.chipBgColorPositive),contentColor=themeColor(R.attr.chipTextPositive)) {
-        Box(Modifier.heightIn(min=48.dp).padding(horizontal=14.dp,vertical=8.dp),contentAlignment=Alignment.Center){Text(label,fontSize=12.sp)}
-    }
-}
+
 @Composable private fun RuleCount(count:WgControlState,node:WgControlState,label:Int,modifier:Modifier) {
     Surface({node.performClick()},modifier,shape=RoundedCornerShape(12.dp),color=themeColor(R.attr.homeScreenBtnBackground)) {
         Column(Modifier.padding(10.dp),horizontalAlignment=Alignment.CenterHorizontally){Text(count.text.toString(),fontSize=16.sp,color=themeColor(R.attr.accentGood));Text(stringResource(label),fontSize=12.sp)}

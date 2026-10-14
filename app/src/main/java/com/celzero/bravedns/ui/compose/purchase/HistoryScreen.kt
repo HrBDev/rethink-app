@@ -1,5 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.purchase
+import com.celzero.bravedns.ui.compose.controls.OriginalChip
+import com.celzero.bravedns.ui.compose.controls.OriginalButton
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -58,7 +60,7 @@ internal class HistoryScreenState {
                     Text(stringResource(if (server) R.string.server_order_title else R.string.payment_history_title))
                     if (scroll.state.collapsedFraction < .99f) RpnText(state.tvHeroSubtitle, Modifier.alpha(.7f * (1f - scroll.state.collapsedFraction)), style = MaterialTheme.typography.bodySmall)
                 }
-            }, navigationIcon = { IconButton(onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.lbl_cancel)) } }, expandedHeight = 180.dp, scrollBehavior = scroll)
+            }, expandedHeight = 180.dp, scrollBehavior = scroll)
             if (state.fetchProgress.isVisible) LinearProgressIndicator(Modifier.fillMaxWidth().alpha(fetchAlpha.value))
         }
     }) { padding ->
@@ -66,8 +68,8 @@ internal class HistoryScreenState {
             LazyColumn(Modifier.fillMaxSize(), state = listState, contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 96.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 item("summary") {
                     if (server) FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        AssistChip({ state.chipEntitlement.performClick() }, label = { Text(stringResource(R.string.entitlement)) })
-                        AssistChip({ state.chipPaymentHistory.performClick() }, label = { Text(stringResource(R.string.payment_history_title)) })
+                        OriginalChip("activity_server_order_history:chip_entitlement", selected = false, onClick = { state.chipEntitlement.performClick() }, selectable = false, label = { Text(stringResource(R.string.entitlement)) })
+                        OriginalChip("activity_server_order_history:chip_payment_history", selected = false, onClick = { state.chipPaymentHistory.performClick() }, selectable = false, label = { Text(stringResource(R.string.payment_history_title)) })
                     } else Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = themeColor(R.attr.chipBgColorPositive))) {
                         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             Icon(painterResource(R.drawable.ic_rethink_plus), null, Modifier.size(36.dp), tint = themeColor(R.attr.accentGood))
@@ -88,7 +90,7 @@ internal class HistoryScreenState {
                     Column(Modifier.fillMaxWidth().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         Icon(painterResource(if (server) R.drawable.ic_cloud_error else R.drawable.ic_cross), null, Modifier.size(64.dp).align(Alignment.CenterHorizontally).alpha(.7f), tint = themeColor(R.attr.accentBad))
                         RpnText(state.tvErrorMessage, Modifier.semantics { liveRegion = LiveRegionMode.Polite })
-                        Button({ state.btnRetry.performClick() }, Modifier.testTag("history_retry")) { Text(stringResource(R.string.ping_test_again)) }
+                        OriginalButton(if (server) "activity_server_order_history:btn_retry" else "activity_purchase_history:btn_retry", { state.btnRetry.performClick() }, Modifier.testTag("history_retry")) { Text(stringResource(R.string.ping_test_again)) }
                     }
                 }
                 if ((if (server) state.rvOrders else state.rvHistory).isVisible) items(count, key = key) { index -> Card(Modifier.fillMaxWidth().alpha(alpha.value)) { row(index) } }

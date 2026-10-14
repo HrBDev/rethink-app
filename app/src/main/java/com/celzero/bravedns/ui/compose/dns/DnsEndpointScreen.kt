@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.dns
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -173,7 +174,7 @@ private class DnsEndpointSourceIdentity(private val endpoint: Any) {
             Column(Modifier.padding(10.dp)) {
                 Text(stringResource(R.string.cd_dnscrypt_relay_heading), Modifier.padding(horizontal = 20.dp, vertical = 5.dp), color = themeColor(R.attr.accentGood), style = MaterialTheme.typography.titleMedium)
                 DnsEndpointList(entries, row, R.string.dns_crypt_empty_state_title, R.string.dns_crypt_empty_state_desc, Modifier.weight(1f), 8)
-                TextButton(onDismiss, Modifier.align(Alignment.End)) { Text(stringResource(R.string.lbl_dismiss), color = themeColor(R.attr.accentGood)) }
+                OriginalButton("@dialog_negative", onDismiss, Modifier.align(Alignment.End)) { Text(stringResource(R.string.lbl_dismiss), color = themeColor(R.attr.accentGood)) }
             }
         }
     }

@@ -2,6 +2,9 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import androidx.compose.ui.graphics.Color
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -55,7 +58,7 @@ class WgSsidPresenter(private val items: MutableList<SsidItem>, val onDelete: (S
             if (b.ssidRecyclerView.isVisible) presenter?.getSsidItems()?.forEach { item ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) { Text(item.name); Text(item.type.getDisplayName(context), color = themeColor(R.attr.accentBad)) }
-                    IconButton({ presenter.onDelete(item) }) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete)) }
+                    IconButton({ presenter.onDelete(item) }) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }
                 }
             }
             WgText(b.emptyStateView)
@@ -63,9 +66,9 @@ class WgSsidPresenter(private val items: MutableList<SsidItem>, val onDelete: (S
             FlowRow { WgRadio(b.radioEqual); WgRadio(b.radioNotEqual) }
             Text(stringResource(R.string.lbl_criteria))
             FlowRow { WgRadio(b.radioExact); WgRadio(b.radioWildcard) }
-            WgField(b.ssidEditText, b.ssidTextInputLayout.hint, onDone = { keyboard?.hide(); scope.launch { yield(); focus.clearFocus(); done?.invoke() } })
-            WgAction(b.addSsidBtn)
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { WgAction(b.cancelBtn); WgAction(b.saveBtn) }
+            WgField(b.ssidEditText, b.ssidTextInputLayout.hint, fieldStyle = OriginalFieldStyle.WgSsid, onDone = { keyboard?.hide(); scope.launch { yield(); focus.clearFocus(); done?.invoke() } })
+            WgAction(b.addSsidBtn, source = "dialog_wg_ssid:addSsidBtn")
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { WgAction(b.cancelBtn, source = "dialog_wg_ssid:cancelBtn"); WgAction(b.saveBtn, source = "dialog_wg_ssid:saveBtn") }
         }
     }
 }

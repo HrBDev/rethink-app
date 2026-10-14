@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.statistics
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
@@ -49,21 +50,19 @@ internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
                     StatsModeButton(state.mode == StatsViewMode.LIST, R.drawable.ic_view_list, R.string.cd_stats_switch_to_list, "stats_mode_list") { state.onMode(StatsViewMode.LIST) }
                     StatsModeButton(state.mode == StatsViewMode.INSIGHTS, R.drawable.ic_view_chart, R.string.cd_stats_switch_to_insights, "stats_mode_insights") { state.onMode(StatsViewMode.INSIGHTS) }
                     Box {
-                        IconButton(onClick = state.onFilter, modifier = Modifier.testTag("stats_filter")) {
-                            Icon(painterResource(R.drawable.ic_filter), stringResource(R.string.ssv_filter_heading), Modifier.size(22.dp))
-                        }
+                        val filterDescription = stringResource(R.string.ssv_filter_heading)
+                        OriginalButton("fragment_summary_statistics:fss_filter_btn", onClick = state.onFilter,
+                            modifier = Modifier.testTag("stats_filter").semantics { contentDescription = filterDescription }) { }
                         statisticsFilterBadge(state.filters, state.providersAvailable)?.let { count ->
                             Badge(Modifier.align(Alignment.BottomEnd).animateContentSize()) { Text(count.toString()) }
                         }
                     }
                 }
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                LazyRow(horizontalArrangement = Arrangement.spacedBy((-1).dp)) {
                     items(TimeCategory.entries.size) { index ->
                         val tc = TimeCategory.entries[index]
                         val amount = when (tc) { TimeCategory.ONE_HOUR -> "1"; TimeCategory.TWENTY_FOUR_HOUR -> "24"; TimeCategory.SEVEN_DAYS -> "7" }
-                        FilterChip(selected = state.timeCategory == tc, onClick = { state.onTimeCategory(tc) }, modifier = Modifier.widthIn(min = 100.dp).testTag("stats_time_${tc.value}"),
-                            colors = FilterChipDefaults.filterChipColors(selectedContainerColor = themeColor(R.attr.accentGood), selectedLabelColor = themeColor(R.attr.homeScreenHeaderTextColor)),
-                            label = { Text(stringResource(R.string.ci_desc, amount, stringResource(if (tc == TimeCategory.SEVEN_DAYS) R.string.lbl_day else R.string.lbl_hour))) })
+                        OriginalChip("fragment_summary_statistics:" + when (tc) { TimeCategory.TWENTY_FOUR_HOUR -> "tb_daily_toggle_btn"; TimeCategory.SEVEN_DAYS -> "tb_weekly_toggle_btn"; else -> "tb_recent_toggle_btn" }, segmentIndex = index, segmentCount = 3, containerColor = themeColor(if (state.timeCategory == tc) R.attr.accentGood else R.attr.defaultToggleBtnBg), contentColor = themeColor(if (state.timeCategory == tc) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor), selected = state.timeCategory == tc, onClick = { state.onTimeCategory(tc) }, modifier = Modifier.widthIn(min = 100.dp).testTag("stats_time_${tc.value}"), label = { Text(stringResource(R.string.ci_desc, amount, stringResource(if (tc == TimeCategory.SEVEN_DAYS) R.string.lbl_day else R.string.lbl_hour))) })
                     }
                 }
             }
@@ -75,8 +74,8 @@ internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
                     item(key = "header_${type.tid}") {
                         Row(Modifier.padding(top = 20.dp).testTag("stats_section_${type.tid}"), verticalAlignment = Alignment.CenterVertically) {
                             Text(stringResource(statisticsTitle(type)), Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
-                            if (type == Type.TOP_ACTIVE_CONNS) TextButton(onClick = state.onClose, modifier = Modifier.testTag("stats_close_all")) { Text(stringResource(R.string.close_all)) }
-                            TextButton(onClick = { state.onDetail(type) }, modifier = Modifier.testTag("stats_detail_${type.tid}")) { Text(stringResource(R.string.ssv_see_more)) }
+                            if (type == Type.TOP_ACTIVE_CONNS) OriginalButton("fragment_summary_statistics:fss_close_conns_chip", onClick = state.onClose, modifier = Modifier.testTag("stats_close_all")) { Text(stringResource(R.string.close_all)) }
+                            OriginalButton("fragment_summary_statistics:fss_active_apps_chip", onClick = { state.onDetail(type) }, modifier = Modifier.testTag("stats_detail_${type.tid}")) { Text(stringResource(R.string.ssv_see_more)) }
                         }
                     }
                     if (state.mode == StatsViewMode.INSIGHTS) item(key = "insights_${type.tid}") { SummaryInsights(type, section.items) }
@@ -88,17 +87,19 @@ internal fun SummaryStatisticsScreen(state: SummaryStatisticsState) {
     if (state.closeDialog) AlertDialog(onDismissRequest = { state.closeDialog = false },
         title = { NoDimDialogWindow(); Text(stringResource(R.string.close_conns_dialog_title)) },
         text = { Text(stringResource(R.string.close_conns_dialog_desc, stringResource(R.string.lbl_all_apps).lowercase())) },
-        confirmButton = { TextButton(onClick = { if (state.closeDialog) { state.closeDialog = false; state.onConfirmClose() } }, modifier = Modifier.testTag("stats_confirm_close")) { Text(stringResource(R.string.lbl_proceed)) } },
-        dismissButton = { TextButton(onClick = { state.closeDialog = false }, modifier = Modifier.testTag("stats_cancel_close")) { Text(stringResource(R.string.lbl_cancel)) } })
+        confirmButton = { OriginalButton("@dialog_positive", onClick = { if (state.closeDialog) { state.closeDialog = false; state.onConfirmClose() } }, modifier = Modifier.testTag("stats_confirm_close")) { Text(stringResource(R.string.lbl_proceed)) } },
+        dismissButton = { OriginalButton("@dialog_negative", onClick = { state.closeDialog = false }, modifier = Modifier.testTag("stats_cancel_close")) { Text(stringResource(R.string.lbl_cancel)) } })
 }
 
 @Composable
 private fun StatsModeButton(selected: Boolean, icon: Int, description: Int, tag: String, onClick: () -> Unit) {
-    FilledIconToggleButton(checked = selected, onCheckedChange = { if (!selected) onClick() }, modifier = Modifier.size(40.dp).testTag(tag),
-        colors = IconButtonDefaults.filledIconToggleButtonColors(checkedContainerColor = themeColor(R.attr.accentGood),
-            checkedContentColor = themeColor(R.attr.homeScreenHeaderTextColor), containerColor = themeColor(R.attr.colorSurfaceContainerHighest), contentColor = themeColor(R.attr.defaultToggleBtnTxt))) {
-        Icon(painterResource(icon), stringResource(description), Modifier.size(22.dp))
-    }
+    val label = stringResource(description)
+    OriginalButton("fragment_summary_statistics:" + if (tag == "stats_mode_list") "fss_view_mode_list_btn" else "fss_view_mode_insights_btn",
+        onClick = { if (!selected) onClick() }, modifier = Modifier.testTag(tag).semantics { contentDescription = label },
+        selected = selected, segmentIndex = if (tag == "stats_mode_list") 0 else 1, segmentCount = 2,
+        containerColor = themeColor(if (selected) R.attr.accentGood else R.attr.defaultToggleBtnBg),
+        leadingIcon = { Icon(painterResource(icon), null, Modifier.size(22.dp), tint = themeColor(if (selected) R.attr.homeScreenHeaderTextColor else R.attr.defaultToggleBtnTxt)) }) { }
+
 }
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

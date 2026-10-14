@@ -1,6 +1,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.rpn
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.app.Dialog
 import android.util.TypedValue
@@ -53,9 +54,9 @@ fun RpnFilterContent(loads: List<String>, selectedLoad: Int, speeds: List<String
             FilterLabel(R.string.server_selection_filter_favourites)
             RpnFilterChip(stringResource(R.string.server_selection_filter_favourites_only), fav) { fav = !fav }
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton(onReset, Modifier.testTag("rpn_filter_reset"), colors = ButtonDefaults.textButtonColors(contentColor = neutral)) { Text(stringResource(R.string.lbl_reset)) }
-                TextButton(onCancel, Modifier.testTag("rpn_filter_cancel"), colors = ButtonDefaults.textButtonColors(contentColor = neutral)) { Text(stringResource(R.string.lbl_cancel)) }
-                TextButton({ onApply(load, speed, fav) }, Modifier.testTag("rpn_filter_apply"), colors = ButtonDefaults.textButtonColors(contentColor = accent)) { Text(stringResource(R.string.lbl_apply)) }
+                OriginalButton("@dialog_neutral", onReset, Modifier.testTag("rpn_filter_reset")) { Text(stringResource(R.string.lbl_reset)) }
+                OriginalButton("@dialog_neutral", onCancel, Modifier.testTag("rpn_filter_cancel")) { Text(stringResource(R.string.lbl_cancel)) }
+                OriginalButton("@dialog_positive", { onApply(load, speed, fav) }, Modifier.testTag("rpn_filter_apply")) { Text(stringResource(R.string.lbl_apply)) }
             }
         }
     }
@@ -63,7 +64,5 @@ fun RpnFilterContent(loads: List<String>, selectedLoad: Int, speeds: List<String
 @Composable private fun FilterLabel(text: Int) { Text(stringResource(text).uppercase(), Modifier.padding(top = 10.dp, bottom = 6.dp), fontSize = 10.5.sp, letterSpacing = 1.365.sp, color = themeColor(R.attr.primaryLightColorText)) }
 @Composable private fun RpnFilterChip(label: String, selected: Boolean, onClick: () -> Unit) {
     val accent = themeColor(R.attr.accentGood)
-    FilterChip(selected, onClick, { Text(label) }, Modifier.heightIn(min = 40.dp),
-        colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.background), selectedContainerColor = accent.copy(alpha = .2f), labelColor = themeColor(R.attr.primaryTextColor), selectedLabelColor = accent),
-        border = BorderStroke(1.dp, if (selected) accent else Color.Transparent))
+    OriginalChip("@rpn_filter", selected, onClick, { Text(label) }, Modifier.heightIn(min = 40.dp))
 }

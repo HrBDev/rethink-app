@@ -1,5 +1,8 @@
 package com.celzero.bravedns.ui.compose.blocklists
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -61,7 +64,7 @@ import kotlinx.coroutines.flow.Flow
     Surface(color = themeColor(R.attr.background)) {
         Box(Modifier.fillMaxSize()) {
             if (b.lbConfigureLayout.visible) Column(Modifier.fillMaxSize()) {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy((-1).dp, Alignment.CenterHorizontally)) {
                     TabButton(stringResource(R.string.rt_list_simple_btn_txt), !b.selectedAdvanced, "simple") { onTab(false) }
                     TabButton(stringResource(R.string.lbl_advanced), b.selectedAdvanced, "advanced") { onTab(true) }
                 }
@@ -69,15 +72,15 @@ import kotlinx.coroutines.flow.Flow
                     val keyboard = LocalSoftwareKeyboardController.current
                     SettingsCard(Modifier.padding(8.dp), cornerRadius = 16.dp, contentPadding = 0.dp) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            TextField(b.query, { value -> b.query = value; onQueryChange(value) }, Modifier.weight(1f).testTag("blocklist-query"), placeholder = { Text(stringResource(R.string.search_rethinkplus_file_tag)) }, singleLine = true,
-                                colors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent),
+                            OriginalTextField(b.query, { value -> b.query = value; onQueryChange(value) }, Modifier.weight(1f).testTag("blocklist-query"), placeholder = { Text(stringResource(R.string.search_rethinkplus_file_tag)) }, singleLine = true,
+                                style = OriginalFieldStyle.Search,
                                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = { if (b.query.isNotBlank() && !onQuerySubmit(b.query)) keyboard?.hide() }),
-                                trailingIcon = if (b.query.isNotEmpty()) ({ IconButton(onClick = { b.query = ""; onQueryChange("") }) { Icon(painterResource(R.drawable.ic_cross_accent), stringResource(R.string.lbl_cancel), tint = Color.Unspecified) } }) else null)
+                                trailingIcon = if (b.query.isNotEmpty()) ({ IconButton(onClick = { b.query = ""; onQueryChange("") }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal)) } }) else null)
                             IconButton(onClick = b.lbAdvSearchFilterIcon.onClick, modifier = Modifier.testTag("blocklist-filter")) { Icon(painterResource(R.drawable.ic_filter), stringResource(R.string.rt_filter_hint), tint = Color.Unspecified) }
                         }
                         FlowRow(Modifier.padding(horizontal = 10.dp, vertical = 5.dp)) {
                             listOf(0 to R.string.lbl_all, 1 to R.string.rt_filter_parent_selected).forEach { (id, label) ->
-                                FilterChip(selected = b.selectionFilter == id, onClick = { if (b.selectionFilter != id) { b.selectionFilter = id; onFilter(id) } }, label = { Text(stringResource(label)) }, modifier = Modifier.padding(3.dp).testTag("blocklist-selection-$id"))
+                                OriginalChip("item_chip_filter:(anonymous)", selected = b.selectionFilter == id, onClick = { if (b.selectionFilter != id) { b.selectionFilter = id; onFilter(id) } }, label = { Text(stringResource(label)) }, modifier = Modifier.padding(3.dp).testTag("blocklist-selection-$id"))
                             }
                         }
                     }
@@ -98,8 +101,8 @@ import kotlinx.coroutines.flow.Flow
                 }
                 HorizontalDivider(color = themeColor(R.attr.border))
                 Row(Modifier.fillMaxWidth()) {
-                    TextButton(onClick = b.lbBlocklistCancelBtn.onClick, Modifier.weight(.4f).testTag("blocklist-cancel")) { Text(stringResource(R.string.notif_dialog_pause_dialog_negative), color = themeColor(R.attr.primaryLightColorText)) }
-                    TextButton(onClick = b.lbBlocklistApplyBtn.onClick, Modifier.weight(.6f).testTag("blocklist-apply")) { Text(b.lbBlocklistApplyBtn.text, color = themeColor(R.attr.accentGood)) }
+                    OriginalButton("fragment_rethink_blocklist:lb_blocklist_cancel_btn", onClick = b.lbBlocklistCancelBtn.onClick, Modifier.weight(.4f).testTag("blocklist-cancel")) { Text(stringResource(R.string.notif_dialog_pause_dialog_negative), color = themeColor(R.attr.primaryLightColorText)) }
+                    OriginalButton("fragment_rethink_blocklist:lb_blocklist_apply_btn", onClick = b.lbBlocklistApplyBtn.onClick, Modifier.weight(.6f).testTag("blocklist-apply")) { Text(b.lbBlocklistApplyBtn.text, color = themeColor(R.attr.accentGood)) }
                 }
             }
             if (b.lbDownloadLayout.visible) Column(Modifier.align(Alignment.Center).verticalScroll(rememberScrollState()).padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -110,9 +113,9 @@ import kotlinx.coroutines.flow.Flow
                         if (b.lbDownloadProgress.isIndeterminate) CircularProgressIndicator(Modifier.size(32.dp))
                         else CircularProgressIndicator(progress = { b.lbDownloadProgress.progress / 100f }, modifier = Modifier.size(32.dp))
                     }
-                    TextButton(onClick = b.lbDownloadBtn.onClick, enabled = b.lbDownloadBtn.isEnabled && b.lbDownloadBtn.isClickable, modifier = Modifier.testTag("blocklist-download")) { Text(b.lbDownloadBtn.text.ifEmpty { stringResource(R.string.rt_download) }, color = themeColor(R.attr.chipTextColor)) }
+                    OriginalButton("fragment_rethink_blocklist:lb_download_btn", onClick = b.lbDownloadBtn.onClick, enabled = b.lbDownloadBtn.isEnabled && b.lbDownloadBtn.isClickable, modifier = Modifier.testTag("blocklist-download")) { Text(b.lbDownloadBtn.text.ifEmpty { stringResource(R.string.rt_download) }, color = themeColor(R.attr.chipTextColor)) }
                 }
-                TextButton(onClick = b.lbCancelDownloadBtn.onClick, modifier = Modifier.testTag("blocklist-cancel-download")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.primaryTextColor)) }
+                OriginalButton("fragment_rethink_blocklist:lb_cancel_download_btn", onClick = b.lbCancelDownloadBtn.onClick, modifier = Modifier.testTag("blocklist-cancel-download")) { Text(stringResource(R.string.lbl_cancel), color = themeColor(R.attr.primaryTextColor)) }
             }
             if (b.lbDownloadProgressRemote.visible) CircularProgressIndicator(Modifier.align(Alignment.TopStart))
         }
@@ -124,9 +127,9 @@ import kotlinx.coroutines.flow.Flow
                     Text(prompt.title, style = MaterialTheme.typography.headlineSmall, color = themeColor(R.attr.primaryTextColor))
                     Text(prompt.message, Modifier.padding(vertical = 16.dp), color = themeColor(R.attr.primaryTextColor))
                     FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                        prompt.neutral?.let { TextButton(onClick = { b.prompt = null; prompt.neutralAction() }, modifier = Modifier.testTag("blocklist-dialog-neutral")) { Text(it, color = themeColor(R.attr.secondaryTextColor)) } }
-                        TextButton(onClick = { b.prompt = null; prompt.cancel() }, modifier = Modifier.testTag("blocklist-dialog-negative")) { Text(prompt.negative, color = themeColor(R.attr.secondaryTextColor)) }
-                        TextButton(onClick = { b.prompt = null; prompt.confirm() }, modifier = Modifier.testTag("blocklist-dialog-positive")) { Text(prompt.positive, color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
+                        prompt.neutral?.let { OriginalButton("@dialog_neutral", onClick = { b.prompt = null; prompt.neutralAction() }, modifier = Modifier.testTag("blocklist-dialog-neutral")) { Text(it, color = themeColor(R.attr.secondaryTextColor)) } }
+                        OriginalButton("@dialog_negative", onClick = { b.prompt = null; prompt.cancel() }, modifier = Modifier.testTag("blocklist-dialog-negative")) { Text(prompt.negative, color = themeColor(R.attr.secondaryTextColor)) }
+                        OriginalButton("@dialog_positive", onClick = { b.prompt = null; prompt.confirm() }, modifier = Modifier.testTag("blocklist-dialog-positive")) { Text(prompt.positive, color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
                     }
                 }
             }
@@ -135,7 +138,7 @@ import kotlinx.coroutines.flow.Flow
 }
 
 @Composable private fun TabButton(label: String, selected: Boolean, key: String, onClick: () -> Unit) {
-    Button(onClick, Modifier.widthIn(min = 125.dp).testTag("blocklist-tab-$key"), shape = RoundedCornerShape(16.dp), colors = ButtonDefaults.buttonColors(containerColor = themeColor(if (selected) R.attr.accentGood else R.attr.defaultToggleBtnBg), contentColor = themeColor(if (selected) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor))) { Text(label) }
+    OriginalButton("fragment_rethink_blocklist:" + if (key == "simple") "lb_simple_toggle_btn" else "lb_adv_toggle_btn", onClick, Modifier.widthIn(min = 125.dp).testTag("blocklist-tab-$key"), selected = selected, segmentIndex = if (key == "simple") 0 else 1, segmentCount = 2, containerColor = themeColor(if (selected) R.attr.accentGood else R.attr.defaultToggleBtnBg), contentColor = themeColor(if (selected) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor)) { Text(label) }
 }
 
 @Composable internal fun BlocklistSelectionRow(row: BlocklistRow, showGroup: Boolean, selectedTags: Set<Int>) {
@@ -157,7 +160,7 @@ import kotlinx.coroutines.flow.Flow
                     Text(row.label, style = MaterialTheme.typography.titleMedium, color = themeColor(R.attr.primaryTextColor), maxLines = if (row.entries == null) 1 else 2, overflow = TextOverflow.Ellipsis)
                     Row(Modifier.padding(top = if (row.entries == null) 4.dp else 8.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text(row.description, Modifier.weight(1f).alpha(.7f), style = MaterialTheme.typography.bodySmall, color = themeColor(R.attr.primaryTextColor), maxLines = if (row.entries == null) 2 else 1, overflow = TextOverflow.Ellipsis)
-                        row.entries?.let { entries -> AssistChip(onClick = { row.onEntries?.invoke() }, label = { Text(entries) }, modifier = Modifier.padding(start = 8.dp).alpha(.8f).testTag("blocklist-entries-${row.key}")) }
+                        row.entries?.let { entries -> OriginalChip("list_item_rethink_blocklist_adv:crp_desc_entries_tv", selected = false, selectable = false, onClick = { row.onEntries?.invoke() }, label = { Text(entries) }, modifier = Modifier.padding(start = 8.dp).alpha(.8f).testTag("blocklist-entries-${row.key}")) }
                     }
                 }
                 Checkbox(checked, select, Modifier.padding(end = 12.dp).testTag("blocklist-check-${row.key}"))

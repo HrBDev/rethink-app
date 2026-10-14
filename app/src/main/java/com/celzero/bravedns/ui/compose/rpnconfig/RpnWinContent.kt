@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.rpnconfig
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -56,8 +57,7 @@ fun RpnWinContent(b: RpnWinState) {
                 }
                 Spacer(Modifier.height(96.dp))
             }
-            Button({ b.openAppSelector.performClick() }, modifier = Modifier.fillMaxWidth().padding(28.dp).testTag("rpn.win.apps"),
-                colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.accentGood), contentColor = Color.White)) {
+            OriginalButton("activity_rpn_win_proxy_detail:open_app_selector", { b.openAppSelector.performClick() }, modifier = Modifier.fillMaxWidth().padding(28.dp).testTag("rpn.win.apps")) {
                 Icon(painterResource(R.drawable.ic_loop_back_app), null, Modifier.size(24.dp)); Text(b.openAppSelector.text.toString(), Modifier.padding(start = 8.dp))
             }
         }

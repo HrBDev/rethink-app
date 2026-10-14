@@ -1,5 +1,6 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -52,7 +53,7 @@ import com.celzero.bravedns.ui.compose.themeColor
                         }
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             listOf(ui.chip5, ui.chip10, ui.chip25, ui.chip50).forEach { control ->
-                                FilterChip(control.isChecked, { ui.selectChip(control) }, label = { Text(control.text.toString()) }, modifier = Modifier.testTag(control.tag))
+                                OriginalChip(control.tag.replace('.', ':'), control.isChecked, { ui.selectChip(control) }, label = { Text(control.text.toString()) }, modifier = Modifier.testTag(control.tag))
                             }
                         }
                     }
@@ -60,12 +61,11 @@ import com.celzero.bravedns.ui.compose.themeColor
             }
             Surface(color = themeColor(com.google.android.material.R.attr.colorSurface), shadowElevation = 8.dp) {
                 Column(Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    if (ui.supportButton.isVisible) Button({ ui.supportButton.performClick() }, enabled = ui.supportButton.isEnabled, modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag(ui.supportButton.tag)) {
-                        utilityImage(R.drawable.ic_heart, Modifier.size(24.dp))
-                        Text(ui.supportButton.text.toString(), Modifier.padding(start = 12.dp), style = utilityTextStyle(ui.supportButton.textAppearance))
+                    if (ui.supportButton.isVisible) OriginalButton("fragment_sponsor:support_button", { ui.supportButton.performClick() }, enabled = ui.supportButton.isEnabled, modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag(ui.supportButton.tag)) {
+                        Text(ui.supportButton.text.toString())
                     }
                     UtilityText(ui.errorText, Modifier.padding(top = 8.dp))
-                    UtilityButton(ui.payWithStripeLink, Modifier.padding(top = 12.dp))
+                    UtilityButton(ui.payWithStripeLink, Modifier.padding(top = 12.dp), source = "fragment_sponsor:pay_with_stripe_link")
                 }
             }
         }
@@ -83,8 +83,7 @@ import com.celzero.bravedns.ui.compose.themeColor
                 UtilityText(ui.successTitle, Modifier.padding(top = 40.dp).semantics { heading() })
                 Text(ui.successMessage.text.toString(), Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp), textAlign = TextAlign.Center,
                     color = themeColor(R.attr.colorOnSurfaceVariant), style = utilityTextStyle(ui.successMessage.textAppearance, lineExtraDp = 6f))
-                OutlinedButton({ ui.continueButton.performClick() }, Modifier.fillMaxWidth().padding(top = 56.dp).heightIn(min = 64.dp).testTag(ui.continueButton.tag), border = BorderStroke(.75.dp, themeColor(R.attr.border)), shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = themeColor(androidx.appcompat.R.attr.colorPrimary))) {
+                OriginalButton("fragment_sponsor_success:continue_button", { ui.continueButton.performClick() }, Modifier.fillMaxWidth().padding(top = 56.dp).heightIn(min = 64.dp).testTag(ui.continueButton.tag)) {
                     Text(ui.continueButton.text.toString(), style = utilityTextStyle(ui.continueButton.textAppearance))
                 }
             }

@@ -1,6 +1,7 @@
 /* Copyright 2024 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.tour
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.graphics.Rect
 import android.graphics.RectF
@@ -224,17 +225,17 @@ class TourOverlayController(
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(stringResource(R.string.tour_step_counter, step.position, step.total).uppercase(Locale.getDefault()), Modifier.weight(1f), color = themeColor(R.attr.primaryTextColor).copy(alpha = .55f), fontSize = 11.sp)
-                    IconButton(onClick = ::skipTour, modifier = Modifier.size(32.dp)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.tour_btn_skip), tint = themeColor(R.attr.primaryLightColorText)) }
+                    IconButton(onClick = ::skipTour, modifier = Modifier.size(32.dp)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.tour_btn_skip), Modifier.size(24.dp), tint = themeColor(R.attr.primaryLightColorText)) }
                 }
                 Text(stringResource(step.titleRes), Modifier.padding(top = 8.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 Text(stringResource(step.descRes), Modifier.padding(top = 6.dp), color = themeColor(R.attr.primaryTextColor).copy(alpha = .8f), fontSize = 13.sp)
                 HorizontalDivider(Modifier.padding(top = 14.dp, bottom = 2.dp), color = themeColor(R.attr.primaryTextColor).copy(alpha = .15f))
                 FlowRow(Modifier.fillMaxWidth().padding(top = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    TextButton(onClick = ::skipTour) { Text(stringResource(R.string.tour_btn_skip), color = themeColor(R.attr.primaryTextColor).copy(alpha = .55f), fontSize = 13.sp) }
+                    OriginalButton("view_tour_tooltip:tour_skip_btn", onClick = ::skipTour) { Text(stringResource(R.string.tour_btn_skip), color = themeColor(R.attr.primaryTextColor).copy(alpha = .55f), fontSize = 13.sp) }
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                         steps.indices.forEach { index -> Box(Modifier.size(6.dp).background(themeColor(R.attr.primaryTextColor).copy(alpha = if (index == currentStepIndex) 1f else .3f), CircleShape)) }
                     }
-                    Button(onClick = ::advanceOrComplete, colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.tourButtonBackground), contentColor = themeColor(R.attr.tourButtonTextColor)), shape = RoundedCornerShape(20.dp)) {
+                    OriginalButton("view_tour_tooltip:tour_next_btn", onClick = ::advanceOrComplete) {
                         Text(stringResource(if (step.isLastStep) R.string.tour_btn_finish else R.string.next), fontSize = 13.sp)
                     }
                 }

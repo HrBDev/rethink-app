@@ -2,6 +2,10 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 package com.celzero.bravedns.ui.compose.trafficlogs
 
+import androidx.compose.ui.graphics.Color
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.*
@@ -66,9 +70,7 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
 
 @Composable fun LogFilterChips(chips: List<LogFilterChip>, singleLine: Boolean = false, onClick: (LogFilterChip) -> Unit) {
     @Composable fun Chip(chip: LogFilterChip) {
-        FilterChip(chip.selected, { onClick(chip) }, { Text(chip.label, fontSize = logTextSize(R.dimen.default_font_text_view)) },
-            leadingIcon = when { chip.icon != null -> ({ Icon(painterResource(chip.icon), null, Modifier.size(15.dp)) }); chip.selected -> ({ Icon(Icons.Default.Check, null, Modifier.size(15.dp)) }); else -> null },
-            shape = RoundedCornerShape(18.dp), colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.chipColorBgNormal), selectedContainerColor = themeColor(R.attr.chipColorBgHighlight), labelColor = themeColor(R.attr.primaryTextColor), selectedLabelColor = themeColor(R.attr.primaryTextColor)), modifier = Modifier.padding(3.dp).testTag("log-filter-${chip.key}"))
+        OriginalChip("item_chip_filter:(anonymous)", chip.selected, { onClick(chip) }, { Text(chip.label, fontSize = logTextSize(R.dimen.default_font_text_view)) }, leadingIcon = when { chip.icon != null -> ({ Icon(painterResource(chip.icon), null, Modifier.size(15.dp)) }); chip.selected -> ({ Icon(Icons.Default.Check, null, Modifier.size(15.dp)) }); else -> null }, modifier = Modifier.padding(3.dp).testTag("log-filter-${chip.key}"))
     }
     if (singleLine) Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 10.dp)) { chips.forEach { Chip(it) } }
     else FlowRow(Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 2.dp)) { chips.forEach { Chip(it) } }
@@ -87,18 +89,18 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
     }
     @Composable fun Content() {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            TextField(state.search.query, { state.search.setQuery(it) }, Modifier.weight(1f).focusRequester(editorFocus).testTag("log-search"),
+            OriginalTextField(state.search.query, { state.search.setQuery(it) }, Modifier.weight(1f).focusRequester(editorFocus).testTag("log-search"),
                 singleLine = true, placeholder = { Text(hint) }, leadingIcon = {
                     // The baseline's already-visible SearchView editor never invokes the root
                     // click listener on focus. Only the root/search affordance expands it and
                     // clears the initial query; tapping or refocusing the editor preserves it.
                     IconButton({ onSearchFocus(); editorFocus.requestFocus(); keyboard?.show() }, Modifier.testTag("log-search-open")) {
-                        Icon(Icons.Default.Search, stringResource(R.string.lbl_search))
+                        Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_search_api_material), stringResource(R.string.lbl_search), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))
                     }
                 },
-                colors = TextFieldDefaults.colors(focusedContainerColor = androidx.compose.ui.graphics.Color.Transparent, unfocusedContainerColor = androidx.compose.ui.graphics.Color.Transparent, focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent, unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent),
+                style = OriginalFieldStyle.Search,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = { state.search.submit() }),
-                trailingIcon = { if (state.search.query.isNotEmpty()) IconButton({ state.search.setQuery("") }) { Icon(Icons.Default.Close, stringResource(R.string.fapps_filter_clear_btn)) } })
+                trailingIcon = { if (state.search.query.isNotEmpty()) IconButton({ state.search.setQuery("") }) { Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.fapps_filter_clear_btn), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal)) } })
             actions()
         }
         filters()
@@ -109,7 +111,7 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
     }
 }
 @Composable fun LogAction(icon: Int, description: String, onClick: () -> Unit, enabled: Boolean = true, modifier: Modifier = Modifier) {
-    IconButton(onClick, modifier, enabled) { Icon(painterResource(icon), description, Modifier.size(24.dp)) }
+    IconButton(onClick, modifier, enabled) { Icon(painterResource(icon), description, Modifier.size(24.dp), tint = Color.Unspecified) }
 }
 @Composable fun <T: Any> LogList(state: LogScreenState, presenter: LogPagingPresenter<T>, modifier: Modifier = Modifier,
     timestamp: (T) -> Long, headerThrottleMillis: Long = 0L, fastScroll: Boolean = true, showHeader: Boolean = true,

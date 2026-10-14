@@ -2,6 +2,9 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.rpnconfig
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.compose.animation.core.*
@@ -64,17 +67,16 @@ fun RpnBypassContent(b: RpnBypassState, query: String, selectedFilter: Int, sear
             Text(b.rpnBypassCount.text.toString(), Modifier.padding(5.dp).testTag("rpn.bypass.count"), color = themeColor(R.attr.accentGood), fontSize = 14.sp)
             Surface(shadowElevation = 4.dp, color = MaterialTheme.colorScheme.surface) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    TextField(query, search, Modifier.weight(1f).focusRequester(searchFocus).testTag("rpn.bypass.search"), singleLine = true,
+                    OriginalTextField(query, search, Modifier.weight(1f).focusRequester(searchFocus).testTag("rpn.bypass.search"), singleLine = true,
                         placeholder = { Text(stringResource(R.string.rpn_bypass_search_hint)) }, leadingIcon = { Icon(Icons.Default.Search, null) },
-                        colors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent,
-                            focusedIndicatorColor = Color.Transparent, unfocusedIndicatorColor = Color.Transparent),
+                        style = OriginalFieldStyle.Search,
                         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                         keyboardActions = KeyboardActions(onSearch = { if (query.trim { it <= ' ' }.isNotEmpty()) { submit(); keyboard?.hide() } }),
                         trailingIcon = { if (query.isNotEmpty()) IconButton({ search(""); searchFocus.requestFocus(); keyboard?.show() }, Modifier.testTag("rpn.bypass.clear")) {
-                            Icon(Icons.Default.Close, stringResource(R.string.lbl_dismiss))
+                            Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material), stringResource(R.string.lbl_dismiss), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))
                         } })
                     IconButton({ b.rpnBypassRefreshList.performClick() }, enabled = b.rpnBypassRefreshList.isEnabled, modifier = Modifier.testTag("rpn.bypass.refresh")) {
-                        Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.wg_compose_refresh), Modifier.rotate(angle))
+                        Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.wg_compose_refresh), Modifier.rotate(angle), tint = Color.Unspecified)
                     }
                 }
             }
@@ -88,7 +90,7 @@ fun RpnBypassContent(b: RpnBypassState, query: String, selectedFilter: Int, sear
             }
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf(R.string.lbl_all, R.string.fapps_firewall_filter_bypass_universal, R.string.lbl_unselected).forEachIndexed { id, label ->
-                    FilterChip(selectedFilter == id, { if (selectedFilter != id) filter(id) }, label = { Text(stringResource(label)) }, modifier = Modifier.testTag("rpn.bypass.filter.$id"))
+                    OriginalChip("item_chip_filter:(anonymous)", selectedFilter == id, { if (selectedFilter != id) filter(id) }, label = { Text(stringResource(label)) }, modifier = Modifier.testTag("rpn.bypass.filter.$id"))
                 }
             }
             apps(Modifier.fillMaxWidth().weight(1f))

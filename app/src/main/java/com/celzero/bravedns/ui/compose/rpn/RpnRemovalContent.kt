@@ -1,5 +1,6 @@
 package com.celzero.bravedns.ui.compose.rpn
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -29,10 +30,11 @@ fun RpnRemovalContent(ui: RpnRemovalState) {
             ui.rows.forEach { (server, row) -> key(server.id) {
                 Row(Modifier.fillMaxWidth().rpnMotion(row).padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(server.flagEmoji, fontSize = 28.sp)
-                    Column(Modifier.padding(start = 16.dp)) { Text(server.countryName); Text(server.serverLocation, style = MaterialTheme.typography.bodySmall) }
+                    Column(Modifier.weight(1f).padding(start = 16.dp)) { Text(server.countryName); Text(server.serverLocation, style = MaterialTheme.typography.bodySmall) }
+                    OriginalLabel("item_removed_server:removal_badge") { Text(stringResource(R.string.server_removed)) }
                 }
             } }
         }
-        Button({ ui.btnUnderstand.performClick() }, Modifier.fillMaxWidth().padding(top = 16.dp).height(56.dp).rpnMotion(ui.btnUnderstand), enabled = ui.btnUnderstand.isEnabled) { Text(ui.btnUnderstand.text.toString()) }
+        OriginalButton("bottomsheet_server_removal_notification:btn_understand", { ui.btnUnderstand.performClick() }, Modifier.fillMaxWidth().padding(top = 16.dp).height(56.dp).rpnMotion(ui.btnUnderstand), enabled = ui.btnUnderstand.isEnabled) { Text(ui.btnUnderstand.text.toString()) }
     }
 }

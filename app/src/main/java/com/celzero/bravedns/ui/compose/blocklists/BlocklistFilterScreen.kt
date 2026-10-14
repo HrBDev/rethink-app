@@ -1,5 +1,6 @@
 package com.celzero.bravedns.ui.compose.blocklists
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -32,12 +33,12 @@ class BlocklistFilterState {
         Text(stringResource(R.string.bsrf_sub_group_heading), Modifier.padding(horizontal = 15.dp, vertical = 10.dp).semantics { heading() }, color = themeColor(R.attr.secondaryTextColor))
         FlowRow(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 5.dp)) {
             state.chips.forEach { chip ->
-                FilterChip(chip.checked, onClick = { chip.checked = !chip.checked; chip.change(chip.checked) }, label = { Text(chip.label) }, modifier = Modifier.padding(3.dp).testTag("blocklist-subgroup-${chip.label}"))
+                OriginalChip("item_chip_filter:(anonymous)", chip.checked, onClick = { chip.checked = !chip.checked; chip.change(chip.checked) }, label = { Text(chip.label) }, modifier = Modifier.padding(3.dp).testTag("blocklist-subgroup-${chip.label}"))
             }
         }
         Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
-            OutlinedButton(state.clear, Modifier.weight(.3f).padding(horizontal = 10.dp).testTag("blocklist-filter-clear")) { Text(stringResource(R.string.bsrf_clear_filter), color = themeColor(R.attr.primaryTextColor)) }
-            Button(state.apply, Modifier.weight(.7f).padding(horizontal = 10.dp).testTag("blocklist-filter-apply")) { Text(stringResource(R.string.lbl_apply), color = themeColor(R.attr.primaryTextColor)) }
+            OriginalButton("bottom_sheet_rethink_plus_filter:rpf_clear", state.clear, Modifier.weight(.3f).padding(horizontal = 10.dp).testTag("blocklist-filter-clear")) { Text(stringResource(R.string.bsrf_clear_filter), color = themeColor(R.attr.primaryTextColor)) }
+            OriginalButton("bottom_sheet_rethink_plus_filter:rpf_apply", state.apply, Modifier.weight(.7f).padding(horizontal = 10.dp).testTag("blocklist-filter-apply")) { Text(stringResource(R.string.lbl_apply), color = themeColor(R.attr.primaryTextColor)) }
         }
     }
 }

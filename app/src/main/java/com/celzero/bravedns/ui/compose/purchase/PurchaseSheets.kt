@@ -1,5 +1,6 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.purchase
+import com.celzero.bravedns.ui.compose.controls.OriginalButton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -78,8 +79,8 @@ internal fun PurchaseSheet(title: String, showHandle: Boolean = true, header: @C
             Text(stringResource(R.string.device_not_registered_what_this_means), style = MaterialTheme.typography.titleMedium)
             Text(stringResource(R.string.device_not_registered_what_this_means_desc))
         }
-        Button(onClick = onSupport, modifier = Modifier.fillMaxWidth().testTag("device_support")) { Text(stringResource(R.string.device_auth_error_btn_email)) }
-        TextButton(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.lbl_cancel)) }
+        OriginalButton(if (unregistered) "bottomsheet_device_not_registered:btn_email_support" else "bottomsheet_device_auth_error:btn_email_support", onClick = onSupport, modifier = Modifier.fillMaxWidth().testTag("device_support")) { Text(stringResource(R.string.device_auth_error_btn_email)) }
+        OriginalButton(if (unregistered) "bottomsheet_device_not_registered:btn_dismiss" else "bottomsheet_device_auth_error:btn_dismiss", onClick = onDismiss, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.lbl_cancel)) }
     }
 }
 @Composable internal fun ConflictContent(state: ConflictState, onRefund: () -> Unit, onSupport: () -> Unit, onDismiss: () -> Unit) {
@@ -90,10 +91,10 @@ internal fun PurchaseSheet(title: String, showHandle: Boolean = true, header: @C
         PurchaseDetail(stringResource(R.string.parse_error_inet_endpoint), state.endpoint)
         PurchaseDetail(stringResource(R.string.conflict_detail_http_code), state.httpCode)
         if (state.serverMessageVisible) Text(state.serverMessage, modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite })
-        if (state.refundVisible) Button(onRefund, enabled = state.refundEnabled, modifier = Modifier.fillMaxWidth().testTag("conflict_refund")) { Text(state.refundLabel) }
+        if (state.refundVisible) OriginalButton("bottomsheet_purchase_conflict:btn_refund", onRefund, enabled = state.refundEnabled, modifier = Modifier.fillMaxWidth().testTag("conflict_refund")) { Text(state.refundLabel) }
         if (state.inFlight) CircularProgressIndicator(Modifier.align(Alignment.CenterHorizontally).testTag("conflict_progress"))
-        OutlinedButton(onSupport, enabled = state.supportEnabled, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.contact_support_title)) }
-        TextButton(onDismiss, enabled = state.dismissEnabled, modifier = Modifier.fillMaxWidth().testTag("conflict_dismiss")) { Text(stringResource(R.string.lbl_cancel)) }
+        OriginalButton("bottomsheet_purchase_conflict:btn_contact_support", onSupport, enabled = state.supportEnabled, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.contact_support_title)) }
+        OriginalButton("bottomsheet_purchase_conflict:btn_dismiss", onDismiss, enabled = state.dismissEnabled, modifier = Modifier.fillMaxWidth().testTag("conflict_dismiss")) { Text(stringResource(R.string.lbl_cancel)) }
     }
 }
 @Composable internal fun ProcessingContent(state: ProcessingStateUi, onPrimary: () -> Unit, onSecondary: () -> Unit) {
@@ -102,7 +103,7 @@ internal fun PurchaseSheet(title: String, showHandle: Boolean = true, header: @C
         if (state.iconVisible) Icon(painterResource(state.icon), null, Modifier.size(56.dp).align(Alignment.CenterHorizontally))
     }) {
         Text(state.message, modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite })
-        if (state.primaryVisible) Button(onPrimary, Modifier.fillMaxWidth().testTag("purchase_primary")) { Text(state.primaryText) }
-        if (state.secondaryVisible) TextButton(onSecondary, Modifier.fillMaxWidth().testTag("purchase_secondary")) { Text(state.secondaryText) }
+        if (state.primaryVisible) OriginalButton("bottomsheet_purchase_processing:action_button", onPrimary, Modifier.fillMaxWidth().testTag("purchase_primary")) { Text(state.primaryText) }
+        if (state.secondaryVisible) OriginalButton("bottomsheet_purchase_processing:secondary_button", onSecondary, Modifier.fillMaxWidth().testTag("purchase_secondary")) { Text(state.secondaryText) }
     }
 }

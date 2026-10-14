@@ -29,12 +29,12 @@
       "path": "app/src/fdroid/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
       "entry_reference": "[Home graph:16](../../app/src/full/res/navigation/app_navigation.xml#L16)",
       "presentation": "native_source_candidate",
-      "current_sha256": "cc2610f57766a3b984079044a333dc6057b92e6aa123321532d60ac904d15915",
+      "current_sha256": "d4fe45bad237bab1b0107c09f78eb87b6227722597247d36bf81efbe3284c837",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:25](../../app/src/fdroid/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt#L25)"
     },
@@ -48,7 +48,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:47](../../app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt#L47)"
     },
@@ -62,7 +62,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:35](../../app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorSuccessFragment.kt#L35)"
     },
@@ -71,12 +71,12 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt",
       "entry_reference": "[Manifest:17](../../app/src/full/AndroidManifest.xml#L17)",
       "presentation": "native_compose_root_with_framework_fragment_interop",
-      "current_sha256": "95262da1aa1007eaf2927dd8de5b60e3a544240929093055692c769ef4b3b764",
+      "current_sha256": "f640206d9186a0d288b7bfabb8bc67d9350bbacfc183c6d444ed64cca8fe4b8a",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Binding removal and fixed-ID fragment boundary](binding-removal-audit.md); current host changes await compilation and runtime restoration tests"
     },
@@ -90,7 +90,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Invisible XML shell; visible dialogs now native:96](../../app/src/main/java/com/celzero/bravedns/ui/NotificationHandlerActivity.kt#L96)"
     },
@@ -104,7 +104,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "Intentionally empty test context"
     },
@@ -118,7 +118,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:65](../../app/src/main/java/com/celzero/bravedns/ui/activity/AdvancedSettingActivity.kt#L65)"
     },
@@ -132,7 +132,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:27](../../app/src/main/java/com/celzero/bravedns/ui/activity/AlertsActivity.kt#L27)"
     },
@@ -146,7 +146,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:101](../../app/src/main/java/com/celzero/bravedns/ui/activity/AntiCensorshipActivity.kt#L101)"
     },
@@ -160,7 +160,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:191](../../app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt#L191)"
     },
@@ -174,7 +174,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:222](../../app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt#L222)"
     },
@@ -188,7 +188,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:72](../../app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt#L72)"
     },
@@ -202,7 +202,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:87](../../app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseDomainLogsActivity.kt#L87)"
     },
@@ -216,7 +216,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:86](../../app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseIpLogsActivity.kt#L86)"
     },
@@ -230,7 +230,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:71](../../app/src/main/java/com/celzero/bravedns/ui/activity/BlockFreeDnsActivity.kt#L71)"
     },
@@ -244,7 +244,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:104](../../app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt#L104); nested adapter migration pending at census"
     },
@@ -258,7 +258,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:81](../../app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt#L81)"
     },
@@ -272,7 +272,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate dnsFragmentHost:98](../../app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt#L98)"
     },
@@ -286,7 +286,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Binding removal and fixed-ID fragment boundary](binding-removal-audit.md); current host changes await compilation and runtime restoration tests"
     },
@@ -300,7 +300,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:136](../../app/src/main/java/com/celzero/bravedns/ui/activity/ConsoleLogActivity.kt#L136)"
     },
@@ -314,7 +314,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:121](../../app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt#L121)"
     },
@@ -328,7 +328,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:128](../../app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt#L128)"
     },
@@ -342,7 +342,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:100](../../app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt#L100)"
     },
@@ -356,7 +356,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Binding removal and fixed-ID fragment boundary](binding-removal-audit.md); current host changes await compilation and runtime restoration tests"
     },
@@ -370,7 +370,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:68](../../app/src/main/java/com/celzero/bravedns/ui/activity/DnsListActivity.kt#L68)"
     },
@@ -379,12 +379,12 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
       "entry_reference": "[Manifest:181](../../app/src/full/AndroidManifest.xml#L181)",
       "presentation": "native_source_candidate",
-      "current_sha256": "07b74ce9d2d99d5cdb506a81c6c76f79d2a886439aa2f108365e0ea945d35898",
+      "current_sha256": "0705f40fb81633e653eb9d85f29bcc761615ebd0e0e020cc4d51fd82c6f6fdf0",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:154](../../app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt#L154)"
     },
@@ -398,7 +398,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:110](../../app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt#L110)"
     },
@@ -412,7 +412,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Binding removal and fixed-ID fragment boundary](binding-removal-audit.md); current host changes await compilation and runtime restoration tests"
     },
@@ -426,7 +426,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Binding removal and fixed-ID fragment boundary](binding-removal-audit.md); current host changes await compilation and runtime restoration tests"
     },
@@ -440,7 +440,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:56](../../app/src/main/java/com/celzero/bravedns/ui/activity/MiscSettingsActivity.kt#L56)"
     },
@@ -449,12 +449,12 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
       "entry_reference": "[Manifest:104](../../app/src/full/AndroidManifest.xml#L104)",
       "presentation": "native_source_candidate",
-      "current_sha256": "b4a3fbde5c4366deb894555835f74d3f769b519a969f92103637c73b23b960aa",
+      "current_sha256": "2787ad30f084803ac6c308d16fd157f6247c3ce6ac1dcd3c01e03ec39ffdcf42",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:117](../../app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt#L117)"
     },
@@ -468,7 +468,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:80](../../app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt#L80)"
     },
@@ -482,7 +482,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:94](../../app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt#L94); nested adapter migration pending at census"
     },
@@ -496,7 +496,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:50](../../app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt#L50)"
     },
@@ -510,7 +510,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:92](../../app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt#L92)"
     },
@@ -524,7 +524,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:122](../../app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt#L122)"
     },
@@ -538,7 +538,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:189](../../app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt#L189)"
     },
@@ -552,7 +552,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:77](../../app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt#L77)"
     },
@@ -566,7 +566,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:97](../../app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt#L97)"
     },
@@ -580,7 +580,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate dnsFragmentHost:64](../../app/src/main/java/com/celzero/bravedns/ui/activity/SmartDnsListActivity.kt#L64)"
     },
@@ -594,7 +594,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:52](../../app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt#L52)"
     },
@@ -608,7 +608,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:41](../../app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt#L41)"
     },
@@ -622,7 +622,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:83](../../app/src/main/java/com/celzero/bravedns/ui/activity/UniversalFirewallSettingsActivity.kt#L83)"
     },
@@ -636,7 +636,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:36](../../app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt#L36)"
     },
@@ -650,7 +650,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:176](../../app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt#L176)"
     },
@@ -664,7 +664,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:74](../../app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt#L74)"
     },
@@ -678,7 +678,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:90](../../app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt#L90)"
     },
@@ -692,7 +692,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:174](../../app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt#L174)"
     },
@@ -706,7 +706,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:92](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppDomainRulesBottomSheet.kt#L92)"
     },
@@ -720,7 +720,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:99](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppIpRulesBottomSheet.kt#L99)"
     },
@@ -734,7 +734,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:144](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt#L144)"
     },
@@ -748,7 +748,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:57](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BackupRestoreBottomSheet.kt#L57)"
     },
@@ -762,7 +762,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:71](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BlockFreeDnsModeBottomSheet.kt#L71)"
     },
@@ -776,7 +776,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:97](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt#L97)"
     },
@@ -790,7 +790,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:90](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt#L90)"
     },
@@ -804,7 +804,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:57](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomDomainRulesBtmSheet.kt#L57)"
     },
@@ -818,7 +818,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:57](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomIpRulesBtmSheet.kt#L57)"
     },
@@ -832,7 +832,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:85](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt#L85)"
     },
@@ -846,7 +846,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:94](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt#L94)"
     },
@@ -860,7 +860,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:101](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt#L101)"
     },
@@ -874,7 +874,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:66](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt#L66)"
     },
@@ -888,7 +888,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:61](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt#L61)"
     },
@@ -902,7 +902,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:51](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt#L51)"
     },
@@ -916,7 +916,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:99](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/HomeScreenSettingBottomSheet.kt#L99)"
     },
@@ -930,7 +930,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:110](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LocalBlocklistsBottomSheet.kt#L110)"
     },
@@ -944,7 +944,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:130](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LogActivityIntervalBottomSheet.kt#L130)"
     },
@@ -958,7 +958,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:39](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt#L39)"
     },
@@ -972,7 +972,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:19](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt#L19)"
     },
@@ -986,7 +986,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:116](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt#L116)"
     },
@@ -1000,7 +1000,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:85](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt#L85)"
     },
@@ -1014,7 +1014,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Legacy pending assigned worker:9](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkInRethinkWarningBottomSheet.kt#L9)"
     },
@@ -1028,7 +1028,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:64](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkListBottomSheet.kt#L64)"
     },
@@ -1042,7 +1042,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "Already dormant; RethinkLogAdapter still opens ConnTrackerBottomSheet"
     },
@@ -1056,7 +1056,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:72](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkPlusFilterBottomSheet.kt#L72)"
     },
@@ -1070,7 +1070,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:126](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt#L126)"
     },
@@ -1084,7 +1084,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:115](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt#L115)"
     },
@@ -1098,7 +1098,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:84](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt#L84)"
     },
@@ -1112,7 +1112,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:172](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerSettingsBottomSheet.kt#L172)"
     },
@@ -1126,7 +1126,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:39](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt#L39)"
     },
@@ -1140,7 +1140,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:108](../../app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt#L108)"
     },
@@ -1154,7 +1154,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate setWgContent:17](../../app/src/main/java/com/celzero/bravedns/ui/dialog/CustomLanIpDialog.kt#L17)"
     },
@@ -1168,7 +1168,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "Native DnsRelaysDialog in DnsCryptListFragment"
     },
@@ -1182,7 +1182,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate setWgContent:50](../../app/src/main/java/com/celzero/bravedns/ui/dialog/GenericHopDialog.kt#L50)"
     },
@@ -1196,7 +1196,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:1](../../app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt#L1)"
     },
@@ -1210,7 +1210,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate GenericHopDialog:33](../../app/src/main/java/com/celzero/bravedns/ui/dialog/RpnProxyHopDialog.kt#L33)"
     },
@@ -1224,7 +1224,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate setWgContent:40](../../app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt#L40)"
     },
@@ -1238,7 +1238,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:88](../../app/src/main/java/com/celzero/bravedns/ui/dialog/SubscriptionAnimDialog.kt#L88)"
     },
@@ -1252,7 +1252,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate setWgContent:56](../../app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt#L56)"
     },
@@ -1266,7 +1266,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate GenericHopDialog:34](../../app/src/main/java/com/celzero/bravedns/ui/dialog/WgHopDialog.kt#L34)"
     },
@@ -1280,7 +1280,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native delegate setWgContent:49](../../app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt#L49)"
     },
@@ -1294,7 +1294,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:132](../../app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt#L132)"
     },
@@ -1308,7 +1308,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:68](../../app/src/main/java/com/celzero/bravedns/ui/fragment/ConfigureFragment.kt#L68)"
     },
@@ -1322,7 +1322,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:74](../../app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt#L74)"
     },
@@ -1336,7 +1336,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:36](../../app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt#L36)"
     },
@@ -1350,7 +1350,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:36](../../app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt#L36)"
     },
@@ -1359,12 +1359,12 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
       "entry_reference": "[ConfigureOtherDnsActivity.kt:101](../../app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt#L101)",
       "presentation": "native_source_candidate",
-      "current_sha256": "54bd5b8fadf69e8da09ec4d7ceb9ced94d1883040d452259a7ae64e19dba24fd",
+      "current_sha256": "4c8fe2ebae08b5369ff6eda140dcce93e6820dac1eb26562c3cf21e6ebfac035",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:58](../../app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt#L58)"
     },
@@ -1378,7 +1378,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:65](../../app/src/main/java/com/celzero/bravedns/ui/fragment/DnsLogFragment.kt#L65)"
     },
@@ -1392,7 +1392,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:57](../../app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt#L57)"
     },
@@ -1406,7 +1406,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:83](../../app/src/main/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragment.kt#L83)"
     },
@@ -1420,7 +1420,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:44](../../app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt#L44)"
     },
@@ -1434,7 +1434,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:46](../../app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt#L46)"
     },
@@ -1448,7 +1448,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:46](../../app/src/main/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragment.kt#L46)"
     },
@@ -1462,7 +1462,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:155](../../app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt#L155)"
     },
@@ -1476,7 +1476,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:46](../../app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt#L46)"
     },
@@ -1490,7 +1490,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:153](../../app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt#L153)"
     },
@@ -1504,7 +1504,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:91](../../app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkListFragment.kt#L91)"
     },
@@ -1518,7 +1518,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:58](../../app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkLogFragment.kt#L58)"
     },
@@ -1532,7 +1532,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:77](../../app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusDashboardFragment.kt#L77)"
     },
@@ -1546,7 +1546,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:86](../../app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt#L86)"
     },
@@ -1555,12 +1555,12 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
       "entry_reference": "[Home graph:34](../../app/src/full/res/navigation/app_navigation.xml#L34)",
       "presentation": "native_source_candidate",
-      "current_sha256": "9e69c0ff0d15b88bb346e0003bb60644860c782a9ee027aa2f3e7b54d0449338",
+      "current_sha256": "0783a286130a655f2a157378410e8508919aff339bbd1f1e437d457e296877b7",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:133](../../app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt#L133)"
     },
@@ -1574,7 +1574,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:45](../../app/src/main/java/com/celzero/bravedns/ui/fragment/SmartDnsListFragment.kt#L45)"
     },
@@ -1588,7 +1588,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:78](../../app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt#L78)"
     },
@@ -1602,7 +1602,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:66](../../app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt#L66)"
     },
@@ -1616,7 +1616,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:92](../../app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt#L92)"
     },
@@ -1630,7 +1630,7 @@
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",
       "search_filter_paging": "pending complete applicable-case parity",
-      "rtl_themes_large_text": "remaining functional clipping/contrast/RTL/large-text checks pending; intentional Material 3 appearance and spacing differences accepted",
+      "rtl_themes_large_text": "original chip/button/field styling restoration requested; clipping/contrast/RTL/large-text and actual rendering checks pending; other intentional Material spacing differences allowed",
       "accessibility": "pending complete semantic/focus/TalkBack parity",
       "notes": "[Native candidate:92](../../app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt#L92)"
     }

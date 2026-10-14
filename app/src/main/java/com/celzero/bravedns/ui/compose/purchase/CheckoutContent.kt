@@ -1,5 +1,9 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.purchase
+import com.celzero.bravedns.ui.compose.controls.OriginalButton
+import com.celzero.bravedns.ui.compose.controls.OriginalLabel
+import androidx.compose.ui.Alignment
+import com.celzero.bravedns.ui.compose.themeColor
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
@@ -70,6 +74,10 @@ We do not collect, sell, license, share any data (personally identifiable or oth
             Text(CheckoutCopy.app_name, style = MaterialTheme.typography.headlineMedium)
             Text(CheckoutCopy.proxy_desc)
             if (state.paymentContainer.isVisible) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    HorizontalDivider(thickness = .5.dp, color = themeColor(R.attr.primaryLightColorText).copy(alpha = .5f))
+                    OriginalLabel("activity_checkout_proxy:(anonymous)", Modifier.testTag("checkout_plans_header")) { Text("plans") }
+                }
                 Text(CheckoutCopy.payment_title, style = MaterialTheme.typography.titleLarge)
                 Column(Modifier.selectableGroup()) {
                     listOf(state.plan1MonthButton, state.plan3MonthsButton, state.plan6MonthsButton).forEachIndexed { index, plan ->
@@ -79,8 +87,8 @@ We do not collect, sell, license, share any data (personally identifiable or oth
                         }
                     }
                 }
-                Button({ state.paymentButton.performClick() }, Modifier.fillMaxWidth().testTag("checkout_payment")) { Text(CheckoutCopy.payment_button) }
-                TextButton({ state.restoreButton.performClick() }, Modifier.fillMaxWidth().testTag("checkout_restore")) { Text(CheckoutCopy.restore_button) }
+                OriginalButton("activity_checkout_proxy:payment_button", { state.paymentButton.performClick() }, Modifier.fillMaxWidth().testTag("checkout_payment")) { Text(CheckoutCopy.payment_button) }
+                OriginalButton("activity_checkout_proxy:restore_button", { state.restoreButton.performClick() }, Modifier.fillMaxWidth().testTag("checkout_restore")) { Text(CheckoutCopy.restore_button) }
                 Text(CheckoutCopy.terms_and_conditions, style = MaterialTheme.typography.titleMedium)
                 Text(CheckoutCopy.termsCopy)
             }
@@ -92,12 +100,12 @@ We do not collect, sell, license, share any data (personally identifiable or oth
             if (state.paymentSuccessContainer.isVisible) {
                 Text(CheckoutCopy.payment_success_title, style = MaterialTheme.typography.titleLarge)
                 Text(CheckoutCopy.payment_success_message)
-                Button({ state.paymentSuccessButton.performClick() }, Modifier.testTag("checkout_continue")) { Text(CheckoutCopy.payment_success_button) }
+                OriginalButton("activity_checkout_proxy:payment_success_button", { state.paymentSuccessButton.performClick() }, Modifier.testTag("checkout_continue")) { Text(CheckoutCopy.payment_success_button) }
             }
             if (state.paymentFailedContainer.isVisible) {
                 Text(CheckoutCopy.payment_failed_title, style = MaterialTheme.typography.titleLarge)
                 Text(CheckoutCopy.payment_failed_message)
-                Button({ state.paymentFailedButton.performClick() }, Modifier.testTag("checkout_retry")) { Text(CheckoutCopy.payment_failed_button) }
+                OriginalButton("activity_checkout_proxy:payment_failed_button", { state.paymentFailedButton.performClick() }, Modifier.testTag("checkout_retry")) { Text(CheckoutCopy.payment_failed_button) }
             }
         }
     }

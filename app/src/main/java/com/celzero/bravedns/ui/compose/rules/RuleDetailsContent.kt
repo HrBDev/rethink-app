@@ -46,7 +46,7 @@ import java.io.Serializable
                     SelectionContainer { Text(title, fontSize = 16.sp) }
                     Text(app.name, fontSize = 12.sp)
                 }
-                IconButton({ deleteOpen = true }, Modifier.testTag("rule_detail_delete")) { Icon(painterResource(R.drawable.ic_delete_small), stringResource(R.string.lbl_delete)) }
+                IconButton({ deleteOpen = true }, Modifier.testTag("rule_detail_delete")) { Icon(painterResource(R.drawable.ic_delete_small), stringResource(R.string.lbl_delete), Modifier.size(24.dp).alpha(if (domain) .8f else 1f), tint = themeColor(R.attr.accentBad)) }
             }
             SettingsCard(Modifier.padding(top = 16.dp), horizontalContentPadding = 12.dp) {
                 Column(Modifier.selectableGroup()) {

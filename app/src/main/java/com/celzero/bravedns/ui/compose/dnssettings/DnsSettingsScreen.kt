@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.dnssettings
 
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -127,8 +128,8 @@ fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDn
                 Text(title, style = MaterialTheme.typography.headlineSmall, color = themeColor(R.attr.primaryTextColor))
                 Text(message, Modifier.padding(top = 16.dp, bottom = 16.dp), color = themeColor(R.attr.primaryTextColor))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = secondaryAction, modifier = Modifier.testTag("dns-dialog-secondary")) { Text(secondary, color = themeColor(R.attr.secondaryTextColor)) }
-                    TextButton(onClick = confirm, modifier = Modifier.testTag("dns-dialog-positive")) { Text(positive, color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
+                    OriginalButton("@dialog_negative", onClick = secondaryAction, modifier = Modifier.testTag("dns-dialog-secondary")) { Text(secondary, color = themeColor(R.attr.secondaryTextColor)) }
+                    OriginalButton("@dialog_positive", onClick = confirm, modifier = Modifier.testTag("dns-dialog-positive")) { Text(positive, color = themeColor(androidx.appcompat.R.attr.colorPrimary)) }
                 }
             }
         }

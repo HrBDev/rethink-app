@@ -1,6 +1,10 @@
 @file:OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 package com.celzero.bravedns.ui.compose.rpn
 
+import androidx.compose.ui.semantics.*
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.content.res.Configuration
 import android.view.View
 import androidx.compose.animation.core.*
@@ -116,7 +120,7 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
                 if (ui.frequentCountriesSection.isVisible) Column(Modifier.padding(vertical = 12.dp).rpnMotion(ui.frequentCountriesSection)) {
                     Text(stringResource(R.string.server_selection_frequent_label), Modifier.padding(horizontal = 20.dp), style = MaterialTheme.typography.labelSmall)
                     Row(Modifier.horizontalScroll(rememberScrollState()).padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        ui.frequentChipGroup.children.forEach { state -> AssistChip({ state.performClick() }, { RpnText(state, style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp)) }, Modifier.heightIn(min = 40.dp), colors = AssistChipDefaults.assistChipColors(containerColor = themeColor(R.attr.colorSurfaceVariant))) }
+                        ui.frequentChipGroup.children.forEach { state -> OriginalChip("@rpn_frequent", selected = false, selectable = false, onClick = { state.performClick() }, label = { OriginalRpnText(state) }, modifier = Modifier.heightIn(min = 40.dp)) }
                     }
                 }
                 if (ui.emptySelectionCard.isVisible) RpnSettingsCard { Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -131,10 +135,10 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
                 }
                 if (ui.searchCard.isVisible) Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 10.dp).onGloballyPositioned { searchY = it.positionInParent().y.toInt() }.rpnMotion(ui.searchCard).clip(RoundedCornerShape(16.dp)).background(themeColor(R.attr.colorSurfaceVariant)).padding(horizontal = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                     Icon(painterResource(R.drawable.ic_search), null, Modifier.size(18.dp))
-                    BasicTextField(ui.searchBar.query, { restoredQuery = it; ui.searchBar.setQuery(it) }, Modifier.weight(1f).padding(horizontal = 8.dp).heightIn(min = 40.dp).focusRequester(focus).onFocusChanged { ui.searchBar.onFocusChanged(it.hasFocus) },
-                        enabled = ui.searchBar.isEnabled, singleLine = true, textStyle = TextStyle(fontSize = 14.sp, color = themeColor(R.attr.primaryTextColor)),
-                        decorationBox = { editor -> Box(contentAlignment = Alignment.CenterStart) { if (ui.searchBar.query.isEmpty()) Text(stringResource(R.string.server_selection_search_hint), fontSize = 14.sp, color = themeColor(R.attr.primaryLightColorText)); editor() } })
-                    if (ui.searchBar.query.isNotEmpty()) IconButton({ ui.searchBar.setQuery("") }, Modifier.size(32.dp), enabled = ui.searchBar.isEnabled) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(16.dp)) }
+                    OriginalTextField(ui.searchBar.query, { restoredQuery = it; ui.searchBar.setQuery(it) }, Modifier.weight(1f).padding(horizontal = 8.dp).heightIn(min = 40.dp).focusRequester(focus).onFocusChanged { ui.searchBar.onFocusChanged(it.hasFocus) },
+                        style = OriginalFieldStyle.ServerSearch, enabled = ui.searchBar.isEnabled, singleLine = true, textStyle = TextStyle(fontSize = 14.sp, color = themeColor(R.attr.primaryTextColor)),
+                        placeholder = { Text(stringResource(R.string.server_selection_search_hint), fontSize = 14.sp, color = themeColor(R.attr.primaryLightColorText)) })
+                    if (ui.searchBar.query.isNotEmpty()) IconButton({ ui.searchBar.setQuery("") }, Modifier.size(32.dp), enabled = ui.searchBar.isEnabled) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.lbl_cancel), Modifier.size(16.dp), tint = Color.Unspecified) }
                     RpnIconButton(ui.searchFilterBtn, R.drawable.ic_filter, R.string.server_selection_filter_locations, 36.dp)
                 }
                 if (ui.serverCountLayout.isVisible) Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -152,12 +156,17 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
                     else Box(Modifier.size(width, height).rpnMotion(child).background(child.backgroundTintList?.defaultColor?.let(::Color) ?: themeColor(R.attr.accentGood), CircleShape))
                 } }
             }
-            if (ui.fabStopProxy.isVisible) FloatingActionButton({ ui.fabStopProxy.performClick() }, Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = with(density) { ui.fabBottomPx.toDp() }).rpnMotion(ui.fabStopProxy)) {
-                Icon(painterResource(R.drawable.ic_stop), ui.fabStopProxy.contentDescription?.toString())
+            if (ui.fabStopProxy.isVisible) FloatingActionButton({ ui.fabStopProxy.performClick() }, Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = with(density) { ui.fabBottomPx.toDp() }).rpnMotion(ui.fabStopProxy),
+                containerColor = themeColor(androidx.appcompat.R.attr.colorError), contentColor = Color.White,
+                elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 8.dp)) {
+                Icon(painterResource(R.drawable.ic_stop), ui.fabStopProxy.contentDescription?.toString() ?: stringResource(R.string.server_settings_stop_proxies), Modifier.size(24.dp))
             }
-            if (ui.fabStartProxy.isVisible) ExtendedFloatingActionButton({ ui.fabStartProxy.performClick() }, Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = with(density) { ui.fabBottomPx.toDp() }).rpnMotion(ui.fabStartProxy)) {
-                Text(ui.fabStartProxy.text.toString())
-            }
+            if (ui.fabStartProxy.isVisible) ExtendedFloatingActionButton(onClick = { ui.fabStartProxy.performClick() },
+                modifier = Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = with(density) { ui.fabBottomPx.toDp() }).rpnMotion(ui.fabStartProxy),
+                containerColor = themeColor(R.attr.accentGood), contentColor = themeColor(R.attr.homeScreenHeaderTextColor),
+                elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 8.dp),
+                icon = { Icon(painterResource(R.drawable.ic_vpn), null, Modifier.size(24.dp), tint = Color.White) },
+                text = { Text(ui.fabStartProxy.text.toString()) })
         }
     }
 }
@@ -194,9 +203,12 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
 
 @Composable private fun RpnIconButton(state: RpnControlState, icon: Int, description: Int, size: Dp, modifier: Modifier = Modifier) {
     if (!state.isVisible) return
-    IconButton({ state.performClick() }, modifier.size(size).rpnMotion(state).background(state.backgroundTintList?.defaultColor?.let(::Color) ?: Color.Transparent, CircleShape), enabled = state.isEnabled && state.isClickable) {
-        Icon(painterResource(icon), state.contentDescription?.toString() ?: stringResource(description), Modifier.size(22.dp), tint = state.iconTint?.defaultColor?.let(::Color) ?: themeColor(R.attr.primaryLightColorText))
-    }
+    val sourceId = when (description) { R.string.contact_support_title -> "support_btn"; R.string.server_settings_open -> "settings_btn"; else -> "search_filter_btn" }
+    val label = state.contentDescription?.toString() ?: stringResource(description)
+    OriginalButton("fragment_server_selection:$sourceId", { state.performClick() }, modifier.rpnMotion(state).semantics { contentDescription = label },
+        enabled = state.isEnabled && state.isClickable, backgroundTint = state.backgroundTintList,
+        leadingIcon = { Icon(painterResource(icon), null, Modifier.size(if (sourceId == "search_filter_btn") 18.dp else 22.dp), tint = state.iconTint?.defaultColor?.let(::Color) ?: themeColor(if (sourceId == "search_filter_btn") R.attr.primaryTextColor else R.attr.primaryLightColorText)) }) { }
+
 }
 @Composable private fun QuickPill(state: RpnControlState, icon: Int, label: String, caption: RpnControlState, iconState: RpnControlState? = null, labelState: RpnControlState? = null, modifier: Modifier = Modifier) {
     Row(modifier.padding(end = 6.dp).rpnMotion(state).clip(RoundedCornerShape(20.dp)).background(themeColor(R.attr.colorSurfaceVariant)).clickable(enabled = state.isClickable && state.isEnabled) { state.performClick() }.padding(horizontal = 10.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -211,9 +223,9 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
             RpnImage(ui.errorIllustration, Modifier.size(80.dp, 64.dp).rpnMotion(ui.errorIllustration))
             RpnText(ui.errorTitle, Modifier.padding(top = 20.dp), MaterialTheme.typography.titleMedium.copy(fontSize = 17.sp))
             RpnText(ui.errorHint, Modifier.padding(top = 6.dp))
-            if (ui.errorRetryBtn.isVisible) Button({ ui.errorRetryBtn.performClick() }, Modifier.fillMaxWidth().padding(top = 24.dp).height(48.dp), enabled = ui.errorRetryBtn.isEnabled) { RpnText(ui.errorRetryBtn) }
-            if (ui.errorResetBtn.isVisible) OutlinedButton({ ui.errorResetBtn.performClick() }, Modifier.fillMaxWidth().padding(top = 10.dp).height(44.dp), enabled = ui.errorResetBtn.isEnabled) { RpnText(ui.errorResetBtn) }
-            if (ui.errorReportBtn.isVisible) TextButton({ ui.errorReportBtn.performClick() }, Modifier.padding(top = 6.dp), enabled = ui.errorReportBtn.isEnabled) { RpnText(ui.errorReportBtn) }
+            if (ui.errorRetryBtn.isVisible) OriginalButton("fragment_server_selection:error_retry_btn", { ui.errorRetryBtn.performClick() }, Modifier.fillMaxWidth().padding(top = 24.dp).height(48.dp), enabled = ui.errorRetryBtn.isEnabled) { OriginalRpnText(ui.errorRetryBtn) }
+            if (ui.errorResetBtn.isVisible) OriginalButton("fragment_server_selection:error_reset_btn", { ui.errorResetBtn.performClick() }, Modifier.fillMaxWidth().padding(top = 10.dp).heightIn(min = 48.dp), enabled = ui.errorResetBtn.isEnabled) { OriginalRpnText(ui.errorResetBtn) }
+            if (ui.errorReportBtn.isVisible) OriginalButton("fragment_server_selection:error_report_btn", { ui.errorReportBtn.performClick() }, Modifier.padding(top = 6.dp), enabled = ui.errorReportBtn.isEnabled) { OriginalRpnText(ui.errorReportBtn) }
         } }
     }
 }

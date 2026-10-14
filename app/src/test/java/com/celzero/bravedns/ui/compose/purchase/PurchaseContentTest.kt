@@ -91,6 +91,8 @@ class PurchaseContentTest {
             paymentButton.setOnClickListener { calls += "payment" }; restoreButton.setOnClickListener { calls += "restore" }
         }
         compose.setContent { TestTheme { CheckoutContent(state) } }
+        compose.onNodeWithTag("checkout_plans_header").assertExists().assertHasNoClickAction()
+        compose.onNodeWithText("plans").assertExists()
         compose.runOnIdle { assertTrue(calls.isEmpty()) }
         compose.onNodeWithText("Synthetic one month").performScrollTo().performClick()
         compose.runOnIdle { assertTrue(calls.isEmpty()) }
@@ -135,6 +137,20 @@ class PurchaseContentTest {
         compose.runOnIdle { assertTrue(calls.isEmpty()) }
         compose.onNodeWithTag("history_retry").performScrollTo().performClick()
         compose.runOnIdle { assertEquals(listOf("reload"), calls) }
+    }
+    @Test fun restoredHistoryBadgesRemainPassiveAndRecomposeFromSyntheticState() {
+        val state = HistoryRowState().apply {
+            tvTypeBadge.text = "Active synthetic"
+            tvStatusChip.text = "Monthly synthetic"
+            tvTestBadge.text = "Test synthetic"
+        }
+        compose.setContent { TestTheme { HistoryRowContent(state, server = true) } }
+        compose.onNodeWithText("Active synthetic").assertHasNoClickAction()
+        compose.onNodeWithText("Monthly synthetic").assertHasNoClickAction()
+        compose.onNodeWithText("Test synthetic").assertHasNoClickAction()
+        compose.runOnIdle { state.tvStatusChip.text = "Expired synthetic" }
+        compose.onNodeWithText("Monthly synthetic").assertDoesNotExist()
+        compose.onNodeWithText("Expired synthetic").assertHasNoClickAction()
     }
     @Composable private fun TestTheme(content: @Composable () -> Unit) {
         val context = LocalContext.current

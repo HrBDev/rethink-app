@@ -1,5 +1,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 package com.celzero.bravedns.ui.compose.firewallapps
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
@@ -49,15 +52,15 @@ import kotlinx.coroutines.launch
     Surface(color=themeColor(R.attr.background)) {
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
             Row(Modifier.padding(horizontal=12.dp),verticalAlignment=Alignment.CenterVertically) {
-                OutlinedTextField(b.ffaSearch.query,{b.ffaSearch.setQuery(it,false)},Modifier.weight(1f).testTag("firewall_search"),singleLine=true,
+                OriginalTextField(b.ffaSearch.query,{b.ffaSearch.setQuery(it,false)},Modifier.weight(1f).testTag("firewall_search"), style = OriginalFieldStyle.Search,singleLine=true,
                     placeholder={Text(stringResource(R.string.lbl_search))},keyboardOptions=KeyboardOptions(imeAction=ImeAction.Search),keyboardActions=KeyboardActions(onSearch={b.ffaSearch.setQuery(b.ffaSearch.query,true)}),
-                    trailingIcon={if(b.ffaSearch.query.isNotEmpty())IconButton({b.ffaSearch.setQuery("",false)}){Icon(Icons.Default.Close,stringResource(R.string.lbl_cancel))}})
+                    trailingIcon={if(b.ffaSearch.query.isNotEmpty())IconButton({b.ffaSearch.setQuery("",false)}){Icon(painterResource(androidx.appcompat.R.drawable.abc_ic_clear_material),stringResource(R.string.lbl_cancel), tint = themeColor(androidx.appcompat.R.attr.colorControlNormal))}})
                 AppListIcon(b.ffaRefreshList,R.drawable.ic_refresh_white,R.string.refresh_complete)
                 AppListIcon(b.ffaFilterIcon,R.drawable.ic_filter,R.string.fapps_filter_filter_heading)
             }
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal=8.dp),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
                 val context=LocalContext.current
-                AppListActivity.FirewallFilter.entries.forEach {filter->FilterChip(b.selectedFilter==filter.id,{b.selectFirewall(filter.id)},label={Text(filter.getLabel(context))})}
+                AppListActivity.FirewallFilter.entries.forEach {filter->OriginalChip("item_chip_filter:(anonymous)", b.selectedFilter==filter.id, {b.selectFirewall(filter.id)}, label={Text(filter.getLabel(context))})}
             }
             Text(wgAnnotatedText(b.firewallAppLabelTv.text),Modifier.fillMaxWidth().padding(horizontal=10.dp,vertical=5.dp).basicMarquee(),fontSize=12.sp,maxLines=1)
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),verticalAlignment=Alignment.CenterVertically) {
@@ -97,7 +100,7 @@ import kotlinx.coroutines.launch
     } else 0f
     TooltipBox(positionProvider=TooltipDefaults.rememberPlainTooltipPositionProvider(),tooltip={PlainTooltip{Text(stringResource(label))}},state=tooltip) {
         IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.rotate(rotation)) {
-            Icon(painterResource(node.imageRes.takeIf{it!=0}?:fallback),stringResource(label),tint=Color.Unspecified)
+            Icon(painterResource(node.imageRes.takeIf{it!=0}?:fallback),stringResource(label), Modifier.alpha(if (fallback == R.drawable.ic_info_white) .5f else 1f), tint=Color.Unspecified)
         }
     }
 }
@@ -115,7 +118,7 @@ import kotlinx.coroutines.launch
                 }
             }
             listOf(b.firewallAppToggleWifi to R.string.ada_app_unmetered,b.firewallAppToggleMobileData to R.string.ada_app_metered).forEachIndexed{i,(node,label)->
-                if(node.isVisible)IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.testTag("firewall_row_network_$i")) {
+                if(node.isVisible)IconButton({node.performClick()},enabled=node.isEnabled,modifier=Modifier.size(48.dp).border(.1.dp, themeColor(R.attr.colorOutline), androidx.compose.foundation.shape.RoundedCornerShape(12.dp)).testTag("firewall_row_network_$i")) {
                     Box(Modifier.size(24.dp).semanticsLabel(stringResource(label))){DrawableImage(node.drawable,Modifier.fillMaxSize())}
                 }
             }

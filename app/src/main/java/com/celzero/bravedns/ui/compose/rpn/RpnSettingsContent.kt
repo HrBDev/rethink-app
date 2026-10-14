@@ -1,5 +1,7 @@
 package com.celzero.bravedns.ui.compose.rpn
 
+import androidx.compose.ui.semantics.*
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,9 +29,11 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                 Text(stringResource(R.string.title_settings), fontSize = 20.sp)
                 Text(stringResource(R.string.server_settings_sheet_subtitle), Modifier.alpha(.6f), fontSize = 12.sp)
             }
-            IconButton({ ui.refreshBtn.performClick() }, Modifier.size(38.dp), enabled = ui.refreshBtn.isEnabled && ui.refreshBtn.isClickable) {
-                Icon(painterResource(R.drawable.ic_refresh_white), stringResource(R.string.server_settings_refresh_servers), Modifier.size(22.dp).rpnMotion(ui.refreshBtn), tint = themeColor(R.attr.accentGood))
-            }
+            val refreshDescription = stringResource(R.string.server_settings_refresh_servers)
+            OriginalButton("bottomsheet_server_settings:refresh_btn", { ui.refreshBtn.performClick() },
+                Modifier.semantics { contentDescription = refreshDescription }, enabled = ui.refreshBtn.isEnabled && ui.refreshBtn.isClickable,
+                leadingIcon = { Icon(painterResource(R.drawable.ic_refresh_white), null, Modifier.size(22.dp).rpnMotion(ui.refreshBtn), tint = themeColor(R.attr.accentGood)) }) { }
+
         }
         Column(Modifier.verticalScroll(rememberScrollState())) {
             RpnSectionLabel(R.string.server_settings_dns_section)
@@ -37,7 +41,7 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                 RpnText(ui.tvDnsFilterDesc, Modifier.padding(horizontal = 16.dp, vertical = 12.dp), MaterialTheme.typography.bodySmall)
                 if (ui.splitDnsBanner.isVisible) Row(Modifier.padding(12.dp).rpnMotion(ui.splitDnsBanner).background(themeColor(R.attr.chipBgColorNeutral), RoundedCornerShape(10.dp)).padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(stringResource(R.string.server_settings_split_dns_disabled), Modifier.weight(1f), fontSize = 12.sp)
-                    TextButton({ ui.splitDnsEnableBtn.performClick() }) { RpnText(ui.splitDnsEnableBtn) }
+                    OriginalButton("bottomsheet_server_settings:split_dns_enable_btn", { ui.splitDnsEnableBtn.performClick() }) { OriginalRpnText(ui.splitDnsEnableBtn) }
                 }
                 Column(Modifier.rpnMotion(ui.dnsCheckboxContainer)) {
                     RpnCheckRow(R.string.rbl_privacy, ui.dnsRowPrivacy, ui.cbDnsPrivacy)
@@ -53,7 +57,7 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                     RpnText(ui.tvConfigModeHint, Modifier.weight(1f).padding(end = 10.dp), MaterialTheme.typography.bodySmall)
                     listOf(R.id.btn_config_auto to ui.btnConfigAuto, R.id.btn_config_manual to ui.btnConfigManual).forEach { (id, state) ->
                         val selected = ui.configModeToggle.checkedId == id
-                        TextButton({ ui.configModeToggle.check(id) }, colors = ButtonDefaults.textButtonColors(containerColor = if (selected) themeColor(R.attr.accentGood) else androidx.compose.ui.graphics.Color.Transparent)) { RpnText(state, style = MaterialTheme.typography.labelMedium) }
+                        OriginalButton("bottomsheet_server_settings:" + if (id == R.id.btn_config_auto) "btn_config_auto" else "btn_config_manual", { ui.configModeToggle.check(id) }, selected = selected, segmentIndex = if (id == R.id.btn_config_auto) 0 else 1, segmentCount = 2) { Text(state.text.toString()) }
                     }
                 }
                 RpnSettingsDivider()
@@ -74,7 +78,7 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                     Icon(painterResource(R.drawable.ic_right_arrow_small), null, Modifier.size(17.dp))
                 }
             }
-            Button({ ui.btnResetRpn.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp).height(48.dp).rpnMotion(ui.btnResetRpn), enabled = ui.btnResetRpn.isEnabled) { Text(ui.btnResetRpn.text.toString()) }
+            OriginalButton("bottomsheet_server_settings:btn_reset_rpn", { ui.btnResetRpn.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp).height(48.dp).rpnMotion(ui.btnResetRpn), enabled = ui.btnResetRpn.isEnabled) { Text(ui.btnResetRpn.text.toString()) }
             Text(stringResource(R.string.rpn_restore_confirm_message), Modifier.padding(horizontal = 20.dp).alpha(.6f), style = MaterialTheme.typography.bodySmall)
             RpnSignature(ui.dolphinSignature, Modifier.fillMaxWidth())
         }

@@ -2,6 +2,9 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.rpnconfig
 
+import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.fields.OriginalTextField
+import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.Easing
@@ -69,7 +72,7 @@ fun RpnSsidContent(state: RpnSsidState, countryName: String, add: () -> Unit, de
                 Modifier.alpha(.8f), color = themeColor(R.attr.primaryLightColorText), fontSize = 14.sp)
             HorizontalDivider(color = themeColor(R.attr.primaryTextColor).copy(alpha = .1f))
             Text(stringResource(R.string.country_ssid_add_new), fontSize = 15.sp, fontWeight = FontWeight.Bold)
-            OutlinedTextField(state.name, { state.name = it }, Modifier.fillMaxWidth().testTag("rpn.ssid.input"), singleLine = true,
+            OriginalTextField(state.name, { state.name = it }, Modifier.fillMaxWidth().testTag("rpn.ssid.input"), style = OriginalFieldStyle.RpnSsid, singleLine = true,
                 label = { Text(stringResource(R.string.wg_ssid_input_hint, stringResource(R.string.lbl_ssids))) },
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done), keyboardActions = KeyboardActions(onDone = { add() }))
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
@@ -84,7 +87,7 @@ fun RpnSsidContent(state: RpnSsidState, countryName: String, add: () -> Unit, de
                     SsidOption(stringResource(R.string.wg_ssid_type_wildcard), !state.exact, "rpn.ssid.wildcard") { state.exact = false }
                 }
             }
-            TextButton(add, enabled = state.name.isNotBlank(), modifier = Modifier.testTag("rpn.ssid.add")) { Text(stringResource(R.string.wg_ssid_add_button)) }
+            OriginalButton("dialog_rpn_ssid:add_ssid_btn", add, enabled = state.name.isNotBlank(), modifier = Modifier.testTag("rpn.ssid.add")) { Text(stringResource(R.string.wg_ssid_add_button)) }
             HorizontalDivider(color = themeColor(R.attr.primaryTextColor).copy(alpha = .1f))
             Text(stringResource(R.string.country_ssid_configured_list), fontSize = 15.sp, fontWeight = FontWeight.Bold)
             if (state.items.isEmpty()) Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -95,13 +98,13 @@ fun RpnSsidContent(state: RpnSsidState, countryName: String, add: () -> Unit, de
                     Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text(item.name, Modifier.weight(1f), fontSize = 16.sp)
                         Text(item.type.getDisplayName(context), Modifier.padding(start = 8.dp), fontSize = 12.sp, color = themeColor(R.attr.accentBad))
-                        IconButton({ delete(item) }, Modifier.testTag("rpn.ssid.delete.$index")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete)) }
+                        IconButton({ delete(item) }, Modifier.testTag("rpn.ssid.delete.$index")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }
                     }
                 }
             }
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton(cancel, Modifier.testTag("rpn.ssid.cancel")) { Text(stringResource(R.string.lbl_cancel)) }
-                Button(save, Modifier.testTag("rpn.ssid.save"), colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.accentGood), contentColor = Color.White)) { Text(stringResource(R.string.lbl_save)) }
+                OriginalButton("dialog_rpn_ssid:cancel_btn", cancel, Modifier.testTag("rpn.ssid.cancel")) { Text(stringResource(R.string.lbl_cancel)) }
+                OriginalButton("dialog_rpn_ssid:save_btn", save, Modifier.testTag("rpn.ssid.save")) { Text(stringResource(R.string.lbl_save)) }
             }
         }
     }

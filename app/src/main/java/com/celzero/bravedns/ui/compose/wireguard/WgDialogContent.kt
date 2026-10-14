@@ -32,7 +32,7 @@ fun WgHopContent(b: WgHopState) {
         androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.fillMaxSize().safeDrawingPadding().padding(16.dp)) {
             WgText(b.wgHopDialogHeading)
             b.wgHopRecyclerView.adapter?.Content(androidx.compose.ui.Modifier.weight(1f))
-            WgAction(b.wgHopDialogOkButton)
+            WgAction(b.wgHopDialogOkButton, source = "dialog_wg_hop:wg_hop_dialog_ok_button")
         }
     }
 }

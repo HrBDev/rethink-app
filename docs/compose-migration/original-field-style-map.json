@@ -1,0 +1,1890 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "native_checkpoint": "e2b97de59cc854de74010c096ceffbaed6cb4a55",
+  "status": "Source implementation plus unexecuted synthetic tests. Not runtime/pixel-equivalence evidence.",
+  "primitive": "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt",
+  "method": "Pinned XML inventory mapped deterministically by layout/id. Existing resources are read as styles/drawables; no layout inflation or Views. Callbacks checked separately against native checkpoint.",
+  "families": {
+    "WgEditor": "Explicit Widget.Material3.TextInputLayout.OutlinedBox; four 8dp corners, 4dp margins, 15dp top padding; generated/optional/auto/random hints remain collapsed; listen-port/MTU centered. Password/IME callbacks unchanged.",
+    "WgSsid": "Explicit Widget.Material3.TextInputLayout.OutlinedBox; theme-resolved shape, not forced 8dp. Android edit-text typography and state colors.",
+    "WgInlineSsid": "edittext_default drawable: 1dp android:darker_gray border, 4dp corners, transparent fill; explicit 8dp padding and primaryTextColor/primaryLightColorText.",
+    "Dns": "No explicit box style: selected Android textInputStyle determines box mode, shape and selectors. BodyLarge text appearance; accentGood focused label.",
+    "DnsProxy": "Plain AppCompatEditText with original editTextStyle background/state, BodyLarge text appearance; no added floating outlined label.",
+    "Network": "Existing Android editTextStyle drawable/padding/hint state resolver retained; 48dp minimum hit area added. Existing node-specific monospace/size styles, numeric filtering and password transformation retained.",
+    "Tasker": "Programmatic AppCompatEditText, themed underline; original 50/40/50/40 pixel padding; horizontal scrolling retained.",
+    "Notes": "Programmatic EditText with themed background and typography; 4-10 line multiline TextFieldValue path preserves selection/composition and length filter.",
+    "Lan": "edittext_default rectangle; drawable 10dp padding; no floating label. Original 2:1 address:prefix weights and 4dp gap.",
+    "ReachabilityRectangle": "Retain original edittext_default drawable and its 10dp padding; state propagated, minimum48dp hit area. No forced outline shape.",
+    "Rule": "Explicit Widget.Material3.TextInputLayout.OutlinedBox; four 8dp corners; accentGood focused label, primaryTextColor, large_font_text_view dimension.",
+    "Ping": "Explicit outlined family; four16dp corners;15sp input. Error supporting text, enabled conjunction, URI/Done retained.",
+    "Support": "Explicit outlined family; four12dp corners;14sp input,5-10lines and1000-character filter/counter retained.",
+    "RpnSsid": "Inherited textInputStyle box mode;12dp corners,15sp input,16dp padding; never force outline.",
+    "Search": "SearchView queryBackground state drawable,16sp sans-serif, search affordance and existing trailing clear callbacks; no floating outline. Rules app-specific searches retain14sp override.",
+    "AppLogSearch": "SearchView queryBackground; programmatic14sp override; XML explicitly null search/search-hint icons.",
+    "ServerSearch": "SearchView queryBackground; programmatic14sp/no-font-padding override; original surrounding search-card/icons retained. Touch target can grow beyond baseline40dp at large font scale.",
+    "TransparentSearch": "Transparent AppCompatEditText14sp with primaryTextColor/light hint, inside original12dp-corner card60dp minimum; no field outline.",
+    "Spinner": "Original Spinner backdrop resolves spinnerStyle. Both baseline adapters use android.R.layout.simple_spinner_dropdown_item, so selected item typography/padding resolve spinnerDropDownItemStyle. Existing app chooser dialog/menu and selection callbacks remain owned by call sites."
+  },
+  "baseline_instances": [
+    {
+      "path": "app/src/full/res/layout/activity_app_list.xml",
+      "id": "ffa_search",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsContent.kt",
+      "renderer_function": "FirewallAppsContent",
+      "baseline_attributes": {
+        "android:id": "@+id/ffa_search",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "start",
+        "android:layout_weight": "0.8",
+        "android:fontFamily": "sans-serif",
+        "android:focusable": "false",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_firewall_all_apps"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/activity_console_log.xml",
+      "id": "search_view",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "renderer_function": "LogSearchBar",
+      "baseline_attributes": {
+        "android:id": "@+id/search_view",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_alignParentStart": "true",
+        "android:layout_centerVertical": "true",
+        "android:layout_gravity": "start",
+        "android:layout_toStartOf": "@id/pause_icon",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/lbl_search"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_add_custom_domain.xml",
+      "id": "dacd_text_input_layout",
+      "source_tag": "TextInputLayout",
+      "family": "Rule",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "renderer_function": "RuleEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/dacd_text_input_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/cd_dialog_edittext_hint",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_add_custom_domain.xml",
+      "id": "dacd_domain_edit_text",
+      "source_tag": "EditText",
+      "family": "Rule",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "renderer_function": "RuleEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/dacd_domain_edit_text",
+        "android:layout_width": "fill_parent",
+        "android:layout_height": "match_parent",
+        "android:layout_marginTop": "10dp",
+        "android:layout_marginBottom": "10dp",
+        "android:hint": "@string/cd_dialog_edittext_hint",
+        "android:importantForAutofill": "no",
+        "android:inputType": "textUri",
+        "android:maxLines": "2",
+        "android:minHeight": "48dp",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textSize": "@dimen/large_font_text_view",
+        "app:layout_constraintRight_toLeftOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@id/text_input_layout_name"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "gateway_ipv4",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/gateway_ipv4",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "2",
+        "android:inputType": "text",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/settings_ip_text_ipv4"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "gateway_ipv4_prefix",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/gateway_ipv4_prefix",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:layout_marginStart": "4dp",
+        "android:inputType": "number",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/lbl_prefix"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "gateway_ipv6",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/gateway_ipv6",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "2",
+        "android:inputType": "text",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/settings_ip_text_ipv6"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "gateway_ipv6_prefix",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/gateway_ipv6_prefix",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:layout_marginStart": "4dp",
+        "android:inputType": "number",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/lbl_prefix"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "router_ipv4",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/router_ipv4",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "2",
+        "android:inputType": "text",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/settings_ip_text_ipv4"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "router_ipv4_prefix",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/router_ipv4_prefix",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:layout_marginStart": "4dp",
+        "android:inputType": "number",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/lbl_prefix"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "router_ipv6",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/router_ipv6",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "2",
+        "android:inputType": "text",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/settings_ip_text_ipv6"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "router_ipv6_prefix",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/router_ipv6_prefix",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:layout_marginStart": "4dp",
+        "android:inputType": "number",
+        "android:hint": "@string/lbl_prefix"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "dns_ipv4",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/dns_ipv4",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "2",
+        "android:inputType": "text",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/settings_ip_text_ipv4"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "dns_ipv4_prefix",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/dns_ipv4_prefix",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:layout_marginStart": "4dp",
+        "android:inputType": "number",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/lbl_prefix"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "dns_ipv6",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/dns_ipv6",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "2",
+        "android:inputType": "text",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/settings_ip_text_ipv6"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+      "id": "dns_ipv6_prefix",
+      "source_tag": "AppCompatEditText",
+      "family": "Lan",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+      "renderer_function": "LanPair",
+      "baseline_attributes": {
+        "android:id": "@+id/dns_ipv6_prefix",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:layout_marginStart": "4dp",
+        "android:inputType": "number",
+        "android:background": "@drawable/edittext_default",
+        "android:hint": "@string/lbl_prefix"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "id": "text_input_layout_name",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout_name",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:hint": "@string/cd_doh_dialog_resolver_name",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "id": "dialog_custom_name_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_custom_name_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textNoSuggestions",
+        "android:maxLines": "2",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "id": "text_input_layout1",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout1",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:hint": "@string/cd_doh_dialog_resolver_url",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "id": "dialog_custom_url_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_custom_url_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textUri",
+        "android:maxLines": "2",
+        "android:text": "https://",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "id": "text_input_layout_ip",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout_ip",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:hint": "@string/cd_doh_dialog_resolver_ip",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "id": "dialog_custom_ip_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_custom_ip_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textNoSuggestions",
+        "android:maxLines": "2",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "id": "text_input_layout_name",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout_name",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:hint": "@string/cd_doh_dialog_resolver_name",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "id": "dialog_custom_name_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_custom_name_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textNoSuggestions",
+        "android:maxLines": "2",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "id": "text_input_layout1",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout1",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:hint": "@string/settings_proxy_header",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "id": "dialog_custom_proxy_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_custom_proxy_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textUri",
+        "android:maxLines": "2",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "id": "text_input_layout2",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout2",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:hint": "@string/cd_doh_dialog_resolver_url",
+        "app:hintTextColor": "?attr/accentGood"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "id": "dialog_custom_resolver_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_custom_resolver_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textUri",
+        "android:maxLines": "2",
+        "android:text": "https://",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "id": "text_input_layout1",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout1",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/cd_dns_crypt_dialog_name",
+        "app:hintTextColor": "?attr/accentGood",
+        "app:layout_constraintTop_toBottomOf": "@id/dialog_dns_proxy_radio_group"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "id": "dialog_dns_crypt_name",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_dns_crypt_name",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textNoSuggestions",
+        "android:maxLines": "1",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "id": "text_input_layout2",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout2",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/cd_dns_crypt_dialog_stamp",
+        "app:hintTextColor": "?attr/accentGood",
+        "app:layout_constraintTop_toBottomOf": "@id/text_input_layout1"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "id": "dialog_dns_crypt_url",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_dns_crypt_url",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "id": "text_input_layout3",
+      "source_tag": "TextInputLayout",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/text_input_layout3",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/cd_dns_crypt_dialog_desc",
+        "app:hintTextColor": "?attr/accentGood",
+        "app:layout_constraintTop_toBottomOf": "@id/text_input_layout2"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "id": "dialog_dns_crypt_desc",
+      "source_tag": "TextInputEditText",
+      "family": "Dns",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_dns_crypt_desc",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:inputType": "textNoSuggestions",
+        "android:maxLines": "2",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+      "id": "dialog_dns_proxy_edit_name",
+      "source_tag": "AppCompatEditText",
+      "family": "DnsProxy",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsProxyEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_dns_proxy_edit_name",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:hint": "@string/dns_proxy_name",
+        "android:inputType": "textNoSuggestions",
+        "android:maxLines": "1",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+      "id": "dialog_dns_proxy_edit_ip",
+      "source_tag": "AppCompatEditText",
+      "family": "DnsProxy",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsProxyEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_dns_proxy_edit_ip",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:hint": "@string/dns_proxy_ip_address",
+        "android:maxLines": "1",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+      "id": "dialog_dns_proxy_edit_port",
+      "source_tag": "AppCompatEditText",
+      "family": "DnsProxy",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsProxyEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_dns_proxy_edit_port",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:autofillHints": "@string/dns_proxy_port",
+        "android:hint": "@string/dns_proxy_port",
+        "android:inputType": "number",
+        "android:maxLines": "1",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/fragment_connection_tracker.xml",
+      "id": "connection_search",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "renderer_function": "LogSearchBar",
+      "baseline_attributes": {
+        "android:id": "@+id/connection_search",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_alignParentStart": "true",
+        "android:layout_centerVertical": "true",
+        "android:layout_gravity": "start",
+        "android:layout_toStartOf": "@id/connection_filter_icon",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_firewall_network_log"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/fragment_custom_domain.xml",
+      "id": "cda_search_view",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "renderer_function": "RulesPage",
+      "baseline_attributes": {
+        "android:id": "@+id/cda_search_view",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "start",
+        "android:layout_weight": "0.9",
+        "android:focusable": "false",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_custom_domains"
+      }
+    },
+    {
+      "path": "app/src/full/res/layout/fragment_custom_ip.xml",
+      "id": "cip_search_view",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "renderer_function": "RulesPage",
+      "baseline_attributes": {
+        "android:id": "@+id/cip_search_view",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "start",
+        "android:layout_weight": "0.9",
+        "android:focusable": "false",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_universal_ips"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_app_wise_domain_logs.xml",
+      "id": "awl_search",
+      "source_tag": "SearchView",
+      "family": "AppLogSearch",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+      "renderer_function": "AppLogsContent",
+      "baseline_attributes": {
+        "android:id": "@+id/awl_search",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_centerVertical": "true",
+        "android:layout_gravity": "start",
+        "android:layout_toEndOf": "@id/awl_app_detail_icon1",
+        "android:layout_toStartOf": "@id/awl_delete",
+        "android:fontFamily": "sans-serif",
+        "app:searchIcon": "@null",
+        "app:searchHintIcon": "@null",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_custom_domains"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_app_wise_ip_logs.xml",
+      "id": "awl_search",
+      "source_tag": "SearchView",
+      "family": "AppLogSearch",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+      "renderer_function": "AppLogsContent",
+      "baseline_attributes": {
+        "android:id": "@+id/awl_search",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_centerVertical": "true",
+        "android:layout_gravity": "start",
+        "android:layout_toStartOf": "@id/awl_delete",
+        "android:layout_toEndOf": "@id/awl_app_detail_icon1",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_universal_ips",
+        "app:searchHintIcon": "@null",
+        "app:searchIcon": "@null"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_customer_support.xml",
+      "id": "til_description",
+      "source_tag": "TextInputLayout",
+      "family": "Support",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt",
+      "renderer_function": "SupportScreen",
+      "baseline_attributes": {
+        "android:id": "@+id/til_description",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/support_description_hint",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "app:boxCornerRadiusTopStart": "12dp",
+        "app:boxCornerRadiusTopEnd": "12dp",
+        "app:boxCornerRadiusBottomStart": "12dp",
+        "app:boxCornerRadiusBottomEnd": "12dp",
+        "app:counterEnabled": "true",
+        "app:counterMaxLength": "1000"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_customer_support.xml",
+      "id": "et_description",
+      "source_tag": "TextInputEditText",
+      "family": "Support",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt",
+      "renderer_function": "SupportScreen",
+      "baseline_attributes": {
+        "android:id": "@+id/et_description",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:minLines": "5",
+        "android:maxLines": "10",
+        "android:gravity": "top",
+        "android:inputType": "textMultiLine|textCapSentences",
+        "android:textSize": "14sp",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:maxLength": "1000"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_events.xml",
+      "id": "events_search",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "renderer_function": "LogSearchBar",
+      "baseline_attributes": {
+        "android:id": "@+id/events_search",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_alignParentStart": "true",
+        "android:layout_centerVertical": "true",
+        "android:layout_toStartOf": "@id/events_filter_icon",
+        "android:fontFamily": "sans-serif",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_event_logs"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_ping_test.xml",
+      "id": "reach_input_layout",
+      "source_tag": "TextInputLayout",
+      "family": "Ping",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/PingScreen.kt",
+      "renderer_function": "PingHero",
+      "baseline_attributes": {
+        "android:id": "@+id/reach_input_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/ping_reach_hint",
+        "app:boxCornerRadiusBottomEnd": "16dp",
+        "app:boxCornerRadiusBottomStart": "16dp",
+        "app:boxCornerRadiusTopEnd": "16dp",
+        "app:boxCornerRadiusTopStart": "16dp"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_ping_test.xml",
+      "id": "reach_input",
+      "source_tag": "TextInputEditText",
+      "family": "Ping",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/PingScreen.kt",
+      "renderer_function": "PingHero",
+      "baseline_attributes": {
+        "android:id": "@+id/reach_input",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionDone",
+        "android:inputType": "textUri",
+        "android:singleLine": "true",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textColorHint": "?attr/primaryLightColorText",
+        "android:textSize": "15sp"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_rpn_bypass_apps.xml",
+      "id": "rpn_bypass_search_view",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt",
+      "renderer_function": "RpnBypassContent",
+      "baseline_attributes": {
+        "android:id": "@+id/rpn_bypass_search_view",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "start",
+        "android:layout_weight": "0.9",
+        "android:focusable": "false",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/rpn_bypass_search_hint"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "interface_name_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/interface_name_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/cd_dns_crypt_dialog_name",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/interface_title"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "interface_name_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/interface_name_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textVisiblePassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "private_key_text_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/private_key_text_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_private_key",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:endIconContentDescription": "refresh",
+        "app:endIconDrawable": "@drawable/ic_refresh_white",
+        "app:endIconMode": "custom",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/interface_name_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "private_key_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/private_key_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textPassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "public_key_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/public_key_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_public_key",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:expandedHintEnabled": "false",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/private_key_text_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "public_key_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/public_key_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:ellipsize": "end",
+        "android:focusable": "false",
+        "android:hint": "@string/lbl_generated",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "none",
+        "android:singleLine": "true"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "addresses_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/addresses_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_addresses",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:layout_constraintEnd_toStartOf": "@id/listen_port_label_layout",
+        "app:layout_constraintHorizontal_chainStyle": "spread",
+        "app:layout_constraintHorizontal_weight": "0.7",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/public_key_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "addresses_label_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/addresses_label_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textVisiblePassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "listen_port_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/listen_port_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_listen_port",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:expandedHintEnabled": "false",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintHorizontal_weight": "0.3",
+        "app:layout_constraintStart_toEndOf": "@id/addresses_label_layout",
+        "app:layout_constraintTop_toBottomOf": "@id/public_key_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "listen_port_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/listen_port_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/lbl_random",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "number",
+        "android:textAlignment": "center"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "dns_servers_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/dns_servers_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_dns_servers",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:expandedHintEnabled": "false",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintEnd_toStartOf": "@id/mtu_label_layout",
+        "app:layout_constraintHorizontal_chainStyle": "spread",
+        "app:layout_constraintHorizontal_weight": "0.7",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/addresses_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "dns_servers_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/dns_servers_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/lbl_auto",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textVisiblePassword",
+        "android:nextFocusForward": "@id/mtu_text",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "mtu_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/mtu_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_mtu",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:expandedHintEnabled": "false",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintHorizontal_weight": "0.3",
+        "app:layout_constraintStart_toEndOf": "@id/dns_servers_label_layout",
+        "app:layout_constraintTop_toBottomOf": "@id/addresses_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_config_editor.xml",
+      "id": "mtu_text",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/mtu_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/lbl_auto",
+        "android:imeOptions": "actionDone",
+        "android:inputType": "number",
+        "android:textAlignment": "center"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/activity_wg_detail.xml",
+      "id": "ssid_edit_text",
+      "source_tag": "AppCompatEditText",
+      "family": "WgInlineSsid",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDetailContent.kt",
+      "renderer_function": "WgDetailContent",
+      "baseline_attributes": {
+        "android:id": "@+id/ssid_edit_text",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:imeOptions": "actionDone",
+        "android:inputType": "text",
+        "android:maxLines": "4",
+        "android:minLines": "1",
+        "android:padding": "8dp",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textColorHint": "?attr/primaryLightColorText"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/bottomsheet_auto_exclude_countries.xml",
+      "id": "et_search",
+      "source_tag": "AppCompatEditText",
+      "family": "TransparentSearch",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnExcludeContent.kt",
+      "renderer_function": "RpnExcludeContent",
+      "baseline_attributes": {
+        "android:id": "@+id/et_search",
+        "android:layout_width": "0dp",
+        "android:layout_height": "match_parent",
+        "android:layout_weight": "1",
+        "android:background": "@android:color/transparent",
+        "android:hint": "@string/auto_exclude_cc_search_hint",
+        "android:imeOptions": "actionDone",
+        "android:inputType": "text",
+        "android:maxLines": "1",
+        "android:singleLine": "true",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textColorHint": "?attr/primaryLightColorText",
+        "android:textSize": "14sp"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_add_custom_ip.xml",
+      "id": "daci_text_input_layout",
+      "source_tag": "TextInputLayout",
+      "family": "Rule",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "renderer_function": "RuleEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/daci_text_input_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginStart": "20dp",
+        "android:layout_marginEnd": "20dp",
+        "android:layout_marginBottom": "10dp",
+        "android:hint": "@string/ci_dialog_edittext_hint",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:hintTextColor": "?attr/accentGood",
+        "app:layout_constraintTop_toBottomOf": "@id/daci_ip_desc"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_add_custom_ip.xml",
+      "id": "daci_ip_edit_text",
+      "source_tag": "EditText",
+      "family": "Rule",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+      "renderer_function": "RuleEditor",
+      "baseline_attributes": {
+        "android:id": "@+id/daci_ip_edit_text",
+        "android:layout_width": "fill_parent",
+        "android:layout_height": "match_parent",
+        "android:hint": "@string/ci_dialog_edittext_hint",
+        "android:importantForAutofill": "no",
+        "android:inputType": "textUri",
+        "android:maxLines": "2",
+        "android:minHeight": "48dp",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textSize": "@dimen/large_font_text_view",
+        "app:layout_constraintRight_toLeftOf": "parent"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "ipv4_address_1",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/ipv4_address_1",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "ipv4_address_2",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/ipv4_address_2",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "url_v4_address_1",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/url_v4_address_1",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "url_v4_address_2",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/url_v4_address_2",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "ipv6_address_1",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/ipv6_address_1",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "ipv6_address_2",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/ipv6_address_2",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "url_v6_address_1",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/url_v6_address_1",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_input_ips.xml",
+      "id": "url_v6_address_2",
+      "source_tag": "AppCompatEditText",
+      "family": "ReachabilityRectangle",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+      "renderer_function": "ProbeField",
+      "baseline_attributes": {
+        "android:id": "@+id/url_v6_address_2",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_rpn_ssid.xml",
+      "id": "ssid_text_input_layout",
+      "source_tag": "TextInputLayout",
+      "family": "RpnSsid",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+      "renderer_function": "RpnSsidContent",
+      "baseline_attributes": {
+        "android:id": "@+id/ssid_text_input_layout",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "12dp",
+        "android:hint": "@string/wg_ssid_input_hint",
+        "app:boxCornerRadiusBottomEnd": "12dp",
+        "app:boxCornerRadiusBottomStart": "12dp",
+        "app:boxCornerRadiusTopEnd": "12dp",
+        "app:boxCornerRadiusTopStart": "12dp",
+        "app:boxStrokeWidth": "1dp",
+        "app:hintAnimationEnabled": "true",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@id/input_section_title"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_rpn_ssid.xml",
+      "id": "ssid_edit_text",
+      "source_tag": "TextInputEditText",
+      "family": "RpnSsid",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+      "renderer_function": "RpnSsidContent",
+      "baseline_attributes": {
+        "android:id": "@+id/ssid_edit_text",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionDone",
+        "android:inputType": "text",
+        "android:maxLines": "1",
+        "android:padding": "16dp",
+        "android:textSize": "15sp"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_set_proxy.xml",
+      "id": "dialog_proxy_edit_ip",
+      "source_tag": "AppCompatEditText",
+      "family": "Network",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "renderer_function": "NetworkEditField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_proxy_edit_ip",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:hint": "@string/settings_socks5_dialog_hint_ip",
+        "android:maxLines": "1",
+        "android:textSize": "@dimen/large_font_text_view",
+        "android:typeface": "monospace"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_set_proxy.xml",
+      "id": "dialog_proxy_edit_port",
+      "source_tag": "AppCompatEditText",
+      "family": "Network",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "renderer_function": "NetworkEditField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_proxy_edit_port",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:hint": "@string/settings_socks5_dialog_hint_port",
+        "android:inputType": "number",
+        "android:maxLines": "1",
+        "android:textSize": "@dimen/large_font_text_view",
+        "android:typeface": "monospace"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_set_proxy.xml",
+      "id": "dialog_proxy_edit_username",
+      "source_tag": "AppCompatEditText",
+      "family": "Network",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "renderer_function": "NetworkEditField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_proxy_edit_username",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:hint": "@string/settings_socks5_dialog_hint_username",
+        "android:maxLines": "1",
+        "android:textSize": "@dimen/large_font_text_view",
+        "android:typeface": "monospace"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_set_proxy.xml",
+      "id": "dialog_proxy_edit_password",
+      "source_tag": "AppCompatEditText",
+      "family": "Network",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "renderer_function": "NetworkEditField",
+      "baseline_attributes": {
+        "android:id": "@+id/dialog_proxy_edit_password",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:hint": "@string/settings_socks5_dialog_hint_password",
+        "android:inputType": "textPassword",
+        "android:maxLines": "1",
+        "android:textSize": "@dimen/large_font_text_view",
+        "android:typeface": "monospace"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "public_key_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/public_key_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_public_key",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:layout_constraintBottom_toTopOf": "@+id/pre_shared_key_label_layout",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/peer_title"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "peer_public_key",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/peer_public_key",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textVisiblePassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "pre_shared_key_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/pre_shared_key_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_preshared_key",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:expandedHintEnabled": "false",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@+id/public_key_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "peer_preshared_key",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/peer_preshared_key",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/lbl_optional",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textPassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "persistent_keepalive_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/persistent_keepalive_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_persistent_keepalive",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:expandedHintEnabled": "false",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@id/pre_shared_key_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "peer_persistent_keep_alive",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/peer_persistent_keep_alive",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:hint": "@string/lbl_optional",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "number"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "endpoint_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/endpoint_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/parse_error_inet_endpoint",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@id/persistent_keepalive_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "peer_endpoint",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/peer_endpoint",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_alignParentStart": "true",
+        "android:imeOptions": "actionNext",
+        "android:inputType": "textNoSuggestions|textVisiblePassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "allowed_ips_label_layout",
+      "source_tag": "TextInputLayout",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/allowed_ips_label_layout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "4dp",
+        "android:hint": "@string/lbl_allowed_ips",
+        "android:paddingTop": "15dp",
+        "app:boxCornerRadiusBottomEnd": "8dp",
+        "app:boxCornerRadiusBottomStart": "8dp",
+        "app:boxCornerRadiusTopEnd": "8dp",
+        "app:boxCornerRadiusTopStart": "8dp",
+        "app:layout_constraintEnd_toEndOf": "parent",
+        "app:layout_constraintStart_toStartOf": "parent",
+        "app:layout_constraintTop_toBottomOf": "@id/endpoint_label_layout"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_add_peer.xml",
+      "id": "peer_allowed_ips",
+      "source_tag": "TextInputEditText",
+      "family": "WgEditor",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+      "renderer_function": "WgField",
+      "baseline_attributes": {
+        "android:id": "@+id/peer_allowed_ips",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_alignParentStart": "true",
+        "android:imeOptions": "actionDone",
+        "android:gravity": "top|start",
+        "android:maxLines": "4",
+        "android:minLines": "1",
+        "android:overScrollMode": "ifContentScrolls",
+        "android:scrollbars": "vertical",
+        "android:inputType": "textMultiLine|textNoSuggestions|textVisiblePassword"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_apps.xml",
+      "id": "wg_include_app_dialog_search_view",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+      "renderer_function": "WgIncludeAppsContent",
+      "baseline_attributes": {
+        "android:id": "@+id/wg_include_app_dialog_search_view",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "start",
+        "android:layout_weight": "0.9",
+        "android:focusable": "false",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_proxy_add_apps"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_ssid.xml",
+      "id": "ssidTextInputLayout",
+      "source_tag": "TextInputLayout",
+      "family": "WgSsid",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidContent.kt",
+      "renderer_function": "WgSsidContent",
+      "baseline_attributes": {
+        "android:id": "@+id/ssidTextInputLayout",
+        "style": "@style/Widget.Material3.TextInputLayout.OutlinedBox",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_wg_ssid.xml",
+      "id": "ssidEditText",
+      "source_tag": "TextInputEditText",
+      "family": "WgSsid",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidContent.kt",
+      "renderer_function": "WgSsidContent",
+      "baseline_attributes": {
+        "android:id": "@+id/ssidEditText",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:imeOptions": "actionDone",
+        "android:inputType": "text"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/fragment_dns_logs.xml",
+      "id": "query_list_search",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "renderer_function": "LogSearchBar",
+      "baseline_attributes": {
+        "android:id": "@+id/query_list_search",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_alignParentStart": "true",
+        "android:layout_centerVertical": "true",
+        "android:layout_gravity": "start",
+        "android:layout_toStartOf": "@id/query_list_filter_icon",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_firewall_network_log"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/fragment_rethink_blocklist.xml",
+      "id": "lb_adv_search_sv",
+      "source_tag": "SearchView",
+      "family": "Search",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+      "renderer_function": "BlocklistConfigurationScreen",
+      "baseline_attributes": {
+        "android:id": "@+id/lb_adv_search_sv",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "start",
+        "android:layout_weight": "0.90",
+        "android:focusable": "false",
+        "android:fontFamily": "sans-serif",
+        "android:isScrollContainer": "true",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/search_rethinkplus_file_tag"
+      }
+    },
+    {
+      "path": "app/src/main/res/layout/fragment_server_selection.xml",
+      "id": "search_bar",
+      "source_tag": "SearchView",
+      "family": "ServerSearch",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+      "renderer_function": "RpnSelectionScreen",
+      "baseline_attributes": {
+        "android:id": "@+id/search_bar",
+        "android:layout_width": "0dp",
+        "android:layout_height": "40dp",
+        "android:layout_weight": "1",
+        "android:imeOptions": "actionSearch",
+        "android:maxLines": "1",
+        "app:closeIcon": "@drawable/ic_cross",
+        "app:iconifiedByDefault": "false",
+        "app:queryHint": "@string/server_selection_search_hint"
+      }
+    }
+  ],
+  "programmatic_instances": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "function": "showNotesDialog",
+      "family": "Notes",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsDialogs.kt"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/MiscSettingsActivity.kt",
+      "function": "showAppTriggerPackageDialog",
+      "family": "Tasker",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt"
+    }
+  ],
+  "auxiliary_selectors": [
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+      "id": "dialog_proxy_spinner_appname",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "renderer_function": "DnsProxyEditor",
+      "family": "Spinner"
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_set_proxy.xml",
+      "id": "dialog_proxy_spinner_appname",
+      "renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "renderer_function": "NetworkContent",
+      "family": "Spinner"
+    }
+  ],
+  "synthetic_tests": {
+    "path": "app/src/test/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFieldsTest.kt",
+    "authored_tests": 8,
+    "execution": "Not run; Android SDK/Java17/Gradle dependency environment unavailable. Source checks do not establish runtime or visual parity."
+  }
+}

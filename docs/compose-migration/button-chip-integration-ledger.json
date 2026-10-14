@@ -1,0 +1,587 @@
+[
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsContent.kt",
+    "original": "FilterChip(b.selectedFilter==filter.id,{b.selectFirewall(filter.id)},label={Text(filter.getLabel(context))})",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+    "original": "FilterChip(b.parent==i,{b.selectParent(i)},label={Text(stringResource(label))},modifier=Modifier.testTag(\"firewall_parent_$i\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+    "original": "FilterChip(category in b.selectedCategories,{b.selectCategory(category,category !in b.selectedCategories)},label={Text(category)},modifier=Modifier.testTag(\"firewall_category_$category\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+    "original": "FilterChip(b.sort==sort,{b.selectSort(sort)},label={Text(stringResource(labels[i]))},modifier=Modifier.testTag(\"firewall_sort_${sort.name}\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistFilterScreen.kt",
+    "original": "FilterChip(chip.checked, onClick = { chip.checked = !chip.checked; chip.change(chip.checked) }, label = { Text(chip.label) }, modifier = Modifier.padding(3.dp).testTag(\"blocklist-subgroup-${chip.label}\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "FilterChip(selected = b.selectionFilter == id, onClick = { if (b.selectionFilter != id) { b.selectionFilter = id; onFilter(id) } }, label = { Text(stringResource(label)) }, modifier = Modifier.padding(3.dp).testTag(\"blocklist-selection-$id\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+    "original": "FilterChip(chip.selected, { onClick(chip) }, { Text(chip.label, fontSize = logTextSize(R.dimen.default_font_text_view)) },\n            leadingIcon = when { chip.icon != null -> ({ Icon(painterResource(chip.icon), null, Modifier.size(15.dp)) }); chip.selected -> ({ Icon(Icons.Default.Check, null, Modifier.size(15.dp)) }); else -> null },\n            shape = RoundedCornerShape(18.dp), colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.chipColorBgNormal), selectedContainerColor = themeColor(R.attr.chipColorBgHighlight), labelColor = themeColor(R.attr.primaryTextColor), selectedLabelColor = themeColor(R.attr.primaryTextColor)), modifier = Modifier.padding(3.dp).testTag(\"log-filter-${chip.key}\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt",
+    "original": "FilterChip(selectedFilter == id, { if (selectedFilter != id) filter(id) }, label = { Text(stringResource(label)) }, modifier = Modifier.testTag(\"rpn.bypass.filter.$id\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+    "original": "FilterChip(chip.isChecked, { chip.isChecked = true }, label = { Text(chip.text.toString()) })",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "FilterChip(state.domainType == DomainRulesManager.DomainType.DOMAIN, { state.domainType = DomainRulesManager.DomainType.DOMAIN }, { Text(stringResource(R.string.lbl_domain), fontSize = 12.sp) })",
+    "source": "\"dialog_add_custom_domain:dacd_domain_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "FilterChip(state.domainType == DomainRulesManager.DomainType.WILDCARD, { state.domainType = DomainRulesManager.DomainType.WILDCARD }, { Text(stringResource(R.string.lbl_wildcard), fontSize = 12.sp) })",
+    "source": "\"dialog_add_custom_domain:dacd_wildcard_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt",
+    "original": "TextButton({ ui.splitDnsEnableBtn.performClick() })",
+    "source": "\"bottomsheet_server_settings:split_dns_enable_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt",
+    "original": "Button({ ui.btnResetRpn.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp).height(48.dp).rpnMotion(ui.btnResetRpn), enabled = ui.btnResetRpn.isEnabled)",
+    "source": "\"bottomsheet_server_settings:btn_reset_rpn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+    "original": "Button({ ui.errorRetryBtn.performClick() }, Modifier.fillMaxWidth().padding(top = 24.dp).height(48.dp), enabled = ui.errorRetryBtn.isEnabled)",
+    "source": "\"fragment_server_selection:error_retry_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+    "original": "OutlinedButton({ ui.errorResetBtn.performClick() }, Modifier.fillMaxWidth().padding(top = 10.dp).height(44.dp), enabled = ui.errorResetBtn.isEnabled)",
+    "source": "\"fragment_server_selection:error_reset_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+    "original": "TextButton({ ui.errorReportBtn.performClick() }, Modifier.padding(top = 6.dp), enabled = ui.errorReportBtn.isEnabled)",
+    "source": "\"fragment_server_selection:error_report_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+    "original": "TextButton(add, enabled = state.name.isNotBlank(), modifier = Modifier.testTag(\"rpn.ssid.add\"))",
+    "source": "\"dialog_rpn_ssid:add_ssid_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+    "original": "TextButton(cancel, Modifier.testTag(\"rpn.ssid.cancel\"))",
+    "source": "\"dialog_rpn_ssid:cancel_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt",
+    "original": "Button(save, Modifier.testTag(\"rpn.ssid.save\"), colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.accentGood), contentColor = Color.White))",
+    "source": "\"dialog_rpn_ssid:save_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt",
+    "original": "SuggestionChip({}, enabled = false, label = { Text(b.lbVersion.text) }, colors = SuggestionChipDefaults.suggestionChipColors(disabledContainerColor = themeColor(R.attr.chipBgColorPositive), disabledLabelColor = themeColor(R.attr.chipTextPositive)))",
+    "source": "\"fragment_rethink_list:lb_version\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "AssistChip(onClick = { row.onEntries?.invoke() }, label = { Text(entries) }, modifier = Modifier.padding(start = 8.dp).alpha(.8f).testTag(\"blocklist-entries-${row.key}\"))",
+    "source": "\"list_item_rethink_blocklist_adv:crp_desc_entries_tv\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+    "original": "SuggestionChip(onClick = { ui.resetChip.performClick() }, label = { UtilityText(ui.resetChip) }, enabled = ui.resetChip.isEnabled, modifier = Modifier.testTag(ui.resetChip.tag), colors = SuggestionChipDefaults.suggestionChipColors(containerColor = themeColor(R.attr.chipBgColorPositive)), border = null)",
+    "source": "\"dialog_input_ips:reset_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigContent.kt",
+    "original": "AssistChip(onClick = { b.refreshChip.performClick() }, enabled = b.refreshChip.isEnabled && b.refreshChip.isClickable,\n                                modifier = Modifier.alpha(b.refreshChip.alpha).testTag(\"rpn.config.refresh\"),\n                                label = { Text(b.refreshChip.text.toString(), fontSize = 11.sp) },\n                                leadingIcon = { Icon(painterResource(R.drawable.ic_refresh_white), null, Modifier.size(18.dp).rotate(b.refreshRotation)) })",
+    "source": "\"activity_rpn_config_detail:refresh_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryFilterSheetContent.kt",
+    "original": "FilterChip(selected = filter in selection.selected, onClick = { selection.toggle(filter) },\n                            label = { Text(stringResource(label)) }, modifier = Modifier.testTag(\"stats_filter_${filter.tid}\"))",
+    "source": "\"bottom_sheet_summary_stats_filter:fss_filter_apps_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/LogIntervalContent.kt",
+    "original": "FilterChip(selected = selected, onClick = { b.bsLaiRangeGroup.check(node.id) },\n                        label = { Text(node.text?.toString().orEmpty(), Modifier.fillMaxWidth(), textAlign = TextAlign.Center, fontSize = 13.sp, fontWeight = FontWeight.Bold) },\n                        modifier = Modifier.weight(1f).heightIn(min = 38.dp).testTag(node.context.resources.getResourceEntryName(node.id)), shape = RoundedCornerShape(0.dp),\n                        border = BorderStroke(1.dp, if (selected) themeColor(androidx.appcompat.R.attr.colorPrimary) else Color.Transparent),\n                        colors = FilterChipDefaults.filterChipColors(containerColor = Color.Transparent, selectedContainerColor = themeColor(androidx.appcompat.R.attr.colorPrimary),\n                            labelColor = themeColor(R.attr.primaryLightColorText), selectedLabelColor = themeColor(com.google.android.material.R.attr.colorOnPrimary)))",
+    "source": "\"bottom_sheet_log_activity_interval:\" + node.context.resources.getResourceEntryName(node.id)"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+    "original": "FilterChip(b.selectedTime==i,{b.onTime(i)},label={Text(node.text.toString())})",
+    "source": "\"activity_app_wise_ip_logs:\" + listOf(\"tb_recent_toggle_btn\", \"tb_daily_toggle_btn\", \"tb_weekly_toggle_btn\")[i]"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+    "original": "FilterChip(selected = state.timeCategory == tc, onClick = { state.onTimeCategory(tc) }, modifier = Modifier.widthIn(min = 100.dp).testTag(\"stats_time_${tc.value}\"),\n                            colors = FilterChipDefaults.filterChipColors(selectedContainerColor = themeColor(R.attr.accentGood), selectedLabelColor = themeColor(R.attr.homeScreenHeaderTextColor)),\n                            label = { Text(stringResource(R.string.ci_desc, amount, stringResource(if (tc == TimeCategory.SEVEN_DAYS) R.string.lbl_day else R.string.lbl_hour))) })",
+    "source": "\"fragment_summary_statistics:\" + when (tc) { TimeCategory.DAILY -> \"tb_daily_toggle_btn\"; TimeCategory.WEEKLY -> \"tb_weekly_toggle_btn\"; else -> \"tb_recent_toggle_btn\" }"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+    "original": "TextButton(onClick = state.onClose, modifier = Modifier.testTag(\"stats_close_all\"))",
+    "source": "\"fragment_summary_statistics:fss_close_conns_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+    "original": "TextButton(onClick = { state.onDetail(type) }, modifier = Modifier.testTag(\"stats_detail_${type.tid}\"))",
+    "source": "\"fragment_summary_statistics:fss_active_apps_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt",
+    "original": "TextButton({ ui.configModeToggle.check(id) }, colors = ButtonDefaults.textButtonColors(containerColor = if (selected) themeColor(R.attr.accentGood) else androidx.compose.ui.graphics.Color.Transparent))",
+    "source": "\"bottomsheet_server_settings:\" + if (id == R.id.btn_config_auto) \"btn_config_auto\" else \"btn_config_manual\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+    "original": "Button({ node.performClick() }, Modifier.testTag(if (index == 0) \"lan_auto\" else \"lan_manual\"), colors = ButtonDefaults.buttonColors(\n                        containerColor = node.backgroundTintList?.defaultColor?.let(::Color) ?: MaterialTheme.colorScheme.primary,\n                        contentColor = node.textColor?.let(::Color) ?: MaterialTheme.colorScheme.onPrimary))",
+    "source": "\"dialog_custom_lan_ip:\" + if (index == 0) \"auto_toggle_btn\" else \"manual_toggle_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "Button(onClick, Modifier.widthIn(min = 125.dp).testTag(\"blocklist-tab-$key\"), shape = RoundedCornerShape(16.dp), colors = ButtonDefaults.buttonColors(containerColor = themeColor(if (selected) R.attr.accentGood else R.attr.defaultToggleBtnBg), contentColor = themeColor(if (selected) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor)))",
+    "source": "\"fragment_rethink_blocklist:\" + if (key == \"simple\") \"lb_simple_toggle_btn\" else \"lb_adv_toggle_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt",
+    "original": "AssistChip(onClick = state.onClick, enabled = state.isEnabled, modifier = Modifier.testTag(\"rethink-$key\"), label = { Text(stringResource(label), color = themeColor(R.attr.chipTextPositive)) }, leadingIcon = if (state.isChipIconVisible) ({ CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp, color = themeColor(R.attr.chipTextPositive)) }) else null)",
+    "source": "\"fragment_rethink_list:\" + when (key) { \"update\" -> \"bslb_update_available_btn\"; \"check\" -> \"bslb_check_update_btn\"; else -> \"bslb_redownload_btn\" }"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+    "original": "FilterChip(selected = tag in selectedBlocklistTags, onClick = { toggleTag(tag) },\n                            label = { Text(tag) }, modifier = Modifier.testTag(\"blocklist_tag_$index\"))",
+    "source": "\"item_chip_filter:(anonymous)\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+    "original": "OutlinedButton(onClick = {\n                            if (!isAdded && requireActivity().isFinishing) Logger.w(Logger.LOG_TAG_UI, \"DnsCrypt relay, Fragment not added to activity\")\n                            else relays = true\n                        })",
+    "source": "\"fragment_dns_crypt_list:add_relay_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryFilterSheetContent.kt",
+    "original": "TextButton(onClick = selection::selectAll, modifier = Modifier.testTag(\"stats_filter_select_all\"))",
+    "source": "\"bottom_sheet_summary_stats_filter:ssfc_select_all\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryFilterSheetContent.kt",
+    "original": "Button(onClick = onApply, modifier = Modifier.fillMaxWidth().padding(top = 12.dp).testTag(\"stats_filter_apply\"))",
+    "source": "\"bottom_sheet_summary_stats_filter:ssfc_apply\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/RpnStatisticsContent.kt",
+    "original": "OutlinedButton(onClick = { b.rpnStatsViewLogs.performClick() }, modifier = Modifier.fillMaxWidth().padding(top = 26.dp).heightIn(min = 48.dp).alpha(.75f).testTag(\"rpn_stats_logs\"),\n                shape = RoundedCornerShape(24.dp), colors = ButtonDefaults.outlinedButtonColors(contentColor = themeColor(R.attr.accentGood)))",
+    "source": "\"bottomsheet_rpn_stats:rpn_stats_view_logs\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/PingScreen.kt",
+    "original": "Button({ ui.pingButton.performClick() }, enabled = ui.pingButton.isEnabled, modifier = Modifier.fillMaxWidth().padding(top = 16.dp).heightIn(min = 52.dp).testTag(ui.pingButton.tag),\n                colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.serverHeaderGradientEnd), contentColor = themeColor(R.attr.primaryTextColor)), shape = RoundedCornerShape(26.dp))",
+    "source": "\"activity_ping_test:ping_button\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt",
+    "original": "FilterChip(chip.isChecked, { ui.selectCategory(chip) }, label = { Text(chip.text.toString(), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_LabelLarge)) }, modifier = Modifier.testTag(chip.tag))",
+    "source": "\"activity_customer_support:chip_payment\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt",
+    "original": "OutlinedButton({ ui.btnSendEmail.performClick() }, enabled = ui.btnSendEmail.isEnabled,\n                        modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(ui.btnSendEmail.tag))",
+    "source": "\"activity_customer_support:btn_send_email\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SponsorScreens.kt",
+    "original": "Button({ ui.supportButton.performClick() }, enabled = ui.supportButton.isEnabled, modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag(ui.supportButton.tag))",
+    "source": "\"fragment_sponsor:support_button\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SponsorScreens.kt",
+    "original": "OutlinedButton({ ui.continueButton.performClick() }, Modifier.fillMaxWidth().padding(top = 56.dp).heightIn(min = 64.dp).testTag(ui.continueButton.tag), border = BorderStroke(.75.dp, themeColor(R.attr.border)), shape = RoundedCornerShape(16.dp),\n                    colors = ButtonDefaults.outlinedButtonColors(contentColor = themeColor(androidx.appcompat.R.attr.colorPrimary)))",
+    "source": "\"fragment_sponsor_success:continue_button\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt",
+    "original": "TextButton({ b.aboutSponsorAgain.performClick() })",
+    "source": "\"fragment_about:about_sponsor_again\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/BugReportFilesContent.kt",
+    "original": "TextButton({ b.brbsSendButton.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 15.dp, vertical = 10.dp).heightIn(min = 48.dp).alpha(b.brbsSendButton.alpha).testTag(\"bugreport.send\"),\n                enabled = b.brbsSendButton.isEnabled, colors = ButtonDefaults.textButtonColors(contentColor = themeColor(R.attr.secondaryTextColor)))",
+    "source": "\"bottom_sheet_bug_report_files:brbs_send_button\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/BlockFreeDnsContent.kt",
+    "original": "FilterChip(b.bfdFilterChipGroup.checkedId == id, { b.bfdFilterChipGroup.check(id) }, { Text(labels[index]) }, Modifier.testTag(\"blockfree-filter-$id\"))",
+    "source": "\"activity_block_free_dns:\" + context.resources.getResourceEntryName(id)"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+    "original": "TextButton({b.fsClear.performClick()},Modifier.testTag(\"firewall_filter_clear\"))",
+    "source": "\"bottom_sheet_firewall_sort_filter:fs_clear\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+    "original": "TextButton({b.fsApply.performClick()},Modifier.testTag(\"firewall_filter_apply\"))",
+    "source": "\"bottom_sheet_firewall_sort_filter:fs_apply\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContent.kt",
+    "original": "AssistChip(onClick = { b.bsOrbotApp.performClick() }, label = {\n                    Text(stringResource(R.string.settings_orbot_header), color = themeColor(R.attr.primaryTextColor), style = utilityTextStyle(size = dimen(R.dimen.heading_font_text_view)))\n                }, modifier = Modifier.padding(start = 5.dp).weight(1f, fill = false))",
+    "source": "\"bottom_sheet_orbot:bs_orbot_app\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContent.kt",
+    "original": "TextButton({ b.includeApplications.performClick() }, Modifier.fillMaxWidth(), colors = ButtonDefaults.textButtonColors(contentColor = themeColor(R.attr.secondaryTextColor)))",
+    "source": "\"bottom_sheet_orbot:include_applications\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+    "original": "TextButton({ fields.resetButton.performClick() }, Modifier.testTag(\"lan_reset\"), enabled = fields.resetButton.isEnabled)",
+    "source": "\"dialog_custom_lan_ip:reset_button\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt",
+    "original": "TextButton({ fields.saveButton.performClick() }, Modifier.testTag(\"lan_save\"), enabled = fields.saveButton.isEnabled)",
+    "source": "\"dialog_custom_lan_ip:save_button\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnWinContent.kt",
+    "original": "Button({ b.openAppSelector.performClick() }, modifier = Modifier.fillMaxWidth().padding(28.dp).testTag(\"rpn.win.apps\"),\n                colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.accentGood), contentColor = Color.White))",
+    "source": "\"activity_rpn_win_proxy_detail:open_app_selector\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = b.lbBlocklistCancelBtn.onClick, Modifier.weight(.4f).testTag(\"blocklist-cancel\"))",
+    "source": "\"fragment_rethink_blocklist:lb_blocklist_cancel_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = b.lbBlocklistApplyBtn.onClick, Modifier.weight(.6f).testTag(\"blocklist-apply\"))",
+    "source": "\"fragment_rethink_blocklist:lb_blocklist_apply_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = b.lbDownloadBtn.onClick, enabled = b.lbDownloadBtn.isEnabled && b.lbDownloadBtn.isClickable, modifier = Modifier.testTag(\"blocklist-download\"))",
+    "source": "\"fragment_rethink_blocklist:lb_download_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = b.lbCancelDownloadBtn.onClick, modifier = Modifier.testTag(\"blocklist-cancel-download\"))",
+    "source": "\"fragment_rethink_blocklist:lb_cancel_download_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistFilterScreen.kt",
+    "original": "OutlinedButton(state.clear, Modifier.weight(.3f).padding(horizontal = 10.dp).testTag(\"blocklist-filter-clear\"))",
+    "source": "\"bottom_sheet_rethink_plus_filter:rpf_clear\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistFilterScreen.kt",
+    "original": "Button(state.apply, Modifier.weight(.7f).padding(horizontal = 10.dp).testTag(\"blocklist-filter-apply\"))",
+    "source": "\"bottom_sheet_rethink_plus_filter:rpf_apply\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnRemovalContent.kt",
+    "original": "Button({ ui.btnUnderstand.performClick() }, Modifier.fillMaxWidth().padding(top = 16.dp).height(56.dp).rpnMotion(ui.btnUnderstand), enabled = ui.btnUnderstand.isEnabled)",
+    "source": "\"bottomsheet_server_removal_notification:btn_understand\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnExcludeContent.kt",
+    "original": "Button({ ui.btnDone.performClick() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp).height(52.dp))",
+    "source": "\"bottomsheet_auto_exclude_countries:btn_done\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt",
+    "original": "TextButton({b.aadRethinkWarningProceed.performClick()},Modifier.padding(top=32.dp).testTag(\"app_warning_proceed\"))",
+    "source": "\"activity_app_details:aad_rethink_warning_proceed\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+    "original": "Button({ control.performClick() }, enabled = control.isEnabled, shape = RoundedCornerShape(16.dp), modifier = modifier.testTag(control.tag), colors = ButtonDefaults.buttonColors(\n        containerColor = control.backgroundTintList?.defaultColor?.let(::Color) ?: themeColor(R.attr.background),\n        contentColor = control.textColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor)))",
+    "source": "control.tag.replace('.', ':')"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/ReachabilityScreen.kt",
+    "original": "OutlinedButton({ control.performClick() }, enabled = control.isEnabled,\n        modifier = modifier.padding(10.dp).testTag(control.tag), shape = RoundedCornerShape(16.dp),\n        border = BorderStroke(.75.dp, themeColor(R.attr.border)), contentPadding = PaddingValues(10.dp),\n        colors = ButtonDefaults.outlinedButtonColors(contentColor = themeColor(R.attr.accentGood)))",
+    "source": "control.tag.replace('.', ':')"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SponsorScreens.kt",
+    "original": "FilterChip(control.isChecked, { ui.selectChip(control) }, label = { Text(control.text.toString()) }, modifier = Modifier.testTag(control.tag))",
+    "source": "control.tag.replace('.', ':')"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/tour/TourOverlayController.kt",
+    "original": "Button(onClick = ::advanceOrComplete, colors = ButtonDefaults.buttonColors(containerColor = themeColor(R.attr.tourButtonBackground), contentColor = themeColor(R.attr.tourButtonTextColor)), shape = RoundedCornerShape(20.dp))",
+    "source": "\"view_tour_tooltip:tour_next_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/tour/TourOverlayController.kt",
+    "original": "TextButton(onClick = ::skipTour)",
+    "source": "\"view_tour_tooltip:tour_skip_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+    "original": "TextButton({ dispatchButton(action, which) }, enabled = dialog.getButton(which).isEnabled, colors = ButtonDefaults.textButtonColors(contentColor = color))",
+    "source": "when (which) { android.content.DialogInterface.BUTTON_NEGATIVE -> \"@dialog_negative\"; android.content.DialogInterface.BUTTON_NEUTRAL -> \"@dialog_neutral\"; else -> \"@dialog_positive\" }"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+    "original": "TextButton({ state!!.performClick() }, m, enabled = state!!.isEnabled && state.isClickable)",
+    "source": "\"dialog_set_proxy:\" + node.key.substringAfterLast('.')"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+    "original": "TextButton({ dispatchButton(action, which) }, Modifier.padding(start = 8.dp).defaultMinSize(minWidth = 64.dp, minHeight = 48.dp),\n                                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 10.dp),\n                                        colors = ButtonDefaults.textButtonColors(contentColor = color))",
+    "source": "when (which) { android.content.DialogInterface.BUTTON_NEGATIVE -> \"@dialog_negative\"; android.content.DialogInterface.BUTTON_NEUTRAL -> \"@dialog_neutral\"; else -> \"@dialog_positive\" }"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeDialogs.kt",
+    "original": "TextButton(onClick = { dialog.choose(action) })",
+    "source": "when (action.which) { -2 -> \"@dialog_negative\"; -3 -> \"@dialog_neutral\"; else -> \"@dialog_positive\" }"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+    "original": "TextButton(onClick = { if (state.closeDialog) { state.closeDialog = false; state.onConfirmClose() } }, modifier = Modifier.testTag(\"stats_confirm_close\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/SummaryStatisticsScreen.kt",
+    "original": "TextButton(onClick = { state.closeDialog = false }, modifier = Modifier.testTag(\"stats_cancel_close\"))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/OnboardingScreens.kt",
+    "original": "TextButton(finish, Modifier.testTag(\"welcome.skip\"))",
+    "source": "\"activity_welcome:btn_skip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/OnboardingScreens.kt",
+    "original": "TextButton({ state.next(finish) }, Modifier.testTag(\"welcome.next\"))",
+    "source": "\"activity_welcome:btn_next\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+    "original": "TextButton({ onButton(which) }, colors = ButtonDefaults.textButtonColors(contentColor =\n                            if (which == DialogInterface.BUTTON_POSITIVE) MaterialTheme.colorScheme.primary else themeColor(R.attr.secondaryTextColor)))",
+    "source": "when (which) { android.content.DialogInterface.BUTTON_NEGATIVE -> \"@dialog_negative\"; android.content.DialogInterface.BUTTON_NEUTRAL -> \"@dialog_neutral\"; else -> \"@dialog_positive\" }"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/ConsoleLogsScreen.kt",
+    "original": "TextButton(dismiss, colors = ButtonDefaults.textButtonColors(contentColor = themeColor(R.attr.secondaryTextColor)))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/ConsoleLogsScreen.kt",
+    "original": "TextButton(dismiss)",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt",
+    "original": "TextButton(onDismiss, Modifier.align(Alignment.End))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+    "original": "TextButton({ showApps = false })",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+    "original": "TextButton(onDismiss, Modifier.testTag(\"dns_editor_cancel\"))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+    "original": "TextButton(onApply, Modifier.testTag(\"dns_editor_add\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+    "original": "TextButton({dialog.dismiss()},Modifier.align(Alignment.End))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/ComposeSnackbarPresenter.kt",
+    "original": "TextButton(onClick = onAction, modifier = Modifier.testTag(\"native_snackbar_action\"))",
+    "source": "\"@text\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton(state::dismissImport)",
+    "source": "\"dialog_import_confirm:dic_cancel_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton(actions::importConfirmed, Modifier.testTag(\"rules_import_confirm\"))",
+    "source": "\"dialog_import_confirm:dic_import_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton({ state.importSummary = null })",
+    "source": "\"dialog_info_rules_layout:info_rules_dialog_ok_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton({ state.editorOpen = false }, Modifier.testTag(\"rule_editor_done\"))",
+    "source": "if (domain) \"dialog_add_custom_domain:dacd_cancel_btn\" else \"dialog_add_custom_ip:daci_cancel_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton({ onSubmit(false) }, Modifier.testTag(\"rule_allow\"))",
+    "source": "if (domain) \"dialog_add_custom_domain:dacd_trust_btn\" else \"dialog_add_custom_ip:daci_trust_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton({ onSubmit(true) }, Modifier.testTag(\"rule_block\"))",
+    "source": "if (domain) \"dialog_add_custom_domain:dacd_block_btn\" else \"dialog_add_custom_ip:daci_block_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton(onCancel, Modifier.testTag(\"rule_delete_cancel\"))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton(onConfirm, Modifier.testTag(\"rule_delete_confirm\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+    "original": "TextButton(onMore)",
+    "source": "if (domain) \"list_item_custom_all_domain:custom_domain_see_more_chip\" else \"list_item_custom_all_ip:custom_ip_see_more_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt",
+    "original": "TextButton(onClick = secondaryAction, modifier = Modifier.testTag(\"dns-dialog-secondary\"))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt",
+    "original": "TextButton(onClick = confirm, modifier = Modifier.testTag(\"dns-dialog-positive\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = { b.prompt = null; prompt.neutralAction() }, modifier = Modifier.testTag(\"blocklist-dialog-neutral\"))",
+    "source": "\"@dialog_neutral\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = { b.prompt = null; prompt.cancel() }, modifier = Modifier.testTag(\"blocklist-dialog-negative\"))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+    "original": "TextButton(onClick = { b.prompt = null; prompt.confirm() }, modifier = Modifier.testTag(\"blocklist-dialog-positive\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt",
+    "original": "TextButton(onClick = { presenter.copy(endpoint); presenter.metadata = null })",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt",
+    "original": "TextButton(onClick = { if (presenter.editable(endpoint)) presenter.edit(endpoint); presenter.metadata = null })",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/LocalBlocklistsScreen.kt",
+    "original": "TextButton(onClick = { b.prompt = null; prompt.cancel() }, Modifier.testTag(\"local-dialog-cancel\"))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/LocalBlocklistsScreen.kt",
+    "original": "TextButton(onClick = { b.prompt = null; prompt.confirm() }, Modifier.testTag(\"local-dialog-confirm\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFilterContent.kt",
+    "original": "TextButton(onReset, Modifier.testTag(\"rpn_filter_reset\"), colors = ButtonDefaults.textButtonColors(contentColor = neutral))",
+    "source": "\"@dialog_neutral\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFilterContent.kt",
+    "original": "TextButton(onCancel, Modifier.testTag(\"rpn_filter_cancel\"), colors = ButtonDefaults.textButtonColors(contentColor = neutral))",
+    "source": "\"@dialog_neutral\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFilterContent.kt",
+    "original": "TextButton({ onApply(load, speed, fav) }, Modifier.testTag(\"rpn_filter_apply\"), colors = ButtonDefaults.textButtonColors(contentColor = accent))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsDialogs.kt",
+    "original": "TextButton(onCancel,Modifier.testTag(\"app_notes_cancel\"),colors=ButtonDefaults.textButtonColors(contentColor=themeColor(R.attr.secondaryTextColor)))",
+    "source": "\"@dialog_negative\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsDialogs.kt",
+    "original": "TextButton(onSave,Modifier.testTag(\"app_notes_save\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsDialogs.kt",
+    "original": "TextButton({dialog.dismiss()},Modifier.align(Alignment.End))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFilterContent.kt",
+    "original": "FilterChip(selected, onClick, { Text(label) }, Modifier.heightIn(min = 40.dp),\n        colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.background), selectedContainerColor = accent.copy(alpha = .2f), labelColor = themeColor(R.attr.primaryTextColor), selectedLabelColor = accent),\n        border = BorderStroke(1.dp, if (selected) accent else Color.Transparent))",
+    "source": "\"@rpn_filter\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+    "original": "AssistChip({ state.performClick() }, { RpnText(state, style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp)) }, Modifier.heightIn(min = 40.dp), colors = AssistChipDefaults.assistChipColors(containerColor = themeColor(R.attr.colorSurfaceVariant)))",
+    "source": "\"@rpn_frequent\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+    "original": "TextButton(onClick = b.fhsLogsEnableChip::performClick)",
+    "source": "\"fragment_home_screen:fhs_logs_enable_chip\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+    "original": "FilterChip(selected = node.isChecked, onClick = { group.select(node) }, enabled = group.isEnabled && node.isEnabled,\n                label = { Text(node.text?.toString().orEmpty(), fontSize = 12.sp) }, modifier = Modifier.testTag(node.context.resources.getResourceEntryName(node.id)),\n                border = androidx.compose.foundation.BorderStroke(1.dp, if (node.isChecked) themeColor(R.attr.colorOutline) else Color.Transparent),\n                colors = FilterChipDefaults.filterChipColors(containerColor = themeColor(R.attr.homeScreenBtnBackground), selectedContainerColor = themeColor(R.attr.homeScreenBtnBackground),\n                    labelColor = themeColor(R.attr.primaryLightColorText), selectedLabelColor = themeColor(R.attr.primaryTextColor)))",
+    "source": "(if (node.id == R.id.fhs_logs_allowed_chip || node.id == R.id.fhs_logs_blocked_chip) \"view_home_logs_activity:\" else \"view_home_logs_apps:\") + node.context.resources.getResourceEntryName(node.id)"
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt",
+    "original": "TextButton(click, Modifier.testTag(tag).semantics { contentDescription = \"$action $name\" })",
+    "source": "if (blocked) \"item_blocked_app:blocked_app_allow_btn\" else \"item_allowed_app:allowed_remove_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt",
+    "original": "TextButton(click, Modifier.align(Alignment.End).testTag(tag).semantics { contentDescription = \"$action $name\" })",
+    "source": "if (blocked) \"item_blocked_app:blocked_app_allow_btn\" else \"item_allowed_app:allowed_remove_btn\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+    "original": "TextButton(onVpnSettings)",
+    "source": "\"dialog_set_dns_proxy:dialog_dns_proxy_lockdown_desc\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt",
+    "original": "TextButton(onClick = { dialog.positive(onDismiss) }, modifier = Modifier.testTag(\"root_dialog_positive\"))",
+    "source": "\"@dialog_positive\""
+  },
+  {
+    "path": "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt",
+    "original": "TextButton(onClick = { dialog.negative(onDismiss) }, modifier = Modifier.testTag(\"root_dialog_negative\"))",
+    "source": "\"@dialog_negative\""
+  }
+]

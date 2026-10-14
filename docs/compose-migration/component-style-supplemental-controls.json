@@ -1,0 +1,76 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "scope": "Manually verified chip-like/action/selector controls outside typed Chip/Button/EditText census. Supplement, not silently counted as typed widgets.",
+  "controls": [
+    {
+      "source_key": "dialog_set_dns_proxy:dialog_dns_proxy_lockdown_desc",
+      "baseline_path": "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+      "baseline_line": 35,
+      "tag": "androidx.appcompat.widget.AppCompatTextView",
+      "attributes": {
+        "android:id": "@+id/dialog_dns_proxy_lockdown_desc",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:paddingStart": "10dp",
+        "android:paddingTop": "10dp",
+        "android:paddingEnd": "10dp",
+        "android:text": "@string/settings_lock_down_mode_desc",
+        "android:textAppearance": "?attr/textAppearanceBodyMedium",
+        "android:textColor": "?attr/primaryLightColorText"
+      },
+      "current_renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "restoration_note": "Clickable plain BodyMedium notice, no button container; retain onVpnSettings callback."
+    },
+    {
+      "source_key": "dialog_set_dns_proxy:dialog_proxy_spinner_appname",
+      "baseline_path": "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+      "baseline_line": 64,
+      "tag": "androidx.appcompat.widget.AppCompatSpinner",
+      "attributes": {
+        "android:id": "@+id/dialog_proxy_spinner_appname",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:textAppearance": "?attr/textAppearanceBodyLarge"
+      },
+      "current_renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+      "restoration_note": "AppCompatSpinner input affordance, distinct from outlined action button."
+    },
+    {
+      "source_key": "dialog_set_proxy:dialog_proxy_spinner_appname",
+      "baseline_path": "app/src/main/res/layout/dialog_set_proxy.xml",
+      "baseline_line": 69,
+      "tag": "androidx.appcompat.widget.AppCompatSpinner",
+      "attributes": {
+        "android:id": "@+id/dialog_proxy_spinner_appname",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:layout_weight": "0.7",
+        "android:textSize": "@dimen/large_font_text_view"
+      },
+      "current_renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "restoration_note": "AppCompatSpinner input affordance, distinct from text action button."
+    },
+    {
+      "source_key": "activity_app_details:aad_notes_chip",
+      "baseline_path": "app/src/full/res/layout/activity_app_details.xml",
+      "baseline_line": 188,
+      "tag": "com.google.android.material.card.MaterialCardView",
+      "attributes": {
+        "android:id": "@+id/aad_notes_chip",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:clickable": "true",
+        "android:focusable": "true",
+        "app:cardBackgroundColor": "?attr/homeScreenBtnBackground",
+        "app:cardCornerRadius": "18dp",
+        "app:cardElevation": "0dp",
+        "app:strokeWidth": "0dp"
+      },
+      "current_renderer_file": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt",
+      "restoration_note": "Chip-like control is actually MaterialCardView;18dp shape must not be replaced by Thin Action12dp."
+    }
+  ]
+}

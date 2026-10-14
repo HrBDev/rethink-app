@@ -53,7 +53,7 @@ internal fun logAnnotated(text: CharSequence): AnnotatedString {
         NoDimDialogWindow()
         Surface(Modifier.widthIn(max = 600.dp).fillMaxWidth(), shape = MaterialTheme.shapes.extraLarge, color = themeColor(R.attr.colorSurfaceContainerHigh)) {
             Column(Modifier.verticalScroll(rememberScrollState()).padding(20.dp)) {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { IconButton(onDismiss, Modifier.size(30.dp)) { Icon(Icons.Default.Close, stringResource(R.string.lbl_cancel), Modifier.size(30.dp)) } }
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { IconButton(onDismiss, Modifier.size(30.dp)) { com.celzero.bravedns.ui.compose.utilities.utilityImage(android.R.drawable.ic_menu_close_clear_cancel, Modifier.size(30.dp), stringResource(R.string.lbl_cancel)) } }
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     state.icon?.let { Icon(painterResource(it), null, Modifier.padding(5.dp).size(24.dp)) }
                     state.title?.let { Text(it, fontSize = logTextSize(R.dimen.heading_font_text_view), color = themeColor(R.attr.primaryTextColor)) }

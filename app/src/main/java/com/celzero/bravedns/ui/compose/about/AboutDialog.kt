@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.about
 
+import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -87,8 +88,8 @@ fun AboutDialogContent(title: CharSequence, message: CharSequence = "", icon: In
     content: (@Composable () -> Unit)? = null, buttons: Map<Int, CharSequence>, closeAction: (() -> Unit)? = null, onButton: (Int) -> Unit) {
     Surface(shape = MaterialTheme.shapes.extraLarge, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
         Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            if (closeAction != null) IconButton(closeAction, Modifier.align(Alignment.End)) {
-                Icon(Icons.Default.Close, stringResource(R.string.close))
+            if (closeAction != null) IconButton(closeAction, Modifier.align(Alignment.End).size(30.dp)) {
+                com.celzero.bravedns.ui.compose.utilities.utilityImage(android.R.drawable.ic_menu_close_clear_cancel, Modifier.size(30.dp), stringResource(R.string.close))
             }
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = if (closeAction != null) Arrangement.Center else Arrangement.Start) {
@@ -103,8 +104,7 @@ fun AboutDialogContent(title: CharSequence, message: CharSequence = "", icon: In
             if (buttons.isNotEmpty()) FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                 listOf(DialogInterface.BUTTON_NEUTRAL, DialogInterface.BUTTON_NEGATIVE, DialogInterface.BUTTON_POSITIVE).forEach { which ->
                     buttons[which]?.let { label ->
-                        TextButton({ onButton(which) }, colors = ButtonDefaults.textButtonColors(contentColor =
-                            if (which == DialogInterface.BUTTON_POSITIVE) MaterialTheme.colorScheme.primary else themeColor(R.attr.secondaryTextColor))) { Text(label.toString()) }
+                        OriginalButton(when (which) { android.content.DialogInterface.BUTTON_NEGATIVE -> "@dialog_negative"; android.content.DialogInterface.BUTTON_NEUTRAL -> "@dialog_neutral"; else -> "@dialog_positive" }, { onButton(which) }) { Text(label.toString()) }
                     }
                 }
             }

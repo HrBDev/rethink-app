@@ -1,5 +1,6 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.purchase
+import com.celzero.bravedns.ui.compose.controls.OriginalButton
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
@@ -104,7 +105,7 @@ internal class ManagePurchaseState {
         AlertDialog(onDismissRequest = { state.confirmCancel = null },
             title = { NoDimDialogWindow(); Text(stringResource(if (isCancel) R.string.confirm_cancel_title else R.string.confirm_revoke_title)) },
             text = { Text(stringResource(if (isCancel) R.string.confirm_cancel_message else R.string.confirm_revoke_message)) },
-            confirmButton = { TextButton(onClick = { onConfirm(isCancel); state.confirmCancel = null }, modifier = Modifier.testTag("manage_confirm")) { Text(stringResource(if (isCancel) R.string.cancel_subscription else R.string.revoke_subscription)) } },
-            dismissButton = { TextButton(onClick = { state.confirmCancel = null }, modifier = Modifier.testTag("manage_confirm_cancel")) { Text(stringResource(R.string.lbl_cancel)) } })
+            confirmButton = { OriginalButton("@dialog_positive", onClick = { onConfirm(isCancel); state.confirmCancel = null }, modifier = Modifier.testTag("manage_confirm")) { Text(stringResource(if (isCancel) R.string.cancel_subscription else R.string.revoke_subscription)) } },
+            dismissButton = { OriginalButton("@dialog_negative", onClick = { state.confirmCancel = null }, modifier = Modifier.testTag("manage_confirm_cancel")) { Text(stringResource(R.string.lbl_cancel)) } })
     }
 }

@@ -93,6 +93,13 @@ NATIVE_EXACT = {"android.view.View", "android.view.SurfaceView", "android.view.T
 NATIVE_DIALOGS = {"com.google.android.material.dialog.MaterialAlertDialogBuilder",
                   "android.app.AlertDialog", "androidx.appcompat.app.AlertDialog",
                   "android.widget.PopupWindow", "android.widget.PopupMenu"}
+# Exact MDC model/drawable types, not Views. They paint source styling on a Compose
+# Canvas; similarly named ProgressIndicator widgets still fail this guard.
+NON_VIEW_MATERIAL_TYPES = {
+    "com.google.android.material.progressindicator.LinearProgressIndicatorSpec",
+    "com.google.android.material.progressindicator.CircularProgressIndicatorSpec",
+    "com.google.android.material.shape.MaterialShapeDrawable",
+}
 
 
 def without_comments(text: str) -> str:
@@ -198,11 +205,14 @@ def analyze_code(path: str, text: str):
         qualified, alias = match[1], match[2] or match[1].rsplit('.', 1)[-1]
         native = qualified.startswith(NATIVE_PREFIXES) or qualified in NATIVE_EXACT
         dialog = qualified in NATIVE_DIALOGS
-        if not native and not dialog: continue
+        if not native and not dialog and qualified not in NON_VIEW_MATERIAL_TYPES: continue
         constructor = re.compile(r'(?<![\w.])' + re.escape(alias) + r'\s*(?:<[^>\n]+>\s*)?(?:\.Builder\s*)?\(|::' + re.escape(alias) + r'\b')
         for type_alias in re.finditer(r'\btypealias\s+\w+\s*=\s*' + re.escape(alias) + r'\b', code):
             errors.append(record(path, code, type_alias, 'native-type-alias'))
         for call in constructor.finditer(code):
+            if qualified in NON_VIEW_MATERIAL_TYPES:
+                inventory.append(record(path, code, call, 'nonview-material-drawing-model', qualified))
+                continue
             item = record(path, code, call, 'native-constructor', qualified)
             inventory.append(item)
             dormant = path in DORMANT.values()
@@ -214,6 +224,9 @@ def analyze_code(path: str, text: str):
     # names; constants/method calls and Compose material3 functions are distinct.
     for match in re.finditer(r'\b(?:(?:android\.widget|androidx\.appcompat\.widget|com\.google\.android\.material\.[\w]+|android\.webkit)\.[A-Z]\w*|android\.view\.(?:View|SurfaceView|TextureView))\s*\(', code):
         qualified = match[0].split('(')[0].strip()
+        if qualified in NON_VIEW_MATERIAL_TYPES:
+            inventory.append(record(path, code, match, 'nonview-material-drawing-model', qualified))
+            continue
         item = record(path, code, match, 'qualified-native-constructor', qualified)
         inventory.append(item)
         if path not in DORMANT.values() and not (path in FRAMEWORK_HOSTS and qualified in FRAMEWORK_TYPES and path not in FRAGMENT_BRIDGES):
@@ -430,7 +443,15 @@ def self_test():
     assert layout_removal_errors(['other/src/debug/res/layout-w600dp/old.xml'])
     assert not layout_removal_errors([])
     assert not layout_removal_errors(['app/src/main/res/layout/old.xml'], allow_retained_layouts=True)
-    return len(mutations) + 15
+    for name in sorted(NON_VIEW_MATERIAL_TYPES):
+        short = name.rsplit('.', 1)[-1]
+        assert not analyze_code(p, f'import {name}\nval drawing = {short}(context)')[0]
+        assert not analyze_code(p, f'val drawing = {name}(context)')[0]
+    for widget in ('LinearProgressIndicator', 'CircularProgressIndicator'):
+        name = 'com.google.android.material.progressindicator.' + widget
+        assert analyze_code(p, f'import {name}\nval widget = {widget}(context)')[0]
+        assert analyze_code(p, f'val widget = {name}(context)')[0]
+    return len(mutations) + 25
 
 
 def main():

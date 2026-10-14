@@ -34,19 +34,19 @@
     "database/CustomDomain.kt"
   ],
   "sourceHashes": {
-    "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt": "e4a6dc91c9a0625647cc1bc49290383617f3a7d02a8f111024016c354c377ac2",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt": "b7cedb9bad5445d143b0657727c0b960da6fda12a33eb0b074dcc56b4595375d",
     "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt": "a621fc64e674ba23a2297ba86987501666a54b699eeea948eeb9bf292b6e2deb",
     "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt": "8d3e38bdeb00a1b2902ff5bfe871a7d5d78c77a4fcd5eaad07a8bba195e54918",
     "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomIpRulesBtmSheet.kt": "19674c35e28ece3940dc85eecb985df38058ce09efe2665a93e5294764c4c2cc",
     "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomDomainRulesBtmSheet.kt": "e83c1d8d6b7641d80b177aaa085ea66a29996b71858bfdd389eb95c22786b26b",
     "app/src/main/java/com/celzero/bravedns/ui/dialog/CustomLanIpDialog.kt": "118b3562c72335fbc6ed595347ffd930b3bf907d30b8e36c5070d17576ad9c4d",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RuleDetailsContent.kt": "edea1ce651d7eb99b0713ff030c49d5ff3dee3296fe1c2ed031060d202efe5ec",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RuleDetailsContent.kt": "8ae340aaa1201c3f0c1260f4d6426dcb63873f7f7af1c96f0bcf77d294f0858d",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpState.kt": "a4c7cbc0d3daadd11765b5f13b97e647c02530f4eb5e4d2a6e1b9ae93ba83d8c",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesPageState.kt": "8ece9892a3d6b2d81e6a3f9e916be8ab18705ed6a1f25706cc49519d4156e91b",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomRuleActions.kt": "33fb3429a22196360b40016eb0617c5f3ecddd885f928198e74acb33c9055956",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomRulePort.kt": "75efb038dcd3c1c80dfd12b06758b23a019bb9169d90772c70f02adab43da1c0",
     "app/src/main/java/com/celzero/bravedns/ui/compose/rules/CustomLanIpContent.kt": "a0583e3971fc9859f099aff8d05e85c75ed4839dcf9ba8b0b8c096c8e6364eef",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt": "ebedf52662db0b0bb594fb55b657df7d3918c56733a1935aeb44cf4191cd4300"
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt": "9d0b6e07eb8ec32c8126c6ab9e763d1eec4ae29c26049f0fffb035a7988c0484"
   },
   "limitation": "Source-only; not compilation, tests, or visual/runtime parity."
 }

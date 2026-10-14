@@ -2,6 +2,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import com.celzero.bravedns.ui.compose.fields.OriginalTextField
 import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.core.*
@@ -22,11 +24,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
 
-@Composable private fun WgSetting(row: WgControlState, title: WgControlState, description: String, check: WgControlState) {
+@Composable private fun WgSetting(sourceId: String, row: WgControlState, title: WgControlState, description: String, check: WgControlState) {
     if (!row.isVisible) return
     Row(Modifier.fillMaxWidth().clickable(enabled = row.isEnabled && row.isClickable) { row.performClick() }.padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Column(Modifier.weight(1f)) { WgText(title); Text(description, style = MaterialTheme.typography.bodyMedium) }
-        WgCheck(check, title.text.toString(), switch = true)
+        Column(Modifier.weight(1f)) { WgText(title); WgSourceText(description, "activity_wg_detail:" + when (sourceId) {
+            "lockdown_check" -> "anonymous_56"; "catch_all_check" -> "anonymous_61"
+            "use_mobile_check" -> "anonymous_70"; else -> "ssid_desc_tv"
+        }) }
+        WgCheck(check, title.text.toString(), switch = true, compoundSource = "activity_wg_detail:$sourceId")
     }
 }
 
@@ -49,7 +54,7 @@ import com.celzero.bravedns.R
     Surface(color = MaterialTheme.colorScheme.background) {
         Box(Modifier.fillMaxSize().safeDrawingPadding()) {
             Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp).padding(bottom = 88.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                WgCard(b.interfaceDetailCard) {
+                WgCard(b.interfaceDetailCard, contentPadding = PaddingValues(start = 15.dp, top = 10.dp, end = 15.dp, bottom = 20.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) { WgText(b.interfaceFlagText); WgText(b.configNameText, Modifier.weight(1f)); WgText(b.configIdText) }
                     WgText(b.statusText)
                     WgText(b.publicKeyLabel); WgText(b.publicKeyText)
@@ -65,26 +70,26 @@ import com.celzero.bravedns.R
                     }
                     FlowRow(horizontalArrangement = Arrangement.End) { WgAction(b.editBtn, source = "activity_wg_detail:edit_btn"); WgAction(b.deleteBtn, source = "activity_wg_detail:delete_btn") }
                 }
-                WgCard(b.actionsCard) {
-                    Text(stringResource(R.string.lbl_actions))
+                WgCard(b.actionsCard, contentPadding = PaddingValues(20.dp)) {
+                    WgSourceText(stringResource(R.string.lbl_actions), "activity_wg_detail:anonymous_37")
                     FlowRow {
                         WgDetailAction(b.applicationsBtnX, R.drawable.ic_app_info_accent) { WgText(b.appsLabel) }
                         WgDetailAction(b.hopBtnX, R.drawable.ic_network_tunnel) {
                             Row(verticalAlignment = Alignment.CenterVertically) { WgText(b.hopLabel); if (b.hopBadge.isVisible) Badge() }
                         }
-                        WgDetailAction(b.logsBtnX, R.drawable.ic_logs) { Text("Logs") }
+                        WgDetailAction(b.logsBtnX, R.drawable.ic_logs) { WgSourceText("Logs", "activity_wg_detail:anonymous_49") }
                     }
                 }
-                WgCard(b.otherSettingsCard) {
+                WgCard(b.otherSettingsCard, contentPadding = PaddingValues(bottom = 20.dp)) {
                     WgText(b.wgHeaderTv)
-                    WgSetting(b.lockdownRl, b.lockdownTitleTv, stringResource(R.string.lockdown_wg_dialog_desc), b.lockdownCheck)
-                    WgSetting(b.catchAllRl, b.catchAllTitleTv, stringResource(R.string.catch_all_wg_dialog_desc), b.catchAllCheck)
+                    WgSetting("lockdown_check", b.lockdownRl, b.lockdownTitleTv, stringResource(R.string.lockdown_wg_dialog_desc), b.lockdownCheck)
+                    WgSetting("catch_all_check", b.catchAllRl, b.catchAllTitleTv, stringResource(R.string.catch_all_wg_dialog_desc), b.catchAllCheck)
                     WgText(b.oneWgInfoTv)
                 }
-                WgCard(b.mobileSsidSettingsCard) {
+                WgCard(b.mobileSsidSettingsCard, contentPadding = PaddingValues(bottom = 20.dp)) {
                     WgText(b.msWgHeaderTv)
-                    WgSetting(b.useMobileRl, b.useMobileTitleTv, stringResource(R.string.wg_setting_use_on_mobile_desc), b.useMobileCheck)
-                    WgSetting(b.ssidFilterRl, b.ssidTitleTv, b.ssidDescTv.text.toString(), b.ssidCheck)
+                    WgSetting("use_mobile_check", b.useMobileRl, b.useMobileTitleTv, stringResource(R.string.wg_setting_use_on_mobile_desc), b.useMobileCheck)
+                    WgSetting("ssid_check", b.ssidFilterRl, b.ssidTitleTv, b.ssidDescTv.text.toString(), b.ssidCheck)
                     if (b.ssidEditGroup.isVisible) Row {
                         WgField(b.ssidEditText, stringResource(R.string.lbl_ssid), Modifier.weight(1f), fieldStyle = OriginalFieldStyle.WgInlineSsid)
                         WgIcon(b.ssidOkBtn, stringResource(R.string.lbl_save))

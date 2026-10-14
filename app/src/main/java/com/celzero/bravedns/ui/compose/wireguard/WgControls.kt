@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import com.celzero.bravedns.ui.compose.fields.OriginalTextField
 import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import android.text.Spanned
@@ -14,6 +16,8 @@ import android.text.style.TypefaceSpan
 import android.view.View
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,14 +56,17 @@ import com.celzero.bravedns.ui.compose.themeColor
 private fun Modifier.wgState(node: WgControlState): Modifier = alpha(if (node.visibility == View.INVISIBLE) 0f else node.alpha)
     .then(if (node.visibility == View.INVISIBLE) Modifier.clearAndSetSemantics { } else Modifier)
 
-@Composable fun WgText(node: WgControlState, modifier: Modifier = Modifier) {
+@Composable fun WgText(node: WgControlState, modifier: Modifier = Modifier, interactive: Boolean = true) {
     if (node.visibility == View.GONE) return
-    Text(wgAnnotatedText(if (node.isAllCaps) node.text.toString().uppercase() else node.text), modifier.wgState(node).then(if (node.hasClickListener) Modifier.clickable(enabled = node.isEnabled && node.isClickable) { node.performClick() } else Modifier),
-        color = node.textColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor),
-        fontSize = node.textSizeSp?.sp ?: MaterialTheme.typography.bodyMedium.fontSize, maxLines = node.maxLines,
-        overflow = if (node.ellipsize) TextOverflow.Ellipsis else TextOverflow.Clip,
-        fontWeight = if (node.textStyle and android.graphics.Typeface.BOLD != 0) FontWeight.Bold else FontWeight.Normal,
-        fontStyle = if (node.textStyle and android.graphics.Typeface.ITALIC != 0) FontStyle.Italic else FontStyle.Normal)
+    val interactions = remember { MutableInteractionSource() }
+    val pressed by interactions.collectIsPressedAsState()
+    val look = resolveWgText(LocalContext.current, LocalDensity.current, node.textSource, node)
+    Text(wgAnnotatedText(if (look.allCaps) node.text.toString().uppercase() else node.text),
+        modifier.wgState(node).then(if (interactive && node.hasClickListener)
+            Modifier.clickable(interactionSource = interactions, indication = null, enabled = node.isEnabled && node.isClickable) { node.performClick() } else Modifier),
+        color = Color(look.colors.getColorForState(wgTextStateSet(node, pressed), look.colors.defaultColor)),
+        style = look.style, maxLines = look.maxLines, minLines = look.minLines,
+        softWrap = !look.singleLine, overflow = look.overflow)
 }
 
 fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
@@ -94,40 +101,12 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
     }
 }
 
-@Composable fun WgCheck(node: WgControlState, label: String? = null, switch: Boolean = false, modifier: Modifier = Modifier) {
+@Composable fun WgCheck(node: WgControlState, label: String? = null, switch: Boolean = false, modifier: Modifier = Modifier, compoundSource: String, interactive: Boolean = true) {
     if (node.visibility == View.GONE) return
     val m = modifier.wgState(node).then(if (label != null) Modifier.semantics { contentDescription = label } else Modifier)
-    if (switch) Switch(node.isChecked, { node.performClick() }, m, enabled = node.isEnabled && node.isClickable, colors = wgSwitchColors(node))
-    else {
-        val colors = node.buttonTint?.let { tint ->
-            CheckboxDefaults.colors(checkedColor = Color(tint), uncheckedColor = Color(tint), disabledCheckedColor = Color(tint), disabledUncheckedColor = Color(tint))
-        } ?: CheckboxDefaults.colors()
-        Checkbox(node.isChecked, { node.performClick() }, m, enabled = node.isEnabled && node.isClickable, colors = colors)
-    }
-}
-
-@Composable private fun wgSwitchColors(node: WgControlState): SwitchColors {
-    val overlay = node.switchThemeOverlay ?: return SwitchDefaults.colors()
-    val context = LocalContext.current
-    val tints = remember(context, overlay) {
-        val themed = androidx.appcompat.view.ContextThemeWrapper(context, overlay)
-        listOf(com.google.android.material.R.color.mtrl_switch_thumb_tint,
-            com.google.android.material.R.color.mtrl_switch_track_tint,
-            com.google.android.material.R.color.mtrl_switch_track_decoration_tint).map {
-            requireNotNull(androidx.appcompat.content.res.AppCompatResources.getColorStateList(themed, it))
-        }
-    }
-    fun tint(index: Int, enabled: Boolean, checked: Boolean): Color {
-        val states = intArrayOf(if (enabled) android.R.attr.state_enabled else -android.R.attr.state_enabled,
-            if (checked) android.R.attr.state_checked else -android.R.attr.state_checked)
-        return Color(tints[index].getColorForState(states, tints[index].defaultColor))
-    }
-    return SwitchDefaults.colors(
-        checkedThumbColor = tint(0, true, true), checkedTrackColor = tint(1, true, true), checkedBorderColor = tint(2, true, true),
-        uncheckedThumbColor = tint(0, true, false), uncheckedTrackColor = tint(1, true, false), uncheckedBorderColor = tint(2, true, false),
-        disabledCheckedThumbColor = tint(0, false, true), disabledCheckedTrackColor = tint(1, false, true), disabledCheckedBorderColor = tint(2, false, true),
-        disabledUncheckedThumbColor = tint(0, false, false), disabledUncheckedTrackColor = tint(1, false, false), disabledUncheckedBorderColor = tint(2, false, false)
-    )
+    if (switch) OriginalSwitch(compoundSource, node.isChecked, if (interactive) ({ node.performClick() }) else null, m, enabled = node.isEnabled && node.isClickable)
+    else OriginalCheckbox(compoundSource, node.isChecked, if (interactive) ({ node.performClick() }) else null, m, enabled = node.isEnabled && node.isClickable,
+        buttonTint = node.buttonTint?.let(android.content.res.ColorStateList::valueOf))
 }
 
 @Composable fun WgIcon(node: WgControlState, label: String? = null, modifier: Modifier = Modifier) {
@@ -145,28 +124,31 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
 
 @Composable fun WgProgress(node: WgControlState, modifier: Modifier = Modifier) {
     if (node.visibility == View.GONE) return
-    if (node.isIndeterminate) LinearProgressIndicator(modifier.wgState(node))
-    else LinearProgressIndicator(progress = { (node.progress.toFloat() / node.max.coerceAtLeast(1)).coerceIn(0f, 1f) }, modifier = modifier.wgState(node), color = node.indicatorColor?.let(::Color) ?: MaterialTheme.colorScheme.primary)
+    val source = requireNotNull(node.progressSource) { "WgProgress requires its baseline source" }
+    val total = node.max.coerceAtLeast(1).toFloat()
+    if (source == "fragment_wg_nw_stats:fss_progress_bar") OriginalHorizontalProgress(
+        modifier.wgState(node), node.progress / total, node.secondaryProgress / total, visible = node.isVisible)
+    else OriginalLinearProgress(source, modifier.wgState(node), node.progress / total,
+        node.isIndeterminate, OriginalProgressOverrides(node.indicatorColor, node.trackColor,
+            node.trackThicknessDp, node.trackCornerRadiusDp, node.indicatorTrackGapDp, node.trackStopIndicatorSizeDp),
+        animate = node.animateProgress, visible = node.isVisible)
 }
 
-@Composable fun WgCard(node: WgControlState? = null, modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
+/** Each caller supplies its original child-container padding; the card owns only its style. */
+@Composable fun WgCard(node: WgControlState? = null, modifier: Modifier = Modifier,
+                      contentPadding: PaddingValues, content: @Composable ColumnScope.() -> Unit) {
     if (node?.visibility == View.GONE) return
-    val context = LocalContext.current
-    val values = remember(context) {
-        context.obtainStyledAttributes(null, intArrayOf(androidx.cardview.R.attr.cardBackgroundColor, androidx.cardview.R.attr.cardElevation), com.google.android.material.R.attr.materialCardViewStyle, 0).let {
-            val color = if (it.hasValue(0)) it.getColor(0, 0) else null
-            val elevation = it.getDimension(1, 0f) / context.resources.displayMetrics.density
-            it.recycle(); color to elevation
-        }
-    }
     val width = with(LocalDensity.current) { (node?.strokeWidth ?: 0).toDp() }
     val m = modifier.fillMaxWidth().then(if (node != null) Modifier.wgState(node) else Modifier)
         .then(if (node?.hasClickListener == true) Modifier.clickable(enabled = node.isEnabled && node.isClickable) { node.performClick() } else Modifier)
-    Card(m, shape = RoundedCornerShape((node?.radiusDp ?: 8f).dp),
-        border = if (width.value > 0) BorderStroke(width, Color(node!!.strokeColor)) else null,
-        colors = CardDefaults.cardColors(containerColor = (node?.backgroundColor ?: values.first)?.let(::Color) ?: MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = (node?.elevationDp ?: values.second).dp)) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
+    com.celzero.bravedns.ui.compose.controls.OriginalCardSurface(
+        modifier = m,
+        cornerRadius = node?.radiusDp?.dp,
+        elevation = node?.elevationDp?.dp,
+        containerColor = node?.backgroundColor?.let(::Color),
+        border = node?.let { BorderStroke(width, Color(it.strokeColor)) },
+    ) {
+        Column(Modifier.padding(contentPadding), content = content)
     }
 }
 

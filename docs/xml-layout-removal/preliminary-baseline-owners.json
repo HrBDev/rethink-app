@@ -1,0 +1,3412 @@
+{
+  "dialog_sponsor_info": [],
+  "list_item_exclude_country": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.ListItemExcludeCountryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "line": 406,
+      "text": "inner class ViewHolder(val binding: ListItemExcludeCountryBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "line": 412,
+      "text": "ListItemExcludeCountryBinding.inflate(inflater, parent, false)"
+    }
+  ],
+  "list_item_vpn_server_add": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "line": 44,
+      "text": "import com.celzero.bravedns.databinding.ListItemVpnServerAddBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "line": 249,
+      "text": "ListItemVpnServerAddBinding.inflate(inflater, parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "line": 1154,
+      "text": "inner class AddTileViewHolder(private val b: ListItemVpnServerAddBinding) :"
+    }
+  ],
+  "bottomsheet_server_removal_notification": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetServerRemovalNotificationBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "line": 47,
+      "text": "private var _binding: BottomsheetServerRemovalNotificationBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "line": 88,
+      "text": "_binding = BottomsheetServerRemovalNotificationBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "activity_network_logs": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ActivityNetworkLogsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+      "line": 48,
+      "text": "class NetworkLogsActivity : BaseActivity(R.layout.activity_network_logs) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+      "line": 49,
+      "text": "private val b by viewBinding(ActivityNetworkLogsBinding::bind)"
+    }
+  ],
+  "dialog_wg_ssid": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "line": 33,
+      "text": "import com.celzero.bravedns.databinding.DialogWgSsidBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "line": 45,
+      "text": "private lateinit var b: DialogWgSsidBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "line": 53,
+      "text": "b = DialogWgSsidBinding.inflate(layoutInflater)"
+    }
+  ],
+  "bottomsheet_rinr_warning": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkInRethinkWarningBottomSheet.kt",
+      "line": 9,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetRinrWarningBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkInRethinkWarningBottomSheet.kt",
+      "line": 17,
+      "text": "private var _binding: BottomsheetRinrWarningBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkInRethinkWarningBottomSheet.kt",
+      "line": 48,
+      "text": "_binding = BottomsheetRinrWarningBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "list_item_app_ip_details": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseIpsAdapter.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.ListItemAppIpDetailsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseIpsAdapter.kt",
+      "line": 65,
+      "text": "ListItemAppIpDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseIpsAdapter.kt",
+      "line": 93,
+      "text": "inner class ConnectionDetailsViewHolder(private val b: ListItemAppIpDetailsBinding) :"
+    }
+  ],
+  "fragment_about": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 63,
+      "text": "import com.celzero.bravedns.databinding.FragmentAboutBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 129,
+      "text": "class AboutFragment : Fragment(R.layout.fragment_about), View.OnClickListener, KoinComponent {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 130,
+      "text": "private val b by viewBinding(FragmentAboutBinding::bind)"
+    }
+  ],
+  "bottom_sheet_bug_report_files": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetBugReportFilesBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "line": 57,
+      "text": "private var _binding: BottomSheetBugReportFilesBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "line": 92,
+      "text": "_binding = BottomSheetBugReportFilesBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "bottomsheet_entitlement_detail": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetEntitlementDetailBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "line": 43,
+      "text": "private var _b: BottomsheetEntitlementDetailBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "line": 62,
+      "text": "_b = BottomsheetEntitlementDetailBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "list_item_purchase_history": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/PurchaseHistoryAdapter.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.ListItemPurchaseHistoryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/PurchaseHistoryAdapter.kt",
+      "line": 58,
+      "text": "val binding = ListItemPurchaseHistoryBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/PurchaseHistoryAdapter.kt",
+      "line": 70,
+      "text": "inner class HistoryViewHolder(private val b: ListItemPurchaseHistoryBinding) :"
+    }
+  ],
+  "fragment_rethink_plus": [
+    {
+      "path": "app/src/fdroid/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 23,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkPlusBinding"
+    },
+    {
+      "path": "app/src/fdroid/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 33,
+      "text": "class RethinkPlusFragment : Fragment(R.layout.fragment_rethink_plus) {"
+    },
+    {
+      "path": "app/src/fdroid/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 34,
+      "text": "private val b by viewBinding(FragmentRethinkPlusBinding::bind)"
+    }
+  ],
+  "dialog_wg_apps": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.DialogWgAppsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "line": 53,
+      "text": "class WgIncludeAppsActivity : BaseActivity(R.layout.dialog_wg_apps),"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "line": 56,
+      "text": "private val b by viewBinding(DialogWgAppsBinding::bind)"
+    }
+  ],
+  "fragment_dns_logs": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsLogFragment.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.FragmentDnsLogsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsLogFragment.kt",
+      "line": 57,
+      "text": "class DnsLogFragment : Fragment(R.layout.fragment_dns_logs), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsLogFragment.kt",
+      "line": 58,
+      "text": "private val b by viewBinding(FragmentDnsLogsBinding::bind)"
+    }
+  ],
+  "bottom_sheet_dns_log": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "line": 48,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetDnsLogBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "line": 79,
+      "text": "private var _binding: BottomSheetDnsLogBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "line": 106,
+      "text": "_binding = BottomSheetDnsLogBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "activity_welcome": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.ActivityWelcomeBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 45,
+      "text": "class WelcomeActivity : BaseActivity(R.layout.activity_welcome) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 47,
+      "text": "private val b by viewBinding(ActivityWelcomeBinding::bind)"
+    }
+  ],
+  "domain_item_bottom_sheet": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DomainRulesBtmSheetAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.DomainItemBottomSheetBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DomainRulesBtmSheetAdapter.kt",
+      "line": 41,
+      "text": "DomainItemBottomSheetBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DomainRulesBtmSheetAdapter.kt",
+      "line": 54,
+      "text": "inner class ViewHolder(private val b: DomainItemBottomSheetBinding) :"
+    }
+  ],
+  "list_item_blocklist_domain_row": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.ListItemBlocklistDomainRowBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+      "line": 105,
+      "text": "val b = ListItemBlocklistDomainRowBinding.inflate(inflater, parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+      "line": 191,
+      "text": "inner class DomainViewHolder(private val b: ListItemBlocklistDomainRowBinding) :"
+    }
+  ],
+  "activity_server_order_history": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "line": 31,
+      "text": "import com.celzero.bravedns.databinding.ActivityServerOrderHistoryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "line": 63,
+      "text": "class ServerOrderHistoryActivity : BaseActivity(R.layout.activity_server_order_history) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "line": 65,
+      "text": "private val b by viewBinding(ActivityServerOrderHistoryBinding::bind)"
+    }
+  ],
+  "view_insights_rank_row": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "line": 66,
+      "text": "import com.celzero.bravedns.databinding.ViewInsightsRankRowBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "line": 839,
+      "text": "val rowBinding = ViewInsightsRankRowBinding.inflate(inflater, rowsContainer, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.ViewInsightsRankRowBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "line": 981,
+      "text": "val rowBinding = ViewInsightsRankRowBinding.inflate("
+    }
+  ],
+  "list_item_proxy_cc_wg": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "line": 20,
+      "text": "import com.celzero.bravedns.databinding.ListItemProxyCcWgBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "line": 240,
+      "text": "ListItemProxyCcWgBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "line": 250,
+      "text": "inner class ViewHolder(private val bb: ListItemProxyCcWgBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "line": 22,
+      "text": "import com.celzero.bravedns.databinding.ListItemProxyCcWgBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "line": 237,
+      "text": "ListItemProxyCcWgBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "line": 247,
+      "text": "inner class ViewHolder(private val bb: ListItemProxyCcWgBinding) :"
+    }
+  ],
+  "list_item_wg_hop": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.ListItemWgHopBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "line": 64,
+      "text": "ListItemWgHopBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "line": 88,
+      "text": "inner class HopViewHolder(private val b: ListItemWgHopBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt",
+      "line": 31,
+      "text": "import com.celzero.bravedns.databinding.ListItemWgHopBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt",
+      "line": 79,
+      "text": "ListItemWgHopBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt",
+      "line": 118,
+      "text": "inner class HopViewHolder(private val b: ListItemWgHopBinding) :"
+    }
+  ],
+  "list_item_console_log": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConsoleLogAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ListItemConsoleLogBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConsoleLogAdapter.kt",
+      "line": 51,
+      "text": "ListItemConsoleLogBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConsoleLogAdapter.kt",
+      "line": 60,
+      "text": "inner class ConsoleLogViewHolder(private val b: ListItemConsoleLogBinding) :"
+    }
+  ],
+  "bottom_sheet_custom_domains": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomDomainRulesBtmSheet.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetCustomDomainsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomDomainRulesBtmSheet.kt",
+      "line": 46,
+      "text": "private var _binding: BottomSheetCustomDomainsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomDomainRulesBtmSheet.kt",
+      "line": 83,
+      "text": "_binding = BottomSheetCustomDomainsBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "item_bug_report_file": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "line": 33,
+      "text": "import com.celzero.bravedns.databinding.ItemBugReportFileBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "line": 467,
+      "text": "inner class ViewHolder(private val itemBinding: ItemBugReportFileBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "line": 504,
+      "text": "val binding = ItemBugReportFileBinding.inflate("
+    }
+  ],
+  "list_item_custom_all_domain": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 46,
+      "text": "import com.celzero.bravedns.databinding.ListItemCustomAllDomainBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 104,
+      "text": "if (viewType == R.layout.list_item_custom_all_domain) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 106,
+      "text": "ListItemCustomAllDomainBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 163,
+      "text": "R.layout.list_item_custom_all_domain"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 165,
+      "text": "R.layout.list_item_custom_all_domain"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 342,
+      "text": "inner class CustomDomainViewHolderWithHeader(private val b: ListItemCustomAllDomainBinding) :"
+    }
+  ],
+  "activity_other_dns_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsListActivity.kt",
+      "line": 26,
+      "text": "import com.celzero.bravedns.databinding.ActivityOtherDnsListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsListActivity.kt",
+      "line": 43,
+      "text": "class DnsListActivity : BaseActivity(R.layout.activity_other_dns_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsListActivity.kt",
+      "line": 44,
+      "text": "private val b by viewBinding(ActivityOtherDnsListBinding::bind)"
+    }
+  ],
+  "dialog_whatsnew": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 62,
+      "text": "import com.celzero.bravedns.databinding.DialogWhatsnewBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 1709,
+      "text": "DialogWhatsnewBinding.inflate(LayoutInflater.from(requireContext()), null, false)"
+    }
+  ],
+  "dialog_input_ips": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.DialogInputIpsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "line": 54,
+      "text": "private lateinit var binding: DialogInputIpsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "line": 69,
+      "text": "binding = DialogInputIpsBinding.inflate(layoutInflater)"
+    }
+  ],
+  "activity_app_lock": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "line": 48,
+      "text": "class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {"
+    }
+  ],
+  "activity_configure_other_dns": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt",
+      "line": 23,
+      "text": "import com.celzero.bravedns.databinding.ActivityConfigureOtherDnsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt",
+      "line": 37,
+      "text": "class ConfigureOtherDnsActivity : BaseActivity(R.layout.activity_configure_other_dns) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt",
+      "line": 38,
+      "text": "private val b by viewBinding(ActivityConfigureOtherDnsBinding::bind)"
+    }
+  ],
+  "bottom_sheet_dns_record_types": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetDnsRecordTypesBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "line": 38,
+      "text": "private var _binding: BottomSheetDnsRecordTypesBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "line": 62,
+      "text": "_binding = BottomSheetDnsRecordTypesBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "view_home_logs_activity": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 81,
+      "text": "import com.celzero.bravedns.databinding.ViewHomeLogsActivityBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 204,
+      "text": "private lateinit var logsPage: ViewHomeLogsActivityBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 1565,
+      "text": "logsPage = ViewHomeLogsActivityBinding.inflate(layoutInflater)"
+    }
+  ],
+  "dialog_add_custom_ip": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 44,
+      "text": "import com.celzero.bravedns.databinding.DialogAddCustomIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 564,
+      "text": "DialogAddCustomIpBinding.inflate((context as CustomRulesActivity).layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 615,
+      "text": "dBind: DialogAddCustomIpBinding,"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.DialogAddCustomIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 255,
+      "text": "val dBind = DialogAddCustomIpBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 299,
+      "text": "dBind: DialogAddCustomIpBinding,"
+    }
+  ],
+  "dialog_set_custom_odoh": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.DialogSetCustomOdohBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt",
+      "line": 128,
+      "text": "val dialogBinding = DialogSetCustomOdohBinding.inflate(layoutInflater)"
+    }
+  ],
+  "dialog_set_dns_crypt": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.DialogSetDnsCryptBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+      "line": 165,
+      "text": "val dialogBinding = DialogSetDnsCryptBinding.inflate(layoutInflater)"
+    }
+  ],
+  "item_dns_record_type": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ItemDnsRecordTypeBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "line": 233,
+      "text": "inner class ViewHolder(private val itemBinding: ItemDnsRecordTypeBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "line": 287,
+      "text": "val binding = ItemDnsRecordTypeBinding.inflate("
+    }
+  ],
+  "list_item_wg_general_interface": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "line": 43,
+      "text": "import com.celzero.bravedns.databinding.ListItemWgGeneralInterfaceBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "line": 106,
+      "text": "ListItemWgGeneralInterfaceBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "line": 122,
+      "text": "inner class WgInterfaceViewHolder(private val b: ListItemWgGeneralInterfaceBinding) :"
+    }
+  ],
+  "list_item_server_order": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ListItemServerOrderBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "line": 57,
+      "text": "val binding = ListItemServerOrderBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "line": 67,
+      "text": "inner class OrderViewHolder(private val b: ListItemServerOrderBinding) :"
+    }
+  ],
+  "item_server_group": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 33,
+      "text": "import com.celzero.bravedns.databinding.ItemServerGroupBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 357,
+      "text": "val binding = ItemServerGroupBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 372,
+      "text": "private val binding: ItemServerGroupBinding"
+    }
+  ],
+  "list_item_rethink_blocklist_adv": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/LocalAdvancedViewAdapter.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ListItemRethinkBlocklistAdvBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/LocalAdvancedViewAdapter.kt",
+      "line": 67,
+      "text": "ListItemRethinkBlocklistAdvBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/LocalAdvancedViewAdapter.kt",
+      "line": 81,
+      "text": "inner class RethinkLocalFileTagViewHolder(private val b: ListItemRethinkBlocklistAdvBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RemoteAdvancedViewAdapter.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ListItemRethinkBlocklistAdvBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RemoteAdvancedViewAdapter.kt",
+      "line": 68,
+      "text": "ListItemRethinkBlocklistAdvBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RemoteAdvancedViewAdapter.kt",
+      "line": 82,
+      "text": "inner class RethinkRemoteFileTagViewHolder(private val b: ListItemRethinkBlocklistAdvBinding) :"
+    }
+  ],
+  "dialog_set_custom_doh": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.DialogSetCustomDohBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt",
+      "line": 124,
+      "text": "val dialogBinding = DialogSetCustomDohBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.DialogSetCustomDohBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt",
+      "line": 133,
+      "text": "val dialogBinding = DialogSetCustomDohBinding.inflate(layoutInflater)"
+    }
+  ],
+  "bottom_sheet_home_screen": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/HomeScreenSettingBottomSheet.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetHomeScreenBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/HomeScreenSettingBottomSheet.kt",
+      "line": 60,
+      "text": "private var _binding: BottomSheetHomeScreenBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/HomeScreenSettingBottomSheet.kt",
+      "line": 94,
+      "text": "_binding = BottomSheetHomeScreenBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "activity_backup_restore": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BackupRestoreBottomSheet.kt",
+      "line": 57,
+      "text": "import com.celzero.bravedns.databinding.ActivityBackupRestoreBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BackupRestoreBottomSheet.kt",
+      "line": 70,
+      "text": "private var _binding: ActivityBackupRestoreBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BackupRestoreBottomSheet.kt",
+      "line": 93,
+      "text": "_binding = ActivityBackupRestoreBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "activity_universal_firewall_settings": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/UniversalFirewallSettingsActivity.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.ActivityUniversalFirewallSettingsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/UniversalFirewallSettingsActivity.kt",
+      "line": 57,
+      "text": "BaseActivity(R.layout.activity_universal_firewall_settings) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/UniversalFirewallSettingsActivity.kt",
+      "line": 58,
+      "text": "private val b by viewBinding(ActivityUniversalFirewallSettingsBinding::bind)"
+    }
+  ],
+  "fragment_firewall_settings": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragment.kt",
+      "line": 23,
+      "text": "import com.celzero.bravedns.databinding.FragmentFirewallSettingsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragment.kt",
+      "line": 32,
+      "text": "class FirewallSettingsFragment : Fragment(R.layout.fragment_firewall_settings), KoinComponent {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragment.kt",
+      "line": 33,
+      "text": "private val b by viewBinding(FragmentFirewallSettingsBinding::bind)"
+    }
+  ],
+  "bottom_sheet_firewall_sort_filter": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetFirewallSortFilterBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "line": 41,
+      "text": "private var _binding: BottomSheetFirewallSortFilterBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "line": 58,
+      "text": "_binding = BottomSheetFirewallSortFilterBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "activity_alerts": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AlertsActivity.kt",
+      "line": 21,
+      "text": "class AlertsActivity : BaseActivity(R.layout.activity_alerts) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AlertsActivity.kt",
+      "line": 23,
+      "text": "/*private val b by viewBinding(ActivityAlertsBinding::bind)"
+    }
+  ],
+  "fragment_proxy_configure": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "line": 51,
+      "text": "import com.celzero.bravedns.databinding.FragmentProxyConfigureBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "line": 90,
+      "text": "class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "line": 91,
+      "text": "private val b by viewBinding(FragmentProxyConfigureBinding::bind)"
+    }
+  ],
+  "list_item_custom_ip": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 46,
+      "text": "import com.celzero.bravedns.databinding.ListItemCustomIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 105,
+      "text": "ListItemCustomIpBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 131,
+      "text": "return R.layout.list_item_custom_ip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 139,
+      "text": "R.layout.list_item_custom_ip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 415,
+      "text": "inner class CustomIpsViewHolderWithoutHeader(private val b: ListItemCustomIpBinding) :"
+    }
+  ],
+  "bottom_sheet_block_free_dns_mode": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BlockFreeDnsModeBottomSheet.kt",
+      "line": 24,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetBlockFreeDnsModeBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BlockFreeDnsModeBottomSheet.kt",
+      "line": 32,
+      "text": "private var _binding: BottomSheetBlockFreeDnsModeBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BlockFreeDnsModeBottomSheet.kt",
+      "line": 66,
+      "text": "_binding = BottomSheetBlockFreeDnsModeBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "dialog_set_proxy": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "line": 50,
+      "text": "import com.celzero.bravedns.databinding.DialogSetProxyBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "line": 804,
+      "text": "val dialogBinding = DialogSetProxyBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "line": 1025,
+      "text": "val dialogBinding = DialogSetProxyBinding.inflate(layoutInflater)"
+    }
+  ],
+  "activity_rpn_bypass_apps": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.ActivityRpnBypassAppsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 69,
+      "text": "class RpnBypassAppsActivity : BaseActivity(R.layout.activity_rpn_bypass_apps),"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 72,
+      "text": "private val b by viewBinding(ActivityRpnBypassAppsBinding::bind)"
+    }
+  ],
+  "dialog_lockdown_check": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "line": 1063,
+      "text": ".inflate(R.layout.dialog_lockdown_check, null)"
+    }
+  ],
+  "bottomsheet_rpn_stats": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetRpnStatsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "line": 66,
+      "text": "private var _binding: BottomsheetRpnStatsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "line": 110,
+      "text": "_binding = BottomsheetRpnStatsBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "item_blocked_app": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BubbleBlockedAppsAdapter.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.ItemBlockedAppBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BubbleBlockedAppsAdapter.kt",
+      "line": 54,
+      "text": "val binding = ItemBlockedAppBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BubbleBlockedAppsAdapter.kt",
+      "line": 70,
+      "text": "private val binding: ItemBlockedAppBinding"
+    }
+  ],
+  "list_item_wg_include_apps": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "line": 38,
+      "text": "import com.celzero.bravedns.databinding.ListItemWgIncludeAppsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "line": 89,
+      "text": "ListItemWgIncludeAppsBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "line": 103,
+      "text": "inner class IncludedAppInfoViewHolder(private val b: ListItemWgIncludeAppsBinding) :"
+    }
+  ],
+  "activity_domain_connections": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.ActivityDomainConnectionsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "line": 50,
+      "text": "class DomainConnectionsActivity : BaseActivity(R.layout.activity_domain_connections){"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "line": 51,
+      "text": "private val b by viewBinding(ActivityDomainConnectionsBinding::bind)"
+    }
+  ],
+  "activity_bubble": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.ActivityBubbleBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "line": 75,
+      "text": "class BubbleActivity : BaseActivity(R.layout.activity_bubble) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "line": 76,
+      "text": "private val b by viewBinding(ActivityBubbleBinding::bind)"
+    }
+  ],
+  "item_section_header": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.ItemSectionHeaderBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 124,
+      "text": "HeaderViewHolder(ItemSectionHeaderBinding.inflate(inflater, parent, false))"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 213,
+      "text": "private val binding: ItemSectionHeaderBinding"
+    }
+  ],
+  "bottomsheet_device_not_registered": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetDeviceNotRegisteredBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "line": 46,
+      "text": "private var _binding: BottomsheetDeviceNotRegisteredBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "line": 95,
+      "text": "_binding = BottomsheetDeviceNotRegisteredBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "fragment_dot_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.FragmentDotListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt",
+      "line": 48,
+      "text": "class DoTListFragment : Fragment(R.layout.fragment_dot_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DoTListFragment.kt",
+      "line": 49,
+      "text": "private val b by viewBinding(FragmentDotListBinding::bind)"
+    }
+  ],
+  "item_log_activity_app": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.ItemLogActivityAppBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "line": 145,
+      "text": "AppVH(ItemLogActivityAppBinding.inflate(inf, parent, false))"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "line": 224,
+      "text": "inner class AppVH(private val b: ItemLogActivityAppBinding) :"
+    }
+  ],
+  "item_chip_filter": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "line": 590,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "line": 257,
+      "text": "R.layout.item_chip_filter,"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "line": 321,
+      "text": "R.layout.item_chip_filter,"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt",
+      "line": 299,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt",
+      "line": 324,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 167,
+      "text": "val chip = layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "line": 181,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "line": 163,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "line": 193,
+      "text": "layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/FirewallAppFilterBottomSheet.kt",
+      "line": 266,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkPlusFilterBottomSheet.kt",
+      "line": 128,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt",
+      "line": 392,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt",
+      "line": 409,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsLogFragment.kt",
+      "line": 263,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt",
+      "line": 737,
+      "text": "val chip = this.layoutInflater.inflate(R.layout.item_chip_filter, b.root, false) as Chip"
+    }
+  ],
+  "fragment_smart_dns_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SmartDnsListFragment.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.FragmentSmartDnsListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SmartDnsListFragment.kt",
+      "line": 40,
+      "text": "class SmartDnsListFragment : Fragment(R.layout.fragment_smart_dns_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SmartDnsListFragment.kt",
+      "line": 41,
+      "text": "private val b by viewBinding(FragmentSmartDnsListBinding::bind)"
+    }
+  ],
+  "spinner_item_firewall_status": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallStatusSpinnerAdapter.kt",
+      "line": 26,
+      "text": "import com.celzero.bravedns.databinding.SpinnerItemFirewallStatusBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallStatusSpinnerAdapter.kt",
+      "line": 46,
+      "text": "?: SpinnerItemFirewallStatusBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallStatusSpinnerAdapter.kt",
+      "line": 60,
+      "text": "?: SpinnerItemFirewallStatusBinding.inflate("
+    }
+  ],
+  "activity_purchase_history": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.ActivityPurchaseHistoryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "line": 54,
+      "text": "class PurchaseHistoryActivity : BaseActivity(R.layout.activity_purchase_history) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "line": 56,
+      "text": "private val b by viewBinding(ActivityPurchaseHistoryBinding::bind)"
+    }
+  ],
+  "fragment_sponsor_success": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorSuccessFragment.kt",
+      "line": 22,
+      "text": "import com.celzero.bravedns.databinding.FragmentSponsorSuccessBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorSuccessFragment.kt",
+      "line": 25,
+      "text": "class SponsorSuccessFragment : Fragment(R.layout.fragment_sponsor_success) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorSuccessFragment.kt",
+      "line": 27,
+      "text": "private val b by viewBinding(FragmentSponsorSuccessBinding::bind)"
+    }
+  ],
+  "activity_tcp_proxy": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "line": 12,
+      "text": "import com.celzero.bravedns.databinding.ActivityTcpProxyBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "line": 31,
+      "text": "class TcpProxyMainActivity : BaseActivity(R.layout.activity_tcp_proxy) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "line": 32,
+      "text": "private val b by viewBinding(ActivityTcpProxyBinding::bind)"
+    }
+  ],
+  "fragment_custom_ip": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 42,
+      "text": "import com.celzero.bravedns.databinding.FragmentCustomIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 61,
+      "text": "class CustomIpFragment : Fragment(R.layout.fragment_custom_ip), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 64,
+      "text": "private val b by viewBinding(FragmentCustomIpBinding::bind)"
+    }
+  ],
+  "view_home_logs_apps": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 82,
+      "text": "import com.celzero.bravedns.databinding.ViewHomeLogsAppsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 205,
+      "text": "private lateinit var topAppsPage: ViewHomeLogsAppsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 1566,
+      "text": "topAppsPage = ViewHomeLogsAppsBinding.inflate(layoutInflater)"
+    }
+  ],
+  "dialog_rpn_ssid": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.DialogRpnSsidBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "line": 54,
+      "text": "private lateinit var b: DialogRpnSsidBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "line": 66,
+      "text": "b = DialogRpnSsidBinding.inflate(layoutInflater)"
+    }
+  ],
+  "activity_rpn_config_detail": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "line": 50,
+      "text": "import com.celzero.bravedns.databinding.ActivityRpnConfigDetailBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "line": 99,
+      "text": "class RpnConfigDetailActivity : BaseActivity(R.layout.activity_rpn_config_detail) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "line": 100,
+      "text": "private val b by viewBinding(ActivityRpnConfigDetailBinding::bind)"
+    }
+  ],
+  "activity_app_wise_domain_logs": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseDomainLogsActivity.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.ActivityAppWiseDomainLogsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseDomainLogsActivity.kt",
+      "line": 61,
+      "text": "BaseActivity(R.layout.activity_app_wise_domain_logs), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseDomainLogsActivity.kt",
+      "line": 62,
+      "text": "private val b by viewBinding(ActivityAppWiseDomainLogsBinding::bind)"
+    }
+  ],
+  "list_item_rpn_stat_app": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.ListItemRpnStatAppBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "line": 263,
+      "text": "inner class ViewHolder(val binding: ListItemRpnStatAppBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "line": 267,
+      "text": "val itemBinding = ListItemRpnStatAppBinding.inflate("
+    }
+  ],
+  "dns_crypt_endpoint_list_item": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsCryptEndpointAdapter.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.DnsCryptEndpointListItemBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsCryptEndpointAdapter.kt",
+      "line": 87,
+      "text": "DnsCryptEndpointListItemBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsCryptEndpointAdapter.kt",
+      "line": 113,
+      "text": "inner class DnsCryptEndpointViewHolder(private val b: DnsCryptEndpointListItemBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsCryptRelayEndpointAdapter.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.DnsCryptEndpointListItemBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsCryptRelayEndpointAdapter.kt",
+      "line": 85,
+      "text": "DnsCryptEndpointListItemBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsCryptRelayEndpointAdapter.kt",
+      "line": 98,
+      "text": "inner class DnsCryptRelayEndpointViewHolder(private val b: DnsCryptEndpointListItemBinding) :"
+    }
+  ],
+  "activity_pause": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ActivityPauseBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "line": 48,
+      "text": "class PauseActivity : BaseActivity(R.layout.activity_pause) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "line": 49,
+      "text": "private val b by viewBinding(ActivityPauseBinding::bind)"
+    }
+  ],
+  "list_item_custom_all_ip": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 45,
+      "text": "import com.celzero.bravedns.databinding.ListItemCustomAllIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 95,
+      "text": "return if (viewType == R.layout.list_item_custom_all_ip) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 97,
+      "text": "ListItemCustomAllIpBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 135,
+      "text": "R.layout.list_item_custom_all_ip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 137,
+      "text": "R.layout.list_item_custom_all_ip"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomIpAdapter.kt",
+      "line": 215,
+      "text": "inner class CustomIpsViewHolderWithHeader(private val b: ListItemCustomAllIpBinding) :"
+    }
+  ],
+  "view_tour_tooltip": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/tour/TourOverlayController.kt",
+      "line": 93,
+      "text": ".inflate(R.layout.view_tour_tooltip, decorRoot, false)"
+    }
+  ],
+  "list_item_rpn_bypass_app": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.ListItemRpnBypassAppBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 406,
+      "text": "inner class ViewHolder(val binding: ListItemRpnBypassAppBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "line": 410,
+      "text": "val itemBinding = ListItemRpnBypassAppBinding.inflate("
+    }
+  ],
+  "list_item_block_free_dns": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlockFreeDnsAdapter.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.ListItemBlockFreeDnsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlockFreeDnsAdapter.kt",
+      "line": 54,
+      "text": "val binding = ListItemBlockFreeDnsBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlockFreeDnsAdapter.kt",
+      "line": 65,
+      "text": "inner class ViewHolder(private val b: ListItemBlockFreeDnsBinding) :"
+    }
+  ],
+  "activity_detailed_statistics": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.ActivityDetailedStatisticsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt",
+      "line": 48,
+      "text": "class DetailedStatisticsActivity : BaseActivity(R.layout.activity_detailed_statistics) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt",
+      "line": 49,
+      "text": "private val b by viewBinding(ActivityDetailedStatisticsBinding::bind)"
+    }
+  ],
+  "item_network_policy": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "line": 760,
+      "text": "this, R.layout.item_network_policy, R.id.policyTitle, options"
+    }
+  ],
+  "activity_console_log": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConsoleLogActivity.kt",
+      "line": 46,
+      "text": "import com.celzero.bravedns.databinding.ActivityConsoleLogBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConsoleLogActivity.kt",
+      "line": 80,
+      "text": "class ConsoleLogActivity : BaseActivity(R.layout.activity_console_log), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ConsoleLogActivity.kt",
+      "line": 82,
+      "text": "private val b by viewBinding(ActivityConsoleLogBinding::bind)"
+    }
+  ],
+  "bottomsheet_server_settings": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerSettingsBottomSheet.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetServerSettingsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerSettingsBottomSheet.kt",
+      "line": 63,
+      "text": "private var _binding: BottomsheetServerSettingsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerSettingsBottomSheet.kt",
+      "line": 179,
+      "text": "_binding = BottomsheetServerSettingsBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "list_item_app_domain_details": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseDomainsAdapter.kt",
+      "line": 43,
+      "text": "import com.celzero.bravedns.databinding.ListItemAppDomainDetailsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseDomainsAdapter.kt",
+      "line": 98,
+      "text": "ListItemAppDomainDetailsBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseDomainsAdapter.kt",
+      "line": 133,
+      "text": "inner class ConnectionDetailsViewHolder(private val b: ListItemAppDomainDetailsBinding) :"
+    }
+  ],
+  "activity_wireguard_main": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.ActivityWireguardMainBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "line": 68,
+      "text": "BaseActivity(R.layout.activity_wireguard_main), OneWgConfigAdapter.DnsStatusListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "line": 69,
+      "text": "private val b by viewBinding(ActivityWireguardMainBinding::bind)"
+    }
+  ],
+  "list_item_shimmer_card": [
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.ListItemShimmerCardBinding"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 70,
+      "text": "val binding = ListItemShimmerCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 130,
+      "text": "class ShimmerViewHolder(binding: ListItemShimmerCardBinding): RecyclerView.ViewHolder(binding.root) {"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.ListItemShimmerCardBinding"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 70,
+      "text": "val binding = ListItemShimmerCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 130,
+      "text": "class ShimmerViewHolder(binding: ListItemShimmerCardBinding): RecyclerView.ViewHolder(binding.root) {"
+    }
+  ],
+  "dialog_wg_add_peer": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.DialogWgAddPeerBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "line": 48,
+      "text": "private lateinit var b: DialogWgAddPeerBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "line": 56,
+      "text": "b = DialogWgAddPeerBinding.inflate(layoutInflater)"
+    }
+  ],
+  "bottom_sheet_orbot": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetOrbotBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt",
+      "line": 67,
+      "text": "private var _binding: BottomSheetOrbotBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt",
+      "line": 97,
+      "text": "_binding = BottomSheetOrbotBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "dialog_set_dns_proxy": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.DialogSetDnsProxyBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt",
+      "line": 148,
+      "text": "val dialogBinding = DialogSetDnsProxyBinding.inflate(layoutInflater)"
+    }
+  ],
+  "bottom_sheet_proxies_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "line": 19,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetProxiesListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "line": 35,
+      "text": "private var _binding: BottomSheetProxiesListBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ProxyCountriesBtmSheet.kt",
+      "line": 100,
+      "text": "_binding = BottomSheetProxiesListBinding.inflate(inflater, container, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "line": 21,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetProxiesListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "line": 37,
+      "text": "private var _binding: BottomSheetProxiesListBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "line": 103,
+      "text": "_binding = BottomSheetProxiesListBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "item_log_activity_conn": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.ItemLogActivityConnBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "line": 147,
+      "text": "EntryVH(ItemLogActivityConnBinding.inflate(inf, parent, false))"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "line": 312,
+      "text": "inner class EntryVH(private val b: ItemLogActivityConnBinding) :"
+    }
+  ],
+  "item_home_firewall_rules_page": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 80,
+      "text": "import com.celzero.bravedns.databinding.ItemHomeFirewallRulesPageBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 1950,
+      "text": "val itemBinding: ItemHomeFirewallRulesPageBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 1974,
+      "text": "val itemBinding = ItemHomeFirewallRulesPageBinding.inflate("
+    }
+  ],
+  "dialog_ip_details_layout": [],
+  "activity_custom_rules": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ActivityCustomRulesBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt",
+      "line": 43,
+      "text": "class CustomRulesActivity : BaseActivity(R.layout.activity_custom_rules) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt",
+      "line": 44,
+      "text": "private val b by viewBinding(ActivityCustomRulesBinding::bind)"
+    }
+  ],
+  "activity_firewall": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FirewallActivity.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ActivityFirewallBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FirewallActivity.kt",
+      "line": 41,
+      "text": "class FirewallActivity : BaseActivity(R.layout.activity_firewall) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/FirewallActivity.kt",
+      "line": 42,
+      "text": "private val b by viewBinding(ActivityFirewallBinding::bind)"
+    }
+  ],
+  "fragment_summary_statistics": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.FragmentSummaryStatisticsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "line": 70,
+      "text": "class SummaryStatisticsFragment : Fragment(R.layout.fragment_summary_statistics) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "line": 71,
+      "text": "private val b by viewBinding(FragmentSummaryStatisticsBinding::bind)"
+    }
+  ],
+  "view_sponsor_badge": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorBadgeView.kt",
+      "line": 32,
+      "text": "LayoutInflater.from(context).inflate(R.layout.view_sponsor_badge, this, true)"
+    }
+  ],
+  "item_ping_test_history": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ItemPingTestHistoryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt",
+      "line": 60,
+      "text": "ItemPingTestHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt",
+      "line": 68,
+      "text": "inner class HistoryViewHolder(private val b: ItemPingTestHistoryBinding) :"
+    }
+  ],
+  "fragment_custom_domain": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.FragmentCustomDomainBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 62,
+      "text": "Fragment(R.layout.fragment_custom_domain), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 64,
+      "text": "private val b by viewBinding(FragmentCustomDomainBinding::bind)"
+    }
+  ],
+  "bottom_sheet_rethink_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkListBottomSheet.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetRethinkListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkListBottomSheet.kt",
+      "line": 38,
+      "text": "private var _binding: BottomSheetRethinkListBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkListBottomSheet.kt",
+      "line": 65,
+      "text": "_binding = BottomSheetRethinkListBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "bottom_sheet_rethink_plus_filter": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkPlusFilterBottomSheet.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetRethinkPlusFilterBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkPlusFilterBottomSheet.kt",
+      "line": 39,
+      "text": "private var _binding: BottomSheetRethinkPlusFilterBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkPlusFilterBottomSheet.kt",
+      "line": 77,
+      "text": "_binding = BottomSheetRethinkPlusFilterBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "activity_misc_settings": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/MiscSettingsActivity.kt",
+      "line": 56,
+      "text": "import com.celzero.bravedns.databinding.ActivityMiscSettingsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/MiscSettingsActivity.kt",
+      "line": 108,
+      "text": "class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/MiscSettingsActivity.kt",
+      "line": 109,
+      "text": "private val b by viewBinding(ActivityMiscSettingsBinding::bind)"
+    }
+  ],
+  "fragment_connection_tracker": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.FragmentConnectionTrackerBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt",
+      "line": 62,
+      "text": "Fragment(R.layout.fragment_connection_tracker), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConnectionTrackerFragment.kt",
+      "line": 63,
+      "text": "private val b by viewBinding(FragmentConnectionTrackerBinding::bind)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkLogFragment.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.FragmentConnectionTrackerBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkLogFragment.kt",
+      "line": 49,
+      "text": "Fragment(R.layout.fragment_connection_tracker), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkLogFragment.kt",
+      "line": 50,
+      "text": "private val b by viewBinding(FragmentConnectionTrackerBinding::bind)"
+    }
+  ],
+  "bottom_sheet_conn_track": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetConnTrackBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt",
+      "line": 77,
+      "text": "private var _binding: BottomSheetConnTrackBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt",
+      "line": 95,
+      "text": "_binding = BottomSheetConnTrackBinding.inflate(inflater, container, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkLogBottomSheet.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetConnTrackBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkLogBottomSheet.kt",
+      "line": 60,
+      "text": "private var _binding: BottomSheetConnTrackBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkLogBottomSheet.kt",
+      "line": 78,
+      "text": "_binding = BottomSheetConnTrackBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "dialog_dnscrypt_relays": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/DnsCryptRelaysDialog.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.DialogDnscryptRelaysBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/DnsCryptRelaysDialog.kt",
+      "line": 34,
+      "text": "private lateinit var b: DialogDnscryptRelaysBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/DnsCryptRelaysDialog.kt",
+      "line": 42,
+      "text": "b = DialogDnscryptRelaysBinding.inflate(layoutInflater)"
+    }
+  ],
+  "list_item_statistics_summary": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DomainConnectionsAdapter.kt",
+      "line": 33,
+      "text": "import com.celzero.bravedns.databinding.ListItemStatisticsSummaryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DomainConnectionsAdapter.kt",
+      "line": 73,
+      "text": "ListItemStatisticsSummaryBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DomainConnectionsAdapter.kt",
+      "line": 86,
+      "text": "inner class DomainConnectionsViewHolder(private val b: ListItemStatisticsSummaryBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "line": 47,
+      "text": "import com.celzero.bravedns.databinding.ListItemStatisticsSummaryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "line": 143,
+      "text": "ListItemStatisticsSummaryBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "line": 217,
+      "text": "val itemBinding: ListItemStatisticsSummaryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.ListItemStatisticsSummaryBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "line": 67,
+      "text": "val binding = ListItemStatisticsSummaryBinding.inflate(inflater, parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "line": 89,
+      "text": "inner class WgNwStatsAdapterViewHolder(private val b: ListItemStatisticsSummaryBinding) :"
+    }
+  ],
+  "welcome_slide4": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 52,
+      "text": "R.layout.welcome_slide4"
+    }
+  ],
+  "activity_app_wise_ip_logs": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseIpLogsActivity.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.ActivityAppWiseIpLogsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseIpLogsActivity.kt",
+      "line": 59,
+      "text": "BaseActivity(R.layout.activity_app_wise_ip_logs), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppWiseIpLogsActivity.kt",
+      "line": 60,
+      "text": "private val b by viewBinding(ActivityAppWiseIpLogsBinding::bind)"
+    }
+  ],
+  "activity_advanced_setting": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AdvancedSettingActivity.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ActivityAdvancedSettingBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AdvancedSettingActivity.kt",
+      "line": 41,
+      "text": "class AdvancedSettingActivity : BaseActivity(R.layout.activity_advanced_setting) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AdvancedSettingActivity.kt",
+      "line": 43,
+      "text": "private val b by viewBinding(ActivityAdvancedSettingBinding::bind)"
+    }
+  ],
+  "dialog_info_firewall_rules": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "line": 523,
+      "text": "val view: View = li.inflate(R.layout.dialog_info_firewall_rules, null)"
+    }
+  ],
+  "shimmer_subscription_loading": [],
+  "list_item_server_wg_peers": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt",
+      "line": 24,
+      "text": "import com.celzero.bravedns.databinding.ListItemServerWgPeersBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt",
+      "line": 49,
+      "text": "ListItemServerWgPeersBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt",
+      "line": 62,
+      "text": "inner class ServerWgPeersViewHolder(private val b: ListItemServerWgPeersBinding) :"
+    }
+  ],
+  "item_lockdown_check": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "line": 1085,
+      "text": ".inflate(R.layout.item_lockdown_check, itemsContainer, false)"
+    }
+  ],
+  "list_item_endpoint": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DoTEndpointAdapter.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.ListItemEndpointBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DoTEndpointAdapter.kt",
+      "line": 83,
+      "text": "ListItemEndpointBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DoTEndpointAdapter.kt",
+      "line": 93,
+      "text": "inner class DoTEndpointViewHolder(private val b: ListItemEndpointBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DohEndpointAdapter.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.ListItemEndpointBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DohEndpointAdapter.kt",
+      "line": 88,
+      "text": "ListItemEndpointBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DohEndpointAdapter.kt",
+      "line": 110,
+      "text": "inner class DoHEndpointViewHolder(private val b: ListItemEndpointBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ODoHEndpointAdapter.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.ListItemEndpointBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ODoHEndpointAdapter.kt",
+      "line": 84,
+      "text": "ListItemEndpointBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ODoHEndpointAdapter.kt",
+      "line": 94,
+      "text": "inner class ODoHEndpointViewHolder(private val b: ListItemEndpointBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SmartDnsEndpointAdapter.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.ListItemEndpointBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SmartDnsEndpointAdapter.kt",
+      "line": 61,
+      "text": "ListItemEndpointBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SmartDnsEndpointAdapter.kt",
+      "line": 69,
+      "text": "inner class SmartDnsEndpointViewHolder(private val b: ListItemEndpointBinding) :"
+    }
+  ],
+  "list_item_wg_peers": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ListItemWgPeersBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "line": 53,
+      "text": "ListItemWgPeersBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "line": 61,
+      "text": "inner class WgPeersViewHolder(private val b: ListItemWgPeersBinding) :"
+    }
+  ],
+  "activity_events": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt",
+      "line": 38,
+      "text": "import com.celzero.bravedns.databinding.ActivityEventsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt",
+      "line": 64,
+      "text": "class EventsActivity : BaseActivity(R.layout.activity_events), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/EventsActivity.kt",
+      "line": 65,
+      "text": "private val b by viewBinding(ActivityEventsBinding::bind)"
+    }
+  ],
+  "fragment_wg_nw_stats": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.FragmentWgNwStatsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "line": 44,
+      "text": "class WgNwStatsFragment : Fragment(R.layout.fragment_wg_nw_stats) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "line": 45,
+      "text": "private val b by viewBinding(FragmentWgNwStatsBinding::bind)"
+    }
+  ],
+  "list_item_wg_one_interface": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.ListItemWgOneInterfaceBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "line": 118,
+      "text": "ListItemWgOneInterfaceBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "line": 134,
+      "text": "inner class WgInterfaceViewHolder(private val b: ListItemWgOneInterfaceBinding) :"
+    }
+  ],
+  "dialog_wg_hop": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/GenericHopDialog.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.DialogWgHopBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/GenericHopDialog.kt",
+      "line": 44,
+      "text": "private lateinit var b: DialogWgHopBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/GenericHopDialog.kt",
+      "line": 52,
+      "text": "b = DialogWgHopBinding.inflate(layoutInflater)"
+    }
+  ],
+  "activity_dns_detail": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsDetailActivity.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.ActivityDnsDetailBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsDetailActivity.kt",
+      "line": 37,
+      "text": "class DnsDetailActivity : BaseActivity(R.layout.activity_dns_detail) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DnsDetailActivity.kt",
+      "line": 38,
+      "text": "private val b by viewBinding(ActivityDnsDetailBinding::bind)"
+    }
+  ],
+  "bottomsheet_purchase_conflict": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetPurchaseConflictBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "line": 58,
+      "text": "private var _binding: BottomsheetPurchaseConflictBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "line": 118,
+      "text": "_binding = BottomsheetPurchaseConflictBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "bottom_sheet_log_activity_interval": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LogActivityIntervalBottomSheet.kt",
+      "line": 31,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetLogActivityIntervalBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LogActivityIntervalBottomSheet.kt",
+      "line": 55,
+      "text": "private var _binding: BottomSheetLogActivityIntervalBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LogActivityIntervalBottomSheet.kt",
+      "line": 126,
+      "text": "_binding = BottomSheetLogActivityIntervalBinding.inflate(inflater, container, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "line": 29,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetLogActivityIntervalBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "line": 56,
+      "text": "private var _binding: BottomSheetLogActivityIntervalBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "line": 122,
+      "text": "_binding = BottomSheetLogActivityIntervalBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "bottom_sheet_local_blocklists": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LocalBlocklistsBottomSheet.kt",
+      "line": 38,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetLocalBlocklistsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LocalBlocklistsBottomSheet.kt",
+      "line": 69,
+      "text": "private var _binding: BottomSheetLocalBlocklistsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LocalBlocklistsBottomSheet.kt",
+      "line": 112,
+      "text": "_binding = BottomSheetLocalBlocklistsBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "bottomsheet_auto_exclude_countries": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetAutoExcludeCountriesBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "line": 63,
+      "text": "private var _binding: BottomsheetAutoExcludeCountriesBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AutoExcludeCountriesBottomSheet.kt",
+      "line": 153,
+      "text": "_binding = BottomsheetAutoExcludeCountriesBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "fragment_rethink_plus_premium": [
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 38,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkPlusPremiumBinding"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 62,
+      "text": "class RethinkPlusFragment : Fragment(R.layout.fragment_rethink_plus_premium),"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 66,
+      "text": "private val b by viewBinding(FragmentRethinkPlusPremiumBinding::bind)"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 38,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkPlusPremiumBinding"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 62,
+      "text": "class RethinkPlusFragment : Fragment(R.layout.fragment_rethink_plus_premium),"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "line": 66,
+      "text": "private val b by viewBinding(FragmentRethinkPlusPremiumBinding::bind)"
+    }
+  ],
+  "fragment_rethink_plus_manage_purchase": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkPlusManagePurchaseBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "line": 68,
+      "text": "class RethinkPlusManagePurchaseFragment : Fragment(R.layout.fragment_rethink_plus_manage_purchase) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "line": 69,
+      "text": "private val b by viewBinding(FragmentRethinkPlusManagePurchaseBinding::bind)"
+    }
+  ],
+  "activity_wg_detail": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "line": 46,
+      "text": "import com.celzero.bravedns.databinding.ActivityWgDetailBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "line": 95,
+      "text": "class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "line": 96,
+      "text": "private val b by viewBinding(ActivityWgDetailBinding::bind)"
+    }
+  ],
+  "activity_tunnel_settings": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.ActivityTunnelSettingsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "line": 68,
+      "text": "class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/TunnelSettingsActivity.kt",
+      "line": 69,
+      "text": "private val b by viewBinding(ActivityTunnelSettingsBinding::bind)"
+    }
+  ],
+  "list_item_conn_track": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConnectionLogAdapter.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.ListItemConnTrackBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConnectionLogAdapter.kt",
+      "line": 113,
+      "text": "ListItemConnTrackBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConnectionLogAdapter.kt",
+      "line": 141,
+      "text": "inner class ConnectionLogViewHolder(private val b: ListItemConnTrackBinding,"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConnectionTrackerAdapter.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.ListItemConnTrackBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConnectionTrackerAdapter.kt",
+      "line": 89,
+      "text": "ListItemConnTrackBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/ConnectionTrackerAdapter.kt",
+      "line": 108,
+      "text": "inner class ConnectionTrackerViewHolder(private val b: ListItemConnTrackBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RethinkLogAdapter.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.ListItemConnTrackBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RethinkLogAdapter.kt",
+      "line": 85,
+      "text": "ListItemConnTrackBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RethinkLogAdapter.kt",
+      "line": 100,
+      "text": "inner class RethinkLogViewHolder(private val b: ListItemConnTrackBinding) :"
+    }
+  ],
+  "activity_wg_config_editor": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.ActivityWgConfigEditorBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "line": 48,
+      "text": "class WgConfigEditorActivity : BaseActivity(R.layout.activity_wg_config_editor) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "line": 49,
+      "text": "private val b by viewBinding(ActivityWgConfigEditorBinding::bind)"
+    }
+  ],
+  "bottomsheet_device_auth_error": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetDeviceAuthErrorBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "line": 39,
+      "text": "private var _binding: BottomsheetDeviceAuthErrorBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "line": 86,
+      "text": "_binding = BottomsheetDeviceAuthErrorBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "list_item_country_card": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.ListItemCountryCardBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 126,
+      "text": "CountryViewHolder(ListItemCountryCardBinding.inflate(inflater, parent, false))"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 222,
+      "text": "private val binding: ListItemCountryCardBinding"
+    }
+  ],
+  "item_event": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/EventsAdapter.kt",
+      "line": 33,
+      "text": "import com.celzero.bravedns.databinding.ItemEventBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/EventsAdapter.kt",
+      "line": 48,
+      "text": "val binding = ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/EventsAdapter.kt",
+      "line": 59,
+      "text": "inner class EventViewHolder(private val binding: ItemEventBinding) :"
+    }
+  ],
+  "dialog_custom_lan_ip": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/CustomLanIpDialog.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.DialogCustomLanIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/CustomLanIpDialog.kt",
+      "line": 58,
+      "text": "private lateinit var binding: DialogCustomLanIpBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/CustomLanIpDialog.kt",
+      "line": 67,
+      "text": "binding = DialogCustomLanIpBinding.inflate(LayoutInflater.from(context))"
+    }
+  ],
+  "welcome_slide2": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 50,
+      "text": "R.layout.welcome_slide2,"
+    }
+  ],
+  "fragment_server_selection": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
+      "line": 73,
+      "text": "import com.celzero.bravedns.databinding.FragmentServerSelectionBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
+      "line": 129,
+      "text": "class ServerSelectionFragment : Fragment(R.layout.fragment_server_selection),"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
+      "line": 140,
+      "text": "private val b by viewBinding(FragmentServerSelectionBinding::bind)"
+    }
+  ],
+  "activity_ping_test": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.ActivityPingTestBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "line": 59,
+      "text": "class PingTestActivity : BaseActivity(R.layout.activity_ping_test) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "line": 60,
+      "text": "private val b by viewBinding(ActivityPingTestBinding::bind)"
+    }
+  ],
+  "activity_anti_censorship": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AntiCensorshipActivity.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.ActivityAntiCensorshipBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AntiCensorshipActivity.kt",
+      "line": 45,
+      "text": "class AntiCensorshipActivity : BaseActivity(R.layout.activity_anti_censorship) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AntiCensorshipActivity.kt",
+      "line": 46,
+      "text": "val b by viewBinding(ActivityAntiCensorshipBinding::bind)"
+    }
+  ],
+  "activity_checkout_proxy": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "line": 32,
+      "text": "import com.celzero.bravedns.databinding.ActivityCheckoutProxyBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "line": 54,
+      "text": "class CheckoutActivity : BaseActivity(R.layout.activity_checkout_proxy) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "line": 55,
+      "text": "private val b by viewBinding(ActivityCheckoutProxyBinding::bind)"
+    }
+  ],
+  "activity_app_details": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "line": 65,
+      "text": "import com.celzero.bravedns.databinding.ActivityAppDetailsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "line": 114,
+      "text": "class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppInfoActivity.kt",
+      "line": 115,
+      "text": "private val b by viewBinding(ActivityAppDetailsBinding::bind)"
+    }
+  ],
+  "activity_customer_support": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.ActivityCustomerSupportBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "line": 64,
+      "text": "class CustomerSupportActivity : BaseActivity(R.layout.activity_customer_support) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "line": 66,
+      "text": "private val b by viewBinding(ActivityCustomerSupportBinding::bind)"
+    }
+  ],
+  "fragment_sponsor": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "line": 26,
+      "text": "import com.celzero.bravedns.databinding.FragmentSponsorBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "line": 37,
+      "text": "class SponsorFragment : Fragment(R.layout.fragment_sponsor) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "line": 39,
+      "text": "private val b by viewBinding(FragmentSponsorBinding::bind)"
+    }
+  ],
+  "activity_smart_dns_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/SmartDnsListActivity.kt",
+      "line": 24,
+      "text": "import com.celzero.bravedns.databinding.ActivitySmartDnsListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/SmartDnsListActivity.kt",
+      "line": 34,
+      "text": "class SmartDnsListActivity : BaseActivity(R.layout.activity_smart_dns_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/SmartDnsListActivity.kt",
+      "line": 35,
+      "text": "private val b by viewBinding(ActivitySmartDnsListBinding::bind)"
+    }
+  ],
+  "fragment_odoh_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.FragmentOdohListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt",
+      "line": 50,
+      "text": "class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ODoHListFragment.kt",
+      "line": 51,
+      "text": "private val b by viewBinding(FragmentOdohListBinding::bind)"
+    }
+  ],
+  "rethink_endpoint_list_item": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RethinkEndpointAdapter.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.RethinkEndpointListItemBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RethinkEndpointAdapter.kt",
+      "line": 94,
+      "text": "RethinkEndpointListItemBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RethinkEndpointAdapter.kt",
+      "line": 120,
+      "text": "inner class RethinkEndpointViewHolder(private val b: RethinkEndpointListItemBinding) :"
+    }
+  ],
+  "fragment_rethink_plus_dashboard": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusDashboardFragment.kt",
+      "line": 30,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkPlusDashboardBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusDashboardFragment.kt",
+      "line": 70,
+      "text": "class RethinkPlusDashboardFragment : Fragment(R.layout.fragment_rethink_plus_dashboard) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusDashboardFragment.kt",
+      "line": 71,
+      "text": "private val b by viewBinding(FragmentRethinkPlusDashboardBinding::bind)"
+    }
+  ],
+  "fragment_home_screen": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 79,
+      "text": "import com.celzero.bravedns.databinding.FragmentHomeScreenBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 166,
+      "text": "class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/HomeScreenFragment.kt",
+      "line": 167,
+      "text": "private val b by viewBinding(FragmentHomeScreenBinding::bind)"
+    }
+  ],
+  "bottom_sheet_app_connections": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppDomainRulesBottomSheet.kt",
+      "line": 36,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetAppConnectionsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppDomainRulesBottomSheet.kt",
+      "line": 53,
+      "text": "private var _binding: BottomSheetAppConnectionsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppDomainRulesBottomSheet.kt",
+      "line": 99,
+      "text": "_binding = BottomSheetAppConnectionsBinding.inflate(inflater, container, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppIpRulesBottomSheet.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetAppConnectionsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppIpRulesBottomSheet.kt",
+      "line": 56,
+      "text": "private var _binding: BottomSheetAppConnectionsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/AppIpRulesBottomSheet.kt",
+      "line": 106,
+      "text": "_binding = BottomSheetAppConnectionsBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "fragment_rethink_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkListFragment.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkListFragment.kt",
+      "line": 64,
+      "text": "class RethinkListFragment : Fragment(R.layout.fragment_rethink_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkListFragment.kt",
+      "line": 65,
+      "text": "private val b by viewBinding(FragmentRethinkListBinding::bind)"
+    }
+  ],
+  "list_item_shimmer_server_row": [],
+  "dialog_import_confirm": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.DialogImportConfirmBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 467,
+      "text": "val dBind = DialogImportConfirmBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.DialogImportConfirmBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomIpFragment.kt",
+      "line": 426,
+      "text": "val dBind = DialogImportConfirmBinding.inflate(layoutInflater)"
+    }
+  ],
+  "item_ssid": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SsidAdapter.kt",
+      "line": 23,
+      "text": "import com.celzero.bravedns.databinding.ItemSsidBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SsidAdapter.kt",
+      "line": 31,
+      "text": "class SsidViewHolder(private val binding: ItemSsidBinding) : RecyclerView.ViewHolder(binding.root) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SsidAdapter.kt",
+      "line": 47,
+      "text": "val binding = ItemSsidBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    }
+  ],
+  "fragment_doh_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.FragmentDohListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt",
+      "line": 50,
+      "text": "class DohListFragment : Fragment(R.layout.fragment_doh_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DohListFragment.kt",
+      "line": 51,
+      "text": "private val b by viewBinding(FragmentDohListBinding::bind)"
+    }
+  ],
+  "item_removed_server": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "line": 31,
+      "text": "import com.celzero.bravedns.databinding.ItemRemovedServerBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "line": 126,
+      "text": "val itemBinding = ItemRemovedServerBinding.inflate("
+    }
+  ],
+  "list_item_custom_domain": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 47,
+      "text": "import com.celzero.bravedns.databinding.ListItemCustomDomainBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 114,
+      "text": "ListItemCustomDomainBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 159,
+      "text": "return R.layout.list_item_custom_domain"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 167,
+      "text": "R.layout.list_item_custom_domain"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 508,
+      "text": "inner class CustomDomainViewHolderWithoutHeader(private val b: ListItemCustomDomainBinding) :"
+    }
+  ],
+  "list_item_blocklist_app_row": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ListItemBlocklistAppRowBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+      "line": 101,
+      "text": "val b = ListItemBlocklistAppRowBinding.inflate(inflater, parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+      "line": 137,
+      "text": "inner class AppViewHolder(private val b: ListItemBlocklistAppRowBinding) :"
+    }
+  ],
+  "fragment_dns_configure": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragment.kt",
+      "line": 34,
+      "text": "import com.celzero.bravedns.databinding.FragmentDnsConfigureBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragment.kt",
+      "line": 66,
+      "text": "class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragment.kt",
+      "line": 68,
+      "text": "private val b by viewBinding(FragmentDnsConfigureBinding::bind)"
+    }
+  ],
+  "bottomsheet_purchase_processing": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.BottomsheetPurchaseProcessingBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "line": 39,
+      "text": "private var _binding: BottomsheetPurchaseProcessingBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "line": 87,
+      "text": "_binding = BottomsheetPurchaseProcessingBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "bottom_sheet_custom_ips": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomIpRulesBtmSheet.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetCustomIpsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomIpRulesBtmSheet.kt",
+      "line": 50,
+      "text": "private var _binding: BottomSheetCustomIpsBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/CustomIpRulesBtmSheet.kt",
+      "line": 86,
+      "text": "_binding = BottomSheetCustomIpsBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "welcome_slide3": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 51,
+      "text": "R.layout.welcome_slide3,"
+    }
+  ],
+  "fragment_dns_crypt_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+      "line": 38,
+      "text": "import com.celzero.bravedns.databinding.FragmentDnsCryptListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+      "line": 56,
+      "text": "class DnsCryptListFragment : Fragment(R.layout.fragment_dns_crypt_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+      "line": 57,
+      "text": "private val b by viewBinding(FragmentDnsCryptListBinding::bind)"
+    }
+  ],
+  "layout_entitlement_row": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "line": 26,
+      "text": "import com.celzero.bravedns.databinding.LayoutEntitlementRowBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "line": 177,
+      "text": "fun compareAndSet(row: LayoutEntitlementRowBinding, label: String, val1: String?, val2: String?, same: Boolean, triggerRestore: Boolean = false, showDivider: Boolean = true) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "line": 257,
+      "text": "rowBinding: LayoutEntitlementRowBinding,"
+    }
+  ],
+  "welcome_slide1": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "line": 49,
+      "text": "R.layout.welcome_slide1,"
+    }
+  ],
+  "fragment_configure": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConfigureFragment.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.FragmentConfigureBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConfigureFragment.kt",
+      "line": 38,
+      "text": "class ConfigureFragment : Fragment(R.layout.fragment_configure) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ConfigureFragment.kt",
+      "line": 40,
+      "text": "private val b by viewBinding(FragmentConfigureBinding::bind)"
+    }
+  ],
+  "list_item_rethink_blocklist_simple": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/LocalSimpleViewAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ListItemRethinkBlocklistSimpleBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/LocalSimpleViewAdapter.kt",
+      "line": 64,
+      "text": "ListItemRethinkBlocklistSimpleBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/LocalSimpleViewAdapter.kt",
+      "line": 78,
+      "text": "inner class RethinkSimpleViewHolder(private val b: ListItemRethinkBlocklistSimpleBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RemoteSimpleViewAdapter.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ListItemRethinkBlocklistSimpleBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RemoteSimpleViewAdapter.kt",
+      "line": 64,
+      "text": "ListItemRethinkBlocklistSimpleBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/RemoteSimpleViewAdapter.kt",
+      "line": 77,
+      "text": "inner class RethinkSimpleViewHolder(private val b: ListItemRethinkBlocklistSimpleBinding) :"
+    }
+  ],
+  "dns_proxy_list_item": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsProxyEndpointAdapter.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.DnsProxyListItemBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsProxyEndpointAdapter.kt",
+      "line": 83,
+      "text": "DnsProxyListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsProxyEndpointAdapter.kt",
+      "line": 92,
+      "text": "inner class DnsProxyEndpointViewHolder(private val b: DnsProxyListItemBinding) :"
+    }
+  ],
+  "fragment_dns_proxy_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt",
+      "line": 37,
+      "text": "import com.celzero.bravedns.databinding.FragmentDnsProxyListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt",
+      "line": 56,
+      "text": "class DnsProxyListFragment : Fragment(R.layout.fragment_dns_proxy_list) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsProxyListFragment.kt",
+      "line": 57,
+      "text": "private val b by viewBinding(FragmentDnsProxyListBinding::bind)"
+    }
+  ],
+  "list_item_dns_log": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsLogAdapter.kt",
+      "line": 45,
+      "text": "import com.celzero.bravedns.databinding.ListItemDnsLogBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsLogAdapter.kt",
+      "line": 90,
+      "text": "return R.layout.list_item_dns_log"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsLogAdapter.kt",
+      "line": 94,
+      "text": "val binding = ListItemDnsLogBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/DnsLogAdapter.kt",
+      "line": 98,
+      "text": "inner class DnsLogViewHolder(private val b: ListItemDnsLogBinding): RecyclerView.ViewHolder(b.root) {"
+    }
+  ],
+  "activity_rpn_win_proxy_detail": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.ActivityRpnWinProxyDetailBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "line": 45,
+      "text": "class RpnWinProxyDetailsActivity: BaseActivity(R.layout.activity_rpn_win_proxy_detail) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "line": 47,
+      "text": "private val b by viewBinding(ActivityRpnWinProxyDetailBinding::bind)"
+    }
+  ],
+  "list_item_play_subs": [
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.ListItemPlaySubsBinding"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 73,
+      "text": "val binding = ListItemPlaySubsBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 134,
+      "text": "inner class SubscriptionPlansViewHolder(private val binding: ListItemPlaySubsBinding) :"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 35,
+      "text": "import com.celzero.bravedns.databinding.ListItemPlaySubsBinding"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 73,
+      "text": "val binding = ListItemPlaySubsBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "line": 134,
+      "text": "inner class SubscriptionPlansViewHolder(private val binding: ListItemPlaySubsBinding) :"
+    }
+  ],
+  "bottom_sheet_summary_stats_filter": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt",
+      "line": 26,
+      "text": "import com.celzero.bravedns.databinding.BottomSheetSummaryStatsFilterBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt",
+      "line": 43,
+      "text": "private var _binding: BottomSheetSummaryStatsFilterBinding? = null"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt",
+      "line": 69,
+      "text": "_binding = BottomSheetSummaryStatsFilterBinding.inflate(inflater, container, false)"
+    }
+  ],
+  "dialog_server_loading": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusDashboardFragment.kt",
+      "line": 405,
+      "text": "val dialogView = layoutInflater.inflate(R.layout.dialog_server_loading, null)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/ServerSelectionFragment.kt",
+      "line": 4028,
+      "text": "val dialogView = layoutInflater.inflate(R.layout.dialog_server_loading, null)"
+    }
+  ],
+  "list_item_app_country_details": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseCountriesAdapter.kt",
+      "line": 27,
+      "text": "import com.celzero.bravedns.databinding.ListItemAppCountryDetailsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseCountriesAdapter.kt",
+      "line": 54,
+      "text": "val binding = ListItemAppCountryDetailsBinding.inflate("
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/AppWiseCountriesAdapter.kt",
+      "line": 67,
+      "text": "inner class CountryViewHolder(private val b: ListItemAppCountryDetailsBinding) :"
+    }
+  ],
+  "list_item_firewall_app": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallAppListAdapter.kt",
+      "line": 41,
+      "text": "import com.celzero.bravedns.databinding.ListItemFirewallAppBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallAppListAdapter.kt",
+      "line": 97,
+      "text": "ListItemFirewallAppBinding.inflate(LayoutInflater.from(parent.context), parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallAppListAdapter.kt",
+      "line": 106,
+      "text": "inner class AppListViewHolder(private val b: ListItemFirewallAppBinding) :"
+    }
+  ],
+  "item_allowed_app": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BubbleAllowedAppsAdapter.kt",
+      "line": 25,
+      "text": "import com.celzero.bravedns.databinding.ItemAllowedAppBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BubbleAllowedAppsAdapter.kt",
+      "line": 49,
+      "text": "inner class ViewHolder(private val binding: ItemAllowedAppBinding) :"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/BubbleAllowedAppsAdapter.kt",
+      "line": 93,
+      "text": "val binding = ItemAllowedAppBinding.inflate("
+    }
+  ],
+  "dialog_add_custom_domain": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 45,
+      "text": "import com.celzero.bravedns.databinding.DialogAddCustomDomainBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 180,
+      "text": "DialogAddCustomDomainBinding.inflate((context as CustomRulesActivity).layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/CustomDomainAdapter.kt",
+      "line": 271,
+      "text": "dBind: DialogAddCustomDomainBinding,"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 39,
+      "text": "import com.celzero.bravedns.databinding.DialogAddCustomDomainBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 250,
+      "text": "val dBind = DialogAddCustomDomainBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/CustomDomainFragment.kt",
+      "line": 324,
+      "text": "dBind: DialogAddCustomDomainBinding,"
+    }
+  ],
+  "list_item_vpn_server": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "line": 45,
+      "text": "import com.celzero.bravedns.databinding.ListItemVpnServerBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "line": 252,
+      "text": "val b = ListItemVpnServerBinding.inflate(inflater, parent, false)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "line": 333,
+      "text": "inner class ServerViewHolder(private val b: ListItemVpnServerBinding) :"
+    }
+  ],
+  "fragment_rethink_blocklist": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt",
+      "line": 43,
+      "text": "import com.celzero.bravedns.databinding.FragmentRethinkBlocklistBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt",
+      "line": 83,
+      "text": "Fragment(R.layout.fragment_rethink_blocklist), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt",
+      "line": 84,
+      "text": "private val b by viewBinding(FragmentRethinkBlocklistBinding::bind)"
+    }
+  ],
+  "activity_block_free_dns": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BlockFreeDnsActivity.kt",
+      "line": 28,
+      "text": "import com.celzero.bravedns.databinding.ActivityBlockFreeDnsBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BlockFreeDnsActivity.kt",
+      "line": 41,
+      "text": "class BlockFreeDnsActivity : BaseActivity(R.layout.activity_block_free_dns) {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/BlockFreeDnsActivity.kt",
+      "line": 42,
+      "text": "private val b by viewBinding(ActivityBlockFreeDnsBinding::bind)"
+    }
+  ],
+  "activity_app_list": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "line": 46,
+      "text": "import com.celzero.bravedns.databinding.ActivityAppListBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "line": 70,
+      "text": "BaseActivity(R.layout.activity_app_list), SearchView.OnQueryTextListener {"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "line": 73,
+      "text": "private val b by viewBinding(ActivityAppListBinding::bind)"
+    }
+  ],
+  "item_server": [],
+  "dialog_info_rules_layout": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt",
+      "line": 42,
+      "text": "import com.celzero.bravedns.databinding.DialogInfoRulesLayoutBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ConnTrackerBottomSheet.kt",
+      "line": 732,
+      "text": "val dialogBinding = DialogInfoRulesLayoutBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "line": 49,
+      "text": "import com.celzero.bravedns.databinding.DialogInfoRulesLayoutBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "line": 548,
+      "text": "val dialogBinding = DialogInfoRulesLayoutBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsBlocklistBottomSheet.kt",
+      "line": 664,
+      "text": "val dialogBinding = DialogInfoRulesLayoutBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt",
+      "line": 40,
+      "text": "import com.celzero.bravedns.databinding.DialogInfoRulesLayoutBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBottomSheet.kt",
+      "line": 579,
+      "text": "val dialogBinding = DialogInfoRulesLayoutBinding.inflate(layoutInflater)"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 61,
+      "text": "import com.celzero.bravedns.databinding.DialogInfoRulesLayoutBinding"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "line": 1730,
+      "text": "val dialogBinding = DialogInfoRulesLayoutBinding.inflate(layoutInflater)"
+    }
+  ]
+}

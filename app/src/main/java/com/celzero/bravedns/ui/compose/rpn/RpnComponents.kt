@@ -74,14 +74,9 @@ fun rpnProgressDialog(activity: android.app.Activity, state: RpnProgressState): 
 
 @Composable
 private fun RpnProgressContent(state: RpnProgressState) {
-    val progress = sourceProgressLook(circular = false)
-    val spinner = sourceProgressLook(circular = true)
     androidx.compose.material3.Surface(shape = androidx.compose.foundation.shape.RoundedCornerShape(24.dp)) {
         Column(Modifier.fillMaxWidth().padding(start = 28.dp, end = 28.dp, top = 36.dp, bottom = 28.dp), horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally) {
-            androidx.compose.material3.CircularProgressIndicator(
-                Modifier.size(56.dp + spinner.inset * 2).padding(spinner.inset), strokeWidth = 4.dp,
-                color = spinner.indicator, trackColor = spinner.track,
-                strokeCap = if (spinner.rounded) androidx.compose.ui.graphics.StrokeCap.Round else androidx.compose.ui.graphics.StrokeCap.Butt)
+            com.celzero.bravedns.ui.compose.controls.OriginalServerLoadingSpinner()
             Spacer(Modifier.height(28.dp))
             Text(state.title.text.toString(), Modifier.fillMaxWidth(), color = themeColor(R.attr.primaryTextColor),
                 style = utilityTextStyle(size = 17f, family = "sans-serif-medium", weight = Typeface.BOLD),
@@ -91,42 +86,12 @@ private fun RpnProgressContent(state: RpnProgressState) {
                 style = utilityTextStyle(size = utilityDimensionSp(LocalContext.current, R.dimen.default_font_text_view)),
                 color = themeColor(R.attr.primaryLightColorText), textAlign = androidx.compose.ui.text.style.TextAlign.Center)
             Spacer(Modifier.height(28.dp))
-            androidx.compose.material3.LinearProgressIndicator(progress = { state.timeout.progress.toFloat() / state.timeout.max.coerceAtLeast(1) }, modifier = Modifier.fillMaxWidth().height(3.dp),
-                color = progress.indicator, trackColor = progress.track,
-                strokeCap = androidx.compose.ui.graphics.StrokeCap.Round, gapSize = 0.dp, drawStopIndicator = {})
+            com.celzero.bravedns.ui.compose.controls.OriginalLinearProgress(
+                "dialog_server_loading:server_loading_timeout_bar", Modifier.fillMaxWidth(),
+                progress = state.timeout.progress.toFloat() / state.timeout.max.coerceAtLeast(1))
             Spacer(Modifier.height(20.dp))
             Text(state.hint.text.toString(), Modifier.fillMaxWidth().alpha(.55f), color = themeColor(R.attr.primaryLightColorText), style = utilityTextStyle(size = utilityDimensionSp(LocalContext.current, R.dimen.small_font_text_view)),
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center)
         }
-    }
-}
-
-/** Resolve source progress-widget theme defaults without instantiating a legacy View. */
-private data class SourceProgressLook(val indicator: Color, val track: Color,
-    val inset: androidx.compose.ui.unit.Dp, val rounded: Boolean)
-
-@Composable private fun sourceProgressLook(circular: Boolean): SourceProgressLook {
-    val context = LocalContext.current
-    val density = LocalDensity.current
-    val primary = themeColor(androidx.appcompat.R.attr.colorPrimary)
-    return remember(context, density, primary, circular) {
-        val values = context.obtainStyledAttributes(null,
-            intArrayOf(com.google.android.material.R.attr.indicatorColor, com.google.android.material.R.attr.trackColor,
-                com.google.android.material.R.attr.indicatorInset, com.google.android.material.R.attr.trackCornerRadius),
-            if (circular) com.google.android.material.R.attr.circularProgressIndicatorStyle else com.google.android.material.R.attr.linearProgressIndicatorStyle,
-            if (circular) com.google.android.material.R.style.Widget_Material3_CircularProgressIndicator else com.google.android.material.R.style.Widget_Material3_LinearProgressIndicator)
-        val disabled = context.obtainStyledAttributes(intArrayOf(android.R.attr.disabledAlpha))
-        try {
-            val indicatorValue = values.peekValue(0)
-            val indicatorResource = values.getResourceId(0, 0)
-            val firstColor = if (indicatorResource != 0 && indicatorValue?.type == android.util.TypedValue.TYPE_REFERENCE &&
-                context.resources.getResourceTypeName(indicatorResource) == "array") context.resources.getIntArray(indicatorResource).firstOrNull()
-                else null
-            val indicator = Color(firstColor ?: values.getColor(0, primary.toArgb()))
-            val track = if (values.hasValue(1)) Color(values.getColor(1, 0))
-                else indicator.copy(alpha = indicator.alpha * disabled.getFloat(0, .2f))
-            SourceProgressLook(indicator, track,
-                with(density) { values.getDimension(2, 4.dp.toPx()).toDp() }, values.getDimension(3, 0f) > 0f)
-        } finally { values.recycle(); disabled.recycle() }
     }
 }

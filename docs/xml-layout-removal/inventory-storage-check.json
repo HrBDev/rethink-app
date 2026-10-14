@@ -1,0 +1,29 @@
+{
+  "kind": "LOSSLESS_WHITESPACE_ONLY_COMPACTION",
+  "files": [
+    {
+      "file": "docs/xml-layout-removal/layout-inventory.json",
+      "old_bytes": 10203437,
+      "new_bytes": 6885758,
+      "old_sha256": "c0f56de87a4115d7f44f2e0f2337d0752a1e3126aeddbff2f5f962e3345bc35d",
+      "new_sha256": "84d76676f41da9f9b07b38e76d2736a0d739849ad1ab15339c06c782c6ed8d01",
+      "json_semantic_equality": true
+    },
+    {
+      "file": "docs/xml-layout-removal/layout-owner-candidates.json",
+      "old_bytes": 1044276,
+      "new_bytes": 678065,
+      "old_sha256": "a0400346244c14123ad7abb99a592326804d74f35e003867df8184a4bafe3bf4",
+      "new_sha256": "ada3a7d51d04e7222d1cb5440270d0ae7bef69a5ed2f8a4c562db169e19db953",
+      "json_semantic_equality": true
+    },
+    {
+      "file": "docs/xml-layout-removal/root-layout-accounting.json",
+      "old_bytes": 225139,
+      "new_bytes": 168844,
+      "old_sha256": "610049c1712dd458f0fff90122e47603bcdb401e65e7f378d61361812e288987",
+      "new_sha256": "ac0e3213bc9e17724f2ea95ee082e60ae96c8633feb622f2882d0c5d911f7604",
+      "json_semantic_equality": true
+    }
+  ]
+}

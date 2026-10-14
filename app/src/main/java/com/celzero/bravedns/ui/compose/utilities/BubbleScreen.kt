@@ -4,6 +4,9 @@ import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -82,7 +85,11 @@ data class BubbleQuickFix(val drawable: Int, val label: Int, val active: Boolean
         } else { try { context.packageManager.getApplicationIcon(packageName) } catch (_: Exception) { fallback } }
         UtilityControl(context).apply { setImageDrawable(drawable) }
     }
-    UtilityImage(icon, Modifier.size(32.dp))
+    // item_*_app: both variants use a 28dp image centered in a 44dp, 22dp-radius frame.
+    Surface(Modifier.size(44.dp), shape = CircleShape, color = themeColor(R.attr.background),
+        tonalElevation = 0.dp, shadowElevation = 0.dp) {
+        Box(contentAlignment = Alignment.Center) { UtilityImage(icon, Modifier.size(28.dp)) }
+    }
 }
 @Composable fun BubbleAllowedRow(app: AllowedAppInfo, action: (AllowedAppInfo) -> Unit, now: Long = remember(app) { System.currentTimeMillis() }) {
     val age = bubbleAllowedAge(app.allowedAt, now)
@@ -95,20 +102,58 @@ data class BubbleQuickFix(val drawable: Int, val label: Int, val active: Boolean
     BubbleRow(app.appName, app.packageName, stringResource(R.string.bubble_blocked_count, app.count), ago, true, stringResource(R.string.bubble_allow_btn), "bubble.allow.${app.uid}", { action(app) }, true)
 }
 @Composable private fun BubbleRow(name: String, pkg: String, line: String, time: String?, blocked: Boolean, action: String, tag: String, click: () -> Unit, bad: Boolean) {
+    // Retain the existing large-font action reflow. It is a deliberate accessibility alternate;
+    // the default-font row below follows the two independent original ConstraintLayouts.
     val large = LocalDensity.current.fontScale > 1.3f
-    Card(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 3.dp), colors = CardDefaults.cardColors(containerColor = themeColor(R.attr.background))) {
-        Column(Modifier.padding(12.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+    val context = LocalContext.current
+    val cardStyle = resolveUtilityStyle(context, androidx.cardview.R.attr.cardViewStyle)
+        .takeIf { it != 0 } ?: androidx.cardview.R.style.CardView
+    OriginalCardSurface(
+        Modifier.fillMaxWidth().padding(horizontal = if (blocked) 6.dp else 4.dp,
+            vertical = if (blocked) 6.dp else 3.dp),
+        style = cardStyle, styleAttribute = androidx.cardview.R.attr.cardViewStyle,
+        useCompatPadding = true, containerColor = themeColor(R.attr.background)
+    ) {
+        Column(Modifier.padding(horizontal = 12.dp, vertical = 10.dp)) {
+            Row(verticalAlignment = Alignment.Top) {
                 AppIcon(pkg, blocked)
                 Column(Modifier.weight(1f).padding(start = 12.dp)) {
-                    Text(name, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead, weight = android.graphics.Typeface.BOLD), color = themeColor(R.attr.primaryTextColor))
-                    if (blocked) Text(pkg, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption), color = themeColor(R.attr.primaryLightColorText))
-                    Text(line, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption), color = themeColor(if (bad) R.attr.accentBad else R.attr.accentGood))
-                    if (time != null) Text(time, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption), color = themeColor(R.attr.primaryLightColorText))
+                    Text(name, Modifier.fillMaxWidth().basicMarquee(iterations = Int.MAX_VALUE),
+                        maxLines = 1, softWrap = false,
+                        style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Subhead, weight = android.graphics.Typeface.BOLD),
+                        color = themeColor(R.attr.primaryTextColor))
+                    if (blocked) {
+                        // XML marks only the app name selected in the adapter. The package's
+                        // marquee is therefore clipped, not made into a second running marquee.
+                        Text(pkg, Modifier.fillMaxWidth().padding(top = 2.dp), maxLines = 1,
+                            softWrap = false, overflow = TextOverflow.Clip,
+                            style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption),
+                            color = themeColor(R.attr.primaryLightColorText))
+                        Row(Modifier.fillMaxWidth().padding(top = 4.dp), verticalAlignment = Alignment.Top) {
+                            Text(line, style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption),
+                                color = themeColor(R.attr.accentBad))
+                            if (time != null) Text(time, Modifier.weight(1f).padding(start = 10.dp),
+                                maxLines = 1, overflow = TextOverflow.Ellipsis,
+                                style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption),
+                                color = themeColor(R.attr.primaryLightColorText))
+                        }
+                    } else {
+                        Text(line, Modifier.fillMaxWidth().padding(top = 2.dp), maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            style = utilityTextStyle(androidx.appcompat.R.style.TextAppearance_AppCompat_Caption),
+                            color = themeColor(if (bad) R.attr.accentBad else R.attr.accentGood))
+                    }
                 }
-                if (!large) OriginalButton(if (blocked) "item_blocked_app:blocked_app_allow_btn" else "item_allowed_app:allowed_remove_btn", click, Modifier.testTag(tag).semantics { contentDescription = "$action $name" }) { Text(action) }
+                if (!large) BubbleRowAction(blocked, action, name, tag, click)
             }
-            if (large) OriginalButton(if (blocked) "item_blocked_app:blocked_app_allow_btn" else "item_allowed_app:allowed_remove_btn", click, Modifier.align(Alignment.End).testTag(tag).semantics { contentDescription = "$action $name" }) { Text(action) }
+            if (large) Box(Modifier.align(Alignment.End)) { BubbleRowAction(blocked, action, name, tag, click) }
         }
     }
+}
+
+@Composable private fun BubbleRowAction(blocked: Boolean, action: String, name: String, tag: String, click: () -> Unit) {
+    // Keep the source 34dp visual/top anchor; Compose's clickable supplies minimum hit slop
+    // without the standalone helper's extra 48dp layout spacer shifting the original row.
+    OriginalButton(if (blocked) "item_blocked_app:blocked_app_allow_btn" else "item_allowed_app:allowed_remove_btn",
+        click, Modifier.testTag(tag).semantics { contentDescription = "$action $name" }, grouped = true) { Text(action) }
 }

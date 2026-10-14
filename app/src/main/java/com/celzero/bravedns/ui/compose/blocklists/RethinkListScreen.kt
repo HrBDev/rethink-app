@@ -98,9 +98,11 @@ import kotlinx.coroutines.flow.Flow
     OriginalChip("fragment_rethink_list:" + when (key) { "update" -> "bslb_update_available_btn"; "check" -> "bslb_check_update_btn"; else -> "bslb_redownload_btn" }, selected = false, selectable = false, onClick = state.onClick, enabled = state.isEnabled, modifier = Modifier.testTag("rethink-$key"), label = { Text(stringResource(label), color = themeColor(R.attr.chipTextPositive)) }, leadingIcon = if (state.isChipIconVisible) ({ CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp, color = themeColor(R.attr.chipTextPositive)) }) else null)
 }
 @Composable private fun RethinkChoice(control: DnsControl, label: Int, key: String) {
-    Row(Modifier.testTag("rethink-$key").clickable(role = Role.RadioButton) { control.isChecked = true; control.onClick() }.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(control.isChecked, null)
+    // Original RadioButton suppresses android:button and uses drawableBottom with 5dp spacing.
+    Column(Modifier.testTag("rethink-$key").clickable(role = Role.RadioButton) { control.isChecked = true; control.onClick() }.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(stringResource(label), color = themeColor(R.attr.primaryTextColor))
+        Spacer(Modifier.height(5.dp))
+        OriginalRadioButton("fragment_rethink_list:radio_$key", control.isChecked, null, indicatorOnly = true)
     }
 }
 @Composable private fun RethinkEndpointRow(endpoint: RethinkDnsEndpoint, presenter: RethinkEndpointPresenter, spacing: Dp) {

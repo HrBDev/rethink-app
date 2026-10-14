@@ -118,6 +118,6 @@ fun SupportScreen(ui: SupportUiState) {
             SupportLabel(description, 12f, secondary = true, modifier = Modifier.padding(top = 2.dp))
         }
         val label = stringResource(title)
-        Switch(state.isChecked, { state.isChecked = it }, modifier = Modifier.testTag(state.tag).semantics { contentDescription = label })
+        OriginalSwitch(state.tag.replace('.', ':'), state.isChecked, { state.isChecked = it }, modifier = Modifier.testTag(state.tag).semantics { contentDescription = label })
     }
 }

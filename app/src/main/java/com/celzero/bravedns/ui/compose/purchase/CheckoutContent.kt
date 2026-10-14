@@ -1,5 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.purchase
+
+import com.celzero.bravedns.ui.compose.controls.*
 import com.celzero.bravedns.ui.compose.controls.OriginalButton
 import com.celzero.bravedns.ui.compose.controls.OriginalLabel
 import androidx.compose.ui.Alignment
@@ -81,8 +83,8 @@ We do not collect, sell, license, share any data (personally identifiable or oth
                 Text(CheckoutCopy.payment_title, style = MaterialTheme.typography.titleLarge)
                 Column(Modifier.selectableGroup()) {
                     listOf(state.plan1MonthButton, state.plan3MonthsButton, state.plan6MonthsButton).forEachIndexed { index, plan ->
-                        Row(Modifier.fillMaxWidth().selectable(selected == index, onClick = { selected = index }, role = Role.RadioButton).padding(vertical = 12.dp)) {
-                            RadioButton(selected == index, onClick = null)
+                        Row(Modifier.fillMaxWidth().selectable(selected == index, onClick = { selected = index }, role = Role.RadioButton).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                            OriginalRadioButton("activity_checkout_proxy:" + listOf("plan1MonthButton", "plan3MonthsButton", "plan6MonthsButton")[index], selected == index, onClick = null, indicatorOnly = true)
                             Text(wgAnnotatedText(plan.text), Modifier.padding(start = 12.dp))
                         }
                     }

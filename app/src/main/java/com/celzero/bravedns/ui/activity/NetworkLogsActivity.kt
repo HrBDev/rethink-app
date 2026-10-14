@@ -31,6 +31,7 @@ import androidx.fragment.compose.AndroidFragment
 import androidx.fragment.compose.rememberFragmentState
 import androidx.lifecycle.Lifecycle
 import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.celzero.bravedns.ui.compose.controls.OriginalTabStrip
 import com.celzero.bravedns.ui.compose.themeColor
 import kotlinx.coroutines.launch
 
@@ -124,9 +125,9 @@ class NetworkLogsActivity : BaseActivity() {
             val specifications = remember(count) { List(count) { getFragment(it) } }
             Column(Modifier.fillMaxSize().background(themeColor(R.attr.background))) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    PrimaryTabRow(pager.currentPage, Modifier.weight(1f)) {
-                        repeat(count) { page -> Tab(pager.currentPage == page, { scope.launch { pager.animateScrollToPage(page) } }, text = { Text(getTabText(page)) }) }
-                    }
+                    OriginalTabStrip(pager.currentPage, List(count) { getTabText(it) },
+                        onSelect = { page -> scope.launch { pager.animateScrollToPage(page) } },
+                        modifier = Modifier.weight(1f), pageOffset = pager.currentPageOffsetFraction)
                     IconButton(::openConsoleLogActivity, Modifier.padding(end = 15.dp, bottom = 5.dp)) { Icon(painterResource(R.drawable.ic_android_icon), stringResource(R.string.console_log_title), Modifier.alpha(.7f), tint = Color.Unspecified) }
                 }
                 HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth()) { page ->

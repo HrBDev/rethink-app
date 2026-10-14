@@ -1,0 +1,33 @@
+PASS: 52 in-memory negative/positive controls
+FAIL: 186 app-owned layout files; 223 violations; 2516 pinned ID symbols
+app/src/full/res/layout-w600dp/fragment_home_screen.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_advanced_setting.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_app_details.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_app_list.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_app_lock.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_block_free_dns.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_bubble.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_bubble.xml:1: xml-layout-reference: @layout/item_allowed_app
+app/src/full/res/layout/activity_bubble.xml:1: xml-layout-reference: @layout/item_blocked_app
+app/src/full/res/layout/activity_console_log.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_misc_settings.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_pause.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_tcp_proxy.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_tunnel_settings.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/activity_welcome.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_app_connections.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_conn_track.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_dns_log.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_firewall_sort_filter.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_home_screen.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_log_activity_interval.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_orbot.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_rethink_list.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/bottom_sheet_rethink_plus_filter.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/dialog_add_custom_domain.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/dialog_custom_lan_ip.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/dialog_import_confirm.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/dialog_info_firewall_rules.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/dialog_info_rules_layout.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+app/src/full/res/layout/dialog_ip_details_layout.xml:1: app-owned-layout-file: Default final gate requires zero files in every res/layout* directory
+Remaining violations recorded in report: 193

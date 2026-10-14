@@ -1,5 +1,5 @@
 {
-  "mode": "PRE_REMOVAL_AUDIT_NOT_FINAL",
+  "mode": "FINAL_LAYOUT_REMOVAL",
   "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
   "kind": "network-sheet token equality with explicit presentation substitutions",
   "passed": true,

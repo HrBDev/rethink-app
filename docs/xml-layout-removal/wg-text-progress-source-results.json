@@ -1,0 +1,49 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "text_sources": 186,
+  "progress_sources": 6,
+  "known_source_absence": {
+    "activity_wireguard_main": "Pinned XML contains no ProgressBar or ProgressIndicator node."
+  },
+  "errors": [],
+  "negative_controls": [
+    {
+      "mutation": "font family",
+      "caught": true
+    },
+    {
+      "mutation": "tracking",
+      "caught": true
+    },
+    {
+      "mutation": "line spacing",
+      "caught": true
+    },
+    {
+      "mutation": "appearance",
+      "caught": true
+    },
+    {
+      "mutation": "line limit",
+      "caught": true
+    },
+    {
+      "mutation": "progress inherited gap",
+      "caught": true
+    },
+    {
+      "mutation": "progress inherited stop",
+      "caught": true
+    },
+    {
+      "mutation": "hop progress callsite",
+      "caught": true
+    },
+    {
+      "mutation": "text renderer consumes source",
+      "caught": true
+    }
+  ],
+  "android_tests": "AUTHORED_UNRUN",
+  "verification": "Source guards only; no compile, render, screenshot, TalkBack or runtime claim."
+}

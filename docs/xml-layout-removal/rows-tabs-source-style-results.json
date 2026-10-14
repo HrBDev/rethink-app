@@ -1,0 +1,69 @@
+{
+  "result": "PASS_SOURCE_ONLY",
+  "findings": [
+    "S21",
+    "S24",
+    "S27"
+  ],
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "pre_patch_compose": "e17aaecf8185f06f1888d50cd2ad250f085d5374",
+  "checks": {
+    "CardView family, compat clearance, distinct margins": true,
+    "source icon frame and image": true,
+    "source top anchors and inner padding": true,
+    "selected app-name marquee and one-line constraints": true,
+    "source caption groups and overflow": true,
+    "existing action identity and large-font reflow preserved": true,
+    "BubbleAllowedRow( age/content/callback body unchanged": true,
+    "BubbleBlockedRow( age/content/callback body unchanged": true,
+    "country keeps independent outer and row geometry": true,
+    "country bold one-line end ellipsis": true,
+    "detail title and subtitle source attributes": true,
+    "count source family, weight, clipping and width": true,
+    "source icon and flag state-specific alpha/frame": true,
+    "arrow retains invisible geometry and resource tint": true,
+    "state typography and annotated spans retained": true,
+    "source progress variants and explicit controller colors": true,
+    "row callbacks and separator preserved": true,
+    "original style hierarchy and overlay resolved": true,
+    "scrollable centered source geometry": true,
+    "source selected/unselected/ripple/background colors": true,
+    "source full-width indicator drawable, height, gravity and elastic movement": true,
+    "original overflow sizing and RTL scroll selection": true,
+    "rules consumes source tab style and pager offset": true,
+    "rules has no raw TabRow/Tab fallback": true,
+    "rules whole-host outside tab strip byte-identical": true,
+    "logs consumes source tab style and pager offset": true,
+    "logs has no raw TabRow/Tab fallback": true,
+    "logs whole-host outside tab strip byte-identical": true,
+    "bubble native rendering only": true,
+    "rows native rendering only": true,
+    "tabs native rendering only": true
+  },
+  "negative_mutations_rejected": 17,
+  "baseline_sha256": {
+    "app/src/full/res/layout/item_allowed_app.xml": "80c6ef679145bc0bf4e8facaf276455533a2cdbc6c7bcefdeab26a661ed4cc6d",
+    "app/src/full/res/layout/item_blocked_app.xml": "8ba16779bad8b38dfb612d0ddecdeed36ba9b516bc0bd8fc38ef726afa8df4ec",
+    "app/src/full/res/layout/list_item_app_domain_details.xml": "c0da87d14ce784b302d419a8511c3856936f094466b66aa1c1cc52ef58c11b21",
+    "app/src/full/res/layout/list_item_app_ip_details.xml": "a0eacb81320218e9cc1c331dcb9ac4cb896da82bc414c30235561fe99ede4143",
+    "app/src/main/res/layout/list_item_app_country_details.xml": "e0ad0477f7d415a442a52049325ee029c2ddb917791d426ee62a30b603faa905",
+    "app/src/main/res/layout/activity_custom_rules.xml": "9a8fabe22f3acc4a2a9a1373faee18075893a3c9296b5139477c60bae2ad9309",
+    "app/src/main/res/layout/activity_network_logs.xml": "1b72d2689e9acca75e02fc54316a80a1567d6c4f5e4e0718a961fd63cf61fb33",
+    "app/src/main/res/values/styles.xml": "94605e7df2a052dbd168cf268e1a72ffffa7c05d234b704ce41d47cf322d8103"
+  },
+  "source_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt": "22765415ab29897d7a0f477add09a8cb1fd8b68f411be8a447434fd94a5cac52",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt": "9414545efc301f045e548b2c1ee78e8ff9893fcecc5d4ba05e8611d61b06fca9",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt": "0f0890d5762ebd45a9e764a4c49e327260d7626a4a51b8786dcecefab48f1d53",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt": "b7cedb9bad5445d143b0657727c0b960da6fda12a33eb0b074dcc56b4595375d",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt": "7f8f64c22edc388e3bb1a6d3dc64343495d03a82e43a9d8e7ad0d8d839a54f2a"
+  },
+  "independent_reference": "MDC 1.14.0 source-style inheritance and source-only widget-oracle test authored, not executed.",
+  "runtime": "NOT_RUN: existing dl.google.com policy denial; no dependency retrieval, build, app or production runtime attempted.",
+  "limitations": [
+    "Source integration, not compiled or visual equivalence. No layout deletion authorized by this guard.",
+    "Existing >1.3 fontScale bubble action reflow is preserved as a current accessibility alternate, not claimed original default geometry.",
+    "Synthetic native-style/layout/callback tests are authored but unrun; exact pixels, font metrics, ripple animation and TalkBack need approved isolated execution.",
+    "NetworkLogs console action geometry and surrounding BubbleScreen shell are outside the bounded row/tab work."
+  ]
+}

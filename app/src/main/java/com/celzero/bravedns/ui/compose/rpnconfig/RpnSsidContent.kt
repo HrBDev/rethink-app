@@ -3,6 +3,7 @@
 package com.celzero.bravedns.ui.compose.rpnconfig
 
 import com.celzero.bravedns.ui.compose.controls.*
+import com.celzero.bravedns.ui.compose.wireguard.WgSourceText
 import com.celzero.bravedns.ui.compose.fields.OriginalTextField
 import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.animation.core.Animatable
@@ -65,39 +66,39 @@ fun RpnSsidContent(state: RpnSsidState, countryName: String, add: () -> Unit, de
                 Box(Modifier.size(56.dp).background(Brush.linearGradient(listOf(Color(0xff9c27b0), Color(0xff2196f3), Color(0xff4caf50))), CircleShape), contentAlignment = Alignment.Center) {
                     Icon(painterResource(R.drawable.ic_settings), stringResource(R.string.country_ssid_icon), Modifier.size(28.dp).graphicsLayer { scaleX = icon.value; scaleY = icon.value; rotationZ = rotation.value }, tint = Color.White)
                 }
-                Text(stringResource(R.string.country_ssid_dialog_title, countryName), Modifier.weight(1f).padding(start = 16.dp), fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                WgSourceText(stringResource(R.string.country_ssid_dialog_title, countryName), "dialog_rpn_ssid:dialog_title", Modifier.weight(1f).padding(start = 16.dp))
             }
-            Text(stringResource(R.string.country_ssid_dialog_description, if (state.equal) connect else pause, countryName,
+            WgSourceText(stringResource(R.string.country_ssid_dialog_description, if (state.equal) connect else pause, countryName,
                 stringResource(R.string.lbl_ssid), stringResource(if (state.exact) R.string.wg_ssid_type_exact else R.string.wg_ssid_type_wildcard).lowercase()),
-                Modifier.alpha(.8f), color = themeColor(R.attr.primaryLightColorText), fontSize = 14.sp)
+                "dialog_rpn_ssid:description_text_view")
             HorizontalDivider(color = themeColor(R.attr.primaryTextColor).copy(alpha = .1f))
-            Text(stringResource(R.string.country_ssid_add_new), fontSize = 15.sp, fontWeight = FontWeight.Bold)
+            WgSourceText(stringResource(R.string.country_ssid_add_new), "dialog_rpn_ssid:input_section_title")
             OriginalTextField(state.name, { state.name = it }, Modifier.fillMaxWidth().testTag("rpn.ssid.input"), style = OriginalFieldStyle.RpnSsid, singleLine = true,
                 label = { Text(stringResource(R.string.wg_ssid_input_hint, stringResource(R.string.lbl_ssids))) },
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done), keyboardActions = KeyboardActions(onDone = { add() }))
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                 Column {
-                    Text(stringResource(R.string.wg_ssid_condition_label), fontSize = 12.sp)
+                    WgSourceText(stringResource(R.string.wg_ssid_condition_label), "dialog_rpn_ssid:anonymous_14")
                     SsidOption(connect, state.equal, "rpn.ssid.equal") { state.equal = true }
                     SsidOption(pause, !state.equal, "rpn.ssid.notEqual") { state.equal = false }
                 }
                 Column {
-                    Text(stringResource(R.string.wg_ssid_match_type_label), fontSize = 12.sp)
+                    WgSourceText(stringResource(R.string.wg_ssid_match_type_label), "dialog_rpn_ssid:anonymous_19")
                     SsidOption(stringResource(R.string.wg_ssid_type_exact), state.exact, "rpn.ssid.exact") { state.exact = true }
                     SsidOption(stringResource(R.string.wg_ssid_type_wildcard), !state.exact, "rpn.ssid.wildcard") { state.exact = false }
                 }
             }
             OriginalButton("dialog_rpn_ssid:add_ssid_btn", add, enabled = state.name.isNotBlank(), modifier = Modifier.testTag("rpn.ssid.add")) { Text(stringResource(R.string.wg_ssid_add_button)) }
             HorizontalDivider(color = themeColor(R.attr.primaryTextColor).copy(alpha = .1f))
-            Text(stringResource(R.string.country_ssid_configured_list), fontSize = 15.sp, fontWeight = FontWeight.Bold)
+            WgSourceText(stringResource(R.string.country_ssid_configured_list), "dialog_rpn_ssid:list_section_title")
             if (state.items.isEmpty()) Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 Icon(painterResource(R.drawable.ic_info), null, Modifier.size(48.dp).alpha(.2f))
-                Text(stringResource(R.string.country_ssid_empty_state), Modifier.alpha(.6f).padding(top = 12.dp), fontSize = 14.sp)
+                WgSourceText(stringResource(R.string.country_ssid_empty_state), "dialog_rpn_ssid:anonymous_28", Modifier.padding(top = 12.dp))
             } else LazyColumn(Modifier.heightIn(max = 250.dp), state = listState) {
                 itemsIndexed(state.items) { index, item ->
                     Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text(item.name, Modifier.weight(1f), fontSize = 16.sp)
-                        Text(item.type.getDisplayName(context), Modifier.padding(start = 8.dp), fontSize = 12.sp, color = themeColor(R.attr.accentBad))
+                        WgSourceText(item.name, "item_ssid:ssidNameText", Modifier.weight(1f))
+                        WgSourceText(item.type.getDisplayName(context), "item_ssid:ssidTypeText", Modifier.padding(start = 8.dp).padding(4.dp))
                         IconButton({ delete(item) }, Modifier.testTag("rpn.ssid.delete.$index")) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }
                     }
                 }
@@ -112,5 +113,5 @@ fun RpnSsidContent(state: RpnSsidState, countryName: String, add: () -> Unit, de
 
 @Composable
 private fun SsidOption(label: String, selected: Boolean, tag: String, click: () -> Unit) {
-    Row(Modifier.testTag(tag).selectable(selected, role = Role.RadioButton, onClick = click), verticalAlignment = Alignment.CenterVertically) { RadioButton(selected, null); Text(label) }
+    Row(Modifier.testTag(tag).selectable(selected, role = Role.RadioButton, onClick = click), verticalAlignment = Alignment.CenterVertically) { OriginalRadioButton("dialog_rpn_ssid:" + when (tag.substringAfterLast('.')) { "notEqual" -> "radio_not_equal"; else -> "radio_${tag.substringAfterLast('.')}" }, selected, null); WgSourceText(label, "dialog_rpn_ssid:" + when (tag.substringAfterLast('.')) { "notEqual" -> "radio_not_equal"; else -> "radio_${tag.substringAfterLast('.')}" }) }
 }

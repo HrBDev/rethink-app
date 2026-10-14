@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,15 +15,15 @@ import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
 
 class WgProxySelectorState(context: Context) {
-    val ipDomainInfo = WgControlState(context)
-    val title = WgControlState(context).apply { text = context.getString(R.string.wg_compose_choose_country); textSizeSp = 20f }
+    val ipDomainInfo = WgControlState(context, textSource = "bottom_sheet_proxies_list:ip_domain_info")
+    val title = WgControlState(context, textSource = "bottom_sheet_proxies_list:title").apply { text = context.getString(R.string.wg_compose_choose_country); textSizeSp = 20f }
     val recyclerView = WgControlState(context)
 }
 class WgProxyRowState(context: Context) {
     val lipCcWgParent = WgControlState(context)
-    val proxyNameCc = WgControlState(context).apply { textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view) }
-    val proxyDescCc = WgControlState(context).apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryLightColorText); textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view) }
-    val proxyRadioCc = WgControlState(context, checkable = true)
+    val proxyNameCc = WgControlState(context, textSource = "list_item_proxy_cc_wg:proxy_name_cc").apply { textSizeSp = wgTextDimensionSp(context, R.dimen.large_font_text_view) }
+    val proxyDescCc = WgControlState(context, textSource = "list_item_proxy_cc_wg:proxy_desc_cc").apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryLightColorText); textSizeSp = wgTextDimensionSp(context, R.dimen.default_font_text_view) }
+    val proxyRadioCc = WgControlState(context, checkable = true, textSource = "list_item_proxy_cc_wg:proxy_radio_cc")
 }
 
 @Composable fun WgProxySelectionContent(b: WgProxySelectorState) {
@@ -39,6 +41,6 @@ class WgProxyRowState(context: Context) {
         // The baseline WG selector leaves the reused country-icon cell empty.
         Spacer(Modifier.width(50.dp))
         Column(Modifier.weight(1f).padding(horizontal = 10.dp)) { WgText(b.proxyNameCc); WgText(b.proxyDescCc) }
-        RadioButton(b.proxyRadioCc.isChecked, { b.proxyRadioCc.isChecked = true; b.proxyRadioCc.callOnClick() })
+        OriginalRadioButton("list_item_proxy_cc_wg:proxy_radio_cc", b.proxyRadioCc.isChecked, { b.proxyRadioCc.isChecked = true; b.proxyRadioCc.callOnClick() })
     }
 }

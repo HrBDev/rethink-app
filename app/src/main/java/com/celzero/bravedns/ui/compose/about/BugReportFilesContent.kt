@@ -90,7 +90,7 @@ fun BugReportFilesContent(b: BugReportFilesState) {
 @Composable
 fun BugReportFileRow(row: BugReportRowState) {
     Row(Modifier.fillMaxWidth().testTag("bugreport.file.${row.key}").toggleable(row.checkbox.isChecked, role = Role.Checkbox) { row.checkbox.performClick() }.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Checkbox(row.checkbox.isChecked, null, colors = diagnosticCheckboxColors())
+        OriginalCheckbox("item_bug_report_file:item_file_checkbox", row.checkbox.isChecked, null)
         Icon(painterResource(row.icon), null, Modifier.padding(start = 8.dp, end = 12.dp).size(32.dp), tint = themeColor(R.attr.accentGood))
         Column(Modifier.weight(1f)) {
             Text(row.name, maxLines = 1, overflow = TextOverflow.MiddleEllipsis, fontWeight = FontWeight.Bold, fontSize = 12.sp, color = themeColor(R.attr.primaryTextColor))
@@ -110,7 +110,7 @@ internal fun DiagnosticSheetHandle() {
 
 @Composable
 private fun DiagnosticCheckbox(node: WgControlState, label: String, tag: String) {
-    Checkbox(node.isChecked, { node.performClick() }, Modifier.testTag(tag).semantics { contentDescription = label }, enabled = node.isEnabled, colors = diagnosticCheckboxColors())
+    OriginalCheckbox("bottom_sheet_bug_report_files:" + if (tag == "bugreport.proc") "brbs_proc_info_checkbox" else "brbs_select_all_checkbox", node.isChecked, { node.performClick() }, Modifier.testTag(tag).semantics { contentDescription = label }, enabled = node.isEnabled)
 }
 
 @Composable

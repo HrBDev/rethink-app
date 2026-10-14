@@ -2,15 +2,15 @@
 
 **Work in progress. Not production ready. Binding removal and the latest layout/component-style corrections have not been compiled or executed.**
 
-## Current regression corrections
+## Current source checkpoint: final XML removal and styling reconciliation
 
-- Anchored opaque navigation and restored Home card gutters are durably checkpointed at `28435219d19d902862336a84fe734dcb584fa7dd`, tree `f219b14ab7767f5b1b4704c69612d280aa02c83d`. Its GitHub Actions run list was empty; there is no CI build result for that commit.
-- This subsequent source checkpoint restores original chip/button/field families and stateful resources, segmented controls, passive badges, icon/FAB overrides, and the omitted Checkout plans/removal-badge labels. It retains native Compose, callbacks and business logic. See `original-controls-restoration.md`, `original-fields-restoration.md`, `component-style-restoration-review.md` and `icon-affordance-audit.json`.
-- All 27 source/controller guards passed against an unchanged 1,576-file `app/src` envelope, SHA-256 `b99f1104df77f5b3c754fc64a6e4a0ee7c6377193e8f9842795a3e0df1d6a547`. The separate whole-production component coverage guard passes: no unreviewed direct calls or unresolved manual linkage obligations; 53 exact reviewed icon/FAB calls and eight byte-identical original TV files are explicit exceptions.
-- Coverage describes source linkage, not visual equivalence. The 284 source-style keys, 271 generated styles, 96 XML field mappings, 117 preserved callback expressions, and 213 planned variant fixtures must not be counted as rendered passes.
-- The cumulative safety manifest now contains 84 exact classes / 598 methods and keeps runtime clearance BLOCKED. New layout, field, control and passive-badge tests are authored only. The full current allowlist still requires toolchain/artifact revalidation, compilation and execution.
-- The 115-original-phone-root ledger continues to mark unverified gates explicitly. Actual Fragment/NavHost inset-policy propagation, all-route visual/accessibility acceptance, and the existing wide Home logs-to-apps bottom-barrier layout gap remain unresolved.
+The latest source work removes **all 186 remaining app-owned XML layout files**. Together with the four earlier shell removals, no app-owned layout resource remains. `docs/xml-layout-removal/layout-removal-manifest.json` records each deleted file, original Git hash, original styling contract and Compose family or verified retired-owner disposition. All 2,516 layout-declared ID names/types remain as values-only resources. Manifest, drawables, colors, styles, strings and dependency-internal resources are retained.
 
+Source corrections now cover anchored opaque navigation, Home section gutters and wide grouping, original chips/buttons/fields/search variants, transparent TextButton overlays, DNS/Stats custom controls, compound controls, slider interaction states, rule/DNS dialogs, cards/rows/tabs, WireGuard/RPN typography and source progress drawables. Search input requests preserve the native no-suggestions/auto-complete flags without constructing an Android editor. See `docs/xml-layout-removal/final-source-handoff.md` for exact boundaries and remaining validation.
+
+The final source gates run with `python3 scripts/compose-migration/check-final-source.py`. Their current results and exact source hashes are in `docs/xml-layout-removal/final-source-checks.json`. These are source/mutation checks, not compiled tests. The protected-core guard separately checks 522 unchanged logic files and the original dependency pins. The user's lint commits remain ancestors of the checkpoint; their locale/resource fixes are retained.
+
+The original 115-phone-root ledger and exhaustive layout/style inventory retain their runtime-unverified status. The old inventory/findings documents are historical preflight evidence; the current removal manifest and final handoff supersede their pending-deletion descriptions without retroactively claiming runtime equivalence. New tests and helpers are authored but unrun; previous runtime safety manifests are historical exact-source envelopes and must not be repinned or enabled without review.
 
 ## Durable source recovery
 

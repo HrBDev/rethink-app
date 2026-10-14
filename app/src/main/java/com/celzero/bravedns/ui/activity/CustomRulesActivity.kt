@@ -35,6 +35,7 @@ import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.ui.bottomsheet.CustomDomainRulesBtmSheet
 import com.celzero.bravedns.ui.bottomsheet.CustomIpRulesBtmSheet
 import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.celzero.bravedns.ui.compose.controls.OriginalTabStrip
 import com.celzero.bravedns.ui.compose.rules.RulesPage
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Themes
@@ -124,11 +125,10 @@ class CustomRulesActivity : BaseActivity() {
                 val scope = rememberCoroutineScope()
                 Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Column(Modifier.fillMaxSize().systemBarsPadding()) {
-                        TabRow(pager.currentPage) {
-                            Tabs.entries.forEach { tab -> Tab(pager.currentPage == tab.screen,
-                                { scope.launch { pager.animateScrollToPage(tab.screen) } },
-                                text = { Text(stringResource(if (tab == Tabs.IP_RULES) R.string.univ_view_blocked_ip else R.string.dc_custom_block_heading)) }) }
-                        }
+                        OriginalTabStrip(pager.currentPage,
+                            Tabs.entries.map { tab -> stringResource(if (tab == Tabs.IP_RULES) R.string.univ_view_blocked_ip else R.string.dc_custom_block_heading) },
+                            onSelect = { page -> scope.launch { pager.animateScrollToPage(page) } },
+                            pageOffset = pager.currentPageOffsetFraction)
                         HorizontalPager(pager, Modifier.weight(1f), beyondViewportPageCount = 1) { page ->
                             if (page == Tabs.IP_RULES.screen) RulesPage(false, uid, rules, ipSource, ipCount, ipModel::setFilter, eventLogger, pager.settledPage == page) { ip ->
                                 CustomIpRulesBtmSheet.newInstance(ip).let { it.show(supportFragmentManager, it.tag) }

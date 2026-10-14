@@ -2,6 +2,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.trafficlogs
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import android.text.Spanned
 import android.text.style.*
 import android.view.View
@@ -130,7 +132,7 @@ internal fun logAnnotated(text: CharSequence): AnnotatedString {
             if (b.bsConnRuleRowDomain.isVisible) { HorizontalDivider(Modifier.padding(start = 16.dp), thickness = .5.dp, color = themeColor(R.attr.border)); RuleRow(b.bsConnRuleRowDomain, b.bsConnDomainRuleAddress.text?.toString().orEmpty(), b.bsConnDomainRuleState, b.bsConnDomainRuleSwitch) }
         }
         if (b.bsConnBlockedRule2HeaderLl.isVisible) DetailCard(Modifier.padding(bottom = 10.dp)) {
-            Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically) { Text(stringResource(R.string.univ_firewall_rule_3), Modifier.weight(1f), fontSize = logTextSize(R.dimen.large_font_text_view)); Switch(b.bsConnUnknownAppCheck.isChecked, { b.bsConnUnknownAppCheck.performClick() }, enabled = b.bsConnUnknownAppCheck.isEnabled) }
+            Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically) { Text(stringResource(R.string.univ_firewall_rule_3), Modifier.weight(1f), fontSize = logTextSize(R.dimen.large_font_text_view)); OriginalSwitch("bottom_sheet_conn_track:bs_conn_unknown_app_check", b.bsConnUnknownAppCheck.isChecked, { b.bsConnUnknownAppCheck.performClick() }, enabled = b.bsConnUnknownAppCheck.isEnabled) }
         }
         SelectionContainer { Text(b.connectionMessage.text?.toString().orEmpty(), Modifier.fillMaxWidth().padding(top = 10.dp, start = 8.dp, end = 8.dp).alpha(.7f), fontSize = logTextSize(R.dimen.mini_font_text_view), textAlign = TextAlign.Center, color = themeColor(R.attr.primaryLightColorText)) }
     }

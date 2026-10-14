@@ -11,6 +11,8 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -43,10 +45,10 @@ import com.celzero.bravedns.ui.compose.themeColor
 import com.celzero.bravedns.ui.compose.wireguard.*
 
 class RpnBypassState(context: Context) {
-    val rpnBypassCount = WgControlState(context).apply { text = context.getString(R.string.rpn_bypass_apps_none) }
+    val rpnBypassCount = WgControlState(context, textSource = "activity_rpn_bypass_apps:rpn_bypass_count").apply { text = context.getString(R.string.rpn_bypass_apps_none) }
     val rpnBypassRefreshList = WgControlState(context)
-    val rpnBypassBulkCheck = WgControlState(context, checkable = true).apply { text = context.getString(R.string.lbl_select_all) }
-    val rpnBypassDeselectAllCheck = WgControlState(context, checkable = true).apply { text = context.getString(R.string.lbl_unselect_all) }
+    val rpnBypassBulkCheck = WgControlState(context, checkable = true, textSource = "activity_rpn_bypass_apps:rpn_bypass_bulk_check").apply { text = context.getString(R.string.lbl_select_all) }
+    val rpnBypassDeselectAllCheck = WgControlState(context, checkable = true, textSource = "activity_rpn_bypass_apps:rpn_bypass_deselect_all_check").apply { text = context.getString(R.string.lbl_unselect_all) }
     var refreshSpinning by mutableStateOf(false)
     var refreshGeneration by mutableIntStateOf(0)
     fun startRefresh() { refreshSpinning = true; refreshGeneration++ }
@@ -63,8 +65,8 @@ fun RpnBypassContent(b: RpnBypassState, query: String, selectedFilter: Int, sear
     } else 0f
     Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         Column(Modifier.safeDrawingPadding().imePadding().padding(10.dp)) {
-            Text(stringResource(R.string.fapps_bypass_block_dialog_title), Modifier.padding(5.dp), fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Text(b.rpnBypassCount.text.toString(), Modifier.padding(5.dp).testTag("rpn.bypass.count"), color = themeColor(R.attr.accentGood), fontSize = 14.sp)
+            WgSourceText(stringResource(R.string.fapps_bypass_block_dialog_title), "activity_rpn_bypass_apps:rpn_bypass_heading", Modifier.padding(5.dp))
+            WgText(b.rpnBypassCount, Modifier.padding(5.dp).testTag("rpn.bypass.count"))
             Surface(shadowElevation = 4.dp, color = MaterialTheme.colorScheme.surface) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     OriginalTextField(query, search, Modifier.weight(1f).focusRequester(searchFocus).testTag("rpn.bypass.search"), singleLine = true,
@@ -82,9 +84,11 @@ fun RpnBypassContent(b: RpnBypassState, query: String, selectedFilter: Int, sear
             }
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf("all" to b.rpnBypassBulkCheck, "none" to b.rpnBypassDeselectAllCheck).forEach { (tag, node) ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        WgCheck(node, node.text.toString(), modifier = Modifier.testTag("rpn.bypass.$tag"))
-                        Text(node.text.toString(), Modifier.alpha(node.alpha).clickable(node.isEnabled && node.isClickable) { node.performClick() }.padding(end = 8.dp), fontSize = 13.sp)
+                    Row(Modifier.testTag("rpn.bypass.$tag").toggleable(node.isChecked,
+                        enabled = node.isEnabled && node.isClickable, role = Role.Checkbox) { node.performClick() },
+                        verticalAlignment = Alignment.CenterVertically) {
+                        WgCheck(node, compoundSource = "activity_rpn_bypass_apps:" + if (tag == "all") "rpn_bypass_bulk_check" else "rpn_bypass_deselect_all_check", interactive = false)
+                        WgText(node, Modifier.padding(end = 8.dp), interactive = false)
                     }
                 }
             }
@@ -109,7 +113,7 @@ fun RpnBypassAppRow(name: String, packageName: String, excluded: Boolean, icon: 
             val bitmap = remember(drawable) { drawable.toBitmap(48, 48).asImageBitmap() }
             Image(bitmap, null, Modifier.size(36.dp))
         }
-        Column(Modifier.weight(1f).padding(horizontal = 12.dp)) { Text(name, fontSize = 15.sp); Text(packageName, Modifier.alpha(.6f), fontSize = 12.sp, color = themeColor(R.attr.primaryLightColorText)) }
-        WgCheck(switch, name, switch = true, modifier = Modifier.testTag("rpn.bypass.switch.$packageName"))
+        Column(Modifier.weight(1f).padding(horizontal = 12.dp)) { WgSourceText(name, "list_item_rpn_bypass_app:rpn_bypass_app_name"); WgSourceText(packageName, "list_item_rpn_bypass_app:rpn_bypass_app_package") }
+        WgCheck(switch, name, switch = true, modifier = Modifier.testTag("rpn.bypass.switch.$packageName"), compoundSource = "list_item_rpn_bypass_app:rpn_bypass_app_switch")
     }
 }

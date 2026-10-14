@@ -5,16 +5,12 @@ import android.view.WindowManager
 import androidx.annotation.AttrRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -25,7 +21,6 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
-import androidx.cardview.R as CardR
 import com.google.android.material.R as MaterialR
 
 @Composable
@@ -51,24 +46,10 @@ fun SettingsCard(
     horizontalContentPadding: Dp = 0.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    LocalConfiguration.current
-    val context = LocalContext.current
-    val density = LocalDensity.current
-    val fallback = themeColor(R.attr.colorSurfaceContainer)
-    val values = context.obtainStyledAttributes(null,
-        intArrayOf(CardR.attr.cardBackgroundColor, CardR.attr.cardCornerRadius, CardR.attr.cardElevation), styleAttribute, 0)
-    val fill: Color
-    val radius: Dp
-    val elevation: Dp
-    try {
-        fill = values.getColorStateList(0)?.defaultColor?.let { Color(it) } ?: fallback
-        radius = with(density) { values.getDimension(1, 0f).toDp() }
-        elevation = with(density) { values.getDimension(2, 0f).toDp() }
-    } finally { values.recycle() }
-    Card(modifier.fillMaxWidth(), shape = RoundedCornerShape(cornerRadius ?: radius),
-        colors = CardDefaults.cardColors(containerColor = containerColor ?: fill,
-            contentColor = contentColor ?: themeColor(R.attr.primaryTextColor)),
-        elevation = CardDefaults.cardElevation(defaultElevation = elevation)) {
+    com.celzero.bravedns.ui.compose.controls.OriginalCardSurface(
+        modifier = modifier.fillMaxWidth(), styleAttribute = styleAttribute,
+        cornerRadius = cornerRadius, containerColor = containerColor, contentColor = contentColor,
+    ) {
         Column(Modifier.padding(horizontal = horizontalContentPadding, vertical = contentPadding), content = content)
     }
 }

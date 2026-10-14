@@ -1,0 +1,321 @@
+{
+  "generated_at_utc": "2026-10-14T13:39:53.081808+00:00",
+  "guard_sha256": "d3eccf7c9dd3e10a2850567ed2602f1b503c0a1ad46d7e0e25c04bc7678a40c3",
+  "result": "PASS_SOURCE_ONLY",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "scope": "Static text/XML source contracts only. No Kotlin compilation, Gradle, emulator, APK, runtime reference, or screenshots executed.",
+  "nodes": 154,
+  "layouts": 52,
+  "mapped_nodes": 151,
+  "inactive_baseline_exceptions": {
+    "activity_universal_firewall_settings:firewall_check_ipv4_check": {
+      "gone_ancestors": [
+        "@+id/firewall_check_ipv4_ll"
+      ],
+      "baseline_controller": "app/src/main/java/com/celzero/bravedns/ui/activity/UniversalFirewallSettingsActivity.kt",
+      "active_controller_references": 0,
+      "listener_setup": "Block commented; initial isChecked assignment line commented."
+    },
+    "list_item_play_subs:selection_indicator": {
+      "baseline_visibility": "gone",
+      "size": [
+        "0dp",
+        "0dp"
+      ],
+      "baseline_owners": [
+        "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+        "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt"
+      ],
+      "active_selectionIndicator_references": 0,
+      "selection_route": "Existing card selection styling; hidden radio was not used."
+    },
+    "item_server:checkbox_server": {
+      "baseline_search_scope": "all tracked app/src files",
+      "patterns": [
+        "ItemServerBinding",
+        "R.layout.item_server (exact resource boundary)",
+        "@layout/item_server (exact resource boundary)",
+        "literal resource name \"item_server\" (including getIdentifier)"
+      ],
+      "matches": 0,
+      "limitation": "Static reference absence only; cannot disprove untracked external reflection. item_server_group is a distinct live layout."
+    }
+  },
+  "network_nodes": 33,
+  "uninstantiated_native_routes": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "snippet": "OriginalRadioButton(originalCompoundKeyForId(node.key!!.substringAfterLast('.')), state!!.isChecked, { state.performClick() }, m, enabled = state.isEnabled)",
+      "reason": "NetworkKind.RADIO is supported by the generic renderer, but none of the 33 finite current compound/slider tree nodes has this kind. This is not counted as a rendered baseline instance."
+    }
+  ],
+  "render_paths": 152,
+  "source_contracts": 30,
+  "negative_controls": [
+    {
+      "name": "delete actual source-key mapping",
+      "rejected": true,
+      "detected_by": [
+        "finite catalog covers exactly baseline nodes"
+      ]
+    },
+    {
+      "name": "change direct renderer key",
+      "rejected": true,
+      "detected_by": [
+        "render path activity_advanced_setting:dv_experimental_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt",
+        "unmapped actual native/wrapper invocation: app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt OriginalSwitch(\"activity_advanced_setting:dv_auto_dial_switch\", b.dvExperimentalSwitch.isC"
+      ]
+    },
+    {
+      "name": "change wrapper input source key",
+      "rejected": true,
+      "detected_by": [
+        "render path activity_anti_censorship:ac_radio_never_split #0 wrapper-input-call: app/src/main/java/com/celzero/bravedns/ui/compose/settings/AntiCensorshipContent.kt"
+      ]
+    },
+    {
+      "name": "change network ID while retaining catalog keys",
+      "rejected": true,
+      "detected_by": [
+        "network ID must have exactly one catalog key: wrong_switch",
+        "render path activity_tunnel_settings:settings_stall_no_nw_switch #0 network-node-input: app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/TunnelSettingsState.kt"
+      ]
+    },
+    {
+      "name": "drop source theme overlay",
+      "rejected": true,
+      "detected_by": [
+        "source contract: overlay is resolved per source family before attributes [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt]"
+      ]
+    },
+    {
+      "name": "drop original switch overlay resource",
+      "rejected": true,
+      "detected_by": [
+        "source contract: source theme CustomWidget.Material3.CompoundButton.MaterialSwitch [app/src/main/res/values/styles.xml]"
+      ]
+    },
+    {
+      "name": "drop original delegate callback",
+      "rejected": true,
+      "detected_by": [
+        "render path activity_misc_settings:dv_ip_info_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+        "render path activity_misc_settings:settings_activity_app_notification_persistent_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+        "render path activity_misc_settings:settings_activity_app_notification_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+        "render path activity_misc_settings:settings_activity_auto_start_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+        "render path activity_misc_settings:settings_activity_check_update_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt"
+      ]
+    },
+    {
+      "name": "drop scalar assignment delegate",
+      "rejected": true,
+      "detected_by": [
+        "render path bottomsheet_server_settings:identity_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt",
+        "render path bottomsheet_server_settings:permanent_config_switch #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt",
+        "unmapped actual native/wrapper invocation: app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt OriginalSwitch(\"bottomsheet_server_settings:$sourceId\", toggle.isChecked, { }, enabled = t"
+      ]
+    },
+    {
+      "name": "drop slider original user change",
+      "rejected": true,
+      "detected_by": [
+        "render path activity_advanced_setting:go_max_memory_seekbar #0 native-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt",
+        "unmapped actual native/wrapper invocation: app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt OriginalSlider(\"activity_advanced_setting:go_max_memory_seekbar\", b.goMaxMemorySeekbar.pro"
+      ]
+    },
+    {
+      "name": "drop slider callback forwarding",
+      "rejected": true,
+      "detected_by": [
+        "source contract: slider forwards source callback, range and interaction contracts [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt]"
+      ]
+    },
+    {
+      "name": "wrong RTL switch thumb placement",
+      "rejected": true,
+      "detected_by": [
+        "source contract: compound drawing and switch gesture physical RTL contract [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt]"
+      ]
+    },
+    {
+      "name": "wrong RTL seek track mirror",
+      "rejected": true,
+      "detected_by": [
+        "source contract: slider forwards source callback, range and interaction contracts [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt]"
+      ]
+    },
+    {
+      "name": "drop tint reset cache dependency",
+      "rejected": true,
+      "detected_by": [
+        "source contract: source drawables, state lists and controller tint reset [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt]"
+      ]
+    },
+    {
+      "name": "drop live drag callback capture",
+      "rejected": true,
+      "detected_by": [
+        "source contract: native wrappers forward original callbacks and semantics [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt]"
+      ]
+    },
+    {
+      "name": "duplicate Wg bulk native action",
+      "rejected": true,
+      "detected_by": [
+        "render path dialog_wg_apps:wg_include_app_bulk_check #0 wrapper-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+        "render path dialog_wg_apps:wg_include_app_deselect_all_check #0 wrapper-render-call: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt",
+        "unmapped actual native/wrapper invocation: app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt WgCheck(node, compoundSource = \"dialog_wg_apps:\" + if (node === b.wgIncludeAppBulkCheck) \""
+      ]
+    },
+    {
+      "name": "drop original controller listener",
+      "rejected": true,
+      "detected_by": [
+        "source contract: changed-only checked setter and reentrant listener guard: wireguard/WgControlState.kt [app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt]"
+      ]
+    },
+    {
+      "name": "reverse native app/framework button tint precedence",
+      "rejected": true,
+      "detected_by": [
+        "source contract: native app tint precedence and legacy-only Material3 checkbox replacement [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt]",
+        "source contract: source drawables, state lists and controller tint reset [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt]"
+      ]
+    },
+    {
+      "name": "lose independent deselect bulk icon accentBad",
+      "rejected": true,
+      "detected_by": [
+        "exact style projection: activity_rpn_bypass_apps:rpn_bypass_deselect_all_check",
+        "source contract: independent Material checkbox icon tint and four source bulk icon colors [app/src/main/res/values/original_compound_styles.xml]"
+      ]
+    },
+    {
+      "name": "replace source Sponsor width with radius fallback",
+      "rejected": true,
+      "detected_by": [
+        "source contract: Sponsor inherited dimensions elevation overlay label and sliding order [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt]"
+      ]
+    },
+    {
+      "name": "lose drag activity when Compose cancels press",
+      "rejected": true,
+      "detected_by": [
+        "source contract: slider press-to-drag continuity drives all active visual uses [app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt]"
+      ]
+    }
+  ],
+  "errors": [],
+  "baseline_layout_sha256": {
+    "app/src/full/res/layout/activity_advanced_setting.xml": "13a7203c1a5fe03060b9d7fbc4ecb8e66f08051095033b4b229bda9ee8443962",
+    "app/src/full/res/layout/activity_app_details.xml": "fdc55b4030d018c95b96de1a3c5787fad27144728feecb2ee7bb072277485d6d",
+    "app/src/full/res/layout/activity_misc_settings.xml": "84812ac342e8d3425f6777bd102d353a94978623c28ca4ffac207ae54863bc40",
+    "app/src/full/res/layout/activity_tcp_proxy.xml": "f092ea5b57b35925f98b922b7a6e8b2be106a8aed893220fb62f5e8faa7b1428",
+    "app/src/full/res/layout/activity_tunnel_settings.xml": "a32c8342a61b02a5adf3b3aebde4bf822a614aaa7afe978fccdb1cfbdcbe205a",
+    "app/src/full/res/layout/bottom_sheet_conn_track.xml": "f8078e9de4ae8f05976772a0b659d5ff2c0217c8c9c91634bb731b8f95998f61",
+    "app/src/full/res/layout/bottom_sheet_home_screen.xml": "a3a6896c0817a5971ece0a4704c610e248b013b3d44df03f7f1b62d25267b161",
+    "app/src/full/res/layout/bottom_sheet_orbot.xml": "3f7944f904519f776a645935dbf7602a03fb8693c09d56c421f04b4facd7a855",
+    "app/src/full/res/layout/dialog_import_confirm.xml": "e74441e30118291692a38cec79423fa4770ac43f8804df7b3bebb6203ed24c68",
+    "app/src/full/res/layout/dialog_lockdown_check.xml": "5fba60e4f6248347033d6fc514a190355e81bbf1887da93a4b2d4b8bd328bb29",
+    "app/src/full/res/layout/dialog_set_custom_doh.xml": "1923da985703ec844131e70da7532a057f32c1d0c227d1a8f1896946c2e3a545",
+    "app/src/full/res/layout/dialog_set_dns_crypt.xml": "c1cff2e4b18d2c90bb4d60736207ef0389b7229174e90f88659d3d389f5feaf3",
+    "app/src/full/res/layout/dialog_set_dns_proxy.xml": "cb4d666bd55ce68514562c3023a93d476d1f83c10c2c7c28d9724d04d3bcc20b",
+    "app/src/full/res/layout/fragment_proxy_configure.xml": "3e531781de7da9d2f3a239c2e68262013c635d3b3bba4cc4c78c00eaaddb7047",
+    "app/src/full/res/layout/fragment_rethink_list.xml": "aeead207f6bba9d07287c473c294a9c7a3a44c5f3f9e3a783fb3e1d3555ba26b",
+    "app/src/full/res/layout/fragment_sponsor.xml": "05edb0ee4fbb03874fb76fe60794801cf63854c2dfc984e81230ff07815f5c47",
+    "app/src/full/res/layout/list_item_custom_all_domain.xml": "cd2e55381da712f05f2ddc9c293899e89741a8e3ba81ded72bfb77d694769fca",
+    "app/src/full/res/layout/list_item_custom_all_ip.xml": "c9da85e9404a3f291d97fcdb17261fb0fb86960f6d66bb21629d2a7dc804bba5",
+    "app/src/full/res/layout/list_item_custom_domain.xml": "16b47e966a9d1fe4d8462988e05b1118576e7f547189ea7ea24d5a39dc49e1e3",
+    "app/src/full/res/layout/list_item_custom_ip.xml": "e21cbc09a83fc3767a66e05950a25cb91ef30dbabf266efcfa66e770df0061f3",
+    "app/src/full/res/layout/list_item_rethink_blocklist_simple.xml": "57a94bdcbdd10603728ec1e2d05629f02682417ee93152f47f37f256762df552",
+    "app/src/main/res/layout/activity_anti_censorship.xml": "af16043508970f7bae2132802d4e7d4804a26e586beb1d2d1bda3428d886e949",
+    "app/src/main/res/layout/activity_checkout_proxy.xml": "18ead200450da5b9eab76507bf3e8df2ae65682ac989980843d38b3a7a2d6195",
+    "app/src/main/res/layout/activity_customer_support.xml": "d5f2f1cbd55c5b767ebbf5759e23b6360bfc518ed33edc80d5c5d86b3c898e1c",
+    "app/src/main/res/layout/activity_rpn_bypass_apps.xml": "6045e728cdd0e0802ce067a4c12cd2d6b8f12e0b8d3682408086446e21ad7600",
+    "app/src/main/res/layout/activity_rpn_config_detail.xml": "e36a7bd803e3c3160fa430de51688958758183947bcc7b3d6bc97f683e3e2807",
+    "app/src/main/res/layout/activity_universal_firewall_settings.xml": "92deda2dec91c6dd3d0d2a877fa700fab99bf2997e0dd19697f063c8adfb47b2",
+    "app/src/main/res/layout/activity_wg_detail.xml": "a46f0563195d7bebb458f7ae5ecf0f874baa503bc541d3c1ad5ddfdfd26b6f01",
+    "app/src/main/res/layout/bottom_sheet_block_free_dns_mode.xml": "287b446dacf8e63a917607391d2cd1aaf94be7f344175c6bda38d5f9af03cb80",
+    "app/src/main/res/layout/bottom_sheet_bug_report_files.xml": "af0c70b83ff062c9aa915f4f1690306803740c0753a5dcf5a40254584a172a52",
+    "app/src/main/res/layout/bottom_sheet_custom_domains.xml": "1016e420c1a1372c7839f63231a7fca30f12887822bbdc1d6b126d2cef93f297",
+    "app/src/main/res/layout/bottom_sheet_custom_ips.xml": "c312920e68e5613720936153bed802d18fd9d16abe93d5dceb74eb033aeb0b2f",
+    "app/src/main/res/layout/bottomsheet_server_settings.xml": "c79c7cdfd1720e71bbe4592c5d798c048b479f6fdc2ce983fc35b5277c1755bc",
+    "app/src/main/res/layout/dialog_rpn_ssid.xml": "7d9ee14b62ead0f3ae9226defd5f81690c8c8ee34eccbf9539501b74ee361883",
+    "app/src/main/res/layout/dialog_set_proxy.xml": "aceb715b7e3c21cc444cd763901c6a87695d24ee59ab22b53ba6cb091afe71f0",
+    "app/src/main/res/layout/dialog_wg_apps.xml": "c0be717ee878b17aa32228894161d15f1bca24840ab1313712b28df3f0eb091b",
+    "app/src/main/res/layout/dialog_wg_ssid.xml": "65827545977b56eed8a3da6354c89576534f9579eebad612f16fb3efbc678042",
+    "app/src/main/res/layout/fragment_dns_configure.xml": "af2736f85f5f087282f2ade08dbfe47757ab7a96ceca8cf4f31c583db9fc033d",
+    "app/src/main/res/layout/item_bug_report_file.xml": "a1928c1885ae3a30e0ba740f78a5ef6a6122441f08a6fe5236c8b1b0a1ed6883",
+    "app/src/main/res/layout/item_dns_record_type.xml": "bc7a0ffce9637b6f0d5fdf078107e3beb378b66db0af038c3f45d8e3bcdcf610",
+    "app/src/main/res/layout/item_network_policy.xml": "75b279ea086dd31bad40577ab54e2bfbb0fb99ef17325a1141f2bacdd7163527",
+    "app/src/main/res/layout/item_server.xml": "c7d4bcedf46b4bda52d9b0d4ac630c75c1b74c5b6da96434fb2f6989795084f5",
+    "app/src/main/res/layout/item_server_group.xml": "30cc1a460a0bc6b16b31421f9fda09f2fb2e336202522009d212f6e3add51e07",
+    "app/src/main/res/layout/list_item_exclude_country.xml": "f6058f3a53390a14c284d3801e99c171b2a8c33e5995471b2c995dfa6b270e9c",
+    "app/src/main/res/layout/list_item_play_subs.xml": "723c914a20fa9d67d13f190413f537bfff52fe10df277cbe0cb4a03f136d74d8",
+    "app/src/main/res/layout/list_item_proxy_cc_wg.xml": "39eda8119f09f41416d3dafc2ef333aef4255faef3b7108e22e4b503b6c155f7",
+    "app/src/main/res/layout/list_item_rethink_blocklist_adv.xml": "bdc5724bedfa35da28241823caab48af8adeab0554399f2fa61c7f47f2b746b9",
+    "app/src/main/res/layout/list_item_rpn_bypass_app.xml": "d879814fc6360267ff06fb8e1c470897f9a86f579de03ef48f40c8079940b914",
+    "app/src/main/res/layout/list_item_wg_general_interface.xml": "60708c1a15876142624dc8b15f7b1e1704f12611b13090d18522a0005b7e6ba9",
+    "app/src/main/res/layout/list_item_wg_hop.xml": "e8814ce838bfabb7475bd8394714d1f7fef9c0345fa87f7ea480f093acb23103",
+    "app/src/main/res/layout/list_item_wg_include_apps.xml": "5ba66d64002e17c6b7606bc20c3a1efcd8a06902616c53d29149ca3f1bce8cd4",
+    "app/src/main/res/layout/list_item_wg_one_interface.xml": "83190eb816afe346b47d89befb71d75000c54f6b9e433cc3cb9ea5435178586c"
+  },
+  "production_file_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt": "eb7e3a1077d2a0559d3c112685741fad1a14e04889f77d674352991c9fdc6d7c",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/BugReportFilesContent.kt": "dbd28f51b4231aac9690b07495b7fac5d60895f6097fe9c0857e7142f0879f52",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/DnsRecordTypesContent.kt": "aa72ee29067395b1265a85a8477194826ec671ae8a97017157e090b7a209b71f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppDetailsContent.kt": "ece34b109f25c24e5315db65ad7edaf0d62cc357c8cd8d23573d720df07a1ac3",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt": "783b426a07a36390e83d596a1cc75ed3f737f1b9159c43e2cd867979c9b85aa4",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt": "a3c1b8501b527f6d93675473d8d2a417fc354d18d54a456d3071840f817937f9",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundCatalog.kt": "fa20b7b9069f5c2476f29c1b6aed13f7c2510f6645e28538a17d536b68b59f4f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt": "5e3d3f1377ad72f46f4e239bae8438730c227db87760257a6fb24683fdf37e00",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt": "012dd26051058ddf0c1a43c1bbe4e58b351be4c003f7a35e50217222c2a10157",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt": "9c252ae7bc8a7abf189d5ccb82173474f1bb06718c77e6901b6a569c261ef520",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt": "9729cd818351e0090ed88380c62082c0ec71c51056f8ac7a6b96fd0a6d844d76",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsState.kt": "8871fdfee92777310c2554d2745ea11d2c5ba5b0e1cf1aa8f9ed13b141c0ee24",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/LockdownDialogState.kt": "8322eb76fd0924fc107ea8df67bba50881369e537a88b5264bd5d350760da70f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/MiscSettingsState.kt": "d6a295c94118d4dcfff77fbb8be2700a59defab4d2aa08d5646c70ba7b636396",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt": "8be5d09b20bff7eb1ebb3fdf7e6126eeed4e09f761f4403261652011483ea843",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt": "15d802516905f03db223da9d53a796db48fc28e32b15217e7f9c42b2b9fb0f13",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/ProxyEditorState.kt": "b8ae6837af0aedd53cff957d95fd388e9187c84cf780d8bb0dc91982200a3a34",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/ProxySettingsState.kt": "fd8b4680588af789e4375e0d07b5f20438cc376edd9d421ed6e73a473a79d872",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/TunnelSettingsState.kt": "7bfaa249c8da50ba5b6754d50763bdc7554339cf6f210a8161bd7e14a792e71b",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContent.kt": "3e30a016ae78b4c91194ccf30087f0629f6241bf2c36b0079c78a19286e33e00",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/CheckoutContent.kt": "236032c36d6b4c95f57f9fcbee1594666cc25f510f73d66b7d2e19a3e684ad90",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnControlState.kt": "d56da911d4b0f1fb56c49294a591a2eb445fd5f3739b6bbc1cc7bd5ddf3191db",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnExcludeContent.kt": "af847f921acffefa73c2a67b1e9ae75757d33f7ff3b9c2491a0b8cafb1c329ba",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt": "9ba127d64399e12ea5da08fe12dfa51a201378c9526b4c906be156af1311c965",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt": "6bf8aeed6c131cf9b7a975e7265252a66a2825ef8a97994a262197c3ecdfc2eb",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigContent.kt": "b6ed867fc9060f5f9812dc482467982887e0a4816809090d688f5bbcb37abe7a",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt": "caee6779a807380ab9dd364ac749198fdfbfa2b5ea5ac1c8ed9a67468c4f1900",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RuleDetailsContent.kt": "8ae340aaa1201c3f0c1260f4d6426dcb63873f7f7af1c96f0bcf77d294f0858d",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt": "9d0b6e07eb8ec32c8126c6ab9e763d1eec4ae29c26049f0fffb035a7988c0484",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt": "a710706b7da75d8404c58890e26332eef18a1d25663b60fd34c2033716a0c6d8",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/settings/AntiCensorshipContent.kt": "0a36038767ddc8727b74e1c9de82236fcec01b25b4a32732b0e37992c186fe12",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/settings/ModeSheets.kt": "e3d1ee77540f566ab50bac8a263e5526001fe493bf94a71ad651d2ec84e0cb68",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/settings/UniversalFirewallContent.kt": "afcf9d10379835f1b5f59cd276cd8c7d2243fcb489d82e61c04ca64211fd2627",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogDetailsContent.kt": "bcf77375607085d6e4dd4dfc030ee8c5d45e6832e57fee6e30d0f0717cfda973",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SponsorScreens.kt": "c828b3555e3b4a060588f296225441e4b7ea14a8549250ef6c583267b11faa23",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt": "d5955b5c4680bc492acad09581b19745cbc7c7cc1061d798fdaf3a286a50b406",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportUiState.kt": "4d44a64f3ece0e911680c206452aaa824d805706c7682f04b1d836ff011d7fd5",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/TcpScreen.kt": "da47ab5d7ac81d3089342dd61287353d497b45ad145aeb99d4473d56e9c6a8d2",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/TcpUiState.kt": "d267a9752a125925780b85d9eb250e01e8d4accfa0ce873ef9471144ad949c6a",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityControl.kt": "921cc874cc871969b341835220598473c548bda7be1bafea7a1db5bc49a5dcfe",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt": "cac549302000752978da1c46d865b5d24daca4df0b57847f929271ee3c80330d",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt": "d93ad72a717f90ee52edf064c652c479a9ebc907b43fd1f8b1faa66f31da6379",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDetailContent.kt": "3d25c21a555753a52b8cb23a439283100f6f367671faab0cc39a838980404aef",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgIncludeAppsContent.kt": "3172779ad1f2a3f4e79fad17d1fd0d9a52d7a8696b89fe89cebe35bf634e446e",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgProxySelectionContent.kt": "a53f1ad4ab4480c7792d75ea65632b59efd47c0d422ccffbf76599e46aaf9d62",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt": "cc304b02b4075322f675c17326cde031f5dabb527b7e5b3ac72cbd64a79694f3",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgSsidContent.kt": "7f8353da0e7be6bcb438429655b53b81728219c92d5c7493e3b4eb8c560b9db5",
+    "app/src/main/res/values/original_compound_styles.xml": "20be3dfbda26aa1c56c43c99742267651d35c8830ea3b462e9f84a395e7220aa",
+    "app/src/main/res/values/styles.xml": "94605e7df2a052dbd168cf268e1a72ffffa7c05d234b704ce41d47cf322d8103"
+  },
+  "remaining_gates": [
+    "Kotlin compilation and Android resource resolution are unverified.",
+    "Runtime checked/unchecked/disabled/pressed/focused/indeterminate and gesture behavior is unverified.",
+    "Visual dimensions, theme/night overlays, RTL, accessibility, screenshot comparison and full interactive flow parity remain unverified.",
+    "Finite call-site and delegate guards are regression tripwires, not a general Kotlin semantic or whole-business-logic proof."
+  ]
+}

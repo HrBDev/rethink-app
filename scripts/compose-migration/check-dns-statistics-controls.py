@@ -140,7 +140,10 @@ def check(sources):
             assert e.get(ANDROID + 'textColor') == '?attr/accentGood'
     assert 'DialogSetCustomDohBinding.inflate(layoutInflater)' in baseline(PREFIX + 'ui/fragment/DoTListFragment.kt')
     assert 'if (kind == DnsServerKind.ODOH) DnsEditorButtons.ODOH else DnsEditorButtons.DOH' in dns
-    dialog = body(dns, '@Composable private fun DnsEditorDialog', '@Composable private fun DnsField')
+    # The extracted source title now owns its original text color. Keep this
+    # button override check scoped to the actual dialog/button body, not its
+    # neighboring typography helper.
+    dialog = body(dns, '@Composable private fun DnsEditorDialog', '@Composable private fun DnsEditorTitle')
     assert 'OriginalButton(buttons.cancelSource, onDismiss' in dialog and 'OriginalButton(buttons.applySource, onApply' in dialog
     assert '@dialog_' not in dialog and 'color = themeColor' not in dialog
     assert 'val resources = LocalResources.current' in dns, 'Preserve lint154 localization fix'
@@ -169,6 +172,7 @@ def main():
             ('filters', 'Modifier.padding(3.dp)', 'Modifier.padding(0.dp)'),
             ('filters', 'onClick = { selection.toggle(filter) }', 'onClick = {}'),
             ('dns', 'OriginalButton(buttons.cancelSource, onDismiss', 'OriginalButton("@dialog_negative", onDismiss'),
+            ('dns', 'OriginalButton(buttons.cancelSource, onDismiss,', 'OriginalButton(buttons.cancelSource, onDismiss, color = themeColor(R.attr.accentGood),'),
             ('dns', 'DnsEditorButtons.ODOH else DnsEditorButtons.DOH', 'DnsEditorButtons.ODOH else DnsEditorButtons.ODOH'),
             ('relays', '"dialog_dnscrypt_relays:custom_dialog_ok_button", onDismiss', '"@dialog_negative", onDismiss'),
         ]

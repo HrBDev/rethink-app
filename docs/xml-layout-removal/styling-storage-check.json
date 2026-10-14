@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "lossless_round_trip": true,
+  "layouts": 186,
+  "nodes": 4344,
+  "category_entries": 20379,
+  "shared_entries": 662,
+  "expanded_sha256": "9119a0a9315bc2f6519a27639ffc115740d19721bc28e9711cc020e7c86ff721",
+  "ledger_bytes": 2866053,
+  "shared_catalog_bytes": 1353339,
+  "runtime": "NOT_RUN",
+  "deterministic_regeneration": {
+    "passed": true,
+    "python_hash_seeds": [
+      1,
+      2
+    ],
+    "artifacts": {
+      "styling-equivalence-ledger.json": "7ab62f96b959015e231bb5263d2c12ac93c060ece218dc849444f331eb9e991b",
+      "styling-shared-catalog.json": "984bc11bfbd40126ff7e3ca620fb2211b7bcb538e74f645ca4bbfabc4da6c237"
+    }
+  }
+}

@@ -6,6 +6,8 @@ import com.celzero.bravedns.ui.compose.controls.*
 import com.celzero.bravedns.ui.compose.fields.OriginalTextField
 import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -51,7 +53,11 @@ import com.celzero.bravedns.R
             }
             FlowRow(Modifier.padding(horizontal = 12.dp)) {
                 listOf(b.wgIncludeAppBulkCheck, b.wgIncludeAppDeselectAllCheck).forEach { node ->
-                    Row(verticalAlignment = Alignment.CenterVertically) { WgCheck(node, node.text.toString()); WgText(node) }
+                    Row(Modifier.toggleable(node.isChecked, enabled = node.isEnabled && node.isClickable,
+                        role = Role.Checkbox) { node.performClick() }, verticalAlignment = Alignment.CenterVertically) {
+                        WgCheck(node, compoundSource = "dialog_wg_apps:" + if (node === b.wgIncludeAppBulkCheck) "wg_include_app_bulk_check" else "wg_include_app_deselect_all_check", interactive = false)
+                        WgText(node, interactive = false)
+                    }
                 }
             }
             b.wgIncludeAppRecyclerViewDialog.adapter?.Content(Modifier.weight(1f))

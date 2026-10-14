@@ -29,6 +29,8 @@ FILES = {
     'row_state': UI + 'compose/rpn/RpnServerRowState.kt',
     'type': UI + 'compose/rpn/RpnSourceTypography.kt',
     'progress': UI + 'compose/rpn/RpnComponents.kt',
+    'shared_progress': UI + 'compose/controls/OriginalProgress.kt',
+    'progress_styles': 'app/src/main/res/values/original_wg_text_styles.xml',
     'removal': UI + 'compose/rpn/RpnRemovalContent.kt',
     'header_loading': UI + 'compose/rpn/RpnHeaderSkeletons.kt',
     'plans': UI + 'compose/purchase/PurchasePlans.kt',
@@ -98,8 +100,29 @@ def validate(src):
     contains('screen', 'empty/error centered paddings and original opacity/type metrics',
              'padding(horizontal = 32.dp, vertical = 56.dp)', 'Modifier.size(72.dp).alpha(.5f)', 'fontSize = 16',
              'Modifier.padding(top = 8.dp), fontSize = 13', 'Modifier.size(64.dp).alpha(.7f)', 'fontSize = 14.sp')
-    contains('screen', 'server fetch progress and distinct signature alpha',
-             'height(3.dp)', 'trackColor = themeColor(R.attr.chipBgColorPositive)', 'alpha(if (server) 1f else .8f)')
+    contains('screen', 'server fetch visibility, source renderer, animated alpha and distinct signature alpha',
+             'if (state.fetchProgress.isVisible) com.celzero.bravedns.ui.compose.controls.OriginalLinearProgress(',
+             '"activity_server_order_history:fetch_progress", Modifier.fillMaxWidth().alpha(fetchAlpha.value), indeterminate = true',
+             'alpha(if (server) 1f else .8f)')
+    # Independent pinned source values remain explicit even though drawing moved to a shared
+    # renderer. Theme-owned fields absent from XML must remain absent, not fabricated as zero.
+    progress_styles = ET.fromstring(src['progress_styles'])
+    for layout, node_id in [('activity_server_order_history', 'fetch_progress'),
+                            ('dialog_server_loading', 'server_loading_timeout_bar'),
+                            ('dialog_server_loading', 'server_loading_spinner')]:
+        baseline = ET.fromstring(git(BASE, 'app/src/main/res/layout/' + layout + '.xml'))
+        node = next(n for n in baseline.iter() if n.get('{'+NS['a']+'}id') == '@+id/' + node_id)
+        retained = {'indicatorSize', 'indicatorInset', 'trackThickness', 'trackCornerRadius',
+                    'indicatorColor', 'trackColor', 'indicatorTrackGapSize', 'trackStopIndicatorSize',
+                    'indeterminate', 'max', 'progress', 'secondaryProgress'}
+        expected = {('android:' if key.startswith('{'+NS['a']+'}') else '') + key.split('}')[-1]: value
+                    for key, value in node.attrib.items() if key.split('}')[-1] in retained}
+        style_name = 'OriginalWgProgress_' + layout + '_' + node_id
+        style = progress_styles.find("style[@name='"+style_name+"']")
+        actual = None if style is None else {item.get('name'): item.text for item in style}
+        check('progress explicit source attributes remain byte-valued: '+layout+':'+node_id, actual == expected)
+        contains('shared_progress', 'progress source resource remains wired: '+layout+':'+node_id, 'R.style.' + style_name)
+
     contains('loading', 'server skeleton exact icon/text/trailing shape dimensions',
              'size(36.dp)', 'padding(start = 12.dp)', 'width(120.dp).height(14.dp)',
              'padding(top = 6.dp).width(70.dp).height(10.dp)', 'size(20.dp)',
@@ -175,11 +198,30 @@ def validate(src):
     contains('progress', 'progress title/status/hint resolve exact source typography',
              'utilityTextStyle(size = 17f, family = "sans-serif-medium", weight = Typeface.BOLD)',
              'R.dimen.default_font_text_view', 'R.dimen.small_font_text_view', 'minLines = 2')
-    contains('progress', 'progress track source colors/inset/caps without modern gap/stop decoration',
-             'sourceProgressLook(circular = false)', 'sourceProgressLook(circular = true)',
-             'Modifier.size(56.dp + spinner.inset * 2).padding(spinner.inset)',
-             'height(3.dp)', 'strokeCap = androidx.compose.ui.graphics.StrokeCap.Round, gapSize = 0.dp, drawStopIndicator = {}',
-             'linearProgressIndicatorStyle', 'circularProgressIndicatorStyle', 'android.R.attr.disabledAlpha')
+    contains('progress', 'loading progress uses pinned timeout and spinner renderers with live range',
+             'com.celzero.bravedns.ui.compose.controls.OriginalLinearProgress(',
+             '"dialog_server_loading:server_loading_timeout_bar", Modifier.fillMaxWidth()',
+             'progress = state.timeout.progress.toFloat() / state.timeout.max.coerceAtLeast(1)',
+             'com.celzero.bravedns.ui.compose.controls.OriginalServerLoadingSpinner()')
+    contains('shared_progress', 'linear progress resolves actual MDC defaults before source colors/thickness/radius',
+             'val spec = LinearProgressIndicatorSpec(context, null)',
+             'context.obtainStyledAttributes(style, intArrayOf(MaterialR.attr.trackThickness,',
+             'spec.trackThickness = overrides.thicknessDp?.let(::px) ?: if (a.hasValue(0)) a.getDimensionPixelSize(0, spec.trackThickness) else spec.trackThickness',
+             'spec.trackCornerRadius = minOf(overrides.radiusDp?.let(::px) ?: a.getDimensionPixelSize(1, 0), spec.trackThickness / 2)',
+             'spec.useRelativeTrackCornerRadius = false',
+             'spec.indicatorColors = intArrayOf(overrides.indicator ?: a.getColor(2, spec.indicatorColors[0]))',
+             'spec.trackColor = overrides.track ?: a.getColor(3, spec.trackColor)')
+    contains('shared_progress', 'gap and stop remain actual MDC theme defaults unless explicitly overridden',
+             'spec.indicatorTrackGapSize = overrides.gapDp?.let(::px) ?: if (a.hasValue(4)) a.getDimensionPixelSize(4, spec.indicatorTrackGapSize) else spec.indicatorTrackGapSize',
+             'spec.trackStopIndicatorSize = overrides.stopSizeDp?.let(::px) ?: if (a.hasValue(5)) a.getDimensionPixelSize(5, spec.trackStopIndicatorSize) else spec.trackStopIndicatorSize',
+             'IndeterminateDrawable.createLinearDrawable(context, spec)',
+             'DeterminateDrawable.createLinearDrawable(context, spec)')
+    contains('shared_progress', 'circular progress retains source size/thickness and inherited inset/track/caps',
+             'CircularProgressIndicatorSpec(context, null).apply {',
+             'indicatorSize = a.getDimensionPixelSize(0, indicatorSize); trackThickness = a.getDimensionPixelSize(1, trackThickness)',
+             'IndeterminateDrawable.createCircularDrawable(context, spec)',
+             '(spec.indicatorSize + spec.indicatorInset * 2).toDp()',
+             'progressBarRangeInfo = ProgressBarRangeInfo.Indeterminate')
     for name in ['rpnProgressDialog', 'RpnText', 'OriginalRpnText']:
         check('unchanged existing RPN helper: '+name,
               compact(block(src['progress'], 'fun '+name)) == compact(block(git(BEFORE, FILES['progress']), 'fun '+name)))
@@ -223,7 +265,7 @@ def validate(src):
              'RpnSubscriptionLoadingSkeleton(ui.shimmerSubscriptionBanner.shimmerRunning)')
     check('generic RPN line skeleton removed', 'fun RpnShimmer' not in src['selection'])
     check('owned renderers do not inflate XML or instantiate a View',
-          all(not re.search(r'AndroidView\s*\(|LayoutInflater|\.inflate\s*\(', src[x]) for x in ['row','screen','tile','loading','watermark','type','removal','header_loading','plans']))
+          all(not re.search(r'AndroidView\s*\(|LayoutInflater|\.inflate\s*\(', src[x]) for x in ['row','screen','tile','loading','watermark','type','removal','header_loading','plans','shared_progress']))
     return results
 
 
@@ -245,6 +287,15 @@ def main():
                  ('loading', 'width(120.dp).height(14.dp)', 'width(100.dp).height(14.dp)'),
                  ('vpn', 'ui.flagWatermark.setFlagText(group.flagEmoji)', 'ui.flagWatermark.setFlagText("")'),
                  ('progress', 'size = 17f, family = "sans-serif-medium"', 'size = 20f, family = "sans-serif-medium"'),
+                 ('screen', 'if (state.fetchProgress.isVisible)', 'if (true)'),
+                 ('screen', 'alpha(fetchAlpha.value)', 'alpha(1f)'),
+                 ('screen', 'alpha(if (server) 1f else .8f)', 'alpha(1f)'),
+                 ('progress_styles', '<item name="trackColor">?attr/chipBgColorPositive</item>', '<item name="trackColor">?attr/background</item>'),
+                 ('progress_styles', '<item name="indicatorColor">?attr/accentGood</item>', '<item name="indicatorColor">?attr/primaryTextColor</item>'),
+                 ('progress_styles', '<item name="trackThickness">3dp</item>', '<item name="trackThickness">4dp</item>'),
+                 ('shared_progress', 'else spec.indicatorTrackGapSize', 'else 0'),
+                 ('shared_progress', 'else spec.trackStopIndicatorSize', 'else 0'),
+                 ('shared_progress', '(spec.indicatorSize + spec.indicatorInset * 2).toDp()', 'spec.indicatorSize.toDp()'),
                  ('removal', 'Modifier.size(40.dp)', 'Modifier.size(28.dp)'),
                  ('plans', 'fillMaxWidth().height(200.dp)', 'fillMaxWidth().height(120.dp)'),
                  ('ping', 'maxLines = 1', 'maxLines = 2'),
@@ -256,13 +307,14 @@ def main():
         changed[key] = changed[key].replace(old, new, 1)
         mutation_results.append({'file': FILES[key], 'mutation': new, 'rejected': not all(x['passed'] for x in validate(changed))})
     report = {'baseline': BASE, 'pre_edit_checkpoint': BEFORE, 'verification_kind': 'source-only, not Kotlin compilation or visual equivalence',
+              'current_report_description': 'Current shared MDC progress renderer contracts. Earlier source reports remain historical; their hardcoded zero-gap/no-stop assumption is superseded by actual MDC 1.14 widget-theme inheritance. No runtime verification is claimed.',
               'checks': results, 'negative_controls': mutation_results, 'baseline_layout_sha256': evidence,
               'source_sha256': {FILES[k]: hashlib.sha256(v.encode()).hexdigest() for k,v in src.items()},
               'unrun': ['Android/Kotlin compilation', 'Compose/Robolectric tests', 'device/screenshots', 'TalkBack/RTL/font-scale visual checks'],
               'remaining_limits': ['Material and framework implicit defaults require approved runtime reference comparison.',
                   'History collapsing toolbar scrim/parallax/title placement remains a separate source/runtime gate.',
                   'Shimmer placeholder composition/timing/alpha are guarded, but exact library sweep/dropoff/tilt and stopped-frame appearance require visual comparison.',
-                  'Progress-window chrome and exact Material progress animation curves require runtime comparison; the source text/track defaults and geometry are restored.']}
+                  'Progress source attributes and delegation to MDC 1.14 drawing/animation are guarded; Compose integration, progress-window chrome and device rendering still require approved runtime comparison.']}
     if args.report:
         output = Path(args.report)
         output.parent.mkdir(parents=True, exist_ok=True)

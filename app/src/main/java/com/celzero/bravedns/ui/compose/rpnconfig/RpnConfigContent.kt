@@ -70,7 +70,7 @@ fun RpnConfigContent(b: RpnConfigState, headerState: TopAppBarState = rememberTo
             Column(Modifier.weight(1f).verticalScroll(contentScroll).testTag("rpn.config.body").padding(start = 16.dp, end = 16.dp, top = 20.dp, bottom = 60.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 ConfigCard(b.statsCard) {
                     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                        WgText(b.valueStatus); Text(" · ", fontSize = 11.sp); WgText(b.valueSince, Modifier.weight(1f))
+                        WgText(b.valueStatus); WgSourceText(" · ", "activity_rpn_config_detail:anonymous_24"); WgText(b.valueSince, Modifier.weight(1f))
                         WgText(b.valueRx); WgText(b.valueTx)
                     }
                     HorizontalDivider(color = themeColor(R.attr.divider).copy(alpha = .08f))
@@ -81,7 +81,7 @@ fun RpnConfigContent(b: RpnConfigState, headerState: TopAppBarState = rememberTo
                     WgText(b.valueIpv4)
                 }
                 ConfigCard(b.actionsCard) {
-                    Text(stringResource(R.string.lbl_actions), style = MaterialTheme.typography.titleLarge)
+                    WgSourceText(stringResource(R.string.lbl_actions), "activity_rpn_config_detail:anonymous_45")
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         ConfigAction(b.applicationsBtn, "apps", R.drawable.ic_app_info_accent, b.appsLabel.text.toString(), b.appsLabel.textColor, Modifier.weight(1f))
                         if (b.hopBtn.isVisible) ConfigAction(b.hopBtn, "hopAction", R.drawable.ic_network_tunnel, b.hopLabel.text.toString(), null, Modifier.weight(1f))
@@ -89,13 +89,13 @@ fun RpnConfigContent(b: RpnConfigState, headerState: TopAppBarState = rememberTo
                     }
                 }
                 ConfigCard(b.otherSettingsCard) {
-                    Text(stringResource(R.string.lbl_advanced), style = MaterialTheme.typography.titleLarge)
+                    WgSourceText(stringResource(R.string.lbl_advanced), "activity_rpn_config_detail:anonymous_64")
                     ConfigSetting("hop", b.hopRl, b.hopCheck, b.hopTitleTv, stringResource(R.string.relay_rpn_desc))
                     ConfigSetting("lockdown", b.lockdownRl, b.lockdownCheck, b.lockdownTitleTv, stringResource(R.string.lockdown_wg_dialog_desc))
                     ConfigSetting("catchAll", b.catchAllRl, b.catchAllCheck, b.catchAllTitleTv, stringResource(R.string.catch_all_wg_dialog_desc))
                 }
                 ConfigCard(b.mobileSsidSettingsCard, padding = 20) {
-                    Text(stringResource(R.string.adv_taster_title), style = MaterialTheme.typography.titleLarge)
+                    WgSourceText(stringResource(R.string.adv_taster_title), "activity_rpn_config_detail:anonymous_82")
                     ConfigSetting("mobile", b.useMobileRl, b.useMobileCheck, b.useMobileTitleTv, stringResource(R.string.wg_setting_use_on_mobile_desc))
                     ConfigSetting("ssid", b.ssidFilterRl, b.ssidCheck, b.ssidTitleTv, b.ssidDescTv.text.toString())
                     if (b.ssidDisplayGroup.isVisible) Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -123,8 +123,11 @@ private fun ConfigSetting(tag: String, row: WgControlState, checked: WgControlSt
     // Hop and lockdown rows had no click listener; their switch remains the only target.
     Row(Modifier.fillMaxWidth().testTag("rpn.config.$tag.row").then(if (row.hasClickListener) Modifier.clickable(row.isEnabled && row.isClickable) { row.performClick() } else Modifier)
         .padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-        Column(Modifier.weight(1f).padding(end = 16.dp)) { WgText(title); Text(description, Modifier.padding(top = 4.dp), color = themeColor(R.attr.primaryLightColorText), fontSize = 13.sp) }
-        WgCheck(checked, title.text.toString(), switch = true, modifier = Modifier.testTag("rpn.config.$tag.switch"))
+        Column(Modifier.weight(1f).padding(end = 16.dp)) { WgText(title); WgSourceText(description, "activity_rpn_config_detail:" + when (tag) {
+            "hop" -> "anonymous_68"; "lockdown" -> "anonymous_73"; "catchAll" -> "anonymous_78"
+            "mobile" -> "anonymous_86"; else -> "ssid_desc_tv"
+        }, Modifier.padding(top = 4.dp)) }
+        WgCheck(checked, title.text.toString(), switch = true, modifier = Modifier.testTag("rpn.config.$tag.switch"), compoundSource = "activity_rpn_config_detail:" + when (tag) { "catchAll" -> "catch_all_check"; "mobile" -> "use_mobile_check"; else -> "${tag}_check" })
     }
 }
 
@@ -135,7 +138,9 @@ private fun ConfigAction(state: WgControlState, tag: String, icon: Int, label: S
         modifier = modifier.alpha(state.alpha).testTag("rpn.config.$tag"), shape = RoundedCornerShape(20.dp), color = themeColor(R.attr.chipBgColorPositive)) {
         Row(Modifier.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Icon(painterResource(icon), null, Modifier.size(24.dp), tint = themeColor(R.attr.accentGood))
-            Text(label, Modifier.weight(1f), color = color?.let(::Color) ?: themeColor(R.attr.accentGood), fontSize = 12.sp)
+            WgSourceText(label, "activity_rpn_config_detail:" + when (tag) {
+                "apps" -> "apps_label"; "hopAction" -> "hop_label"; else -> "anonymous_60"
+            }, Modifier.weight(1f), color = color?.let(::Color) ?: Color.Unspecified)
             Icon(painterResource(R.drawable.ic_right_arrow_secondary), null, Modifier.size(18.dp), tint = themeColor(R.attr.accentGood))
         }
     }

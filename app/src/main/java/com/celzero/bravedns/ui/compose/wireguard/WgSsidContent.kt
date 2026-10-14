@@ -2,10 +2,14 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import androidx.compose.ui.graphics.Color
 import com.celzero.bravedns.ui.compose.fields.OriginalTextField
 import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -38,9 +42,9 @@ class WgSsidPresenter(private val items: MutableList<SsidItem>, val onDelete: (S
     }
 }
 
-@Composable private fun WgRadio(node: WgControlState) {
-    Row(Modifier.clickable(enabled = node.isEnabled && node.isClickable) { node.isChecked = true }, verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(node.isChecked, { node.isChecked = true }, enabled = node.isEnabled && node.isClickable)
+@Composable private fun WgRadio(sourceId: String, node: WgControlState) {
+    Row(Modifier.selectable(selected = node.isChecked, role = Role.RadioButton, enabled = node.isEnabled && node.isClickable) { node.isChecked = true }, verticalAlignment = Alignment.CenterVertically) {
+        OriginalRadioButton("dialog_wg_ssid:$sourceId", node.isChecked, null, enabled = node.isEnabled && node.isClickable, indicatorOnly = true)
         WgText(node)
     }
 }
@@ -53,19 +57,19 @@ class WgSsidPresenter(private val items: MutableList<SsidItem>, val onDelete: (S
     val done = b.ssidEditText.onEditorDone
     Surface(shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.background) {
         Column(Modifier.safeDrawingPadding().imePadding().verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text(stringResource(R.string.wg_setting_ssid_title), style = MaterialTheme.typography.titleLarge)
+            WgSourceText(stringResource(R.string.wg_setting_ssid_title), "dialog_wg_ssid:anonymous_3")
             WgText(b.descriptionTextView)
             if (b.ssidRecyclerView.isVisible) presenter?.getSsidItems()?.forEach { item ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) { Text(item.name); Text(item.type.getDisplayName(context), color = themeColor(R.attr.accentBad)) }
+                    Column(Modifier.weight(1f)) { WgSourceText(item.name, "item_ssid:ssidNameText"); WgSourceText(item.type.getDisplayName(context), "item_ssid:ssidTypeText", Modifier.padding(4.dp)) }
                     IconButton({ presenter.onDelete(item) }) { Icon(painterResource(R.drawable.ic_delete), stringResource(R.string.lbl_delete), tint = Color.Unspecified) }
                 }
             }
             WgText(b.emptyStateView)
             WgText(b.ssidConditionHeading)
-            FlowRow { WgRadio(b.radioEqual); WgRadio(b.radioNotEqual) }
-            Text(stringResource(R.string.lbl_criteria))
-            FlowRow { WgRadio(b.radioExact); WgRadio(b.radioWildcard) }
+            FlowRow { WgRadio("radioEqual", b.radioEqual); WgRadio("radioNotEqual", b.radioNotEqual) }
+            WgSourceText(stringResource(R.string.lbl_criteria), "dialog_wg_ssid:anonymous_12")
+            FlowRow { WgRadio("radioExact", b.radioExact); WgRadio("radioWildcard", b.radioWildcard) }
             WgField(b.ssidEditText, b.ssidTextInputLayout.hint, fieldStyle = OriginalFieldStyle.WgSsid, onDone = { keyboard?.hide(); scope.launch { yield(); focus.clearFocus(); done?.invoke() } })
             WgAction(b.addSsidBtn, source = "dialog_wg_ssid:addSsidBtn")
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { WgAction(b.cancelBtn, source = "dialog_wg_ssid:cancelBtn"); WgAction(b.saveBtn, source = "dialog_wg_ssid:saveBtn") }

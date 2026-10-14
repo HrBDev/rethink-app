@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-14T13:35:32.965627+00:00",
+  "baseline_commit": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "checkout_head": "ff0510e327efb5f65c4aa8f958c4b1650bd8d569",
+  "review_scope": "Bounded independent source-only Kotlin/API, callback, state, disabled behavior review of six final renderer files. No production edits.",
+  "status": "SOURCE_REVIEW_COMPLETE_WITH_ONE_SOURCE_CORRECTION",
+  "compile_status": "NOT_RUN",
+  "runtime_status": "NOT_RUN",
+  "dependencies_declared": {
+    "material_components": "1.14.0",
+    "compose_bom": "2026.08.00",
+    "min_sdk": 23,
+    "compile_sdk": 37,
+    "resolved_artifact_graph_verified": false
+  },
+  "files": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt",
+      "sha256": "5e3d3f1377ad72f46f4e239bae8438730c227db87760257a6fb24683fdf37e00",
+      "lines": 324
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt",
+      "sha256": "012dd26051058ddf0c1a43c1bbe4e58b351be4c003f7a35e50217222c2a10157",
+      "lines": 308
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalProgress.kt",
+      "sha256": "611f1dccfc21681a00b84bed4b175ada13b9fcb3114bd6dc79df457c7186ee60",
+      "lines": 163
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt",
+      "sha256": "0f0890d5762ebd45a9e764a4c49e327260d7626a4a51b8786dcecefab48f1d53",
+      "lines": 211
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextStyles.kt",
+      "sha256": "dc4c542042c3f0fb26a97d8ee7c84fa3480394c01266c0a523b59c05371e57b4",
+      "lines": 130
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextCatalog.kt",
+      "sha256": "cec647211a7616ca9892c2fd2c4d04beea7af55c2ef5def8a4fda8d463fa3323",
+      "lines": 196
+    }
+  ],
+  "findings": [
+    {
+      "id": "FR-01",
+      "severity": "P2",
+      "status": "CORRECTED_IN_SOURCE_UNRUN",
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt",
+      "lines": [
+        60,
+        63,
+        70,
+        80,
+        163,
+        166
+      ],
+      "title": "Retain active slider styling when drag cancels the press interaction",
+      "description": "The original renderer observed PressInteraction only. Compose Slider uses a separate DragInteraction during dragging and cancels its tap press, so pressed colors, the shortened Material handle, gap adjustment and halo reverted mid-drag. MDC 1.14 retains thumbIsPressed across ACTION_MOVE.",
+      "original_sha256": "6d122eed0069a8c8f7070a899643d361ceaaca9e8a3914f522a854771f1dc1b0",
+      "corrected_sha256": "012dd26051058ddf0c1a43c1bbe4e58b351be4c003f7a35e50217222c2a10157",
+      "correction": "originalSliderActiveInteraction collects pressed and dragged states and returns pressed || dragged; existing active-state branches now use it. Value/change-finished callbacks remain forwarded unchanged.",
+      "verification": "Manually re-read final source and authored Press -> DragStart + PressCancel -> DragStop regression test. Test not compiled or executed."
+    }
+  ],
+  "additional_actionable_findings": [],
+  "checks": [
+    {
+      "check": "Six final production byte hashes matched agreed frozen values",
+      "status": "PASS"
+    },
+    {
+      "check": "186 WireGuard text catalog keys unique and referenced OriginalWgText styles defined",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "check": "Five OriginalProgress style references defined in generated values XML",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "check": "MDC 1.14 progress spec fields and drawable factory/visibility APIs inspected in official source",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "check": "Float/custom-thumb/custom-track Slider call shape checked against official 1.4.0-beta01 API and pre-BOM AndroidX source",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "check": "Compound current callback/state capture, disabled gesture removal, release/cancel flow and drawable callback disposal inspected",
+      "status": "REVIEWED_SOURCE_ONLY"
+    },
+    {
+      "check": "Progress clamping/range semantics, visibility/disposal and RTL direction inspected",
+      "status": "REVIEWED_SOURCE_ONLY"
+    },
+    {
+      "check": "Tab selection callback, safe position indexing, RTL position, empty labels and per-tab selectable semantics inspected",
+      "status": "REVIEWED_SOURCE_ONLY"
+    },
+    {
+      "check": "WireGuard typography override/line-limit/state-color mapping and catalog refs inspected",
+      "status": "REVIEWED_SOURCE_ONLY"
+    },
+    {
+      "check": "Exact MDC non-View classifications: LinearProgressIndicatorSpec and CircularProgressIndicatorSpec extend BaseProgressIndicatorSpec; MaterialShapeDrawable extends Drawable",
+      "status": "PASS_SOURCE_ONLY"
+    }
+  ],
+  "gaps": [
+    "No Gradle/Kotlin/AAPT/lint, Android unit/Robolectric/instrumentation or device execution; no dependency binaries downloaded.",
+    "Exact artifact versions resolved by Compose BOM and final Android API/resource linkage are not verified by a source review. Current AndroidX main is not used as a substitute for the declared BOM: its newer 1.5 API differs from the 1.4 custom-slot overload.",
+    "Gesture scheduling, accessibility/TalkBack, disabled mid-gesture behavior, animated drawables and visual/font-scale/theme parity require runtime validation.",
+    "This finite review does not establish complete business-logic equivalence or audit all renderer call sites."
+  ],
+  "upstream_source_evidence": [
+    {
+      "label": "BaseProgressIndicatorSpec",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/progressindicator/BaseProgressIndicatorSpec.java",
+      "git_blob_sha": "a4a91da111a8391bea955af24e54793edc52456d"
+    },
+    {
+      "label": "LinearProgressIndicatorSpec",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/progressindicator/LinearProgressIndicatorSpec.java",
+      "git_blob_sha": "8985277381988a629d6907b84a90ca02178fc574"
+    },
+    {
+      "label": "IndeterminateDrawable",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/progressindicator/IndeterminateDrawable.java",
+      "git_blob_sha": "b309b52db7014987a2221f1b6e703be223dcb7ca"
+    },
+    {
+      "label": "DrawableWithAnimatedVisibilityChange",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/progressindicator/DrawableWithAnimatedVisibilityChange.java",
+      "git_blob_sha": "42b2f9597540df170118c41f2b537baac573f920"
+    },
+    {
+      "label": "BaseSlider",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/slider/BaseSlider.java",
+      "git_blob_sha": "ade35e4e48cdf14a5f1b76b89dc50031cb8fe693"
+    },
+    {
+      "label": "ComposeSliderPreBom",
+      "url": "https://github.com/androidx/androidx/blob/00750b0544d71f1267b80da4ded1c1b8322ae273/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Slider.kt",
+      "git_blob_sha": "b71a76534fa07398b136e8a5626cdceac3257fd7"
+    },
+    {
+      "label": "Material3API1.4.0-beta01",
+      "url": "https://github.com/androidx/androidx/blob/androidx-main/compose/material3/material3/api/1.4.0-beta01.txt",
+      "git_blob_sha": "f27bfa77b39e0d7cc38c2ed78e80d14b78e20786"
+    },
+    {
+      "label": "ComposeLocals",
+      "url": "https://github.com/androidx/androidx/blob/androidx-main/compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/platform/CompositionLocals.kt",
+      "git_blob_sha": "b3fce1a90f02adcbf3d1224909683606b410d683"
+    },
+    {
+      "label": "CircularProgressIndicatorSpec",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/progressindicator/CircularProgressIndicatorSpec.java",
+      "git_blob_sha": "03b6d37e77c42cd658183cd3063104b2c7a4fa11"
+    },
+    {
+      "label": "MaterialShapeDrawable",
+      "url": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/shape/MaterialShapeDrawable.java",
+      "git_blob_sha": "6aaedd2049f87466ab0a67701956d1f59c221d2a"
+    }
+  ],
+  "supporting_file_pins": [
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControlsTest.kt",
+      "sha256": "abfb3b255c5288eb7787cd0768a90441b02264307398dab76093919a3d5f18fa"
+    },
+    {
+      "path": "scripts/compose-migration/check-binding-removal.py",
+      "sha256": "de04514634de471d2a5478cb8fb77aedb0eedd16b085d2ac8249f92838bfd6ad"
+    },
+    {
+      "path": "app/src/main/res/values/original_wg_text_styles.xml",
+      "sha256": "9d1539fbadd77cb7708150aa37a9b443e0183a2e25c529d46bb890ef7b00f0ee"
+    },
+    {
+      "path": "gradle/lib.toml",
+      "sha256": "6289d8946555d26dd6b2f549b425c0b198d6ba23ae87e90445a3668335c6d067"
+    }
+  ]
+}

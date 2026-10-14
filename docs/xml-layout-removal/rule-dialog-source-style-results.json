@@ -1,0 +1,81 @@
+{
+  "status": "passed_source_only",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "findings": [
+    "S19",
+    "S20",
+    "S34"
+  ],
+  "negative_mutations_rejected": 21,
+  "baseline_resources": [
+    {
+      "path": "app/src/main/res/drawable/rectangle_border_background.xml",
+      "sha256": "353b1fffc4f06ceafc017697201580d16e87175353c6bfff3baf174cb08e129f"
+    },
+    {
+      "path": "app/src/full/res/layout/list_item_custom_domain.xml",
+      "sha256": "16b47e966a9d1fe4d8462988e05b1118576e7f547189ea7ea24d5a39dc49e1e3"
+    },
+    {
+      "path": "app/src/main/res/layout/bottom_sheet_custom_domains.xml",
+      "sha256": "1016e420c1a1372c7839f63231a7fca30f12887822bbdc1d6b126d2cef93f297"
+    },
+    {
+      "path": "app/src/full/res/layout/list_item_custom_ip.xml",
+      "sha256": "e21cbc09a83fc3767a66e05950a25cb91ef30dbabf266efcfa66e770df0061f3"
+    },
+    {
+      "path": "app/src/main/res/layout/bottom_sheet_custom_ips.xml",
+      "sha256": "c312920e68e5613720936153bed802d18fd9d16abe93d5dceb74eb033aeb0b2f"
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_add_custom_domain.xml",
+      "sha256": "c37e72f00354ac5609bcdaf6523c997071cb550eeb626cd6bc6834ff979b6531"
+    },
+    {
+      "path": "app/src/main/res/layout/dialog_add_custom_ip.xml",
+      "sha256": "de801f83db12eeab5a39babae8aa0af06296441320c79dffebd66985306d218b"
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_import_confirm.xml",
+      "sha256": "e74441e30118291692a38cec79423fa4770ac43f8804df7b3bebb6203ed24c68"
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_doh.xml",
+      "sha256": "1923da985703ec844131e70da7532a057f32c1d0c227d1a8f1896946c2e3a545"
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+      "sha256": "c52f66dad8edfde71a3476f0da5ac62994c9ac85238c1372460744407d8fc0b9"
+    },
+    {
+      "path": "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+      "sha256": "c1cff2e4b18d2c90bb4d60736207ef0389b7229174e90f88659d3d389f5feaf3"
+    },
+    {
+      "path": "app/src/main/res/values/dimens.xml",
+      "sha256": "1dcaf24002b1422fa1cbd748c85799bd47528af2f9c3d6a4573bf8e06324e72b"
+    }
+  ],
+  "baseline_layouts_loaded_from_git_only": true,
+  "application_layout_references_in_test_oracles": 0,
+  "reference_factory_sha256": "0a22c2637adb3268b6891b6e9b4558408b0cade12746d785a1702b333ded5741",
+  "frozen_search_sha256": "6d68d298a74016debf8baac405ab4bdacaed51c32b45ec1225d74c6799212587",
+  "callback_literals": "unchanged_from_staged_snapshot",
+  "tests": {
+    "RuleDialogSourceStyleTest": "authored_UNRUN",
+    "DnsEditorSourceStyleTest": "authored_UNRUN"
+  },
+  "runtime": "NOT_RUN; no toolchain/artifact fetch or production execution",
+  "limits": [
+    "Dialog window shell dimensions/background/insets remain unverified.",
+    "Inner TextInputLayout/EditText metrics and native compound-label min-height are outside this bounded surrounding-layout fix.",
+    "FlowRow large-font wrapping remains an accessibility adaptation requiring actual-host comparison.",
+    "No claim of pixel, TalkBack or full layout equivalence; this source guard is not runtime clearance."
+  ],
+  "production_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt": "9d0b6e07eb8ec32c8126c6ab9e763d1eec4ae29c26049f0fffb035a7988c0484",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RuleDetailsContent.kt": "8ae340aaa1201c3f0c1260f4d6426dcb63873f7f7af1c96f0bcf77d294f0858d",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt": "9c252ae7bc8a7abf189d5ccb82173474f1bb06718c77e6901b6a569c261ef520"
+  }
+}

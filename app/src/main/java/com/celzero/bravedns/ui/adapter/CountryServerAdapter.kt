@@ -1,5 +1,7 @@
 package com.celzero.bravedns.ui.adapter
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import androidx.compose.ui.platform.LocalLocale
 
 import androidx.compose.animation.core.animateFloatAsState
@@ -166,11 +168,8 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                                 com.celzero.bravedns.ui.compose.controls.OriginalLabel("item_server_group:chip_link_speed",
                                     Modifier.padding(end = 12.dp), containerColor = themeColor(if (group.avgLink >= 10_000) attr else R.attr.chipColorBgNormal)) { Text(label) }
                             }
-                            val checkColor = themeColor(R.attr.accentGood)
-                            Checkbox(group.isEnabled, null, Modifier.size(28.dp).alpha(if (proxyStoppedValue) .4f else 1f),
-                                enabled = !proxyStoppedValue,
-                                colors = CheckboxDefaults.colors(checkedColor = checkColor, uncheckedColor = checkColor,
-                                    disabledCheckedColor = checkColor, disabledUncheckedColor = checkColor))
+                            OriginalCheckbox("item_server_group:checkbox_server", group.isEnabled, null,
+                                Modifier.size(28.dp).alpha(if (proxyStoppedValue) .4f else 1f), enabled = !proxyStoppedValue)
                         }
                     }
                 } }

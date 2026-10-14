@@ -1,6 +1,6 @@
 {
   "kind": "Current-source residual widget guard; not compilation, runtime or visual validation",
-  "passed": true,
+  "passed": false,
   "production_source_sets_discovered": [
     "alpha",
     "fdroid",
@@ -12,7 +12,7 @@
   ],
   "production_files_by_source_set": {
     "fdroid": 23,
-    "main": 659,
+    "main": 664,
     "play": 34,
     "tv": 31,
     "website": 32
@@ -245,8 +245,19 @@
   ],
   "invalid_unchanged_file_exemptions": [],
   "stale_unchanged_file_exemptions": [],
-  "raw_unreviewed_calls": [],
-  "raw_unreviewed_counts": {},
+  "raw_unreviewed_calls": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "line": 130,
+      "component": "IconButton",
+      "nearest_function": "Country",
+      "call": "IconButton({\n                    val next = !item.isFavourite\n                    star.animate().scaleX(1.35f).scaleY(1.35f).setDuration(120).setInterpolator(AccelerateDecelerateInterpolator()).withEndAction {\n                        star.animate().scaleX(1f).scaleY(1f).setDuration(100).setInterpolator(AccelerateDecelerateInterpolator()).start()\n                    }.start()\n                    item.isFavourite = next\n                    countries = countries.toList()\n                    listener.onFavouriteToggled(item.countryCode, item.countryName, next)\n                }, Modifier.padding(horizontal = 8.dp).size(48.dp)) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(32.dp).rpnMotion(star)) }",
+      "call_sha256": "b3fd825e2818e1644ea5564ba5fbd2b5a578a5e0aa0657f7fffe74a9180ab357"
+    }
+  ],
+  "raw_unreviewed_counts": {
+    "IconButton": 1
+  },
   "allowed_primitive_calls": [
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
@@ -257,16 +268,6 @@
       "call_sha256": "546147df2189386a99bd2aca2d074fd58969f9503d0fa90428f3f05e9a5dacae",
       "allow_reason": "Plain app-log toolbar affordance; restored original drawable colors, 0.7 alpha and bottom margin rather than imposing a filled button.",
       "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/activity_network_logs.xml#app_logs: AppCompatImageView, ic_android_icon, alpha0.7, end 15dp, bottom 5dp."
-    },
-    {
-      "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
-      "line": 108,
-      "component": "IconButton",
-      "nearest_function": "Country",
-      "call": "IconButton({\n                    val next = !item.isFavourite\n                    star.animate().scaleX(1.35f).scaleY(1.35f).setDuration(120).setInterpolator(AccelerateDecelerateInterpolator()).withEndAction {\n                        star.animate().scaleX(1f).scaleY(1f).setDuration(100).setInterpolator(AccelerateDecelerateInterpolator()).start()\n                    }.start()\n                    item.isFavourite = next\n                    countries = countries.toList()\n                    listener.onFavouriteToggled(item.countryCode, item.countryName, next)\n                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(32.dp).rpnMotion(star)) }",
-      "call_sha256": "d544aa77b02e9435653907348fc96a8c6389c3ffbf6fb7b4a9acc5345b054d62",
-      "allow_reason": "Plain favourite ImageView action, not a chip/button surface. Restored 32dp artwork (48 minus 2 \u00d7 8); retained original drawable state choice, scale animation, content description and listener.",
-      "baseline_evidence": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9: app/src/main/res/layout/list_item_country_card.xml#iv_favourite: 48dp ImageView, 8dp padding, borderless selectable background, ic_star_outline. CountryServerAdapter replaces with filled star when favourite and animates scale."
     },
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
@@ -360,7 +361,7 @@
     },
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt",
-      "line": 64,
+      "line": 65,
       "component": "FloatingActionButton",
       "nearest_function": "DnsEndpointScreen",
       "call": "FloatingActionButton(onClick = onAdd, modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp)) {\n            Icon(painterResource(R.drawable.ic_fab_without_border), stringResource(R.string.lbl_create), Modifier.size(24.dp))\n        }",
@@ -370,7 +371,7 @@
     },
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt",
-      "line": 145,
+      "line": 146,
       "component": "IconButton",
       "nearest_function": "DnsEndpointRow",
       "call": "IconButton(item.onInfo, Modifier.testTag(\"dns_endpoint_info_${item.id}\")) {\n                Icon(painterResource(if (item.deletable) R.drawable.ic_fab_uninstall else R.drawable.ic_info), stringResource(if (item.deletable) R.string.lbl_delete else R.string.bsct_meta_info), Modifier.size(24.dp), tint = themeColor(R.attr.primaryTextColor).copy(alpha = .55f))\n            }",
@@ -886,7 +887,9 @@
       "status": "renderer_and_source_reference_present_needs_visual_check"
     }
   ],
-  "unused_exception_indexes": [],
+  "unused_exception_indexes": [
+    0
+  ],
   "ambiguous_exception_matches": {},
   "button_chip_ledger_entries": 117,
   "known_legacy_unassigned_definition": {

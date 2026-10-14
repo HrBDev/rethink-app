@@ -1,0 +1,7 @@
+{
+  "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+  "sha256": "6d68d298a74016debf8baac405ab4bdacaed51c32b45ec1225d74c6799212587",
+  "start": "OriginalCardSurface(Modifier.fillMaxWidth().padding(4.dp), cornerRadius = 16.dp) {\n                 ",
+  "end": "before LazyColumn",
+  "verification": "Hash before compound-only edits; no search bytes changed."
+}

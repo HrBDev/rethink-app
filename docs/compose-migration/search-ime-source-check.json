@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "source_only": true,
+  "checks": 18,
+  "negative_controls": 6,
+  "compile": "not_run",
+  "runtime": "not_run",
+  "input_session_started": false
+}

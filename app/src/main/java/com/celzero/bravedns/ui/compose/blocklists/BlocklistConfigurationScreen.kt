@@ -163,7 +163,7 @@ import kotlinx.coroutines.flow.Flow
                         row.entries?.let { entries -> OriginalChip("list_item_rethink_blocklist_adv:crp_desc_entries_tv", selected = false, selectable = false, onClick = { row.onEntries?.invoke() }, label = { Text(entries) }, modifier = Modifier.padding(start = 8.dp).alpha(.8f).testTag("blocklist-entries-${row.key}")) }
                     }
                 }
-                Checkbox(checked, select, Modifier.padding(end = 12.dp).testTag("blocklist-check-${row.key}"))
+                OriginalCheckbox(if (row.entries == null) "list_item_rethink_blocklist_simple:crp_check_box" else "list_item_rethink_blocklist_adv:crp_check_box", checked, select, Modifier.padding(end = 12.dp).testTag("blocklist-check-${row.key}"))
             }
         }
     }

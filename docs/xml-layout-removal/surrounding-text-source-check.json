@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "source_only": true,
+  "source_contracts": 26,
+  "negative_controls": 9,
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "compile": "not_run",
+  "runtime": "not_run",
+  "url_spacing_note": "8dp source container margin plus 2dp URL margin =10dp; retained intentionally",
+  "sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/dns/BlockFreeDnsContent.kt": "0354d7086b9383e960940001da77503bebd0c2e23ee4fb8403456a1920b5080b",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt": "96b6b3bb760979c0333edc4ef1cd9fbb7d9b0bb8a948e61a70c447412e930fae",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistFilterScreen.kt": "ab6d926cec96802228f71a142a0b039b97c793411cd271dd1b484bc6834d9e7a",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/home/LogIntervalContent.kt": "5d2e1d8ca4ada5d3d12e67133a7a0cc9cb908e8e7e7615813ca4eee209456d86",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/PagedStatisticsScreen.kt": "059e66124a35c50ce40f0f748dcb07b0add147c7cc2c9abe1e05b63445183f87"
+  }
+}

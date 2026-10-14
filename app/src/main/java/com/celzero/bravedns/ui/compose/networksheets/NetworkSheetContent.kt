@@ -68,10 +68,10 @@ fun OrbotSheetContent(b: OrbotSheetState) {
             Text(b.orbotStatus.text.toString(), Modifier.align(Alignment.CenterHorizontally).padding(15.dp).semantics { liveRegion = LiveRegionMode.Polite },
                 color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center, style = utilityTextStyle(size = dimen(R.dimen.default_font_text_view)))
             Column(Modifier.fillMaxWidth().padding(horizontal = 5.dp)) {
-                OrbotChoice(b.bsOrbotHttpRl, b.bsOrbotRadioHttp, R.string.orbot_http, R.string.orbot_http_desc)
-                OrbotChoice(b.bsSocks5OrbotRl, b.bsOrbotRadioSocks5, R.string.orbot_socks5, R.string.orbot_socks5_desc)
-                OrbotChoice(b.bsOrbotBothRl, b.bsOrbotRadioBoth, R.string.orbot_both, R.string.orbot_both_desc)
-                OrbotChoice(b.bsOrbotNoneRl, b.bsOrbotRadioNone, R.string.orbot_none, R.string.orbot_none_desc)
+                OrbotChoice("bs_orbot_radio_http", b.bsOrbotHttpRl, b.bsOrbotRadioHttp, R.string.orbot_http, R.string.orbot_http_desc)
+                OrbotChoice("bs_orbot_radio_socks5", b.bsSocks5OrbotRl, b.bsOrbotRadioSocks5, R.string.orbot_socks5, R.string.orbot_socks5_desc)
+                OrbotChoice("bs_orbot_radio_both", b.bsOrbotBothRl, b.bsOrbotRadioBoth, R.string.orbot_both, R.string.orbot_both_desc)
+                OrbotChoice("bs_orbot_radio_none", b.bsOrbotNoneRl, b.bsOrbotRadioNone, R.string.orbot_none, R.string.orbot_none_desc)
             }
         }
     }
@@ -106,7 +106,7 @@ private fun OrbotImage(b: OrbotSheetState) {
 }
 
 @Composable
-private fun OrbotChoice(row: WgControlState, radio: WgControlState, title: Int, description: Int) {
+private fun OrbotChoice(sourceId: String, row: WgControlState, radio: WgControlState, title: Int, description: Int) {
     if (row.visibility == View.GONE) return
     val label = stringResource(title)
     // Row and radio deliberately remain distinct targets: the baseline callbacks differ when selected.
@@ -116,7 +116,7 @@ private fun OrbotChoice(row: WgControlState, radio: WgControlState, title: Int, 
             Text(label, color = themeColor(R.attr.primaryTextColor), style = utilityTextStyle(size = dimen(R.dimen.large_font_text_view)))
             Text(stringResource(description), Modifier.alpha(.75f), color = themeColor(R.attr.primaryLightColorText), style = utilityTextStyle(size = dimen(R.dimen.default_font_text_view)))
         }
-        RadioButton(radio.isChecked, if (radio.isClickable) ({ clickSheetRadio(radio) }) else null, Modifier.testTag("orbot_radio_$title").padding(5.dp).semantics { contentDescription = label; if (!radio.isClickable) disabled() },
+        OriginalRadioButton("bottom_sheet_orbot:$sourceId", radio.isChecked, if (radio.isClickable) ({ clickSheetRadio(radio) }) else null, Modifier.testTag("orbot_radio_$title").semantics { contentDescription = label; if (!radio.isClickable) disabled() },
             enabled = radio.isEnabled)
     }
 }
@@ -204,7 +204,7 @@ fun ProxyCountriesSheetContent(b: ProxyCountriesSheetState) {
                         Text(if (b.supportsCountryDetails) conf else "", color = themeColor(R.attr.primaryTextColor), style = utilityTextStyle(size = dimen(R.dimen.large_font_text_view)))
                         Text(if (b.supportsCountryDetails) conf else "", color = themeColor(R.attr.primaryLightColorText), style = utilityTextStyle(size = dimen(R.dimen.default_font_text_view)))
                     }
-                    RadioButton(checked, { b.click(conf) }, Modifier.testTag("country_radio_$conf").padding(10.dp).semantics { contentDescription = conf })
+                    OriginalRadioButton("list_item_proxy_cc_wg:proxy_radio_cc", checked, { b.click(conf) }, Modifier.testTag("country_radio_$conf").semantics { contentDescription = conf })
                 }
             }
         }

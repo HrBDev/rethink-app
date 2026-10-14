@@ -32,6 +32,8 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.data.BlockFreeDnsItem
 import com.celzero.bravedns.data.BlockFreeDnsType
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
+import androidx.compose.ui.text.style.TextAlign
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 
 /** Mirrors the XML singleSelection + selectionRequired ChipGroup, in XML child order. */
@@ -66,18 +68,14 @@ internal class BlockFreeDnsListState(selectedKey: String, val onItemSelected: (B
 
 @Composable internal fun BlockFreeDnsContent(b: BlockFreeDnsPresentation, list: BlockFreeDnsListState) {
     val context = LocalContext.current
-    val cardColor = remember(context) {
-        val values = context.obtainStyledAttributes(null, intArrayOf(androidx.cardview.R.attr.cardBackgroundColor), com.google.android.material.R.attr.materialCardViewStyle, 0)
-        try { values.getColorStateList(0)?.defaultColor?.let(::Color) } finally { values.recycle() }
-    } ?: MaterialTheme.colorScheme.surface
     Surface(color = themeColor(R.attr.background)) {
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
-            Text("Block Free DNS", Modifier.padding(start = 17.dp, top = 15.dp, end = 20.dp), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.titleSmall)
-            Text("Select a DNS that passes all queries through without blocking. This is used as a fallback when your active DNS is unavailable.", Modifier.padding(horizontal = 16.dp, vertical = 12.dp), color = themeColor(R.attr.primaryLightColorText), style = MaterialTheme.typography.bodyMedium)
-            if (b.bfdSelectedCard.visibility == View.VISIBLE) Surface(Modifier.fillMaxWidth().padding(horizontal = 8.dp), shape = RoundedCornerShape(12.dp), color = themeColor(R.attr.chipBgColorPositive)) {
+            Text("Block Free DNS", Modifier.padding(start = 17.dp, top = 15.dp, end = 20.dp), color = MaterialTheme.colorScheme.primary, style = utilityTextStyle(appearance = com.google.android.material.R.style.TextAppearance_Material3_TitleSmall_Emphasized))
+            Text("Select a DNS that passes all queries through without blocking. This is used as a fallback when your active DNS is unavailable.", Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 8.dp), color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp)
+            if (b.bfdSelectedCard.visibility == View.VISIBLE) OriginalCardSurface(Modifier.fillMaxWidth().padding(start = 8.dp, end = 8.dp, bottom = 8.dp), cornerRadius = 12.dp, elevation = 0.dp, containerColor = themeColor(R.attr.chipBgColorPositive)) {
                 Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text("Selected:")
-                    Text(b.bfdSelectedName.text.toString(), Modifier.padding(start = 6.dp), fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text("Selected:", color = themeColor(R.attr.primaryTextColor), fontSize = 12.sp)
+                    Text(b.bfdSelectedName.text.toString(), Modifier.padding(start = 6.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 12.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
             }
             val labels = listOf("All", "Rethink", "DoH", "DoT", "DNSCrypt", "ODoH", "DNS Proxy")
@@ -90,21 +88,21 @@ internal class BlockFreeDnsListState(selectedKey: String, val onItemSelected: (B
             LazyColumn(Modifier.weight(1f), contentPadding = PaddingValues(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 items(list.items, key = { it.key }) { item ->
                     val checked = item.key == list.selectedKey
-                    Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp), border = BorderStroke(.5.dp, themeColor(R.attr.border)), color = cardColor) {
+                    OriginalCardSurface(Modifier.fillMaxWidth(), cornerRadius = 12.dp, elevation = 0.dp, border = BorderStroke(.5.dp, themeColor(R.attr.border))) {
                         Row(Modifier.fillMaxWidth().testTag("blockfree-item-${item.key}").semantics { selected = checked }.clickable(role = Role.RadioButton) { list.onItemSelected(item) }.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                             Column(Modifier.weight(1f)) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text(item.name, Modifier.weight(1f, false), fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                    Text(item.name, Modifier.weight(1f, false), color = themeColor(R.attr.primaryTextColor), fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
                                     OriginalLabel("list_item_block_free_dns:bfd_item_type_chip", Modifier.padding(start = 10.dp)) { Text(item.type.label) }
                                 }
-                                Text(if (item.type == BlockFreeDnsType.SYSTEM) "Underlying network's DNS" else item.url, Modifier.padding(top = 10.dp), color = themeColor(R.attr.primaryLightColorText), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                Text(if (item.type == BlockFreeDnsType.SYSTEM) "Underlying network's DNS" else item.url, Modifier.padding(top = 10.dp), color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                             }
                             if (checked) Icon(painterResource(R.drawable.ic_tick), null, Modifier.size(32.dp).padding(4.dp)) else Spacer(Modifier.size(32.dp))
                         }
                     }
                 }
             }
-            if (b.bfdEmptyTxt.visibility == View.VISIBLE) Text("No DNS servers found", Modifier.fillMaxWidth().padding(32.dp), color = themeColor(R.attr.primaryLightColorText))
+            if (b.bfdEmptyTxt.visibility == View.VISIBLE) Text("No DNS servers found", Modifier.fillMaxWidth().padding(32.dp), color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp, textAlign = TextAlign.Center)
         }
     }
 }

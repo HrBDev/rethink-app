@@ -97,7 +97,7 @@ fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDn
 @Composable private fun DnsChoice(control: DnsControl, label: Int, key: String, onInfo: (() -> Unit)? = null) {
     Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp), verticalAlignment = Alignment.CenterVertically) {
         Row(Modifier.weight(1f).heightIn(min = 48.dp).testTag("dns-choice-$key").clickable(role = Role.RadioButton) { control.isChecked = true; control.onClick() }, verticalAlignment = Alignment.CenterVertically) {
-            RadioButton(control.isChecked, onClick = null)
+            OriginalRadioButton("fragment_dns_configure:" + when (key) { "rethink" -> "rethink_plus_dns_rb"; else -> "${key}_dns_rb" }, control.isChecked, onClick = null, enabled = control.isEnabled, indicatorOnly = true)
             Text(stringResource(label), Modifier.weight(1f), color = themeColor(R.attr.primaryTextColor))
             if (onInfo == null) Icon(painterResource(R.drawable.ic_right_arrow_white), null, tint = Color.Unspecified)
         }
@@ -116,7 +116,7 @@ fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDn
             }
             Text(description, Modifier.padding(top = 5.dp), fontSize = 12.sp, color = themeColor(R.attr.primaryTextColor))
         }
-        if (toggle != null) Switch(toggle.isChecked, { toggle.isChecked = it }, Modifier.padding(10.dp).testTag("dns-switch-$key"), enabled = toggle.isEnabled && toggle.isClickable)
+        if (toggle != null) OriginalSwitch("fragment_dns_configure:" + requireNotNull(dnsSwitchSources[key]), toggle.isChecked, { toggle.isChecked = it }, Modifier.testTag("dns-switch-$key"), enabled = toggle.isEnabled && toggle.isClickable)
         else Icon(painterResource(R.drawable.ic_arrow_down_small), null, Modifier.padding(10.dp), tint = Color.Unspecified)
     }
 }
@@ -135,3 +135,16 @@ fun DnsSettingsScreen(b: DnsSettingsState, onRestore: () -> Unit, onCopySystemDn
         }
     }
 }
+
+private val dnsSwitchSources = mapOf(
+    "dcDownloaderRl" to "dc_downloader_switch",
+    "dcCheckUpdateRl" to "dc_check_update_switch",
+    "dcAlgRl" to "dc_alg_switch",
+    "dcSplitDnsRl" to "dc_split_dns_switch",
+    "dcFaviconRl" to "dc_favicon_switch",
+    "dcEnableCacheRl" to "dc_enable_cache_switch",
+    "dcProxyDnsRl" to "dc_proxy_dns_switch",
+    "dcPreventDnsLeaksRl" to "dc_prevent_dns_leaks_switch",
+    "dcBlockHeadingRl" to "dc_block_unknown_switch",
+    "dcUndelegatedDomainsRl" to "dc_undelegated_domains_switch",
+)

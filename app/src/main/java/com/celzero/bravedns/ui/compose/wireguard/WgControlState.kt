@@ -10,11 +10,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 
 /** Presentation state only: no View, service or persistence is owned here. */
-class WgControlState(val context: Context? = null, val checkable: Boolean = false) {
+class WgControlState(val context: Context? = null, val checkable: Boolean = false, val textSource: String? = null) {
     private var textValue: CharSequence by mutableStateOf("")
     var maxLength: Int? = null
-    var maxLines: Int = Int.MAX_VALUE
-    var ellipsize = false
+    internal var maxLinesOverride: Int? by mutableStateOf(null)
+    var maxLines: Int
+        get() = maxLinesOverride ?: Int.MAX_VALUE
+        set(value) { maxLinesOverride = value }
+    internal var ellipsizeOverride: Boolean? by mutableStateOf(null)
+    var ellipsize: Boolean
+        get() = ellipsizeOverride ?: false
+        set(value) { ellipsizeOverride = value }
     var text: CharSequence
         get() = textValue
         set(value) {
@@ -31,7 +37,15 @@ class WgControlState(val context: Context? = null, val checkable: Boolean = fals
     var isPassword by mutableStateOf(false)
     var noSuggestions by mutableStateOf(false)
     var imeNext by mutableStateOf(false)
-    var textStyle by mutableStateOf(0)
+    internal var textStyleOverride: Int? by mutableStateOf(null)
+    var textStyle: Int
+        get() = textStyleOverride ?: 0
+        set(value) { textStyleOverride = value }
+    var textAppearanceStyle: Int? by mutableStateOf(null)
+    var fontFamilyName: String? by mutableStateOf(null)
+    var letterSpacingEm: Float? by mutableStateOf(null)
+    var lineSpacingExtraDp: Float? by mutableStateOf(null)
+    var lineSpacingMultiplier: Float? by mutableStateOf(null)
     var elevationDp: Float? by mutableStateOf(null)
     var isSelected by mutableStateOf(false)
     var alpha by mutableStateOf(1f)
@@ -48,9 +62,16 @@ class WgControlState(val context: Context? = null, val checkable: Boolean = fals
     var imageResource: Int? by mutableStateOf(null)
     var secondaryProgress by mutableStateOf(0)
     var progress by mutableStateOf(0)
+    var animateProgress by mutableStateOf(false)
     var max by mutableStateOf(100)
     var indicatorColor: Int? by mutableStateOf(null)
     var isIndeterminate by mutableStateOf(false)
+    var progressSource: String? = null
+    var trackColor: Int? by mutableStateOf(null)
+    var trackThicknessDp: Float? by mutableStateOf(null)
+    var trackCornerRadiusDp: Float? by mutableStateOf(null)
+    var indicatorTrackGapDp: Float? by mutableStateOf(null)
+    var trackStopIndicatorSizeDp: Float? by mutableStateOf(null)
     var adapter: WgListContent? by mutableStateOf(null)
     var onTextChanged: ((CharSequence) -> Unit)? = null
     var onEndIconClick: (() -> Unit)? = null
@@ -82,7 +103,7 @@ class WgControlState(val context: Context? = null, val checkable: Boolean = fals
     fun setImageDrawable(value: Drawable?) { drawable = value }
     fun setImageResource(value: Int) { imageResource = value }
     fun setIndicatorColor(value: Int) { indicatorColor = value }
-    fun setProgress(value: Int, animate: Boolean) { progress = value }
+    fun setProgress(value: Int, animate: Boolean) { progress = value; animateProgress = animate }
     fun setOnClickListener(listener: ((WgControlState) -> Unit)?) { click = listener }
     fun setOnCheckedChangeListener(listener: ((WgControlState, Boolean) -> Unit)?) { checkedListener = listener }
     fun setEndIconOnClickListener(listener: (WgControlState) -> Unit) { onEndIconClick = { listener(this) } }

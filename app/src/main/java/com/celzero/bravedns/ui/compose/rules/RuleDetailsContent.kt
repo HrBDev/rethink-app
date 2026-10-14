@@ -1,5 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.rules
+
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -56,9 +58,18 @@ import java.io.Serializable
                         if (uid == UID_EVERYBODY) IpRuleStatus.BYPASS_UNIVERSAL.id to R.string.ci_bypass_universal else IpRuleStatus.TRUST.id to R.string.ci_trust_rule)
                     options.forEach { (status, label) ->
                         Row(Modifier.fillMaxWidth().selectable(selected == status, role = Role.RadioButton, onClick = { onStatus(status) }).padding(vertical = 8.dp).testTag("rule_status_$status"), verticalAlignment = Alignment.CenterVertically) {
-                            RuleStatusBadge(domain, status, selected == status)
+                            RuleStatusBadge(domain, status, selected == status, detail = true)
                             Text(stringResource(label), Modifier.weight(1f).padding(horizontal = 12.dp), fontSize = 14.sp)
-                            RadioButton(selected == status, null)
+                            OriginalRadioButton(if (domain) "bottom_sheet_custom_domains:" + when (status) {
+                                DomainRulesManager.Status.NONE.id -> "custom_domain_rb_no_rule"
+                                DomainRulesManager.Status.BLOCK.id -> "custom_domain_rb_block"
+                                else -> "custom_domain_rb_whitelist"
+                            } else "bottom_sheet_custom_ips:" + when (status) {
+                                IpRuleStatus.NONE.id -> "custom_ip_rb_no_rule"
+                                IpRuleStatus.BLOCK.id -> "custom_ip_rb_block"
+                                IpRuleStatus.BYPASS_UNIVERSAL.id -> "custom_ip_rb_bypass_univ"
+                                else -> "custom_ip_rb_bypass_app"
+                            }, selected == status, null)
                         }
                     }
                     Box(Modifier.fillMaxWidth().padding(top = 8.dp), contentAlignment = Alignment.Center) { RuleStatusDescription(domain, displayed, modified) }

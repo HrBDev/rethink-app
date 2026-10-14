@@ -1,0 +1,273 @@
+{
+  "result": "PASS_SOURCE_ONLY",
+  "checks": {
+    "instance/style/default precedence": true,
+    "compat/corner/max-elevation clearance": true,
+    "physical source padding mapped for RTL": true,
+    "zero border suppresses inherited stroke without a hairline": true,
+    "source shadow without tonal overlay": true,
+    "SettingsCard keeps parameters and delegates source style": true,
+    "WgCard removes universal child insets and gaps": true,
+    "WgCard keeps explicit radius/elevation/fill/zero-border and callback": true,
+    "general/one original ten-dp containers": true,
+    "general/one each uses ten-dp container": true,
+    "include original margins/minimum/content padding": true,
+    "hop/peer source container insets": true,
+    "general/one uptime and traffic restored as peers": true,
+    "detail four source container paddings": true,
+    "stats combines original ten-dp margin and ten-dp child padding": true,
+    "About retains zero child padding within original outer margins": true,
+    "all eleven WgCard calls require explicit child padding": true
+  },
+  "negative_mutations_rejected": 8,
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "baseline_layout_sha256": {
+    "app/src/main/res/layout/activity_wg_detail.xml": "a46f0563195d7bebb458f7ae5ecf0f874baa503bc541d3c1ad5ddfdfd26b6f01",
+    "app/src/main/res/layout/list_item_wg_general_interface.xml": "60708c1a15876142624dc8b15f7b1e1704f12611b13090d18522a0005b7e6ba9",
+    "app/src/main/res/layout/list_item_wg_one_interface.xml": "83190eb816afe346b47d89befb71d75000c54f6b9e433cc3cb9ea5435178586c",
+    "app/src/main/res/layout/list_item_wg_include_apps.xml": "5ba66d64002e17c6b7606bc20c3a1efcd8a06902616c53d29149ca3f1bce8cd4",
+    "app/src/main/res/layout/list_item_wg_hop.xml": "e8814ce838bfabb7475bd8394714d1f7fef9c0345fa87f7ea480f093acb23103",
+    "app/src/main/res/layout/list_item_wg_peers.xml": "5751890f2909712f29a2508848c0f0daa35ddc2154a90477f74699b68b1ef8e9",
+    "app/src/main/res/layout/fragment_wg_nw_stats.xml": "277a5ce8e67b7b948d4e80bf7aaea31dba084b3a8f6256ec4b12e4362304b3a9",
+    "app/src/main/res/layout/fragment_about.xml": "e9c771d4afabb27d8786c07a78119c04d90164388145395e847087d63f39a52d"
+  },
+  "baseline_card_container_contracts": {
+    "activity_wg_detail": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/interface_detail_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintStart_toStartOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toTopOf": "parent",
+          "{http://schemas.android.com/apk/res/android}layout_marginBottom": "16dp",
+          "{http://schemas.android.com/apk/res-auto}cardCornerRadius": "18dp",
+          "{http://schemas.android.com/apk/res-auto}strokeWidth": "0dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}paddingStart": "15dp",
+          "{http://schemas.android.com/apk/res/android}paddingTop": "10dp",
+          "{http://schemas.android.com/apk/res/android}paddingEnd": "15dp",
+          "{http://schemas.android.com/apk/res/android}paddingBottom": "20dp"
+        }
+      },
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/actions_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintLeft_toLeftOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toBottomOf": "@id/interface_detail_card",
+          "{http://schemas.android.com/apk/res/android}layout_marginBottom": "16dp",
+          "{http://schemas.android.com/apk/res-auto}cardCornerRadius": "18dp",
+          "{http://schemas.android.com/apk/res-auto}strokeWidth": "0dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}orientation": "vertical",
+          "{http://schemas.android.com/apk/res/android}padding": "20dp"
+        }
+      },
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/other_settings_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintLeft_toLeftOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toBottomOf": "@id/actions_card",
+          "{http://schemas.android.com/apk/res/android}layout_marginBottom": "16dp",
+          "{http://schemas.android.com/apk/res-auto}cardCornerRadius": "18dp",
+          "{http://schemas.android.com/apk/res-auto}strokeWidth": "0dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}orientation": "vertical",
+          "{http://schemas.android.com/apk/res/android}paddingBottom": "20dp"
+        }
+      },
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/mobile_ssid_settings_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintLeft_toLeftOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toBottomOf": "@id/other_settings_card",
+          "{http://schemas.android.com/apk/res/android}layout_marginBottom": "16dp",
+          "{http://schemas.android.com/apk/res-auto}cardCornerRadius": "18dp",
+          "{http://schemas.android.com/apk/res-auto}strokeWidth": "0dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}orientation": "vertical",
+          "{http://schemas.android.com/apk/res/android}paddingBottom": "20dp"
+        }
+      }
+    ],
+    "list_item_wg_general_interface": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/interface_detail_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}clickable": "true",
+          "{http://schemas.android.com/apk/res/android}focusable": "true",
+          "{http://schemas.android.com/apk/res-auto}cardCornerRadius": "16dp",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintBottom_toBottomOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintStart_toStartOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toBottomOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toTopOf": "parent"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/config_title_layout",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}background": "?android:attr/selectableItemBackground",
+          "{http://schemas.android.com/apk/res/android}padding": "10dp",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintStart_toStartOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toTopOf": "parent"
+        }
+      }
+    ],
+    "list_item_wg_one_interface": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/interface_detail_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}clickable": "true",
+          "{http://schemas.android.com/apk/res/android}focusable": "true",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintBottom_toBottomOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintStart_toStartOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toBottomOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toTopOf": "parent"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/config_title_layout",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}background": "?android:attr/selectableItemBackground",
+          "{http://schemas.android.com/apk/res/android}padding": "10dp",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintStart_toStartOf": "parent",
+          "{http://schemas.android.com/apk/res-auto}layout_constraintTop_toTopOf": "parent"
+        }
+      }
+    ],
+    "list_item_wg_include_apps": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/wg_include_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}layout_marginStart": "6dp",
+          "{http://schemas.android.com/apk/res/android}layout_marginEnd": "6dp",
+          "{http://schemas.android.com/apk/res-auto}cardBackgroundColor": "?attr/background",
+          "{http://schemas.android.com/apk/res-auto}cardCornerRadius": "16dp",
+          "{http://schemas.android.com/apk/res-auto}cardElevation": "0dp",
+          "{http://schemas.android.com/apk/res-auto}cardUseCompatPadding": "true",
+          "{http://schemas.android.com/apk/res-auto}strokeColor": "?attr/divider",
+          "{http://schemas.android.com/apk/res-auto}strokeWidth": "1dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/wg_include_app_list_container",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}minHeight": "68dp",
+          "{http://schemas.android.com/apk/res/android}paddingStart": "10dp",
+          "{http://schemas.android.com/apk/res/android}paddingTop": "10dp",
+          "{http://schemas.android.com/apk/res/android}paddingEnd": "6dp",
+          "{http://schemas.android.com/apk/res/android}paddingBottom": "10dp"
+        }
+      }
+    ],
+    "list_item_wg_hop": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/wg_hop_list_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}background": "?attr/selectedCardBg"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/wg_hop_list_container",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}layout_marginStart": "5dp",
+          "{http://schemas.android.com/apk/res/android}paddingTop": "7dp",
+          "{http://schemas.android.com/apk/res/android}paddingBottom": "7dp"
+        }
+      }
+    ],
+    "list_item_wg_peers": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}paddingStart": "15dp",
+          "{http://schemas.android.com/apk/res/android}paddingTop": "15dp",
+          "{http://schemas.android.com/apk/res/android}paddingEnd": "15dp",
+          "{http://schemas.android.com/apk/res/android}paddingBottom": "20dp"
+        }
+      }
+    ],
+    "fragment_wg_nw_stats": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}id": "@+id/tb_stats_card",
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res-auto}strokeColor": "?attr/secondaryTextColor",
+          "{http://schemas.android.com/apk/res-auto}strokeWidth": "1dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}layout_margin": "10dp",
+          "{http://schemas.android.com/apk/res/android}orientation": "vertical",
+          "{http://schemas.android.com/apk/res/android}padding": "10dp"
+        }
+      }
+    ],
+    "fragment_about": [
+      {
+        "card": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}layout_marginStart": "16dp",
+          "{http://schemas.android.com/apk/res/android}layout_marginEnd": "16dp",
+          "{http://schemas.android.com/apk/res/android}layout_marginTop": "8dp",
+          "{http://schemas.android.com/apk/res/android}layout_marginBottom": "8dp"
+        },
+        "direct_child": {
+          "{http://schemas.android.com/apk/res/android}layout_width": "match_parent",
+          "{http://schemas.android.com/apk/res/android}layout_height": "wrap_content",
+          "{http://schemas.android.com/apk/res/android}clipChildren": "false",
+          "{http://schemas.android.com/apk/res/android}orientation": "vertical"
+        }
+      }
+    ]
+  },
+  "production_file_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCard.kt": "8d2174cc06c02308758241992d84a7f39d6c21c338567fad12d70d86fae1d5eb",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/settings/SettingsComponents.kt": "7076bcf563cffa0ff083a4844f8c68d1caeb578d4fcb5c522cab11412c68615f",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt": "d93ad72a717f90ee52edf064c652c479a9ebc907b43fd1f8b1faa66f31da6379",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt": "cc304b02b4075322f675c17326cde031f5dabb527b7e5b3ac72cbd64a79694f3",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgDetailContent.kt": "3d25c21a555753a52b8cb23a439283100f6f367671faab0cc39a838980404aef",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgStatsContent.kt": "42b78cbad492f7f3dd28c06136dfe808ffd8b4c9652a29918dcb9fbb4fe788b0",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt": "37a1f7ddf2b16934d82106a6a9058a68a7ee6abf7223853bc3cafcab700b2ee2"
+  },
+  "runtime": "NOT_RUN_TOOLCHAIN_UNAVAILABLE",
+  "remaining_gates": [
+    "S06/S07 child-by-child typography, spacing, grouping and original ripple/selector contracts remain open.",
+    "OriginalCardSurface models rounded cards and default state colors only; it is not a general shapeAppearance/state-list/checkable-card equivalence claim.",
+    "Compound controls are independently owned; this guard does not certify them."
+  ]
+}

@@ -208,7 +208,8 @@ fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing:
         val shape = RoundedCornerShape(radius)
         m = m.background(Color(color and 0x00FFFFFF or 0x1A000000), shape).border(stroke, Color(color), shape)
     }
-    m = m.padding(node.padding.start.dp, node.padding.top.dp, node.padding.end.dp, node.padding.bottom.dp)
+    if (node.kind !in listOf(NetworkKind.SWITCH, NetworkKind.CHECK, NetworkKind.RADIO, NetworkKind.SLIDER))
+        m = m.padding(node.padding.start.dp, node.padding.top.dp, node.padding.end.dp, node.padding.bottom.dp)
     val children = node.children + (state?.let { extraChildren[it] } ?: emptyList())
     when (node.kind) {
         NetworkKind.SCROLL -> Column(if (scrollContainer) m.verticalScroll(remember { ScrollState(0) }) else m) { children.forEach { NetworkContent(it, if (it.alignEnd) Modifier.align(Alignment.End) else Modifier, refreshing = refreshing, extraChildren = extraChildren) } }
@@ -265,14 +266,14 @@ fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing:
             if (clickable) IconButton({ state!!.performClick() }, m.rotate(angle), enabled = state!!.isEnabled && state.isClickable) { icon() }
             else Box(m.rotate(angle)) { icon() }
         }
-        NetworkKind.SWITCH, NetworkKind.CHECK -> WgCheck(state!!, node.description?.toString(), node.kind == NetworkKind.SWITCH, m)
-        NetworkKind.RADIO -> RadioButton(state!!.isChecked, { state.performClick() }, m, enabled = state.isEnabled)
+        NetworkKind.SWITCH, NetworkKind.CHECK -> WgCheck(state!!, node.description?.toString(), node.kind == NetworkKind.SWITCH, m, compoundSource = originalCompoundKeyForId(node.key!!.substringAfterLast('.')))
+        NetworkKind.RADIO -> OriginalRadioButton(originalCompoundKeyForId(node.key!!.substringAfterLast('.')), state!!.isChecked, { state.performClick() }, m, enabled = state.isEnabled)
         NetworkKind.BUTTON -> OriginalButton("dialog_set_proxy:" + node.key.orEmpty().substringAfterLast('.'), { state!!.performClick() }, m, enabled = state!!.isEnabled && state.isClickable) {
             Text(networkAnnotatedText(state.text), color = state.textColor?.let(::Color) ?: MaterialTheme.colorScheme.primary, style = utilityTextStyle(node.appearance, resolvedTextSize, node.fontFamily, node.textWeight, node.letterSpacing))
         }
         NetworkKind.FIELD -> NetworkEditField(state!!, m.fillMaxWidth(), node.numeric, node.description?.toString(),
             utilityTextStyle(node.appearance, resolvedTextSize, node.fontFamily, node.textWeight, node.letterSpacing))
-        NetworkKind.SLIDER -> Slider(node.slider!!.progress.toFloat(), { node.slider.userProgress(it.toInt()) }, m.pointerInput(node.slider) {
+        NetworkKind.SLIDER -> OriginalSlider(originalCompoundKeyForId(node.key!!.substringAfterLast('.')), node.slider!!.progress.toFloat(), { node.slider.userProgress(it.toInt()) }, m.pointerInput(node.slider) {
             awaitEachGesture {
                 awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
                 node.slider.startGesture()

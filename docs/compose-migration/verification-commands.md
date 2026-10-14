@@ -17,6 +17,14 @@ git diff --check
 
 The baseline Git object `23cb6dd98805445174bd83b7237ad5f5d2c24ac9` must exist locally for the source-comparison guards. These scripts inspect source and may write their documented JSON reports. They do not execute Kotlin or start the application.
 
+## Current complete source-only gate matrix
+
+```sh
+python3 scripts/compose-migration/check-final-source.py
+```
+
+This executes only the 41 explicitly listed Python source checks plus `git diff --check`. It does not run Gradle, Kotlin, Android, a native backend, VPN or any live flow. Keep the exact pinned baseline Git object locally; no retained layout files are needed. Individual checks include strict zero-layout/binding/resource-reference gates, original-style contracts, independent reference-fixture checks, targeted negative controls and protected/controller source comparisons. The resulting report pins current `app/src` source hashes and labels all Android tests UNRUN.
+
 ## Compilation after toolchain access is restored
 
 Prerequisites: the branch's **already installed and verified Gradle wrapper distribution**, Java 17, Android SDK platform 37, the required build tools and dependency artifacts. A wrapper can download its distribution before Gradle processes `--offline` or an init script. Do not invoke `./gradlew` until its distribution is locally present and verified; an independently verified local Gradle binary matching the wrapper version is another execution prerequisite, not a way to bypass a denied download. Use the existing version catalog; do not upgrade dependencies to make a check pass. The workspace reset removed the installed toolchain and caches, and the explicit `dl.google.com:443` policy denial remains unresolved. The following offline command therefore cannot currently complete here; it does not authorize retrying blocked downloads.

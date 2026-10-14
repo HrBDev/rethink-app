@@ -37,6 +37,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
@@ -111,7 +112,7 @@ fun LogIntervalContent(b: LogIntervalPresentation) {
         }
         if (b.bsLaiEmpty.isVisible) Column(Modifier.fillMaxWidth().padding(top = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Image(painterResource(R.drawable.illustrations_no_record), stringResource(R.string.log_activity_interval_empty), Modifier.fillMaxWidth().padding(horizontal = 30.dp))
-            Text(stringResource(R.string.log_activity_interval_empty), Modifier.padding(top = 8.dp), textAlign = TextAlign.Center, color = themeColor(R.attr.primaryLightColorText).copy(alpha = .6f), fontSize = 12.sp)
+            Text(stringResource(R.string.log_activity_interval_empty), Modifier.padding(top = 8.dp), textAlign = TextAlign.Center, color = themeColor(R.attr.primaryLightColorText).copy(alpha = .6f), fontSize = 11.sp)
         }
         if (b.bsLaiRecycler.isVisible) Column(Modifier.fillMaxWidth().padding(top = 16.dp)) {
             b.bsLaiRecycler.adapter?.let { adapter -> repeat(adapter.getItemCount()) { index -> adapter.Row(index) } }
@@ -125,7 +126,7 @@ private fun IntervalCount(node: HomeNode, label: Int, color: Color, modifier: Mo
     Surface(modifier, shape = RoundedCornerShape(16.dp), border = BorderStroke(1.dp, themeColor(R.attr.border))) {
         Column(Modifier.padding(14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Text(node.text?.toString().orEmpty(), color = color, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Text(stringResource(label).uppercase(LocalLocale.current.platformLocale), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .7f), fontSize = 12.sp)
+            Text(stringResource(label).uppercase(LocalLocale.current.platformLocale), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .7f), fontSize = 11.sp)
         }
     }
 }
@@ -153,7 +154,7 @@ fun AppActivityNativeRow(
                     Text(name.take(1).uppercase(LocalLocale.current.platformLocale), color = themeColor(androidx.appcompat.R.attr.colorPrimary), fontSize = 15.sp, fontWeight = FontWeight.Bold)
                 }
                 Column(Modifier.weight(1f).padding(start = 12.dp)) {
-                    Text(name, color = themeColor(R.attr.primaryTextColor), fontSize = 15.sp)
+                    Text(name, color = themeColor(R.attr.primaryTextColor), fontSize = 15.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     Text(stringResource(R.string.log_activity_conn_count, row.total), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .6f), fontSize = 12.sp)
                 }
                 if (row.allowed > 0) Text(formatCount(row.allowed), Modifier.padding(start = 8.dp), color = themeColor(androidx.appcompat.R.attr.colorPrimary), fontSize = 13.sp, fontWeight = FontWeight.Bold)
@@ -166,7 +167,7 @@ fun AppActivityNativeRow(
                 CachedActivityIcon(row, favIconEnabled)
                 Column(Modifier.weight(1f).padding(start = 8.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        SelectionContainer(Modifier.weight(1f)) { Text(row.label, color = themeColor(R.attr.primaryLightColorText), fontSize = 13.sp) }
+                        SelectionContainer(Modifier.weight(1f)) { Text(row.label, color = themeColor(R.attr.primaryLightColorText), fontSize = 13.sp, maxLines = 1, overflow = TextOverflow.Ellipsis) }
                         if (row.allowed > 0) Text(formatCount(row.allowed), Modifier.padding(start = 8.dp), color = themeColor(R.attr.accentGood), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         if (showBlockedCount && row.blocked > 0) Text(formatCount(row.blocked), Modifier.padding(start = 8.dp), color = themeColor(R.attr.accentBad), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }

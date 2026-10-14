@@ -1,5 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
+
+import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,7 +27,7 @@ import com.celzero.bravedns.ui.compose.themeColor
                     UtilityText(ui.tcpProxyStatus)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         UtilityText(ui.enableUdpRelay, Modifier.weight(1f))
-                        Checkbox(ui.enableUdpRelay.isChecked, { ui.enableUdpRelay.isChecked = it }, Modifier.testTag(ui.enableUdpRelay.tag).semantics { contentDescription = "Enable UDP Relay" })
+                        OriginalCheckbox("activity_tcp_proxy:enable_udp_relay", ui.enableUdpRelay.isChecked, { ui.enableUdpRelay.isChecked = it }, Modifier.testTag(ui.enableUdpRelay.tag).semantics { contentDescription = "Enable UDP Relay" })
                     }
                     UtilityButton(ui.tcpProxyAddApps, source = "activity_tcp_proxy:tcp_proxy_add_apps")
                     if (ui.tcpErrorRl.isVisible) UtilityText(ui.tcpErrorTv)
@@ -46,6 +48,6 @@ import com.celzero.bravedns.ui.compose.themeColor
     Row(verticalAlignment = Alignment.CenterVertically) {
         utilityImage(R.drawable.ic_wireguard_icon, Modifier.size(32.dp))
         Text(label, Modifier.weight(1f).padding(horizontal = 12.dp), style = utilityTextStyle(size = 16f), color = themeColor(R.attr.secondaryTextColor))
-        Switch(state.isChecked, { state.isChecked = it }, Modifier.testTag(state.tag).semantics { contentDescription = label })
+        OriginalSwitch(state.tag.replace('.', ':'), state.isChecked, { state.isChecked = it }, Modifier.testTag(state.tag).semantics { contentDescription = label })
     }
 }

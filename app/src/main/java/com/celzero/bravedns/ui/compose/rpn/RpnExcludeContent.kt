@@ -54,7 +54,7 @@ fun RpnExcludeContent(ui: RpnExcludeState, filtered: List<CountryItem>, all: Lis
                         Row(Modifier.fillMaxWidth().alpha(if (item.isExcluded || !limitReached) 1f else .45f).clickable { onToggle(item) }.padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                             Text(item.flagEmoji, fontSize = 24.sp)
                             Column(Modifier.weight(1f).padding(horizontal = 12.dp)) { Text(item.countryName); Text(item.cc, style = MaterialTheme.typography.bodySmall) }
-                            Checkbox(item.isExcluded, null)
+                            OriginalCheckbox("list_item_exclude_country:cb_exclude", item.isExcluded, null)
                         }
                     } }
                 }

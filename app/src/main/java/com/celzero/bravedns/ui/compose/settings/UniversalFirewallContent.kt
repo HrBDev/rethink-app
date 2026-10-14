@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.settings
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import android.os.Bundle
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
@@ -93,28 +95,28 @@ fun UniversalFirewallContent(b: UniversalFirewallState) {
                 style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
             Text(stringResource(R.string.universal_firewall_explanation), Modifier.padding(horizontal = 2.dp).padding(10.dp).alpha(.7f),
                 color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_1), R.drawable.ic_device_lock, b.firewallAllAppsTxt, b.firewallAllAppsCheck, b.firewallDeviceLockedRl, b.firewallDeviceLockedStats, b.deviceLockedProgress, b.firewallDeviceLockedShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_2), R.drawable.ic_foreground, b.firewallBackgroundModeTxt, b.firewallBackgroundModeCheck, b.firewallNotInUseRl, b.firewallNotInUseStats, b.notInUseProgress, b.firewallNotInUseShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_3), R.drawable.ic_unknown_app, b.firewallUnknownConnectionModeTxt, b.firewallUnknownConnectionModeCheck, b.firewallUnknownRl, b.firewallUnknownStats, b.unknownProgress, b.firewallUnknownShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_4), R.drawable.ic_udp, b.firewallUdpConnectionModeTxt, b.firewallUdpConnectionModeCheck, b.firewallUdpRl, b.firewallUdpStats, b.udpProgress, b.firewallUdpShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_5), R.drawable.ic_prevent_dns_leaks, b.firewallDisallowDnsBypassModeTxt, b.firewallDisallowDnsBypassModeCheck, b.firewallDnsBypassRl, b.firewallDnsBypassStats, b.dnsBypassProgress, b.firewallDnsBypassShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_6), R.drawable.ic_app_info, b.firewallBlockNewAppTxt, b.firewallBlockNewAppCheck, b.firewallNewAppRl, b.firewallNewAppStats, b.newAppProgress, b.firewallNewAppShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_9), R.drawable.ic_univ_metered, b.firewallBlockMeteredTxt, b.firewallBlockMeteredCheck, b.firewallMeteredRl, b.firewallMeteredStats, b.meteredProgress, b.firewallMeteredShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_8), R.drawable.ic_http, b.firewallBlockHttpTxt, b.firewallBlockHttpCheck, b.firewallHttpRl, b.firewallHttpStats, b.httpProgress, b.firewallHttpShimmerLayout)
-            UniversalRuleRow(stringResource(R.string.univ_firewall_rule_10), R.drawable.ic_global_lockdown, b.firewallUnivLockdownTxt, b.firewallUnivLockdownCheck, b.firewallLockdownRl, b.firewallLockdownStats, b.lockdownProgress, b.firewallLockdownShimmerLayout)
+            UniversalRuleRow("firewall_all_apps_check", stringResource(R.string.univ_firewall_rule_1), R.drawable.ic_device_lock, b.firewallAllAppsTxt, b.firewallAllAppsCheck, b.firewallDeviceLockedRl, b.firewallDeviceLockedStats, b.deviceLockedProgress, b.firewallDeviceLockedShimmerLayout)
+            UniversalRuleRow("firewall_background_mode_check", stringResource(R.string.univ_firewall_rule_2), R.drawable.ic_foreground, b.firewallBackgroundModeTxt, b.firewallBackgroundModeCheck, b.firewallNotInUseRl, b.firewallNotInUseStats, b.notInUseProgress, b.firewallNotInUseShimmerLayout)
+            UniversalRuleRow("firewall_unknown_connection_mode_check", stringResource(R.string.univ_firewall_rule_3), R.drawable.ic_unknown_app, b.firewallUnknownConnectionModeTxt, b.firewallUnknownConnectionModeCheck, b.firewallUnknownRl, b.firewallUnknownStats, b.unknownProgress, b.firewallUnknownShimmerLayout)
+            UniversalRuleRow("firewall_udp_connection_mode_check", stringResource(R.string.univ_firewall_rule_4), R.drawable.ic_udp, b.firewallUdpConnectionModeTxt, b.firewallUdpConnectionModeCheck, b.firewallUdpRl, b.firewallUdpStats, b.udpProgress, b.firewallUdpShimmerLayout)
+            UniversalRuleRow("firewall_disallow_dns_bypass_mode_check", stringResource(R.string.univ_firewall_rule_5), R.drawable.ic_prevent_dns_leaks, b.firewallDisallowDnsBypassModeTxt, b.firewallDisallowDnsBypassModeCheck, b.firewallDnsBypassRl, b.firewallDnsBypassStats, b.dnsBypassProgress, b.firewallDnsBypassShimmerLayout)
+            UniversalRuleRow("firewall_block_new_app_check", stringResource(R.string.univ_firewall_rule_6), R.drawable.ic_app_info, b.firewallBlockNewAppTxt, b.firewallBlockNewAppCheck, b.firewallNewAppRl, b.firewallNewAppStats, b.newAppProgress, b.firewallNewAppShimmerLayout)
+            UniversalRuleRow("firewall_block_metered_check", stringResource(R.string.univ_firewall_rule_9), R.drawable.ic_univ_metered, b.firewallBlockMeteredTxt, b.firewallBlockMeteredCheck, b.firewallMeteredRl, b.firewallMeteredStats, b.meteredProgress, b.firewallMeteredShimmerLayout)
+            UniversalRuleRow("firewall_block_http_check", stringResource(R.string.univ_firewall_rule_8), R.drawable.ic_http, b.firewallBlockHttpTxt, b.firewallBlockHttpCheck, b.firewallHttpRl, b.firewallHttpStats, b.httpProgress, b.firewallHttpShimmerLayout)
+            UniversalRuleRow("firewall_univ_lockdown_check", stringResource(R.string.univ_firewall_rule_10), R.drawable.ic_global_lockdown, b.firewallUnivLockdownTxt, b.firewallUnivLockdownCheck, b.firewallLockdownRl, b.firewallLockdownStats, b.lockdownProgress, b.firewallLockdownShimmerLayout)
         }
     }
 }
 
 @Composable
-private fun UniversalRuleRow(title: String, icon: Int, titleControl: WgControlState, checked: WgControlState,
+private fun UniversalRuleRow(sourceId: String, title: String, icon: Int, titleControl: WgControlState, checked: WgControlState,
     statsRow: WgControlState, stats: WgControlState, progress: WgControlState, shimmer: WgControlState) {
     Row(Modifier.fillMaxWidth().padding(horizontal = 2.dp).padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
         Row(Modifier.weight(1f).clickable { titleControl.performClick() }.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
             Image(painterResource(icon), null, Modifier.size(24.dp))
             Text(title, Modifier.padding(start = 10.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 14.sp)
         }
-        Switch(checked.isChecked, { checked.performClick() }, Modifier.padding(15.dp))
+        OriginalSwitch("activity_universal_firewall_settings:$sourceId", checked.isChecked, { checked.performClick() })
     }
     Box(Modifier.fillMaxWidth().clickable { statsRow.performClick() }) {
         Row(Modifier.fillMaxWidth().padding(start = 45.dp, end = 20.dp), verticalAlignment = Alignment.CenterVertically) {

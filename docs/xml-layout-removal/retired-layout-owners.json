@@ -1,0 +1,184 @@
+{
+  "baseline_commit": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "frozen_current_commit": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00",
+  "status": "source-only; no runtime execution; bytecode/arbitrary name construction unavailable",
+  "orphan_resource_records": [
+    {
+      "layout_path": "app/src/full/res/layout/dialog_ip_details_layout.xml",
+      "baseline_sha256": "79a6e6fb97ff7b910df9424e70e0f2e6af898e375e7687d7fc049a877a37ec2b",
+      "baseline_name_occurrences": [],
+      "baseline_binding_occurrences": [],
+      "current_name_occurrences": [],
+      "current_binding_occurrences": [],
+      "disposition": "baseline_orphan_resource; no exact source, XML include/tools, binding, reflection literal or current layout inflation owner found; no live equivalent invented"
+    },
+    {
+      "layout_path": "app/src/main/res/layout/dialog_sponsor_info.xml",
+      "baseline_sha256": "f8d3e5d73e7be19678e3b3f40a935f7f2465d9c42be2de598f99ffc1fd3d398b",
+      "baseline_name_occurrences": [],
+      "baseline_binding_occurrences": [],
+      "current_name_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControlCatalog.kt",
+          "line": 160,
+          "text": "\"dialog_sponsor_info:dialog_sponsor_info_sponsor\" to OriginalControlSpec(R.style.OriginalControl_dialog_sponsor_info_dialog_sponsor_info_sponsor, OriginalControlKind.Text, 0f, false, 0f, emptySet()),"
+        }
+      ],
+      "current_binding_occurrences": [],
+      "disposition": "baseline_orphan_resource; no exact source, XML include/tools, binding, reflection literal or current layout inflation owner found; no live equivalent invented"
+    },
+    {
+      "layout_path": "app/src/main/res/layout/item_server.xml",
+      "baseline_sha256": "c7d4bcedf46b4bda52d9b0d4ac630c75c1b74c5b6da96434fb2f6989795084f5",
+      "baseline_name_occurrences": [],
+      "baseline_binding_occurrences": [],
+      "current_name_occurrences": [],
+      "current_binding_occurrences": [],
+      "disposition": "baseline_orphan_resource; no exact source, XML include/tools, binding, reflection literal or current layout inflation owner found; no live equivalent invented"
+    }
+  ],
+  "retired_class_records": [
+    {
+      "symbol": "ServerWgPeersAdapter",
+      "baseline_definition": "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt",
+      "baseline_sha256": "f6ea6f390d393121ad5859019ffe92ff86bf43dc6509a82024b68ce95d4ad345",
+      "layout_name": "list_item_server_wg_peers",
+      "role": "exclusive_dormant_owner",
+      "baseline_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt",
+          "line": 34,
+          "text": "class ServerWgPeersAdapter("
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt",
+          "line": 38,
+          "text": ") : RecyclerView.Adapter<ServerWgPeersAdapter.ServerWgPeersViewHolder>() {"
+        }
+      ],
+      "baseline_external_symbol_occurrences": [],
+      "current_symbol_occurrences": [],
+      "current_owner_exists": false
+    },
+    {
+      "symbol": "SponsorBadgeView",
+      "baseline_definition": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorBadgeView.kt",
+      "baseline_sha256": "ab5cc4621422eee17ea31ecaf0be1dcd106b548ca3c7b87dfdea770c7b3a05a7",
+      "layout_name": "view_sponsor_badge",
+      "role": "exclusive_dormant_owner",
+      "baseline_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorBadgeView.kt",
+          "line": 24,
+          "text": "class SponsorBadgeView @JvmOverloads constructor("
+        }
+      ],
+      "baseline_external_symbol_occurrences": [],
+      "current_symbol_occurrences": [],
+      "current_owner_exists": false
+    },
+    {
+      "symbol": "FirewallStatusSpinnerAdapter",
+      "baseline_definition": "app/src/main/java/com/celzero/bravedns/adapter/FirewallStatusSpinnerAdapter.kt",
+      "baseline_sha256": "f6d04b291d909823c40fddd681d45992161b0e32dcf70990d146cea6661068b9",
+      "layout_name": "spinner_item_firewall_status",
+      "role": "exclusive_dormant_owner",
+      "baseline_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/FirewallStatusSpinnerAdapter.kt",
+          "line": 28,
+          "text": "class FirewallStatusSpinnerAdapter(val context: Context, private val spinnerLabels: Array<String>) :"
+        }
+      ],
+      "baseline_external_symbol_occurrences": [],
+      "current_symbol_occurrences": [],
+      "current_owner_exists": false
+    },
+    {
+      "symbol": "WgHopAdapter",
+      "baseline_definition": "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt",
+      "baseline_sha256": "c734ee0a1e53cd8fde3d9bd2bde725b71e6e3c93819580833016ec6af73e9ed3",
+      "layout_name": "list_item_wg_hop",
+      "role": "shared_with_live_GenericHopAdapter",
+      "baseline_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt",
+          "line": 52,
+          "text": "class WgHopAdapter("
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/WgHopAdapter.kt",
+          "line": 57,
+          "text": ") : RecyclerView.Adapter<WgHopAdapter.HopViewHolder>() {"
+        }
+      ],
+      "baseline_external_symbol_occurrences": [],
+      "current_symbol_occurrences": [],
+      "current_owner_exists": false
+    },
+    {
+      "symbol": "RethinkLogBottomSheet",
+      "baseline_definition": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkLogBottomSheet.kt",
+      "baseline_sha256": "437b1a6a80328024d306d133b2712bde3782eefb2bcddfdc1d62c86771937609",
+      "layout_name": "bottom_sheet_conn_track",
+      "role": "shared_with_live_ConnTrackerBottomSheet",
+      "baseline_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RethinkLogBottomSheet.kt",
+          "line": 58,
+          "text": "class RethinkLogBottomSheet : BaseBottomSheetDialogFragment(), KoinComponent {"
+        }
+      ],
+      "baseline_external_symbol_occurrences": [],
+      "current_symbol_occurrences": [],
+      "current_owner_exists": false
+    },
+    {
+      "symbol": "DnsCryptRelaysDialog",
+      "baseline_definition": "app/src/main/java/com/celzero/bravedns/ui/dialog/DnsCryptRelaysDialog.kt",
+      "baseline_sha256": "e2d8a96a7679a28fecf5f2166899f197badd29ca4bf142fed7328f2a852cbde9",
+      "layout_name": "dialog_dnscrypt_relays",
+      "role": "baseline_live_replaced_DnsRelaysDialog",
+      "baseline_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/DnsCryptRelaysDialog.kt",
+          "line": 28,
+          "text": "class DnsCryptRelaysDialog("
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+          "line": 40,
+          "text": "import com.celzero.bravedns.ui.dialog.DnsCryptRelaysDialog"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+          "line": 154,
+          "text": "DnsCryptRelaysDialog(requireActivity(), dnsCryptRelayRecyclerAdapter, themeId)"
+        }
+      ],
+      "baseline_external_symbol_occurrences": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+          "line": 40,
+          "text": "import com.celzero.bravedns.ui.dialog.DnsCryptRelaysDialog"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/DnsCryptListFragment.kt",
+          "line": 154,
+          "text": "DnsCryptRelaysDialog(requireActivity(), dnsCryptRelayRecyclerAdapter, themeId)"
+        }
+      ],
+      "current_symbol_occurrences": [],
+      "current_owner_exists": false
+    }
+  ],
+  "orphan_layout_names": [
+    "dialog_ip_details_layout",
+    "dialog_sponsor_info",
+    "item_server",
+    "list_item_server_wg_peers",
+    "spinner_item_firewall_status",
+    "view_sponsor_badge"
+  ],
+  "shared_layout_warning": "Retired WgHopAdapter/RethinkLogBottomSheet do not retire their shared layouts. DnsCryptRelaysDialog was live and has native replacement DnsRelaysDialog; do not treat it as dead."
+}

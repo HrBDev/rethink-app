@@ -201,7 +201,7 @@ internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle):
 
 /** abc_search_view.xml defaults to actionSearch and textNoSuggestions. Fill only unset search
  * options: callers still own explicit IME actions, autocorrection, keyboard type and callbacks.
- * Compose exposes autocorrection here, not the native textAutoComplete/noSuggestions bit pair.
+ * OriginalSearchInputMethod separately retains the native textAutoComplete/noSuggestions bits.
  */
 internal fun originalFieldKeyboardOptions(style: OriginalFieldStyle, options: KeyboardOptions): KeyboardOptions {
     if (!style.search) return options
@@ -226,9 +226,11 @@ fun OriginalTextField(value: String, onValueChange: (String) -> Unit, modifier: 
 ) {
     OriginalField(value, modifier, style, enabled, textStyle, label, placeholder, leadingIcon, trailingIcon, supportingText,
         isError, errorMessage, visualTransformation, singleLine, expandedHint) { fieldModifier, resolvedText, cursor, interaction, decoration ->
-        BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,
-            originalFieldKeyboardOptions(style, keyboardOptions), keyboardActions, singleLine, maxLines, minLines, visualTransformation,
-            interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)
+        OriginalSearchInputMethod(style, keyboardOptions) {
+            BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,
+                originalFieldKeyboardOptions(style, keyboardOptions), keyboardActions, singleLine, maxLines, minLines, visualTransformation,
+                interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)
+        }
     }
 }
 
@@ -242,9 +244,11 @@ fun OriginalTextField(value: TextFieldValue, onValueChange: (TextFieldValue) -> 
 ) {
     OriginalField(value.text, modifier, style, enabled, textStyle, null, placeholder, null, null, null,
         false, null, VisualTransformation.None, singleLine, true) { fieldModifier, resolvedText, cursor, interaction, decoration ->
-        BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,
-            originalFieldKeyboardOptions(style, keyboardOptions), keyboardActions, singleLine, maxLines, minLines, VisualTransformation.None,
-            interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)
+        OriginalSearchInputMethod(style, keyboardOptions) {
+            BasicTextField(value, onValueChange, fieldModifier, enabled, readOnly, resolvedText,
+                originalFieldKeyboardOptions(style, keyboardOptions), keyboardActions, singleLine, maxLines, minLines, VisualTransformation.None,
+                interactionSource = interaction, cursorBrush = SolidColor(cursor), decorationBox = decoration)
+        }
     }
 }
 

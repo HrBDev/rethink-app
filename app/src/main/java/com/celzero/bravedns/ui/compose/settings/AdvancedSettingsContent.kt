@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.settings
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -98,18 +100,18 @@ fun AdvancedSettingsContent(b: AdvancedSettingsState) {
             if (b.settingsExperimentalRl.isVisible) SettingsRow(stringResource(R.string.adv_set_experimental_title),
                 stringResource(R.string.adv_set_experimental_desc), R.drawable.ic_experimental,
                 onClick = { b.settingsExperimentalRl.performClick() }) {
-                Switch(b.dvExperimentalSwitch.isChecked, { b.dvExperimentalSwitch.isChecked = it }, Modifier.padding(10.dp))
+                OriginalSwitch("activity_advanced_setting:dv_experimental_switch", b.dvExperimentalSwitch.isChecked, { b.dvExperimentalSwitch.isChecked = it })
             }
             if (b.settingsAutoDialRl.isVisible) SettingsRow(stringResource(R.string.set_auto_dial_title),
                 stringResource(R.string.set_auto_dial_desc), R.drawable.ic_auto_dial, iconAlpha = .5f,
                 onClick = { b.settingsAutoDialRl.performClick() }) {
-                Switch(b.dvAutoDialSwitch.isChecked, { b.dvAutoDialSwitch.isChecked = it }, Modifier.padding(10.dp))
+                OriginalSwitch("activity_advanced_setting:dv_auto_dial_switch", b.dvAutoDialSwitch.isChecked, { b.dvAutoDialSwitch.isChecked = it })
             }
             if (b.settingsPtModeRl.isVisible) SettingsRow("Protocol Translation Mode", b.settingsPtModeDesc.text.toString(),
                 R.drawable.ic_ip_network, iconAlpha = .5f, onClick = { b.settingsPtModeRl.performClick() })
             if (b.settingsGoMaxMemoryLl.isVisible) Column(Modifier.padding(vertical = 15.dp)) {
                 SettingsRow("Go Max Memory Limit", "Set the maximum memory the Go engine can consume", R.drawable.ic_experimental, iconAlpha = .5f, verticalPadding = 0.dp)
-                Slider(b.goMaxMemorySeekbar.progress.toFloat(), { b.goMaxMemorySeekbar.userProgress(it.toInt()) },
+                OriginalSlider("activity_advanced_setting:go_max_memory_seekbar", b.goMaxMemorySeekbar.progress.toFloat(), { b.goMaxMemorySeekbar.userProgress(it.toInt()) },
                     Modifier.padding(start = 40.dp, end = 20.dp), valueRange = 0f..5f, steps = 4,
                     onValueChangeFinished = { b.goMaxMemorySeekbar.stop() })
                 Text(b.goMaxMemoryValueTxt.text.toString(), Modifier.align(Alignment.End).padding(end = 25.dp), fontSize = 12.sp)

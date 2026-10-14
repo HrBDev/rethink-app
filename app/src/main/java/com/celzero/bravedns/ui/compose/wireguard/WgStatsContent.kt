@@ -18,15 +18,9 @@ import com.celzero.bravedns.ui.compose.themeColor
                 WgToggle(b.tbRecentToggleBtn, source = "fragment_wg_nw_stats:tb_recent_toggle_btn"); WgToggle(b.tbDailyToggleBtn, source = "fragment_wg_nw_stats:tb_daily_toggle_btn"); WgToggle(b.tbWeeklyToggleBtn, source = "fragment_wg_nw_stats:tb_weekly_toggle_btn")
             }
             WgText(b.tbLogsDisabledTv, Modifier.padding(16.dp))
-            WgCard(b.tbStatsCard, Modifier.padding(horizontal = 12.dp)) {
+            WgCard(b.tbStatsCard, Modifier.padding(horizontal = 12.dp), contentPadding = PaddingValues(20.dp)) {
                 val accent = themeColor(androidx.appcompat.R.attr.colorAccent)
-                val total = b.fssProgressBar.max.coerceAtLeast(1).toFloat()
-                val progress = (b.fssProgressBar.progress / total).coerceIn(0f, 1f)
-                val secondary = (b.fssProgressBar.secondaryProgress / total).coerceIn(0f, 1f)
-                Box(Modifier.fillMaxWidth().height(6.dp).background(accent.copy(alpha = .12f))) {
-                    Box(Modifier.fillMaxWidth(secondary).fillMaxHeight().background(accent.copy(alpha = .5f)))
-                    Box(Modifier.fillMaxWidth(progress).fillMaxHeight().background(accent))
-                }
+                WgProgress(b.fssProgressBar, Modifier.fillMaxWidth().padding(5.dp))
                 FlowRow(horizontalArrangement = Arrangement.SpaceBetween) {
                     Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) { Box(Modifier.padding(end = 10.dp).size(8.dp).background(accent, CircleShape)); WgText(b.fssUnmeteredDataUsage) }
                     WgText(b.fssTotalDataUsage)

@@ -32,12 +32,12 @@ class ProxyEditorState(context: Context) {
     val dialogProxyEditPassword = WgControlState(context, checkable = false) .apply { hint = context.getText(R.string.settings_socks5_dialog_hint_password); isPassword = true; maxLines = 1 }
     val dialogProxyUdpHeader = WgControlState(context, checkable = false)
     val node21 = WgControlState(context, checkable = false) .apply { text = context.getText(R.string.univ_firewall_rule_4) }
-    val dialogProxyUdpCheck = WgControlState(context, checkable = true) .apply { buttonTint = UIUtils.fetchColor(context, R.attr.accentGood) }
+    val dialogProxyUdpCheck = WgControlState(context, checkable = true)
     val dialogProxyExcludeAppsHeader = WgControlState(context, checkable = false)
     val node24 = WgControlState(context, checkable = false)
     val node25 = WgControlState(context, checkable = false) .apply { text = context.getText(R.string.settings_exclude_proxy_apps_heading) }
     val dialogProxyExcludeAppsDesc = WgControlState(context, checkable = false) .apply { text = context.getText(R.string.settings_exclude_proxy_apps_desc) }
-    val dialogProxyExcludeAppsCheck = WgControlState(context, checkable = true) .apply { buttonTint = UIUtils.fetchColor(context, R.attr.accentGood) }
+    val dialogProxyExcludeAppsCheck = WgControlState(context, checkable = true)
     val dialogProxyErrorText = WgControlState(context, checkable = false) .apply { textColor = UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorError) }
     val node29 = WgControlState(context, checkable = false)
     val dialogProxyCancelBtn = WgControlState(context, checkable = false) .apply { text = context.getText(R.string.lbl_cancel); textColor = UIUtils.fetchColor(context, R.attr.accentGood) }

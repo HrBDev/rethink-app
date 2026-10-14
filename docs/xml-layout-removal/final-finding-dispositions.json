@@ -1,0 +1,349 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "status": "BOUNDED_SOURCE_RECONCILIATION_NOT_RUNTIME_ACCEPTANCE",
+  "historical_findings_unchanged": true,
+  "limitations": [
+    "Targeted source checks establish specified contracts, not full per-node visual equivalence.",
+    "S30 URL spacing was a false-positive: original parent8dp plus child2dp already equals current10dp; retained and guarded.",
+    "Actual large-font dimensions, system windows, interactions and accessibility are unrun."
+  ],
+  "findings": [
+    {
+      "id": "S01",
+      "historical_title": "Wide Home logs card no longer reaches the shared bottom barrier",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "checkpoint-20261014-1231.md",
+        "home-layout-source-check.json"
+      ]
+    },
+    {
+      "id": "S02",
+      "historical_title": "Home apps metric grid and qualifier-specific grouping collapsed",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "checkpoint-20261014-1231.md",
+        "home-layout-source-check.json"
+      ]
+    },
+    {
+      "id": "S03",
+      "historical_title": "Home fixed heights are now minimums with different padding constraints",
+      "status": "SOURCE_GROUPING_AND_GEOMETRY_CORRECTED_LARGE_TEXT_BOUNDS_UNVERIFIED",
+      "evidence": [
+        "checkpoint-20261014-1231.md",
+        "home-layout-source-check.json"
+      ]
+    },
+    {
+      "id": "S04",
+      "historical_title": "Home card elevation space restored but shadow is not rendered",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "checkpoint-20261014-1231.md",
+        "home-layout-source-check.json"
+      ]
+    },
+    {
+      "id": "S05",
+      "historical_title": "Home typography loses source tracking, truncation and autosize",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "checkpoint-20261014-1231.md",
+        "home-layout-source-check.json"
+      ]
+    },
+    {
+      "id": "S06",
+      "historical_title": "Settings/DNS cards still omit inherited compat-padding geometry",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "dns-card-source-corrections.md",
+        "shared-card-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S07",
+      "historical_title": "WireGuard card wrapper flattens per-layout padding and row grouping",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "dns-card-source-corrections.md",
+        "shared-card-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S08",
+      "historical_title": "Raw switches bypass the original theme overlays",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "compound-control-source-corrections.md",
+        "compound-control-source-results.json"
+      ]
+    },
+    {
+      "id": "S09",
+      "historical_title": "Radio controls have unreviewed source-style/default differences",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "compound-control-source-corrections.md",
+        "compound-control-source-results.json"
+      ]
+    },
+    {
+      "id": "S10",
+      "historical_title": "SeekBar/Slider replacement does not preserve the source widget appearance",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "compound-control-source-corrections.md",
+        "compound-control-source-results.json"
+      ]
+    },
+    {
+      "id": "S11",
+      "historical_title": "Progress defaults replace explicit source track/color contracts",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "wg-text-progress-source-corrections.md",
+        "wg-text-progress-source-results.json"
+      ]
+    },
+    {
+      "id": "S12",
+      "historical_title": "StatisticsRow no longer matches the source summary row text contract",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "statistics-row-source-check.json"
+      ]
+    },
+    {
+      "id": "S13",
+      "historical_title": "RPN statistics app row is incorrectly collapsed into StatisticsRow",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "statistics-row-source-check.json"
+      ]
+    },
+    {
+      "id": "S14",
+      "historical_title": "Expanded blocklist-domain row loses geometry, type and overflow",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "statistics-row-source-check.json"
+      ]
+    },
+    {
+      "id": "S15",
+      "historical_title": "Purchase/history grouping and icon backgrounds changed",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "history-rpn-styling-restoration.md",
+        "history-rpn-styling-followup.md",
+        "history-rpn-styling-source-report-v3.json"
+      ]
+    },
+    {
+      "id": "S16",
+      "historical_title": "Loading skeleton layouts replaced by generic shapes",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "history-rpn-styling-restoration.md",
+        "history-rpn-styling-followup.md",
+        "history-rpn-styling-source-report-v3.json"
+      ]
+    },
+    {
+      "id": "S17",
+      "historical_title": "Add-server tile lost its dashed stroke and label typography",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "history-rpn-styling-restoration.md",
+        "history-rpn-styling-followup.md",
+        "history-rpn-styling-source-report-v3.json"
+      ]
+    },
+    {
+      "id": "S18",
+      "historical_title": "Country selector and alphabet headers changed text metrics",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "history-rpn-styling-restoration.md",
+        "history-rpn-styling-followup.md",
+        "history-rpn-styling-source-report-v3.json"
+      ]
+    },
+    {
+      "id": "S19",
+      "historical_title": "Rule status badges are generic filled surfaces instead of framed source badges",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "rule-dialog-source-corrections.md",
+        "rule-dialog-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S20",
+      "historical_title": "Rule editor title/body/error geometry still uses generic dialog text",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "rule-dialog-source-corrections.md",
+        "rule-dialog-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S21",
+      "historical_title": "Bubble app rows lose source icon frame and name marquee",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "rows-tabs-source-corrections.md",
+        "rows-tabs-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S22",
+      "historical_title": "WireGuard text helper cannot carry several explicit text properties",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "wg-text-progress-source-corrections.md",
+        "wg-text-progress-source-results.json"
+      ]
+    },
+    {
+      "id": "S23",
+      "historical_title": "RPN progress dialog status/hint text grew from original sizes",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "history-rpn-styling-restoration.md",
+        "history-rpn-styling-followup.md",
+        "history-rpn-styling-source-report-v3.json"
+      ]
+    },
+    {
+      "id": "S24",
+      "historical_title": "Tabbed hosts do not resolve TabbedLayoutDefault",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "rows-tabs-source-corrections.md",
+        "rows-tabs-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S25",
+      "historical_title": "Checkbox/selection visuals need a separate source-style census",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "compound-control-source-corrections.md",
+        "compound-control-source-results.json"
+      ]
+    },
+    {
+      "id": "S26",
+      "historical_title": "Fixed visual size versus minimum/touch size must be proven for restored controls",
+      "status": "FIXED_VISUAL_AND_TOUCH_GEOMETRY_SOURCE_CORRECTED_RUNTIME_BOUNDS_UNVERIFIED",
+      "evidence": [
+        "compound-control-source-corrections.md",
+        "../compose-migration/button-search-regression-review.md"
+      ]
+    },
+    {
+      "id": "S27",
+      "historical_title": "App connection rows omit source line/weight/font distinctions",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "rows-tabs-source-corrections.md",
+        "rows-tabs-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S28",
+      "historical_title": "Endpoint flag minimum frame was lost",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "dns-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S29",
+      "historical_title": "DNS record-mode controls bypass their existing original-control catalog",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "dns-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S30",
+      "historical_title": "Block Free DNS surrounding text and URL spacing differ",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "surrounding-text-corrections.md",
+        "surrounding-text-source-check.json",
+        "surrounding-text-search-ime-review.md"
+      ]
+    },
+    {
+      "id": "S31",
+      "historical_title": "Filter-sheet heading style and drag-handle geometry differ",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "surrounding-text-corrections.md",
+        "surrounding-text-source-check.json",
+        "surrounding-text-search-ime-review.md"
+      ]
+    },
+    {
+      "id": "S32",
+      "historical_title": "Interval sheet captions and expandable row overflow differ",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "surrounding-text-corrections.md",
+        "surrounding-text-source-check.json",
+        "surrounding-text-search-ime-review.md"
+      ]
+    },
+    {
+      "id": "S33",
+      "historical_title": "Detailed-statistics/domain headers lose original typography",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "surrounding-text-corrections.md",
+        "surrounding-text-source-check.json",
+        "surrounding-text-search-ime-review.md"
+      ]
+    },
+    {
+      "id": "S34",
+      "historical_title": "DNS editor layout loses source invisible error reservation and insets",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "rule-dialog-source-corrections.md",
+        "rule-dialog-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S35",
+      "historical_title": "Smart DNS header description is 14sp instead of11sp",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "dns-source-style-results.json"
+      ]
+    },
+    {
+      "id": "S36",
+      "historical_title": "Removed-server rows and ping-history rows lose text metrics",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "history-rpn-styling-restoration.md",
+        "history-rpn-styling-followup.md",
+        "history-rpn-styling-source-report-v3.json"
+      ]
+    },
+    {
+      "id": "S37",
+      "historical_title": "About brand title uses fixed SP tracking instead of source EM/style",
+      "status": "SOURCE_CORRECTED_RUNTIME_UNVERIFIED",
+      "evidence": [
+        "dns-card-source-corrections.md",
+        "shared-card-source-style-results.json"
+      ]
+    }
+  ]
+}

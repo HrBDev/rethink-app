@@ -50,7 +50,7 @@ import org.koin.android.ext.android.inject
  *
  * Example:
  * ```
- * class MyActivity : BaseActivity(R.layout.activity_my) {
+ * class MyActivity : BaseActivity() {
  *     override fun onCreate(savedInstanceState: Bundle?) {
  *         theme.applyStyle(Themes.getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
  *         super.onCreate(savedInstanceState)

@@ -1,6 +1,8 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.settings
 
+import com.celzero.bravedns.ui.compose.controls.*
+
 import android.os.Bundle
 import android.graphics.Typeface
 import androidx.compose.foundation.clickable
@@ -57,20 +59,20 @@ fun AntiCensorshipContent(b: AntiCensorshipState) {
             Text(stringResource(R.string.ac_desc), Modifier.padding(horizontal = 10.dp).padding(10.dp),
                 color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp)
             SettingsCard(contentPadding = 10.dp, horizontalContentPadding = 5.dp) {
-                AntiCensorshipRow(b.acNeverSplitRl, b.acRadioNeverSplit, stringResource(R.string.settings_app_list_default_app), stringResource(R.string.ac_never_split_desc), 5.dp)
-                AntiCensorshipRow(b.acSplitAutoRl, b.acRadioSplitAuto, stringResource(R.string.settings_ip_text_ipv46), stringResource(R.string.ac_split_auto_desc), 5.dp)
-                AntiCensorshipRow(b.acSplitTcpRl, b.acRadioSplitTcp, stringResource(R.string.ac_split_tcp), stringResource(R.string.ac_split_tcp_desc), 5.dp)
-                AntiCensorshipRow(b.acSplitTlsRl, b.acRadioSplitTls, stringResource(R.string.ac_split_tls), stringResource(R.string.ac_split_tls_desc), 5.dp)
-                AntiCensorshipRow(b.acDesyncRl, b.acRadioDesync, stringResource(R.string.ac_desync), stringResource(R.string.ac_desync_desc), 20.dp)
-                AntiCensorshipRow(b.acTcpProxyRl, b.acRadioTcpProxy, stringResource(R.string.ac_tcp_proxy), stringResource(R.string.ac_tcp_proxy_desc), 20.dp)
+                AntiCensorshipRow("ac_radio_never_split", b.acNeverSplitRl, b.acRadioNeverSplit, stringResource(R.string.settings_app_list_default_app), stringResource(R.string.ac_never_split_desc), 5.dp)
+                AntiCensorshipRow("ac_radio_split_auto", b.acSplitAutoRl, b.acRadioSplitAuto, stringResource(R.string.settings_ip_text_ipv46), stringResource(R.string.ac_split_auto_desc), 5.dp)
+                AntiCensorshipRow("ac_radio_split_tcp", b.acSplitTcpRl, b.acRadioSplitTcp, stringResource(R.string.ac_split_tcp), stringResource(R.string.ac_split_tcp_desc), 5.dp)
+                AntiCensorshipRow("ac_radio_split_tls", b.acSplitTlsRl, b.acRadioSplitTls, stringResource(R.string.ac_split_tls), stringResource(R.string.ac_split_tls_desc), 5.dp)
+                AntiCensorshipRow("ac_radio_desync", b.acDesyncRl, b.acRadioDesync, stringResource(R.string.ac_desync), stringResource(R.string.ac_desync_desc), 20.dp)
+                AntiCensorshipRow("ac_radio_tcp_proxy", b.acTcpProxyRl, b.acRadioTcpProxy, stringResource(R.string.ac_tcp_proxy), stringResource(R.string.ac_tcp_proxy_desc), 20.dp)
             }
             AntiCensorshipHeading(stringResource(R.string.ac_retry_options_title))
             Text(stringResource(R.string.ac_retry_options_desc), Modifier.padding(horizontal = 10.dp).padding(10.dp),
                 color = themeColor(R.attr.primaryLightColorText), fontSize = 12.sp)
             SettingsCard(contentPadding = 10.dp, horizontalContentPadding = 5.dp) {
-                AntiCensorshipRow(b.acRetryNeverRl, b.acRadioNeverRetry, stringResource(R.string.settings_app_list_default_app), stringResource(R.string.ac_retry_options_never_desc), 5.dp)
-                AntiCensorshipRow(b.acRetryWithSplitRl, b.acRadioRetryWithSplit, stringResource(R.string.settings_ip_text_ipv46), stringResource(R.string.ac_retry_options_with_split_desc), 5.dp)
-                AntiCensorshipRow(b.acRetryAfterSplitRl, b.acRadioRetryAfterSplit, stringResource(R.string.lbl_always), stringResource(R.string.ac_retry_options_after_split_desc), 20.dp)
+                AntiCensorshipRow("ac_radio_never_retry", b.acRetryNeverRl, b.acRadioNeverRetry, stringResource(R.string.settings_app_list_default_app), stringResource(R.string.ac_retry_options_never_desc), 5.dp)
+                AntiCensorshipRow("ac_radio_retry_with_split", b.acRetryWithSplitRl, b.acRadioRetryWithSplit, stringResource(R.string.settings_ip_text_ipv46), stringResource(R.string.ac_retry_options_with_split_desc), 5.dp)
+                AntiCensorshipRow("ac_radio_retry_after_split", b.acRetryAfterSplitRl, b.acRadioRetryAfterSplit, stringResource(R.string.lbl_always), stringResource(R.string.ac_retry_options_after_split_desc), 20.dp)
             }
         }
     }
@@ -85,11 +87,11 @@ private fun AntiCensorshipHeading(text: String) {
 }
 
 @Composable
-private fun AntiCensorshipRow(row: WgControlState, radio: WgControlState, title: String, description: String, bottom: androidx.compose.ui.unit.Dp) {
+private fun AntiCensorshipRow(sourceId: String, row: WgControlState, radio: WgControlState, title: String, description: String, bottom: androidx.compose.ui.unit.Dp) {
     if (!row.isVisible) return
     Row(Modifier.fillMaxWidth().alpha(row.alpha).padding(bottom = 1.dp).clickable { row.performClick() }.padding(top = 5.dp, bottom = bottom),
         verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(radio.isChecked, { if (!radio.isChecked) radio.isChecked = true }, Modifier.padding(10.dp), enabled = radio.isEnabled)
+        OriginalRadioButton("activity_anti_censorship:$sourceId", radio.isChecked, { if (!radio.isChecked) radio.isChecked = true }, enabled = radio.isEnabled)
         Column(Modifier.weight(1f)) {
             Text(title, Modifier.padding(vertical = 5.dp), fontSize = 14.sp, color = themeColor(R.attr.primaryTextColor))
             Text(description, Modifier.padding(bottom = 5.dp), fontSize = 12.sp, color = themeColor(R.attr.secondaryTextColor))

@@ -41,11 +41,11 @@ import com.celzero.bravedns.ui.compose.themeColor
                         UtilityText(ui.contributionPrice, Modifier.padding(top = 16.dp))
                         var sliding by remember { mutableStateOf(false) }
                         BoxWithConstraints(Modifier.fillMaxWidth()) {
-                            if (sliding) Surface(Modifier.align(Alignment.TopStart).offset(x = (maxWidth - 48.dp) * (ui.contributionSeekbar.value / 6f), y = (-24).dp), shape = MaterialTheme.shapes.small) {
-                                Text(ui.contributionSeekbar.label(ui.contributionSeekbar.value), Modifier.padding(6.dp))
-                            }
-                            Slider(ui.contributionSeekbar.value, { sliding = true; ui.contributionSeekbar.userValue(it) }, onValueChangeFinished = { sliding = false }, valueRange = 0f..6f, steps = 5,
+                            OriginalSlider("fragment_sponsor:contribution_seekbar", ui.contributionSeekbar.value, { sliding = true; ui.contributionSeekbar.userValue(it) }, onValueChangeFinished = { sliding = false }, valueRange = 0f..6f, steps = 5,
                                 modifier = Modifier.fillMaxWidth().testTag(ui.contributionSeekbar.tag).semantics { stateDescription = ui.contributionSeekbar.label(ui.contributionSeekbar.value) })
+                            if (sliding) OriginalSliderValueLabel("fragment_sponsor:contribution_seekbar",
+                                ui.contributionSeekbar.label(ui.contributionSeekbar.value), ui.contributionSeekbar.value / 6f,
+                                Modifier.matchParentSize())
                         }
                         Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                             Text("$1", style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_LabelSmall))

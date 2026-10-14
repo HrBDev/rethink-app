@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
 
@@ -30,7 +31,7 @@ class BlocklistFilterState {
 @Composable fun BlocklistFilterScreen(state: BlocklistFilterState) {
     Column(Modifier.fillMaxWidth().padding(10.dp).verticalScroll(rememberScrollState()).padding(bottom = 40.dp)) {
         Box(Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp, bottom = 20.dp).size(60.dp, 3.dp).background(themeColor(R.attr.border)))
-        Text(stringResource(R.string.bsrf_sub_group_heading), Modifier.padding(horizontal = 15.dp, vertical = 10.dp).semantics { heading() }, color = themeColor(R.attr.secondaryTextColor))
+        Text(stringResource(R.string.bsrf_sub_group_heading), Modifier.padding(horizontal = 15.dp, vertical = 10.dp).semantics { heading() }, color = themeColor(R.attr.secondaryTextColor), fontSize = 14.sp)
         FlowRow(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 5.dp)) {
             state.chips.forEach { chip ->
                 OriginalChip("item_chip_filter:(anonymous)", chip.checked, onClick = { chip.checked = !chip.checked; chip.change(chip.checked) }, label = { Text(chip.label) }, modifier = Modifier.padding(3.dp).testTag("blocklist-subgroup-${chip.label}"))

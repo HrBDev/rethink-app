@@ -74,10 +74,8 @@ internal class HistoryScreenState {
                         color = themeColor(if (server) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor), maxLines = 1)
                 }
             }, expandedHeight = 180.dp, scrollBehavior = scroll)
-            if (state.fetchProgress.isVisible) LinearProgressIndicator(
-                Modifier.fillMaxWidth().height(3.dp).alpha(fetchAlpha.value),
-                color = themeColor(R.attr.accentGood), trackColor = themeColor(R.attr.chipBgColorPositive),
-                strokeCap = androidx.compose.ui.graphics.StrokeCap.Butt)
+            if (state.fetchProgress.isVisible) com.celzero.bravedns.ui.compose.controls.OriginalLinearProgress(
+                "activity_server_order_history:fetch_progress", Modifier.fillMaxWidth().alpha(fetchAlpha.value), indeterminate = true)
         }
     }) { padding ->
         Box(Modifier.fillMaxSize().padding(padding)) {

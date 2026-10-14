@@ -81,8 +81,8 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
                             RuleCount(b.aadIpBlockHeader,b.aadIpBlockCard,R.string.lbl_ip_rules,Modifier.weight(1f))
                             RuleCount(b.aadDomainBlockHeader,b.aadDomainBlockCard,R.string.lbl_domain_rules,Modifier.weight(1f))
                         }
-                        SwitchRow(b.excludeProxyRl,b.excludeProxySwitch,R.string.exclude_apps_from_proxy,R.drawable.ic_proxy_white,if(b.aadProxyDetails.isVisible)b.aadProxyDetails.text.toString() else "")
-                        SwitchRow(b.tempAllowRl,b.tempAllowSwitch,R.string.temp_allow_label,R.drawable.ic_firewall_shield,b.tempAllowDesc.text.toString().ifEmpty{stringResource(R.string.temp_allow_desc)})
+                        SwitchRow("exclude_proxy_switch",b.excludeProxyRl,b.excludeProxySwitch,R.string.exclude_apps_from_proxy,R.drawable.ic_proxy_white,if(b.aadProxyDetails.isVisible)b.aadProxyDetails.text.toString() else "")
+                        SwitchRow("temp_allow_switch",b.tempAllowRl,b.tempAllowSwitch,R.string.temp_allow_label,R.drawable.ic_firewall_shield,b.tempAllowDesc.text.toString().ifEmpty{stringResource(R.string.temp_allow_desc)})
                     }
                 }
                 if(b.aadViewModeToggleGroup.isVisible) Row(Modifier.fillMaxWidth().padding(horizontal=20.dp),horizontalArrangement=Arrangement.End) {
@@ -143,10 +143,10 @@ private data class Section(val type:AppInsightsSection,val heading:WgControlStat
         Column(Modifier.padding(10.dp),horizontalAlignment=Alignment.CenterHorizontally){Text(count.text.toString(),fontSize=16.sp,color=themeColor(R.attr.accentGood));Text(stringResource(label),fontSize=12.sp)}
     }
 }
-@Composable private fun SwitchRow(row:WgControlState,switch:WgControlState,title:Int,icon:Int,desc:String) {
+@Composable private fun SwitchRow(sourceId:String,row:WgControlState,switch:WgControlState,title:Int,icon:Int,desc:String) {
     Row(Modifier.fillMaxWidth().clickable(role=Role.Switch){row.performClick()}.semantics{toggleableState=if(switch.isChecked)androidx.compose.ui.state.ToggleableState.On else androidx.compose.ui.state.ToggleableState.Off}.padding(16.dp),verticalAlignment=Alignment.CenterVertically) {
         Icon(painterResource(icon),null,Modifier.padding(end=12.dp).size(24.dp))
         Column(Modifier.weight(1f)){Text(stringResource(title),fontSize=14.sp);if(desc.isNotEmpty())Text(desc,fontSize=12.sp)}
-        Switch(switch.isChecked,onCheckedChange=null)
+        OriginalSwitch("activity_app_details:$sourceId",switch.isChecked,onCheckedChange=null)
     }
 }

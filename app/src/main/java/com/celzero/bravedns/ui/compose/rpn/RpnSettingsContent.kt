@@ -3,6 +3,7 @@ package com.celzero.bravedns.ui.compose.rpn
 import androidx.compose.ui.semantics.*
 import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.*
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -44,11 +45,11 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                     OriginalButton("bottomsheet_server_settings:split_dns_enable_btn", { ui.splitDnsEnableBtn.performClick() }) { OriginalRpnText(ui.splitDnsEnableBtn) }
                 }
                 Column(Modifier.rpnMotion(ui.dnsCheckboxContainer)) {
-                    RpnCheckRow(R.string.rbl_privacy, ui.dnsRowPrivacy, ui.cbDnsPrivacy)
+                    RpnCheckRow("cb_dns_privacy", R.string.rbl_privacy, ui.dnsRowPrivacy, ui.cbDnsPrivacy)
                     RpnSettingsDivider()
-                    RpnCheckRow(R.string.server_settings_dns_family, ui.dnsRowFamily, ui.cbDnsFamily)
+                    RpnCheckRow("cb_dns_family", R.string.server_settings_dns_family, ui.dnsRowFamily, ui.cbDnsFamily)
                     RpnSettingsDivider()
-                    RpnCheckRow(R.string.rbl_security, ui.dnsRowSecurity, ui.cbDnsSecurity)
+                    RpnCheckRow("cb_dns_security", R.string.rbl_security, ui.dnsRowSecurity, ui.cbDnsSecurity)
                 }
             }
             RpnSectionLabel(R.string.server_settings_config_handling_section)
@@ -61,14 +62,14 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
                     }
                 }
                 RpnSettingsDivider()
-                RpnSwitchRow(R.string.server_settings_identity_title, R.string.server_settings_identity_desc, ui.identityRow, ui.identitySwitch)
+                RpnSwitchRow("identity_switch", R.string.server_settings_identity_title, R.string.server_settings_identity_desc, ui.identityRow, ui.identitySwitch)
                 RpnSettingsDivider()
                 Row(Modifier.fillMaxWidth().rpnMotion(ui.portRow).clickable(enabled = ui.portRow.isClickable) { ui.portRow.performClick() }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) { Text(stringResource(R.string.server_settings_port_title)); Text(stringResource(R.string.server_settings_port_desc), style = MaterialTheme.typography.bodySmall) }
                     RpnText(ui.tvPortValue)
                     Icon(painterResource(R.drawable.ic_arrow_down_small), null, Modifier.size(16.dp))
                 }
-                if (ui.permanentConfigRow.isVisible) { RpnSettingsDivider(); RpnSwitchRow(R.string.server_settings_permanent_config_title, R.string.server_settings_permanent_config_desc, ui.permanentConfigRow, ui.permanentConfigSwitch) }
+                if (ui.permanentConfigRow.isVisible) { RpnSettingsDivider(); RpnSwitchRow("permanent_config_switch", R.string.server_settings_permanent_config_title, R.string.server_settings_permanent_config_desc, ui.permanentConfigRow, ui.permanentConfigSwitch) }
             }
             RpnSectionLabel(R.string.auto_exclude_cc_title)
             RpnSettingsCard {
@@ -90,14 +91,14 @@ fun RpnSettingsContent(ui: RpnSettingsState) {
     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp).clip(RoundedCornerShape(16.dp)).background(themeColor(CardR.attr.cardBackgroundColor)).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(16.dp)), content = content)
 }
 @Composable internal fun RpnSettingsDivider() { HorizontalDivider(Modifier.padding(horizontal = 16.dp), color = themeColor(R.attr.primaryTextColor).copy(alpha = .08f)) }
-@Composable private fun RpnCheckRow(label: Int, row: RpnControlState, checkbox: RpnControlState) {
-    Row(Modifier.fillMaxWidth().clickable(enabled = row.isClickable) { row.performClick() }.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(stringResource(label), Modifier.weight(1f)); Checkbox(checkbox.isChecked, { checkbox.isChecked = it }, enabled = checkbox.isEnabled)
+@Composable private fun RpnCheckRow(sourceId: String, label: Int, row: RpnControlState, checkbox: RpnControlState) {
+    Row(Modifier.fillMaxWidth().toggleable(value = checkbox.isChecked, enabled = row.isEnabled && row.isClickable, role = Role.Checkbox) { row.performClick() }.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(stringResource(label), Modifier.weight(1f)); OriginalCheckbox("bottomsheet_server_settings:$sourceId", checkbox.isChecked, null, enabled = checkbox.isEnabled)
     }
 }
-@Composable private fun RpnSwitchRow(title: Int, desc: Int, row: RpnControlState, toggle: RpnControlState) {
+@Composable private fun RpnSwitchRow(sourceId: String, title: Int, desc: Int, row: RpnControlState, toggle: RpnControlState) {
     Row(Modifier.fillMaxWidth().rpnMotion(row).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) { Text(stringResource(title)); Text(stringResource(desc), Modifier.alpha(.6f), style = MaterialTheme.typography.bodySmall) }
-        Switch(toggle.isChecked, { toggle.isChecked = it }, enabled = toggle.isEnabled)
+        OriginalSwitch("bottomsheet_server_settings:$sourceId", toggle.isChecked, { toggle.isChecked = it }, enabled = toggle.isEnabled)
     }
 }

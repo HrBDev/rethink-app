@@ -117,7 +117,7 @@ class NetworkAlertDialogBuilder(private val context: Context, private val theme:
                             adapter.items.forEachIndexed { index, item ->
                                 Row(Modifier.fillMaxWidth().selectable(selected = index == adapter.selected(), role = Role.RadioButton,
                                     onClick = { dispatchButton(action, index) }).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                                    RadioButton(index == adapter.selected(), onClick = null)
+                                    OriginalRadioButton("item_network_policy:radioButton", index == adapter.selected(), onClick = null)
                                     Column(Modifier.weight(1f).padding(horizontal = 10.dp)) {
                                         Text(item.first, style = utilityTextStyle(size = 14f, weight = android.graphics.Typeface.BOLD), color = themeColor(R.attr.primaryTextColor))
                                         Text(item.second, Modifier.padding(top = 2.dp), style = utilityTextStyle(size = 11f), color = themeColor(R.attr.primaryLightColorText))

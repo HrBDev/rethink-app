@@ -6,6 +6,8 @@ import android.app.Dialog
 import android.view.Window
 import android.view.WindowManager
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import com.celzero.bravedns.ui.compose.themeColor
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -35,20 +37,20 @@ class FirewallFilterState {
     fun selectSort(value:AppListActivity.SortOption){if(sort==value)return;sort=value;onSort(value)}
 }
 @Composable fun FirewallFilterContent(b:FirewallFilterState) {
-    Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).navigationBarsPadding().padding(20.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
-        HorizontalDivider(Modifier.width(60.dp).align(Alignment.CenterHorizontally),thickness=3.dp)
-        Text(stringResource(R.string.fapps_filter_filter_heading),fontSize=16.sp)
-        FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+    Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).navigationBarsPadding().padding(10.dp).padding(bottom = 40.dp)) {
+        Box(Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp, bottom = 20.dp).size(60.dp, 3.dp).background(themeColor(R.attr.border)))
+        Text(stringResource(R.string.fapps_filter_filter_heading),modifier=Modifier.padding(horizontal = 15.dp, vertical = 10.dp), color=themeColor(R.attr.secondaryTextColor), fontSize=14.sp)
+        FlowRow(Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp, top = 5.dp, bottom = 2.dp), horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             listOf(R.string.lbl_all,R.string.fapps_filter_parent_installed,R.string.fapps_filter_parent_system).forEachIndexed{i,label->
                 OriginalChip("item_chip_filter:(anonymous)", b.parent==i, {b.selectParent(i)}, label={Text(stringResource(label))}, modifier=Modifier.testTag("firewall_parent_$i"))
             }
         }
-        Text(stringResource(R.string.fapps_filter_categories_heading),fontSize=16.sp)
-        FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        Text(stringResource(R.string.fapps_filter_categories_heading),modifier=Modifier.padding(horizontal = 15.dp, vertical = 10.dp), color=themeColor(R.attr.secondaryTextColor), fontSize=14.sp)
+        FlowRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 7.dp), horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             b.categories.forEach{category->OriginalChip("item_chip_filter:(anonymous)", category in b.selectedCategories, {b.selectCategory(category,category !in b.selectedCategories)}, label={Text(category)}, modifier=Modifier.testTag("firewall_category_$category"))}
         }
-        Text(stringResource(R.string.fapps_filter_sort_heading),fontSize=16.sp)
-        FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        Text(stringResource(R.string.fapps_filter_sort_heading),modifier=Modifier.padding(horizontal = 15.dp, vertical = 10.dp), color=themeColor(R.attr.secondaryTextColor), fontSize=14.sp)
+        FlowRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 7.dp), horizontalArrangement=Arrangement.spacedBy(8.dp)) {
             val labels=listOf(R.string.fapps_filter_sort_name,R.string.fapps_filter_sort_package,R.string.fapps_filter_sort_uid)
             AppListActivity.SortOption.entries.forEachIndexed{i,sort->OriginalChip("item_chip_filter:(anonymous)", b.sort==sort, {b.selectSort(sort)}, label={Text(stringResource(labels[i]))}, modifier=Modifier.testTag("firewall_sort_${sort.name}"))}
         }

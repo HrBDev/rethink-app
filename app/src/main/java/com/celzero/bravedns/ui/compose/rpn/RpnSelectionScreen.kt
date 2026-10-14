@@ -145,8 +145,8 @@ fun RpnSelectionScreen(ui: RpnSelectionState, anchors: HomeTourAnchors) {
                     RpnText(ui.tvServerCount, Modifier.weight(1f), MaterialTheme.typography.titleMedium)
                     if (ui.tvActiveFilterSummary.isVisible) RpnText(ui.tvActiveFilterSummary, Modifier.clip(RoundedCornerShape(16.dp)).background(ui.tvActiveFilterSummary.backgroundTintList?.defaultColor?.let(::Color) ?: Color.Transparent).clickable { ui.tvActiveFilterSummary.performClick() }.padding(8.dp), MaterialTheme.typography.bodySmall)
                 }
-                if (ui.rvServers.isVisible) ui.countryAdapter?.Content(Modifier.fillMaxWidth().padding(horizontal = 16.dp).rpnMotion(ui.rvServers))
-                if (ui.shimmerServerList.isVisible) Column(Modifier.padding(horizontal = 12.dp)) { repeat(5) { RpnShimmer(ui.shimmerServerList, 80.dp, listOf(.5f to 16.dp, .7f to 12.dp)) } }
+                if (ui.rvServers.isVisible) ui.countryAdapter?.Content(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 12.dp).rpnMotion(ui.rvServers))
+                if (ui.shimmerServerList.isVisible) RpnServerLoadingRows(count = 5, running = ui.shimmerServerList.shimmerRunning, modifier = Modifier.padding(horizontal = 12.dp))
                 if (ui.errorStateContainer.isVisible) RpnErrorContent(ui)
             }
             Box(Modifier.matchParentSize().rpnMotion(ui.fxOverlay)) {

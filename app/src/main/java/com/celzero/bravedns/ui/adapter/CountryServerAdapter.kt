@@ -1,10 +1,11 @@
 package com.celzero.bravedns.ui.adapter
 
 import androidx.compose.ui.platform.LocalLocale
+
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,6 +17,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.CountryConfig
 import com.celzero.bravedns.ui.compose.themeColor
@@ -23,7 +31,6 @@ import com.celzero.bravedns.ui.compose.rpn.*
 import com.celzero.bravedns.util.SnackbarHelper.capitalizeWords
 import java.util.Locale
 import android.view.animation.AccelerateDecelerateInterpolator
-import androidx.cardview.R as CardR
 
 /** Native presenter; the original grouping and callback contract is retained. */
 class CountryServerAdapter(countries: List<CountryItem>, private val listener: CitySelectionListener) {
@@ -87,7 +94,10 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
             var previous: String? = null
             countries.forEach { item ->
                 val letter = sectionLetter(item.countryName)
-                if (letter != previous) Text(letter, Modifier.padding(start = 8.dp, top = 14.dp, bottom = 8.dp), style = MaterialTheme.typography.labelSmall)
+                if (letter != previous) Text(letter,
+                    Modifier.fillMaxWidth().padding(start = 4.dp, end = 4.dp, top = 14.dp, bottom = 4.dp),
+                    color = themeColor(R.attr.primaryLightColorText),
+                    style = countryTextStyle(11.sp).copy(fontWeight = FontWeight.Bold, letterSpacing = .1.em))
                 previous = letter
                 key(item.countryCode) { Country(item) }
             }
@@ -98,13 +108,24 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
         val expanded = expandedCountries[item.countryCode] == true
         val arrow by animateFloatAsState(if (expanded) 180f else 0f, label = "country expansion")
         val star = remember { RpnControlState() }
-        Column(Modifier.fillMaxWidth().padding(bottom = 8.dp).background(themeColor(CardR.attr.cardBackgroundColor), RoundedCornerShape(16.dp)).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(16.dp))) {
-            Row(Modifier.fillMaxWidth().clickable { expandedCountries[item.countryCode] = !expanded }.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) { Text(item.flagEmoji, fontSize = 26.sp); Text(item.countryCode.uppercase(LocalLocale.current.platformLocale), fontSize = 10.sp) }
-                Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
-                    Text(item.countryName)
+        // list_item_country_card is a plain section, with a circular avatar and an inset divider.
+        Column(Modifier.fillMaxWidth()) {
+            Row(Modifier.fillMaxWidth().clickable { expandedCountries[item.countryCode] = !expanded }
+                .padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.size(36.dp).background(themeColor(R.attr.colorSurfaceVariant), CircleShape).padding(horizontal = 2.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                    Text(item.flagEmoji, maxLines = 1, style = countryTextStyle(12.sp, includeFontPadding = false))
+                    Text(item.countryCode.uppercase(LocalLocale.current.platformLocale), Modifier.fillMaxWidth(),
+                        color = themeColor(R.attr.primaryLightColorText), maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        style = countryTextStyle(rpnDimensionSp(R.dimen.mini_font_text_view), includeFontPadding = false)
+                            .copy(fontWeight = FontWeight.Bold, letterSpacing = .02.em, textAlign = TextAlign.Center))
+                }
+                Column(Modifier.weight(1f).padding(start = 13.dp, end = 10.dp)) {
+                    Text(item.countryName, Modifier.fillMaxWidth(), color = themeColor(R.attr.primaryTextColor),
+                        maxLines = 1, overflow = TextOverflow.Ellipsis, style = countryTextStyle(rpnDimensionSp(R.dimen.extra_large_font_text_view)))
                     val total = item.serverGroups.sumOf { it.serverCount }
-                    Text(pluralStringResource(R.plurals.server_count, total, total), style = MaterialTheme.typography.bodySmall)
+                    Text(pluralStringResource(R.plurals.server_count, total, total), Modifier.padding(top = 2.dp),
+                        color = themeColor(R.attr.primaryLightColorText), style = countryTextStyle(11.sp))
                 }
                 IconButton({
                     val next = !item.isFavourite
@@ -114,33 +135,51 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
                     item.isFavourite = next
                     countries = countries.toList()
                     listener.onFavouriteToggled(item.countryCode, item.countryName, next)
-                }) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(32.dp).rpnMotion(star)) }
-                Icon(painterResource(R.drawable.ic_arrow_down_small), stringResource(R.string.server_selection_filter_locations), Modifier.size(20.dp).rotate(arrow))
+                }, Modifier.padding(horizontal = 8.dp).size(48.dp)) { Image(painterResource(if (item.isFavourite) R.drawable.ic_star_filled else R.drawable.ic_star_outline), stringResource(R.string.server_selection_filter_favourites_only), Modifier.size(32.dp).rpnMotion(star)) }
+                Icon(painterResource(R.drawable.ic_expand_more_24), stringResource(R.string.server_selection_filter_locations),
+                    Modifier.padding(horizontal = 8.dp).size(24.dp).padding(2.dp).rotate(arrow), tint = themeColor(R.attr.primaryLightColorText))
             }
-            if (expanded) item.serverGroups.forEach { group -> key(group.key) {
-                Row(Modifier.fillMaxWidth().clickable {
-                    if (proxyStoppedValue) listener.onProxyStoppedItemTapped() else listener.onCitySelected(group.servers.first(), !group.isEnabled)
-                }.padding(start = 20.dp, end = 14.dp, top = 8.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) {
-                        Text(group.city.capitalizeWords())
-                        if (group.serverCount > 1) Text(pluralStringResource(R.plurals.server_count, group.serverCount, group.serverCount), style = MaterialTheme.typography.bodySmall)
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                            if (group.avgLink > 0) {
-                                val (label, attr) = speedInfo(group.avgLink)
-                                com.celzero.bravedns.ui.compose.controls.OriginalLabel("item_server_group:chip_link_speed", containerColor = themeColor(if (group.avgLink >= 10_000) attr else R.attr.chipColorBgNormal)) { Text(label) }
-                            }
+            HorizontalDivider(Modifier.padding(start = 53.dp), thickness = 1.dp, color = themeColor(R.attr.border))
+            if (expanded) Column(Modifier.fillMaxWidth().padding(start = 14.dp, end = 4.dp, bottom = 6.dp)) {
+                item.serverGroups.forEach { group -> key(group.key) {
+                    Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).clickable {
+                        if (proxyStoppedValue) listener.onProxyStoppedItemTapped() else listener.onCitySelected(group.servers.first(), !group.isEnabled)
+                    }.padding(start = 16.dp, end = 12.dp, top = 12.dp, bottom = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(group.city.capitalizeWords(), color = themeColor(R.attr.primaryTextColor),
+                                maxLines = 1, overflow = TextOverflow.Ellipsis,
+                                style = countryTextStyle(15.sp).copy(fontWeight = FontWeight.Medium))
+                            if (group.serverCount > 1) Text(pluralStringResource(R.plurals.server_count, group.serverCount, group.serverCount),
+                                Modifier.padding(top = 2.dp), color = themeColor(R.attr.primaryLightColorText), style = countryTextStyle(12.sp))
+                        }
+                        Row(Modifier.padding(start = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                             if (group.avgLoad > 0) {
                                 val (label, attr) = loadInfo(group.avgLoad)
-                                Box(Modifier.size(5.dp).background(themeColor(attr), RoundedCornerShape(5.dp)))
-                                Text(label, color = themeColor(attr), style = MaterialTheme.typography.labelSmall)
+                                Box(Modifier.padding(end = 5.dp).size(7.dp).background(themeColor(attr), CircleShape))
+                                Text(label, Modifier.padding(end = 8.dp), color = themeColor(attr),
+                                    style = countryTextStyle(12.sp).copy(fontWeight = FontWeight.Medium))
                             }
+                            if (group.avgLink > 0) {
+                                val (label, attr) = speedInfo(group.avgLink)
+                                com.celzero.bravedns.ui.compose.controls.OriginalLabel("item_server_group:chip_link_speed",
+                                    Modifier.padding(end = 12.dp), containerColor = themeColor(if (group.avgLink >= 10_000) attr else R.attr.chipColorBgNormal)) { Text(label) }
+                            }
+                            val checkColor = themeColor(R.attr.accentGood)
+                            Checkbox(group.isEnabled, null, Modifier.size(28.dp).alpha(if (proxyStoppedValue) .4f else 1f),
+                                enabled = !proxyStoppedValue,
+                                colors = CheckboxDefaults.colors(checkedColor = checkColor, uncheckedColor = checkColor,
+                                    disabledCheckedColor = checkColor, disabledUncheckedColor = checkColor))
                         }
                     }
-                    Checkbox(group.isEnabled, null, Modifier.alpha(if (proxyStoppedValue) .4f else 1f), enabled = !proxyStoppedValue)
-                }
-            } }
+                } }
+            }
         }
     }
+
+    private fun countryTextStyle(size: androidx.compose.ui.unit.TextUnit, includeFontPadding: Boolean = true) = TextStyle(
+        fontSize = size, fontFamily = FontFamily.SansSerif, fontWeight = FontWeight.Normal, letterSpacing = 0.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = includeFontPadding))
+
     private fun speedInfo(linkMbps: Int): Pair<String, Int> {
         val formatted: String
         val attr: Int

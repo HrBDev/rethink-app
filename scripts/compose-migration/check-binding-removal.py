@@ -159,8 +159,6 @@ def analyze_code(path: str, text: str):
         for match in pattern.finditer(code):
             if rule == 'view-in-compose' and path in FRAGMENT_BRIDGES and match[0] == 'AndroidView':
                 inventory.append(record(path, code, match, 'framework-fragment-interop'))
-            elif rule == 'layout-resource' and path == NOTIFICATION and match[0] == 'android.R.layout.activity_list_item':
-                inventory.append(record(path, code, match, 'invisible-platform-trampoline'))
             else:
                 errors.append(record(path, code, match, rule))
     if path in FRAGMENT_BRIDGES:
@@ -242,7 +240,6 @@ def analyze_code(path: str, text: str):
     for match in re.finditer(r'\b(?:setContentView|addContentView)\s*\(', code):
         tail = code[match.end():].lstrip()
         known = tail.startswith('ComposeView(')
-        known |= path == NOTIFICATION and tail.startswith('android.R.layout.activity_list_item)')
         known |= path in {PKG + 'ui/activity/SmartDnsListActivity.kt', PKG + 'ui/activity/ConfigureOtherDnsActivity.kt'} and tail.startswith('dnsFragmentHost(')
         named_roots = {
             PKG + 'ui/activity/RpnConfigDetailActivity.kt': 'composeRoot',
@@ -283,8 +280,21 @@ def check_build(path: str, text: str):
     return errors
 
 
-def scan(root: Path):
+def layout_removal_errors(paths, allow_retained_layouts=False):
+    if allow_retained_layouts:
+        return []
+    return [{'path': path, 'line': 1, 'rule': 'retained-app-owned-layout',
+             'detail': 'Final gate requires zero layout XML in production, test, flavor, qualified or alternate resource source sets'}
+            for path in sorted(paths)]
+
+
+def scan(root: Path, allow_retained_layouts=False):
     errors, inventory, hashes = [], [], {}
+    all_layout_paths = [file.relative_to(root).as_posix() for file in root.rglob('*.xml')
+                        if file.is_file() and file.parent.name.startswith('layout')
+                        and file.parent.parent.name == 'res'
+                        and not any(part in ('.git', '.gradle', 'build') for part in file.relative_to(root).parts)]
+    errors.extend(layout_removal_errors(all_layout_paths, allow_retained_layouts))
     resource_hashes = {}
     source_counts = Counter()
     xml_layouts, xml_roots, resources = [], Counter(), []
@@ -328,14 +338,24 @@ def scan(root: Path):
         path = file.relative_to(root).as_posix()
         hashes[path] = hashlib.sha256(file.read_bytes()).hexdigest()
         errors.extend(check_build(path, file.read_text()))
-    # Ensure the platform exception remains genuinely invisible and singular.
+    # Require the reviewed empty Compose notification trampoline, never a layout or visible child.
     notification = root / NOTIFICATION
     if notification.exists():
         code = without_comments(notification.read_text())
-        if code.count('android.R.layout.activity_list_item') != 1 or not re.search(r'window\.decorView\.alpha\s*=\s*0f', code):
-            errors.append({'path': NOTIFICATION, 'line': 1, 'rule': 'trampoline-exception-contract', 'detail': 'Must retain exactly one invisible platform layout'})
+        compact = re.sub(r'\s+', ' ', code)
+        shell = ('setContentView(ComposeView(this).apply { '
+                 'setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed) '
+                 'setContent {} }) window.decorView.alpha = 0f')
+        if (shell not in compact or len(re.findall(r'\bComposeView\s*\(', code)) != 1 or
+                len(re.findall(r'\bsetContentView\s*\(', code)) != 1 or
+                len(re.findall(r'\bsetContent\s*\{', code)) != 1 or
+                re.search(r'\bR\.layout\.', code)):
+            errors.append({'path': NOTIFICATION, 'line': 1, 'rule': 'trampoline-compose-contract',
+                           'detail': 'Must retain one lifecycle-disposed empty ComposeView immediately followed by invisible decor alpha'})
     return {
         'status': 'PASS' if not errors else 'FAIL', 'source_only': True,
+        'mode': 'PRE_REMOVAL_AUDIT_NOT_FINAL' if allow_retained_layouts else 'FINAL_ZERO_LAYOUT_GATE',
+        'all_source_set_layout_paths': sorted(all_layout_paths),
         'guard_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'baseline': BASELINE, 'recovered_commit': RECOVERED_COMMIT, 'recovered_tree': RECOVERED_TREE,
         'production_source_sets': dict(sorted(source_counts.items())),
@@ -348,8 +368,8 @@ def scan(root: Path):
         'resource_sha256': dict(sorted(resource_hashes.items())),
         'limits': ['Lexical source census, not compiler or whole-program reachability proof.',
                    'No Gradle, APK inspection, emulator, Application, VPN, traffic or permission flows executed.',
-                   'Retained layout XML and dormant historical View classes are not deleted by this guard.',
-                   'Framework Dialog/BottomSheetDialog, two AndroidView FragmentContainerView bridges, navigation containers, ComposeView, platform toast and invisible notification trampoline remain.'],
+                   'This guard never deletes resources; its default final mode rejects retained layout XML in every source set. Explicit --allow-retained-layouts is audit-only, not final acceptance.',
+                   'Framework Dialog/BottomSheetDialog, two AndroidView FragmentContainerView bridges, navigation containers, ComposeView, platform toast and an empty invisible Compose notification trampoline remain.'],
     }
 
 
@@ -363,6 +383,7 @@ def self_test():
         'numeric Activity layout': 'class Probe : BaseActivity(123)',
         'numeric Fragment layout': 'class Probe : Fragment(123)',
         'XML constructor': 'class Probe : BaseActivity(R.layout.old_screen)',
+        'framework layout no longer accepted': 'setContentView(android.R.layout.activity_list_item)',
         'inflation across lines': 'inflater\n .inflate\n (layout, parent, false)',
         'AndroidView wrapper': 'AndroidView(factory = { oldView })',
         'AndroidView alias': 'import androidx.compose.ui.viewinterop.AndroidView as Wrapped',
@@ -405,7 +426,11 @@ def self_test():
     assert not analyze_code(SETTINGS_BRIDGE, settings)[0]
     assert analyze_code(SETTINGS_BRIDGE, settings.replace('factory = { container }', 'factory = { oldView }'))[0]
     assert analyze_code(SETTINGS_BRIDGE, settings + '\ncontainer.addView(existingView)')[0]
-    return len(mutations) + 11
+    assert layout_removal_errors(['app/src/testFuture/res/layout-night/old.xml'])
+    assert layout_removal_errors(['other/src/debug/res/layout-w600dp/old.xml'])
+    assert not layout_removal_errors([])
+    assert not layout_removal_errors(['app/src/main/res/layout/old.xml'], allow_retained_layouts=True)
+    return len(mutations) + 15
 
 
 def main():
@@ -413,16 +438,19 @@ def main():
     parser.add_argument('--repo', type=Path, default=ROOT)
     parser.add_argument('--report', type=Path)
     parser.add_argument('--self-test', action='store_true')
+    parser.add_argument('--allow-retained-layouts', action='store_true',
+                        help='Explicit pre-removal source audit only; not final zero-layout acceptance')
     args = parser.parse_args()
     controls = self_test() if args.self_test else None
     if controls is not None:
         print(f'PASS: {controls} in-memory positive/negative controls')
-    report = scan(args.repo.resolve())
+    report = scan(args.repo.resolve(), allow_retained_layouts=args.allow_retained_layouts)
     report['self_test_controls'] = controls
     if args.report:
         output = args.report if args.report.is_absolute() else args.repo / args.report
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
+    print('Mode:', report['mode'])
     print(f"{report['status']}: {report['production_source_files']} production source files across {len(report['production_source_sets'])} source sets; {report['retained_layout_resources']} retained XML layouts; {len(report['errors'])} violations")
     for error in report['errors']:
         print(f"  {error['path']}:{error['line']}: {error['rule']}: {error['detail']}")

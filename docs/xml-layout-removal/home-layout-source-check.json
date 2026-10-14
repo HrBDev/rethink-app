@@ -1,0 +1,9 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "kind": "source_only_not_compile_or_runtime",
+  "passed": true,
+  "layout_contracts": 23,
+  "self_test_mutations_rejected": 15,
+  "android_compilation": "not_run",
+  "compose_bounds_tests": "not_run"
+}

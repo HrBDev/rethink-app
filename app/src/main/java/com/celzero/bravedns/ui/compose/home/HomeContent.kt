@@ -2,6 +2,7 @@
 package com.celzero.bravedns.ui.compose.home
 
 import androidx.compose.ui.platform.LocalLocale
+
 import com.celzero.bravedns.ui.compose.controls.*
 import android.content.res.ColorStateList
 import android.text.Spanned
@@ -17,6 +18,9 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,6 +38,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -45,6 +50,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -54,6 +60,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
@@ -65,6 +72,7 @@ import androidx.compose.ui.unit.*
 import androidx.core.graphics.drawable.toBitmap
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
+import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 import kotlinx.coroutines.flow.distinctUntilChanged
 import java.util.Locale
 import kotlin.math.log10
@@ -79,20 +87,7 @@ fun HomeContent(b: HomePresentation) {
         Column(Modifier.weight(1f).widthIn(max = 720.dp).fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 32.dp)) {
             ProtectionRow(b)
             if (wide) {
-                Row(Modifier.fillMaxWidth().padding(top = 12.dp)) {
-                    Column(Modifier.weight(.58f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
-                            DnsCard(b, Modifier.weight(.7f).padding(start = 2.dp), true)
-                            ThroughputCard(b, Modifier.weight(.3f).fillMaxHeight(), true)
-                        }
-                        LogsCard(b, true, Modifier.fillMaxWidth().padding(start = 2.dp, end = 8.dp))
-                    }
-                    Column(Modifier.weight(.42f).padding(start = 10.dp, end = 2.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        RulesCard(b, Modifier.fillMaxWidth(), true)
-                        ProxyCard(b, Modifier.fillMaxWidth(), true)
-                        AppsCard(b, true)
-                    }
-                }
+                WideHomeCards(b)
             } else {
                 Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
                     DnsCard(b, Modifier.weight(.65f), false)
@@ -111,6 +106,43 @@ fun HomeContent(b: HomePresentation) {
     HomeDialogs(b)
 }
 
+/** Match w600dp's two guidelines and bottom barrier without intrinsic measurement of pagers. */
+@Composable
+private fun WideHomeCards(b: HomePresentation) {
+    Layout(modifier = Modifier.fillMaxWidth().padding(top = 12.dp), content = {
+        Box(propagateMinConstraints = true) { DnsCard(b, Modifier.fillMaxWidth().padding(start = 2.dp), true) }
+        Box(propagateMinConstraints = true) { ThroughputCard(b, Modifier.fillMaxWidth(), true) }
+        Box(propagateMinConstraints = true) { RulesCard(b, Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp), true) }
+        Box(propagateMinConstraints = true) {
+            Column(Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                ProxyCard(b, Modifier.fillMaxWidth(), true)
+                AppsCard(b, true)
+            }
+        }
+        Box(propagateMinConstraints = true) { LogsCard(b, true, Modifier.fillMaxWidth().padding(start = 2.dp, end = 8.dp)) }
+    }) { children, constraints ->
+        val width = constraints.maxWidth
+        val split = (width * .58f).toInt()
+        val dnsSplit = (width * .406f).toInt()
+        fun widthConstraints(value: Int) = Constraints(minWidth = value, maxWidth = value)
+        val rules = children[2].measure(widthConstraints(width - split))
+        val dns = children[0].measure(Constraints.fixed(dnsSplit, rules.height))
+        val throughput = children[1].measure(Constraints.fixed(split - dnsSplit, rules.height))
+        val right = children[3].measure(widthConstraints(width - split))
+        // Normal source geometry fills to the proxy/apps bottom barrier. If translated or
+        // enlarged log content needs more space, let the scrollable page grow rather than clip it.
+        val logs = children[4].measure(widthConstraints(split).copy(minHeight = right.height))
+        val secondRowY = rules.height + 12.dp.roundToPx()
+        layout(width, secondRowY + maxOf(right.height, logs.height)) {
+            dns.placeRelative(0, 0)
+            throughput.placeRelative(dnsSplit, 0)
+            rules.placeRelative(split, 0)
+            right.placeRelative(split, secondRowY)
+            logs.placeRelative(0, secondRowY)
+        }
+    }
+}
+
 @Composable
 private fun ProtectionRow(b: HomePresentation) {
     Row(Modifier.fillMaxWidth().padding(top = 16.dp, start = 26.dp, end = 26.dp).heightIn(min = 40.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -126,6 +158,7 @@ private fun HomeCard(node: HomeNode, modifier: Modifier = Modifier, radius: Dp =
     val stroke = when (val color = node.strokeColor) { is Int -> color; is ColorStateList -> color.defaultColor; else -> null }
     var m = modifier.homeTourAnchor(node.id).padding(rememberHomeCardPadding(radius, elevationOverride))
         .testTag(node.context.resources.getResourceEntryName(node.id))
+        .shadow(rememberHomeCardElevation(elevationOverride), shape, clip = false)
         .clip(shape).background(themeColor(if (wide) R.attr.colorSurfaceContainer else androidx.cardview.R.attr.cardBackgroundColor))
     if (stroke != null && node.strokeWidth > 0) m = m.border(with(LocalDensity.current) { node.strokeWidth.toDp() }, Color(stroke), shape)
     if (node.click != null) m = m.clickable(enabled = node.isEnabled, onClick = node::performClick)
@@ -154,15 +187,16 @@ private fun ThroughputCard(b: HomePresentation, modifier: Modifier, wide: Boolea
 
 @Composable
 private fun RulesCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
-    val pages = b.fhsFirewallRulesPager.adapter as? HomeRulesPages ?: return
-    HomeCard(b.fhsCardFirewallRulesCard, modifier.alpha(b.fhsFirewallBadgesRow.alpha).homeTourAnchor(R.id.fhs_card_firewall_ll), wide = wide, elevationOverride = 0.dp) {
-        Column(Modifier.fillMaxWidth().heightIn(min = if (wide) 80.dp else 84.dp).padding(start = 14.dp, end = 14.dp, top = 10.dp, bottom = 8.dp)) {
-            NativePager(b.fhsFirewallRulesPager, Modifier.fillMaxWidth().weight(1f, false)) { page ->
+    val pages = b.fhsFirewallRulesPager.adapter as? HomeRulesPages
+    HomeCard(b.fhsCardFirewallRulesCard, modifier.height(if (wide) 80.dp else 84.dp).alpha(b.fhsFirewallBadgesRow.alpha).homeTourAnchor(R.id.fhs_card_firewall_ll), wide = wide, elevationOverride = 0.dp) {
+        Column(Modifier.fillMaxSize().padding(start = 14.dp, end = 14.dp, top = 10.dp, bottom = 8.dp)) {
+            if (pages != null) NativePager(b.fhsFirewallRulesPager, Modifier.fillMaxWidth().weight(1f, false)) { page ->
                 Row(Modifier.fillMaxWidth().clickable { pages.onRulePageTapped?.invoke(page) }.padding(start = 10.dp, top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(pages.counts[page], color = themeColor(R.attr.primaryTextColor), fontFamily = FontFamily.Monospace, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    Text(pages.labels[page].replaceFirstChar { if (it.isLowerCase()) it.titlecase(LocalLocale.current.platformLocale) else it.toString() }, Modifier.weight(1f).padding(start = 6.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 12.sp)
+                    Text(pages.counts[page], color = themeColor(R.attr.primaryTextColor), style = utilityTextStyle(size = 16f, family = "monospace", weight = Typeface.BOLD), maxLines = 1)
+                    BasicText(pages.labels[page].replaceFirstChar { if (it.isLowerCase()) it.titlecase(LocalLocale.current.platformLocale) else it.toString() }, Modifier.weight(1f).padding(start = 6.dp), style = utilityTextStyle(size = 12f, spacing = .02f).copy(color = themeColor(R.attr.primaryTextColor)), maxLines = 1, overflow = TextOverflow.Ellipsis, autoSize = TextAutoSize.StepBased(8.sp, 12.sp, 1.sp))
                 }
             }
+            else Spacer(Modifier.fillMaxWidth().weight(1f))
             Dots(listOf(b.fhsRulesDot0, b.fhsRulesDot1, b.fhsRulesDot2), wide)
         }
     }
@@ -188,7 +222,7 @@ private fun ProxyCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
                                     Box(Modifier.size(5.dp).background(color, CircleShape))
                                     HomeText(count, Modifier.padding(start = 2.dp))
                                 }
-                                Text(stringResource(labels[index]).uppercase(LocalLocale.current.platformLocale), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .85f), fontSize = 8.sp, textAlign = TextAlign.Center)
+                                BasicText(stringResource(labels[index]).uppercase(LocalLocale.current.platformLocale), Modifier.fillMaxWidth(), style = utilityTextStyle(size = 8f, spacing = .05f).copy(color = themeColor(R.attr.primaryLightColorText).copy(alpha = .85f), textAlign = TextAlign.Center), maxLines = 1, overflow = TextOverflow.Ellipsis, autoSize = TextAutoSize.StepBased(6.sp, 8.sp, 1.sp))
                             }
                         }
                     }
@@ -201,25 +235,70 @@ private fun ProxyCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
 @Composable
 private fun AppsCard(b: HomePresentation, wide: Boolean, modifier: Modifier = Modifier.fillMaxWidth()) {
     HomeCard(b.fhsCardAppsCv, modifier, wide = wide) {
-        FlowRow(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Row(verticalAlignment = Alignment.Bottom) {
-                HomeText(b.fhsCardAllowedApps)
-                HomeText(b.fhsCardAppsAllApps)
-                HomeText(b.fhsAppsLabel, Modifier.padding(start = 8.dp))
+        if (wide) {
+            Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)) {
+                AppsCount(b)
+                Row(Modifier.fillMaxWidth().padding(top = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    AppsMetricGrid(b, Modifier.weight(1f).padding(end = 8.dp), 6.dp, alignEnd = false)
+                    AppsArrow()
+                }
             }
-            Row(Modifier.weight(1f), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Column {
-                    HomeText(b.fhsCardAppsBlockedCount)
-                    HomeText(b.fhsCardAppsBypassedCount)
-                }
-                Column {
-                    HomeText(b.fhsCardAppsIsolatedCount)
-                    HomeText(b.fhsCardAppsExcludedCount)
-                }
-                Text("›", Modifier.padding(start = 10.dp), color = themeColor(R.attr.primaryLightColorText), fontSize = 20.sp)
+        } else {
+            Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                AppsCount(b)
+                AppsMetricGrid(b, Modifier.weight(1f).padding(start = 12.dp, end = 8.dp), 0.dp, alignEnd = true)
+                AppsArrow()
             }
         }
     }
+}
+
+@Composable
+private fun AppsCount(b: HomePresentation) {
+    Row(verticalAlignment = Alignment.Bottom) {
+        HomeText(b.fhsCardAllowedApps)
+        HomeText(b.fhsCardAppsAllApps)
+        HomeText(b.fhsAppsLabel, Modifier.padding(start = 8.dp))
+    }
+}
+
+/** Source aligned Flow order is blocked/isolated, then bypassed/excluded. */
+@Composable
+private fun AppsMetricGrid(b: HomePresentation, modifier: Modifier, verticalGap: Dp, alignEnd: Boolean) {
+    Layout(modifier, content = {
+        listOf(b.fhsCardAppsBlockedCount, b.fhsCardAppsIsolatedCount, b.fhsCardAppsBypassedCount, b.fhsCardAppsExcludedCount).forEach { node ->
+            Box { HomeText(node) }
+        }
+    }) { children, constraints ->
+        val gap = 12.dp.roundToPx()
+        val natural = children.map { it.maxIntrinsicWidth(Constraints.Infinity) }
+        val firstWidth = maxOf(natural[0], natural[2])
+        val secondWidth = maxOf(natural[1], natural[3])
+        // ConstraintFlow's aligned mode reduces the column count when two columns cannot fit.
+        val columns = if (firstWidth + gap + secondWidth <= constraints.maxWidth) 2 else 1
+        val widths = if (columns == 2) listOf(firstWidth, secondWidth) else listOf(minOf(natural.maxOrNull() ?: 0, constraints.maxWidth))
+        val measured = children.mapIndexed { index, child -> child.measure(Constraints(maxWidth = widths[index % columns])) }
+        val rowHeights = measured.chunked(columns).map { row -> row.maxOf { it.height } }
+        val packedWidth = widths.sum() + if (columns == 2) gap else 0
+        val width = constraints.constrainWidth(constraints.maxWidth)
+        val height = rowHeights.sum() + verticalGap.roundToPx() * (rowHeights.size - 1)
+        layout(width, height) {
+            val start = if (alignEnd) width - packedWidth else 0
+            var y = 0
+            measured.chunked(columns).forEachIndexed { rowIndex, row ->
+                row.forEachIndexed { columnIndex, child ->
+                    val x = start + if (columnIndex == 0) 0 else widths[0] + gap
+                    child.placeRelative(x, y + (rowHeights[rowIndex] - child.height) / 2)
+                }
+                y += rowHeights[rowIndex] + verticalGap.roundToPx()
+            }
+        }
+    }
+}
+
+@Composable
+private fun AppsArrow() {
+    Text("›", Modifier.padding(start = 10.dp).alpha(.8f), color = themeColor(R.attr.primaryLightColorText), style = utilityTextStyle(size = 20f))
 }
 
 @Composable
@@ -478,13 +557,16 @@ private fun StartBorder(b: HomePresentation, modifier: Modifier) {
 @Composable
 private fun HomeText(node: HomeNode, modifier: Modifier = Modifier, align: TextAlign? = null, animated: Boolean = false) {
     if (!node.isVisible) return
-    val size = (node.textSize / node.context.resources.displayMetrics.scaledDensity).sp
+    val size = homeTextSizeSp(node.context, node.textSize).sp
     val text = if (node.allCaps) node.text?.toString()?.uppercase(LocalLocale.current.platformLocale).orEmpty() else node.text ?: ""
     val color = node.textColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor)
-    val font = if (node.monospace) FontFamily.Monospace else FontFamily.SansSerif
-    if (animated) AnimatedContent(text, modifier.alpha(node.alpha), transitionSpec = { fadeIn(tween(150, 150)) togetherWith fadeOut(tween(150)) }, label = "home status") { value ->
-        Text(homeAnnotatedText(value), color = color, fontSize = size, fontFamily = font, textAlign = align)
-    } else Text(homeAnnotatedText(text), modifier.alpha(node.alpha), color = color, fontSize = size, fontFamily = font, textAlign = align)
+    val contract = homeTextContract(node.id)
+    val style = utilityTextStyle(size = size.value, family = if (node.monospace) "monospace" else contract.family, spacing = contract.tracking)
+    val textModifier = modifier.alpha(node.alpha).then(if (contract.marquee) Modifier.basicMarquee() else Modifier)
+    if (animated) AnimatedContent(text, textModifier, transitionSpec = { fadeIn(tween(150, 150)) togetherWith fadeOut(tween(150)) }, label = "home status") { value ->
+        Text(homeAnnotatedText(value), color = color, style = style, maxLines = contract.lines, overflow = contract.overflow, textAlign = align)
+    } else Text(homeAnnotatedText(text), textModifier, color = color, style = style, maxLines = contract.lines, overflow = contract.overflow, textAlign = align)
+
 }
 
 fun homeAnnotatedText(text: CharSequence): AnnotatedString = buildAnnotatedString {

@@ -4,10 +4,11 @@ import com.celzero.bravedns.ui.compose.controls.OriginalChip
 import com.celzero.bravedns.ui.compose.controls.OriginalButton
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.ui.graphics.Color
+import com.celzero.bravedns.ui.compose.controls.OriginalCardSurface
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -19,6 +20,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.rpn.*
 import com.celzero.bravedns.ui.compose.themeColor
@@ -53,49 +60,105 @@ internal class HistoryScreenState {
         fetchAlpha.animateTo(state.fetchTarget, tween(if (state.fetchTarget == 1f) 200 else 400))
         if (state.fetchTarget == 0f) onFetchHidden()
     }
-    Scaffold(Modifier.fillMaxSize().nestedScroll(scroll.nestedScrollConnection), topBar = {
+    Scaffold(Modifier.fillMaxSize().nestedScroll(scroll.nestedScrollConnection), containerColor = themeColor(R.attr.background), topBar = {
         Column {
             LargeTopAppBar(modifier = Modifier.rpnHeroBackground(), colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = androidx.compose.ui.graphics.Color.Transparent, scrolledContainerColor = androidx.compose.ui.graphics.Color.Transparent), title = {
                 Column {
                     Text(stringResource(if (server) R.string.server_order_title else R.string.payment_history_title))
-                    if (scroll.state.collapsedFraction < .99f) RpnText(state.tvHeroSubtitle, Modifier.alpha(.7f * (1f - scroll.state.collapsedFraction)), style = MaterialTheme.typography.bodySmall)
+                    if (scroll.state.collapsedFraction < .99f) HistoryText(state.tvHeroSubtitle,
+                        Modifier.alpha(.7f * (1f - scroll.state.collapsedFraction)),
+                        fontSize = if (server) rpnDimensionSp(R.dimen.mini_font_text_view) else 13.sp,
+                        fontFamily = if (server) FontFamily.Monospace else FontFamily.SansSerif,
+                        color = themeColor(if (server) R.attr.homeScreenHeaderTextColor else R.attr.primaryTextColor), maxLines = 1)
                 }
             }, expandedHeight = 180.dp, scrollBehavior = scroll)
-            if (state.fetchProgress.isVisible) LinearProgressIndicator(Modifier.fillMaxWidth().alpha(fetchAlpha.value))
+            if (state.fetchProgress.isVisible) LinearProgressIndicator(
+                Modifier.fillMaxWidth().height(3.dp).alpha(fetchAlpha.value),
+                color = themeColor(R.attr.accentGood), trackColor = themeColor(R.attr.chipBgColorPositive),
+                strokeCap = androidx.compose.ui.graphics.StrokeCap.Butt)
         }
     }) { padding ->
         Box(Modifier.fillMaxSize().padding(padding)) {
-            LazyColumn(Modifier.fillMaxSize(), state = listState, contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 96.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                item("summary") {
-                    if (server) FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        OriginalChip("activity_server_order_history:chip_entitlement", selected = false, onClick = { state.chipEntitlement.performClick() }, selectable = false, label = { Text(stringResource(R.string.entitlement)) })
-                        OriginalChip("activity_server_order_history:chip_payment_history", selected = false, onClick = { state.chipPaymentHistory.performClick() }, selectable = false, label = { Text(stringResource(R.string.payment_history_title)) })
-                    } else Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = themeColor(R.attr.chipBgColorPositive))) {
-                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Icon(painterResource(R.drawable.ic_rethink_plus), null, Modifier.size(36.dp), tint = themeColor(R.attr.accentGood))
-                            Text(stringResource(R.string.payment_history_summary_title), style = MaterialTheme.typography.titleMedium)
-                            Text(stringResource(R.string.payment_history_summary_subtitle)); RpnText(state.tvEntryCount)
+            // The summary/actions stay above one shared, weighted history card, as in both XML hosts.
+            Column(Modifier.fillMaxSize().padding(bottom = 100.dp)) {
+                if (server) FlowRow(Modifier.fillMaxWidth().padding(start = 16.dp, end = 10.dp, top = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End)) {
+                    OriginalChip("activity_server_order_history:chip_entitlement", selected = false,
+                        onClick = { state.chipEntitlement.performClick() }, selectable = false,
+                        label = { Text(stringResource(R.string.entitlement)) })
+                    OriginalChip("activity_server_order_history:chip_payment_history", selected = false,
+                        onClick = { state.chipPaymentHistory.performClick() }, selectable = false,
+                        label = { Text(stringResource(R.string.payment_history_title)) })
+                } else HistorySummary(state)
+                OriginalCardSurface(Modifier.fillMaxWidth().weight(1f).padding(start = 16.dp, end = 16.dp, top = 12.dp),
+                    cornerRadius = 16.dp, border = BorderStroke(0.dp, Color.Transparent),
+                    containerColor = if (server) themeColor(R.attr.background) else null) {
+                    Box(Modifier.fillMaxSize()) {
+                        if (state.shimmer.isVisible) {
+                            if (server) RpnServerLoadingRows(count = 4, running = state.shimmerRunning,
+                                modifier = Modifier.padding(vertical = 8.dp), durationMillis = 1500,
+                                baseAlpha = .85f, highlightAlpha = .35f)
+                            else PurchaseHistoryLoadingRows(state.shimmerRunning)
+                        }
+                        if (state.emptyState.isVisible) HistoryEmpty(state, server)
+                        if (state.errorState.isVisible) HistoryError(state, server)
+                        if ((if (server) state.rvOrders else state.rvHistory).isVisible) {
+                            LazyColumn(Modifier.fillMaxSize().alpha(alpha.value), state = listState,
+                                contentPadding = PaddingValues(top = 4.dp, bottom = 8.dp)) {
+                                items(count, key = key) { index -> row(index) }
+                            }
                         }
                     }
                 }
-                if (state.shimmer.isVisible) item("loading") { PurchaseShimmer(running = state.shimmerRunning, duration = 1500) }
-                if (state.emptyState.isVisible) item("empty") {
-                    Column(Modifier.fillMaxWidth().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Icon(painterResource(if (server) R.drawable.ic_rethink_plus_sparkle else R.drawable.ic_rethink_plus), null, Modifier.size(72.dp).align(Alignment.CenterHorizontally))
-                        Text(stringResource(if (server) R.string.server_order_empty_title else R.string.payment_history_empty_title), style = MaterialTheme.typography.titleLarge)
-                        Text(if (server && state.tvEmptySubtitle.text.isNotEmpty()) state.tvEmptySubtitle.text.toString() else stringResource(if (server) R.string.server_order_empty_subtitle else R.string.payment_history_empty_subtitle))
-                    }
-                }
-                if (state.errorState.isVisible) item("error") {
-                    Column(Modifier.fillMaxWidth().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Icon(painterResource(if (server) R.drawable.ic_cloud_error else R.drawable.ic_cross), null, Modifier.size(64.dp).align(Alignment.CenterHorizontally).alpha(.7f), tint = themeColor(R.attr.accentBad))
-                        RpnText(state.tvErrorMessage, Modifier.semantics { liveRegion = LiveRegionMode.Polite })
-                        OriginalButton(if (server) "activity_server_order_history:btn_retry" else "activity_purchase_history:btn_retry", { state.btnRetry.performClick() }, Modifier.testTag("history_retry")) { Text(stringResource(R.string.ping_test_again)) }
-                    }
-                }
-                if ((if (server) state.rvOrders else state.rvHistory).isVisible) items(count, key = key) { index -> Card(Modifier.fillMaxWidth().alpha(alpha.value)) { row(index) } }
             }
-            RpnSignature(state.dolphinSignature, Modifier.fillMaxWidth().align(Alignment.BottomCenter).padding(bottom = 12.dp).alpha(.8f))
+            RpnSignature(state.dolphinSignature, Modifier.fillMaxWidth().align(Alignment.BottomCenter).padding(bottom = 12.dp).alpha(if (server) 1f else .8f))
         }
     }
+}
+
+@Composable private fun HistorySummary(state: HistoryScreenState) {
+    OriginalCardSurface(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 16.dp),
+        cornerRadius = 16.dp, border = BorderStroke(0.dp, Color.Transparent),
+        containerColor = themeColor(R.attr.chipBgColorPositive)) {
+        Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Icon(painterResource(R.drawable.ic_rethink_plus), null, Modifier.size(36.dp).padding(4.dp), tint = themeColor(R.attr.accentGood))
+            Column(Modifier.weight(1f).padding(start = 12.dp)) {
+                HistoryStaticText(stringResource(R.string.payment_history_summary_title), fontSize = 14,
+                    color = themeColor(R.attr.primaryTextColor), bold = true)
+                HistoryStaticText(stringResource(R.string.payment_history_summary_subtitle), Modifier.padding(top = 2.dp), fontSize = 12)
+            }
+            HistoryText(state.tvEntryCount, Modifier.widthIn(min = 32.dp), fontSize = 22.sp,
+                color = themeColor(R.attr.accentGood), fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        }
+    }
+}
+
+@Composable private fun HistoryEmpty(state: HistoryScreenState, server: Boolean) {
+    Column(Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 56.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Icon(painterResource(if (server) R.drawable.ic_rethink_plus_sparkle else R.drawable.ic_rethink_plus), null,
+            Modifier.size(72.dp).alpha(.5f), tint = themeColor(R.attr.primaryLightColorText))
+        HistoryStaticText(stringResource(if (server) R.string.server_order_empty_title else R.string.payment_history_empty_title),
+            Modifier.padding(top = 16.dp), fontSize = 16, color = themeColor(R.attr.primaryTextColor), bold = true, align = TextAlign.Center)
+        HistoryStaticText(if (server && state.tvEmptySubtitle.text.isNotEmpty()) state.tvEmptySubtitle.text.toString()
+            else stringResource(if (server) R.string.server_order_empty_subtitle else R.string.payment_history_empty_subtitle),
+            Modifier.padding(top = 8.dp), fontSize = 13, align = TextAlign.Center)
+    }
+}
+
+@Composable private fun HistoryError(state: HistoryScreenState, server: Boolean) {
+    Column(Modifier.fillMaxWidth().padding(horizontal = 32.dp, vertical = 56.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Icon(painterResource(if (server) R.drawable.ic_cloud_error else R.drawable.ic_cross), null,
+            Modifier.size(64.dp).alpha(.7f), tint = themeColor(R.attr.accentBad))
+        HistoryText(state.tvErrorMessage, Modifier.padding(top = 12.dp).semantics { liveRegion = LiveRegionMode.Polite },
+            fontSize = 14.sp, textAlign = TextAlign.Center)
+        OriginalButton(if (server) "activity_server_order_history:btn_retry" else "activity_purchase_history:btn_retry",
+            { state.btnRetry.performClick() }, Modifier.padding(top = 16.dp).testTag("history_retry")) { Text(stringResource(R.string.ping_test_again)) }
+    }
+}
+
+@Composable private fun HistoryStaticText(text: String, modifier: Modifier = Modifier, fontSize: Int,
+    color: androidx.compose.ui.graphics.Color = themeColor(R.attr.primaryLightColorText), bold: Boolean = false, align: TextAlign = TextAlign.Start) {
+    Text(text, modifier, color = color, style = TextStyle(fontSize = fontSize.sp,
+        fontFamily = FontFamily.SansSerif, fontWeight = if (bold) FontWeight.Bold else FontWeight.Normal,
+        letterSpacing = 0.sp, textAlign = align, platformStyle = PlatformTextStyle(includeFontPadding = true)))
 }

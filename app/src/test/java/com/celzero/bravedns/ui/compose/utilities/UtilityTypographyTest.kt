@@ -3,7 +3,6 @@ package com.celzero.bravedns.ui.compose.utilities
 import android.app.Application
 import android.graphics.Typeface
 import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -20,6 +19,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.TextUnitType
 import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.reference.BaselineSponsorSuccessReference
+import com.celzero.bravedns.ui.compose.reference.BaselineSupportReference
+import com.celzero.bravedns.ui.compose.reference.BaselineReachabilityReference
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -28,15 +30,15 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
-/** Offscreen XML widgets are reference measurements only. No production host or side effects. */
+/** Offscreen programmatic baseline widgets are reference measurements only. No production host or side effects. */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk=[35],application=Application::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 class UtilityTypographyTest {
     @get:Rule val compose=createComposeRule()
-    @Test fun sponsorSuccessTitleMatchesTheRealXmlTextView() {
+    @Test fun sponsorSuccessTitleMatchesIndependentBaselineTextView() {
         val context=ContextThemeWrapper(ApplicationProvider.getApplicationContext(),R.style.AppThemeWhite)
-        val reference=LayoutInflater.from(context).inflate(R.layout.fragment_sponsor_success,null).findViewById<TextView>(R.id.success_title)
+        val reference=BaselineSponsorSuccessReference.create(context).title
         val ui=SponsorSuccessUiState(context)
         lateinit var rendered:TextStyle
         compose.setContent {CompositionLocalProvider(LocalContext provides context) {
@@ -45,9 +47,9 @@ class UtilityTypographyTest {
         }}
         compose.runOnIdle {assertTypography(reference,rendered)}
     }
-    @Test fun sponsorSuccessBodyMatchesXmlBodySizeAndSpacing() {
+    @Test fun sponsorSuccessBodyMatchesBaselineBodySizeAndSpacing() {
         val context=ContextThemeWrapper(ApplicationProvider.getApplicationContext(),R.style.AppThemeTrueBlackFrost)
-        val reference=LayoutInflater.from(context).inflate(R.layout.fragment_sponsor_success,null).findViewById<TextView>(R.id.success_message)
+        val reference=BaselineSponsorSuccessReference.create(context).message
         val ui=SponsorSuccessUiState(context)
         lateinit var rendered:TextStyle
         compose.setContent {CompositionLocalProvider(LocalContext provides context) {rendered=utilityTextStyle(ui.successMessage.textAppearance,lineExtraDp=6f);Text(reference.text.toString(),style=rendered)}}
@@ -59,9 +61,9 @@ class UtilityTypographyTest {
             assertEquals(expected,rendered.lineHeight.value,.002f)
         }
     }
-    @Test fun supportSectionUsesItsXmlAppearanceBoldAndLetterSpacing() {
+    @Test fun supportSectionUsesBaselineAppearanceBoldAndLetterSpacing() {
         val context=ContextThemeWrapper(ApplicationProvider.getApplicationContext(),R.style.AppThemeTrueBlackFrost)
-        val root=LayoutInflater.from(context).inflate(R.layout.activity_customer_support,null)
+        val root=BaselineSupportReference.create(context).root
         val reference=allText(root).single{it.text.toString()==context.getString(R.string.support_section_describe)}
         lateinit var rendered:TextStyle
         compose.setContent {CompositionLocalProvider(LocalContext provides context) {rendered=utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_TitleSmall,weight=Typeface.BOLD,spacing=.08f);Text(reference.text.toString(),style=rendered)}}
@@ -69,15 +71,15 @@ class UtilityTypographyTest {
     }
     @Test fun supportUnstyledAttachmentTitleUsesThemeTextViewDefault() {
         val context=ContextThemeWrapper(ApplicationProvider.getApplicationContext(),R.style.AppThemeWhite)
-        val root=LayoutInflater.from(context).inflate(R.layout.activity_customer_support,null)
+        val root=BaselineSupportReference.create(context).root
         val reference=allText(root).single{it.text.toString()==context.getString(R.string.support_attach_sub_status)}
         lateinit var rendered:TextStyle
         compose.setContent {CompositionLocalProvider(LocalContext provides context) {rendered=utilityTextStyle(weight=Typeface.BOLD);Text(reference.text.toString(),style=rendered)}}
         compose.runOnIdle {assertTypography(reference,rendered)}
     }
-    @Test fun reachabilityInputMatchesXmlEditTextDefaultAppearance() {
+    @Test fun reachabilityInputMatchesBaselineEditTextDefaultAppearance() {
         val context=ContextThemeWrapper(ApplicationProvider.getApplicationContext(),R.style.AppThemeWhite)
-        val reference=LayoutInflater.from(context).inflate(R.layout.dialog_input_ips,null).findViewById<TextView>(R.id.ipv4_address_1)
+        val reference=BaselineReachabilityReference.create(context).ipv4EditText
         lateinit var rendered:TextStyle
         compose.setContent {CompositionLocalProvider(LocalContext provides context) {rendered=utilityTextStyle(defaultStyleAttribute=android.R.attr.editTextStyle);Text("192.0.2.1",style=rendered)}}
         compose.runOnIdle {assertTypography(reference,rendered)}
@@ -87,9 +89,10 @@ class UtilityTypographyTest {
         val context=ContextThemeWrapper(base,R.style.AppThemeWhite).apply {
             applyOverrideConfiguration(android.content.res.Configuration(base.resources.configuration).apply {fontScale=2f})
         }
-        val root=LayoutInflater.from(context).inflate(R.layout.fragment_sponsor_success,null)
-        val title=root.findViewById<TextView>(R.id.success_title)
-        val message=root.findViewById<TextView>(R.id.success_message)
+        val reference=BaselineSponsorSuccessReference.create(context)
+        val root=reference.root
+        val title=reference.title
+        val message=reference.message
         root.measure(View.MeasureSpec.makeMeasureSpec(800,View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(800,View.MeasureSpec.EXACTLY))
         root.layout(0,0,800,800)
         val density=Density(context)

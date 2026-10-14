@@ -2,7 +2,7 @@
   "schema_version": 1,
   "review_kind": "cumulative_source_only_binding_removal_and_component_style_delta",
   "review_date_utc": "2026-10-14",
-  "source_review_complete": true,
+  "source_review_complete": false,
   "execution_status": "BLOCKED_TOOLCHAIN_AND_ARTIFACT_REVALIDATION_REQUIRED",
   "runtime_clearance": {
     "status": "BLOCKED",
@@ -2763,5 +2763,10 @@
       "Device TalkBack/IME/focus verification"
     ],
     "control_negative_control_report": "docs/compose-migration/original-controls-independent-review.json"
+  },
+  "pending_source_review": {
+    "status": "CURRENT_XML_REMOVAL_AND_STYLE_SOURCE_DELTA_NOT_YET_REPINNED",
+    "last_reviewed_source_tree_pin_preserved": true,
+    "reason": "New source-only reference factories and layout styling changes require independent method/helper/source-envelope review; the old exact pin intentionally rejects this tree. Runtime remains BLOCKED."
   }
 }

@@ -1,0 +1,28 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "source_path": "app/src/main/res/layout/dialog_input_ips.xml",
+  "baseline_source_sha256": "bd5d274471390d394e000eb2aec563a34d39231dad308827c2c3c1b91c0e0275",
+  "factory_path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineReachabilityReference.kt",
+  "factory_sha256": "cbe833e669f20675374ceffe15a81e86222749ea9a1c572b76f33e012cbf15cb",
+  "reference_scope": "original subtree/control ipv4_address_1",
+  "nodes": [
+    {
+      "variable": "reference0",
+      "widget": "androidx.appcompat.widget.AppCompatEditText",
+      "source_attributes": {
+        "android:id": "@+id/ipv4_address_1",
+        "android:layout_width": "0dp",
+        "android:layout_height": "wrap_content",
+        "android:layout_weight": "1",
+        "android:background": "@drawable/edittext_default",
+        "android:inputType": "text"
+      },
+      "parent_variable": null,
+      "layout_params_class": null
+    }
+  ],
+  "runtime_xml_inflation": false,
+  "runtime_json_loading": false,
+  "production_renderer_dependencies": false,
+  "execution": "not compiled or run; runtime clearance BLOCKED"
+}

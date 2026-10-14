@@ -82,6 +82,45 @@ class HomeSectionSpacingTest {
         assertControlsAndNoDispatch()
     }
 
+    @Test
+    @Config(qualifiers = "w700dp-h1600dp")
+    fun wideLogsShareProxyAppsBottomBarrierAtDefaultScale() {
+        render(width = 700)
+        assertEquals(bounds("fhs_card_apps_cv").bottom, bounds("fhs_card_logs_ll").bottom, 1f)
+        assertControlsAndNoDispatch()
+    }
+
+    @Test
+    @Config(qualifiers = "w700dp-h1600dp")
+    fun wideDisabledLogsStillFillToTheAppsBottomBarrier() {
+        render(width = 700, configure = {
+            fhsLogsPager.isVisible = false
+            fhsLogsDisabledRow.isVisible = true
+            fhsLogsDisabledTxt.text = "Synthetic disabled logs"
+        })
+        assertEquals(bounds("fhs_card_apps_cv").bottom, bounds("fhs_card_logs_ll").bottom, 1f)
+        assertControlsAndNoDispatch()
+    }
+
+    @Test
+    @Config(qualifiers = "w700dp-h1600dp")
+    fun wideConnectionCardsRemainMeasuredBeforeRulesAdapterArrives() {
+        render(width = 700, configure = { fhsFirewallRulesPager.adapter = null })
+        assertTrue(bounds("fhs_card_dns_ll").height > 0f)
+        assertTrue(bounds("fhs_throughput_ll").height > 0f)
+        assertTrue(bounds("fhs_card_firewall_rules_card").height > 0f)
+        assertControlsAndNoDispatch()
+    }
+
+    @Test fun originalHomeTextContractsKeepTrackingAndSingleLineVariants() {
+        assertEquals(.04f, homeTextContract(R.id.fhs_protection_level_txt).tracking, 0f)
+        assertEquals(1, homeTextContract(R.id.fhs_card_other_proxy_count).lines)
+        assertEquals(.02f, homeTextContract(R.id.fhs_card_apps_blocked_count).tracking, 0f)
+        assertEquals(.15f, homeTextContract(R.id.fhs_top_apps_wifi_label).tracking, 0f)
+        assertEquals(.08f, homeTextContract(R.id.fhs_top_apps_window).tracking, 0f)
+        assertTrue(homeTextContract(R.id.fhs_card_dns_connected_dns).marquee)
+    }
+
     private fun assertPhoneGroups() {
         val dns = bounds("fhs_card_dns_ll")
         val throughput = bounds("fhs_throughput_ll")
@@ -124,7 +163,7 @@ class HomeSectionSpacingTest {
         assertTrue("Card sections must have a visible vertical gutter: $above / $below", below.top - above.bottom >= 8f)
     }
 
-    private fun render(width: Int = 360, direction: LayoutDirection = LayoutDirection.Ltr, fontScale: Float = 1f, theme: Int = R.style.AppThemeWhite) {
+    private fun render(width: Int = 360, direction: LayoutDirection = LayoutDirection.Ltr, fontScale: Float = 1f, theme: Int = R.style.AppThemeWhite, configure: HomePresentation.() -> Unit = {}) {
         compose.setContent {
             val base = LocalContext.current
             val context = remember(base, theme) { ContextThemeWrapper(base, theme) }
@@ -145,6 +184,7 @@ class HomeSectionSpacingTest {
                     fhsLogsDots.isVisible = false
                     fhsCardAllowedApps.text = "12"
                     fhsCardAppsAllApps.text = "/ 12"
+                    configure()
                     listOf(fhsCardDnsLl, fhsThroughputLl, fhsCardFirewallRulesCard, fhsCardProxyLl, fhsCardLogsLl, fhsCardAppsCv).forEach { node ->
                         node.setOnClickListener { calls += node.id.toString() }
                     }

@@ -116,6 +116,32 @@ class StatisticsContentTest {
         compose.onNodeWithText("Fake row 0").assertIsDisplayed()
         compose.onNodeWithText("Fake row 1").assertIsDisplayed()
     }
+    @Test fun sourceSummaryRowRetainsTextSizesAndOneLineTruncation() {
+        compose.setContent { Theme { StatisticsRow("Synthetic summary", "Synthetic subtitle", "", "123") } }
+        assertEquals(14f, textLayout("Synthetic summary").layoutInput.style.fontSize.value, 0f)
+        assertEquals(11f, textLayout("Synthetic subtitle").layoutInput.style.fontSize.value, 0f)
+        assertEquals(12f, textLayout("123").layoutInput.style.fontSize.value, 0f)
+        assertEquals(1, textLayout("Synthetic summary").layoutInput.maxLines)
+        assertEquals(androidx.compose.ui.text.style.TextOverflow.Ellipsis, textLayout("Synthetic subtitle").layoutInput.overflow)
+    }
+    @Test fun rpnAndBlocklistRowsKeepIndependentOriginalTextContracts() {
+        compose.setContent { Theme { androidx.compose.foundation.layout.Column {
+            RpnStatisticsAppRow("Synthetic RPN app", "Synthetic metadata", "255 MB", null)
+            BlocklistStatisticsAppRow("Synthetic blocklist app", "13", null, false, "synthetic_blocklist") {}
+            BlocklistStatisticsDomainRow("synthetic.example.invalid", "7")
+        } } }
+        assertEquals(14f, textLayout("Synthetic RPN app").layoutInput.style.fontSize.value, 0f)
+        assertEquals(11f, textLayout("Synthetic metadata").layoutInput.style.fontSize.value, 0f)
+        assertEquals(13f, textLayout("255 MB").layoutInput.style.fontSize.value, 0f)
+        assertEquals(16f, textLayout("13").layoutInput.style.fontSize.value, 0f)
+        assertEquals(12f, textLayout("synthetic.example.invalid").layoutInput.style.fontSize.value, 0f)
+        assertEquals(androidx.compose.ui.text.style.TextOverflow.MiddleEllipsis, textLayout("synthetic.example.invalid").layoutInput.overflow)
+    }
+    private fun textLayout(text: String): androidx.compose.ui.text.TextLayoutResult {
+        val result = mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
+        compose.onNodeWithText(text, useUnmergedTree = true).performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult) { assertTrue(it(result)) }
+        return result.single()
+    }
     private fun string(id: Int) = ApplicationProvider.getApplicationContext<Context>().getString(id)
     @Composable private fun Theme(rtl: Boolean = false, fontScale: Float = 1f, content: @Composable () -> Unit) {
         val base = LocalContext.current

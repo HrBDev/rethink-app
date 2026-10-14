@@ -24,6 +24,8 @@ import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import android.provider.Settings
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.net.toUri
 import androidx.core.view.WindowInsetsControllerCompat
 import com.celzero.bravedns.R
@@ -93,7 +95,10 @@ class NotificationHandlerActivity: BaseActivity() {
         handleFrostEffectIfNeeded(persistentState.theme)
 
         // This is a trampoline activity that shows dialogs but no actual UI
-        setContentView(android.R.layout.activity_list_item)
+        setContentView(ComposeView(this).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {}
+        })
         window.decorView.alpha = 0f // Make it invisible
 
         if (isAtleastQ()) {

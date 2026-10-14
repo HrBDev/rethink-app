@@ -1,0 +1,127 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "source_path": "app/src/full/res/layout/fragment_sponsor_success.xml",
+  "baseline_source_sha256": "194217acae20a8d206a9e10277b8a71eed5e099704a1271d034dd4a22ac581f3",
+  "factory_path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineSponsorSuccessReference.kt",
+  "factory_sha256": "009282ea71b69010b0474ac3a3231f7d08b87ed2482fd45e13ded3f7e35b8909",
+  "reference_scope": "complete original hierarchy",
+  "nodes": [
+    {
+      "variable": "reference0",
+      "widget": "android.widget.LinearLayout",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "match_parent",
+        "android:gravity": "center",
+        "android:orientation": "vertical",
+        "android:padding": "32dp"
+      },
+      "parent_variable": null,
+      "layout_params_class": null
+    },
+    {
+      "variable": "reference1",
+      "widget": "com.google.android.material.card.MaterialCardView",
+      "source_attributes": {
+        "android:layout_width": "140dp",
+        "android:layout_height": "140dp",
+        "app:cardCornerRadius": "70dp",
+        "app:cardElevation": "0dp",
+        "app:cardBackgroundColor": "?attr/colorSurfaceContainerHigh",
+        "app:strokeWidth": "0dp"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference2",
+      "widget": "android.widget.LinearLayout",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "match_parent",
+        "android:gravity": "center"
+      },
+      "parent_variable": "reference1",
+      "layout_params_class": "android.widget.FrameLayout.LayoutParams"
+    },
+    {
+      "variable": "reference3",
+      "widget": "android.widget.ImageView",
+      "source_attributes": {
+        "android:id": "@+id/success_emblem",
+        "android:layout_width": "80dp",
+        "android:layout_height": "80dp",
+        "android:importantForAccessibility": "no",
+        "android:src": "@drawable/dns_icon",
+        "app:tint": "?attr/accentGood"
+      },
+      "parent_variable": "reference2",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference4",
+      "widget": "android.widget.TextView",
+      "source_attributes": {
+        "android:id": "@+id/success_title",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "40dp",
+        "android:text": "@string/sponsor_thank_you",
+        "android:textAppearance": "@style/TextAppearance.Material3.HeadlineLarge",
+        "android:textStyle": "bold",
+        "android:textColor": "?attr/colorPrimary"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference5",
+      "widget": "android.widget.TextView",
+      "source_attributes": {
+        "android:id": "@+id/success_message",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "16dp",
+        "android:gravity": "center",
+        "android:lineSpacingExtra": "6dp",
+        "android:text": "@string/sponsor_support_message",
+        "android:textAppearance": "@style/TextAppearance.Material3.BodyLarge",
+        "android:textColor": "?attr/colorOnSurfaceVariant",
+        "android:paddingHorizontal": "16dp"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference6",
+      "widget": "android.widget.LinearLayout",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "56dp",
+        "android:orientation": "vertical"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference7",
+      "widget": "com.google.android.material.button.MaterialButton",
+      "source_attributes": {
+        "android:id": "@+id/continue_button",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "64dp",
+        "android:background": "@drawable/rectangle_border_background",
+        "android:text": "@string/sponsor_continue",
+        "android:textAppearance": "@style/TextAppearance.Material3.TitleMedium",
+        "style": "@style/Widget.Material3.Button.OutlinedButton"
+      },
+      "parent_variable": "reference6",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    }
+  ],
+  "runtime_xml_inflation": false,
+  "runtime_json_loading": false,
+  "production_renderer_dependencies": false,
+  "execution": "not compiled or run; runtime clearance BLOCKED"
+}

@@ -42,14 +42,26 @@ def check(overrides=None):
         "ProxyCard(b, Modifier.weight(1f).padding(end = 2.dp), false)",
         "LogsCard(b, false, Modifier.fillMaxWidth().padding(horizontal = 2.dp))",
         "AppsCard(b, false, Modifier.fillMaxWidth().padding(horizontal = 2.dp))",
-        "DnsCard(b, Modifier.weight(.7f).padding(start = 2.dp), true)",
+        "DnsCard(b, Modifier.fillMaxWidth().padding(start = 2.dp), true)",
         "LogsCard(b, true, Modifier.fillMaxWidth().padding(start = 2.dp, end = 8.dp))",
-        "Column(Modifier.weight(.42f).padding(start = 10.dp, end = 2.dp)",
-        "Row(Modifier.fillMaxWidth().padding(top = 12.dp))",
+        "Column(Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp)",
+        "Layout(modifier = Modifier.fillMaxWidth().padding(top = 12.dp)",
+        "val split = (width * .58f).toInt()",
+        "val dnsSplit = (width * .406f).toInt()",
+        "widthConstraints(split).copy(minHeight = right.height)",
+        "logs.placeRelative(0, secondRowY)",
+        "right.placeRelative(split, secondRowY)",
+        "rememberHomeCardElevation(elevationOverride)",
+        "modifier.height(if (wide) 80.dp else 84.dp)",
+        "AppsMetricGrid(b, Modifier.weight(1f).padding(end = 8.dp), 6.dp, alignEnd = false)",
         "verticalArrangement = Arrangement.spacedBy(12.dp)",
+        "it.maxIntrinsicWidth(Constraints.Infinity)",
+        "val start = if (alignEnd) width - packedWidth else 0",
+        "firstWidth + gap + secondWidth <= constraints.maxWidth",
     ]
     for token in required_content:
         assert token in content, f"Home gutter/group contract missing: {token}"
+    assert "as? HomeRulesPages ?: return" not in content, "Rules shell must exist before its pager adapter"
     assert ".padding(bottom = 80.dp)" not in content, "Activity-owned navigation clearance must not be added twice"
     assert content.index(".padding(rememberHomeCardPadding") < content.index(".clip(shape).background"), "Gutters must sit outside the painted surface"
     for token in ["cardUseCompatPadding", "cardPreventCornerOverlap", "cardElevation", "cardMaxElevation", "materialCardViewStyle",
@@ -61,6 +73,7 @@ def check(overrides=None):
     for token in ["application = Application::class", "phoneSectionsKeepOutsideGuttersAndOriginalGroups",
                   "phoneRtlLargeTextKeepsOutsideGuttersAndOriginalGroups", "frostCardsStillHaveCornerClearanceAtZeroElevation",
                   "wideRtlLargeTextKeepsConnectionLogsAndRulesProxyAppsGroups", "baselineInsetsKeepRadiusAndElevationDifferences",
+                  "wideLogsShareProxyAppsBottomBarrierAtDefaultScale", "wideDisabledLogsStillFillToTheAppsBottomBarrier", "originalHomeTextContractsKeepTrackingAndSingleLineVariants",
                   "assertHorizontalGap", "assertVerticalGap", "calls.isEmpty()"]:
         assert token in tests, f"Synthetic coverage source missing: {token}"
     for token in ["RethinkDnsApplication", "HomeScreenActivity(", "HomeScreenFragment(", "VpnController.", "launchFragment", "startService("]:
@@ -77,6 +90,12 @@ def main():
     rejected = 0
     if args.self_test:
         mutations = [
+            (CONTENT, "as? HomeRulesPages\n", "as? HomeRulesPages ?: return\n"),
+            (CONTENT, "val start = if (alignEnd) width - packedWidth else 0", "val start = 0"),
+            (CONTENT, "firstWidth + gap + secondWidth <= constraints.maxWidth", "true"),
+            (CONTENT, "copy(minHeight = right.height)", "copy(minHeight = 0)"),
+            (CONTENT, "logs.placeRelative(0, secondRowY)", "logs.placeRelative(0, 0)"),
+            (CONTENT, ".shadow(rememberHomeCardElevation(elevationOverride), shape, clip = false)", ""),
             (CONTENT, ".padding(rememberHomeCardPadding(radius, elevationOverride))", ""),
             (CONTENT, "elevationOverride = 0.dp", "elevationOverride = 2.dp"),
             (CONTENT, "padding(start = 10.dp, end = 2.dp)", "padding(start = 0.dp, end = 0.dp)"),

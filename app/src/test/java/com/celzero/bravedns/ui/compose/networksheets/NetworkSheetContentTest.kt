@@ -4,9 +4,7 @@ package com.celzero.bravedns.ui.compose.networksheets
 import android.app.Application
 import android.view.ContextThemeWrapper
 import android.view.View
-import android.view.LayoutInflater
 import android.content.res.Configuration
-import android.widget.TextView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Modifier
@@ -23,6 +21,7 @@ import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.reference.BaselineOrbotInfoReference
 import com.celzero.bravedns.ui.compose.RethinkTheme
 import org.junit.Assert.*
 import org.junit.Rule
@@ -103,7 +102,7 @@ class NetworkSheetContentTest {
         compose.onNodeWithTag("country_radio_BB").assertIsSelected().performClick()
         compose.runOnIdle { assertEquals(listOf("BB", "BB"), calls) }
     }
-    @Test fun informationUsesXmlTypographyAndCloseIsOnlyCallback() {
+    @Test fun informationUsesBaselineTypographyAndCloseIsOnlyCallback() {
         var dismiss = 0
         compose.setContent { Theme { OrbotInfoContent("Synthetic title", "Synthetic <not HTML> body") { dismiss++ } } }
         compose.onNodeWithTag("orbot_info_title").performSemanticsAction(SemanticsActions.GetTextLayoutResult) { read ->
@@ -131,9 +130,10 @@ class NetworkSheetContentTest {
         }
         val context = ContextThemeWrapper(app.createConfigurationContext(configuration), R.style.AppTheme)
         val description = "Synthetic connection information.\nSecond line of selectable description.\nThird line checks baseline spacing."
-        val baseline = LayoutInflater.from(context).inflate(R.layout.dialog_info_rules_layout, null, false)
+        val reference = BaselineOrbotInfoReference.create(context, description = description)
+        val baseline = reference.root
         baseline.layoutDirection = View.LAYOUT_DIRECTION_RTL
-        val oldText = baseline.findViewById<TextView>(R.id.info_rules_dialog_rules_desc).apply { text = description }
+        val oldText = reference.description
         val density = context.resources.displayMetrics.density
         val width = (360 * density).toInt()
         val height = (800 * density).toInt()

@@ -1,0 +1,156 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "source_path": "app/src/main/res/layout/bottom_sheet_summary_stats_filter.xml",
+  "baseline_source_sha256": "ab90b462e28ecb71c2220efbb38090fd60ec54be5460ee4927081f3152329d3e",
+  "factory_path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineStatisticsFilterReference.kt",
+  "factory_sha256": "0bd2e83bb60563ac35af2f6d4099beb54c1b60caa16c272513bb06dfd68fda73",
+  "reference_scope": "original subtree/control ssfc_chip_group",
+  "nodes": [
+    {
+      "variable": "reference0",
+      "widget": "com.google.android.material.chip.ChipGroup",
+      "source_attributes": {
+        "android:id": "@+id/ssfc_chip_group",
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:paddingTop": "6dp",
+        "app:chipSpacingHorizontal": "6dp",
+        "app:chipSpacingVertical": "4dp",
+        "app:selectionRequired": "true",
+        "app:singleLine": "false"
+      },
+      "parent_variable": null,
+      "layout_params_class": null
+    },
+    {
+      "variable": "reference1",
+      "widget": "com.google.android.material.chip.Chip",
+      "source_attributes": {
+        "android:id": "@+id/fss_filter_apps_chip",
+        "style": "@style/ThinnerChip.Large",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "3dp",
+        "android:padding": "2dp",
+        "android:checkable": "true",
+        "android:checked": "true",
+        "android:text": "@string/apps_info_title",
+        "android:textAlignment": "center",
+        "android:textSize": "@dimen/default_font_text_view",
+        "app:checkedIconVisible": "false",
+        "app:chipBackgroundColor": "@drawable/bg_chip_state_list"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "com.google.android.material.chip.ChipGroup.LayoutParams"
+    },
+    {
+      "variable": "reference2",
+      "widget": "com.google.android.material.chip.Chip",
+      "source_attributes": {
+        "android:id": "@+id/fss_filter_countries_chip",
+        "style": "@style/ThinnerChip.Large",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "3dp",
+        "android:padding": "2dp",
+        "android:checkable": "true",
+        "android:checked": "true",
+        "android:text": "@string/ssv_filter_countries",
+        "android:textAlignment": "center",
+        "android:textSize": "@dimen/default_font_text_view",
+        "app:checkedIconVisible": "false",
+        "app:chipBackgroundColor": "@drawable/bg_chip_state_list"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "com.google.android.material.chip.ChipGroup.LayoutParams"
+    },
+    {
+      "variable": "reference3",
+      "widget": "com.google.android.material.chip.Chip",
+      "source_attributes": {
+        "android:id": "@+id/fss_filter_providers_chip",
+        "style": "@style/ThinnerChip.Large",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "3dp",
+        "android:padding": "2dp",
+        "android:checkable": "true",
+        "android:checked": "true",
+        "android:text": "@string/ssv_filter_providers",
+        "android:textAlignment": "center",
+        "android:textSize": "@dimen/default_font_text_view",
+        "app:checkedIconVisible": "false",
+        "app:chipBackgroundColor": "@drawable/bg_chip_state_list"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "com.google.android.material.chip.ChipGroup.LayoutParams"
+    },
+    {
+      "variable": "reference4",
+      "widget": "com.google.android.material.chip.Chip",
+      "source_attributes": {
+        "android:id": "@+id/fss_filter_blocklist_chip",
+        "style": "@style/ThinnerChip.Large",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "3dp",
+        "android:padding": "2dp",
+        "android:checkable": "true",
+        "android:checked": "true",
+        "android:text": "@string/ssv_filter_blocklist",
+        "android:textAlignment": "center",
+        "android:textSize": "@dimen/default_font_text_view",
+        "app:checkedIconVisible": "false",
+        "app:chipBackgroundColor": "@drawable/bg_chip_state_list"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "com.google.android.material.chip.ChipGroup.LayoutParams"
+    },
+    {
+      "variable": "reference5",
+      "widget": "com.google.android.material.chip.Chip",
+      "source_attributes": {
+        "android:id": "@+id/fss_filter_domains_chip",
+        "style": "@style/ThinnerChip.Large",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "3dp",
+        "android:padding": "2dp",
+        "android:checkable": "true",
+        "android:checked": "true",
+        "android:text": "@string/ssv_filter_domains",
+        "android:textAlignment": "center",
+        "android:textSize": "@dimen/default_font_text_view",
+        "app:checkedIconVisible": "false",
+        "app:chipBackgroundColor": "@drawable/bg_chip_state_list"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "com.google.android.material.chip.ChipGroup.LayoutParams"
+    },
+    {
+      "variable": "reference6",
+      "widget": "com.google.android.material.chip.Chip",
+      "source_attributes": {
+        "android:id": "@+id/fss_filter_ips_chip",
+        "style": "@style/ThinnerChip.Large",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_margin": "3dp",
+        "android:padding": "2dp",
+        "android:checkable": "true",
+        "android:checked": "true",
+        "android:text": "@string/ssv_filter_ips",
+        "android:textAlignment": "center",
+        "android:textSize": "@dimen/default_font_text_view",
+        "app:checkedIconVisible": "false",
+        "app:chipBackgroundColor": "@drawable/bg_chip_state_list"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "com.google.android.material.chip.ChipGroup.LayoutParams"
+    }
+  ],
+  "runtime_xml_inflation": false,
+  "runtime_json_loading": false,
+  "production_renderer_dependencies": false,
+  "execution": "not compiled or run; runtime clearance BLOCKED"
+}

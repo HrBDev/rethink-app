@@ -5,10 +5,11 @@ import android.view.View
 import com.celzero.bravedns.R
 
 class RpnServerRowState(context: Context) {
+    val flagWatermark = RpnFlagWatermarkState(context)
     val appsAction = RpnControlState() .apply { setTextColor(com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.serverChipTextColor)); textSizeSp = context.resources.getDimension(R.dimen.small_font_text_view) / context.resources.displayMetrics.scaledDensity; maxLines = 1 }
     val appsActionContainer = RpnControlState() .apply { isClickable = true; isFocusable = true }
     val ivStatusCheck = RpnControlState() .apply { alpha = 0.75f; visibility = View.GONE; setImageResource(R.drawable.ic_check_circle) ; imageTintList = android.content.res.ColorStateList.valueOf(com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.chipBgColorPositive)) }
-    val lastRoutedAppAction = RpnControlState() .apply { visibility = View.GONE ; setTextColor(com.celzero.bravedns.util.UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)); textSizeSp = 10f }
+    val lastRoutedAppAction = RpnControlState() .apply { visibility = View.GONE ; setTextColor(com.celzero.bravedns.util.UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)); textSizeSp = 10f; maxLines = 1 }
     val lastRoutedAppContainer = RpnControlState() .apply { isClickable = true; isFocusable = true }
     val lastRoutedAppFallbackIcon = RpnControlState() .apply { visibility = View.GONE; setImageResource(R.drawable.ic_timer) ; imageTintList = android.content.res.ColorStateList.valueOf(com.celzero.bravedns.util.UIUtils.fetchColor(context, androidx.appcompat.R.attr.colorPrimary)) }
     val lastRoutedAppIconStack = RpnControlState()

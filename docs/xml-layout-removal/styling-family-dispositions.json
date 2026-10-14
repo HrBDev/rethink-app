@@ -1,0 +1,660 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "native_snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00",
+  "families": [
+    {
+      "family": "about",
+      "layout_count": 6,
+      "layout_paths": [
+        "app/src/full/res/layout/dialog_whatsnew.xml",
+        "app/src/main/res/layout/bottom_sheet_bug_report_files.xml",
+        "app/src/main/res/layout/bottom_sheet_dns_record_types.xml",
+        "app/src/main/res/layout/fragment_about.xml",
+        "app/src/main/res/layout/item_bug_report_file.xml",
+        "app/src/main/res/layout/item_dns_record_type.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S25",
+        "S26",
+        "S29",
+        "S37"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/dialog_whatsnew.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "appdetails",
+      "layout_count": 10,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_app_details.xml",
+        "app/src/full/res/layout/bottom_sheet_app_connections.xml",
+        "app/src/full/res/layout/domain_item_bottom_sheet.xml",
+        "app/src/full/res/layout/item_chip_filter.xml",
+        "app/src/full/res/layout/list_item_app_domain_details.xml",
+        "app/src/full/res/layout/list_item_app_ip_details.xml",
+        "app/src/main/res/layout/activity_app_wise_domain_logs.xml",
+        "app/src/main/res/layout/activity_app_wise_ip_logs.xml",
+        "app/src/main/res/layout/list_item_app_country_details.xml",
+        "app/src/main/res/layout/view_insights_rank_row.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S08",
+        "S26",
+        "S27"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/bottom_sheet_app_connections.xml",
+        "app/src/full/res/layout/domain_item_bottom_sheet.xml",
+        "app/src/full/res/layout/item_chip_filter.xml",
+        "app/src/main/res/layout/activity_app_wise_domain_logs.xml",
+        "app/src/main/res/layout/activity_app_wise_ip_logs.xml",
+        "app/src/main/res/layout/view_insights_rank_row.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "blocklists",
+      "layout_count": 6,
+      "layout_paths": [
+        "app/src/full/res/layout/bottom_sheet_rethink_plus_filter.xml",
+        "app/src/full/res/layout/fragment_rethink_list.xml",
+        "app/src/full/res/layout/list_item_rethink_blocklist_simple.xml",
+        "app/src/main/res/layout/bottom_sheet_local_blocklists.xml",
+        "app/src/main/res/layout/fragment_rethink_blocklist.xml",
+        "app/src/main/res/layout/list_item_rethink_blocklist_adv.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S25",
+        "S31"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/fragment_rethink_list.xml",
+        "app/src/main/res/layout/bottom_sheet_local_blocklists.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "dns",
+      "layout_count": 17,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_block_free_dns.xml",
+        "app/src/full/res/layout/dialog_set_custom_doh.xml",
+        "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+        "app/src/full/res/layout/dialog_set_dns_crypt.xml",
+        "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+        "app/src/full/res/layout/fragment_dns_crypt_list.xml",
+        "app/src/full/res/layout/fragment_dns_proxy_list.xml",
+        "app/src/full/res/layout/fragment_doh_list.xml",
+        "app/src/full/res/layout/fragment_dot_list.xml",
+        "app/src/full/res/layout/fragment_odoh_list.xml",
+        "app/src/full/res/layout/list_item_block_free_dns.xml",
+        "app/src/full/res/layout/rethink_endpoint_list_item.xml",
+        "app/src/main/res/layout/dialog_dnscrypt_relays.xml",
+        "app/src/main/res/layout/dns_crypt_endpoint_list_item.xml",
+        "app/src/main/res/layout/dns_proxy_list_item.xml",
+        "app/src/main/res/layout/fragment_smart_dns_list.xml",
+        "app/src/main/res/layout/list_item_endpoint.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S09",
+        "S25",
+        "S28",
+        "S30",
+        "S34"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/fragment_dns_crypt_list.xml",
+        "app/src/full/res/layout/fragment_dns_proxy_list.xml",
+        "app/src/full/res/layout/fragment_doh_list.xml",
+        "app/src/full/res/layout/fragment_dot_list.xml",
+        "app/src/full/res/layout/fragment_odoh_list.xml",
+        "app/src/main/res/layout/dialog_dnscrypt_relays.xml",
+        "app/src/main/res/layout/fragment_smart_dns_list.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "dnssettings",
+      "layout_count": 4,
+      "layout_paths": [
+        "app/src/main/res/layout/activity_configure_other_dns.xml",
+        "app/src/main/res/layout/activity_other_dns_list.xml",
+        "app/src/main/res/layout/activity_smart_dns_list.xml",
+        "app/src/main/res/layout/fragment_dns_configure.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S08",
+        "S35"
+      ],
+      "no_additional_specific_finding_identified": [],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "firewallapps",
+      "layout_count": 4,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_app_list.xml",
+        "app/src/full/res/layout/bottom_sheet_firewall_sort_filter.xml",
+        "app/src/full/res/layout/dialog_info_firewall_rules.xml",
+        "app/src/full/res/layout/list_item_firewall_app.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S31"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/dialog_info_firewall_rules.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "home",
+      "layout_count": 8,
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+        "app/src/full/res/layout/bottom_sheet_log_activity_interval.xml",
+        "app/src/full/res/layout/fragment_home_screen.xml",
+        "app/src/full/res/layout/item_home_firewall_rules_page.xml",
+        "app/src/full/res/layout/item_log_activity_app.xml",
+        "app/src/full/res/layout/item_log_activity_conn.xml",
+        "app/src/full/res/layout/view_home_logs_activity.xml",
+        "app/src/full/res/layout/view_home_logs_apps.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S26",
+        "S32"
+      ],
+      "no_additional_specific_finding_identified": [],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "native_host_or_adapter",
+      "layout_count": 12,
+      "layout_paths": [
+        "app/src/full/res/layout/bottom_sheet_rethink_list.xml",
+        "app/src/main/res/layout/activity_custom_rules.xml",
+        "app/src/main/res/layout/activity_domain_connections.xml",
+        "app/src/main/res/layout/activity_network_logs.xml",
+        "app/src/main/res/layout/fragment_rethink_plus.xml",
+        "app/src/main/res/layout/item_ping_test_history.xml",
+        "app/src/main/res/layout/item_section_header.xml",
+        "app/src/main/res/layout/item_server_group.xml",
+        "app/src/main/res/layout/list_item_blocklist_app_row.xml",
+        "app/src/main/res/layout/list_item_blocklist_domain_row.xml",
+        "app/src/main/res/layout/list_item_country_card.xml",
+        "app/src/main/res/layout/view_tour_tooltip.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S14",
+        "S18",
+        "S24",
+        "S25",
+        "S26",
+        "S33",
+        "S36"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/bottom_sheet_rethink_list.xml",
+        "app/src/main/res/layout/fragment_rethink_plus.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "networksettings",
+      "layout_count": 7,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_misc_settings.xml",
+        "app/src/full/res/layout/activity_tunnel_settings.xml",
+        "app/src/full/res/layout/dialog_lockdown_check.xml",
+        "app/src/full/res/layout/fragment_proxy_configure.xml",
+        "app/src/full/res/layout/item_lockdown_check.xml",
+        "app/src/main/res/layout/dialog_set_proxy.xml",
+        "app/src/main/res/layout/item_network_policy.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S10",
+        "S25"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/dialog_lockdown_check.xml",
+        "app/src/full/res/layout/item_lockdown_check.xml",
+        "app/src/main/res/layout/item_network_policy.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "networksheets",
+      "layout_count": 5,
+      "layout_paths": [
+        "app/src/full/res/layout/bottom_sheet_orbot.xml",
+        "app/src/full/res/layout/dialog_info_rules_layout.xml",
+        "app/src/main/res/layout/activity_backup_restore.xml",
+        "app/src/main/res/layout/bottomsheet_rinr_warning.xml",
+        "app/src/main/res/layout/list_item_proxy_cc_wg.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S09"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/dialog_info_rules_layout.xml",
+        "app/src/main/res/layout/activity_backup_restore.xml",
+        "app/src/main/res/layout/bottomsheet_rinr_warning.xml",
+        "app/src/main/res/layout/list_item_proxy_cc_wg.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "purchase",
+      "layout_count": 17,
+      "layout_paths": [
+        "app/src/main/res/layout/activity_checkout_proxy.xml",
+        "app/src/main/res/layout/activity_purchase_history.xml",
+        "app/src/main/res/layout/activity_server_order_history.xml",
+        "app/src/main/res/layout/bottomsheet_device_auth_error.xml",
+        "app/src/main/res/layout/bottomsheet_device_not_registered.xml",
+        "app/src/main/res/layout/bottomsheet_entitlement_detail.xml",
+        "app/src/main/res/layout/bottomsheet_purchase_conflict.xml",
+        "app/src/main/res/layout/bottomsheet_purchase_processing.xml",
+        "app/src/main/res/layout/fragment_rethink_plus_manage_purchase.xml",
+        "app/src/main/res/layout/fragment_rethink_plus_premium.xml",
+        "app/src/main/res/layout/layout_entitlement_row.xml",
+        "app/src/main/res/layout/list_item_play_subs.xml",
+        "app/src/main/res/layout/list_item_purchase_history.xml",
+        "app/src/main/res/layout/list_item_server_order.xml",
+        "app/src/main/res/layout/list_item_shimmer_card.xml",
+        "app/src/main/res/layout/list_item_shimmer_server_row.xml",
+        "app/src/main/res/layout/shimmer_subscription_loading.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S09",
+        "S11",
+        "S15",
+        "S16",
+        "S26"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/main/res/layout/fragment_rethink_plus_manage_purchase.xml",
+        "app/src/main/res/layout/layout_entitlement_row.xml",
+        "app/src/main/res/layout/list_item_play_subs.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "retired",
+      "layout_count": 6,
+      "layout_paths": [
+        "app/src/full/res/layout/dialog_ip_details_layout.xml",
+        "app/src/full/res/layout/spinner_item_firewall_status.xml",
+        "app/src/full/res/layout/view_sponsor_badge.xml",
+        "app/src/main/res/layout/dialog_sponsor_info.xml",
+        "app/src/main/res/layout/item_server.xml",
+        "app/src/main/res/layout/list_item_server_wg_peers.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "retired_no_live_baseline_renderer",
+      "known_findings": [
+        "S25"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/dialog_ip_details_layout.xml",
+        "app/src/full/res/layout/spinner_item_firewall_status.xml",
+        "app/src/full/res/layout/view_sponsor_badge.xml",
+        "app/src/main/res/layout/dialog_sponsor_info.xml",
+        "app/src/main/res/layout/list_item_server_wg_peers.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "rpn",
+      "layout_count": 10,
+      "layout_paths": [
+        "app/src/main/res/layout/bottomsheet_auto_exclude_countries.xml",
+        "app/src/main/res/layout/bottomsheet_server_removal_notification.xml",
+        "app/src/main/res/layout/bottomsheet_server_settings.xml",
+        "app/src/main/res/layout/dialog_server_loading.xml",
+        "app/src/main/res/layout/fragment_rethink_plus_dashboard.xml",
+        "app/src/main/res/layout/fragment_server_selection.xml",
+        "app/src/main/res/layout/item_removed_server.xml",
+        "app/src/main/res/layout/list_item_exclude_country.xml",
+        "app/src/main/res/layout/list_item_vpn_server.xml",
+        "app/src/main/res/layout/list_item_vpn_server_add.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S08",
+        "S11",
+        "S16",
+        "S17",
+        "S23",
+        "S25",
+        "S26",
+        "S36"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/main/res/layout/fragment_rethink_plus_dashboard.xml",
+        "app/src/main/res/layout/list_item_vpn_server.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "rpnconfig",
+      "layout_count": 6,
+      "layout_paths": [
+        "app/src/main/res/layout/activity_rpn_bypass_apps.xml",
+        "app/src/main/res/layout/activity_rpn_config_detail.xml",
+        "app/src/main/res/layout/activity_rpn_win_proxy_detail.xml",
+        "app/src/main/res/layout/dialog_rpn_ssid.xml",
+        "app/src/main/res/layout/item_ssid.xml",
+        "app/src/main/res/layout/list_item_rpn_bypass_app.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S09",
+        "S22",
+        "S25",
+        "S26"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/main/res/layout/activity_rpn_win_proxy_detail.xml",
+        "app/src/main/res/layout/item_ssid.xml",
+        "app/src/main/res/layout/list_item_rpn_bypass_app.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "rules",
+      "layout_count": 12,
+      "layout_paths": [
+        "app/src/full/res/layout/dialog_add_custom_domain.xml",
+        "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+        "app/src/full/res/layout/dialog_import_confirm.xml",
+        "app/src/full/res/layout/fragment_custom_domain.xml",
+        "app/src/full/res/layout/fragment_custom_ip.xml",
+        "app/src/full/res/layout/list_item_custom_all_domain.xml",
+        "app/src/full/res/layout/list_item_custom_all_ip.xml",
+        "app/src/full/res/layout/list_item_custom_domain.xml",
+        "app/src/full/res/layout/list_item_custom_ip.xml",
+        "app/src/main/res/layout/bottom_sheet_custom_domains.xml",
+        "app/src/main/res/layout/bottom_sheet_custom_ips.xml",
+        "app/src/main/res/layout/dialog_add_custom_ip.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S19",
+        "S20",
+        "S25"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/dialog_custom_lan_ip.xml",
+        "app/src/full/res/layout/fragment_custom_domain.xml",
+        "app/src/full/res/layout/fragment_custom_ip.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "settings",
+      "layout_count": 9,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_advanced_setting.xml",
+        "app/src/full/res/layout/bottom_sheet_home_screen.xml",
+        "app/src/full/res/layout/fragment_firewall_settings.xml",
+        "app/src/main/res/layout/activity_anti_censorship.xml",
+        "app/src/main/res/layout/activity_dns_detail.xml",
+        "app/src/main/res/layout/activity_firewall.xml",
+        "app/src/main/res/layout/activity_universal_firewall_settings.xml",
+        "app/src/main/res/layout/bottom_sheet_block_free_dns_mode.xml",
+        "app/src/main/res/layout/fragment_configure.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S06",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/bottom_sheet_home_screen.xml",
+        "app/src/main/res/layout/activity_dns_detail.xml",
+        "app/src/main/res/layout/activity_firewall.xml",
+        "app/src/main/res/layout/activity_universal_firewall_settings.xml",
+        "app/src/main/res/layout/bottom_sheet_block_free_dns_mode.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "statistics",
+      "layout_count": 6,
+      "layout_paths": [
+        "app/src/main/res/layout/activity_detailed_statistics.xml",
+        "app/src/main/res/layout/bottom_sheet_summary_stats_filter.xml",
+        "app/src/main/res/layout/bottomsheet_rpn_stats.xml",
+        "app/src/main/res/layout/fragment_summary_statistics.xml",
+        "app/src/main/res/layout/list_item_rpn_stat_app.xml",
+        "app/src/main/res/layout/list_item_statistics_summary.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S12",
+        "S13",
+        "S26",
+        "S33"
+      ],
+      "no_additional_specific_finding_identified": [],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "trafficlogs",
+      "layout_count": 10,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_console_log.xml",
+        "app/src/full/res/layout/bottom_sheet_conn_track.xml",
+        "app/src/full/res/layout/bottom_sheet_dns_log.xml",
+        "app/src/full/res/layout/fragment_connection_tracker.xml",
+        "app/src/full/res/layout/list_item_conn_track.xml",
+        "app/src/full/res/layout/list_item_dns_log.xml",
+        "app/src/main/res/layout/activity_events.xml",
+        "app/src/main/res/layout/fragment_dns_logs.xml",
+        "app/src/main/res/layout/item_event.xml",
+        "app/src/main/res/layout/list_item_console_log.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S08"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/activity_console_log.xml",
+        "app/src/full/res/layout/bottom_sheet_dns_log.xml",
+        "app/src/full/res/layout/fragment_connection_tracker.xml",
+        "app/src/full/res/layout/list_item_conn_track.xml",
+        "app/src/full/res/layout/list_item_dns_log.xml",
+        "app/src/main/res/layout/activity_events.xml",
+        "app/src/main/res/layout/fragment_dns_logs.xml",
+        "app/src/main/res/layout/item_event.xml",
+        "app/src/main/res/layout/list_item_console_log.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "utilities",
+      "layout_count": 17,
+      "layout_paths": [
+        "app/src/full/res/layout/activity_app_lock.xml",
+        "app/src/full/res/layout/activity_bubble.xml",
+        "app/src/full/res/layout/activity_pause.xml",
+        "app/src/full/res/layout/activity_tcp_proxy.xml",
+        "app/src/full/res/layout/activity_welcome.xml",
+        "app/src/full/res/layout/fragment_sponsor.xml",
+        "app/src/full/res/layout/fragment_sponsor_success.xml",
+        "app/src/full/res/layout/item_allowed_app.xml",
+        "app/src/full/res/layout/item_blocked_app.xml",
+        "app/src/main/res/layout/activity_alerts.xml",
+        "app/src/main/res/layout/activity_customer_support.xml",
+        "app/src/main/res/layout/activity_ping_test.xml",
+        "app/src/main/res/layout/dialog_input_ips.xml",
+        "app/src/main/res/layout/welcome_slide1.xml",
+        "app/src/main/res/layout/welcome_slide2.xml",
+        "app/src/main/res/layout/welcome_slide3.xml",
+        "app/src/main/res/layout/welcome_slide4.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S08",
+        "S10",
+        "S21",
+        "S25",
+        "S26"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/full/res/layout/activity_app_lock.xml",
+        "app/src/full/res/layout/activity_bubble.xml",
+        "app/src/full/res/layout/activity_pause.xml",
+        "app/src/full/res/layout/activity_welcome.xml",
+        "app/src/main/res/layout/activity_alerts.xml",
+        "app/src/main/res/layout/dialog_input_ips.xml",
+        "app/src/main/res/layout/welcome_slide1.xml",
+        "app/src/main/res/layout/welcome_slide2.xml",
+        "app/src/main/res/layout/welcome_slide3.xml",
+        "app/src/main/res/layout/welcome_slide4.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    },
+    {
+      "family": "wireguard",
+      "layout_count": 14,
+      "layout_paths": [
+        "app/src/main/res/layout/activity_wg_config_editor.xml",
+        "app/src/main/res/layout/activity_wg_detail.xml",
+        "app/src/main/res/layout/activity_wireguard_main.xml",
+        "app/src/main/res/layout/bottom_sheet_proxies_list.xml",
+        "app/src/main/res/layout/dialog_wg_add_peer.xml",
+        "app/src/main/res/layout/dialog_wg_apps.xml",
+        "app/src/main/res/layout/dialog_wg_hop.xml",
+        "app/src/main/res/layout/dialog_wg_ssid.xml",
+        "app/src/main/res/layout/fragment_wg_nw_stats.xml",
+        "app/src/main/res/layout/list_item_wg_general_interface.xml",
+        "app/src/main/res/layout/list_item_wg_hop.xml",
+        "app/src/main/res/layout/list_item_wg_include_apps.xml",
+        "app/src/main/res/layout/list_item_wg_one_interface.xml",
+        "app/src/main/res/layout/list_item_wg_peers.xml"
+      ],
+      "root_and_full_property_contract": "Complete in styling-equivalence-ledger.json, all qualifiers and each explicit original node retained.",
+      "renderer_mapping_status": "Concrete current family/source references verified; no equivalence inferred from identifiers.",
+      "source_disposition": "known_gaps_and_independent_source_reconciliation_pending",
+      "known_findings": [
+        "S07",
+        "S09",
+        "S11",
+        "S22",
+        "S25"
+      ],
+      "no_additional_specific_finding_identified": [
+        "app/src/main/res/layout/bottom_sheet_proxies_list.xml",
+        "app/src/main/res/layout/dialog_wg_hop.xml"
+      ],
+      "accepted_spacing_deviations": [],
+      "runtime_gate": "not_run_toolchain_unavailable",
+      "safe_next_step": "Resolve family findings and all per-node contracts; reviewer must accept source equivalence and resource-reference cleanup before deletion. Keep runtime status independent and open."
+    }
+  ],
+  "exhaustive_layout_accounting": 186,
+  "root_ledger_accounting_path": "root-layout-accounting.json"
+}

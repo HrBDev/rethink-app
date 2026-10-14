@@ -5,9 +5,8 @@ import android.app.Application
 import android.content.res.Configuration
 import android.text.TextPaint
 import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
-import android.widget.TextView
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.reference.BaselineOrbotInfoReference
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,20 +15,19 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
-/** Offscreen baseline XML TextViews only. No production Application, Activity or controller. */
+/** Offscreen baseline programmatic TextViews only. No production Application, Activity or controller. */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [35], application = Application::class)
 class OrbotInfoTypographyTest {
-    @Test fun actualXmlTypographyMatchesAtNormalAndLargeScalesAcrossThemes() {
+    @Test fun independentBaselineTypographyMatchesAtNormalAndLargeScalesAcrossThemes() {
         val app = RuntimeEnvironment.getApplication()
         for (theme in listOf(R.style.AppThemeWhite, R.style.AppTheme, R.style.AppThemeTrueBlackFrost)) {
             for (scale in listOf(1f, 2f)) {
                 val config = Configuration(app.resources.configuration).apply { fontScale = scale }
                 val context = ContextThemeWrapper(app.createConfigurationContext(config), theme)
-                val baseline = LayoutInflater.from(context).inflate(R.layout.dialog_info_rules_layout, null, false)
-                for ((description, id) in listOf(false to R.id.info_rules_dialog_rules_title, true to R.id.info_rules_dialog_rules_desc)) {
-                    val view = baseline.findViewById<TextView>(id)
+                val baseline = BaselineOrbotInfoReference.create(context)
+                for ((description, view) in listOf(false to baseline.title, true to baseline.description)) {
                     val typography = resolveOrbotInfoTypography(context, description)
                     val label = "theme=$theme scale=$scale description=$description"
                     assertEquals(label, view.textSize, typography.sizePx, .01f)

@@ -18,7 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConnection
 import com.celzero.bravedns.service.FirewallManager
-import com.celzero.bravedns.ui.compose.statistics.StatisticsRow
+import com.celzero.bravedns.ui.compose.statistics.BlocklistStatisticsAppRow
+import com.celzero.bravedns.ui.compose.statistics.BlocklistStatisticsDomainRow
 import com.celzero.bravedns.util.Utilities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,13 +52,11 @@ class BlocklistAppsAdapter internal constructor(private val context: Context,
         }
         val description = stringResource(if (group.expanded) R.string.statistics_expanded else R.string.statistics_collapsed)
         Column(Modifier.testTag("blocklist_group_${app.uid}").semantics { stateDescription = description }) {
-            StatisticsRow(identity?.first ?: app.appOrDnsName ?: stringResource(R.string.network_log_app_name_unnamed, app.uid.toString()),
-                null, "", app.count.toString(), icon = identity?.second ?: Utilities.getDefaultIcon(context),
-                downArrow = true, arrowRotation = if (group.expanded) 180f else 0f, tag = "blocklist_app_${app.uid}") { toggle(group) }
+            BlocklistStatisticsAppRow(identity?.first ?: app.appOrDnsName ?: stringResource(R.string.network_log_app_name_unnamed, app.uid.toString()),
+                app.count.toString(), icon = identity?.second ?: Utilities.getDefaultIcon(context),
+                expanded = group.expanded, tag = "blocklist_app_${app.uid}") { toggle(group) }
             if (group.expanded) group.domains.orEmpty().forEach { domain ->
-                Row(Modifier.fillMaxWidth().padding(start = 54.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)) {
-                    Text(domain.appOrDnsName.orEmpty(), Modifier.weight(1f)); Text(domain.count.toString())
-                }
+                BlocklistStatisticsDomainRow(domain.appOrDnsName.orEmpty(), domain.count.toString())
             }
         }
     }

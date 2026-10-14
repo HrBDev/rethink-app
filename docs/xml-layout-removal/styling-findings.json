@@ -1,0 +1,1123 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "native_snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00",
+  "findings": [
+    {
+      "id": "S01",
+      "priority": "P0",
+      "status": "confirmed_source_mismatch",
+      "title": "Wide Home logs card no longer reaches the shared bottom barrier",
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml"
+      ],
+      "baseline_contract": "w600dp logs is 0dp height, top below throughput, bottom constrained to fhs_row2_bottom_barrier over proxy/apps; outer gutters remain 2dp/8dp/10dp and 12dp vertical separation.",
+      "current_source_difference": "HomeContent uses independent .58/.42 Column heights. LogsCard has content-driven height and cannot share the proxy/apps bottom boundary. This is separate from the already-restored compat gutters.",
+      "required_before_deletion": "Restore the cross-column measurement relationship in native Compose, and assert logs/apps outer bottom bounds for normal/long/hidden-content states. Preserve existing navigation-clearance and gutter fixes.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 82,
+          "excerpt": "Column(Modifier.weight(.58f)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+          "line": 699,
+          "excerpt": "app:layout_constraintBottom_toBottomOf=\"@id/fhs_row2_bottom_barrier\"",
+          "snapshot": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S02",
+      "priority": "P0",
+      "status": "confirmed_source_mismatch",
+      "title": "Home apps metric grid and qualifier-specific grouping collapsed",
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+        "app/src/full/res/layout/fragment_home_screen.xml"
+      ],
+      "baseline_contract": "The wide layout puts count/title above an aligned Flow with maxElementsWrap=2, horizontal gap 12dp and vertical gap 6dp. ConstraintFlow owns blocked, isolated, bypassed, excluded order. Phone and wide have separate geometry.",
+      "current_source_difference": "AppsCard shares one FlowRow for both qualifiers and nests two Columns in a Row; count/title and metrics may become siblings on one row, and row alignment/wrap is not the original 2\u00d72 flow.",
+      "required_before_deletion": "Implement explicit phone and wide grid grouping from the two XML contracts. Assert row/column placement, wrap and reading order with long translated metrics.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 203,
+          "excerpt": "FlowRow(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+          "line": 611,
+          "excerpt": "app:flow_maxElementsWrap=\"2\"",
+          "snapshot": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S03",
+      "priority": "P0",
+      "status": "confirmed_source_mismatch",
+      "title": "Home fixed heights are now minimums with different padding constraints",
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+        "app/src/full/res/layout/fragment_home_screen.xml"
+      ],
+      "baseline_contract": "Protection bar, firewall rules card and logs pager have fixed XML dimensions (40dp, wide rules 80dp, pager 168dp wide/190dp phone); card clearance consumes part of outer card constraints. NestedScrollView fillViewport=true is also explicit.",
+      "current_source_difference": "ProtectionRow, RulesCard and NativePager use heightIn(min=...), while parent wrapping and padding order differ. Rules minimum is applied inside HomeCard after outside clearance, not to the original outer card. Scrollable Column does not explicitly reproduce fillViewport.",
+      "required_before_deletion": "Record outer allocated height versus visible surface versus content minimum for each state, then match default-font geometry without accidental double insets. Decide/validate large-text growth explicitly rather than call min-height equivalent to fixed height.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 158,
+          "excerpt": "heightIn(min = if (wide) 80.dp else 84.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 231,
+          "excerpt": "heightIn(min = if (wide) 168.dp else 190.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S04",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Home card elevation space restored but shadow is not rendered",
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+        "app/src/full/res/layout/fragment_home_screen.xml"
+      ],
+      "baseline_contract": "Default Widget.Rethink.MaterialCardView has 2dp elevation and compat padding; Frost has zero elevation; rules explicitly zero.",
+      "current_source_difference": "HomeCard uses calculated padding then clip/background/border. It does not draw a shadow or an elevated Surface/Card. The restored gap is not the full elevation treatment.",
+      "required_before_deletion": "Preserve theme-dependent shadow rendering as well as measured outside clearance. Avoid duplicating compat padding or adding shadows to zero-elevation rules/Frost.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 126,
+          "excerpt": "var m = modifier.homeTourAnchor(node.id).padding(rememberHomeCardPadding",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeCardSpacing.kt",
+          "line": 34,
+          "excerpt": "fun rememberHomeCardPadding",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S05",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Home typography loses source tracking, truncation and autosize",
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+        "app/src/full/res/layout/fragment_home_screen.xml",
+        "app/src/full/res/layout/item_home_firewall_rules_page.xml",
+        "app/src/full/res/layout/view_home_logs_activity.xml",
+        "app/src/full/res/layout/view_home_logs_apps.xml"
+      ],
+      "baseline_contract": "Source labels use letterSpacing (.02/.05), maxLines/ellipsize and several uniform autosize ranges (rules 8\u201312sp; proxy labels 6\u20138sp). Home text size/color/alpha are not the complete contract.",
+      "current_source_difference": "HomeText accepts size/color/monospace/allCaps but no letterSpacing, maxLines, ellipsize or source font weight; RulesCard and proxy labels use unbounded Text with fixed sizes.",
+      "required_before_deletion": "Carry actual baseline text contracts into presentation-only text rendering, retaining default-font alignment and source-specific overflow. Add narrow/RTL/large-font fixtures for rules, proxy legend and apps labels.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 478,
+          "excerpt": "private fun HomeText(",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+          "line": 162,
+          "excerpt": "Text(pages.labels[page]",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/full/res/layout/item_home_firewall_rules_page.xml",
+          "line": 39,
+          "excerpt": "app:autoSizeMinTextSize=\"8sp\"",
+          "snapshot": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S06",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Settings/DNS cards still omit inherited compat-padding geometry",
+      "layout_paths": [
+        "app/src/full/res/layout/activity_app_list.xml",
+        "app/src/full/res/layout/activity_misc_settings.xml",
+        "app/src/full/res/layout/activity_tunnel_settings.xml",
+        "app/src/full/res/layout/fragment_firewall_settings.xml",
+        "app/src/full/res/layout/fragment_proxy_configure.xml",
+        "app/src/full/res/layout/list_item_firewall_app.xml",
+        "app/src/full/res/layout/list_item_rethink_blocklist_simple.xml",
+        "app/src/full/res/layout/rethink_endpoint_list_item.xml",
+        "app/src/main/res/layout/activity_anti_censorship.xml",
+        "app/src/main/res/layout/activity_other_dns_list.xml",
+        "app/src/main/res/layout/bottom_sheet_custom_domains.xml",
+        "app/src/main/res/layout/bottom_sheet_custom_ips.xml",
+        "app/src/main/res/layout/bottomsheet_server_settings.xml",
+        "app/src/main/res/layout/dns_crypt_endpoint_list_item.xml",
+        "app/src/main/res/layout/dns_proxy_list_item.xml",
+        "app/src/main/res/layout/fragment_configure.xml",
+        "app/src/main/res/layout/fragment_dns_configure.xml",
+        "app/src/main/res/layout/fragment_rethink_blocklist.xml",
+        "app/src/main/res/layout/list_item_endpoint.xml",
+        "app/src/main/res/layout/list_item_rethink_blocklist_adv.xml"
+      ],
+      "baseline_contract": "MaterialCardView inherits Widget.Rethink.MaterialCardView/Frost, including cardUseCompatPadding=true; explicit per-card radius/stroke/content padding and margins apply on top.",
+      "current_source_difference": "SettingsCard resolves fill/radius/elevation only, then draws a Compose Card to full allocated bounds. It does not resolve compat padding, prevent-corner-overlap, max elevation, card stroke or explicit Android foreground.",
+      "required_before_deletion": "Create a source-style-aware native card primitive and map each call to its actual style plus per-card overrides. Reconcile outer clearance separately from content padding, including zero-elevation Frost.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/SettingsComponents.kt",
+          "line": 59,
+          "excerpt": "intArrayOf(CardR.attr.cardBackgroundColor, CardR.attr.cardCornerRadius, CardR.attr.cardElevation)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/SettingsComponents.kt",
+          "line": 68,
+          "excerpt": "Card(modifier.fillMaxWidth()",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S07",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "WireGuard card wrapper flattens per-layout padding and row grouping",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_wg_config_editor.xml",
+        "app/src/main/res/layout/activity_wg_detail.xml",
+        "app/src/main/res/layout/activity_wireguard_main.xml",
+        "app/src/main/res/layout/dialog_wg_add_peer.xml",
+        "app/src/main/res/layout/list_item_wg_general_interface.xml",
+        "app/src/main/res/layout/list_item_wg_hop.xml",
+        "app/src/main/res/layout/list_item_wg_include_apps.xml",
+        "app/src/main/res/layout/list_item_wg_one_interface.xml",
+        "app/src/main/res/layout/list_item_wg_peers.xml"
+      ],
+      "baseline_contract": "WireGuard cards and their children have individually specified radii, margins, padding and constrained subrows; uptime/rx-tx are peers in a RelativeLayout in interface rows.",
+      "current_source_difference": "WgCard always creates an inner Column with 16dp padding and 8dp spacing and no compat padding. WgRows stacks uptime and rx-tx separately instead of their original shared row. WgAppRow omits its source icon-container geometry.",
+      "required_before_deletion": "Use per-card contracts rather than one content-padding default. Restore explicit subrow grouping, hidden-child spacing and modifier order for each WireGuard layout.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+          "line": 169,
+          "excerpt": "Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt",
+          "line": 42,
+          "excerpt": "if (b.interfaceActiveLayout.isVisible) { WgText(b.interfaceActiveUptime); WgText(b.interfaceActiveRxTx) }",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S08",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Raw switches bypass the original theme overlays",
+      "layout_paths": [
+        "app/src/full/res/layout/activity_advanced_setting.xml",
+        "app/src/full/res/layout/activity_app_details.xml",
+        "app/src/full/res/layout/activity_tcp_proxy.xml",
+        "app/src/full/res/layout/bottom_sheet_conn_track.xml",
+        "app/src/main/res/layout/activity_customer_support.xml",
+        "app/src/main/res/layout/bottomsheet_server_settings.xml",
+        "app/src/main/res/layout/fragment_dns_configure.xml"
+      ],
+      "baseline_contract": "These XML controls specify CustomWidget.Material3.CompoundButton.MaterialSwitch, whose CustomCompoundButtonSwitch overlay overrides colorSurface/colorOnSurface/colorControlActivated and secondary colors; checked/unchecked/disabled states matter.",
+      "current_source_difference": "Their native calls use raw Switch defaults without the source overlay. RethinkTheme global colors do not apply an individual widget materialThemeOverlay.",
+      "required_before_deletion": "Route through a native switch renderer that resolves the particular XML style/overlay and its state colors/dimensions. Existing wgSwitchColors is useful partial infrastructure but not a blanket equivalence exemption.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt",
+          "line": 101,
+          "excerpt": "Switch(b.dvExperimentalSwitch.isChecked",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/SupportScreen.kt",
+          "line": 121,
+          "excerpt": "Switch(state.isChecked",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSettingsContent.kt",
+          "line": 101,
+          "excerpt": "Switch(toggle.isChecked",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S09",
+      "priority": "P1",
+      "status": "confirmed_source_omission_runtime_effect_pending",
+      "title": "Radio controls have unreviewed source-style/default differences",
+      "layout_paths": [
+        "app/src/full/res/layout/bottom_sheet_orbot.xml",
+        "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+        "app/src/main/res/layout/activity_anti_censorship.xml",
+        "app/src/main/res/layout/activity_checkout_proxy.xml",
+        "app/src/main/res/layout/dialog_rpn_ssid.xml",
+        "app/src/main/res/layout/dialog_wg_ssid.xml"
+      ],
+      "baseline_contract": "Baseline mixes MaterialRadioButton, AppCompatRadioButton and RadioButton, sometimes with explicit CustomCompoundButtonSwitch overlay, tint or padding. These are not a single global Material3 radio style.",
+      "current_source_difference": "Native renderers mostly use RadioButton defaults. AntiCensorshipRow does not resolve the explicit overlay applied to all nine XML radios.",
+      "required_before_deletion": "Resolve source widget defaults/overlays and checked/unchecked/disabled states per family. Preserve selection group semantics and avoid duplicate targets when both row and control are clickable.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/AntiCensorshipContent.kt",
+          "line": 92,
+          "excerpt": "RadioButton(radio.isChecked",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/CheckoutContent.kt",
+          "line": 85,
+          "excerpt": "RadioButton(selected == index, onClick = null)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S10",
+      "priority": "P1",
+      "status": "confirmed_source_omission_runtime_effect_pending",
+      "title": "SeekBar/Slider replacement does not preserve the source widget appearance",
+      "layout_paths": [
+        "app/src/full/res/layout/activity_advanced_setting.xml",
+        "app/src/full/res/layout/activity_misc_settings.xml",
+        "app/src/full/res/layout/activity_tunnel_settings.xml",
+        "app/src/full/res/layout/fragment_sponsor.xml"
+      ],
+      "baseline_contract": "Baseline uses AppCompatSeekBar for several settings and a separately styled Slider for sponsorship; thumb/track/ticks/min-height arise from different widget defaults.",
+      "current_source_difference": "Advanced/Network sources use generic Compose Slider, including its visual track/thumb/tick system, without source style/drawable resolution; callback preservation does not preserve visual form.",
+      "required_before_deletion": "Map each source slider type/attributes to an explicit native visual contract. Resolve external widget defaults in independent reference fixtures before deleting XML.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/settings/AdvancedSettingsContent.kt",
+          "line": 112,
+          "excerpt": "Slider(b.goMaxMemorySeekbar.progress.toFloat()",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+          "line": 272,
+          "excerpt": "NetworkKind.SLIDER -> Slider",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S11",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Progress defaults replace explicit source track/color contracts",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_server_order_history.xml",
+        "app/src/main/res/layout/activity_wireguard_main.xml",
+        "app/src/main/res/layout/dialog_server_loading.xml",
+        "app/src/main/res/layout/fragment_wg_nw_stats.xml",
+        "app/src/main/res/layout/list_item_wg_hop.xml"
+      ],
+      "baseline_contract": "Server-order progress is 3dp, square-cornered, accentGood on chipBgColorPositive. Server-loading timeout is 3dp with 4dp corners. Other XML progress nodes retain per-instance tints and thickness.",
+      "current_source_difference": "HistoryScreen and WgProgress use default LinearProgressIndicator parameters; server-loading does not set source track corner/gap/stop behavior. Current Compose defaults are not verified against original MDC defaults.",
+      "required_before_deletion": "Map determinate/indeterminate progress per original node, including track, thickness, corner shape, gap/stop decorations, insets and accessible range.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryScreen.kt",
+          "line": 64,
+          "excerpt": "if (state.fetchProgress.isVisible) LinearProgressIndicator",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+          "line": 148,
+          "excerpt": "if (node.isIndeterminate) LinearProgressIndicator",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnComponents.kt",
+          "line": 78,
+          "excerpt": "androidx.compose.material3.LinearProgressIndicator(progress",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S12",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "StatisticsRow no longer matches the source summary row text contract",
+      "layout_paths": [
+        "app/src/main/res/layout/list_item_statistics_summary.xml"
+      ],
+      "baseline_contract": "Summary title 14sp bold single-line ellipsis; subtitle 11sp single-line ellipsis with 2dp top margin; count 12sp with .85 alpha; icon22dp in 40dp frame.",
+      "current_source_difference": "StatisticsRow uses bodySmall (12sp) for subtitle and bodyMedium (14sp) for count; text has no maxLines/ellipsis; subtitle loses 2dp top margin. WgStatsRow also reorders data/name and has its own incompatible geometry.",
+      "required_before_deletion": "Preserve distinct summary/variant row contracts. Reintroduce exact sizes, line limits and baseline margins; do not use the same generic row for layouts with different metrics.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/StatisticsRow.kt",
+          "line": 38,
+          "excerpt": "if (subtitle != null) Text(subtitle, style = MaterialTheme.typography.bodySmall",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/StatisticsRow.kt",
+          "line": 43,
+          "excerpt": "Text(count, Modifier.alpha(.85f), style = MaterialTheme.typography.bodyMedium)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgRows.kt",
+          "line": 106,
+          "excerpt": "Column(Modifier.weight(1f)) { WgText(b.ssName); WgText(b.ssDataUsage) }",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S13",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "RPN statistics app row is incorrectly collapsed into StatisticsRow",
+      "layout_paths": [
+        "app/src/main/res/layout/list_item_rpn_stat_app.xml"
+      ],
+      "baseline_contract": "RPN app row has horizontal20dp/vertical7dp padding, 32dp icon, 14sp normal title, 11sp .7-alpha metadata and 13sp sans-serif-medium total; line limits are one.",
+      "current_source_difference": "RpnStatsBottomSheet uses StatisticsRow with 16dp/8dp padding, 22dp icon in 40dp frame, bold title, bodySmall metadata and bodyMedium total. This is a different layout contract.",
+      "required_before_deletion": "Give RPN app statistics its own source-backed row variant and check long-name/large-font ellipsis rather than inherit summary-row defaults.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+          "line": 276,
+          "excerpt": "StatisticsRow(",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/StatisticsRow.kt",
+          "line": 33,
+          "excerpt": "Box(Modifier.size(40.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S14",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Expanded blocklist-domain row loses geometry, type and overflow",
+      "layout_paths": [
+        "app/src/main/res/layout/list_item_blocklist_app_row.xml",
+        "app/src/main/res/layout/list_item_blocklist_domain_row.xml"
+      ],
+      "baseline_contract": "Domain row is minHeight40dp; padding start52/end46/top4/bottom4; 12sp primaryLightColorText single-line middle ellipsis; count minWidth32dp with 8dp start margin.",
+      "current_source_difference": "BlocklistAppsAdapter.GroupAt uses start54/end16/top8/bottom8, raw Text with no explicit 12sp/color/single-line/middle ellipsis/min count width. App headers also inherit generic StatisticsRow.",
+      "required_before_deletion": "Restore app and expanded-domain variants separately, including row minimum, count alignment and middle-ellipsis behavior.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt",
+          "line": 58,
+          "excerpt": "Row(Modifier.fillMaxWidth().padding(start = 54.dp, end = 16.dp, top = 8.dp, bottom = 8.dp))",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S15",
+      "priority": "P0",
+      "status": "confirmed_source_mismatch",
+      "title": "Purchase/history grouping and icon backgrounds changed",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_purchase_history.xml",
+        "app/src/main/res/layout/activity_server_order_history.xml",
+        "app/src/main/res/layout/list_item_purchase_history.xml",
+        "app/src/main/res/layout/list_item_server_order.xml"
+      ],
+      "baseline_contract": "History rows are horizontal icon-frame plus text stack within a shared parent list; payment icon24dp in 44dp neutral circle, server icon24dp in 32dp positive circle; per-node order/margins/dividers differ.",
+      "current_source_difference": "HistoryRowContent renders a vertical Column with 28dp icon then all content, loses circle backgrounds and timestamp timer drawable, reorders badge/title/timestamp content and uses a generic divider. HistoryScreen wraps each item in an individual Card.",
+      "required_before_deletion": "Restore each row hierarchy and the shared parent-card/list grouping. Preserve control restoration inside it. tv_purchase_token is always GONE in baseline adapter; its non-rendering is not a missing-visible-content bug.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryRowContent.kt",
+          "line": 47,
+          "excerpt": "Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp))",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryScreen.kt",
+          "line": 96,
+          "excerpt": "items(count, key = key) { index -> Card(",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S16",
+      "priority": "P0",
+      "status": "confirmed_source_mismatch",
+      "title": "Loading skeleton layouts replaced by generic shapes",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_server_order_history.xml",
+        "app/src/main/res/layout/fragment_rethink_plus_premium.xml",
+        "app/src/main/res/layout/fragment_server_selection.xml",
+        "app/src/main/res/layout/list_item_shimmer_card.xml",
+        "app/src/main/res/layout/list_item_shimmer_server_row.xml",
+        "app/src/main/res/layout/shimmer_subscription_loading.xml"
+      ],
+      "baseline_contract": "Server-row include is a 16dp-corner card with icon36dp, text120\u00d714/70\u00d710 separated by6dp, trailing20dp square and explicit margins. Subscription/card skeletons have their own detailed arrangements.",
+      "current_source_difference": "History uses PurchaseShimmer with four 120dp 2\u00d72 blocks; RpnShimmer uses fractional-width lines. A running shimmer animation alone does not preserve source placeholder composition.",
+      "required_before_deletion": "Create native source-specific skeleton variants; keep each include fanout and shimmer timing/direction/alpha. Cover loading before final data, including stopped shimmer state.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/PurchasePlans.kt",
+          "line": 57,
+          "excerpt": "repeat(2) { Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) { repeat(2)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt",
+          "line": 232,
+          "excerpt": "private fun RpnShimmer(",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S17",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Add-server tile lost its dashed stroke and label typography",
+      "layout_paths": [
+        "app/src/main/res/layout/list_item_vpn_server_add.xml"
+      ],
+      "baseline_contract": "bg_vpn_server_add_tile uses 1dp border with dashWidth6dp/dashGap4dp and radius16dp; label11sp sans-serif-medium .02em tracking, one line. Tile minHeight80dp excludes outer margin6dp.",
+      "current_source_difference": "RpnAddServerTile uses a solid border and plain Text; heightIn(80dp) precedes padding6dp, so margin consumes minimum allocation rather than remaining outside it.",
+      "required_before_deletion": "Paint the actual dashed drawable/shape in Compose and restore label contract and outer-margin/min-height relationship.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerTile.kt",
+          "line": 104,
+          "excerpt": "heightIn(min = 80.dp).padding(6.dp).border(1.dp",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/res/drawable/bg_vpn_server_add_tile.xml",
+          "line": 8,
+          "excerpt": "android:dashWidth=\"6dp\"",
+          "snapshot": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S18",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Country selector and alphabet headers changed text metrics",
+      "layout_paths": [
+        "app/src/main/res/layout/item_section_header.xml",
+        "app/src/main/res/layout/item_server_group.xml",
+        "app/src/main/res/layout/list_item_country_card.xml"
+      ],
+      "baseline_contract": "Country flag12sp with includeFontPadding=false; server count11sp; code has mini size/bold/tracking. Header is11sp bold sans-serif-medium, .1em tracking, start/end4dp top14/bottom4dp.",
+      "current_source_difference": "CountryServerAdapter.Country draws flag26sp and code10sp; headers use labelSmall with start8/bottom8 and omit source weight/family/tracking. Country card/title/count and group layouts share generic Text defaults.",
+      "required_before_deletion": "Restore exact country/header/group variants and source drawable/background geometry. Keep the already-restored favourite artwork and selection callbacks.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+          "line": 102,
+          "excerpt": "Text(item.flagEmoji, fontSize = 26.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+          "line": 89,
+          "excerpt": "if (letter != previous) Text(letter, Modifier.padding(start = 8.dp, top = 14.dp, bottom = 8.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S19",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Rule status badges are generic filled surfaces instead of framed source badges",
+      "layout_paths": [
+        "app/src/full/res/layout/list_item_custom_domain.xml",
+        "app/src/full/res/layout/list_item_custom_ip.xml",
+        "app/src/main/res/layout/bottom_sheet_custom_domains.xml",
+        "app/src/main/res/layout/bottom_sheet_custom_ips.xml"
+      ],
+      "baseline_contract": "Source badge uses rectangle_border_background: radius16dp, .75dp border; list badges have minWidth25dp/padding5dp; detail badges are fixed32\u00d732 with bold text.",
+      "current_source_difference": "RuleStatusBadge uses MaterialTheme.shapes.small, no border, horizontal8/vertical4 padding and no 32dp detail variant or bold weight.",
+      "required_before_deletion": "Use source-specific list/detail badge variants with original drawable, min/fixed constraints and dynamic tint state. A badge is not covered merely because buttons/chips are restored.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+          "line": 278,
+          "excerpt": "Surface(color = bg, contentColor = fg, shape = MaterialTheme.shapes.small)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S20",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Rule editor title/body/error geometry still uses generic dialog text",
+      "layout_paths": [
+        "app/src/full/res/layout/dialog_add_custom_domain.xml",
+        "app/src/full/res/layout/dialog_import_confirm.xml",
+        "app/src/main/res/layout/dialog_add_custom_ip.xml"
+      ],
+      "baseline_contract": "Editor title14sp plus XML10dp padding, description11sp and specified margins; error12sp with margin10dp/padding5dp. Dialog window background/theme is separate from layout content.",
+      "current_source_difference": "RuleDialog defaults title20sp/titleLarge, padding20dp and spacedBy10dp; RuleEditor body/error texts use generic inherited sizing instead of XML sizes/paddings. Original fields/buttons do not restore surrounding text.",
+      "required_before_deletion": "Map dialog content and window separately; preserve original title/body/error typography and spacing. Independently compare actual themed window shape rather than assume extraLarge is correct.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+          "line": 180,
+          "excerpt": "titleSize: TextUnit = 20.sp",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rules/RulesContent.kt",
+          "line": 184,
+          "excerpt": "Column(Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp))",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S21",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Bubble app rows lose source icon frame and name marquee",
+      "layout_paths": [
+        "app/src/full/res/layout/item_allowed_app.xml",
+        "app/src/full/res/layout/item_blocked_app.xml"
+      ],
+      "baseline_contract": "Rows use CardView with compat padding; allowed icon28dp within44dp circular frame; name one-line marquee and row child constraints; source content vertical padding10dp.",
+      "current_source_difference": "BubbleRow uses generic Material3 Card, icon32dp with no44dp frame, content padding12dp and unbounded name text. Large-font button reflow is deliberate current behavior but is not baseline equivalence.",
+      "required_before_deletion": "Restore original card/icon/name constraints while preserving accessible actions. Document any authorized large-font alternate layout independently; default-font equality is still required.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt",
+          "line": 84,
+          "excerpt": "UtilityImage(icon, Modifier.size(32.dp))",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/BubbleScreen.kt",
+          "line": 99,
+          "excerpt": "Column(Modifier.padding(12.dp))",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S22",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "WireGuard text helper cannot carry several explicit text properties",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_rpn_bypass_apps.xml",
+        "app/src/main/res/layout/activity_rpn_config_detail.xml",
+        "app/src/main/res/layout/activity_wg_detail.xml",
+        "app/src/main/res/layout/dialog_rpn_ssid.xml",
+        "app/src/main/res/layout/list_item_wg_hop.xml",
+        "app/src/main/res/layout/list_item_wg_include_apps.xml"
+      ],
+      "baseline_contract": "Examples: app include label sans-serif-medium16sp/.01em; description sans-serif12sp/.02em; RPN bypass heading sans-serif-medium18sp; SSID dialog title .01em.",
+      "current_source_difference": "WgText handles color/size/maxLines/bold/italic but has no fontFamily/letterSpacing/textAppearance/line-height input. Shared renderer cannot reproduce those properties solely from IDs.",
+      "required_before_deletion": "Extend source-specific text style metadata and route every affected TextView to it, resolving textAppearance before explicit overrides. Keep state and callback code untouched.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+          "line": 55,
+          "excerpt": "@Composable fun WgText(",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S23",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "RPN progress dialog status/hint text grew from original sizes",
+      "layout_paths": [
+        "app/src/main/res/layout/dialog_server_loading.xml"
+      ],
+      "baseline_contract": "Status12sp, hint10sp, title17sp bold sans-serif-medium; explicit margins and minLines2.",
+      "current_source_difference": "RpnProgressContent status has no fontSize (inherits bodyLarge), hint uses bodySmall (12sp), and title does not resolve sans-serif-medium. Most geometry is present but typography differs.",
+      "required_before_deletion": "Use explicit source text style values for these nodes and retain independent progress decoration verification.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnComponents.kt",
+          "line": 76,
+          "excerpt": "Text(state.status.text.toString()",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnComponents.kt",
+          "line": 80,
+          "excerpt": "style = MaterialTheme.typography.bodySmall, textAlign",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S24",
+      "priority": "P1",
+      "status": "confirmed_source_omission_runtime_effect_pending",
+      "title": "Tabbed hosts do not resolve TabbedLayoutDefault",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_custom_rules.xml",
+        "app/src/main/res/layout/activity_network_logs.xml"
+      ],
+      "baseline_contract": "Both TabLayouts explicitly use @style/TabbedLayoutDefault; selected text, unselected text, indicator/background, ripple and label appearance are part of that style.",
+      "current_source_difference": "CustomRulesActivity and NetworkLogsActivity call raw TabRow/Tab. The style resource is not consumed by their native tab components.",
+      "required_before_deletion": "Map all TabbedLayoutDefault properties to a shared source-backed native tab strip and preserve tab height/selection/scrolling/indicator in both hosts.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt",
+          "line": 127,
+          "excerpt": "TabRow(pager.currentPage)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+          "line": 127,
+          "excerpt": "TabRow(",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S25",
+      "priority": "P1",
+      "status": "unresolved_source_style_mapping",
+      "title": "Checkbox/selection visuals need a separate source-style census",
+      "layout_paths": [
+        "app/src/full/res/layout/activity_tcp_proxy.xml",
+        "app/src/full/res/layout/dialog_set_custom_doh.xml",
+        "app/src/full/res/layout/dialog_set_dns_proxy.xml",
+        "app/src/full/res/layout/list_item_custom_all_domain.xml",
+        "app/src/full/res/layout/list_item_custom_all_ip.xml",
+        "app/src/full/res/layout/list_item_custom_domain.xml",
+        "app/src/full/res/layout/list_item_custom_ip.xml",
+        "app/src/full/res/layout/list_item_rethink_blocklist_simple.xml",
+        "app/src/main/res/layout/activity_rpn_bypass_apps.xml",
+        "app/src/main/res/layout/bottom_sheet_bug_report_files.xml",
+        "app/src/main/res/layout/bottomsheet_server_settings.xml",
+        "app/src/main/res/layout/dialog_set_proxy.xml",
+        "app/src/main/res/layout/dialog_wg_apps.xml",
+        "app/src/main/res/layout/item_bug_report_file.xml",
+        "app/src/main/res/layout/item_dns_record_type.xml",
+        "app/src/main/res/layout/item_server.xml",
+        "app/src/main/res/layout/item_server_group.xml",
+        "app/src/main/res/layout/list_item_exclude_country.xml",
+        "app/src/main/res/layout/list_item_rethink_blocklist_adv.xml",
+        "app/src/main/res/layout/list_item_wg_hop.xml",
+        "app/src/main/res/layout/list_item_wg_include_apps.xml",
+        "app/src/main/res/layout/list_item_wg_one_interface.xml"
+      ],
+      "baseline_contract": "Baseline contains 20 AppCompatCheckBox, 8 MaterialCheckBox and multiple explicit tints, minimum sizes and widget theme choices; source selection semantics and duplicate row/control targets also differ.",
+      "current_source_difference": "Current native implementations include CheckboxDefaults/default Checkbox and some custom tint helpers. The previous 213-variant control census covered button/chip/field/icon families, not full checkbox parity.",
+      "required_before_deletion": "Account for every checkbox node and its actual native invocation; compare source-resolved checked/unchecked/indeterminate/disabled colors, shape/size and semantic grouping. Do not broadly replace the tint-preserving cases.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControls.kt",
+          "line": 104,
+          "excerpt": "} ?: CheckboxDefaults.colors()",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt",
+          "line": 166,
+          "excerpt": "Checkbox(checked, select",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S26",
+      "priority": "P1",
+      "status": "confirmed_constraint_difference_runtime_measurement_required",
+      "title": "Fixed visual size versus minimum/touch size must be proven for restored controls",
+      "layout_paths": [
+        "app/src/full/res/layout-w600dp/fragment_home_screen.xml",
+        "app/src/full/res/layout/activity_app_details.xml",
+        "app/src/full/res/layout/fragment_home_screen.xml",
+        "app/src/full/res/layout/fragment_sponsor.xml",
+        "app/src/full/res/layout/fragment_sponsor_success.xml",
+        "app/src/full/res/layout/item_allowed_app.xml",
+        "app/src/full/res/layout/item_blocked_app.xml",
+        "app/src/full/res/layout/view_home_logs_activity.xml",
+        "app/src/full/res/layout/view_home_logs_apps.xml",
+        "app/src/main/res/layout/activity_customer_support.xml",
+        "app/src/main/res/layout/activity_ping_test.xml",
+        "app/src/main/res/layout/bottom_sheet_summary_stats_filter.xml",
+        "app/src/main/res/layout/bottomsheet_auto_exclude_countries.xml",
+        "app/src/main/res/layout/bottomsheet_device_auth_error.xml",
+        "app/src/main/res/layout/bottomsheet_device_not_registered.xml",
+        "app/src/main/res/layout/bottomsheet_entitlement_detail.xml",
+        "app/src/main/res/layout/bottomsheet_purchase_conflict.xml",
+        "app/src/main/res/layout/bottomsheet_purchase_processing.xml",
+        "app/src/main/res/layout/bottomsheet_rpn_stats.xml",
+        "app/src/main/res/layout/bottomsheet_server_removal_notification.xml",
+        "app/src/main/res/layout/bottomsheet_server_settings.xml",
+        "app/src/main/res/layout/dialog_rpn_ssid.xml",
+        "app/src/main/res/layout/fragment_rethink_plus_premium.xml",
+        "app/src/main/res/layout/fragment_server_selection.xml",
+        "app/src/main/res/layout/fragment_summary_statistics.xml",
+        "app/src/main/res/layout/item_bug_report_file.xml",
+        "app/src/main/res/layout/item_server_group.xml",
+        "app/src/main/res/layout/view_tour_tooltip.xml"
+      ],
+      "baseline_contract": "XML layout_height=fixed, minHeight, style/chipMinHeight, inset and parent constraints have distinct precedence. Some source chips are compact and some opt out of minimum touch target.",
+      "current_source_difference": "OriginalControl stores fixed visualHeight but renders it with heightIn(min=look.height); interactive Box adds minimumInteractiveComponentSize and propagation. The surrounding layout can therefore allocate/grow differently even when colors and radius are correct.",
+      "required_before_deletion": "Keep all existing per-instance style keys. Test outer/touch/visual/content bounds independently at default and large fonts; resolve fixed/min/parent precedence and source touch-target rules before accepting a layout.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControls.kt",
+          "line": 124,
+          "excerpt": "val visual = Modifier.wrapContentHeight().heightIn(min = look.height.dp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControls.kt",
+          "line": 122,
+          "excerpt": "Modifier.minimumInteractiveComponentSize()",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S27",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "App connection rows omit source line/weight/font distinctions",
+      "layout_paths": [
+        "app/src/full/res/layout/list_item_app_domain_details.xml",
+        "app/src/full/res/layout/list_item_app_ip_details.xml",
+        "app/src/main/res/layout/list_item_app_country_details.xml"
+      ],
+      "baseline_contract": "Each layout supplies distinct line limits, ellipsis, font family, source sizes and count/flag/progress alignment. Country is not identical to domain/IP.",
+      "current_source_difference": "AppConnectionRow flattens three types into shared14sp title/12sp subtitle/16sp count; Text does not apply node textStyle/maxLines/ellipsize. Generic count/font and row padding replace original attrs.",
+      "required_before_deletion": "Make per-layout row variants or pass complete source contracts; preserve current progress explicit colors and source-specific icon/flag states.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt",
+          "line": 28,
+          "excerpt": "Text(wgAnnotatedText(title.text), color = themeColor(R.attr.primaryTextColor), fontSize = 14.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt",
+          "line": 34,
+          "excerpt": "Text(count.text.toString(), Modifier.padding(5.dp), fontSize = 16.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S28",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Endpoint flag minimum frame was lost",
+      "layout_paths": [
+        "app/src/main/res/layout/dns_crypt_endpoint_list_item.xml",
+        "app/src/main/res/layout/dns_proxy_list_item.xml",
+        "app/src/main/res/layout/list_item_endpoint.xml"
+      ],
+      "baseline_contract": "list_item_endpoint endpoint_flag_text has minWidth32dp/minHeight32dp, centered25sp text, marginEnd5dp; endpoint rows also inherit card compat styling.",
+      "current_source_difference": "DnsEndpointRow flag is raw Text with end5dp and25sp size, without the source minimum frame or centered text. Protocol layouts need separate attribute comparison rather than a generic endpoint equivalence assumption.",
+      "required_before_deletion": "Preserve flag slot constraints per protocol variant and independently resolve card/tint/selection artwork contracts.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointScreen.kt",
+          "line": 140,
+          "excerpt": "flag?.let { Text(it, Modifier.padding(end = 5.dp), fontSize = 25.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S29",
+      "priority": "P0",
+      "status": "confirmed_source_mismatch",
+      "title": "DNS record-mode controls bypass their existing original-control catalog",
+      "layout_paths": [
+        "app/src/main/res/layout/bottom_sheet_dns_record_types.xml"
+      ],
+      "baseline_contract": "Both buttons use toggleButtonStyle, minWidth125dp and cornerRadius16dp within a single-selection MaterialButtonToggleGroup; source style adds accent stroke and state fill/text.",
+      "current_source_difference": "DnsRecordTypesContent draws two independent Surface/Text controls, with no source stroke/minWidth/fused inner-corner semantics. Keys already exist in OriginalControlCatalog but are unused by these nodes.",
+      "required_before_deletion": "Use exact existing catalog variants with segmentIndex/count, original dynamic tints, selection callbacks and test tags. Extend integration guard to catch manually painted source controls.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/DnsRecordTypesContent.kt",
+          "line": 67,
+          "excerpt": "Surface(Modifier.weight(1f).selectable(selected",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControlCatalog.kt",
+          "line": 84,
+          "excerpt": "bottom_sheet_dns_record_types:drbs_auto_mode_btn",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S30",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Block Free DNS surrounding text and URL spacing differ",
+      "layout_paths": [
+        "app/src/full/res/layout/activity_block_free_dns.xml",
+        "app/src/full/res/layout/list_item_block_free_dns.xml"
+      ],
+      "baseline_contract": "Description/selected/empty text12sp, item name14sp bold, item URL12sp with2dp top margin; heading uses explicit TitleSmall.Emphasized style.",
+      "current_source_difference": "BlockFreeDnsContent uses bodyMedium14sp for description and default Text for selected/empty/name/URL (bodyLarge16sp), and URL top10dp. Cards are manually flattened surfaces.",
+      "required_before_deletion": "Retain restored filter/type-chip keys, but restore explicit surrounding text styles and URL margin; map the original MaterialCard shapes/elevation/insets separately.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/BlockFreeDnsContent.kt",
+          "line": 100,
+          "excerpt": "Modifier.padding(top = 10.dp), color = themeColor(R.attr.primaryLightColorText)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S31",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Filter-sheet heading style and drag-handle geometry differ",
+      "layout_paths": [
+        "app/src/full/res/layout/bottom_sheet_firewall_sort_filter.xml",
+        "app/src/full/res/layout/bottom_sheet_rethink_plus_filter.xml"
+      ],
+      "baseline_contract": "Filter headings14sp secondaryTextColor with original margin/padding; handle60\u00d73dp border color and10dp/20dp vertical margins.",
+      "current_source_difference": "FirewallFilterContent uses16sp default-color headings, a generic HorizontalDivider color and shared20dp/spacedBy10dp arrangement. BlocklistFilterScreen heading has no explicit14sp size.",
+      "required_before_deletion": "Restore exact heading and handle variants while retaining original-control chip/button selection behavior.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallFilterContent.kt",
+          "line": 40,
+          "excerpt": "Text(stringResource(R.string.fapps_filter_filter_heading),fontSize=16.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistFilterScreen.kt",
+          "line": 33,
+          "excerpt": "Text(stringResource(R.string.bsrf_sub_group_heading)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S32",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Interval sheet captions and expandable row overflow differ",
+      "layout_paths": [
+        "app/src/full/res/layout/bottom_sheet_log_activity_interval.xml",
+        "app/src/full/res/layout/item_log_activity_app.xml",
+        "app/src/full/res/layout/item_log_activity_conn.xml"
+      ],
+      "baseline_contract": "Count labels and empty message11sp; app name maxLines1/end ellipsis; connection label maxLines1/end ellipsis/selectable. Card styles/elevation are independent of text.",
+      "current_source_difference": "IntervalCount and empty message use12sp. AppActivityNativeRow Text for name and entry label does not constrain maxLines/overflow, allowing a longer row than XML.",
+      "required_before_deletion": "Restore source11sp captions and line limits/overflow; preserve source row reading/selection and original range buttons.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/LogIntervalContent.kt",
+          "line": 113,
+          "excerpt": "fontSize = 12.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/LogIntervalContent.kt",
+          "line": 155,
+          "excerpt": "Text(name, color = themeColor(R.attr.primaryTextColor), fontSize = 15.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S33",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Detailed-statistics/domain headers lose original typography",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_detailed_statistics.xml",
+        "app/src/main/res/layout/activity_domain_connections.xml"
+      ],
+      "baseline_contract": "Brand Heading.HomeScreen is all-caps sans-serif-smallcaps with .25em tracking and rethink_header_text size. Title16sp smallcaps with5dp extra line spacing; subtitle12sp primaryLightColorText.",
+      "current_source_difference": "PagedStatisticsScreen uses headlineLarge for brand, titleLarge for heading and bodyMedium for subtitle, dropping source family/tracking/caps/colors and sizes. Selectable domain title behavior is preserved.",
+      "required_before_deletion": "Resolve the original named style and explicit title/subtitle overrides; keep header constraints/empty-state alignment and existing selection behavior.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/PagedStatisticsScreen.kt",
+          "line": 30,
+          "excerpt": "style = MaterialTheme.typography.headlineLarge",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/statistics/PagedStatisticsScreen.kt",
+          "line": 34,
+          "excerpt": "Text(title, style = MaterialTheme.typography.titleLarge)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S34",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "DNS editor layout loses source invisible error reservation and insets",
+      "layout_paths": [
+        "app/src/full/res/layout/dialog_set_custom_doh.xml",
+        "app/src/full/res/layout/dialog_set_custom_odoh.xml",
+        "app/src/full/res/layout/dialog_set_dns_crypt.xml"
+      ],
+      "baseline_contract": "DoH/ODoH failure TextView starts INVISIBLE, retaining measurement; its10dp margins/5dp padding differ from DNSCrypt2dp error padding. Titles have10dp padding and each layout has own field arrangement.",
+      "current_source_difference": "Shared DnsEditorDialog uses20dp content padding/spacedBy8; DnsError emits nothing without error and has no layout-specific padding. Field restoration alone does not preserve parent/error geometry.",
+      "required_before_deletion": "Model invisible versus gone error states and per-editor content insets without changing validation/callback behavior. Compare dialog window background separately from layout content.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+          "line": 169,
+          "excerpt": "if (!error.isNullOrEmpty()) Text(error",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt",
+          "line": 137,
+          "excerpt": "Column(Modifier.padding(20.dp))",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S35",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Smart DNS header description is 14sp instead of11sp",
+      "layout_paths": [
+        "app/src/main/res/layout/activity_configure_other_dns.xml",
+        "app/src/main/res/layout/activity_smart_dns_list.xml"
+      ],
+      "baseline_contract": "Shared title references the concrete TextAppearance.Material3.TitleMedium resource; Smart DNS description is small_font_subheading_text=11sp with5dp padding.",
+      "current_source_difference": "DnsFragmentHeader uses theme titleMedium (not exact direct style resource) and explicit14sp for Smart DNS description. Margins/padding are otherwise closely matched.",
+      "required_before_deletion": "Resolve the explicit title style and11sp description with existing typography helper; retain native framework host and fixed IDs.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsFragmentHost.kt",
+          "line": 40,
+          "excerpt": "description?.let { Text(it, Modifier.padding(5.dp), fontSize = 14.sp",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S36",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "Removed-server rows and ping-history rows lose text metrics",
+      "layout_paths": [
+        "app/src/main/res/layout/item_ping_test_history.xml",
+        "app/src/main/res/layout/item_removed_server.xml"
+      ],
+      "baseline_contract": "Removed-server flag24sp in40dp frame, name16sp bold/maxLines1, location13sp/maxLines1. Ping-history targets14.5sp medium, latency13sp bold medium, outcome11.5sp medium; all are single-line.",
+      "current_source_difference": "RpnRemovalContent flag28sp with no frame and generic name/bodySmall location; PingHistoryRow resolves only numeric sizes and leaves family/weight/line limits unset.",
+      "required_before_deletion": "Give each row its own complete source text/frame contract; preserve current data and callback logic and disclose large-font alternate layout separately.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnRemovalContent.kt",
+          "line": 32,
+          "excerpt": "Text(server.flagEmoji, fontSize = 28.sp)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        },
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/adapter/PingTestHistoryAdapter.kt",
+          "line": 35,
+          "excerpt": "style = utilityTextStyle(size = 14.5f)",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    },
+    {
+      "id": "S37",
+      "priority": "P1",
+      "status": "confirmed_source_mismatch",
+      "title": "About brand title uses fixed SP tracking instead of source EM/style",
+      "layout_paths": [
+        "app/src/main/res/layout/fragment_about.xml"
+      ],
+      "baseline_contract": "TextAppearance.Heading.HomeScreen specifies sans-serif-smallcaps, .25em tracking, all-caps and rethink_header_text dimension.",
+      "current_source_difference": "AboutContent uses SansSerif and letterSpacing7.sp; dimensionResource(...).value.sp is not a source text-style resolver and can double-apply scaled values under nonlinear font scaling.",
+      "required_before_deletion": "Resolve original named TextAppearance and explicit dynamic text/click state through the existing typography resolver; keep content and source accessibility behavior.",
+      "source_evidence": [
+        {
+          "path": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutContent.kt",
+          "line": 46,
+          "excerpt": "fontSize = dimensionResource(R.dimen.rethink_header_text).value.sp, letterSpacing = 7.sp",
+          "snapshot": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00"
+        }
+      ],
+      "verification": "Source only; screenshots/measurement/TalkBack/actual-host execution not run."
+    }
+  ]
+}

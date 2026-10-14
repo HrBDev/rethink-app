@@ -63,3 +63,17 @@ internal fun rememberHomeCardPadding(radius: Dp, elevationOverride: Dp? = null):
         }
     }
 }
+
+/** Match the baseline's visual shadow separately from its outside shadow allocation. */
+@Composable
+internal fun rememberHomeCardElevation(override: Dp?): Dp {
+    val context = LocalContext.current
+    val density = LocalDensity.current
+    val configuration = LocalConfiguration.current
+    return remember(context, density, configuration, override) {
+        override ?: context.obtainStyledAttributes(null, intArrayOf(androidx.cardview.R.attr.cardElevation),
+            com.google.android.material.R.attr.materialCardViewStyle, 0).let { values ->
+            try { with(density) { values.getDimension(0, 0f).toDp() } } finally { values.recycle() }
+        }
+    }
+}

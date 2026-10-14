@@ -6,10 +6,10 @@ import android.content.Context
 import android.os.Parcelable
 import android.util.SparseArray
 import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
 import android.view.View
 import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.reference.BaselineStatisticsFilterReference
 import com.celzero.bravedns.ui.bottomsheet.SummaryStatsFilterBottomSheet.SectionFilter as Filter
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -19,17 +19,16 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
-/** Reference widgets only, inflated offscreen with plain Application. No app host or service. */
+/** Reference widgets only, constructed offscreen with plain Application. No app host or service. */
 @org.robolectric.annotation.GraphicsMode(org.robolectric.annotation.GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 class StatisticsMaterialReferenceTest {
     private val context = ContextThemeWrapper(ApplicationProvider.getApplicationContext<Context>(), R.style.AppThemeWhite)
     private fun group(seed: Set<Filter>, callbacks: MutableList<Set<Filter>>): ChipGroup {
-        val root = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_summary_stats_filter, null)
-        val group = root.findViewById<ChipGroup>(R.id.ssfc_chip_group)
-        root.findViewById<Chip>(Filter.PROVIDERS.chipId).visibility = View.GONE
-        Filter.entries.forEach { root.findViewById<Chip>(it.chipId).isChecked = it in seed }
+        val group = BaselineStatisticsFilterReference.create(context).group
+        group.findViewById<Chip>(Filter.PROVIDERS.chipId).visibility = View.GONE
+        Filter.entries.forEach { group.findViewById<Chip>(it.chipId).isChecked = it in seed }
         group.setOnCheckedStateChangeListener { _, ids -> callbacks += Filter.entries.filter { it.chipId in ids }.toSet() }
         return group
     }

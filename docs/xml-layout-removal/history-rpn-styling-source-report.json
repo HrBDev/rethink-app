@@ -1,0 +1,220 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "pre_edit_checkpoint": "f07b51b6fb2528d55b396aed62bbb9b700893c70",
+  "verification_kind": "source-only, not Kotlin compilation or visual equivalence",
+  "checks": [
+    {
+      "name": "history icon beside text, original circle/icon sizes and spacing",
+      "passed": true
+    },
+    {
+      "name": "history divider thickness/inset/theme",
+      "passed": true
+    },
+    {
+      "name": "server order title/status then type/test then date/order/token sequence",
+      "passed": true
+    },
+    {
+      "name": "purchase badge/transition precede timestamp, reason and hidden token",
+      "passed": true
+    },
+    {
+      "name": "timestamp timer and source maximum lines/fades/monospace",
+      "passed": true
+    },
+    {
+      "name": "shared weighted card wraps uncarded lazy items",
+      "passed": true
+    },
+    {
+      "name": "history rows are not individually carded",
+      "passed": true
+    },
+    {
+      "name": "summary horizontal grouping and XML metrics",
+      "passed": true
+    },
+    {
+      "name": "empty/error centered paddings and original opacity/type metrics",
+      "passed": true
+    },
+    {
+      "name": "server fetch progress and distinct signature alpha",
+      "passed": true
+    },
+    {
+      "name": "server skeleton exact icon/text/trailing shape dimensions",
+      "passed": true
+    },
+    {
+      "name": "purchase skeleton five vertical source cards",
+      "passed": true
+    },
+    {
+      "name": "RPN five server skeleton rows and original list padding",
+      "passed": true
+    },
+    {
+      "name": "server history four server rows and purchase-specific variant",
+      "passed": true
+    },
+    {
+      "name": "RPN shimmer timing/alpha and no live animation when stopped",
+      "passed": true
+    },
+    {
+      "name": "add-tile dash pattern with outer margin before minimum height",
+      "passed": true
+    },
+    {
+      "name": "add-tile original single-line medium tracked label",
+      "passed": true
+    },
+    {
+      "name": "plain two-column source grid with equal-height rows and no invented gap",
+      "passed": true
+    },
+    {
+      "name": "source content card style, watermark and recent-app icon layering",
+      "passed": true
+    },
+    {
+      "name": "country avatar source metrics and font padding",
+      "passed": true
+    },
+    {
+      "name": "alphabet section original typography and padding",
+      "passed": true
+    },
+    {
+      "name": "plain country grouping, inset divider and nested rows",
+      "passed": true
+    },
+    {
+      "name": "country rows have no added card borders/background",
+      "passed": true
+    },
+    {
+      "name": "favourite action callback unchanged",
+      "passed": true
+    },
+    {
+      "name": "city selection/stopped callback unchanged",
+      "passed": true
+    },
+    {
+      "name": "country speedInfo body unchanged",
+      "passed": true
+    },
+    {
+      "name": "country loadInfo body unchanged",
+      "passed": true
+    },
+    {
+      "name": "country sectionLetter body unchanged",
+      "passed": true
+    },
+    {
+      "name": "watermark bind exactly one source assignment: ui.flagWatermark.setFlagDrawable(",
+      "passed": true
+    },
+    {
+      "name": "watermark bind exactly one source assignment: ui.flagWatermark.setFlagText(group.flagEmoji)",
+      "passed": true
+    },
+    {
+      "name": "entire VPN adapter unchanged except the two watermark presentation assignments",
+      "passed": true
+    },
+    {
+      "name": "watermark flagCenter drawing body byte-exact from baseline",
+      "passed": true
+    },
+    {
+      "name": "watermark buildMask drawing body byte-exact from baseline",
+      "passed": true
+    },
+    {
+      "name": "watermark drawFlag drawing body byte-exact from baseline",
+      "passed": true
+    },
+    {
+      "name": "watermark source constants, native drawing and RTL",
+      "passed": true
+    },
+    {
+      "name": "dimension references retain qualifier and font scaling",
+      "passed": true
+    },
+    {
+      "name": "owned renderers do not inflate XML or instantiate a View",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerTile.kt",
+      "mutation": "floatArrayOf(1.dp.toPx(), 1.dp.toPx())",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt",
+      "mutation": "countryTextStyle(26.sp, includeFontPadding = false)",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryScreen.kt",
+      "mutation": "index -> Card { row(index) }",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnLoadingSkeletons.kt",
+      "mutation": "width(100.dp).height(14.dp)",
+      "rejected": true
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "mutation": "ui.flagWatermark.setFlagText(\"\")",
+      "rejected": true
+    }
+  ],
+  "baseline_layout_sha256": {
+    "app/src/main/res/layout/activity_purchase_history.xml": "7d118950bdb2d0040899e49bb4a4645d8e5c2173f090402e6eadc078d8d7def0",
+    "app/src/main/res/layout/activity_server_order_history.xml": "99502f7179d770afdd20f002248c864703c4021b9bea7bb303f5c8e2deccaf4a",
+    "app/src/main/res/layout/list_item_purchase_history.xml": "896c6a1a1324246a829ccd46eda29101a80baeeda646e1463180ee8f5a40b780",
+    "app/src/main/res/layout/list_item_server_order.xml": "9fd885ef67e2b8928f7b7653e04db667f6cbc0bce3b01e72b2556386695a03bd",
+    "app/src/main/res/layout/list_item_shimmer_card.xml": "f34bccb673613b8b69a7bfae51a3bfb41442e5bfebc12b4eeee38a878be43cda",
+    "app/src/main/res/layout/list_item_shimmer_server_row.xml": "ba2e5efafe9e961ac52b07c4a4f950d3c8e142fd1a1f20504fed040f5ffeb62e",
+    "app/src/main/res/layout/list_item_country_card.xml": "1b3ed19af557986ac438f9d6f6d7e711d77a6db9eb1d04e3b888e469c23983f1",
+    "app/src/main/res/layout/item_server_group.xml": "30cc1a460a0bc6b16b31421f9fda09f2fb2e336202522009d212f6e3add51e07",
+    "app/src/main/res/layout/item_section_header.xml": "39508489169601784bfef1d9793ca88ab41170a42754a0a2f7deffa0001569dd",
+    "app/src/main/res/layout/list_item_vpn_server_add.xml": "1b5f059c298a937a01833afd54b2064d23d9e17d8602ee55c5ae9c92ac884db4",
+    "app/src/main/res/layout/list_item_vpn_server.xml": "b8eea41ed7255812f5fe8ebb05390877243e7b2db7ad8cac71236fd36754ad1a",
+    "app/src/main/res/layout/fragment_server_selection.xml": "31b0a534953574b9902a28473cb20624b5e31a349e4772c22f39b0a799c570dd"
+  },
+  "source_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryRowContent.kt": "2a56cb486c0d4496d4e25282ebf5dd165a5f175420ef6cfd1b2d24bf420abc75",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/HistoryScreen.kt": "356d1ebf33ccba2ebc855b021847964cafff7cc2fa8c5020e0767be393533dfb",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerTile.kt": "d0d9f64b2675c8c58ecc96656563259f6449451be82ac130609b64494b71cd65",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnLoadingSkeletons.kt": "e2a4f8e1f8794494815f0096261507b9a25f622c2111267f9d287a785a0e3758",
+    "app/src/main/java/com/celzero/bravedns/ui/adapter/CountryServerAdapter.kt": "26623cdc0b5c2f1e25e01bee2adff9b42397cf4597acb4259133fb6492e49c48",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSelectionScreen.kt": "2cf4b5f44f415262d1f9aacc84ade6b8c7a8426557c942f578e861840d228af6",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt": "b8188c257508fc4a52b5af91a69952d4cc7654604dfbf5877ae25fb40f87a883",
+    "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt": "1178e894493f920de3e10f3d19f01c5f052ac7cccaea1445105ba7fbff43d4d3",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnServerRowState.kt": "7ecae27f0ad947ac0f777c005951bfe01266ef7f6891b79662f429c605933cc8",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnSourceTypography.kt": "94a837201ae929a63f1bcb34f6997d0af244e19867496e4d60cd8ad5e55dd295"
+  },
+  "unrun": [
+    "Android/Kotlin compilation",
+    "Compose/Robolectric tests",
+    "device/screenshots",
+    "TalkBack/RTL/font-scale visual checks"
+  ],
+  "remaining_limits": [
+    "Material and framework implicit defaults require approved runtime reference comparison.",
+    "History collapsing toolbar scrim/parallax/title placement remains a separate source/runtime gate.",
+    "Shimmer placeholder composition/timing/alpha are guarded, but exact library sweep/dropoff/tilt and stopped-frame appearance require visual comparison.",
+    "RPN header/subscription skeletons and premium subscription loading layout are outside this bounded row/history fix."
+  ]
+}

@@ -22,16 +22,16 @@ import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.celzero.bravedns.ui.compose.RethinkTheme
 import com.celzero.bravedns.ui.compose.statistics.RpnStatisticsPresentation
 import com.celzero.bravedns.ui.compose.statistics.RpnStatisticsContent
-import com.celzero.bravedns.ui.compose.statistics.StatisticsRow
+import com.celzero.bravedns.ui.compose.statistics.RpnStatisticsAppRow
 import androidx.lifecycle.lifecycleScope
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConnection
@@ -274,7 +274,7 @@ class RpnStatsBottomSheet : BaseBottomSheetDialogFragment() {
             val meta = getString(R.string.rpn_stats_conn_count, formatCount(item.count)) + " · " +
                 humanReadableByteCount(item.downloadBytes ?: 0L, true) + " 🔻 · " +
                 humanReadableByteCount(item.uploadBytes ?: 0L, true) + " 🔺"
-            StatisticsRow(item.appOrDnsName ?: stringResource(R.string.lbl_unknown), meta, "",
+            RpnStatisticsAppRow(item.appOrDnsName ?: stringResource(R.string.lbl_unknown), meta,
                 humanReadableByteCount(item.totalBytes ?: 0L, true), icon = icon)
         }
         private fun loadIconForUid(context: android.content.Context, uid: Int) =

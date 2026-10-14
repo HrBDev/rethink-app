@@ -1,0 +1,167 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "source_path": "app/src/full/res/layout/dialog_info_rules_layout.xml",
+  "baseline_source_sha256": "003bbf0ab1175cec5a36f616e5d6f210ff74589beb685a1255cd4226a47e502b",
+  "factory_path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineOrbotInfoReference.kt",
+  "factory_sha256": "1714de33a8be18f4f0e177f6fa283c1f67eb2e0b882b625d782249d2314b8d9c",
+  "reference_scope": "complete original hierarchy",
+  "nodes": [
+    {
+      "variable": "reference0",
+      "widget": "androidx.core.widget.NestedScrollView",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "match_parent",
+        "android:orientation": "vertical",
+        "android:padding": "20dp",
+        "app:layout_behavior": "@string/appbar_scrolling_view_behavior",
+        "app:layout_scrollFlags": "scroll|enterAlways"
+      },
+      "parent_variable": null,
+      "layout_params_class": null
+    },
+    {
+      "variable": "reference1",
+      "widget": "android.widget.LinearLayout",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "match_parent",
+        "android:orientation": "vertical",
+        "app:layout_behavior": "@string/appbar_scrolling_view_behavior"
+      },
+      "parent_variable": "reference0",
+      "layout_params_class": "android.widget.FrameLayout.LayoutParams"
+    },
+    {
+      "variable": "reference2",
+      "widget": "android.widget.RelativeLayout",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:orientation": "horizontal"
+      },
+      "parent_variable": "reference1",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference3",
+      "widget": "androidx.appcompat.widget.AppCompatImageView",
+      "source_attributes": {
+        "android:id": "@+id/info_rules_dialog_cancel_img",
+        "android:layout_width": "30dp",
+        "android:layout_height": "30dp",
+        "android:layout_centerVertical": "true",
+        "android:layout_alignParentEnd": "true",
+        "android:src": "@android:drawable/ic_menu_close_clear_cancel"
+      },
+      "parent_variable": "reference2",
+      "layout_params_class": "android.widget.RelativeLayout.LayoutParams"
+    },
+    {
+      "variable": "reference4",
+      "widget": "com.google.android.material.button.MaterialButton",
+      "source_attributes": {
+        "android:id": "@+id/info_rules_dialog_ok_btn",
+        "style": "@style/Widget.Material3.Button.TextButton.Dialog",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_toStartOf": "@id/info_rules_dialog_cancel_img",
+        "android:layout_marginEnd": "10dp",
+        "android:background": "?attr/selectableItemBackground",
+        "android:drawablePadding": "10dp",
+        "android:layout_centerVertical": "true",
+        "android:padding": "10dp",
+        "android:text": "@string/about_bug_report_dialog_positive_btn",
+        "android:visibility": "gone"
+      },
+      "parent_variable": "reference2",
+      "layout_params_class": "android.widget.RelativeLayout.LayoutParams"
+    },
+    {
+      "variable": "reference5",
+      "widget": "android.widget.LinearLayout",
+      "source_attributes": {
+        "android:layout_width": "match_parent",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center",
+        "android:orientation": "horizontal"
+      },
+      "parent_variable": "reference1",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference6",
+      "widget": "androidx.appcompat.widget.AppCompatImageView",
+      "source_attributes": {
+        "android:id": "@+id/info_rules_dialog_rules_icon",
+        "android:layout_width": "24dp",
+        "android:layout_height": "24dp",
+        "android:layout_gravity": "center_vertical",
+        "android:layout_margin": "5dp",
+        "android:src": "@android:drawable/ic_menu_close_clear_cancel",
+        "android:visibility": "gone"
+      },
+      "parent_variable": "reference5",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference7",
+      "widget": "androidx.appcompat.widget.AppCompatTextView",
+      "source_attributes": {
+        "android:id": "@+id/info_rules_dialog_rules_title",
+        "style": "@style/Widget.AppCompat.TextView.SpinnerItem",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_gravity": "center_vertical",
+        "android:drawablePadding": "15dp",
+        "android:text": "@string/firewall_rules",
+        "android:textAppearance": "@style/TextAppearance.AppCompat.Headline",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textSize": "@dimen/heading_font_text_view"
+      },
+      "parent_variable": "reference5",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference8",
+      "widget": "androidx.appcompat.widget.AppCompatTextView",
+      "source_attributes": {
+        "android:id": "@+id/info_rules_dialog_rules_desc",
+        "style": "@style/Widget.AppCompat.TextView.SpinnerItem",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:layout_marginTop": "10dp",
+        "android:lineSpacingExtra": "5dp",
+        "android:textIsSelectable": "true",
+        "android:padding": "5dp",
+        "android:text": "@string/bsct_conn_rule_explanation",
+        "android:textAppearance": "@style/TextAppearance.AppCompat.Subhead",
+        "android:textColor": "?attr/primaryTextColor",
+        "android:textSize": "@dimen/large_font_text_view"
+      },
+      "parent_variable": "reference1",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    },
+    {
+      "variable": "reference9",
+      "widget": "androidx.appcompat.widget.AppCompatTextView",
+      "source_attributes": {
+        "style": "@style/Widget.AppCompat.TextView.SpinnerItem",
+        "android:layout_width": "wrap_content",
+        "android:layout_height": "wrap_content",
+        "android:drawablePadding": "20dp",
+        "android:padding": "10dp",
+        "android:text": "@string/hybrid_mode_info_title",
+        "android:textAppearance": "@style/TextAppearance.AppCompat.Headline",
+        "android:visibility": "gone",
+        "app:drawableStartCompat": "@drawable/spinner_both"
+      },
+      "parent_variable": "reference1",
+      "layout_params_class": "android.widget.LinearLayout.LayoutParams"
+    }
+  ],
+  "runtime_xml_inflation": false,
+  "runtime_json_loading": false,
+  "production_renderer_dependencies": false,
+  "execution": "not compiled or run; runtime clearance BLOCKED"
+}

@@ -31,6 +31,10 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.reference.BaselineSponsorSuccessReference
+import com.celzero.bravedns.ui.compose.reference.BaselineSupportReference
+import com.celzero.bravedns.ui.compose.reference.BaselineOrbotInfoReference
+import com.celzero.bravedns.ui.compose.reference.BaselineWidgetMode
 import com.celzero.bravedns.ui.compose.RethinkTheme
 import com.celzero.bravedns.ui.compose.chrome.HomeBottomNavigation
 import com.celzero.bravedns.ui.compose.home.HomeTourAnchors
@@ -39,7 +43,6 @@ import com.celzero.bravedns.ui.compose.utilities.SponsorSuccessScreen
 import com.celzero.bravedns.ui.compose.utilities.SponsorSuccessUiState
 import com.celzero.bravedns.ui.compose.utilities.SupportScreen
 import com.celzero.bravedns.ui.compose.utilities.SupportUiState
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import org.junit.Assert.assertTrue
@@ -59,7 +62,7 @@ class ContentVisualParityTest {
     private val active = mutableStateOf(visualCases.first())
     private val failures = mutableListOf<String>()
 
-    @Test fun supportCapturedAgainstRetainedXmlAcrossConfigurations() {
+    @Test fun supportCapturedAgainstIndependentBaselineAcrossConfigurations() {
         compose.setContent { Scene { context ->
             SupportScreen(remember(context) { SupportUiState(context).apply {
                 headerTitle = "Synthetic support"
@@ -69,16 +72,15 @@ class ContentVisualParityTest {
         } }
         visualCases.forEach { scenario ->
             val context = show(scenario)
-            val baseline = inflateBaseline(context, R.layout.activity_customer_support)
-            baseline.findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar).title = "Synthetic support"
-            baseline.findViewById<TextView>(R.id.tv_hero_subtitle).text = "Synthetic subscription · ID: example"
+            val reference = BaselineSupportReference.create(context, "Synthetic support", "Synthetic subscription · ID: example")
+            val baseline = reference.root
             compose.runOnUiThread {
                 attachBaselineOffscreen(compose.activity, baseline, scenario.width, 800)
                 layoutBaseline(baseline, scenario.width, 800)
             }
             compose.waitForIdle()
             compose.runOnUiThread { baseline.jumpDrawablesToCurrentState() }
-            val evidence = VisualEvidence("support", scenario)
+            val evidence = VisualEvidence("support", scenario, reference.source)
             evidence.capture(captureBaseline(baseline, context.color(R.attr.background)), capture())
             listOf(R.string.support_section_describe, R.string.support_issue_category_label,
                 R.string.support_section_attachments, R.string.support_attachments_desc,
@@ -87,7 +89,7 @@ class ContentVisualParityTest {
                 val label = context.getString(id)
                 evidence.text(context.resources.getResourceEntryName(id), baseline.textView(label), text(label))
             }
-            evidence.text("hero subtitle", baseline.findViewById(R.id.tv_hero_subtitle), text("Synthetic subscription · ID: example"))
+            evidence.text("hero subtitle", reference.heroSubtitle, text("Synthetic subscription · ID: example"))
             val send = compose.onNodeWithTag("activity_customer_support.btn_send_email")
             send.assertIsDisplayed().assertHasClickAction().assertIsEnabled()
             evidence.check("send touch target", send.fetchSemanticsNode().touchBoundsInRoot.height >= 48f, "minimum 48 dp")
@@ -102,7 +104,7 @@ class ContentVisualParityTest {
         assertRequiredChecks()
     }
 
-    @Test fun sponsorSuccessCapturedAgainstRetainedXmlAcrossConfigurations() {
+    @Test fun sponsorSuccessCapturedAgainstIndependentBaselineAcrossConfigurations() {
         compose.setContent { Scene { context ->
             SponsorSuccessScreen(remember(context) { SponsorSuccessUiState(context).apply {
                 continueButton.setOnClickListener { error("Capture cannot activate navigation") }
@@ -110,18 +112,18 @@ class ContentVisualParityTest {
         } }
         visualCases.forEach { scenario ->
             val context = show(scenario)
-            val baseline = inflateBaseline(context, R.layout.fragment_sponsor_success)
+            val reference = BaselineSponsorSuccessReference.create(context, BaselineWidgetMode.MATERIAL_COMPAT)
+            val baseline = reference.root
             compose.runOnUiThread {
                 attachBaselineOffscreen(compose.activity, baseline, scenario.width, 800)
                 layoutBaseline(baseline, scenario.width, 800)
             }
             compose.waitForIdle()
             compose.runOnUiThread { baseline.jumpDrawablesToCurrentState() }
-            val evidence = VisualEvidence("sponsor-success", scenario)
+            val evidence = VisualEvidence("sponsor-success", scenario, reference.source)
             evidence.capture(captureBaseline(baseline, context.color(R.attr.background)), capture())
-            listOf(R.id.success_title, R.id.success_message, R.id.continue_button).forEach { id ->
-                val old = baseline.findViewById<TextView>(id)
-                evidence.text(context.resources.getResourceEntryName(id), old, text(old.text.toString()), compareColor = true)
+            listOf(reference.title, reference.message, reference.continueButton).forEach { old ->
+                evidence.text(context.resources.getResourceEntryName(old.id), old, text(old.text.toString()), compareColor = true)
             }
             text(context.getString(R.string.sponsor_thank_you)).assert(SemanticsMatcher.keyIsDefined(SemanticsProperties.Heading))
             val action = compose.onNodeWithTag("fragment_sponsor_success.continue_button")
@@ -133,7 +135,7 @@ class ContentVisualParityTest {
         assertRequiredChecks()
     }
 
-    @Test fun orbotInfoCapturedAgainstRetainedXmlAcrossConfigurations() {
+    @Test fun orbotInfoCapturedAgainstIndependentBaselineAcrossConfigurations() {
         val title = "Synthetic Orbot information"
         val description = "Synthetic connection information.\nSecond line of selectable description.\nThird line checks baseline spacing."
         compose.setContent { Scene(R.attr.colorSurfaceContainerHigh) { OrbotInfoContent(title, description) {
@@ -141,19 +143,18 @@ class ContentVisualParityTest {
         } } }
         visualCases.forEach { scenario ->
             val context = show(scenario)
-            val baseline = inflateBaseline(context, R.layout.dialog_info_rules_layout)
-            baseline.findViewById<TextView>(R.id.info_rules_dialog_rules_title).text = title
-            baseline.findViewById<TextView>(R.id.info_rules_dialog_rules_desc).text = description
+            val reference = BaselineOrbotInfoReference.create(context, title, description)
+            val baseline = reference.root
             compose.runOnUiThread {
                 attachBaselineOffscreen(compose.activity, baseline, scenario.width, 800)
                 layoutBaseline(baseline, scenario.width, 800)
             }
             compose.waitForIdle()
             compose.runOnUiThread { baseline.jumpDrawablesToCurrentState() }
-            val evidence = VisualEvidence("orbot-info", scenario)
+            val evidence = VisualEvidence("orbot-info", scenario, reference.source)
             evidence.capture(captureBaseline(baseline, context.color(R.attr.colorSurfaceContainerHigh)), capture())
-            evidence.text("title", baseline.findViewById(R.id.info_rules_dialog_rules_title), compose.onNodeWithTag("orbot_info_title"))
-            evidence.text("description", baseline.findViewById(R.id.info_rules_dialog_rules_desc), compose.onNodeWithTag("orbot_info_description"))
+            evidence.text("title", reference.title, compose.onNodeWithTag("orbot_info_title"))
+            evidence.text("description", reference.description, compose.onNodeWithTag("orbot_info_description"))
             val dismiss = compose.onNodeWithContentDescription(context.getString(R.string.lbl_dismiss))
             dismiss.assertIsDisplayed().assertHasClickAction()
             evidence.check("dismiss touch target", dismiss.fetchSemanticsNode().touchBoundsInRoot.height >= 48f, "minimum 48 dp (baseline icon is 30 dp)")
@@ -209,7 +210,7 @@ class ContentVisualParityTest {
             evidence.check("tab direction", tabCenters.zipWithNext().all { (a, b) -> if (scenario.rtl) a > b else a < b },
                 "RTL=${scenario.rtl}, physical centers=$tabCenters")
             evidence.review("bar height", baseline.height == capture().fetchSemanticsNode().boundsInRoot.height.toInt(),
-                "XML=${baseline.height}px, Compose=${capture().fetchSemanticsNode().boundsInRoot.height}px")
+                "reference=${baseline.height}px, Compose=${capture().fetchSemanticsNode().boundsInRoot.height}px")
             failures += evidence.finish()
             if (baseline.parent != null) compose.runOnUiThread { detachBaseline(baseline) }
         }

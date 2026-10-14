@@ -1,0 +1,277 @@
+{
+  "kind": "immutable_baseline_resource_dependency_pins_not_android_resolution",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "seed_themes": [
+    "AppThemeWhite",
+    "AppTheme",
+    "AppThemeTrueBlackFrost",
+    "AppThemeWhitePlus",
+    "AppThemeTrueBlackPlus"
+  ],
+  "baseline_files": [
+    {
+      "path": "app/src/main/res/drawable-hdpi/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable-mdpi/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable-v24/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable-xhdpi/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable-xxhdpi/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable-xxxhdpi/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable/bg_chip_state_list.xml",
+      "sha256": "33f6bebb76ce16e97a4fe318d43e4cef451cfe2ed1825261e137e94f2dd41a43"
+    },
+    {
+      "path": "app/src/main/res/drawable/bg_plus_hero_gradient.xml",
+      "sha256": "2d4e9b58f7391338d744dce7878b3500f5e0787076b5c3cb52a93bc8634517de"
+    },
+    {
+      "path": "app/src/main/res/drawable/chip_text_color.xml",
+      "sha256": "9f7604423adc8d533577d059af461e0e194d8bc0124ff295baed72ff91ee33a0"
+    },
+    {
+      "path": "app/src/main/res/drawable/dns_icon.png",
+      "sha256": "1047ab39cc3d8cb44a74cc579a752680a596ebc548e47700116f6996f7e9e416"
+    },
+    {
+      "path": "app/src/main/res/drawable/edittext_default.xml",
+      "sha256": "c518abce830bdd087054ed3f4b1580498b8ba41c15bc7a008804fdeace731366"
+    },
+    {
+      "path": "app/src/main/res/drawable/rectangle_border_background.xml",
+      "sha256": "353b1fffc4f06ceafc017697201580d16e87175353c6bfff3baf174cb08e129f"
+    },
+    {
+      "path": "app/src/main/res/drawable/spinner_both.xml",
+      "sha256": "0c150377f4992215fb7f6d62a845dd4ae129ab0d8a276de5b1be129ea46a2f43"
+    },
+    {
+      "path": "app/src/main/res/values-ab/strings.xml",
+      "sha256": "da0af9f62a29c52216e50c28d689b272b849ed412195fb0d5763a721460be29a"
+    },
+    {
+      "path": "app/src/main/res/values-ar/strings.xml",
+      "sha256": "1eb5b1281283c877aac1a21b73e8be5bd948af90a086b8036263a7f96cdf308f"
+    },
+    {
+      "path": "app/src/main/res/values-bg/strings.xml",
+      "sha256": "9e486241f9e021c219ca2c99e21916c95fa4f0ef523296113e8dcfb67b385965"
+    },
+    {
+      "path": "app/src/main/res/values-bn/strings.xml",
+      "sha256": "2a0232ae80f474208b8797bb912b83cb3e6a1fe1fcdd69f7315ce6db03dec4e0"
+    },
+    {
+      "path": "app/src/main/res/values-cs/strings.xml",
+      "sha256": "7c3874ff024bfe562f9c9d823e5ce2efc992b472bbaf8b15c2970964f1e4fdeb"
+    },
+    {
+      "path": "app/src/main/res/values-da/strings.xml",
+      "sha256": "7fa39eec3de4744f0a0957c3f8f33aca0a2d9b89ae604f4a7c2fbeaff4334d58"
+    },
+    {
+      "path": "app/src/main/res/values-de/strings.xml",
+      "sha256": "5f1ca3fd3a2765cdb5eafc5702efca7b3146980e1558335cf54ddf0dd06a984a"
+    },
+    {
+      "path": "app/src/main/res/values-el/strings.xml",
+      "sha256": "226dfdaeab0cfdb8d29a7db6c5db33030e6c2fbde5b6e5601a6284971bc0a328"
+    },
+    {
+      "path": "app/src/main/res/values-es/strings.xml",
+      "sha256": "d180ec3303948255e4f2fce03fbe0428b5d12befcc8364144e7f94b87998f937"
+    },
+    {
+      "path": "app/src/main/res/values-fa/strings.xml",
+      "sha256": "a39a0303fb57b09183838cf1563abbb769b7a383e9ed1561bb932f71cfed7acf"
+    },
+    {
+      "path": "app/src/main/res/values-fi/strings.xml",
+      "sha256": "c44c832606eb3a9d51ddb2d81259e4a6c2f51c992b25f63edf97fcc94aad0595"
+    },
+    {
+      "path": "app/src/main/res/values-fr/strings.xml",
+      "sha256": "e676e054ad7b438fdf55ea082a60f43dd5e8002467dd54c789062953ff2cd9bf"
+    },
+    {
+      "path": "app/src/main/res/values-hi/strings.xml",
+      "sha256": "0cc9a2a7ad05ae9db6e66d39b82587f51e887842fae803079492c5d617e2e5e6"
+    },
+    {
+      "path": "app/src/main/res/values-hu/strings.xml",
+      "sha256": "84d514de7c3390ec6b7caaf2f7b65387ede4f937ae96b6b9a621eca319c5f49c"
+    },
+    {
+      "path": "app/src/main/res/values-in/strings.xml",
+      "sha256": "1367ebb880c8dccb95665a2828e49de45fd65effd883605afcc5cff4106dd7c2"
+    },
+    {
+      "path": "app/src/main/res/values-it/strings.xml",
+      "sha256": "ca3a5dce204c762e88f642010f725cee5826097c0681fb362180f13a6f8e3683"
+    },
+    {
+      "path": "app/src/main/res/values-iw/strings.xml",
+      "sha256": "34295d349ba37b1c1a8e481798a3a998a37335be29d0e313890aeb6ef2a4ce57"
+    },
+    {
+      "path": "app/src/main/res/values-ja/strings.xml",
+      "sha256": "11072a165de9f92359f6565087a9623c65a30ac3a6280524ca5e3e9b71365809"
+    },
+    {
+      "path": "app/src/main/res/values-ko/strings.xml",
+      "sha256": "f850afeba44f25b282a46357a212319b5c77d4ccd68fff896080cc59f81d6bb8"
+    },
+    {
+      "path": "app/src/main/res/values-lo/strings.xml",
+      "sha256": "25cd3a20dc327d220dcc9d2732237760897cd76ffbe95351eec67aada0259ea7"
+    },
+    {
+      "path": "app/src/main/res/values-lt/strings.xml",
+      "sha256": "76bda1c9e1d554628b777a8238858d237bb46459cc73c789fc2bd241f8ba88b4"
+    },
+    {
+      "path": "app/src/main/res/values-lv/strings.xml",
+      "sha256": "dbd22fff335454b743c976b874bd64f09453b19501ba9910c7166db24b4895c4"
+    },
+    {
+      "path": "app/src/main/res/values-nb-rNO/strings.xml",
+      "sha256": "e656dcfe1abef90c5f27f90c4a7888702ffe8cd31474ca88a5c11ddbbf9a82fe"
+    },
+    {
+      "path": "app/src/main/res/values-nl/strings.xml",
+      "sha256": "8871ce49dbffbda003b58a6e30c37e3ad3d1f8fba4a37888860ab19dc1b7c6b8"
+    },
+    {
+      "path": "app/src/main/res/values-pl/strings.xml",
+      "sha256": "fd948fabd04ea81b441e8dc39095dbaddb371464e6b4c1263ca349719423eb74"
+    },
+    {
+      "path": "app/src/main/res/values-pt-rBR/strings.xml",
+      "sha256": "f56b682578cf204725a6bca1d2693c76bae334710be573b8b27274c2fafb311d"
+    },
+    {
+      "path": "app/src/main/res/values-pt/strings.xml",
+      "sha256": "4344425437a72c75bb26bcb26db22ff1a9a931156723ae3c5930a2db90bc235b"
+    },
+    {
+      "path": "app/src/main/res/values-ro/strings.xml",
+      "sha256": "15614ccca2e03175aef2e34e43f55ddd6501905cb177c31a13ea5f5bb45ecd16"
+    },
+    {
+      "path": "app/src/main/res/values-ru/strings.xml",
+      "sha256": "1ae350064459cb1a79d4a272afbebfbc1f0725b151a63b60e94bcc65cb001e31"
+    },
+    {
+      "path": "app/src/main/res/values-sk/strings.xml",
+      "sha256": "d85ff894b557275380d1e09b7752a30f4bda588350b3b148f3881aef987418b9"
+    },
+    {
+      "path": "app/src/main/res/values-sr/strings.xml",
+      "sha256": "496a888cb9f1879f0850a1d48d3444c02ba74c455e642f4bcea49e40786633ee"
+    },
+    {
+      "path": "app/src/main/res/values-sv/strings.xml",
+      "sha256": "79ad1d52a2e637b80dbf7b4fa59d6f09610b9d31d1eabb7e40f9941a811ed0a9"
+    },
+    {
+      "path": "app/src/main/res/values-ta/strings.xml",
+      "sha256": "a52e6b70955b9be330afbff9ddd707d80f5c7422f50638d57f2b2072334f2890"
+    },
+    {
+      "path": "app/src/main/res/values-th/strings.xml",
+      "sha256": "9da6cdd851720a74b90a467d2e1506938270ce3ea08a593d6bd99fae11cbc871"
+    },
+    {
+      "path": "app/src/main/res/values-tl/strings.xml",
+      "sha256": "064d8445a45e19f840d778a4f6b520bcd021362383858d19e12747fb927a8d26"
+    },
+    {
+      "path": "app/src/main/res/values-tr/strings.xml",
+      "sha256": "98881f50f76cc68e8fe964ce2cb7fc9950ce28833900328e0e7d20041e459b01"
+    },
+    {
+      "path": "app/src/main/res/values-uk/strings.xml",
+      "sha256": "4645ecb97a55ae37b4bc0f4f57d5a4a650dbdbb1789e03c232faab426d21ee1a"
+    },
+    {
+      "path": "app/src/main/res/values-vi/strings.xml",
+      "sha256": "1cd2bbe196c68dfe963da70d6a4f13195d4b6e7ba22844801575acd14cb555f4"
+    },
+    {
+      "path": "app/src/main/res/values-zh-rCN/strings.xml",
+      "sha256": "2a1831f1c9bb90c39f9784994f94918dc1cd4582407fa0b2b74735385d41c673"
+    },
+    {
+      "path": "app/src/main/res/values-zh-rHK/strings.xml",
+      "sha256": "ec5926758302cf62ad676164f5e8ab5bafcc41f53fcf1c271e64514e4f6946c4"
+    },
+    {
+      "path": "app/src/main/res/values-zh-rTW/strings.xml",
+      "sha256": "18e78ef8920f7c729570ee8764ef62935cad968dc95790f5c89f74f796921e96"
+    },
+    {
+      "path": "app/src/main/res/values/attrs.xml",
+      "sha256": "0f431a190261bd8160d4c6929d3b685175521f7c5673921aed2612c7cff81ef2"
+    },
+    {
+      "path": "app/src/main/res/values/colors.xml",
+      "sha256": "a8e82fe343d9172038888b4d27b57effb6d76fd19f562b1c31030b6e6d553212"
+    },
+    {
+      "path": "app/src/main/res/values/dimens.xml",
+      "sha256": "1dcaf24002b1422fa1cbd748c85799bd47528af2f9c3d6a4573bf8e06324e72b"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "85330c5bb28c603323680a3b188a3c06d3df6e07873f66df50c8d7d09bf95140"
+    },
+    {
+      "path": "app/src/main/res/values/styles.xml",
+      "sha256": "94605e7df2a052dbd168cf268e1a72ffffa7c05d234b704ce41d47cf322d8103"
+    },
+    {
+      "path": "app/src/main/res/values/text_appearance_overrides.xml",
+      "sha256": "b7f5ebc28901142967a177a1c8a0eb2b19b3cfef55c503da8cdb623259429b55"
+    }
+  ],
+  "unresolved_library_or_framework_resource_names": [
+    "string/appbar_scrolling_view_behavior",
+    "style/TextAppearance.AppCompat",
+    "style/TextAppearance.AppCompat.Headline",
+    "style/TextAppearance.AppCompat.Subhead",
+    "style/Theme.Material3.Dark.NoActionBar",
+    "style/Theme.Material3.Light.NoActionBar",
+    "style/ThemeOverlay.Material3",
+    "style/Widget.AppCompat.Light.SearchView",
+    "style/Widget.AppCompat.SearchView",
+    "style/Widget.AppCompat.TextView.SpinnerItem",
+    "style/Widget.Material3.Button.OutlinedButton",
+    "style/Widget.Material3.Button.TextButton.Dialog",
+    "style/Widget.Material3.CardView.Elevated",
+    "style/Widget.Material3.Chip.Assist",
+    "style/Widget.Material3.Chip.Filter",
+    "style/Widget.Material3.CompoundButton.MaterialSwitch",
+    "style/Widget.Material3.TextInputLayout.OutlinedBox"
+  ],
+  "limits": [
+    "The Android/Material resource resolver is not executed here. Library/default behavior requires exact approved artifacts and later runtime checks.",
+    "Pins protect shared expected/actual inputs from moving together silently. Current drift fails instead of being accepted as a new baseline.",
+    "Source styles added in separate new files are permitted; the referenced original resources remain immutable."
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "status": "PASS",
+  "source_only": true,
+  "methods": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "keyOf",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "calculatePercentage",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "progressValue",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "setTimeCategory",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "notifyDataset",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "isUnknownApp",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "startDomainConnectionsActivity",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "startAppInfoActivity",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "showDomainRulesBottomSheet",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "showDnsLogs",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "showNetworkLogs",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "handleVpnState",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "startActivity",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "io",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "uiCtx",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt",
+      "method": "setSubTitle",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt",
+      "method": "handleStatType",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
+      "method": "setSubTitle",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "method": "load",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "method": "onAppExpandRequested",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "method": "render",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "method": "showTimeRange",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt",
+      "method": "setDolphinSignature",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "loadStats",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "openConnectionLogs",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "applyStats",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "showLoadingState",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "showContentState",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "showErrorState",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt",
+      "method": "setDolphinSignature",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "method": "logEvent",
+      "baseline_equivalent": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "method": "observeAppStart",
+      "baseline_equivalent": true
+    }
+  ],
+  "sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt": "46ddf37274bf0dd7ff49f5571f803796e0609b666ddc7d46325dd5e0b67abff8",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/DetailedStatisticsActivity.kt": "8e61f0cbf7eb4c0f5282e27e079293179e2bfba6b775dc37e5293f20e331123e",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt": "0705f40fb81633e653eb9d85f29bcc761615ebd0e0e020cc4d51fd82c6f6fdf0",
+    "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt": "8f6b67cd09aa9cb2d6b683395d6346f6b523e4fd0601704f8ca3789bbc253512",
+    "app/src/main/java/com/celzero/bravedns/adapter/DomainConnectionsAdapter.kt": "f8bb5c6f53d2d991bb99ee62092e5ad5d70c5c9bb2b8f0ebabdc7a4fedd8b699",
+    "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt": "1f06ddc12601a331cb79d8870c2f990d687f91575cb6c02aea7076c7dddf88fa",
+    "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt": "2fa925eaa81064beebfb73e662061aa5dceb90a50cc55b343126f4ac0bef3165",
+    "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt": "e68c94cdd19ef2c7b3bc6a7c1e4536a1d2cf36e908b319765b0236ed4eca94a7",
+    "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt": "3c2e4b46b87c7c96d050030c4b6f92b25f2f71d37cdebf01b359a4f64adf37ce"
+  }
+}

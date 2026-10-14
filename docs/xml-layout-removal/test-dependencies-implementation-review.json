@@ -1,0 +1,278 @@
+{
+  "kind": "source_only_not_compilation_or_runtime",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "frozen_comparison": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00",
+  "references": [
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineOrbotInfoReference.kt",
+      "nodes": 10,
+      "property_and_structure_check": "PASS",
+      "sha256": "1714de33a8be18f4f0e177f6fa283c1f67eb2e0b882b625d782249d2314b8d9c"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineReachabilityReference.kt",
+      "nodes": 1,
+      "property_and_structure_check": "PASS",
+      "sha256": "cbe833e669f20675374ceffe15a81e86222749ea9a1c572b76f33e012cbf15cb"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineSponsorSuccessReference.kt",
+      "nodes": 8,
+      "property_and_structure_check": "PASS",
+      "sha256": "009282ea71b69010b0474ac3a3231f7d08b87ed2482fd45e13ded3f7e35b8909"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineStatisticsFilterReference.kt",
+      "nodes": 7,
+      "property_and_structure_check": "PASS",
+      "sha256": "0bd2e83bb60563ac35af2f6d4099beb54c1b60caa16c272513bb06dfd68fda73"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineSupportReference.kt",
+      "nodes": 47,
+      "property_and_structure_check": "PASS",
+      "sha256": "aa80dacd1760ae8163bd0a01cb0fea920617193ea50a35a65235533b18b62e7a"
+    }
+  ],
+  "total_reference_widgets": 73,
+  "eight_visual_configurations_unchanged": true,
+  "app_layout_references_in_tests": 0,
+  "fixtures_contain_no_app_xml_or_production_renderer": true,
+  "runtime_clearance": "BLOCKED",
+  "baseline_dependency_resource_count": 60,
+  "changed_files": [
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContentTest.kt",
+      "before_test_methods": [
+        "orbotRowAndRadioKeepDistinctCallbacksAndHiddenBoth",
+        "loadingAndPreQVisibilityPreventInputWithoutHidingStatus",
+        "backupAndRestoreEmitOnlyExplicitSeparateCallbacks",
+        "warningChoicesRemainDistinctUnderRtlLargeTextAndFrost",
+        "countryRowAndRadioDispatchOnceEachAndRenderSelectionFromSource",
+        "informationUsesXmlTypographyAndCloseIsOnlyCallback",
+        "infoLongTextCanScrollWithoutTruncationUnderRtlLargeText",
+        "infoUsesBaselineLineStepAndFirstStrongDirectionAtNonlinearFontScale"
+      ],
+      "after_test_methods": [
+        "orbotRowAndRadioKeepDistinctCallbacksAndHiddenBoth",
+        "loadingAndPreQVisibilityPreventInputWithoutHidingStatus",
+        "backupAndRestoreEmitOnlyExplicitSeparateCallbacks",
+        "warningChoicesRemainDistinctUnderRtlLargeTextAndFrost",
+        "countryRowAndRadioDispatchOnceEachAndRenderSelectionFromSource",
+        "informationUsesBaselineTypographyAndCloseIsOnlyCallback",
+        "infoLongTextCanScrollWithoutTruncationUnderRtlLargeText",
+        "infoUsesBaselineLineStepAndFirstStrongDirectionAtNonlinearFontScale"
+      ],
+      "renamed_methods": [
+        {
+          "old": "informationUsesXmlTypographyAndCloseIsOnlyCallback",
+          "new": "informationUsesBaselineTypographyAndCloseIsOnlyCallback"
+        }
+      ],
+      "before_assertion_call_counts": {
+        "assertDoesNotExist": 2,
+        "assertIsSelected": 3,
+        "assertEquals": 11,
+        "assertIsNotEnabled": 2,
+        "assertHasNoClickAction": 1,
+        "assertIsDisplayed": 2,
+        "assertTrue": 5,
+        "assertFalse": 2
+      },
+      "after_assertion_call_counts": {
+        "assertDoesNotExist": 2,
+        "assertIsSelected": 3,
+        "assertEquals": 11,
+        "assertIsNotEnabled": 2,
+        "assertHasNoClickAction": 1,
+        "assertIsDisplayed": 2,
+        "assertTrue": 5,
+        "assertFalse": 2
+      },
+      "assertion_counts_equal": true,
+      "assertion_lines_unchanged": true,
+      "current_sha256": "c01b1e02307a9d55c5e56ec6de6b9d78fc07ed17ec4cf3c8803917ca69f64864"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoTypographyTest.kt",
+      "before_test_methods": [
+        "actualXmlTypographyMatchesAtNormalAndLargeScalesAcrossThemes",
+        "infoTextPreservesUnderlineItalicAndParagraphTextWithoutMakingLinksActions"
+      ],
+      "after_test_methods": [
+        "independentBaselineTypographyMatchesAtNormalAndLargeScalesAcrossThemes",
+        "infoTextPreservesUnderlineItalicAndParagraphTextWithoutMakingLinksActions"
+      ],
+      "renamed_methods": [
+        {
+          "old": "actualXmlTypographyMatchesAtNormalAndLargeScalesAcrossThemes",
+          "new": "independentBaselineTypographyMatchesAtNormalAndLargeScalesAcrossThemes"
+        }
+      ],
+      "before_assertion_call_counts": {
+        "assertEquals": 11,
+        "assertTrue": 4
+      },
+      "after_assertion_call_counts": {
+        "assertEquals": 11,
+        "assertTrue": 4
+      },
+      "assertion_counts_equal": true,
+      "assertion_lines_unchanged": true,
+      "current_sha256": "4b38c7780930f15fd837b3caeeca8c618e802e69a2e05dc83ee18437ce44b7eb"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/StatisticsMaterialReferenceTest.kt",
+      "before_test_methods": [
+        "realSixChipHierarchyRestorationMatchesNativeReplayIncludingHiddenProvider",
+        "actualSelectionRequiredLastUncheckIsSilentAndSelectAllIncludesHiddenChild",
+        "actualBlocklistListenerRechecksLastTagAndRefetchesExactlyOnce"
+      ],
+      "after_test_methods": [
+        "realSixChipHierarchyRestorationMatchesNativeReplayIncludingHiddenProvider",
+        "actualSelectionRequiredLastUncheckIsSilentAndSelectAllIncludesHiddenChild",
+        "actualBlocklistListenerRechecksLastTagAndRefetchesExactlyOnce"
+      ],
+      "renamed_methods": [],
+      "before_assertion_call_counts": {
+        "assertEquals": 5,
+        "assertTrue": 3
+      },
+      "after_assertion_call_counts": {
+        "assertEquals": 5,
+        "assertTrue": 3
+      },
+      "assertion_counts_equal": true,
+      "assertion_lines_unchanged": true,
+      "current_sha256": "a940d665719ab39b524b454bbbfcd1a1253acacf3f17e370397498adcbf5a40c"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/utilities/UtilityTypographyTest.kt",
+      "before_test_methods": [
+        "sponsorSuccessTitleMatchesTheRealXmlTextView",
+        "sponsorSuccessBodyMatchesXmlBodySizeAndSpacing",
+        "supportSectionUsesItsXmlAppearanceBoldAndLetterSpacing",
+        "supportUnstyledAttachmentTitleUsesThemeTextViewDefault",
+        "reachabilityInputMatchesXmlEditTextDefaultAppearance",
+        "sponsorLargeFontPreservesRawSpAndRenderedLineStep"
+      ],
+      "after_test_methods": [
+        "sponsorSuccessTitleMatchesIndependentBaselineTextView",
+        "sponsorSuccessBodyMatchesBaselineBodySizeAndSpacing",
+        "supportSectionUsesBaselineAppearanceBoldAndLetterSpacing",
+        "supportUnstyledAttachmentTitleUsesThemeTextViewDefault",
+        "reachabilityInputMatchesBaselineEditTextDefaultAppearance",
+        "sponsorLargeFontPreservesRawSpAndRenderedLineStep"
+      ],
+      "renamed_methods": [
+        {
+          "old": "sponsorSuccessTitleMatchesTheRealXmlTextView",
+          "new": "sponsorSuccessTitleMatchesIndependentBaselineTextView"
+        },
+        {
+          "old": "sponsorSuccessBodyMatchesXmlBodySizeAndSpacing",
+          "new": "sponsorSuccessBodyMatchesBaselineBodySizeAndSpacing"
+        },
+        {
+          "old": "supportSectionUsesItsXmlAppearanceBoldAndLetterSpacing",
+          "new": "supportSectionUsesBaselineAppearanceBoldAndLetterSpacing"
+        },
+        {
+          "old": "reachabilityInputMatchesXmlEditTextDefaultAppearance",
+          "new": "reachabilityInputMatchesBaselineEditTextDefaultAppearance"
+        }
+      ],
+      "before_assertion_call_counts": {
+        "assertTypography": 6,
+        "assertEquals": 9
+      },
+      "after_assertion_call_counts": {
+        "assertTypography": 6,
+        "assertEquals": 9
+      },
+      "assertion_counts_equal": true,
+      "assertion_lines_unchanged": true,
+      "current_sha256": "092a25ee61b6236cc332ae058a69eaf0eebb600ae779a2ae001f0cce789d291e"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/ContentVisualParityTest.kt",
+      "before_test_methods": [
+        "supportCapturedAgainstRetainedXmlAcrossConfigurations",
+        "sponsorSuccessCapturedAgainstRetainedXmlAcrossConfigurations",
+        "orbotInfoCapturedAgainstRetainedXmlAcrossConfigurations",
+        "rootNavigationCapturedAgainstBaselineWidgetAcrossConfigurations"
+      ],
+      "after_test_methods": [
+        "supportCapturedAgainstIndependentBaselineAcrossConfigurations",
+        "sponsorSuccessCapturedAgainstIndependentBaselineAcrossConfigurations",
+        "orbotInfoCapturedAgainstIndependentBaselineAcrossConfigurations",
+        "rootNavigationCapturedAgainstBaselineWidgetAcrossConfigurations"
+      ],
+      "renamed_methods": [
+        {
+          "old": "supportCapturedAgainstRetainedXmlAcrossConfigurations",
+          "new": "supportCapturedAgainstIndependentBaselineAcrossConfigurations"
+        },
+        {
+          "old": "sponsorSuccessCapturedAgainstRetainedXmlAcrossConfigurations",
+          "new": "sponsorSuccessCapturedAgainstIndependentBaselineAcrossConfigurations"
+        },
+        {
+          "old": "orbotInfoCapturedAgainstRetainedXmlAcrossConfigurations",
+          "new": "orbotInfoCapturedAgainstIndependentBaselineAcrossConfigurations"
+        }
+      ],
+      "before_assertion_call_counts": {
+        "evidence.capture": 4,
+        "evidence.text": 6,
+        "assertIsDisplayed": 4,
+        "assertHasClickAction": 4,
+        "assertIsEnabled": 1,
+        "evidence.check": 6,
+        "assertContentDescriptionEquals": 1,
+        "evidence.review": 2,
+        "assertRequiredChecks": 5,
+        "assertIsSelected": 1,
+        "assertIsNotSelected": 1,
+        "assertTrue": 1
+      },
+      "after_assertion_call_counts": {
+        "evidence.capture": 4,
+        "evidence.text": 6,
+        "assertIsDisplayed": 4,
+        "assertHasClickAction": 4,
+        "assertIsEnabled": 1,
+        "evidence.check": 6,
+        "assertContentDescriptionEquals": 1,
+        "evidence.review": 2,
+        "assertRequiredChecks": 5,
+        "assertIsSelected": 1,
+        "assertIsNotSelected": 1,
+        "assertTrue": 1
+      },
+      "assertion_counts_equal": true,
+      "assertion_lines_unchanged": true,
+      "current_sha256": "a078391605fe1de03d219bf2d9cf31a53785ea1c01786ee59d5e3947672adac4"
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/VisualParityHarness.kt",
+      "before_test_methods": [],
+      "after_test_methods": [],
+      "renamed_methods": [],
+      "before_assertion_call_counts": {
+        "assertTrue": 1
+      },
+      "after_assertion_call_counts": {
+        "assertTrue": 1
+      },
+      "assertion_counts_equal": true,
+      "assertion_lines_unchanged": true,
+      "current_sha256": "607afbe139bed9e2fe2b2400041a007e7bc02de5bb88e8ede898b56ca2ae7673"
+    }
+  ],
+  "limits": [
+    "No Gradle/Kotlin/AAPT/Robolectric/device execution; Android reference behavior remains unverified.",
+    "Static property/constructor/parent/order checks and identical assertions do not establish rendered equivalence.",
+    "Robolectric attribute builder, protected construction hook and library LayoutParams APIs require later approved compilation/runtime revalidation."
+  ]
+}

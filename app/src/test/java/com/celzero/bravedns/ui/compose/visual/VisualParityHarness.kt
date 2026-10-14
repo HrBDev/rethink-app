@@ -7,10 +7,8 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.compose.ui.graphics.asAndroidBitmap
@@ -22,6 +20,8 @@ import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.graphics.isSpecified
 import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.reference.BaselineReferenceSource
+import org.robolectric.RuntimeEnvironment
 import java.io.File
 import java.util.Locale
 import kotlin.math.abs
@@ -30,7 +30,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertTrue
 
-/** References are real retained XML widgets, never an AndroidView or a production controller. */
+/** References are real source-derived or library-owned widgets, never production controllers. */
 internal const val PINNED_BASELINE = "23cb6dd98805445174bd83b7237ad5f5d2c24ac9"
 internal data class VisualCase(val name: String, val theme: Int, val width: Int, val fontScale: Float, val rtl: Boolean) {
     fun context(base: Context): ContextThemeWrapper = ContextThemeWrapper(base, theme).apply {
@@ -61,17 +61,6 @@ internal fun descendants(view: View): List<View> = listOf(view) +
     if (view is ViewGroup) (0 until view.childCount).flatMap { descendants(view.getChildAt(it)) } else emptyList()
 internal fun View.textView(text: String): TextView = descendants(this).filterIsInstance<TextView>()
     .first { it.text.toString() == text }
-internal fun inflateBaseline(context: Context, layout: Int): View {
-    // Match AppCompat/Material host inflation without constructing a production AppCompatActivity.
-    val inflater = LayoutInflater.from(context).cloneInContext(context)
-    val material = com.google.android.material.theme.MaterialComponentsViewInflater()
-    inflater.factory2 = object : LayoutInflater.Factory2 {
-        override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? =
-            material.createView(parent, name, context, attrs, false, true, true, false)
-        override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? = onCreateView(null, name, context, attrs)
-    }
-    return inflater.inflate(layout, null, false)
-}
 internal fun attachBaselineOffscreen(activity: Activity, view: View, width: Int, height: Int) {
     // CollapsingToolbarLayout's real title painter requires an attached toolbar dummy view.
     // This test-only reference host is physically outside the window and cannot obscure Compose.
@@ -100,18 +89,35 @@ internal fun SemanticsNodeInteraction.textLayout(): TextLayoutResult {
 }
 
 /** Cosmetic Material differences are review evidence. Lost content/actions/captures remain gates. */
-internal class VisualEvidence(private val surface: String, private val scenario: VisualCase) {
+internal class VisualEvidence(
+    private val surface: String,
+    private val scenario: VisualCase,
+    private val referenceSource: BaselineReferenceSource? = null
+) {
     private val directory = File(System.getProperty("rethink.visual.output")
         ?: System.getenv("RETHINK_VISUAL_OUTPUT") ?: "build/outputs/compose-visual-parity", "$surface/${scenario.name}").apply { mkdirs() }
-    private val report = JSONObject().put("baselineCommit", PINNED_BASELINE).put("surface", surface)
+    private val referenceContext = scenario.context(RuntimeEnvironment.getApplication())
+    private val report = JSONObject().put("schemaVersion", 2).put("baselineCommit", PINNED_BASELINE).put("surface", surface)
         .put("scenario", scenario.name).put("widthDp", scenario.width).put("fontScale", scenario.fontScale)
-        .put("rtl", scenario.rtl).put("baseline", "baseline-xml.png").put("native", "native-compose.png")
+        .put("rtl", scenario.rtl).put("baseline", "baseline-reference.png").put("native", "native-compose.png")
+        .put("referenceKind", referenceSource?.kind ?: "material-library-widget")
+        .put("referenceSourcePath", referenceSource?.resourcePath ?: JSONObject.NULL)
+        .put("baselineSourceSha256", referenceSource?.baselineSourceSha256 ?: JSONObject.NULL)
+        .put("referenceFactory", referenceSource?.factory ?: JSONObject.NULL)
+        .put("referenceFactorySourceSha256", referenceSource?.factorySourceSha256 ?: JSONObject.NULL)
+        .put("referenceAttributeHelperSha256", referenceSource?.attributeHelperSha256 ?: JSONObject.NULL)
+        .put("theme", referenceContext.resources.getResourceName(scenario.theme))
+        .put("density", referenceContext.resources.displayMetrics.density)
+        .put("locale", "en").put("layoutDirection", if (scenario.rtl) "rtl" else "ltr")
+        .put("androidSdk", android.os.Build.VERSION.SDK_INT)
+        .put("declaredMaterialVersion", "1.14.0").put("declaredRobolectricVersion", "4.17")
+        .put("referenceIsHistoricalScreenshot", false)
     private val measurements = JSONArray()
     val failures = mutableListOf<String>()
     private val differences = mutableListOf<String>()
     fun capture(baseline: Bitmap, native: SemanticsNodeInteraction) = capture(baseline, native.captureToImage().asAndroidBitmap())
     fun capture(baseline: Bitmap, native: Bitmap) {
-        File(directory, "baseline-xml.png").outputStream().use { baseline.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        File(directory, "baseline-reference.png").outputStream().use { baseline.compress(Bitmap.CompressFormat.PNG, 100, it) }
         File(directory, "native-compose.png").outputStream().use { native.compress(Bitmap.CompressFormat.PNG, 100, it) }
         report.put("baselineWidthPx", baseline.width).put("baselineHeightPx", baseline.height)
             .put("nativeWidthPx", native.width).put("nativeHeightPx", native.height)
@@ -170,11 +176,11 @@ internal class VisualEvidence(private val surface: String, private val scenario:
             .put("nativeBoundsInRoot", bounds.toString()).put("nativeVisualOverflow", result.hasVisualOverflow))
         close(label, "font size", baseline.textSize, nativeSize, .1f)
         if (style.fontWeight != null && baseline.typeface.weight != style.fontWeight!!.weight) {
-            differences += "$label font weight: XML=${baseline.typeface.weight}, Compose=${style.fontWeight!!.weight}"
+            differences += "$label font weight: reference=${baseline.typeface.weight}, Compose=${style.fontWeight!!.weight}"
         }
         close(label, "letter spacing", baseline.letterSpacing * baseline.textSize, nativeLetter, .05f)
         if (compareColor && style.color.isSpecified && baseline.currentTextColor != style.color.toArgb()) {
-            differences += "$label color: XML=${baseline.currentTextColor}, Compose=${style.color.toArgb()}"
+            differences += "$label color: reference=${baseline.currentTextColor}, Compose=${style.color.toArgb()}"
         }
         check("$label retains literal content", result.layoutInput.text.text == baseline.text.toString(), "No content may be dropped for cosmetic parity")
         if (baseline.ellipsize == null) {
@@ -210,13 +216,13 @@ internal class VisualEvidence(private val surface: String, private val scenario:
         flush()
     }
     private fun close(label: String, property: String, baseline: Float, native: Float, tolerance: Float) {
-        if (abs(baseline - native) > tolerance) differences += "$label $property: XML=$baseline, Compose=$native (tolerance=$tolerance)"
+        if (abs(baseline - native) > tolerance) differences += "$label $property: reference=$baseline, Compose=$native (tolerance=$tolerance)"
     }
     fun finish(): List<String> { flush(); return failures.map { "$surface/${scenario.name}: $it" } }
     private fun flush() {
         report.put("measurements", measurements).put("parityMismatches", JSONArray(differences))
             .put("requiredFailures", JSONArray(failures))
-            .put("acceptance", "Newer Material cosmetic differences are review-only; capture validity, content and accessibility checks remain required")
+            .put("acceptance", "Reference metrics and cosmetic differences are recorded; capture validity, content and accessibility checks remain required. Original-style acceptance requires the separate styling gates.")
         File(directory, "measurements.json").writeText(report.toString(2))
     }
 }

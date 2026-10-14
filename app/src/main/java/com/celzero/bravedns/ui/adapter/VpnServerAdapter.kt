@@ -369,10 +369,16 @@ class VpnServerAdapter(
                 ui.refreshStopIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.ic_refresh))
                 ui.refreshStopIcon.visibility = View.VISIBLE
                 // Monochrome glyph reads stronger than emoji flags; embed deeper.
+                ui.flagWatermark.setFlagDrawable(
+                    AppCompatResources.getDrawable(context, R.drawable.ic_rpn_auto),
+                    R.attr.primaryTextColor,
+                    peakAlpha = 0.25f
+                )
             } else {
                 ui.refreshStopIcon.visibility = View.VISIBLE
                 ui.refreshStopIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.ic_cross))
                 // Regular server: render the country flag as the corner watermark.
+                ui.flagWatermark.setFlagText(group.flagEmoji)
             }
 
             val locationText = if (group.key.equals(AUTO_SERVER_ID, ignoreCase = true)) {

@@ -1,0 +1,10 @@
+{
+  "kind": "IN_MEMORY_POST_REMOVAL_SIMULATION_NOT_ACTUAL_DELETION_OR_BUILD",
+  "removed_from_in_memory_map": 186,
+  "files_deleted_on_disk": 0,
+  "status": "PASS",
+  "errors": [],
+  "expected_preserved_ids": 2516,
+  "remaining_disk_layout_count": 186,
+  "guard_sha256": "d984b58df7cef0ab2136c50a5d0ac50cdadaf078e443423ce968725e8387aeea"
+}

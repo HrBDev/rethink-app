@@ -1,0 +1,158 @@
+{
+  "kind": "worker_source_only_handoff",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "comparison": "803cd4c884243ab9ef9c92cb0c4959d63bc27b00",
+  "runtime_clearance": "BLOCKED",
+  "files": [
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/NetworkSheetContentTest.kt",
+      "sha256": "c01b1e02307a9d55c5e56ec6de6b9d78fc07ed17ec4cf3c8803917ca69f64864",
+      "bytes": 10383
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoTypographyTest.kt",
+      "sha256": "4b38c7780930f15fd837b3caeeca8c618e802e69a2e05dc83ee18437ce44b7eb",
+      "bytes": 3848
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/statistics/StatisticsMaterialReferenceTest.kt",
+      "sha256": "a940d665719ab39b524b454bbbfcd1a1253acacf3f17e370397498adcbf5a40c",
+      "bytes": 4380
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/utilities/UtilityTypographyTest.kt",
+      "sha256": "092a25ee61b6236cc332ae058a69eaf0eebb600ae779a2ae001f0cce789d291e",
+      "bytes": 7916
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/ContentVisualParityTest.kt",
+      "sha256": "a078391605fe1de03d219bf2d9cf31a53785ea1c01786ee59d5e3947672adac4",
+      "bytes": 15493
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/visual/VisualParityHarness.kt",
+      "sha256": "607afbe139bed9e2fe2b2400041a007e7bc02de5bb88e8ede898b56ca2ae7673",
+      "bytes": 15739
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineOrbotInfoReference.kt",
+      "sha256": "1714de33a8be18f4f0e177f6fa283c1f67eb2e0b882b625d782249d2314b8d9c",
+      "bytes": 9700
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineReachabilityReference.kt",
+      "sha256": "cbe833e669f20675374ceffe15a81e86222749ea9a1c572b76f33e012cbf15cb",
+      "bytes": 1508
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineReferenceAttributes.kt",
+      "sha256": "769d740d48d03881a4d16ec590b9fdd18e2b5ea5bb16b77460162df6393a1a52",
+      "bytes": 1589
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineReferenceSources.kt",
+      "sha256": "7035feaeef447942dac3b1eae7c64de27fd648f901567d8e5b22976ace796942",
+      "bytes": 2493
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineSponsorSuccessReference.kt",
+      "sha256": "009282ea71b69010b0474ac3a3231f7d08b87ed2482fd45e13ded3f7e35b8909",
+      "bytes": 7934
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineStatisticsFilterReference.kt",
+      "sha256": "0bd2e83bb60563ac35af2f6d4099beb54c1b60caa16c272513bb06dfd68fda73",
+      "bytes": 8842
+    },
+    {
+      "path": "app/src/test/java/com/celzero/bravedns/ui/compose/reference/BaselineSupportReference.kt",
+      "sha256": "aa80dacd1760ae8163bd0a01cb0fea920617193ea50a35a65235533b18b62e7a",
+      "bytes": 38823
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-assertion-parity.json",
+      "sha256": "4b6f0c0da531cd02d6659d1b6d891666501e78765e3831f14da73798d703f159",
+      "bytes": 9498
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-audit.py",
+      "sha256": "ee0233b813d1fe894e8287e0b871c7e508e7fc034225cb42da2c63110c41e224",
+      "bytes": 6994
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-check-fixtures.py",
+      "sha256": "673c2a7ba921d74b4b8a0858e5c4ef80139e5881fec737406d8b0c1c0de6cb8a",
+      "bytes": 7931
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-generate-factories.py",
+      "sha256": "132666dd8ed8a5cbcfc11087350f79f6a6b8f97e8881734cd9c56f102decd0ff",
+      "bytes": 10094
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-implementation-review.json",
+      "sha256": "dc385fb7bca54dfa3b3053a4ff4d043d745415fca560ab4646bc51071b181ae0",
+      "bytes": 11615
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-implementation.md",
+      "sha256": "cec9fbb1b1ce884292954d7861e546ef9c010a57313f85c78a1792dd655b1958",
+      "bytes": 8574
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-inventory.json",
+      "sha256": "8651c5765cb1ee00f33659c76b1365521b16b1b392a56fe29a42dd3a9c0b5aff",
+      "bytes": 226331
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-orbot-contract.json",
+      "sha256": "45e02122bef6f1f9e66e9549bfc84ed7eb03ebe6f7dbd450780c72652e6c9f8f",
+      "bytes": 6958
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-pin-resources.py",
+      "sha256": "961b787f1e303cf2042a1a91b0eb998df949c3712c8bc426038dcd481cc45e10",
+      "bytes": 3618
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-plan.md",
+      "sha256": "13f180188caaee142d5b4e5539e2e0c86c7de11039020aa33e76cdef5aca0133",
+      "bytes": 29895
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-preserve-all-ids.txt",
+      "sha256": "8e5c76edcfdabb4887426b814f09eb0db89cff83892d40d3feeab012f0f69bb5",
+      "bytes": 50981
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-preserve-production-ids.txt",
+      "sha256": "f2eda032faf809efaac14a647a5a0602bd58ad71b3d4abe8ba0adf0e5065ca2b",
+      "bytes": 2898
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-reachability-contract.json",
+      "sha256": "7047bc32b82124934c9fafbdf06f4c9699bd4b43e1a853a8363d87930756e9b7",
+      "bytes": 1160
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-resource-pins.json",
+      "sha256": "f3b83fbda609586be22fd11a5bee6048d31c9f68b6afc2d40ec4a742519a74c9",
+      "bytes": 10834
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-sponsor-contract.json",
+      "sha256": "bb31672e0a2a3f59d0cef8d8c9f241f020ea33084adb4e7ef069fe1b5f5671dd",
+      "bytes": 4965
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-statistics-contract.json",
+      "sha256": "9e434af3252c9556a9263524e3ecc05e301693d581dada1a72cbc208f4f543e2",
+      "bytes": 6503
+    },
+    {
+      "path": "docs/xml-layout-removal/test-dependencies-support-contract.json",
+      "sha256": "b7e50cc0c8e44443637d7174830adf8e4b40fce35df412429c16e5a969ab3aa8",
+      "bytes": 27206
+    }
+  ]
+}

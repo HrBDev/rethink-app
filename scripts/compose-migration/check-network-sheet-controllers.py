@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Four network sheets: pinned-source controller guard, without starting Android or services."""
 from pathlib import Path
-import importlib.util, subprocess, json, sys
+import importlib.util, subprocess, json, sys, argparse, hashlib
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location('guard', Path(__file__).with_name('check-wireguard-controllers.py'))
 g = importlib.util.module_from_spec(spec); spec.loader.exec_module(g)
@@ -13,6 +13,7 @@ FILES = {
 }
 SUBSTITUTIONS = [('MaterialAlertDialogBuilder', 'WgAlertDialogBuilder'),
                  ('b.orbotIcon.clearAnimation()', 'b.animating = false')]
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument("--allow-retained-layouts",action="store_true");args=parser.parse_args()
 results = []; errors = []
 for filename, presentation in FILES.items():
     path = 'app/src/main/java/com/celzero/bravedns/ui/bottomsheet/' + filename
@@ -34,14 +35,21 @@ orbot = (ROOT / 'app/src/main/java/com/celzero/bravedns/ui/bottomsheet/OrbotBott
 for line in ['var text = getString(R.string.orbot_explanation)', 'text = text.replace("\\n", "<br /><br />")',
              'val styledText = HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)']:
     if line not in orbot: errors.append('Orbot info text transform changed: ' + line)
-# The offscreen typography oracle must remain the pinned XML, not a second migrated fixture.
+# The oracle retains immutable baseline properties in independent test-only widgets, never app XML inflation.
 for path in ['app/src/full/res/layout/dialog_info_rules_layout.xml', 'app/src/full/res/layout/bottom_sheet_orbot.xml',
              'app/src/main/res/layout/activity_backup_restore.xml', 'app/src/main/res/layout/bottomsheet_rinr_warning.xml',
              'app/src/main/res/layout/bottom_sheet_proxies_list.xml', 'app/src/main/res/layout/list_item_proxy_cc_wg.xml']:
     before = subprocess.check_output(['git', 'show', g.BASELINE + ':' + path], cwd=ROOT)
-    if before != (ROOT / path).read_bytes(): errors.append('Baseline XML fixture changed: ' + path)
+    retained=(ROOT/path).exists()
+    if retained and not args.allow_retained_layouts:errors.append('Final layout-removal gate: '+path+' is still present')
+    if retained and before != (ROOT/path).read_bytes(): errors.append('Retained baseline source changed: ' + path)
+    if path.endswith('/dialog_info_rules_layout.xml'):
+        contract=json.loads((ROOT/'docs/xml-layout-removal/test-dependencies-orbot-contract.json').read_text())
+        if contract['source_path']!=path or contract['baseline_source_sha256']!=hashlib.sha256(before).hexdigest():errors.append('Independent Orbot reference provenance changed')
+        if contract['baseline']!=g.BASELINE:errors.append('Independent Orbot reference baseline changed')
+        if contract['factory_sha256']!=hashlib.sha256((ROOT/contract['factory_path']).read_bytes()).hexdigest():errors.append('Independent Orbot reference factory changed without review')
 g.self_test()
-report = {'baseline': g.BASELINE, 'kind': 'network-sheet token equality with explicit presentation substitutions',
+report = {'mode':'PRE_REMOVAL_AUDIT_NOT_FINAL' if args.allow_retained_layouts else 'FINAL_LAYOUT_REMOVAL','baseline': g.BASELINE, 'kind': 'network-sheet token equality with explicit presentation substitutions',
           'passed': not errors, 'count': len(results), 'methods': results,
           'excludedPresentation': {k: sorted(v) for k, v in FILES.items()}, 'substitutions': SUBSTITUTIONS,
           'limits': ['Source equality does not establish compilation, Android behavior, rendering or accessibility parity.',

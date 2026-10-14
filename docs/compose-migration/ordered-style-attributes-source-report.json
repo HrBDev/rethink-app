@@ -1,7 +1,7 @@
 {
   "status": "PASS_SOURCE_ONLY",
   "style_queries_routed": 62,
-  "negative_controls_rejected": 11,
+  "negative_controls_rejected": 12,
   "compile": "UNRUN",
   "android_resource_tests": "UNRUN",
   "rendering": "UNRUN"

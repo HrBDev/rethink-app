@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.TypedValue
 
 /**
  * Android's style lookup requires ascending resource IDs. Presentation resolvers group attributes
@@ -24,6 +25,7 @@ internal class OrderedStyledAttributes(private val values: TypedArray, private v
     fun hasValue(index: Int) = values.hasValue(order.index(index))
     fun hasValueOrEmpty(index: Int) = values.hasValueOrEmpty(order.index(index))
     fun peekValue(index: Int) = values.peekValue(order.index(index))
+    fun getValue(index: Int, outValue: TypedValue): Boolean = values.getValue(order.index(index), outValue)
     fun getResourceId(index: Int, fallback: Int) = values.getResourceId(order.index(index), fallback)
     fun getDimension(index: Int, fallback: Float) = values.getDimension(order.index(index), fallback)
     fun getDimensionPixelSize(index: Int, fallback: Int) = values.getDimensionPixelSize(order.index(index), fallback)

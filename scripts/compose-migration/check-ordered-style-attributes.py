@@ -21,7 +21,7 @@ def check(overrides=None):
     assert 'sortedIds.binarySearch(attributes[it])' in wrapper, 'preserve declared indices'
     assert 'fun index(declaredIndex: Int): Int = declaredToSorted[declaredIndex]' in wrapper
     assert '.sort()' not in wrapper, 'do not mutate caller arrays'
-    for method in ('hasValue', 'hasValueOrEmpty', 'peekValue', 'getResourceId', 'getDimension',
+    for method in ('hasValue', 'hasValueOrEmpty', 'peekValue', 'getValue', 'getResourceId', 'getDimension',
                    'getDimensionPixelSize', 'getBoolean', 'getInt', 'getFloat', 'getColor',
                    'getColorStateList', 'getDrawable', 'getString'):
         assert f'values.{method}(order.index(index)' in wrapper, f'unmapped {method}'
@@ -46,7 +46,7 @@ def check(overrides=None):
         assert token in control, 'intrinsic icon contract: ' + token
     for token in ('application = Application::class', 'allQueryOverloadsMatchIndependentSingleAttributePlatformQueries',
                   'context.obtainStyledAttributes(intArrayOf(it))', 'assertArrayEquals(original, input)',
-                  'hasValueOrEmpty', 'snapshot(expected.peekValue(0))'):
+                  'hasValueOrEmpty', 'snapshot(expected.peekValue(0))', 'expected.getValue(0, expectedValue)', 'actual.getValue(index, actualValue)', 'snapshot(expectedValue), snapshot(actualValue)'):
         assert token in test, 'independent resource test: ' + token
     return calls
 
@@ -61,6 +61,7 @@ def main():
         (WRAPPER, 'declaredToSorted[declaredIndex]', 'declaredIndex'),
         (WRAPPER, 'values.hasValueOrEmpty(order.index(index))', 'values.hasValueOrEmpty(index)'),
         (WRAPPER, 'values.getDimension(order.index(index), fallback)', 'values.getDimension(index, fallback)'),
+        (WRAPPER, 'values.getValue(order.index(index), outValue)', 'values.getValue(index, outValue)'),
         (WRAPPER, 'obtainStyledAttributes(style, order.sortedIds)', 'obtainStyledAttributes(style, attributes)'),
         (CONTROL, 'context.obtainOrderedStyledAttributes(null, attrs', 'context.obtainStyledAttributes(null, attrs'),
         (CONTROL, 'originalIconExtent(iconPainter.intrinsicSize.width, density)', 'look.iconSize.dp'),

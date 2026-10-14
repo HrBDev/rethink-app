@@ -45,6 +45,11 @@ class OrderedStyledAttributesTest {
                             assertEquals(expected.hasValue(0), actual.hasValue(index))
                             assertEquals(expected.hasValueOrEmpty(0), actual.hasValueOrEmpty(index))
                             assertEquals(snapshot(expected.peekValue(0)), snapshot(actual.peekValue(index)))
+                            val expectedValue = TypedValue()
+                            val actualValue = TypedValue()
+                            val found = expected.getValue(0, expectedValue)
+                            assertEquals("getValue presence at declared index $index", found, actual.getValue(index, actualValue))
+                            if (found) assertEquals(snapshot(expectedValue), snapshot(actualValue))
                         } finally { expected.recycle() }
                     }
                 } finally { actual.recycle() }

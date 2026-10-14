@@ -1,0 +1,701 @@
+{
+  "status": "SOURCE_REVIEW_ONLY_NO_ADDITIONAL_MISSING_OPERATION_FOUND",
+  "snapshot_date_utc": "2026-10-14",
+  "production_acquisitions": 62,
+  "production_files": 17,
+  "required_operation_count": 15,
+  "current_file_hashes_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/resources/OrderedStyledAttributes.kt": "4120f4b8fbc0935b33f97160b56e03e814369ed3438cf27658d1ec462c555b68",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/resources/OrderedStyledAttributesTest.kt": "c3c71d70cace26c91da541f05d8eb0aaef8d0655b24f1199afa31fc64b6eb7db",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt": "d315b85ab34543cc45c979fdeaa7a6e267e711e3d80a673e720babe24f0a9280"
+  },
+  "methodology": "Full production acquisition inventory, manual receiver/selection-alias review, and broad dot-call/property scan of all 17 consumer files. Finite reviewed census, not a Kotlin parser/type-checker.",
+  "files": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/RethinkTheme.kt",
+      "sha256": "5e4f587675ade146cb3affb1d399bbe7a9a9159c391fe7aae59a28e6a255ea5d",
+      "acquisition_count": 1,
+      "acquisitions": [
+        {
+          "line": 21,
+          "source": "val values = LocalContext.current.obtainOrderedStyledAttributes(intArrayOf(attribute))"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "values"
+      ],
+      "required_operations": [
+        "getColor",
+        "hasValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppConnectionRows.kt",
+      "sha256": "6514b358da7c2f2c5ac91e876ce053b0a98d791985f89aa943fc397be1172904",
+      "acquisition_count": 3,
+      "acquisitions": [
+        {
+          "line": 141,
+          "source": "val defaults = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor), android.R.attr.textViewStyle, 0)"
+        },
+        {
+          "line": 142,
+          "source": "val inherited = context.obtainOrderedStyledAttributes(if (appearance != 0) appearance else defaults.getResourceId(0, 0), intArrayOf(android.R.attr.textColor))"
+        },
+        {
+          "line": 155,
+          "source": "val attributes = context.obtainOrderedStyledAttributes(null,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "defaults",
+        "inherited",
+        "attributes"
+      ],
+      "required_operations": [
+        "getColorStateList",
+        "getDimension",
+        "getResourceId",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistCardAppearance.kt",
+      "sha256": "550eeb956ac6ef53c6b47d2f1a5fa59ac7317879fa896bd195ab03e757228add",
+      "acquisition_count": 1,
+      "acquisitions": [
+        {
+          "line": 32,
+          "source": "val attributes = cardContext.obtainOrderedStyledAttributes(null,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "attributes"
+      ],
+      "required_operations": [
+        "getDimension",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt",
+      "sha256": "d315b85ab34543cc45c979fdeaa7a6e267e711e3d80a673e720babe24f0a9280",
+      "acquisition_count": 2,
+      "acquisitions": [
+        {
+          "line": 112,
+          "source": "val widget = context.obtainOrderedStyledAttributes(MaterialR.style.Widget_Material3_BottomNavigationView,"
+        },
+        {
+          "line": 123,
+          "source": "val attributes = context.obtainOrderedStyledAttributes(appearance,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "widget",
+        "attributes"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getDimension",
+        "getFloat",
+        "getInt",
+        "getResourceId",
+        "getString",
+        "getValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCard.kt",
+      "sha256": "bee64b43a3f577aa04f44e9dbd832698832855309b1ac76448c11debcfcafa13",
+      "acquisition_count": 2,
+      "acquisitions": [
+        {
+          "line": 58,
+          "source": "val defaults = context.obtainOrderedStyledAttributes(null, attributes, styleAttribute, 0)"
+        },
+        {
+          "line": 59,
+          "source": "val explicit = if (style != 0) context.obtainOrderedStyledAttributes(style, attributes) else null"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "defaults",
+        "explicit",
+        "values(index)"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColorStateList",
+        "getDimension",
+        "hasValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt",
+      "sha256": "2c7c1e8fd8ccadbb96f3a05087aae2873ae9b31786bc70fda2b5a8aa5b99fc5e",
+      "acquisition_count": 5,
+      "acquisitions": [
+        {
+          "line": 245,
+          "source": "val a = context.obtainOrderedStyledAttributes(spec.style, intArrayOf(attr))"
+        },
+        {
+          "line": 246,
+          "source": "val b = context.obtainOrderedStyledAttributes(null, intArrayOf(attr), defaultAttr, defaultStyle)"
+        },
+        {
+          "line": 253,
+          "source": "val androidTheme = context.obtainOrderedStyledAttributes(spec.style, intArrayOf(android.R.attr.theme)).let { try { it.getResourceId(0, 0) } finally { it.recycle() } }"
+        },
+        {
+          "line": 255,
+          "source": "val base = wrapped.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)"
+        },
+        {
+          "line": 256,
+          "source": "val explicit = wrapped.obtainOrderedStyledAttributes(spec.style, attrs)"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "a",
+        "b",
+        "it in immediate let",
+        "base",
+        "explicit",
+        "array(i)",
+        "values = array(i)"
+      ],
+      "required_operations": [
+        "getColorStateList",
+        "getDimension",
+        "getDrawable",
+        "getResourceId",
+        "hasValue",
+        "hasValueOrEmpty",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalControls.kt",
+      "sha256": "930b347e1d1389600458b218e541c9a811da2b2366eb7aad036637520dd82e7a",
+      "acquisition_count": 5,
+      "acquisitions": [
+        {
+          "line": 215,
+          "source": "val defaults = context.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)"
+        },
+        {
+          "line": 216,
+          "source": "val source = context.obtainOrderedStyledAttributes(spec.style, attrs)"
+        },
+        {
+          "line": 265,
+          "source": "val base = context.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)"
+        },
+        {
+          "line": 266,
+          "source": "val explicit = context.obtainOrderedStyledAttributes(spec.style, attrs)"
+        },
+        {
+          "line": 280,
+          "source": "val appearance = context.obtainOrderedStyledAttributes(res(0), intArrayOf(android.R.attr.textSize, android.R.attr.textColor,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "defaults",
+        "source",
+        "(if (...) source else defaults)",
+        "base",
+        "explicit",
+        "array(index)",
+        "values = array(index)",
+        "appearance",
+        "fontArray",
+        "sizeArray"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColorStateList",
+        "getDimension",
+        "getDrawable",
+        "getFloat",
+        "getInt",
+        "getResourceId",
+        "getString",
+        "hasValue",
+        "hasValueOrEmpty",
+        "peekValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalProgress.kt",
+      "sha256": "e016253c1ccaf74289e058e83ef92be32ae01ea18f9be0d7553f865cee927a78",
+      "acquisition_count": 3,
+      "acquisitions": [
+        {
+          "line": 50,
+          "source": "val a = context.obtainOrderedStyledAttributes(style, intArrayOf(MaterialR.attr.trackThickness,"
+        },
+        {
+          "line": 101,
+          "source": "val a = context.obtainOrderedStyledAttributes(R.style.OriginalWgProgress_dialog_server_loading_server_loading_spinner,"
+        },
+        {
+          "line": 118,
+          "source": "val a = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.progressDrawable, android.R.attr.minHeight,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "a"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColor",
+        "getColorStateList",
+        "getDimensionPixelSize",
+        "getDrawable",
+        "hasValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt",
+      "sha256": "52b1b35c22273f62f2855e261588345a55ac1cf3fcaf484f42a4b7677c11ba1c",
+      "acquisition_count": 6,
+      "acquisitions": [
+        {
+          "line": 188,
+          "source": "val overlayStyle = context.obtainOrderedStyledAttributes(spec.style, overlayAttrs)"
+        },
+        {
+          "line": 189,
+          "source": "val overlayBase = context.obtainOrderedStyledAttributes(null, overlayAttrs, defaultAttr, defaultStyle)"
+        },
+        {
+          "line": 203,
+          "source": "val base = themed.obtainOrderedStyledAttributes(null, attrs, defaultAttr, defaultStyle)"
+        },
+        {
+          "line": 204,
+          "source": "val explicit = themed.obtainOrderedStyledAttributes(spec.style, attrs)"
+        },
+        {
+          "line": 278,
+          "source": "val a = context.obtainOrderedStyledAttributes(style, intArrayOf(android.R.attr.textAppearance, android.R.attr.textColor,"
+        },
+        {
+          "line": 281,
+          "source": "val appearance = context.obtainOrderedStyledAttributes(a.getResourceId(0, 0), intArrayOf(android.R.attr.textSize,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "overlayStyle",
+        "overlayBase",
+        "base",
+        "explicit",
+        "array(i)",
+        "values = array(i)",
+        "a",
+        "appearance"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColor",
+        "getColorStateList",
+        "getDimension",
+        "getDrawable",
+        "getFloat",
+        "getInt",
+        "getResourceId",
+        "getString",
+        "hasValue",
+        "hasValueOrEmpty",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalTabs.kt",
+      "sha256": "2f0bf6a7d3579a278f4fae0f4bbfd2d33dd0e6a33bafce7dc9c92ac71e99d1a7",
+      "acquisition_count": 3,
+      "acquisitions": [
+        {
+          "line": 177,
+          "source": "val overlay = base.obtainOrderedStyledAttributes(R.style.TabbedLayoutDefault, intArrayOf(MaterialR.attr.materialThemeOverlay))"
+        },
+        {
+          "line": 188,
+          "source": "val a = context.obtainOrderedStyledAttributes(R.style.TabbedLayoutDefault, attrs)"
+        },
+        {
+          "line": 192,
+          "source": "val text = context.obtainOrderedStyledAttributes(textAppearance, intArrayOf(android.R.attr.textColor, androidx.appcompat.R.attr.textAllCaps))"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "it in immediate let",
+        "a",
+        "text"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColor",
+        "getColorStateList",
+        "getDimensionPixelSize",
+        "getDrawable",
+        "getInt",
+        "getResourceId",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/fields/OriginalTextFields.kt",
+      "sha256": "f73268ec79f6d58e2b811be1c53c8ebfdb4beca621591a3d7a2f0dba641eea9c",
+      "acquisition_count": 11,
+      "acquisitions": [
+        {
+          "line": 111,
+          "source": "val editor = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance,"
+        },
+        {
+          "line": 115,
+          "source": "val appearance = context.obtainOrderedStyledAttributes(editor.getResourceId(0, 0), intArrayOf("
+        },
+        {
+          "line": 117,
+          "source": "val search = context.obtainOrderedStyledAttributes(null, intArrayOf(androidx.appcompat.R.attr.queryBackground,"
+        },
+        {
+          "line": 136,
+          "source": "val cursor = context.obtainOrderedStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {"
+        },
+        {
+          "line": 161,
+          "source": "val box = context.obtainOrderedStyledAttributes(widgetStyle, intArrayOf(MaterialR.attr.boxBackgroundMode,"
+        },
+        {
+          "line": 166,
+          "source": "val edit = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.background,"
+        },
+        {
+          "line": 193,
+          "source": "val cursor = context.obtainOrderedStyledAttributes(intArrayOf(androidx.appcompat.R.attr.colorControlActivated)).let {"
+        },
+        {
+          "line": 196,
+          "source": "val highlight = context.obtainOrderedStyledAttributes(intArrayOf(android.R.attr.textColorHighlight)).let {"
+        },
+        {
+          "line": 443,
+          "source": "val attrs = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.background),"
+        },
+        {
+          "line": 451,
+          "source": "val item = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.paddingLeft, android.R.attr.paddingTop,"
+        },
+        {
+          "line": 460,
+          "source": "val attrs = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textColor), android.R.attr.spinnerDropDownItemStyle, 0)"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "editor",
+        "appearance",
+        "search",
+        "box",
+        "edit",
+        "attrs",
+        "item",
+        "it in immediate let"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColor",
+        "getColorStateList",
+        "getDimension",
+        "getDimensionPixelSize",
+        "getDrawable",
+        "getInt",
+        "getResourceId",
+        "hasValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeCardSpacing.kt",
+      "sha256": "a6c49666c76129091b135b9437cfd7a4fbe51e1c2fc7b8f7aa5b2421932a1af6",
+      "acquisition_count": 2,
+      "acquisitions": [
+        {
+          "line": 41,
+          "source": "val values = context.obtainOrderedStyledAttributes("
+        },
+        {
+          "line": 76,
+          "source": "override ?: context.obtainOrderedStyledAttributes(null, intArrayOf(androidx.cardview.R.attr.cardElevation),"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "values, including named let parameter"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getDimension",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt",
+      "sha256": "4bceab8271e74f9649a949a8a81580fbaef1ad48005b982997663747b81badf5",
+      "acquisition_count": 1,
+      "acquisitions": [
+        {
+          "line": 349,
+          "source": "val attrs = context.obtainOrderedStyledAttributes(null,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "attrs"
+      ],
+      "required_operations": [
+        "getColorStateList",
+        "getDimension",
+        "getDrawable",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/networksheets/OrbotInfoContent.kt",
+      "sha256": "11e82075ac66d70aa7ca75f658e714e926ed84ce7fddf8f82bd672754e9308a5",
+      "acquisition_count": 5,
+      "acquisitions": [
+        {
+          "line": 59,
+          "source": "val defaults = context.obtainOrderedStyledAttributes(null, attrs, android.R.attr.textViewStyle, 0)"
+        },
+        {
+          "line": 60,
+          "source": "val widget = context.obtainOrderedStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem, attrs)"
+        },
+        {
+          "line": 61,
+          "source": "val values = context.obtainOrderedStyledAttributes(appearance, attrs)"
+        },
+        {
+          "line": 70,
+          "source": "val colorValue = context.obtainOrderedStyledAttributes(intArrayOf(R.attr.primaryTextColor))"
+        },
+        {
+          "line": 75,
+          "source": "val padding = context.obtainOrderedStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem,"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "defaults",
+        "widget",
+        "values",
+        "indexValue(index)",
+        "colorValue",
+        "padding"
+      ],
+      "required_operations": [
+        "getColor",
+        "getDimension",
+        "getFloat",
+        "getInt",
+        "getString",
+        "hasValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityTypography.kt",
+      "sha256": "37025e3bc7f1795f9e726eea33ed6eb589a96c5792eb7a55f37e308f63492360",
+      "acquisition_count": 4,
+      "acquisitions": [
+        {
+          "line": 22,
+          "source": "val defaultAppearance = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textAppearance), defaultStyleAttribute, 0).let {"
+        },
+        {
+          "line": 25,
+          "source": "val inherited = context.obtainOrderedStyledAttributes(defaultAppearance, ids)"
+        },
+        {
+          "line": 26,
+          "source": "val widget = context.obtainOrderedStyledAttributes(null, ids, defaultStyleAttribute, 0)"
+        },
+        {
+          "line": 27,
+          "source": "val explicit = if (appearance != 0) context.obtainOrderedStyledAttributes(appearance, ids) else null"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "it in immediate let",
+        "inherited",
+        "widget",
+        "explicit",
+        "values(index)"
+      ],
+      "required_operations": [
+        "getDimension",
+        "getFloat",
+        "getInt",
+        "getResourceId",
+        "getString",
+        "hasValue",
+        "peekValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "sha256": "acc6a71eff08346577010d7a547661e7f285e3ed3053f92427e5b4595aa9b3b7",
+      "acquisition_count": 4,
+      "acquisitions": [
+        {
+          "line": 200,
+          "source": "context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textSize), android.R.attr.textAppearanceMedium,"
+        },
+        {
+          "line": 219,
+          "source": "context.obtainOrderedStyledAttributes(null, intArrayOf(attribute), styleAttribute, 0).let {"
+        },
+        {
+          "line": 231,
+          "source": "val widget = context.obtainOrderedStyledAttributes(null, intArrayOf(android.R.attr.textColor, android.R.attr.textAppearance), styleAttribute, 0)"
+        },
+        {
+          "line": 234,
+          "source": "val inherited = if (appearance != 0) context.obtainOrderedStyledAttributes(appearance, intArrayOf(android.R.attr.textColor)) else null"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "it in immediate let",
+        "widget",
+        "inherited"
+      ],
+      "required_operations": [
+        "getColorStateList",
+        "getDimension",
+        "getDimensionPixelSize",
+        "getResourceId",
+        "hasValue",
+        "recycle"
+      ]
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextStyles.kt",
+      "sha256": "369da6ecc7dc53afcc92563f7fcdf70b7f5fd14fcea2d6659ef64a7118b0a5c8",
+      "acquisition_count": 4,
+      "acquisitions": [
+        {
+          "line": 48,
+          "source": "val base = context.obtainOrderedStyledAttributes(null, ids, spec?.defaultStyleAttr ?: android.R.attr.textViewStyle, 0)"
+        },
+        {
+          "line": 49,
+          "source": "val explicit = spec?.let { context.obtainOrderedStyledAttributes(it.style, ids) }"
+        },
+        {
+          "line": 51,
+          "source": "val appearance = context.obtainOrderedStyledAttributes(node?.textAppearanceStyle ?: direct(0).getResourceId(0, 0), ids)"
+        },
+        {
+          "line": 74,
+          "source": "val lineHeightEnabled = context.obtainOrderedStyledAttributes(intArrayOf(MaterialR.attr.textAppearanceLineHeightEnabled)).let {"
+        }
+      ],
+      "reviewed_receivers_and_selection_aliases": [
+        "base",
+        "explicit",
+        "appearance",
+        "direct(i)",
+        "value(i)",
+        "fontArray",
+        "heightArray",
+        "it in immediate let/takeIf"
+      ],
+      "required_operations": [
+        "getBoolean",
+        "getColorStateList",
+        "getDimension",
+        "getDimensionPixelSize",
+        "getFloat",
+        "getInt",
+        "getResourceId",
+        "getString",
+        "hasValue",
+        "peekValue",
+        "recycle"
+      ]
+    }
+  ],
+  "return_contracts": {
+    "Boolean": [
+      "hasValue",
+      "hasValueOrEmpty",
+      "getBoolean",
+      "getValue"
+    ],
+    "Int": [
+      "getResourceId",
+      "getDimensionPixelSize",
+      "getInt",
+      "getColor"
+    ],
+    "Float": [
+      "getDimension",
+      "getFloat"
+    ],
+    "ColorStateList?": [
+      "getColorStateList"
+    ],
+    "String?": [
+      "getString"
+    ],
+    "nullable-capable platform TypedValue": [
+      "peekValue"
+    ],
+    "nullable-capable Drawable": [
+      "getDrawable"
+    ],
+    "Unit": [
+      "recycle"
+    ]
+  },
+  "findings": [
+    "No additional source-proven missing operation after the mapped getValue repair. All 15 operation names needed by reviewed wrapper receivers are present. No caller requires a TypedArray-typed assignment/argument, enumeration properties, close/use, or unmapped extra getter.",
+    "getValue now explicitly returns Boolean and passes order.index(index) plus the caller-owned TypedValue. HomeChrome checks that Boolean and reads the output. The coordinator also removed the unused TextButton import.",
+    "hasValueOrEmpty requires API 22; gradle/lib.toml has minSdk 23 and compileSdk 37. Remaining forwarding methods are API 1. No new minimum-API blocker found.",
+    "Nullable object results retain safe calls, Elvis fallback, explicit requireNotNull, or immediate null checks. No new non-null assertion introduced.",
+    "Existing class-scoped ResourceType suppression covers the adapter forwarding calls. No extra or global suppression is needed. Lint remains unrun, so absence of diagnostics is not established.",
+    "Updated independent single-ID oracle tests all three query overloads and six themes. It compares getValue presence and successful snapshots only; that avoids asserting undefined output-object state after false."
+  ],
+  "false_positive_hits": [
+    "OriginalSliders.kt:249 getValue belongs to Map; UtilityTypography.kt:65 getValue belongs to Resources.",
+    "getFont in WgTextStyles.kt:64, OriginalControls.kt:286, and OriginalSliders.kt:293 belongs to ResourcesCompat.",
+    "getText in WgAlertDialog.kt belongs to Context."
+  ],
+  "remaining_targeted_test_assertions": [
+    "The focused resource test exercises hasValue, hasValueOrEmpty, peekValue, and getValue, but not the other 10 value getters or recycle lifecycle. Add explicit Kotlin-typed assignments for every method to catch future absent/wrong return signatures during compilation.",
+    "Use deliberately unsorted fixtures with suitable values for each getter and independent single-ID platform queries; compare fallback values too. Do not call incompatible getters on arbitrary attributes.",
+    "Add controlled undefined, @empty, and duplicate cases. Compare getValue Boolean; compare output object only when true.",
+    "Expand successful TypedValue snapshot to assetCookie, density, and changingConfigurations.",
+    "Add API-23 coverage to API-35 resource testing; compare drawable/color-state-list content or representative states, not object identity."
+  ],
+  "limits": {
+    "kotlin_compile": "UNRUN",
+    "android_lint": "UNRUN",
+    "robolectric": "UNRUN",
+    "device_emulator_visual": "UNRUN",
+    "production_edits_by_reviewer": "NONE",
+    "toolchain_download_execution": "NONE",
+    "AGENTS": "None found in checkout or checked ancestor paths."
+  },
+  "primary_api_reference": "https://developer.android.com/reference/kotlin/android/content/res/TypedArray"
+}

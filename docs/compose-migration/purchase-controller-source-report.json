@@ -1,0 +1,1199 @@
+{
+  "status": "PASS",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "reconstruction": "Freshly reimplemented and rechecked after lost-workspace restart; no prior test result reused",
+  "exact_body_count": 211,
+  "narrowly_adapted_body_count": 26,
+  "privacy_notice_sha256": "84af9b0cae02134ca3cc00c2118034325f2555a9c32cad0953afc1dcce165093",
+  "errors": [],
+  "exact_bodies": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "init",
+      "sha256": "bf5a98a29836c93f1c67bf1d2829023c923a862dd8586549dafebd7c443a09f2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "handlePaymentStatusUi",
+      "sha256": "c4394dbe241ef71a625eb449c51549fb97934686004c16451b5941daeea72525"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "observePaymentStatus",
+      "sha256": "1d5df8cf764091159bdf9939751c8886b925da700535b39c79da37432e57c479"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "handleKeys",
+      "sha256": "c16df86653c621e6c852476737b85f0bc1c96ee5f49ca8aaaaa90237ae64a437"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "setupClickListeners",
+      "sha256": "2c986baa4c4b5c3db3f2e39cef7dd13f5917907a9677da353fb4df92067d52cb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "setSpannablePricing",
+      "sha256": "b28fddf5710fa93b2d4c9ecb4e0f850dd61c0ca2d2b92329dee2c7b3b4b9388e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "generateRandomHexToken",
+      "sha256": "665a8781e2fb11ba617a3831890ad0d7586e407b4c8c217e558b5756df45c656"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "io",
+      "sha256": "20c1597f9b885339c64e0505882bcaebeb74b201720b0ee41e1081636a16d31e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CheckoutActivity.kt",
+      "method": "uiCtx",
+      "sha256": "c958027178306c2465b778d4021a921285381a88db395b8ffc95dda5d3e6aecb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "setDolphinSignature",
+      "sha256": "648fd2de62f35510fe0d705e4533e3b1b2fb0fbe0043b926dc63ff68d742b9bb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "onSaveInstanceState",
+      "sha256": "f0ed495b66650c4453f8329073459b40a538786dab728eb9a77370e913bcef2a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "observeTotalCount",
+      "sha256": "173202c870c5f7a50d8d2cb35df96965484eb874a2ce1de1a6f658674a95be15"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "loadHeroSubtitle",
+      "sha256": "acfaf3c8bddbd1b2dbc04284b4cd5a981993f02150757a894870455a3b16ece8"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "buildHeroSubtitle",
+      "sha256": "0e3f0d17d5801e7427b89a2aacabf9831400336af543ac5e62e64c6f5c5b6c46"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "onPause",
+      "sha256": "7d022ed447eb6717c45fb7d95b220a51f1440ed22f3d9da74be2fc069e4cafd8"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "onResume",
+      "sha256": "11661b012eb18956ce1f46aa95da28ea6d78c03e5f5813fb5be3037386eb9c8e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "uiCtx",
+      "sha256": "c958027178306c2465b778d4021a921285381a88db395b8ffc95dda5d3e6aecb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "io",
+      "sha256": "20c1597f9b885339c64e0505882bcaebeb74b201720b0ee41e1081636a16d31e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "setDolphinSignature",
+      "sha256": "648fd2de62f35510fe0d705e4533e3b1b2fb0fbe0043b926dc63ff68d742b9bb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "setupClickListeners",
+      "sha256": "efd1a29004d088300763b6221b6f4f4988058b546970d03901c5108bd7b33165"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "openBillingHistory",
+      "sha256": "f0b8a1798e82c25b9c0bb0a7f26e540d98c3fa392656e10f91e56fe5fe9135f1"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "showShimmer",
+      "sha256": "69269fd56d556a3a08be4faeed9e0965596329f81d83361a8c711b61b17f6e37"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "loadHeroSubtitle",
+      "sha256": "dfedac832b9029e7fb1571a57dd00e8426bfcc03bbf9fceae65367acb09ccf83"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "buildHeroSubtitle",
+      "sha256": "bae898d5b2875094460f6d4661143695aa13fd1db54f953712cbf70db32b6d04"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "heroIdentityLine",
+      "sha256": "f7962360744d570f029b0c8fb9ccbd8d25d242ca98d5a36fd4962965ee9b8a1e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "onPause",
+      "sha256": "7d022ed447eb6717c45fb7d95b220a51f1440ed22f3d9da74be2fc069e4cafd8"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "onResume",
+      "sha256": "11661b012eb18956ce1f46aa95da28ea6d78c03e5f5813fb5be3037386eb9c8e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "uiCtx",
+      "sha256": "c958027178306c2465b778d4021a921285381a88db395b8ffc95dda5d3e6aecb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "io",
+      "sha256": "20c1597f9b885339c64e0505882bcaebeb74b201720b0ee41e1081636a16d31e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "onViewCreated",
+      "sha256": "354859c97a2d1c8b0c2f04b384ab6e71adbecb71efd1183e7bdceb9effe4467d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "initView",
+      "sha256": "cbc24caff210df137231bc4741087f60c3e36b533cec381faba14f5c79f2700b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "onResume",
+      "sha256": "dd75509925c740bb5fb2b44965ce7ca489494d63ce20eb78a1472be896e3973c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "loadSubscriptionDetails",
+      "sha256": "c8358de0c2a2ead29737f417b1aac91dedfd438e4c0fe050e06160ff63cff17d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "populateView",
+      "sha256": "92325af00a36e737c685f9bc658748c40a53975cb1ade135610a6064524844ab"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "formatToken",
+      "sha256": "4749e338f6b2fa3745b962ad0edd7afe486c25e7f957859a5bebee2489185980"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "heroIdentityLine",
+      "sha256": "f7962360744d570f029b0c8fb9ccbd8d25d242ca98d5a36fd4962965ee9b8a1e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "gateActionRows",
+      "sha256": "c5084356ad18621321e2b667fe8934ebadc85df91be6887748f516a009e04418"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "gateManageOnPlayRow",
+      "sha256": "e152dca2cef27f3a5d8e52baea236c9ee6b99237d7e1a3b1e1568a1cbb4cc53b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "setRowAvailability",
+      "sha256": "5e0c46f7404af72dae3ae9e6103b025e8ad06293707c498bd33592b53635fcd3"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "setupClickListeners",
+      "sha256": "7962f56189ff7566b74f7c96c50bcd924ced24a81ea99f26d060d2013e06ad05"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "copyWhoToClipboard",
+      "sha256": "dca1fd5b7c0c62aa9c505434c5f84a5f59674528a2b67d976f5e6db09a52876f"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "showCancelOrRevokeButton",
+      "sha256": "b9992fe24bfd6014baa362597394353f703c8e35227aec4ad44143d092aa6b6e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "canRevoke",
+      "sha256": "eeac9174b367880b760ff3dcb0673db13c8cb02e56b42e57761e67e5ba3d1f90"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "observeOperationState",
+      "sha256": "ede3a383f55cf28d52cc770a858b42c4158e17fd414f3fb971f36e678aec0f5a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "hideProgressOverlay",
+      "sha256": "c555da4326edb87ef40f78e9751b1cf2fb72b4c4a7d32ecef9d25b4d11527275"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "observeAckFailureState",
+      "sha256": "9ddf9d8858bfa0334deee41c302cb98bad768f918aa07eb55fac52d5de042ff3"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "updateAckFailureBanner",
+      "sha256": "8efdec6cf3e61bc0dd94a9c7193fe500dc862caf4a73fe9796a10d651566802e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "observeSubscriptionState",
+      "sha256": "57b8756b60f68cd763089566d976380c0cb4647527550efc60572913265d2942"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "setupServerErrorObserver",
+      "sha256": "ede97a4a76e7b381ae929d12549f9c2ca8e99940fcf233c08bf3f6e5f85c23a3"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "showDeviceNotRegisteredBottomSheet",
+      "sha256": "5bf632444d99e3465e6d7581d9488f2e68d41f6182811239b1026d40c921a991"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "showDeviceAuthErrorBottomSheet",
+      "sha256": "0b619b2667a53588359f42694d5795606ea1491cee56d1fd4b9a51da49d52bdf"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "showConflictBottomSheet",
+      "sha256": "048d7515a351b245417cb0021aa29e0b72166e8788b8631b9bae96ac0cf8a463"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "managePlayStoreSubs",
+      "sha256": "9c31c11d12adbb5eb88070b39d96a321ddf395ae3f1f383c71db8edde8a22213"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "openServerOrderHistory",
+      "sha256": "6f086229803a71d45bbbb2bfa0657369059687b8043772d25b68a42625052799"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "isInAppProduct",
+      "sha256": "df9fcbdb4b94a8e0b47b3a8aa5612ee283d48813db817df5f0e865e058d4ad3f"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "newInstance",
+      "sha256": "87658387b8c72458492b3eab33a165a3aac642ae7ca3a2aa9ae9661cf8077cf2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "onCreate",
+      "sha256": "d1b52d7a3d094a82c94a277532260fa7075fb3a8adf28ef21248ea8246f4ce8b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "onViewCreated",
+      "sha256": "e950ca79bfe3d8e128836a2086c97fc2a28747cea03955ece3b3c9c4bc8b9e37"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "maskCid",
+      "sha256": "3dc8b8f5a0c608ff3a9e58614620d4615056337a49dc8f8d2539c76ccc0fc312"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "openCustomerSupport",
+      "sha256": "274028cb849bf8ee3cda43a6b4daa07b75fab32a3d72f5a0d396fefa23700a05"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "dismiss",
+      "sha256": "aea8e9ca298a9e7cc05d2850f88bd530d95eb2d88fffafcc8e501050f09c8230"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceAuthErrorBottomSheet.kt",
+      "method": "dismissAllowingStateLoss",
+      "sha256": "fef09f0d8a5eea740987242fc8e9ff0117867f1d0f7de4a93a6536d3fd177cb9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "newInstance",
+      "sha256": "91386cfab9aae30b1aa0fa3559b3864cffebd82f04a7e130fbca3d5f7d4d0273"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "onCreate",
+      "sha256": "d1b52d7a3d094a82c94a277532260fa7075fb3a8adf28ef21248ea8246f4ce8b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "onViewCreated",
+      "sha256": "d35df1299616f78be2cbbaaa1df989ac5ac70a88c7aab64c8f91719901b74f94"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "maskCid",
+      "sha256": "7bacd40753b3716b548f20a2ddc79af05d75386f8176dd908fce3ac77ac80dd7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "openEmailClient",
+      "sha256": "388d4e09a00e6e5324fd4e1877b0c272affe78e91d6fa3f23dc2f6fc01f1f39f"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "dismiss",
+      "sha256": "aea8e9ca298a9e7cc05d2850f88bd530d95eb2d88fffafcc8e501050f09c8230"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DeviceNotRegisteredBottomSheet.kt",
+      "method": "dismissAllowingStateLoss",
+      "sha256": "fef09f0d8a5eea740987242fc8e9ff0117867f1d0f7de4a93a6536d3fd177cb9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "newInstance",
+      "sha256": "cf5fe688db9d25008cf15131a4b4ebdb078b3c34af604e29fb58d4c6f0378987"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "onCreate",
+      "sha256": "d1b52d7a3d094a82c94a277532260fa7075fb3a8adf28ef21248ea8246f4ce8b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "onViewCreated",
+      "sha256": "182a3ae8f00d3315abf894f214eeca8cf48305488d8f127435274d497f66f782"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "dismiss",
+      "sha256": "aea8e9ca298a9e7cc05d2850f88bd530d95eb2d88fffafcc8e501050f09c8230"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "dismissAllowingStateLoss",
+      "sha256": "fef09f0d8a5eea740987242fc8e9ff0117867f1d0f7de4a93a6536d3fd177cb9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "titleFor",
+      "sha256": "6c08807299caab49a99bc6873e6185e74f030a238b91ba1eaa802432bde5238c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "descriptionFor",
+      "sha256": "165ad158bc00f037374931b38902728ed359450850d90027412b1c312aac45c2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "newInstance",
+      "sha256": "92d101882b413aea9a83055596bbe68d5e31dc40cfb346de7d1c5efbe9b09e1d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "onCreate",
+      "sha256": "d1b52d7a3d094a82c94a277532260fa7075fb3a8adf28ef21248ea8246f4ce8b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "onViewCreated",
+      "sha256": "1723daa407ae98e6d80928db27228fc4eeda75f653587a974287fe976a6dd080"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "updateState",
+      "sha256": "9cab9c09c323f22a2fa695ba730597a597fa6a652f62a65f39eb140ba9feb9ed"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "dismiss",
+      "sha256": "73aa295f61d4f3664139d715019b8ce42e2c4a3a952877e7e6f2b2a51fe2df80"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "dismissAllowingStateLoss",
+      "sha256": "55b28eea3e4e6633f1794a3410a9318773df461832f6a63bd0a1be93b6cddd66"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "onViewCreated",
+      "sha256": "aa113a5dc6ecbd5df143c0c4fe33f960f8f56ad40ac502813a18e44011d9ff36"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "dismiss",
+      "sha256": "aea8e9ca298a9e7cc05d2850f88bd530d95eb2d88fffafcc8e501050f09c8230"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "dismissAllowingStateLoss",
+      "sha256": "fef09f0d8a5eea740987242fc8e9ff0117867f1d0f7de4a93a6536d3fd177cb9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "observeEntitlementState",
+      "sha256": "b8cb8c789479f31450847f7aa1eae385bae847e84222414fd2bc8317e48fa262"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "handleResetResult",
+      "sha256": "f5f2121a0b9f88d827ea6bf14a5faac3be53a950d6c8c5bdda6c443b852876d7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "valuesEqual",
+      "sha256": "b2bbb1f2bb61661355a46ced7750e2790952229140accad51dbf20b725e3f446"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "newInstance",
+      "sha256": "6a7e96c50ea93a2da67674f2ef0bcb65ce130851b260e1689a365611a207027b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/SubscriptionAnimDialog.kt",
+      "method": "newInstance",
+      "sha256": "b5e135a4ba41a07dc79942fd027f0287fc861dc0018fc7aee9e4ff5e245da6c5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/SubscriptionAnimDialog.kt",
+      "method": "festive",
+      "sha256": "fefbe3094e495396e3cc7d2383a346c7fc629068da14c5d0a26c42867868ec2c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bind",
+      "sha256": "669dba457b82682d29904261d84926d75b1ce11beb50108b2884632a29140c89"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bindTypeBadge",
+      "sha256": "c9106ff4d8a19ab6560aa013ac3f6827a0f9845c13f112404a453474278d5371"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bindStatusChip",
+      "sha256": "d1e34468cf78fd016e0d0b2ded5a17eb50a500a997883741b1c86b821fcd5764"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "statusStyle",
+      "sha256": "7fd023cb9d62a41592857c116a8e1a55ec981b65155e6f6f785dc8088e4f485d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bindProductInfo",
+      "sha256": "fedf443552f05523f39ac135cb4ec418388b3327b7f7ab767b772e21c245b379"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "formatProductName",
+      "sha256": "98bb2707dc475533d2d9d3972801ad1193672fe41726b2073520505e5d8b9ce9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bindDates",
+      "sha256": "1580143ec587623217165871292ee15037bc53a2a9624eafd39220994f78a8e8"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bindOrderId",
+      "sha256": "6479faf55cba873d01b95b004c92a78b32198e648ca14e68608ce951ae81b0b2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/ServerOrderHistoryAdapter.kt",
+      "method": "bindTestBadge",
+      "sha256": "54b850ebe7024cfdb906e8b44a4622a1a854b117a1601c29b2fefd8a0e37de59"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/PurchaseHistoryAdapter.kt",
+      "method": "stateStringRes",
+      "sha256": "a52e8d557909c0537e5b2dd575d4950ec2059b2ce3204883d97fb9622eaa0a62"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/PurchaseHistoryAdapter.kt",
+      "method": "friendlyStateName",
+      "sha256": "cce756c3a095de41b6c85f938ff223a91f74f3c9b3da0627195863485c0bc4da"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onViewCreated",
+      "sha256": "a58615a3d7a0233121bd7df28dc55fcc5547b5303968a6aaa27108479840e62f"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onResume",
+      "sha256": "1a7248b971067c333693f53362291b177213904b1cbec81b4afe6b8b7f0d1a89"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onPause",
+      "sha256": "f0f971a1e621ea68048ad0c1332f4f5ce322043c7281c2433fd23ff1392cb518"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onDestroyView",
+      "sha256": "25cf698ae3121d40f5f3274cdcf3a4c222de47dc4d35c57dc2d1df67eab3ebcd"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupUI",
+      "sha256": "fb215f9963466b69218ed6bce1db80e152f9101eb45fd75d58168afca07e0d69"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "applyButtonTheme",
+      "sha256": "8998976b2d636826de5e3d3931b8a360b83c929ec42efff4bd47103a87525b94"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupProductTypeToggle",
+      "sha256": "d533e118cc6c9dfbf4ada2aae022eb935e8f01428fea448f69f373129404e468"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupClickListeners",
+      "sha256": "58bdfbef3d8b4a19cf68d7c84cc7df278528414383587675008b415e47e6aaa2"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "openHelpAndSupport",
+      "sha256": "50efc2744f732b8d4bc51447ed1366ee90fe82ae7360509e8014ab32012e5ba9"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupObservers",
+      "sha256": "32b1aece89b4a9f3840d0a78f7e10f2ebe22c00f52ff01bb46efda7b7839e3f4"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupIab",
+      "sha256": "2ae1cc8f4dadea8ec53cc3f926a4b56e31a3c4d2a7c7695f6f4cad28a91050ac"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "handleUiState",
+      "sha256": "1ba2c83aca597bc9e4993048c3833df3224ac8a4224927750abaa0f48ccf38fc"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showLoading",
+      "sha256": "f7d3352e429451b05f00c7d9037e1f58e54a3163a78ba736ce456d4accb19501"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showConnectionInfo",
+      "sha256": "7011271e8d8cc32d7c9b9b79a6d811c885fd701a9d0cd653a767377debdba9c6"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showProcessing",
+      "sha256": "f12f46aad2c9e2b75292c67a187a371033e502c1dac80b38d3e398ede0e8833b"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showPendingPurchase",
+      "sha256": "5fb54944deaf2cde824ec96f9cca73fccdc69398ff097970518346d0681e012e"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showPendingTimeout",
+      "sha256": "21e785ca8ab5c4e6064a55db8e5c75aaef22c03d8cf41d1f1b5dc9bffbcb351c"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showNoInternet",
+      "sha256": "2ac8a81c83b93dad64379ea879d2bee6f9fb5ee8fc0166dd428006cff605ac92"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showServerAckPending",
+      "sha256": "03cd7708a79633a84dd87d934f534a4ba9fb72398f0ff7adfa4cbbe56c98e535"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showSuccess",
+      "sha256": "cf0260510ddc55a9ef85c18c4d533c9e27bdbef315fcbf0f3d9f9f4032fe248c"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showError",
+      "sha256": "4e35410963690e505d578069a17628b9f4add37a1d72baf4d532cb75cd2ac333"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showAcknowledgementFailed",
+      "sha256": "59be86e600950f0a83d576b34037a2b96f1b6fb302a611c9161506cabc351d2b"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showTransactionError",
+      "sha256": "45e559508740c4e25038370cdca9a1181a551fd9b0a8cd479373b105fae3099e"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "hideAllContainers",
+      "sha256": "e8462614c5b0009b2390e31b9b2208148db2971f19d6295bc841ba505ef50456"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "navigateToDashboard",
+      "sha256": "b8880895ca67c00a098a92622111b33ac668af0b78361a891b0e2451be41b9d5"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "navigateBackToDashboard",
+      "sha256": "e00c864dd694ddd890bef230ad41915a3d1dedc6ab42304f52d06913229563a8"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "initializeBilling",
+      "sha256": "6952ca6e53799f790d80e35a9d706ba75141dedf548b60e1efd6565fe6c31b54"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "reconnectBilling",
+      "sha256": "438c59a65cf9e14366b9fd4f3e21ce18bc97b7f198219a4928c3834bca00c968"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "purchaseSubscription",
+      "sha256": "b0e5bd2d82dd7f517a3c3832c335dcfd66767eb8fa27c47b4475ff1da2d05166"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showProcessingBottomSheet",
+      "sha256": "0c3537e137ac379c831c410c8439d494691f43aed924f364c15c2264649a649d"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "dismissProcessingBottomSheet",
+      "sha256": "3a9fab91853c691921de2f2cf6961e53fe74d02792cbe628e316742b709ec64b"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "startProcessingTimeout",
+      "sha256": "0b9991a1ddf5baaf1e35fc9fb3fec64112ce1398596ffd037b189e58d2abd27f"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "cancelProcessingTimeout",
+      "sha256": "929c64ffbb63c75b6e6a6ed200ebe9807f71bbb11acd5610dc8ec62e116aad40"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "friendlyBillingMessage",
+      "sha256": "81c37298a16154dd7af3b3f55e2fc7f3f350e6035dc500f2886c9a6e02be6ce3"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "isOnline",
+      "sha256": "512b76752f43773c0b26fb283402b1d0e1d7612201e540f3c3430e6a0745d146"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "restorePurchases",
+      "sha256": "4612bed1482b918bdff4ed183196bbe92ae1fc33789bc602b58bbcb43f4128d8"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onConnectionResult",
+      "sha256": "fe8714c5260a7e169f56bc5fdb0ece54fa976f3f1c338c6f23bef6e215eccdfa"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "purchasesResult",
+      "sha256": "90bc0e76cad300e05534a281c9c4b3748fc9a016e35494c095263b3f5bf05358"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "productResult",
+      "sha256": "7be78a5956205a6613c72b9b8bf6643be71dd119f2a1e3562a10db56359e194a"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onSubscriptionSelected",
+      "sha256": "6c590497169f4e4733152dfaa03c4350ea9ec65489704c20d655f4123d09b55b"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "updateCancelPolicyText",
+      "sha256": "9622dd40dd2bab8b8070e76c895aab53fe88cb3864718f5fac23eadbd4758686"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onViewCreated",
+      "sha256": "a58615a3d7a0233121bd7df28dc55fcc5547b5303968a6aaa27108479840e62f"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onResume",
+      "sha256": "1a7248b971067c333693f53362291b177213904b1cbec81b4afe6b8b7f0d1a89"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onPause",
+      "sha256": "f0f971a1e621ea68048ad0c1332f4f5ce322043c7281c2433fd23ff1392cb518"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onDestroyView",
+      "sha256": "25cf698ae3121d40f5f3274cdcf3a4c222de47dc4d35c57dc2d1df67eab3ebcd"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupUI",
+      "sha256": "fb215f9963466b69218ed6bce1db80e152f9101eb45fd75d58168afca07e0d69"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "applyButtonTheme",
+      "sha256": "8998976b2d636826de5e3d3931b8a360b83c929ec42efff4bd47103a87525b94"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupProductTypeToggle",
+      "sha256": "d533e118cc6c9dfbf4ada2aae022eb935e8f01428fea448f69f373129404e468"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupClickListeners",
+      "sha256": "58bdfbef3d8b4a19cf68d7c84cc7df278528414383587675008b415e47e6aaa2"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "openHelpAndSupport",
+      "sha256": "50efc2744f732b8d4bc51447ed1366ee90fe82ae7360509e8014ab32012e5ba9"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupObservers",
+      "sha256": "32b1aece89b4a9f3840d0a78f7e10f2ebe22c00f52ff01bb46efda7b7839e3f4"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "setupIab",
+      "sha256": "2ae1cc8f4dadea8ec53cc3f926a4b56e31a3c4d2a7c7695f6f4cad28a91050ac"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "handleUiState",
+      "sha256": "1ba2c83aca597bc9e4993048c3833df3224ac8a4224927750abaa0f48ccf38fc"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showLoading",
+      "sha256": "f7d3352e429451b05f00c7d9037e1f58e54a3163a78ba736ce456d4accb19501"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showConnectionInfo",
+      "sha256": "7011271e8d8cc32d7c9b9b79a6d811c885fd701a9d0cd653a767377debdba9c6"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showProcessing",
+      "sha256": "f12f46aad2c9e2b75292c67a187a371033e502c1dac80b38d3e398ede0e8833b"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showPendingPurchase",
+      "sha256": "5fb54944deaf2cde824ec96f9cca73fccdc69398ff097970518346d0681e012e"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showPendingTimeout",
+      "sha256": "21e785ca8ab5c4e6064a55db8e5c75aaef22c03d8cf41d1f1b5dc9bffbcb351c"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showNoInternet",
+      "sha256": "2ac8a81c83b93dad64379ea879d2bee6f9fb5ee8fc0166dd428006cff605ac92"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showServerAckPending",
+      "sha256": "03cd7708a79633a84dd87d934f534a4ba9fb72398f0ff7adfa4cbbe56c98e535"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showSuccess",
+      "sha256": "cf0260510ddc55a9ef85c18c4d533c9e27bdbef315fcbf0f3d9f9f4032fe248c"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showError",
+      "sha256": "4e35410963690e505d578069a17628b9f4add37a1d72baf4d532cb75cd2ac333"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showAcknowledgementFailed",
+      "sha256": "59be86e600950f0a83d576b34037a2b96f1b6fb302a611c9161506cabc351d2b"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showTransactionError",
+      "sha256": "45e559508740c4e25038370cdca9a1181a551fd9b0a8cd479373b105fae3099e"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "hideAllContainers",
+      "sha256": "e8462614c5b0009b2390e31b9b2208148db2971f19d6295bc841ba505ef50456"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "navigateToDashboard",
+      "sha256": "b8880895ca67c00a098a92622111b33ac668af0b78361a891b0e2451be41b9d5"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "navigateBackToDashboard",
+      "sha256": "e00c864dd694ddd890bef230ad41915a3d1dedc6ab42304f52d06913229563a8"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "initializeBilling",
+      "sha256": "6952ca6e53799f790d80e35a9d706ba75141dedf548b60e1efd6565fe6c31b54"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "reconnectBilling",
+      "sha256": "438c59a65cf9e14366b9fd4f3e21ce18bc97b7f198219a4928c3834bca00c968"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "purchaseSubscription",
+      "sha256": "b0e5bd2d82dd7f517a3c3832c335dcfd66767eb8fa27c47b4475ff1da2d05166"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showProcessingBottomSheet",
+      "sha256": "0c3537e137ac379c831c410c8439d494691f43aed924f364c15c2264649a649d"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "dismissProcessingBottomSheet",
+      "sha256": "3a9fab91853c691921de2f2cf6961e53fe74d02792cbe628e316742b709ec64b"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "startProcessingTimeout",
+      "sha256": "0b9991a1ddf5baaf1e35fc9fb3fec64112ce1398596ffd037b189e58d2abd27f"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "cancelProcessingTimeout",
+      "sha256": "929c64ffbb63c75b6e6a6ed200ebe9807f71bbb11acd5610dc8ec62e116aad40"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "friendlyBillingMessage",
+      "sha256": "81c37298a16154dd7af3b3f55e2fc7f3f350e6035dc500f2886c9a6e02be6ce3"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "isOnline",
+      "sha256": "512b76752f43773c0b26fb283402b1d0e1d7612201e540f3c3430e6a0745d146"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "restorePurchases",
+      "sha256": "4612bed1482b918bdff4ed183196bbe92ae1fc33789bc602b58bbcb43f4128d8"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onConnectionResult",
+      "sha256": "fe8714c5260a7e169f56bc5fdb0ece54fa976f3f1c338c6f23bef6e215eccdfa"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "purchasesResult",
+      "sha256": "90bc0e76cad300e05534a281c9c4b3748fc9a016e35494c095263b3f5bf05358"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "productResult",
+      "sha256": "7be78a5956205a6613c72b9b8bf6643be71dd119f2a1e3562a10db56359e194a"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "onSubscriptionSelected",
+      "sha256": "6c590497169f4e4733152dfaa03c4350ea9ec65489704c20d655f4123d09b55b"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "updateCancelPolicyText",
+      "sha256": "9622dd40dd2bab8b8070e76c895aab53fe88cb3864718f5fac23eadbd4758686"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "resolvePlanName",
+      "sha256": "d4048102456975442d646d25e8d3f91bb399418e752bcdb1f84fe45a5a93ddcd"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "resolvePlanName",
+      "sha256": "cd278ed6a6eed22102c95dddd627cb1b7cac3be25b6e2107b05f82785beea41d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "clearParticles",
+      "sha256": "321fd906560fe7140203cdf945a6f53e08376095859091fb7579e656520fb755"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "computeSceneGeometry",
+      "sha256": "3fb7d98404b92fce80e3d96483c6ba792638b38a7bac31f20cb22bcdeb762a11"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "swimDurationMs",
+      "sha256": "3cc4b3e72bafc0f3cdf1d6ebf423be56133ab33db596074194f61f1464096077"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "cycleDurationMs",
+      "sha256": "a2d8416cf75cc337dd11317348a7b1d86a47b8824f62a18843b87d322c50299d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "advanceTime",
+      "sha256": "75e471fd24f8ee59d30c6605f32ffe948185756fb13052a427100561380253a0"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "drawScene",
+      "sha256": "df0c94bd531959fcb37950dd75811ca231dba10fd15004a20eee32f5d31ff93d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "drawMember",
+      "sha256": "9e12e9caf6e016db10eca478c7fb59eea1ca3a7fdbcdd5711aa879f67b3b1c5d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "calculateDolphinPose",
+      "sha256": "adfa27b69685e10ff289a5c2a3d347e410f1245781484b1ccb562d838fe81028"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "drawWater",
+      "sha256": "3c033d5c75a5582eb21e8ac6c88eea74fb42e4d5636fecb4b40f947f826382a7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "waveY",
+      "sha256": "8b174785f3556999687efe02d6b9c77416c5b191e79d9914d325b4cd893069a0"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "drawShadowIfAirborne",
+      "sha256": "8b174785f3556999687efe02d6b9c77416c5b191e79d9914d325b4cd893069a0"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "drawDolphinGlyph",
+      "sha256": "c1a5b40c100a5e341ca082bff2721f6bbd8d28be9b64d0651c805b9cbbed9597"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "maybeSpawnSplashOnCrossing",
+      "sha256": "62ef4702e2edc7d9ef2d9ff58503bd49c6d0552ef0d7a83a7881c59e71966fb6"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "spawnSplash",
+      "sha256": "e61e1bae744fce0c5d496b5c03c63c04807d67998cf49c07fff5d05bbd5ce936"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "updateAndDrawSplash",
+      "sha256": "f125a9e712f2278383cdd3bcb2a9b301a0498cac7e48cb22ad2059757a6ca81c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "maybeEmitBubble",
+      "sha256": "e01ca85f967f534e971ec0844f387397fb8ee6f9d8d6ce552bd8d09b9edc7c9b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "updateAndDrawBubbles",
+      "sha256": "a95eca6724b5ee2024b01b6555e1a1cf10bf07bab12de0646e984165c3713dce"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "lerp",
+      "sha256": "03bbb87d9a2aab782913159380fa9c748729c948382c061ccbfe945bc3ee60fa"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "easeInOutSine",
+      "sha256": "03bbb87d9a2aab782913159380fa9c748729c948382c061ccbfe945bc3ee60fa"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "easeInSine",
+      "sha256": "03bbb87d9a2aab782913159380fa9c748729c948382c061ccbfe945bc3ee60fa"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "easeOutSine",
+      "sha256": "03bbb87d9a2aab782913159380fa9c748729c948382c061ccbfe945bc3ee60fa"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/DolphinOceanRenderer.kt",
+      "method": "randDp",
+      "sha256": "03bbb87d9a2aab782913159380fa9c748729c948382c061ccbfe945bc3ee60fa"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/MoneyBackBadgeRenderer.kt",
+      "method": "drawSeal",
+      "sha256": "bed3352fa0a6058c2ab1e4a9818eefe2be7126ed81a2caf4c49dc5af7ec70e17"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/MoneyBackBadgeRenderer.kt",
+      "method": "drawCurvedText",
+      "sha256": "72376f403db5371cb7d92d6fda4c05d56cfdece7fe3c003b6689bc5756039ba9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/purchase/MoneyBackBadgeRenderer.kt",
+      "method": "drawCenterText",
+      "sha256": "506d89786864536fb490b752e74c79453bd522e2d9bb037ef7d15035a6bedc78"
+    }
+  ],
+  "adapted_bodies": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "initiateRefund",
+      "sha256": "f10abf3a8be0f149f67acc4d504007ba928aa2ea0f07cc8fa2feff8c6d7fc7e7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseConflictBottomSheet.kt",
+      "method": "setRefundInFlight",
+      "sha256": "b93f084b53fd929c48903c6b3d120e9ff526af1b4af7d68c15ebc8c8dfb6cf66"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkPlusManagePurchaseFragment.kt",
+      "method": "setDolphinSignature",
+      "sha256": "648fd2de62f35510fe0d705e4533e3b1b2fb0fbe0043b926dc63ff68d742b9bb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "observeResetState",
+      "sha256": "46000d00c3a3ecd3cc21ed67b1da115c833e9436c014b7b0b7d70f6d310876ea"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "initView",
+      "sha256": "90145226ceaa64d4af085c1e33cd02e1e45f261e3d37e878a0d8618ce7c1d683"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/EntitlementDetailBottomSheet.kt",
+      "method": "displayEntitlement",
+      "sha256": "d01b20e91556a234ac3998b779ac326c72949aaa2f0ad83b3f10dcee4359fdf8"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/PurchaseHistoryAdapter.kt",
+      "method": "bind",
+      "sha256": "866871d7a26df6227e129b1cf51bcecdd078bf0444beb7c0527c22675da2e42c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PurchaseHistoryActivity.kt",
+      "method": "observeHistory",
+      "sha256": "68407e08066d30092b19eec8ba5d3827ee116ee5fdc4f305bc654a97ec52f1ac"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ServerOrderHistoryActivity.kt",
+      "method": "observeUiState",
+      "sha256": "88afad7172ad13146a5bf6bcac5434a4b6b8340536e5ef66f31af87e1a9cb434"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showReady",
+      "sha256": "6dafa2fa6587fd2bee6dc709443f0ac16dc55c6ef2dffaa0342899e5af73dabd"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "getInAppDurationMonths",
+      "sha256": "1cc861ddfb05b5a3d07252584ee5b7cb4565687f699c344f5712225d46cdc06b"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "formatDurationLabel",
+      "sha256": "de83f364380d7eb1e80759d2304192193c542bc777852b9fef5747801cd70f06"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "calculateSavings",
+      "sha256": "ba61c2e636224908b30c8e8f6bfd629455067f24e5b8af6a2ce6412dd4ad427b"
+    },
+    {
+      "file": "app/src/play/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "getBillingText",
+      "sha256": "f49aba220327cb866336be204bbb4a4ba7748825255dea042e2c362119433639"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/ui/fragment/RethinkPlusFragment.kt",
+      "method": "showReady",
+      "sha256": "6dafa2fa6587fd2bee6dc709443f0ac16dc55c6ef2dffaa0342899e5af73dabd"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "getInAppDurationMonths",
+      "sha256": "1cc861ddfb05b5a3d07252584ee5b7cb4565687f699c344f5712225d46cdc06b"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "formatDurationLabel",
+      "sha256": "de83f364380d7eb1e80759d2304192193c542bc777852b9fef5747801cd70f06"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "calculateSavings",
+      "sha256": "ba61c2e636224908b30c8e8f6bfd629455067f24e5b8af6a2ce6412dd4ad427b"
+    },
+    {
+      "file": "app/src/website/java/com/celzero/bravedns/adapter/GooglePlaySubsAdapter.kt",
+      "method": "getBillingText",
+      "sha256": "f49aba220327cb866336be204bbb4a4ba7748825255dea042e2c362119433639"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showProcessing",
+      "sha256": "103b2232f649bfc957595d3519d0fff274912cdc7596a9a84e851b384e499a74"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showPendingVerification",
+      "sha256": "b08c59b90c0054227f3272aa51bab9a25880ce70f207c8c4fc127d40b59beb34"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showSuccess",
+      "sha256": "a11001317818bc1ca3eb48a2168ec38954307f5c77a93af6976099f2862880b7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showError",
+      "sha256": "4b1a0da4940fd9471ab7d23491983da1bf3386b53ad245c6e7e213aff6c612e6"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showServerAckPending",
+      "sha256": "f3b07484b2ffb43a570f3dddd42033fc777e9946e3c2269862988d1a5ca81537"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showPendingTimeout",
+      "sha256": "da0a930cce8e90b526c87a9c617a5f74ab147262c565792604e634dc2fc91843"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/PurchaseProcessingBottomSheet.kt",
+      "method": "showPaymentDeclined",
+      "sha256": "29182a54a61bb95286533276c1d92ced08a22d58c2667acc143310f1f884b717"
+    }
+  ],
+  "limitation": "Source equality only; not Android compilation, Compose, lifecycle, billing execution, device or visual parity."
+}

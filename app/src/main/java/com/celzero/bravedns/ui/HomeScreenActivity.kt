@@ -93,9 +93,19 @@ import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.isWebsiteFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
+import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.celzero.bravedns.ui.compose.chrome.HomeBottomNavigation
+import com.celzero.bravedns.ui.compose.chrome.HomeChromeDialog
+import com.celzero.bravedns.ui.compose.chrome.HomeChromeDialogContent
+import com.celzero.bravedns.ui.compose.chrome.ComposeSnackbarPresenter
+import com.celzero.bravedns.ui.compose.home.HomeTourAnchors
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.key
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -106,6 +116,39 @@ import java.util.concurrent.TimeUnit
 import kotlin.time.Duration.Companion.milliseconds
 
 class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
+    private var selectedNavigationItem by mutableIntStateOf(R.id.homeScreenFragment)
+    private var selectNavigationItem: ((Int) -> Boolean)? = null
+    private val chromeDialogs = mutableStateListOf<HomeChromeDialog>()
+
+    private fun selectBottomNavigationItem(itemId: Int) {
+        // The former reselected listener is a no-op, including programmatic selection.
+        if (selectedNavigationItem == itemId) return
+        if (selectNavigationItem?.invoke(itemId) == true) selectedNavigationItem = itemId
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("compose_bottom_navigation_selection", selectedNavigationItem)
+    }
+
+    private fun installComposeChrome(savedInstanceState: Bundle?) {
+        selectedNavigationItem = savedInstanceState?.getInt(
+            "compose_bottom_navigation_selection", R.id.homeScreenFragment
+        ) ?: R.id.homeScreenFragment
+        val anchors = HomeTourAnchors.forActivity(this)
+        findViewById<ComposeView>(R.id.nav_view).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                RethinkTheme {
+                    HomeBottomNavigation(selectedNavigationItem, anchors, ::selectBottomNavigationItem)
+                    chromeDialogs.forEach { dialog ->
+                        key(dialog) { HomeChromeDialogContent(dialog) { chromeDialogs.remove(dialog) } }
+                    }
+                }
+            }
+        }
+    }
+
     private val persistentState by inject<PersistentState>()
     private val appUpdateManager by inject<AppUpdater>()
     private val inAppMessageProvider by inject<InAppMessageProvider>()
@@ -126,6 +169,7 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     override fun onCreate(savedInstanceState: Bundle?) {
         theme.applyStyle(getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
         super.onCreate(savedInstanceState)
+        installComposeChrome(savedInstanceState)
 
         if (isAtleastO_MR1()) {
             Logger.vv(LOG_TAG_UI, "Setting up window insets for Android 27+")
@@ -258,21 +302,16 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     private fun showRestoreDialog(uri: Uri) {
         if (!isInForeground()) return
 
-        val builder = MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
-        builder.setTitle(R.string.brbs_restore_dialog_title)
-        builder.setMessage(R.string.brbs_restore_dialog_message)
-        builder.setPositiveButton(getString(R.string.brbs_restore_dialog_positive)) { _, _ ->
-            val workId = startRestore(uri)
-            observeRestoreWorker(workId)
-        }
-
-        builder.setNegativeButton(getString(R.string.lbl_cancel)) { _, _ ->
-            // no-op
-        }
-
-        builder.setCancelable(true)
-        val dialog = builder.create()
-        dialog.show()
+        chromeDialogs += HomeChromeDialog(
+            title = getString(R.string.brbs_restore_dialog_title),
+            message = getString(R.string.brbs_restore_dialog_message),
+            positiveLabel = getString(R.string.brbs_restore_dialog_positive),
+            negativeLabel = getString(R.string.lbl_cancel),
+            onPositive = {
+                val workId = startRestore(uri)
+                observeRestoreWorker(workId)
+            },
+        )
     }
 
     private fun startRestore(fileUri: Uri): java.util.UUID? {
@@ -709,17 +748,15 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     private fun showUpdateCompleteSnackbar() {
         try {
             val container: View = findViewById(R.id.container)
-            val snack =
-                Snackbar.make(
-                    container,
-                    getString(R.string.update_complete_snack_message),
-                    Snackbar.LENGTH_INDEFINITE
-                )
-            snack.setAction(getString(R.string.update_complete_action_snack)) {
-                appUpdateManager.completeUpdate()
-            }
-            snack.setActionTextColor(ContextCompat.getColor(this, R.color.primaryLightColorText))
-            snack.show()
+            ComposeSnackbarPresenter(
+                view = container,
+                message = getString(R.string.update_complete_snack_message),
+                duration = ComposeSnackbarPresenter.LENGTH_INDEFINITE,
+                actionLabel = getString(R.string.update_complete_action_snack),
+                action = { appUpdateManager.completeUpdate() },
+                appearance = ComposeSnackbarPresenter.Appearance.Material,
+                actionColor = ContextCompat.getColor(this, R.color.primaryLightColorText),
+            ).show()
         } catch (e: Exception) {
             Logger.e(LOG_TAG_UI, "err showing update complete snackbar: ${e.message}", e)
         }
@@ -732,74 +769,42 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     ) {
         if (!isInForeground()) return
 
-        val builder = MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
-        builder.setTitle(title)
-
-        // Determine dialog type based on title to decide if it should be modal
+        // Preserve the baseline title-based modality decision, including informational fallback.
         val isUpdateAvailable = title == getString(R.string.download_update_dialog_title)
         val isUpToDate = message == getString(R.string.download_update_dialog_message_ok)
         val isError = message == getString(R.string.download_update_dialog_failure_message)
         val isQuotaExceeded = message == getString(R.string.download_update_dialog_trylater_message)
-
-        // Adjust message for Play Store if needed
-        if (isUpdateAvailable && source == AppUpdater.InstallSource.STORE) {
-            // Play Store updates should use native UI, but if we reach here, show appropriate message
-            builder.setMessage("A new version is available. Please update from Play Store.")
+        val displayMessage = if (isUpdateAvailable && source == AppUpdater.InstallSource.STORE) {
+            "A new version is available. Please update from Play Store."
         } else {
-            builder.setMessage(message)
+            message
         }
-
-        // Make dialog non-dismissible (modal) only when an actual update is available
-        // User cannot dismiss by tapping outside or pressing back button
-        // However, user can still choose "Remind me later" button
-        builder.setCancelable(!isUpdateAvailable)
-
-        when {
-            isUpdateAvailable -> {
-                // Update is available - modal dialog with explicit user choice
-                if (source == AppUpdater.InstallSource.STORE) {
-                    // For Play Store updates, this dialog rarely appears as Google's native UI handles it
-                    // But if it does appear, just show OK to dismiss (native UI should have been shown)
-                    builder.setPositiveButton(getString(R.string.hs_download_positive_default)) { dialogInterface, _ ->
+        val dialog = when {
+            isUpdateAvailable -> HomeChromeDialog(
+                title = title,
+                message = displayMessage,
+                positiveLabel = getString(if (source == AppUpdater.InstallSource.STORE)
+                    R.string.hs_download_positive_default else R.string.hs_download_positive_website),
+                negativeLabel = getString(R.string.hs_download_negative_default),
+                dismissible = false,
+                onPositive = {
+                    if (source == AppUpdater.InstallSource.STORE) {
                         appUpdateManager.completeUpdate()
-                        dialogInterface.dismiss()
-                    }
-                    builder.setNegativeButton(getString(R.string.hs_download_negative_default)) { dialogInterface, _ ->
-                        persistentState.lastAppUpdateCheck = System.currentTimeMillis()
-                        dialogInterface.dismiss()
-                    }
-                } else {
-                    // For website version, open browser to download - this is the main use case
-                    builder.setPositiveButton(getString(R.string.hs_download_positive_website)) { dialogInterface, _ ->
+                    } else {
                         initiateDownload()
-                        dialogInterface.dismiss()
                     }
-                    // Negative button allows user to postpone the update
-                    builder.setNegativeButton(getString(R.string.hs_download_negative_default)) { dialogInterface, _ ->
-                        persistentState.lastAppUpdateCheck = System.currentTimeMillis()
-                        dialogInterface.dismiss()
-                    }
-                }
-            }
-            isUpToDate || isError || isQuotaExceeded -> {
-                // Informational dialogs - dismissible with OK button
-                builder.setCancelable(true)
-                builder.setPositiveButton(getString(R.string.hs_download_positive_default)) { dialogInterface, _ ->
-                    dialogInterface.dismiss()
-                }
-            }
-            else -> {
-                // Fallback for any other case - make it dismissible
-                builder.setCancelable(true)
-                builder.setPositiveButton(getString(R.string.hs_download_positive_default)) { dialogInterface, _ ->
-                    dialogInterface.dismiss()
-                }
-            }
+                },
+                onNegative = { persistentState.lastAppUpdateCheck = System.currentTimeMillis() },
+            )
+            isUpToDate || isError || isQuotaExceeded -> HomeChromeDialog(
+                title, displayMessage, getString(R.string.hs_download_positive_default)
+            )
+            else -> HomeChromeDialog(
+                title, displayMessage, getString(R.string.hs_download_positive_default)
+            )
         }
-
         try {
-            val dialog = builder.create()
-            dialog.show()
+            chromeDialogs += dialog
         } catch (e: Exception) {
             Logger.e(LOG_TAG_UI, "err showing download dialog: ${e.message}", e)
         }
@@ -849,8 +854,7 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
                         else -> {
                             // Navigate home via the item-selected listener; an
                             // extra navigate here would replace the fragment twice.
-                            val btmNavView = findViewById<BottomNavigationView>(R.id.nav_view)
-                            btmNavView.selectedItemId = homeId
+                            selectBottomNavigationItem(homeId)
                         }
                     }
                 }
@@ -874,8 +878,8 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         }
 
     private fun setupNavigationItemSelectedListener() {
-        val btmNavView = findViewById<BottomNavigationView>(R.id.nav_view) ?: run {
-            Logger.w(LOG_TAG_UI, "setupNavigationItemSelectedListener: BottomNavigationView not found")
+        val btmNavView = findViewById<ComposeView>(R.id.nav_view) ?: run {
+            Logger.w(LOG_TAG_UI, "setupNavigationItemSelectedListener: Compose navigation host not found")
             return
         }
 
@@ -894,35 +898,35 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             when (destination.id) {
                 R.id.rethinkPlusDashboardFragment -> {
                     // Dashboard is a child of the rethinkPlus flow keep rethinkPlus checked.
-                    btmNavView.menu.findItem(R.id.rethinkPlus)?.isChecked = true
+                    selectedNavigationItem = R.id.rethinkPlus
                 }
                 R.id.rethinkPlus,
                 R.id.homeScreenFragment,
                 R.id.summaryStatisticsFragment,
                 R.id.configureFragment,
                 R.id.aboutFragment -> {
-                    // These are direct menu items: BottomNavigationView updates isChecked
-                    // automatically when selectedItemId is set; nothing extra needed here.
+                    // Direct destination changes intentionally do not synchronize the highlight.
+                    // Only the selection path updates it, preserving the existing behavior.
                 }
                 else -> { /* other destinations: no bottom-nav highlight change */ }
             }
         }
 
-        btmNavView.setOnItemSelectedListener { item ->
+        selectNavigationItem = selection@ { itemId ->
             val currentId = navController.currentDestination?.id
 
             // Prevent re-navigating if we are already on this destination (or its child).
             // For rethinkPlus this also covers rethinkPlusDashboardFragment.
-            val alreadyThere = when (item.itemId) {
+            val alreadyThere = when (itemId) {
                 R.id.rethinkPlus ->
                     currentId == R.id.rethinkPlus || currentId == R.id.rethinkPlusDashboardFragment
-                else -> currentId == item.itemId
+                else -> currentId == itemId
             }
-            if (alreadyThere) return@setOnItemSelectedListener false
+            if (alreadyThere) return@selection false
 
             // Defer so the selector animation renders before fragment inflation.
             btmNavView.post {
-                when (item.itemId) {
+                when (itemId) {
                     R.id.rethinkPlus -> {
                         // RPN is not available in alpha builds; show a "coming soon"
                         // toast and stay on the current destination.
@@ -960,7 +964,7 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
 
                     else -> {
                         navController.navigate(
-                            item.itemId,
+                            itemId,
                             null,
                             bottomNavNavOptions(homeId, false)
                         )
@@ -970,8 +974,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             true
         }
 
-        // Tapping an already-selected tab is a no-op (don't re-navigate or recreate).
-        btmNavView.setOnItemReselectedListener { /* intentional no-op */ }
     }
 
     private fun io(f: suspend () -> Unit) {

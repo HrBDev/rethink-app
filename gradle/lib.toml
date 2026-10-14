@@ -157,6 +157,11 @@ googleFirebaseFirebaseCrashlyticsNdk = { module = "com.google.firebase:firebase-
 androidxBenchmarkBenchmarkMacroJunit4 = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
 androidxTestUiautomatorUiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
 
+androidxFragmentFragmentCompose = { module = "androidx.fragment:fragment-compose", version.ref = "fragmentKtx" }
+androidxComposeUiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidxComposeUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
+nlDionsegijnKonfettiCompose = { module = "nl.dionsegijn:konfetti-compose", version.ref = "konfettiXml" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidTest = { id = "com.android.test", version.ref = "agp" }

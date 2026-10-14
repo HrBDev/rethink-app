@@ -1,0 +1,35 @@
+/* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
+@file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+package com.celzero.bravedns.ui.compose.wireguard
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.celzero.bravedns.ui.compose.themeColor
+
+@Composable fun WgStatsContent(b: WgStatsState) {
+    Surface(color = MaterialTheme.colorScheme.background) {
+        Column(Modifier.fillMaxSize()) {
+            FlowRow(Modifier.padding(12.dp), horizontalArrangement = Arrangement.Center) {
+                WgToggle(b.tbRecentToggleBtn); WgToggle(b.tbDailyToggleBtn); WgToggle(b.tbWeeklyToggleBtn)
+            }
+            WgText(b.tbLogsDisabledTv, Modifier.padding(16.dp))
+            WgCard(b.tbStatsCard, Modifier.padding(horizontal = 12.dp)) {
+                val accent = themeColor(androidx.appcompat.R.attr.colorAccent)
+                val total = b.fssProgressBar.max.coerceAtLeast(1).toFloat()
+                val progress = (b.fssProgressBar.progress / total).coerceIn(0f, 1f)
+                val secondary = (b.fssProgressBar.secondaryProgress / total).coerceIn(0f, 1f)
+                Box(Modifier.fillMaxWidth().height(6.dp).background(accent.copy(alpha = .12f))) {
+                    Box(Modifier.fillMaxWidth(secondary).fillMaxHeight().background(accent.copy(alpha = .5f)))
+                    Box(Modifier.fillMaxWidth(progress).fillMaxHeight().background(accent))
+                }
+                FlowRow(horizontalArrangement = Arrangement.SpaceBetween) { WgText(b.fssUnmeteredDataUsage); WgText(b.fssTotalDataUsage) }
+                WgText(b.fssMeteredDataUsage)
+            }
+            b.statsRecyclerView.adapter?.Content(Modifier.weight(1f))
+        }
+    }
+}

@@ -16,18 +16,11 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/app_navigation" />
 
-   <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- Framework-only shell: native Compose renders navigation and transient dialogs. -->
+    <androidx.compose.ui.platform.ComposeView
         android:id="@+id/nav_view"
-        android:name="com.celzero.bravedns.ui.HomeScreenActivity"
-        style="@style/Widget.Material3.BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/nav_menu_background"
-        app:labelVisibilityMode="labeled"
-        android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        android:layout_gravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

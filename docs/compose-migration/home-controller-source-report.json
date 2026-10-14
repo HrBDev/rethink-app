@@ -1,0 +1,587 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "kind": "source_equivalence_only",
+  "results": [
+    {
+      "method": "onAttach",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "initializeValues",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "initializeClickListeners",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openRethinkAppInfoIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openRpnDashboardScreen",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openRpnServerSelection",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "logEvent",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handlePause",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openPauseActivity",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateCardsUi",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeVpnState",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "enableFirewallCardIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "enableAppsCardIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "enableDnsCardIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "enableProxyCardIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "enableLogsCardIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeProxyStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startProxyPollingForStatus",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startDnsStatePolling",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateUiWithDnsStatusPolled",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "getConnectedDnsId",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startProxyStatePolling",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateUiWithProxyStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "showRpnStopped",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "getProxyStatus",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isSplitDns",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isDnsError",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "unobserveProxyStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isStoppedSlotVisible",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isRpnStoppedEarly",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "toggleLogsView",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateLogsDotsVisibility",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "showLogsDotsTemporarily",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "pagerPageCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openNetworkLogs",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "refreshTopAppsHistogram",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "loadTopAppsEntries",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isUnknownAppName",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "iconForUid",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "showTopAppsEntry",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "formatBytesCompact",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeLogActivity",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "renderLogsHourAxisLabels",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "renderLogsHeaderCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "tappedInterval",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openIntervalDetails",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeDnsStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "renderDnsHeadline",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateUiWithDnsStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "withBlocklistCountSuffix",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeLogsCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "formatDecimal",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "unobserveDnsStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeUniversalStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeCustomRulesCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateTotalRuleCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateRulesPageCounts",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openRulesScreen",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "compactRuleCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "unObserveCustomRulesCount",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "unobserveUniversalStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "observeAppStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "unobserveAppStates",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleMainScreenBtnClickEvent",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleVpnActivation",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "batteryOptimizationActive",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isRestrictBackgroundActive",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "openBottomSheet",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleAlwaysOnVpn",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "onResume",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleRethinkAppStatus",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startTrafficStats",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "displayProtos",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "updateActiveSinceUi",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "displayTrafficStatsBW",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "stopTrafficStats",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "displayTrafficStatsRate",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "getCommonUnit",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "convertToCommonUnit",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "maybeAutoStartVpn",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "triggerBugReport",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleLockdownModeIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleShimmer",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "onPause",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "onDestroyView",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startDnsActivity",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "canStartRethinkActivity",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startAppsActivity",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startActivity",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "prepareAndStartVpn",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "proceedWithVpnStart",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "stopShimmer",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startShimmer",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "stopVpnService",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "startVpnService",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "getNotificationPermissionIfNeeded",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "shouldShowRethinkWarning",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "prepareVpnService",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "registerForActivityResult",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "hasLocalNetworkPermission",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "requestLocalNetworkPermission",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "handleLocalNetworkPermissionDenied",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "syncDnsStatus",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isAnotherVpnActive",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "fetchTextColor",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isLightTheme",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "isDarkThemeOn",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "io",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "uiCtx",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "ui",
+      "check": "exact_body",
+      "passed": true
+    },
+    {
+      "method": "showBatteryOptimizationDialog",
+      "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    },
+    {
+      "method": "showAlwaysOnStopDialog",
+      "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    },
+    {
+      "method": "showAlwaysOnDisableDialog",
+      "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    },
+    {
+      "method": "showPrivateDnsDialog",
+      "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    },
+    {
+      "method": "showFirstTimeVpnDialog",
+      "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    },
+    {
+      "method": "showLocalNetworkPermissionDialog",
+      "check": "callbacks_and_order_with_presentation_substitution",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

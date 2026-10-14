@@ -1,0 +1,1436 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "kind": "selected-controller-token-equality",
+  "passed": true,
+  "count": 204,
+  "methods": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "method": "showListenPort",
+      "baselineSha256": "0aa45dfd4e9944014b8f75dab50c363725d2718ed572f2d56438171d2482626e",
+      "currentSha256": "0aa45dfd4e9944014b8f75dab50c363725d2718ed572f2d56438171d2482626e",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "method": "setupClickListeners",
+      "baselineSha256": "709a53236d237fd2e15fd7fd8bbe012ac4e16ab1ece957b4f1d93cddc12f4e72",
+      "currentSha256": "709a53236d237fd2e15fd7fd8bbe012ac4e16ab1ece957b4f1d93cddc12f4e72",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "method": "addWgInterface",
+      "baselineSha256": "178018ea3d2ba850409aead153bb731e8acdb917e92fd5e329669492d218808c",
+      "currentSha256": "178018ea3d2ba850409aead153bb731e8acdb917e92fd5e329669492d218808c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "method": "io",
+      "baselineSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "currentSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigEditorActivity.kt",
+      "method": "uiCtx",
+      "baselineSha256": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "currentSha256": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "method": "setupClickListener",
+      "baselineSha256": "8b56caaa150895889916fd937ba43898078ec2dc761c38c8edd5689aeff8ed91",
+      "currentSha256": "8b56caaa150895889916fd937ba43898078ec2dc761c38c8edd5689aeff8ed91",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgAddPeerDialog.kt",
+      "method": "ui",
+      "baselineSha256": "9d822defafdca909cb96d6067f7f48c6b15ef0d53b089f86e6cd33d8f61fed62",
+      "currentSha256": "9d822defafdca909cb96d6067f7f48c6b15ef0d53b089f86e6cd33d8f61fed62",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "getDescTxt",
+      "baselineSha256": "c01faa45232a0b904ee8a8fa5d33fd0b4fb95b67330a630033ef0fd3fbb42b7d",
+      "currentSha256": "c01faa45232a0b904ee8a8fa5d33fd0b4fb95b67330a630033ef0fd3fbb42b7d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "loadCurrentSsids",
+      "baselineSha256": "6719201f4931d97d1010b7ad0a578a7cf1928a342b87ea2cb1f62ee998a293d8",
+      "currentSha256": "6719201f4931d97d1010b7ad0a578a7cf1928a342b87ea2cb1f62ee998a293d8",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "disableOrEnableRadioButtons",
+      "baselineSha256": "ed3df0d50b0ec5b29242e334bcb8eeb07afedc4ef5cef839252b791cfa8027ca",
+      "currentSha256": "ed3df0d50b0ec5b29242e334bcb8eeb07afedc4ef5cef839252b791cfa8027ca",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "resetToDefaultSelection",
+      "baselineSha256": "a2c63eb1789ef37c9660774c57d5770eda55621d5fc3cd54e24c901259e36b28",
+      "currentSha256": "a2c63eb1789ef37c9660774c57d5770eda55621d5fc3cd54e24c901259e36b28",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "isValidSsidName",
+      "baselineSha256": "e4e9e1f1beb4f5c75a996c4e2b29afa283d98f371c7d5f987e16e0e4e394da74",
+      "currentSha256": "e4e9e1f1beb4f5c75a996c4e2b29afa283d98f371c7d5f987e16e0e4e394da74",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "showDeleteConfirmation",
+      "baselineSha256": "d4fe5dbfc86bcc308db667d1f7a75b671a75d046b421be9c6377c99848a94282",
+      "currentSha256": "d4fe5dbfc86bcc308db667d1f7a75b671a75d046b421be9c6377c99848a94282",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "updateEmptyState",
+      "baselineSha256": "740502d27cd8484628062f18bcfef55d0d92a37328c7f53417b280650903bc80",
+      "currentSha256": "740502d27cd8484628062f18bcfef55d0d92a37328c7f53417b280650903bc80",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/WgSsidDialog.kt",
+      "method": "saveSsids",
+      "baselineSha256": "bc03a1c5195469bf65e490557b3127c9dcc7803219d624f151a19a9c883bfc68",
+      "currentSha256": "bc03a1c5195469bf65e490557b3127c9dcc7803219d624f151a19a9c883bfc68",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "newIntent",
+      "baselineSha256": "141fc13d11d76b8168e03d99b9e54ed14ce73aa5efd79b8d4fec7bc8e9465ffe",
+      "currentSha256": "141fc13d11d76b8168e03d99b9e54ed14ce73aa5efd79b8d4fec7bc8e9465ffe",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "observeApps",
+      "baselineSha256": "817b020c41b15dc1a6cffce7d102579d3ffca0a9c87cd305cc1c1f26d95423fd",
+      "currentSha256": "817b020c41b15dc1a6cffce7d102579d3ffca0a9c87cd305cc1c1f26d95423fd",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "applyFilter",
+      "baselineSha256": "975723793e161282a2a790c07b260a2d8844c6a3d4c38888b92c735a98cec545",
+      "currentSha256": "975723793e161282a2a790c07b260a2d8844c6a3d4c38888b92c735a98cec545",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "refreshPagingAdapter",
+      "baselineSha256": "c9da901c63169408a6bceabe688a5bc4a401675b5ed96d50928f5383dd240773",
+      "currentSha256": "c9da901c63169408a6bceabe688a5bc4a401675b5ed96d50928f5383dd240773",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "clearSearch",
+      "baselineSha256": "19143e098fcff3ae0b4b8dc7c9962ddd3766ebdb08c06e7adfda1e30c1988641",
+      "currentSha256": "19143e098fcff3ae0b4b8dc7c9962ddd3766ebdb08c06e7adfda1e30c1988641",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "syncBulkToggleState",
+      "baselineSha256": "57f991eeaea2100b935efad0b321efca73431bebb8ee376c5ace9150a3298dbc",
+      "currentSha256": "57f991eeaea2100b935efad0b321efca73431bebb8ee376c5ace9150a3298dbc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "setBulkControlsEnabled",
+      "baselineSha256": "35861f27c5f78d23fabdbd96b5bc88d2dc35da3ffa12baab29cad9b214f66d2a",
+      "currentSha256": "35861f27c5f78d23fabdbd96b5bc88d2dc35da3ffa12baab29cad9b214f66d2a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "confirmBulkAction",
+      "baselineSha256": "2cc11723275d860bd9994b80c69b67db04f9a005624b8d75883e329e5faf0649",
+      "currentSha256": "2cc11723275d860bd9994b80c69b67db04f9a005624b8d75883e329e5faf0649",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "performBulkAction",
+      "baselineSha256": "1f1147d421698d446824ff424c98e2e128d5e8db340833959fc0838abb78ac88",
+      "currentSha256": "1f1147d421698d446824ff424c98e2e128d5e8db340833959fc0838abb78ac88",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "onQueryTextSubmit",
+      "baselineSha256": "c2bfa91cb7f6eac3adf0431c18b17b0ab183b55c5400fe14284328598b7c3d1a",
+      "currentSha256": "c2bfa91cb7f6eac3adf0431c18b17b0ab183b55c5400fe14284328598b7c3d1a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "onQueryTextChange",
+      "baselineSha256": "c2bfa91cb7f6eac3adf0431c18b17b0ab183b55c5400fe14284328598b7c3d1a",
+      "currentSha256": "c2bfa91cb7f6eac3adf0431c18b17b0ab183b55c5400fe14284328598b7c3d1a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgIncludeAppsActivity.kt",
+      "method": "io",
+      "baselineSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "currentSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "update",
+      "baselineSha256": "ccc5e75ae12d7735f95c38f3583a029a09e37886c76b87872fd4632f34449fce",
+      "currentSha256": "ccc5e75ae12d7735f95c38f3583a029a09e37886c76b87872fd4632f34449fce",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "setupClickListeners",
+      "baselineSha256": "209a5d86009619961b56ab3dbef9487baaae163a355cce3b95d96f24a471b52f",
+      "currentSha256": "209a5d86009619961b56ab3dbef9487baaae163a355cce3b95d96f24a471b52f",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "updateInterfaceDetails",
+      "baselineSha256": "ab46fe7a9beac9e14a6b241bd3837e040342dfa96990d1538b9f626f35d689cc",
+      "currentSha256": "ab46fe7a9beac9e14a6b241bd3837e040342dfa96990d1538b9f626f35d689cc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "updateProxyIdForApp",
+      "baselineSha256": "b1ed3d508876a31df9d1996e19fc55e464d59117faa8dbb44abf2b415a1321cc",
+      "currentSha256": "b1ed3d508876a31df9d1996e19fc55e464d59117faa8dbb44abf2b415a1321cc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "notifyAppModified",
+      "baselineSha256": "9f9e2a39175d2be424e7ed98db6e24cd6e505cae422fb308080ffc47441c3e78",
+      "currentSha256": "9f9e2a39175d2be424e7ed98db6e24cd6e505cae422fb308080ffc47441c3e78",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "uiCtx",
+      "baselineSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "currentSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgIncludeAppsAdapter.kt",
+      "method": "io",
+      "baselineSha256": "06cd5f7694de8853fef0937a6ee5d8221ad52386539fdbd3ae4980f0bd95763b",
+      "currentSha256": "06cd5f7694de8853fef0937a6ee5d8221ad52386539fdbd3ae4980f0bd95763b",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "onPermissionsGranted",
+      "baselineSha256": "8d76ec8f7546ce34cb883c6a4f7a2482312f706f05bc31a71074c3a74b03a506",
+      "currentSha256": "8d76ec8f7546ce34cb883c6a4f7a2482312f706f05bc31a71074c3a74b03a506",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "onPermissionsDenied",
+      "baselineSha256": "a2160cfc35ad811abfbfaad1b1c23807f693eb8183804766c252bda719d39b84",
+      "currentSha256": "a2160cfc35ad811abfbfaad1b1c23807f693eb8183804766c252bda719d39b84",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "onPermissionsRationale",
+      "baselineSha256": "67986bf653242169f21bcdff4df96b53b90ebba95f4349b64a8e79d56cee09ba",
+      "currentSha256": "67986bf653242169f21bcdff4df96b53b90ebba95f4349b64a8e79d56cee09ba",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "fromInt",
+      "baselineSha256": "4cf5242fb5afc006f983bec8ac3b33e166c02b6ac76291e2a6811d56589b38ba",
+      "currentSha256": "4cf5242fb5afc006f983bec8ac3b33e166c02b6ac76291e2a6811d56589b38ba",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "onResume",
+      "baselineSha256": "5b78d1bfde3e921424b7c71a5fd2b3ec8eb275d2d13043e286c4e75f24df102d",
+      "currentSha256": "5b78d1bfde3e921424b7c71a5fd2b3ec8eb275d2d13043e286c4e75f24df102d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "onRequestPermissionsResult",
+      "baselineSha256": "dd108584ee914c423b5e990bfa1e04ff0252ccd362f9e3341599bc91b192b597",
+      "currentSha256": "dd108584ee914c423b5e990bfa1e04ff0252ccd362f9e3341599bc91b192b597",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "init",
+      "baselineSha256": "826f8371b8a7b25e1c278e330067e8da2e67956c6d5e7bb4d7619237727da0c6",
+      "currentSha256": "826f8371b8a7b25e1c278e330067e8da2e67956c6d5e7bb4d7619237727da0c6",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateStatusUi",
+      "baselineSha256": "167e8f0202e0f34eadeea5b3c16605cd84c3b1b41580416a08d789d73437184a",
+      "currentSha256": "167e8f0202e0f34eadeea5b3c16605cd84c3b1b41580416a08d789d73437184a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "cancelStatsJob",
+      "baselineSha256": "cfa07b0d1f90d52f6401c6562154a09c11f7103a7ae92e06282941e81bc266dc",
+      "currentSha256": "cfa07b0d1f90d52f6401c6562154a09c11f7103a7ae92e06282941e81bc266dc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "startStatsPolling",
+      "baselineSha256": "6cb85d293729a1db21ffa3bfe95b6b80668b4ed25ce156aa7b462f34dc586f33",
+      "currentSha256": "6cb85d293729a1db21ffa3bfe95b6b80668b4ed25ce156aa7b462f34dc586f33",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "resolveClientIps",
+      "baselineSha256": "b8537f68287737faa32eca3f22007a27d33b33ce86938bcb572805626552dacc",
+      "currentSha256": "b8537f68287737faa32eca3f22007a27d33b33ce86938bcb572805626552dacc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateFlag",
+      "baselineSha256": "07e0a0b9ebe1b084397db5abf8a006f26455db21c332fb7c3f419804c9feecd6",
+      "currentSha256": "07e0a0b9ebe1b084397db5abf8a006f26455db21c332fb7c3f419804c9feecd6",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showClientIpShimmer",
+      "baselineSha256": "8e3e75591da6f701c20038f7a22e3ec5312e8f7207134df144bdb1a197177fc0",
+      "currentSha256": "8e3e75591da6f701c20038f7a22e3ec5312e8f7207134df144bdb1a197177fc0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "applyClientIps",
+      "baselineSha256": "6e099e6ef65bf61467e18a95e9ecd5692447e481a7ebc310aa95146f65d11ff3",
+      "currentSha256": "6e099e6ef65bf61467e18a95e9ecd5692447e481a7ebc310aa95146f65d11ff3",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "buildIpDetailSpan",
+      "baselineSha256": "5d50b861aeb587b2830102defe9232b333ab3d329b5480a8cae7436e4ee1c34d",
+      "currentSha256": "5d50b861aeb587b2830102defe9232b333ab3d329b5480a8cae7436e4ee1c34d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "styleLabel",
+      "baselineSha256": "2ca454a37e7b90a85cc76b2511da1692e566fc2e35e10899c4fb4442ae883529",
+      "currentSha256": "2ca454a37e7b90a85cc76b2511da1692e566fc2e35e10899c4fb4442ae883529",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "appendLine",
+      "baselineSha256": "7dd44b06b960329b8364a5ad0fc513ae0f8cc882aa531e3482fef52c8ecf682c",
+      "currentSha256": "7dd44b06b960329b8364a5ad0fc513ae0f8cc882aa531e3482fef52c8ecf682c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "isDnsError",
+      "baselineSha256": "775739cb8545cebe1d6d84e3711d4cce7b5a083acb1e235a4319cc64d5471d44",
+      "currentSha256": "775739cb8545cebe1d6d84e3711d4cce7b5a083acb1e235a4319cc64d5471d44",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "getStatusText",
+      "baselineSha256": "da4aaace30303e43978a5c70eb63fc0158d32e2dc0b8e186ab5097ca65c02f51",
+      "currentSha256": "da4aaace30303e43978a5c70eb63fc0158d32e2dc0b8e186ab5097ca65c02f51",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "getHandshakeTime",
+      "baselineSha256": "47653658fd8f79d419d1293a7ff40ab33e9162312408f15e3c605e067f5b64c4",
+      "currentSha256": "47653658fd8f79d419d1293a7ff40ab33e9162312408f15e3c605e067f5b64c4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "getStrokeColorForStatus",
+      "baselineSha256": "d98aa608f47418ac0f829a06f8606f5dcd6d8ef570b67c0304bdde56781c1b2a",
+      "currentSha256": "d98aa608f47418ac0f829a06f8606f5dcd6d8ef570b67c0304bdde56781c1b2a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showInvalidConfigDialog",
+      "baselineSha256": "08419347594237459f5449dd4bd8c2318c5d444804b6d412bf9bd8eef900c504",
+      "currentSha256": "08419347594237459f5449dd4bd8c2318c5d444804b6d412bf9bd8eef900c504",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "shouldObserveAppsCount",
+      "baselineSha256": "b9295a611dc4131810370b380ada9a2e95a24a28ccd5e0fa753355d14cc85330",
+      "currentSha256": "b9295a611dc4131810370b380ada9a2e95a24a28ccd5e0fa753355d14cc85330",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "handleAppsCount",
+      "baselineSha256": "71d27e04b9f72d1c18821ad44fea56c2679b73ba3cee74a7bfb3c651989cd65c",
+      "currentSha256": "71d27e04b9f72d1c18821ad44fea56c2679b73ba3cee74a7bfb3c651989cd65c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "convertStringIdToId",
+      "baselineSha256": "c467a56628e0e298303c12aaa68b96e452958bf984e1f924c0607ec2a3c18624",
+      "currentSha256": "c467a56628e0e298303c12aaa68b96e452958bf984e1f924c0607ec2a3c18624",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "startActivity",
+      "baselineSha256": "2314a7003d48d336d4ea98513261c5a754510c944d67b02d9af69676dc2b31ba",
+      "currentSha256": "2314a7003d48d336d4ea98513261c5a754510c944d67b02d9af69676dc2b31ba",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateUseOnMobileNetwork",
+      "baselineSha256": "3608bb9a6bd7a4e30e28b6aa8739b3ddf18341a4aac6a9af0c2c4aad7a747c03",
+      "currentSha256": "3608bb9a6bd7a4e30e28b6aa8739b3ddf18341a4aac6a9af0c2c4aad7a747c03",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateCatchAll",
+      "baselineSha256": "dc47bd3266929f527065570d47a1c2268f398fa4a9734982dfd37b445c7ae1b4",
+      "currentSha256": "dc47bd3266929f527065570d47a1c2268f398fa4a9734982dfd37b445c7ae1b4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "openAppsDialog",
+      "baselineSha256": "90754f88252c8d523b10d3d615ed732b17057a0e88823267954fe209c24875bc",
+      "currentSha256": "90754f88252c8d523b10d3d615ed732b17057a0e88823267954fe209c24875bc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "refreshHopStatus",
+      "baselineSha256": "64369faa99dc4a0b58245d6cc5c8245950edc976d75b60e3a3dc16f3a0565525",
+      "currentSha256": "64369faa99dc4a0b58245d6cc5c8245950edc976d75b60e3a3dc16f3a0565525",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateHopStatusLabel",
+      "baselineSha256": "5307d6b904e68027b14587c5b8b4a42f67962303defcd9fcf561c41d6947c1d1",
+      "currentSha256": "5307d6b904e68027b14587c5b8b4a42f67962303defcd9fcf561c41d6947c1d1",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "openHopDialog",
+      "baselineSha256": "4a075bf3098dc2ef80a0d7daea668835793664e0c363072a4f59ffd8eacc2fad",
+      "currentSha256": "4a075bf3098dc2ef80a0d7daea668835793664e0c363072a4f59ffd8eacc2fad",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showInvalidConfigInfoDialog",
+      "baselineSha256": "eb7a08707ad21e8ec4916eda7dbffc64f53cdf3ec51038972b7e39c25bd86c0d",
+      "currentSha256": "eb7a08707ad21e8ec4916eda7dbffc64f53cdf3ec51038972b7e39c25bd86c0d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showDeleteInterfaceDialog",
+      "baselineSha256": "38907032112f51cc1379cd32a19c1c9cbe0f8e06105fa348542d150937ced7cc",
+      "currentSha256": "38907032112f51cc1379cd32a19c1c9cbe0f8e06105fa348542d150937ced7cc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "openAddPeerDialog",
+      "baselineSha256": "8e2afa01b3dfcf3727109e33ba77680dcab9bfb186dcb94e7ec7e6610973e8dd",
+      "currentSha256": "8e2afa01b3dfcf3727109e33ba77680dcab9bfb186dcb94e7ec7e6610973e8dd",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "uiCtx",
+      "baselineSha256": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "currentSha256": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "io",
+      "baselineSha256": "26ad899406e12b7cb1330bb4305c89cd7ec150d0315c24068c07f4f39e2b9cd9",
+      "currentSha256": "26ad899406e12b7cb1330bb4305c89cd7ec150d0315c24068c07f4f39e2b9cd9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "ui",
+      "baselineSha256": "446e7cf004b131583a92ad5961257fe14574b490f3931e8997e7b51809ec86a5",
+      "currentSha256": "446e7cf004b131583a92ad5961257fe14574b490f3931e8997e7b51809ec86a5",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "setupErrorActionListeners",
+      "baselineSha256": "2d4b76f48b00dcdef468bc3499b63d18cf14d3d35be0f501d2cc3c5c7faa456e",
+      "currentSha256": "2d4b76f48b00dcdef468bc3499b63d18cf14d3d35be0f501d2cc3c5c7faa456e",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "hideSsidExtras",
+      "baselineSha256": "a9898ede028dba8b16a460b5fc01f8e32f6ff0a9d18c054b5b0d77d0394deb98",
+      "currentSha256": "a9898ede028dba8b16a460b5fc01f8e32f6ff0a9d18c054b5b0d77d0394deb98",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showSsidDisplay",
+      "baselineSha256": "9cd4831b5ceda31c3fea6b7ae9d7046b84fe5677cf68279d049e3b3da14e3b4c",
+      "currentSha256": "9cd4831b5ceda31c3fea6b7ae9d7046b84fe5677cf68279d049e3b3da14e3b4c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "openSsidDialog",
+      "baselineSha256": "22b161548139ef26b5b615bd0177340aa1d53d0c5ef46c0ca747641ad54390b9",
+      "currentSha256": "22b161548139ef26b5b615bd0177340aa1d53d0c5ef46c0ca747641ad54390b9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showLocationDisclosureDialog",
+      "baselineSha256": "5e2616e04f755a53ef7aaeae3b27354758bb62fe28ad45b728522c0ed63ee237",
+      "currentSha256": "5e2616e04f755a53ef7aaeae3b27354758bb62fe28ad45b728522c0ed63ee237",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showLocationEnableDialog",
+      "baselineSha256": "3755039fd044f648ff7cc03286c2f14e81dba424054691d8a1c9e0055d4c0c91",
+      "currentSha256": "3755039fd044f648ff7cc03286c2f14e81dba424054691d8a1c9e0055d4c0c91",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateErrorLayouts",
+      "baselineSha256": "f314d191a19151ed53bd050349d27a1ac11a391f56ca7b0fbe726c53402abaf4",
+      "currentSha256": "f314d191a19151ed53bd050349d27a1ac11a391f56ca7b0fbe726c53402abaf4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "hideErrorLayouts",
+      "baselineSha256": "bacb1ddbf492c0e20f9a0988d0356dd556822181a98b6e147d40bd4bd15988eb",
+      "currentSha256": "bacb1ddbf492c0e20f9a0988d0356dd556822181a98b6e147d40bd4bd15988eb",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "updateSsidPermissionState",
+      "baselineSha256": "f18289f32f14d90a2f58bf3cc021d56cbecac8ebbea192f0b0184c82142fa484",
+      "currentSha256": "f18289f32f14d90a2f58bf3cc021d56cbecac8ebbea192f0b0184c82142fa484",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "showPermissionDeniedDialog",
+      "baselineSha256": "61c38523bf58ccd091ed5d01c2771cfb4436a5a683e108eb7ab979e8561bfa87",
+      "currentSha256": "61c38523bf58ccd091ed5d01c2771cfb4436a5a683e108eb7ab979e8561bfa87",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "logEvent",
+      "baselineSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "currentSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "handleOnBackPressed",
+      "baselineSha256": "aaf6c059a23c5298d8579cec0e8d6ed095603d4d84731c47c6de540a27ed0cd9",
+      "currentSha256": "aaf6c059a23c5298d8579cec0e8d6ed095603d4d84731c47c6de540a27ed0cd9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "init",
+      "baselineSha256": "b9af3fdb844d0ee65de78e4953a4a94ddf2078061299a4d1d8b0e00bf33f38a4",
+      "currentSha256": "b9af3fdb844d0ee65de78e4953a4a94ddf2078061299a4d1d8b0e00bf33f38a4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "setAdapter",
+      "baselineSha256": "c5319c5e2a6a7dc4acad2458e20ddcd0517c68a2c768400d2ed683b5f94eaab4",
+      "currentSha256": "c5319c5e2a6a7dc4acad2458e20ddcd0517c68a2c768400d2ed683b5f94eaab4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "showOneWgToggle",
+      "baselineSha256": "b497746e7be9dfbee5d324a198b4f3497d360c2d0bfbc8ecc9cd7c807ba53bb2",
+      "currentSha256": "b497746e7be9dfbee5d324a198b4f3497d360c2d0bfbc8ecc9cd7c807ba53bb2",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "showGeneralToggle",
+      "baselineSha256": "657c967008fd2a965ee585f323fd1ea3b4489937d6a8ebc4bf2c2b80bd85fdb6",
+      "currentSha256": "657c967008fd2a965ee585f323fd1ea3b4489937d6a8ebc4bf2c2b80bd85fdb6",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "selectToggleBtnUi",
+      "baselineSha256": "1f1998463ea0859a9c0492b35d5618ccf29c77c7db7fc0f965e63c118443fd02",
+      "currentSha256": "1f1998463ea0859a9c0492b35d5618ccf29c77c7db7fc0f965e63c118443fd02",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "unselectToggleBtnUi",
+      "baselineSha256": "e4f4d683bda33076f7a1aa8ba4117784dfdf510a5d929fb9b7d937759b0f2fcd",
+      "currentSha256": "e4f4d683bda33076f7a1aa8ba4117784dfdf510a5d929fb9b7d937759b0f2fcd",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "observeConfig",
+      "baselineSha256": "d5d2c1180a8ccac770de8f20acac7f0030195b7c61109ca6e0e8fadaa4b6a675",
+      "currentSha256": "d5d2c1180a8ccac770de8f20acac7f0030195b7c61109ca6e0e8fadaa4b6a675",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "showWgViews",
+      "baselineSha256": "746345af6362498244269c609619637928666fef9e66d78f6f4b5a2a10a57771",
+      "currentSha256": "746345af6362498244269c609619637928666fef9e66d78f6f4b5a2a10a57771",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "hideWgViews",
+      "baselineSha256": "d588d5a24104d0f7ae23cc826427c57e69303e3dd5aeabede4537dc3704f9ca9",
+      "currentSha256": "d588d5a24104d0f7ae23cc826427c57e69303e3dd5aeabede4537dc3704f9ca9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "observeDnsName",
+      "baselineSha256": "2977da8232922ef8a47332049e1e9939af8c4d096b975e9e45695a806a2b986a",
+      "currentSha256": "2977da8232922ef8a47332049e1e9939af8c4d096b975e9e45695a806a2b986a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "showDeleteAllInterfacesDialog",
+      "baselineSha256": "c15967925617b7ea45b8a943fe2949cda8b58864856c0f10bd970b3a91f6613c",
+      "currentSha256": "c15967925617b7ea45b8a943fe2949cda8b58864856c0f10bd970b3a91f6613c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "openTunnelEditorActivity",
+      "baselineSha256": "2b39195f8905e847dbeb79a5510f1c436118f3436363a3bb37e0d470b5e81175",
+      "currentSha256": "2b39195f8905e847dbeb79a5510f1c436118f3436363a3bb37e0d470b5e81175",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "showDisableDialog",
+      "baselineSha256": "26b3992b306351c45be98a95c1aaa8a9609d86914a16ba20687ebaa6464ce985",
+      "currentSha256": "26b3992b306351c45be98a95c1aaa8a9609d86914a16ba20687ebaa6464ce985",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "logEvent",
+      "baselineSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "currentSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "io",
+      "baselineSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "currentSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/WgMainActivity.kt",
+      "method": "uiCtx",
+      "baselineSha256": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "currentSha256": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "update",
+      "baselineSha256": "1fe9404ee545386f653362a145619bcca5a1781a4649209e43a2129902bebc14",
+      "currentSha256": "1fe9404ee545386f653362a145619bcca5a1781a4649209e43a2129902bebc14",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateStatusJob",
+      "baselineSha256": "0ab393c18a0c79ad37a78b41633f107f0f66558ab1cce7d1b48f3ced3eb4d384",
+      "currentSha256": "0ab393c18a0c79ad37a78b41633f107f0f66558ab1cce7d1b48f3ced3eb4d384",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "disableInactiveConfig",
+      "baselineSha256": "f4a3616e07936db3dea119749ad2d49100f4b17038e30e16d7da3ed7f212ffe9",
+      "currentSha256": "f4a3616e07936db3dea119749ad2d49100f4b17038e30e16d7da3ed7f212ffe9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateProxyStatusContinuously",
+      "baselineSha256": "d9f09889c3af4572480ef308d9d68cd20150017c126520c6bdc022e1a0fc803e",
+      "currentSha256": "d9f09889c3af4572480ef308d9d68cd20150017c126520c6bdc022e1a0fc803e",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateProtocolChip",
+      "baselineSha256": "1a9a2ffdbe4784d0323072b2fbc7f3273a399c4fc75a9f19bea08bd7fd944c14",
+      "currentSha256": "1a9a2ffdbe4784d0323072b2fbc7f3273a399c4fc75a9f19bea08bd7fd944c14",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateSplitTunnelChip",
+      "baselineSha256": "e7db4f3d9ee53cf5ea33127f0f66198034a44e4251e011cd13f36b0e743811ee",
+      "currentSha256": "e7db4f3d9ee53cf5ea33127f0f66198034a44e4251e011cd13f36b0e743811ee",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateHopSrcChip",
+      "baselineSha256": "adf672d404f390079f2d0c996e622ca47ca999f5e1b8f2e92cbb3225844f1a28",
+      "currentSha256": "adf672d404f390079f2d0c996e622ca47ca999f5e1b8f2e92cbb3225844f1a28",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateHoppingChip",
+      "baselineSha256": "8b4ffe06410dbc6fc178b7ca1201e072eec05c93bb5a81f9f982ed20484920d2",
+      "currentSha256": "8b4ffe06410dbc6fc178b7ca1201e072eec05c93bb5a81f9f982ed20484920d2",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateFlag",
+      "baselineSha256": "c3a54b2d8668c853c53b25f0d95effa52e136e2ca5043301b2aad2cbe00276e9",
+      "currentSha256": "c3a54b2d8668c853c53b25f0d95effa52e136e2ca5043301b2aad2cbe00276e9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "cancelJobIfAny",
+      "baselineSha256": "f2461384bf934cf1ae859a2bcbc3ab84e3b2b3c242cf93c4f080466303e5a191",
+      "currentSha256": "f2461384bf934cf1ae859a2bcbc3ab84e3b2b3c242cf93c4f080466303e5a191",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateStatus",
+      "baselineSha256": "d89cb91930c2c200015cfe7d35123e7937213c840ffda6319791fb46eb4affd4",
+      "currentSha256": "d89cb91930c2c200015cfe7d35123e7937213c840ffda6319791fb46eb4affd4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateAmneziaChip",
+      "baselineSha256": "6dcbeaafd3c8ab69f7db010723bad409fd63c4588115c0ca44c6811a51516785",
+      "currentSha256": "6dcbeaafd3c8ab69f7db010723bad409fd63c4588115c0ca44c6811a51516785",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "isAmneziaConfig",
+      "baselineSha256": "6d2ad2d455f21e144d316807ede2a68e61a91c1b04660e79ea1e0a7bb3e5d4e2",
+      "currentSha256": "6d2ad2d455f21e144d316807ede2a68e61a91c1b04660e79ea1e0a7bb3e5d4e2",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateUi",
+      "baselineSha256": "e0acea8a87c116bb84a910634fcfed3b59607ad29e5d683b2366153bcb1a434f",
+      "currentSha256": "e0acea8a87c116bb84a910634fcfed3b59607ad29e5d683b2366153bcb1a434f",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateStatusUi",
+      "baselineSha256": "2cdbf73235b3e958b905aec1619b0e9f6261fd0bb98f1ec5af49d7495f341383",
+      "currentSha256": "2cdbf73235b3e958b905aec1619b0e9f6261fd0bb98f1ec5af49d7495f341383",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getStrokeColorForStatus",
+      "baselineSha256": "d98aa608f47418ac0f829a06f8606f5dcd6d8ef570b67c0304bdde56781c1b2a",
+      "currentSha256": "d98aa608f47418ac0f829a06f8606f5dcd6d8ef570b67c0304bdde56781c1b2a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getStatusText",
+      "baselineSha256": "1dd6fd050b4e8962f92de3f1d075359f67582d70ff93d2b5adb0285bcc4df345",
+      "currentSha256": "1dd6fd050b4e8962f92de3f1d075359f67582d70ff93d2b5adb0285bcc4df345",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "updateProxyStatusUi",
+      "baselineSha256": "050706838926ff137717dc8867834c06b5752b0ae8abdb74d4d78a2ef2b1b87f",
+      "currentSha256": "050706838926ff137717dc8867834c06b5752b0ae8abdb74d4d78a2ef2b1b87f",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "isDnsError",
+      "baselineSha256": "775739cb8545cebe1d6d84e3711d4cce7b5a083acb1e235a4319cc64d5471d44",
+      "currentSha256": "775739cb8545cebe1d6d84e3711d4cce7b5a083acb1e235a4319cc64d5471d44",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getRxTx",
+      "baselineSha256": "b715f4f2b74e9e16f6a5f3e22facbe4ff21cbcdc2e3663eb9da01b5b9c93f863",
+      "currentSha256": "b715f4f2b74e9e16f6a5f3e22facbe4ff21cbcdc2e3663eb9da01b5b9c93f863",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getUpTime",
+      "baselineSha256": "ca1eac20aef0079622fa3fa77cd81eaf9cab3d9b7cf737e28314f548e5c4ddea",
+      "currentSha256": "ca1eac20aef0079622fa3fa77cd81eaf9cab3d9b7cf737e28314f548e5c4ddea",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getHumanReadableLastOk",
+      "baselineSha256": "8352522f6c4683b2843cd26d65620817b2feab6845561304796d3047dd5370c7",
+      "currentSha256": "8352522f6c4683b2843cd26d65620817b2feab6845561304796d3047dd5370c7",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "setupClickListeners",
+      "baselineSha256": "9a971da8105c4e93367d1daa316496506755da8e4070f71871cad0a12a8242db",
+      "currentSha256": "9a971da8105c4e93367d1daa316496506755da8e4070f71871cad0a12a8242db",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "disableWgIfPossible",
+      "baselineSha256": "7ba90a714302a1fee4d6365e605c1bd05891cd02ade6113b065ee3c6439b6cfc",
+      "currentSha256": "7ba90a714302a1fee4d6365e605c1bd05891cd02ade6113b065ee3c6439b6cfc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "enableWgIfPossible",
+      "baselineSha256": "8d117a18d2e30fa5fcba0a737dd73c7915fc9cb21880b13a8440abe38b18eb61",
+      "currentSha256": "8d117a18d2e30fa5fcba0a737dd73c7915fc9cb21880b13a8440abe38b18eb61",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "showInvalidConfigDialog",
+      "baselineSha256": "49275d719500665b0ae5cf18f3b0989aba8531fd855598244b80db3cacb90bb3",
+      "currentSha256": "49275d719500665b0ae5cf18f3b0989aba8531fd855598244b80db3cacb90bb3",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "launchConfigDetail",
+      "baselineSha256": "b2fd23e5a15ef0aafc5a58ffa4799caf5541049cfd910890ace0af3e52f53777",
+      "currentSha256": "b2fd23e5a15ef0aafc5a58ffa4799caf5541049cfd910890ace0af3e52f53777",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "logEvent",
+      "baselineSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "currentSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "uiCtx",
+      "baselineSha256": "6cd4cf7152e2190ff512a2dbd930d68b37ce2f87f7729a041c0d80694c56870a",
+      "currentSha256": "6cd4cf7152e2190ff512a2dbd930d68b37ce2f87f7729a041c0d80694c56870a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "io",
+      "baselineSha256": "1010ae508305f630c7779150ad55591dceb39af1bec64039d6ff34013d7023f3",
+      "currentSha256": "1010ae508305f630c7779150ad55591dceb39af1bec64039d6ff34013d7023f3",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "update",
+      "baselineSha256": "7cff5976d01363c126a35ecff52613dd19b9efb3d8a21e32b9d905384e727483",
+      "currentSha256": "7cff5976d01363c126a35ecff52613dd19b9efb3d8a21e32b9d905384e727483",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "cancelJobIfAny",
+      "baselineSha256": "f2461384bf934cf1ae859a2bcbc3ab84e3b2b3c242cf93c4f080466303e5a191",
+      "currentSha256": "f2461384bf934cf1ae859a2bcbc3ab84e3b2b3c242cf93c4f080466303e5a191",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "keepStatusUpdated",
+      "baselineSha256": "f05ff3764c33ff7b6a08c968aabfcaa0bdea3193c76109b352ec98147c184c82",
+      "currentSha256": "f05ff3764c33ff7b6a08c968aabfcaa0bdea3193c76109b352ec98147c184c82",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "updateProtocolChip",
+      "baselineSha256": "203bc00e8e67f10cf840123446069609f26f79f310b4e1014ad0b2605ab46084",
+      "currentSha256": "203bc00e8e67f10cf840123446069609f26f79f310b4e1014ad0b2605ab46084",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "updateSplitTunnelChip",
+      "baselineSha256": "e7db4f3d9ee53cf5ea33127f0f66198034a44e4251e011cd13f36b0e743811ee",
+      "currentSha256": "e7db4f3d9ee53cf5ea33127f0f66198034a44e4251e011cd13f36b0e743811ee",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "updateStatus",
+      "baselineSha256": "1f7856d22c18af9815df76e751aa2513bd71a3104abd1c6c262b58fcd72e8ac8",
+      "currentSha256": "1f7856d22c18af9815df76e751aa2513bd71a3104abd1c6c262b58fcd72e8ac8",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "isDnsError",
+      "baselineSha256": "775739cb8545cebe1d6d84e3711d4cce7b5a083acb1e235a4319cc64d5471d44",
+      "currentSha256": "775739cb8545cebe1d6d84e3711d4cce7b5a083acb1e235a4319cc64d5471d44",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "updateStatusUi",
+      "baselineSha256": "e9bff4e29f9c6fd447c39107d29bae73fd13721238d65bcb0ceaeeb4e9f15b13",
+      "currentSha256": "e9bff4e29f9c6fd447c39107d29bae73fd13721238d65bcb0ceaeeb4e9f15b13",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getStrokeColorForStatus",
+      "baselineSha256": "d98aa608f47418ac0f829a06f8606f5dcd6d8ef570b67c0304bdde56781c1b2a",
+      "currentSha256": "d98aa608f47418ac0f829a06f8606f5dcd6d8ef570b67c0304bdde56781c1b2a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getStatusText",
+      "baselineSha256": "a43ebc329a1e611a647ff1aae9cbf89dc61c7b0ec6c6465f42a43d01858da4b4",
+      "currentSha256": "a43ebc329a1e611a647ff1aae9cbf89dc61c7b0ec6c6465f42a43d01858da4b4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "updateProxyStatusUi",
+      "baselineSha256": "a42498c1bd2a1230c98f9bce76c9ee679ceeda173accf1f3ced4c475a49b601f",
+      "currentSha256": "a42498c1bd2a1230c98f9bce76c9ee679ceeda173accf1f3ced4c475a49b601f",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "disableInterface",
+      "baselineSha256": "ac633d713e995348684e4ef80a5fa54af222f6daa66f2120534d34bef0f5a388",
+      "currentSha256": "ac633d713e995348684e4ef80a5fa54af222f6daa66f2120534d34bef0f5a388",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "updateFlag",
+      "baselineSha256": "0743a1c8741800c804ccadd6b5453342022cd087ff58b1077b5c044af336e550",
+      "currentSha256": "0743a1c8741800c804ccadd6b5453342022cd087ff58b1077b5c044af336e550",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getUpTime",
+      "baselineSha256": "ca1eac20aef0079622fa3fa77cd81eaf9cab3d9b7cf737e28314f548e5c4ddea",
+      "currentSha256": "ca1eac20aef0079622fa3fa77cd81eaf9cab3d9b7cf737e28314f548e5c4ddea",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getRxTx",
+      "baselineSha256": "b715f4f2b74e9e16f6a5f3e22facbe4ff21cbcdc2e3663eb9da01b5b9c93f863",
+      "currentSha256": "b715f4f2b74e9e16f6a5f3e22facbe4ff21cbcdc2e3663eb9da01b5b9c93f863",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getHandshakeTime",
+      "baselineSha256": "47653658fd8f79d419d1293a7ff40ab33e9162312408f15e3c605e067f5b64c4",
+      "currentSha256": "47653658fd8f79d419d1293a7ff40ab33e9162312408f15e3c605e067f5b64c4",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "setupClickListeners",
+      "baselineSha256": "72f55ddcc0ddb69afd69670c74579a2056fe5a913f1cc8483875e2296392acd0",
+      "currentSha256": "72f55ddcc0ddb69afd69670c74579a2056fe5a913f1cc8483875e2296392acd0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "enableWgIfPossible",
+      "baselineSha256": "689c29020d4ab04b43627d987c2dbe1661fa536335e5aee8dae9ced11afa4e99",
+      "currentSha256": "689c29020d4ab04b43627d987c2dbe1661fa536335e5aee8dae9ced11afa4e99",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "showInvalidConfigDialog",
+      "baselineSha256": "49275d719500665b0ae5cf18f3b0989aba8531fd855598244b80db3cacb90bb3",
+      "currentSha256": "49275d719500665b0ae5cf18f3b0989aba8531fd855598244b80db3cacb90bb3",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "disableWgIfPossible",
+      "baselineSha256": "cb4e3dfe877d3f6a2b802212774905598aa7943b2e695346a180e8e373ee0904",
+      "currentSha256": "cb4e3dfe877d3f6a2b802212774905598aa7943b2e695346a180e8e373ee0904",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "launchConfigDetail",
+      "baselineSha256": "59020a16778e4b4f0fabe2a148182e88f6cec93f237ff74bc104595d51db688e",
+      "currentSha256": "59020a16778e4b4f0fabe2a148182e88f6cec93f237ff74bc104595d51db688e",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "logEvent",
+      "baselineSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "currentSha256": "2ab3086e08d713980306e8b4dd596269ec98aa806e9125b2d949dc732bebdfd0",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "uiCtx",
+      "baselineSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "currentSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "io",
+      "baselineSha256": "5580219e352e583c0d150117f01b665f9a1e48039b1bdca2614ea9a3ff58abac",
+      "currentSha256": "5580219e352e583c0d150117f01b665f9a1e48039b1bdca2614ea9a3ff58abac",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "update",
+      "baselineSha256": "73fe1684a29f6b99f3dce33e7a7705b2a435a9feaab5cc601e66faf44bcf01bc",
+      "currentSha256": "73fe1684a29f6b99f3dce33e7a7705b2a435a9feaab5cc601e66faf44bcf01bc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateWireGuardHop",
+      "baselineSha256": "d052924a4c4a29946949070e77b98618c7b539353fe625396d395e7d0a1b714d",
+      "currentSha256": "d052924a4c4a29946949070e77b98618c7b539353fe625396d395e7d0a1b714d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateRpnProxyHop",
+      "baselineSha256": "206c2266d7966beebbd2d476e08eb7cbe5577bd611c7ed1952d28e8439fb4225",
+      "currentSha256": "206c2266d7966beebbd2d476e08eb7cbe5577bd611c7ed1952d28e8439fb4225",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "showWgChips",
+      "baselineSha256": "e71e399415ff2c21122c068d5246d5b556eaa736cf8e59b868fbb519ba03bfef",
+      "currentSha256": "e71e399415ff2c21122c068d5246d5b556eaa736cf8e59b868fbb519ba03bfef",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "showRpnChips",
+      "baselineSha256": "d4df6070bcec12af87ee8a56630f6bb74263df2e7520a6a2b406302ebf61b845",
+      "currentSha256": "d4df6070bcec12af87ee8a56630f6bb74263df2e7520a6a2b406302ebf61b845",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateWgPropertiesChip",
+      "baselineSha256": "2e1b8d1f54ccd1879ae5773d1d33d58b061176d948862a7b19c1a07a2ff403e2",
+      "currentSha256": "2e1b8d1f54ccd1879ae5773d1d33d58b061176d948862a7b19c1a07a2ff403e2",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateRpnPropertiesChip",
+      "baselineSha256": "8f2754bc507a8e38ef93f71ce79b8312ad62a484a27ca5876a194453eee17ee1",
+      "currentSha256": "8f2754bc507a8e38ef93f71ce79b8312ad62a484a27ca5876a194453eee17ee1",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateAmzChip",
+      "baselineSha256": "0109cec9d5183dd040855530f672dc4c9a39ad2d25e79da18eda4571cb57281c",
+      "currentSha256": "0109cec9d5183dd040855530f672dc4c9a39ad2d25e79da18eda4571cb57281c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateProtocolChip",
+      "baselineSha256": "94609b1a2a678417637bf21156a97b50477f8837cae93ca1a51f3d3980f256f8",
+      "currentSha256": "94609b1a2a678417637bf21156a97b50477f8837cae93ca1a51f3d3980f256f8",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateSplitTunnelChip",
+      "baselineSha256": "e7eb8108a017dce32395bf70ff4f18c9b14caa00e969768d09fb9e6acc579885",
+      "currentSha256": "e7eb8108a017dce32395bf70ff4f18c9b14caa00e969768d09fb9e6acc579885",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateHopSrcChip",
+      "baselineSha256": "84d04d4a58113955d161575f149fb391f735adf0d1d01643cbb9126b8cbdea8a",
+      "currentSha256": "84d04d4a58113955d161575f149fb391f735adf0d1d01643cbb9126b8cbdea8a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateHoppingChip",
+      "baselineSha256": "52b99af9ecfa5cac09b4ffda297dcd6a5ea8b2341b6ed5e92bfa7240af2892e9",
+      "currentSha256": "52b99af9ecfa5cac09b4ffda297dcd6a5ea8b2341b6ed5e92bfa7240af2892e9",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "updateRpnStatusUi",
+      "baselineSha256": "11bd221232fd7ac86149bd9699c62c4c03d79e8345d24671a167ef07b03f7339",
+      "currentSha256": "11bd221232fd7ac86149bd9699c62c4c03d79e8345d24671a167ef07b03f7339",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "setupWgClickListeners",
+      "baselineSha256": "17a12e012d03f8b19e62b3e74c9895a46fccf6f5bcade855ba2ac091a14cca01",
+      "currentSha256": "17a12e012d03f8b19e62b3e74c9895a46fccf6f5bcade855ba2ac091a14cca01",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "setupRpnClickListeners",
+      "baselineSha256": "251e4ddf5056ae03327e252208c0f29178441d9e52aedbbb5d4d18da396e5bef",
+      "currentSha256": "251e4ddf5056ae03327e252208c0f29178441d9e52aedbbb5d4d18da396e5bef",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "handleWgHop",
+      "baselineSha256": "64233fff3ca617ad86f2210a22992fa853b204ec235a7f6a4cdbc735711420a5",
+      "currentSha256": "64233fff3ca617ad86f2210a22992fa853b204ec235a7f6a4cdbc735711420a5",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "handleRpnHop",
+      "baselineSha256": "f8ebfb903689881d895de2775bed2dd5877faecc6317cdb722f41ea59a4de254",
+      "currentSha256": "f8ebfb903689881d895de2775bed2dd5877faecc6317cdb722f41ea59a4de254",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "io",
+      "baselineSha256": "e23eb4c76c41e299762a6d1453ce2a145d61ebd0cac57e5ed79c2d9a62447845",
+      "currentSha256": "e23eb4c76c41e299762a6d1453ce2a145d61ebd0cac57e5ed79c2d9a62447845",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/GenericHopAdapter.kt",
+      "method": "uiCtx",
+      "baselineSha256": "b224aa147f078e41aa48255eaa4b9f20fdcf438d596d2cc5f777cd2e94176fd6",
+      "currentSha256": "b224aa147f078e41aa48255eaa4b9f20fdcf438d596d2cc5f777cd2e94176fd6",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "update",
+      "baselineSha256": "c65d0d2ccfee146aa1afdcec184b96d54c1802bab89e7aaec63ecab77a996bff",
+      "currentSha256": "c65d0d2ccfee146aa1afdcec184b96d54c1802bab89e7aaec63ecab77a996bff",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "openEditPeerDialog",
+      "baselineSha256": "de0c735bb550c37d7cac0df62c81591a1d536580b2ab47f5ff34c9846829b656",
+      "currentSha256": "de0c735bb550c37d7cac0df62c81591a1d536580b2ab47f5ff34c9846829b656",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "dataChanged",
+      "baselineSha256": "f5e9eea39001fa2ee1add0ab119ef5816e57a8564bb37dfc9f06da645ab0ee9a",
+      "currentSha256": "f5e9eea39001fa2ee1add0ab119ef5816e57a8564bb37dfc9f06da645ab0ee9a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "showDeleteInterfaceDialog",
+      "baselineSha256": "6fc64d4cac0c6be81fae3d2f34db5ab18097cac600a362bb447435a106477f1c",
+      "currentSha256": "6fc64d4cac0c6be81fae3d2f34db5ab18097cac600a362bb447435a106477f1c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "deletePeer",
+      "baselineSha256": "a59aa70a2208e70ceb738844924b2ead5940286191165422422ce40b2e12689a",
+      "currentSha256": "a59aa70a2208e70ceb738844924b2ead5940286191165422422ce40b2e12689a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "uiCtx",
+      "baselineSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "currentSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgPeersAdapter.kt",
+      "method": "io",
+      "baselineSha256": "5cff0f3b595c98a0b04fd9540dbe2762fca958489dc5a9939d8a89a0a91e37bf",
+      "currentSha256": "5cff0f3b595c98a0b04fd9540dbe2762fca958489dc5a9939d8a89a0a91e37bf",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "newInstance",
+      "baselineSha256": "f44bbdb15dd079484c3ea5c9fe92b8500d367e16643de1b83388d80133d69d48",
+      "currentSha256": "f44bbdb15dd079484c3ea5c9fe92b8500d367e16643de1b83388d80133d69d48",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "processDomain",
+      "baselineSha256": "74046b858aba93558405a5741f6b1b14ec0e17af440c7a48c78eb35c2289bf98",
+      "currentSha256": "74046b858aba93558405a5741f6b1b14ec0e17af440c7a48c78eb35c2289bf98",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "processIp",
+      "baselineSha256": "f73a645fa26b2652619c8ede2337d3142f34d1c10bf37f047aa041b3aed49c78",
+      "currentSha256": "f73a645fa26b2652619c8ede2337d3142f34d1c10bf37f047aa041b3aed49c78",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "bind",
+      "baselineSha256": "3bcc6eb1b451f0452e5896f4a009f241807bb715d749dd1099a47cdbfc81ed6e",
+      "currentSha256": "3bcc6eb1b451f0452e5896f4a009f241807bb715d749dd1099a47cdbfc81ed6e",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "io",
+      "baselineSha256": "313f3216d3e046334bff8fce8e99f17bf3c3a73a5478afca7ab0fb4abe340784",
+      "currentSha256": "313f3216d3e046334bff8fce8e99f17bf3c3a73a5478afca7ab0fb4abe340784",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "uiCtx",
+      "baselineSha256": "6c35f2210c32359a8708250f5621c752d50816c03c8ccde55a81895cac860d31",
+      "currentSha256": "6c35f2210c32359a8708250f5621c752d50816c03c8ccde55a81895cac860d31",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/WireguardListBtmSheet.kt",
+      "method": "onDismiss",
+      "baselineSha256": "15d0b741ce605d7617d14b5ba99efc08ed6dc8a5083b41e117be576d6aed2b1e",
+      "currentSha256": "15d0b741ce605d7617d14b5ba99efc08ed6dc8a5083b41e117be576d6aed2b1e",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "newInstance",
+      "baselineSha256": "17b9f04953c526d3e39cca4baa44677fb9e91b0c4bd52f0266ee323b6036379d",
+      "currentSha256": "17b9f04953c526d3e39cca4baa44677fb9e91b0c4bd52f0266ee323b6036379d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "initView",
+      "baselineSha256": "c8a06d6a6e96903488356073fbd6dacfaeda7f28356cdb4ae380d086e5326991",
+      "currentSha256": "c8a06d6a6e96903488356073fbd6dacfaeda7f28356cdb4ae380d086e5326991",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "handleTotalUsagesUi",
+      "baselineSha256": "59e9f0107c1e0723cb279adf2b84ea1afe3be38c828a004f744a7b1d9e27ba37",
+      "currentSha256": "59e9f0107c1e0723cb279adf2b84ea1afe3be38c828a004f744a7b1d9e27ba37",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "calculatePercentage",
+      "baselineSha256": "50d391deea52d3849cde48864294aead93f1cb3c42064a11f7e5aed5bd160211",
+      "currentSha256": "50d391deea52d3849cde48864294aead93f1cb3c42064a11f7e5aed5bd160211",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "selectToggleBtnUi",
+      "baselineSha256": "4595f7a0a9a6d1a56a446c5c96862925e86d4d2590e5f9311f81ea4afaf57c84",
+      "currentSha256": "4595f7a0a9a6d1a56a446c5c96862925e86d4d2590e5f9311f81ea4afaf57c84",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "unselectToggleBtnUi",
+      "baselineSha256": "3a91459233693ea864360850422c1ba940f2eb7e8568b0c47f34e1214be99060",
+      "currentSha256": "3a91459233693ea864360850422c1ba940f2eb7e8568b0c47f34e1214be99060",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "showErrorDialog",
+      "baselineSha256": "32fc3e320aad0738f57c963d08137600e95471556f5c1e010e8afe4897c8125a",
+      "currentSha256": "32fc3e320aad0738f57c963d08137600e95471556f5c1e010e8afe4897c8125a",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "io",
+      "baselineSha256": "d84f00a8536f978efde76404f225f34a662d7417e127c2dcd45b4068d68f9ddc",
+      "currentSha256": "d84f00a8536f978efde76404f225f34a662d7417e127c2dcd45b4068d68f9ddc",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/WgNwStatsFragment.kt",
+      "method": "uiCtx",
+      "baselineSha256": "5997027c2055303768bb04afa3e50845990c4f7d02d757580514ab9d4b9e9b13",
+      "currentSha256": "5997027c2055303768bb04afa3e50845990c4f7d02d757580514ab9d4b9e9b13",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "calculatePercentage",
+      "baselineSha256": "5ecf8553b897ffdd8daccd4d1f467b5d4f5cbe45b5e63a69a865a5961169c14d",
+      "currentSha256": "5ecf8553b897ffdd8daccd4d1f467b5d4f5cbe45b5e63a69a865a5961169c14d",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "bind",
+      "baselineSha256": "c0116c821204a43d3a8f27c34fd09dd8243a1f2c142702afc3173dddc2e3463c",
+      "currentSha256": "c0116c821204a43d3a8f27c34fd09dd8243a1f2c142702afc3173dddc2e3463c",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "showDataUsage",
+      "baselineSha256": "97db5caece472e6a581ad9b4d46a3e3f85af43bfb9b86650810477f1943155cb",
+      "currentSha256": "97db5caece472e6a581ad9b4d46a3e3f85af43bfb9b86650810477f1943155cb",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "setIcon",
+      "baselineSha256": "98e3fb085c7b0ee6da5a02e23225dc299a7057facabeb55501d6e9039d3b2c21",
+      "currentSha256": "98e3fb085c7b0ee6da5a02e23225dc299a7057facabeb55501d6e9039d3b2c21",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "getAppName",
+      "baselineSha256": "d330f0093e0f326f2d8736446c3777e3d32962013ab3d111194dc14e5b664988",
+      "currentSha256": "d330f0093e0f326f2d8736446c3777e3d32962013ab3d111194dc14e5b664988",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "io",
+      "baselineSha256": "5cff0f3b595c98a0b04fd9540dbe2762fca958489dc5a9939d8a89a0a91e37bf",
+      "currentSha256": "5cff0f3b595c98a0b04fd9540dbe2762fca958489dc5a9939d8a89a0a91e37bf",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "ui",
+      "baselineSha256": "70b0967ac66130a9bdcd040cd659a3bd2592203eeb06f47911e82752e8372f4b",
+      "currentSha256": "70b0967ac66130a9bdcd040cd659a3bd2592203eeb06f47911e82752e8372f4b",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "uiCtx",
+      "baselineSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "currentSha256": "4e21312ffb633eead44e7f1e13d4c1be6bed002148c1930420551eae052d20e7",
+      "passed": true
+    }
+  ]
+}

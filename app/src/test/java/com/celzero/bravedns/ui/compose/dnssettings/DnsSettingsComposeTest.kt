@@ -17,6 +17,7 @@ import org.junit.Test
 import org.junit.Assert.*
 
 /** No production Fragment/Activity is launched; every effect is a local counter. */
+@org.robolectric.annotation.GraphicsMode(org.robolectric.annotation.GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 class DnsSettingsComposeTest {

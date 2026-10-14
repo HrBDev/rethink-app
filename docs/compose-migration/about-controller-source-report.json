@@ -1,0 +1,611 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "kind": "About/diagnostics token equality with explicit presentation substitutions",
+  "passed": true,
+  "count": 81,
+  "methods": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "onViewCreated",
+      "passed": true,
+      "adaptedBaselineSha256": "b2e1bb40398f006ee5179ea30cc7da5c1718c56033a7160cbbd1549249619c2a",
+      "currentSha256": "b2e1bb40398f006ee5179ea30cc7da5c1718c56033a7160cbbd1549249619c2a"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "onCreate",
+      "passed": true,
+      "adaptedBaselineSha256": "e133609cd4b0f1146622c2d9ebaa859570c753830e61fd87755a2ad05cefe71c",
+      "currentSha256": "e133609cd4b0f1146622c2d9ebaa859570c753830e61fd87755a2ad05cefe71c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "onResume",
+      "passed": true,
+      "adaptedBaselineSha256": "4f58d32cc56d475c51fff8a451b356dab72c1e7a18debc24c7b144dfcc355ff4",
+      "currentSha256": "4f58d32cc56d475c51fff8a451b356dab72c1e7a18debc24c7b144dfcc355ff4"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "updateVersionInfo",
+      "passed": true,
+      "adaptedBaselineSha256": "9aa41aeb9d9dbb00eaae96c13f0f2ff239163bc01806586f13ef430c1e6f397d",
+      "currentSha256": "9aa41aeb9d9dbb00eaae96c13f0f2ff239163bc01806586f13ef430c1e6f397d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "updateTokenUi",
+      "passed": true,
+      "adaptedBaselineSha256": "7b6f9d327eb247205f77b946353f618facfadda741f470e85f37f4466510d12a",
+      "currentSha256": "7b6f9d327eb247205f77b946353f618facfadda741f470e85f37f4466510d12a"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "getLastUpdatedTs",
+      "passed": true,
+      "adaptedBaselineSha256": "4d5bc9875d9d772e3bda1c4e545bbb405bad64057ad9eaa486972b516dc51e2b",
+      "currentSha256": "4d5bc9875d9d772e3bda1c4e545bbb405bad64057ad9eaa486972b516dc51e2b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "updateSponsorInfo",
+      "passed": true,
+      "adaptedBaselineSha256": "d5355a55491f1af8205fd5d21925b5e3abff58c14b9d1904bade3a65ed25f440",
+      "currentSha256": "d5355a55491f1af8205fd5d21925b5e3abff58c14b9d1904bade3a65ed25f440"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "applySponsorState",
+      "passed": true,
+      "adaptedBaselineSha256": "92f11e8d8b682dce2a56bddc99571a508b24037541a3e2904eb5cd8a7f7f57c4",
+      "currentSha256": "92f11e8d8b682dce2a56bddc99571a508b24037541a3e2904eb5cd8a7f7f57c4"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openRpnDashboardScreen",
+      "passed": true,
+      "adaptedBaselineSha256": "f8a8fb09c6f42687ad8751a38bffa1569539b5500707f1817a3a1fcc9d132993",
+      "currentSha256": "f8a8fb09c6f42687ad8751a38bffa1569539b5500707f1817a3a1fcc9d132993"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "getVersionName",
+      "passed": true,
+      "adaptedBaselineSha256": "373802540a7e91aa70d4b5ab2193dd41b755caf5fd97ad0d464ba0d674a95a62",
+      "currentSha256": "373802540a7e91aa70d4b5ab2193dd41b755caf5fd97ad0d464ba0d674a95a62"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "getSponsorInfo",
+      "passed": true,
+      "adaptedBaselineSha256": "89a2907dcb129f66b6e46de92a7fe99410a62a7e312b6e90415703e6dfb238af",
+      "currentSha256": "89a2907dcb129f66b6e46de92a7fe99410a62a7e312b6e90415703e6dfb238af"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "getDownloadSource",
+      "passed": true,
+      "adaptedBaselineSha256": "7c968f8595ebbe46897ed6193d822834d491063a0216f338fc10722d5c94967a",
+      "currentSha256": "7c968f8595ebbe46897ed6193d822834d491063a0216f338fc10722d5c94967a"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "onClick",
+      "passed": true,
+      "adaptedBaselineSha256": "34765c7041cf178f09ac4104663e63a81063fbb0b112b28cbfab39b9a77ba85c",
+      "currentSha256": "34765c7041cf178f09ac4104663e63a81063fbb0b112b28cbfab39b9a77ba85c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "handleTitleClick",
+      "passed": true,
+      "adaptedBaselineSha256": "19130b0d172d77fb8ea212726ba6b63079486358f6510eeb74f4b9e658e48e36",
+      "currentSha256": "19130b0d172d77fb8ea212726ba6b63079486358f6510eeb74f4b9e658e48e36"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "enableTestMode",
+      "passed": true,
+      "adaptedBaselineSha256": "b8288ac45043a7ff1df40984cbf81c1536a2c05f8851d2a632ce809376016e0e",
+      "currentSha256": "b8288ac45043a7ff1df40984cbf81c1536a2c05f8851d2a632ce809376016e0e"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openStackTraceDialog",
+      "passed": true,
+      "adaptedBaselineSha256": "fe3f335dfe7d44d5436aefe80a7faadd8ff21449d433f6741a88f8afeef353d1",
+      "currentSha256": "fe3f335dfe7d44d5436aefe80a7faadd8ff21449d433f6741a88f8afeef353d1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openMemoryProfile",
+      "passed": true,
+      "adaptedBaselineSha256": "6664912c7897cf2d768e5d21b85e81e768e9d5de8f526f8fc13ca5a595e45db2",
+      "currentSha256": "6664912c7897cf2d768e5d21b85e81e768e9d5de8f526f8fc13ca5a595e45db2"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "launchMemoryProfileDirPicker",
+      "passed": true,
+      "adaptedBaselineSha256": "c9c661f53e1fadbde139db4ff0697f62164dfb00f80e7b261330e630da6a07d4",
+      "currentSha256": "c9c661f53e1fadbde139db4ff0697f62164dfb00f80e7b261330e630da6a07d4"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "performMemoryProfileCapture",
+      "passed": true,
+      "adaptedBaselineSha256": "80ce3795137182381ec86813d4448e83cee5dfb01225df4aacaf84f368ff1c4f",
+      "currentSha256": "80ce3795137182381ec86813d4448e83cee5dfb01225df4aacaf84f368ff1c4f"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "publishStagedProfile",
+      "passed": true,
+      "adaptedBaselineSha256": "7754af455be2a15e327e410dde546a34cd70e31f17d5ce54fe2ac3de5ecc25bb",
+      "currentSha256": "7754af455be2a15e327e410dde546a34cd70e31f17d5ce54fe2ac3de5ecc25bb"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "copyFileToTree",
+      "passed": true,
+      "adaptedBaselineSha256": "1e923d6f3a2d2203309c244545f4c19516da15b0ff8f046d0c3448815bb3f10e",
+      "currentSha256": "1e923d6f3a2d2203309c244545f4c19516da15b0ff8f046d0c3448815bb3f10e"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "isTreeUriAccessible",
+      "passed": true,
+      "adaptedBaselineSha256": "053d8d68a5bc81ab912091e099a63c1c46f069219c17f45894d8f30612ca6a42",
+      "currentSha256": "053d8d68a5bc81ab912091e099a63c1c46f069219c17f45894d8f30612ca6a42"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "buildProfileResultMessage",
+      "passed": true,
+      "adaptedBaselineSha256": "eec0904c46980d78466a0e2c69801aadaf7e603ec152d2f18ca3ac4515f58d24",
+      "currentSha256": "eec0904c46980d78466a0e2c69801aadaf7e603ec152d2f18ca3ac4515f58d24"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "showMemoryProfileNotification",
+      "passed": true,
+      "adaptedBaselineSha256": "f56f5d38083621d3cee6cb459fc43b79883ec12b7dc8adb928da421e0061a99f",
+      "currentSha256": "f56f5d38083621d3cee6cb459fc43b79883ec12b7dc8adb928da421e0061a99f"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "formatFileSize",
+      "passed": true,
+      "adaptedBaselineSha256": "a1ce8b5988fa98d8582c4759f5da1b910c2739c986d85e6be012fdfd492221e9",
+      "currentSha256": "a1ce8b5988fa98d8582c4759f5da1b910c2739c986d85e6be012fdfd492221e9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openEventLogs",
+      "passed": true,
+      "adaptedBaselineSha256": "a8a6c40a4b5995e11730d8aa5a7eeac04e17297c3a734ea0b10cbaeebbaf6ab2",
+      "currentSha256": "a8a6c40a4b5995e11730d8aa5a7eeac04e17297c3a734ea0b10cbaeebbaf6ab2"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openConsoleLogs",
+      "passed": true,
+      "adaptedBaselineSha256": "80449e78a7cfe64cbb6fc05e250780dc93db1bb358ecc3a799244c5a80389156",
+      "currentSha256": "80449e78a7cfe64cbb6fc05e250780dc93db1bb358ecc3a799244c5a80389156"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "generateNewToken",
+      "passed": true,
+      "adaptedBaselineSha256": "af035a4d2e000c4996c117443186c1e4b2a303dd4ab7ae570a78b9d3dcf7b501",
+      "currentSha256": "af035a4d2e000c4996c117443186c1e4b2a303dd4ab7ae570a78b9d3dcf7b501"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "setFirebaseUserId",
+      "passed": true,
+      "adaptedBaselineSha256": "30f18fa42a18e8b35c349db53145bbd88068a418636527853cb76c0d875ae017",
+      "currentSha256": "30f18fa42a18e8b35c349db53145bbd88068a418636527853cb76c0d875ae017"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openProcDialog",
+      "passed": true,
+      "adaptedBaselineSha256": "7bf9a31c616282618969d5dcc5f87317d04bb2c89ca884ca4d08939478d3411b",
+      "currentSha256": "7bf9a31c616282618969d5dcc5f87317d04bb2c89ca884ca4d08939478d3411b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "otherSection",
+      "passed": true,
+      "adaptedBaselineSha256": "8ca1a4e7ed230edca67e6bd5f7b1c295f08a36138cac193cd2377bc351fbe789",
+      "currentSha256": "8ca1a4e7ed230edca67e6bd5f7b1c295f08a36138cac193cd2377bc351fbe789"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "copyToClipboard",
+      "passed": true,
+      "adaptedBaselineSha256": "392c47a1c1ab3e72ecac30b501988c3922aa4165d520b8971016bb042eece5fa",
+      "currentSha256": "392c47a1c1ab3e72ecac30b501988c3922aa4165d520b8971016bb042eece5fa"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "getDatabaseTables",
+      "passed": true,
+      "adaptedBaselineSha256": "e6ad84cdcd4878fd81b9d4ffe3e3afb94f322513bc89e1e74a8174c7cb81c0e5",
+      "currentSha256": "e6ad84cdcd4878fd81b9d4ffe3e3afb94f322513bc89e1e74a8174c7cb81c0e5"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "printSysEnvAndProps",
+      "passed": true,
+      "adaptedBaselineSha256": "2757c846f794b18a2141b47c030ce9f3d3585af4b1fb414e79b1c7112a6b4ee3",
+      "currentSha256": "2757c846f794b18a2141b47c030ce9f3d3585af4b1fb414e79b1c7112a6b4ee3"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "printAllSysconfValues",
+      "passed": true,
+      "adaptedBaselineSha256": "2e22608a5c452d12df51deaa0db4159cc81a607b0304aa1a7c1af4bd77e080ec",
+      "currentSha256": "2e22608a5c452d12df51deaa0db4159cc81a607b0304aa1a7c1af4bd77e080ec"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "buildTableDump",
+      "passed": true,
+      "adaptedBaselineSha256": "3afc8bddce68eb8079e4a17f7f2fc8c54a19beb9253dea79ad648c5b30d7855d",
+      "currentSha256": "3afc8bddce68eb8079e4a17f7f2fc8c54a19beb9253dea79ad648c5b30d7855d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "hasAnyLogsAvailable",
+      "passed": true,
+      "adaptedBaselineSha256": "71de170a46193e5af83c8ae42a09525ec20cb312474fe113739998e62fecf8a6",
+      "currentSha256": "71de170a46193e5af83c8ae42a09525ec20cb312474fe113739998e62fecf8a6"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "showNoLogDialog",
+      "passed": true,
+      "adaptedBaselineSha256": "dc975f7d74388cefc07341baf09a380524384a2777c2426aa79b2c897132dd54",
+      "currentSha256": "dc975f7d74388cefc07341baf09a380524384a2777c2426aa79b2c897132dd54"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "openNotificationSettings",
+      "passed": true,
+      "adaptedBaselineSha256": "cba617caeb44a9e0db59a6972ca5096c65e68a9b77ced9a86420f738d002b7f4",
+      "currentSha256": "cba617caeb44a9e0db59a6972ca5096c65e68a9b77ced9a86420f738d002b7f4"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "promptCrashLogAction",
+      "passed": true,
+      "adaptedBaselineSha256": "5e1028a93c55456591920830a94f73cedcc63ac7f5553c45cce819a343e969ed",
+      "currentSha256": "5e1028a93c55456591920830a94f73cedcc63ac7f5553c45cce819a343e969ed"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "handleShowAppExitInfo",
+      "passed": true,
+      "adaptedBaselineSha256": "1e55d219d715b3c583242e96e2ec856e6c762fc14f495a457d6e4c43bc606b6a",
+      "currentSha256": "1e55d219d715b3c583242e96e2ec856e6c762fc14f495a457d6e4c43bc606b6a"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "onAppExitInfoFailure",
+      "passed": true,
+      "adaptedBaselineSha256": "02f621a68f467b244e403a7531ba903eca387da5869db9e53e3e5401442875f8",
+      "currentSha256": "02f621a68f467b244e403a7531ba903eca387da5869db9e53e3e5401442875f8"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "showBugReportProgressUi",
+      "passed": true,
+      "adaptedBaselineSha256": "780046a702b26251cc72b178d55f1134124c13951810e20a4549ef7126a78c06",
+      "currentSha256": "780046a702b26251cc72b178d55f1134124c13951810e20a4549ef7126a78c06"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "hideBugReportProgressUi",
+      "passed": true,
+      "adaptedBaselineSha256": "85d146bbe44651f118af9785d4796b534d276677c600db129f5b697b47bc3c4d",
+      "currentSha256": "85d146bbe44651f118af9785d4796b534d276677c600db129f5b697b47bc3c4d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "onAppExitInfoSuccess",
+      "passed": true,
+      "adaptedBaselineSha256": "92643b85d731ebb3ae6503d3519339aad8fe3e0148ffb46671d366756b921739",
+      "currentSha256": "92643b85d731ebb3ae6503d3519339aad8fe3e0148ffb46671d366756b921739"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "logEvent",
+      "passed": true,
+      "adaptedBaselineSha256": "2e8a31d2053ec75fe606f9f0b18ebeba787035dee5a0579a444fb5cebf0adad1",
+      "currentSha256": "2e8a31d2053ec75fe606f9f0b18ebeba787035dee5a0579a444fb5cebf0adad1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "io",
+      "passed": true,
+      "adaptedBaselineSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c",
+      "currentSha256": "c47d9854196d929032973f616a0a55f98442258b9b9c6036b2c3ca4afd38f85c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "uiCtx",
+      "passed": true,
+      "adaptedBaselineSha256": "5997027c2055303768bb04afa3e50845990c4f7d02d757580514ab9d4b9e9b13",
+      "currentSha256": "5997027c2055303768bb04afa3e50845990c4f7d02d757580514ab9d4b9e9b13"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "dismissProgressAndShowResults",
+      "passed": true,
+      "adaptedBaselineSha256": "32efcca4d053a2ebdebf48414937ba392f707c9c4fe8cd1ce49011a1749a3fe9",
+      "currentSha256": "32efcca4d053a2ebdebf48414937ba392f707c9c4fe8cd1ce49011a1749a3fe9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "isDarkThemeOn",
+      "passed": true,
+      "adaptedBaselineSha256": "c7cd2fc2d1203755f21b0e09cae945142400d5534075bc53f5e4c03a86c46d1b",
+      "currentSha256": "c7cd2fc2d1203755f21b0e09cae945142400d5534075bc53f5e4c03a86c46d1b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "onStart",
+      "passed": true,
+      "adaptedBaselineSha256": "9ce0a301014ddbe71dcf7fef43d91444bf2ed1e14e04a8787c5f6786ba0e47ed",
+      "currentSha256": "9ce0a301014ddbe71dcf7fef43d91444bf2ed1e14e04a8787c5f6786ba0e47ed"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "onViewCreated",
+      "passed": true,
+      "adaptedBaselineSha256": "1357038a888f077d927d6ab76d6a26edaf83dbcc7f5a46c185b6192cf0ea1e90",
+      "currentSha256": "1357038a888f077d927d6ab76d6a26edaf83dbcc7f5a46c185b6192cf0ea1e90"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "onDestroyView",
+      "passed": true,
+      "adaptedBaselineSha256": "7a41b701046eb6f5934a56b4ea1cae243d284d2005bb8164889b6ee8223ab1fc",
+      "currentSha256": "7a41b701046eb6f5934a56b4ea1cae243d284d2005bb8164889b6ee8223ab1fc"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "loadBugReportFiles",
+      "passed": true,
+      "adaptedBaselineSha256": "15f56c4ddbbbf08e4fcfea0fac38bf4c021773d413d60e81b929c8e757f42be6",
+      "currentSha256": "15f56c4ddbbbf08e4fcfea0fac38bf4c021773d413d60e81b929c8e757f42be6"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "toggleProcInfoEntry",
+      "passed": true,
+      "adaptedBaselineSha256": "e0a1fe9b714cd135d051a3abff2215ac825bab32eabb7be0b8b8810508ed3b6d",
+      "currentSha256": "e0a1fe9b714cd135d051a3abff2215ac825bab32eabb7be0b8b8810508ed3b6d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "generateProcInfoFile",
+      "passed": true,
+      "adaptedBaselineSha256": "df7fede47942519c8867d886fbcbdea317f5bbdd1c4d7ec5e399b2d1ba713e19",
+      "currentSha256": "df7fede47942519c8867d886fbcbdea317f5bbdd1c4d7ec5e399b2d1ba713e19"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "collectAllBugReportFiles",
+      "passed": true,
+      "adaptedBaselineSha256": "c3d70a061910208f96048b6f93b57fc904d69a528c6b2f3750277a9f06016798",
+      "currentSha256": "c3d70a061910208f96048b6f93b57fc904d69a528c6b2f3750277a9f06016798"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "getFileType",
+      "passed": true,
+      "adaptedBaselineSha256": "6405728a486781b110b6fd2eadb1ce651d2a5f0bfa51383f06e5c18c3d8e80e1",
+      "currentSha256": "6405728a486781b110b6fd2eadb1ce651d2a5f0bfa51383f06e5c18c3d8e80e1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "updateSelectAllState",
+      "passed": true,
+      "adaptedBaselineSha256": "b00c8236feaf932cfff31dd727c4eb4adad031dce913b1713fbf1a3733ed0370",
+      "currentSha256": "b00c8236feaf932cfff31dd727c4eb4adad031dce913b1713fbf1a3733ed0370"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "updateTotalSize",
+      "passed": true,
+      "adaptedBaselineSha256": "9cdc2a4a8c8daf1134e7d8df0c39dd23fa461c76317568d0530fe68d642a3fb1",
+      "currentSha256": "9cdc2a4a8c8daf1134e7d8df0c39dd23fa461c76317568d0530fe68d642a3fb1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "updateSendButtonState",
+      "passed": true,
+      "adaptedBaselineSha256": "d49a1d73ccd7bb86c402b5d57d2cb1d800de2b818c581b474f7d9b20318cd768",
+      "currentSha256": "d49a1d73ccd7bb86c402b5d57d2cb1d800de2b818c581b474f7d9b20318cd768"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "sendBugReport",
+      "passed": true,
+      "adaptedBaselineSha256": "b2e7895fd5c9245982fd3cfa65b4650b010e1df2f003b9b70732aa5d57b69de1",
+      "currentSha256": "b2e7895fd5c9245982fd3cfa65b4650b010e1df2f003b9b70732aa5d57b69de1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "createCombinedZip",
+      "passed": true,
+      "adaptedBaselineSha256": "f73a72e56535828f86645f87e8950d08f353a0d7632cbdd01e5f4121b3d96799",
+      "currentSha256": "f73a72e56535828f86645f87e8950d08f353a0d7632cbdd01e5f4121b3d96799"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "getFileUri",
+      "passed": true,
+      "adaptedBaselineSha256": "eecf30fbbd820f9f56b9590bfa6a4e02e35be967c5b418b56a247bf9012a7b95",
+      "currentSha256": "eecf30fbbd820f9f56b9590bfa6a4e02e35be967c5b418b56a247bf9012a7b95"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "formatFileSize",
+      "passed": true,
+      "adaptedBaselineSha256": "995dad5681445311543bc93718bfd9fe1e1036e67fc3482b363173d853346292",
+      "currentSha256": "995dad5681445311543bc93718bfd9fe1e1036e67fc3482b363173d853346292"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "formatDate",
+      "passed": true,
+      "adaptedBaselineSha256": "490abd0870650054608c60aa8823fd7b678a769d4f10e9fc6bbec31caa7cba98",
+      "currentSha256": "490abd0870650054608c60aa8823fd7b678a769d4f10e9fc6bbec31caa7cba98"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "updateSelectAllCheckboxState",
+      "passed": true,
+      "adaptedBaselineSha256": "4c89f1d802f41842db6248541c86574ca9dbe1957bda69ec5c2fb4e49299ceb9",
+      "currentSha256": "4c89f1d802f41842db6248541c86574ca9dbe1957bda69ec5c2fb4e49299ceb9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "showDeleteConfirmationDialog",
+      "passed": true,
+      "adaptedBaselineSha256": "46d23e4816cf30f8e38bab766aae9089654436c07b3c99d90eda33867d59bf47",
+      "currentSha256": "46d23e4816cf30f8e38bab766aae9089654436c07b3c99d90eda33867d59bf47"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "deleteFile",
+      "passed": true,
+      "adaptedBaselineSha256": "b8617da3b4b569068e9df9a176d0c1a626fee0df8dba75d6ccd8c394be1a802c",
+      "currentSha256": "b8617da3b4b569068e9df9a176d0c1a626fee0df8dba75d6ccd8c394be1a802c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/BugReportFilesBottomSheet.kt",
+      "method": "openFile",
+      "passed": true,
+      "adaptedBaselineSha256": "f58f59c21bbf7f4f76515401ab156aed19ab3620e1ab255780ff7c1737d4a6a8",
+      "currentSha256": "f58f59c21bbf7f4f76515401ab156aed19ab3620e1ab255780ff7c1737d4a6a8"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "isDarkThemeOn",
+      "passed": true,
+      "adaptedBaselineSha256": "c7cd2fc2d1203755f21b0e09cae945142400d5534075bc53f5e4c03a86c46d1b",
+      "currentSha256": "c7cd2fc2d1203755f21b0e09cae945142400d5534075bc53f5e4c03a86c46d1b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "onViewCreated",
+      "passed": true,
+      "adaptedBaselineSha256": "49fb3b0d0132f949c373df587a9707d27fefb7ec35652500d67ff434dbb8d6d5",
+      "currentSha256": "49fb3b0d0132f949c373df587a9707d27fefb7ec35652500d67ff434dbb8d6d5"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "onDismiss",
+      "passed": true,
+      "adaptedBaselineSha256": "a194d13ea2443de3268bd23df67e6e4b11b0f3b89dace7f002b31cbba79e5a0d",
+      "currentSha256": "a194d13ea2443de3268bd23df67e6e4b11b0f3b89dace7f002b31cbba79e5a0d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "onDestroyView",
+      "passed": true,
+      "adaptedBaselineSha256": "7a41b701046eb6f5934a56b4ea1cae243d284d2005bb8164889b6ee8223ab1fc",
+      "currentSha256": "7a41b701046eb6f5934a56b4ea1cae243d284d2005bb8164889b6ee8223ab1fc"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "setupAutoModeCard",
+      "passed": true,
+      "adaptedBaselineSha256": "df63730928eb66f60d68a725660849a51ae137cb8ecf070af4d18b822c9a8029",
+      "currentSha256": "df63730928eb66f60d68a725660849a51ae137cb8ecf070af4d18b822c9a8029"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "selectToggleBtnUi",
+      "passed": true,
+      "adaptedBaselineSha256": "15d087842aa06c70095701ffbdb34f5ec9e0d0907636f667b5f76b839e83de1c",
+      "currentSha256": "15d087842aa06c70095701ffbdb34f5ec9e0d0907636f667b5f76b839e83de1c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "unselectToggleBtnUi",
+      "passed": true,
+      "adaptedBaselineSha256": "36ea1dc30c9aa4617ea96371a337ca03dd588cfb27688baf9830c59d7fc73a86",
+      "currentSha256": "36ea1dc30c9aa4617ea96371a337ca03dd588cfb27688baf9830c59d7fc73a86"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "updateAutoMode",
+      "passed": true,
+      "adaptedBaselineSha256": "39cb1e5620c0db26595e7fc46de2b0a0b3d6ad44a46f4d571b66e810df9b90d6",
+      "currentSha256": "39cb1e5620c0db26595e7fc46de2b0a0b3d6ad44a46f4d571b66e810df9b90d6"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "method": "sortBySelection",
+      "passed": true,
+      "adaptedBaselineSha256": "49c3947e795183a3d053b35ce02aaeb6eb8efa81966695d8b5f69cd1b937e7a0",
+      "currentSha256": "49c3947e795183a3d053b35ce02aaeb6eb8efa81966695d8b5f69cd1b937e7a0"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "statistics collection and timeout",
+      "passed": true
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/fragment/AboutFragment.kt",
+      "method": "Proc formatting and complete-copy data",
+      "passed": true
+    }
+  ],
+  "presentationExclusions": {
+    "ui/fragment/AboutFragment.kt": [
+      "initView",
+      "makeLineRecyclerView",
+      "makeScrollableSpannable",
+      "makeScrollableText",
+      "makeTabButton",
+      "makeTabButton#2",
+      "onBindViewHolder",
+      "onBindViewHolder#2",
+      "onCreateViewHolder",
+      "onCreateViewHolder#2",
+      "onDestroyView",
+      "onDoubleTap",
+      "onSingleTapConfirmed",
+      "openDatabaseDumpDialog",
+      "openStatsDialog",
+      "selectTab",
+      "selectTab#2",
+      "showContributors",
+      "showNewFeaturesDialog",
+      "showProcDialog",
+      "showStackTraceDialog"
+    ],
+    "ui/bottomsheet/BugReportFilesBottomSheet.kt": [
+      "bind",
+      "initView",
+      "onBindViewHolder",
+      "onCreateView",
+      "onCreateViewHolder"
+    ],
+    "ui/bottomsheet/DnsRecordTypesBottomSheet.kt": [
+      "bind",
+      "initView",
+      "onBindViewHolder",
+      "onCreateView",
+      "onCreateViewHolder",
+      "updateAutoModeUI"
+    ]
+  }
+}

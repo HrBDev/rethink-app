@@ -3,6 +3,9 @@ package com.celzero.bravedns.ui.compose.wireguard
 
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.text.style.BackgroundColorSpan
+import android.text.style.UnderlineSpan
+import android.text.style.StrikethroughSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.text.style.TypefaceSpan
@@ -29,6 +32,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontStyle
@@ -64,8 +68,13 @@ fun wgAnnotatedText(value: CharSequence?): AnnotatedString {
             val style = when (span) {
                 is ForegroundColorSpan -> SpanStyle(color = Color(span.foregroundColor))
                 is RelativeSizeSpan -> SpanStyle(fontSize = span.sizeChange.em)
-                is StyleSpan -> SpanStyle(fontWeight = if (span.style and android.graphics.Typeface.BOLD != 0) FontWeight.Bold else FontWeight.Normal)
-                is TypefaceSpan -> SpanStyle(fontFamily = if (span.family == "monospace") FontFamily.Monospace else FontFamily.Default)
+                is StyleSpan -> SpanStyle(
+                    fontWeight = if (span.style and android.graphics.Typeface.BOLD != 0) FontWeight.Bold else FontWeight.Normal,
+                    fontStyle = if (span.style and android.graphics.Typeface.ITALIC != 0) FontStyle.Italic else FontStyle.Normal)
+                is TypefaceSpan -> SpanStyle(fontFamily = FontFamily(android.graphics.Typeface.create(span.family, android.graphics.Typeface.NORMAL)))
+                is BackgroundColorSpan -> SpanStyle(background = Color(span.backgroundColor))
+                is UnderlineSpan -> SpanStyle(textDecoration = TextDecoration.Underline)
+                is StrikethroughSpan -> SpanStyle(textDecoration = TextDecoration.LineThrough)
                 else -> null
             }
             style?.let { addStyle(it, text.getSpanStart(span), text.getSpanEnd(span)) }

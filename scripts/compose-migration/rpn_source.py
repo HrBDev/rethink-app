@@ -36,6 +36,7 @@ def normalize(source):
     source=source.replace('adapter.notifyDataSetChanged()', 'ui.revision++')
     source=re.sub(r'^.*ui.rv(?:SelectedServers|Servers).post \{.*requestLayout\(\).*\}\n','',source,flags=re.M)
     source=source.replace('MaterialAlertDialogBuilder(', 'WgAlertDialogBuilder(')
+    source=source.replace('androidx.appcompat.app.AlertDialog.Builder(requireContext())', 'WgAlertDialogBuilder(requireContext())')
     for prop in ['ALPHA','TRANSLATION_X','TRANSLATION_Y','SCALE_X','SCALE_Y','ROTATION']:
         name=re.sub('_([a-z])',lambda m:m[1].upper(),prop.lower())
         source=source.replace('View.'+prop,'"'+name+'"')

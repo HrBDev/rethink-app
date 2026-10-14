@@ -15,10 +15,18 @@
  */
 package com.celzero.bravedns.ui.activity
 
+import androidx.activity.compose.setContent
+import com.celzero.bravedns.ui.compose.RethinkTheme
+import com.celzero.bravedns.ui.compose.utilities.*
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.BaseActivity
 
-class AlertsActivity : BaseActivity(R.layout.activity_alerts) {
+class AlertsActivity : BaseActivity() {
+    override fun onCreate(savedInstanceState: android.os.Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent { RethinkTheme { AlertsScreen() } }
+    }
+
 
     /*private val b by viewBinding(ActivityAlertsBinding::bind)
     private var alertAdapter: AlertAdapter? = null

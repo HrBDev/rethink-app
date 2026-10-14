@@ -10,6 +10,8 @@ import android.content.DialogInterface
 import android.view.Window
 import android.view.WindowManager
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -85,14 +87,14 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
             Surface(shape = MaterialTheme.shapes.extraLarge, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
                 Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     icon?.let { Icon(painterResource(it), null) }
-                    Text(title.toString(), style = MaterialTheme.typography.headlineSmall)
+                    if (title.isNotEmpty()) Text(wgAnnotatedText(title), style = MaterialTheme.typography.headlineSmall)
                     Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        if (message.isNotEmpty()) Text(message.toString())
-                        rows.forEach { Text(it.toString()) }
+                        if (message.isNotEmpty()) Text(wgAnnotatedText(message))
+                        rows.forEach { Text(wgAnnotatedText(it)) }
                         choices?.let { (labels, selected, action) ->
                             labels.forEachIndexed { index, label ->
-                                Row(Modifier.fillMaxWidth().clickable { dispatchChoice(action, index) }, verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                                    RadioButton(index == selectedChoice, onClick = { dispatchChoice(action, index) })
+                                Row(Modifier.fillMaxWidth().selectable(selected = index == selectedChoice, role = Role.RadioButton, onClick = { dispatchChoice(action, index) }), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                                    RadioButton(index == selectedChoice, onClick = null)
                                     Text(label)
                                 }
                             }

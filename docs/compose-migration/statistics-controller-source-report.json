@@ -170,7 +170,7 @@
     "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt": "4ba5068e8d0a0a941505590c17820c46cf0be32060616d89b79e82f7955a3a6b",
     "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt": "8f6b67cd09aa9cb2d6b683395d6346f6b523e4fd0601704f8ca3789bbc253512",
     "app/src/main/java/com/celzero/bravedns/adapter/DomainConnectionsAdapter.kt": "f8bb5c6f53d2d991bb99ee62092e5ad5d70c5c9bb2b8f0ebabdc7a4fedd8b699",
-    "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt": "1427b3326328385cd9b4bc390066986d899837d23388a4ad8de52778d4218fdf",
+    "app/src/main/java/com/celzero/bravedns/adapter/BlocklistAppsAdapter.kt": "6e222856f4378851991b8a82732e71456c3b39d18db9b9022749308a7d50ebe3",
     "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/SummaryStatsFilterBottomSheet.kt": "2fa925eaa81064beebfb73e662061aa5dceb90a50cc55b343126f4ac0bef3165",
     "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnLogActivityIntervalBottomSheet.kt": "e68c94cdd19ef2c7b3bc6a7c1e4536a1d2cf36e908b319765b0236ed4eca94a7",
     "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/RpnStatsBottomSheet.kt": "03ea642bd3f110c4394d07eba6740be98d06e9bff67cc1cb1d74568d5507658d"

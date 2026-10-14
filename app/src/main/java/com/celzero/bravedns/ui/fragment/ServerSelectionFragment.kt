@@ -3198,7 +3198,7 @@ class ServerSelectionFragment : Fragment(),
             showToast(getString(R.string.server_selection_auto_always_on))
             return
         }
-        val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext())
+        val dialog = WgAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.server_selection_remove_title))
             .setMessage(getString(R.string.server_selection_remove_message, group.countryName, group.cityName))
             .setPositiveButton(getString(R.string.lbl_remove)) { _, _ ->

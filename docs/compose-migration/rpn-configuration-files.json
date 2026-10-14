@@ -1,0 +1,32 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "files": {
+    "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt": "797953a75a7323d4e797be2a088073d0a7e5d6f01de723e4a2d0519b42dc0f16",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt": "4f68cece9f40268e352a9119173388a0e61b9d407878fb12a81ac034f508cb36",
+    "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt": "8e9aa866f17a5522ce34dee35126d36f79c004ce7b8c4e387f12d5f674e1022e",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnBypassContent.kt": "40ecd5f72de0127c2f13e991fce06b8f662b5e2caeaf3e8daf6e320e750c15f8",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigContent.kt": "704034c91ec9ec802c66a650ad7d2e92078338c2bb10d5a907c9e7391f15d591",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigFlag.kt": "df487fc53b904082f14ef567297a1a3955ec43e621bdc1c812bdd6c8f1aad366",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigHeader.kt": "54946847f1ee0b0a0ce73646115c62c9c16fdae3c3172455f47538ed803192c0",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigState.kt": "b9a0b6015ab6c5ab88637f6287fbf181e57192554108f3c8c9b34ede70a0d1c3",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidContent.kt": "bf9f30efbf91e840fa50b56348e84211757d7d0bcef2ec3ebe63139531da2365",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidState.kt": "0004b89e84ad6775d2f24daa6af3dfdad9064f0e8de4e74520186f2391f0f223",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnWinContent.kt": "0ea3e0bccc53172db6d7dbc0a031e6787b8663097e5a372ce7fbd506b4c191a2",
+    "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt": "ac4dd197163dd85300ec8360c29fee911b4d9456c5e5959b091c4ff2f022c1d7",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigurationComposeTest.kt": "deeb2e5ec58d53935db6c4d6ca20ea026ebc384081b4bc5ed2ddab1c77e965b9",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnConfigurationDialogTest.kt": "ee6ff40a7d5a1fde38a2c41a5696b86d7a368f924b832ac0b620dfbd7204e8cc",
+    "app/src/test/java/com/celzero/bravedns/ui/compose/rpnconfig/RpnSsidStateTest.kt": "8f84106281e9fa7d1518e6a9148076f5d2b5c24d984e133a4899ff576c5e8e5e",
+    "docs/compose-migration/rpn-configuration-controller-evidence.json": "b11f461d7ee9b1cc28fedcaee63761e9b7d51fae0897f9bf69119e2f88cb192e",
+    "docs/compose-migration/rpn-configuration-parity.md": "7d14785a4f44ecec7f21306e2d4ca64c68b73d64ed954d139bf3a2d19cf803a9",
+    "scripts/compose-migration/check-rpn-configuration-controllers.py": "e2204fe8331e5af1f91ad316f45d43a2f78ba1d2d391c213f3dad8c2b937ff76"
+  },
+  "deleted": [
+    "app/src/main/java/com/celzero/bravedns/adapter/SsidAdapter.kt",
+    "app/src/main/java/com/celzero/bravedns/adapter/ServerWgPeersAdapter.kt"
+  ],
+  "unchanged_native_wrappers": [
+    "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnProxyHopDialog.kt",
+    "app/src/main/java/com/celzero/bravedns/ui/dialog/WgHopDialog.kt"
+  ],
+  "validation": "Fresh source guard only; Gradle compilation and all 29 tests owned by coordinator and unrun by this worker."
+}

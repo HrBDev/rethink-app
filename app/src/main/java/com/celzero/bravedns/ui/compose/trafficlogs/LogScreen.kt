@@ -109,9 +109,19 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
     val context = LocalContext.current
     var header by remember { mutableStateOf("") }
     var updated by remember { mutableLongStateOf(0L) }
-    LaunchedEffect(list.firstVisibleItemIndex, list.firstVisibleItemScrollOffset) {
+    var headerVisible by remember { mutableStateOf(false) }
+    var previouslyScrolling by remember { mutableStateOf(false) }
+    val firstTimestamp = presenter.peek(list.firstVisibleItemIndex)?.let(timestamp)
+    LaunchedEffect(list.firstVisibleItemIndex, list.firstVisibleItemScrollOffset, firstTimestamp) {
         val now = System.currentTimeMillis()
-        if (showHeader && now - updated >= headerThrottleMillis) presenter.peek(list.firstVisibleItemIndex)?.let { updated = now; header = formatToRelativeTime(context, timestamp(it)) }
+        if (showHeader && now - updated >= headerThrottleMillis && firstTimestamp != null) {
+            updated = now; header = formatToRelativeTime(context, firstTimestamp); headerVisible = true
+        }
+    }
+    LaunchedEffect(list.isScrollInProgress) {
+        // RecyclerView hides only on an actual transition to IDLE, not on first layout.
+        if (previouslyScrolling && !list.isScrollInProgress) headerVisible = false
+        previouslyScrolling = list.isScrollInProgress
     }
     Box(modifier.fillMaxWidth()) {
         if (state.showList) LazyColumn(Modifier.fillMaxSize().testTag("log-list"), state = list, contentPadding = PaddingValues(bottom = 10.dp)) {
@@ -120,7 +130,7 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
         state.message?.let { Text(it, Modifier.align(Alignment.TopCenter).padding(24.dp)) }
         if (!state.showList) empty?.invoke()
         if (state.showList && fastScroll) LogFastScroller(list, Modifier.align(Alignment.CenterEnd), thumbColorAttribute)
-        if (showHeader && list.isScrollInProgress && header.isNotEmpty()) Text(header, Modifier.align(Alignment.TopCenter).padding(top = 10.dp).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(100.dp)).padding(horizontal = 10.dp, vertical = 5.dp), fontSize = logTextSize(R.dimen.default_font_text_view))
+        if (showHeader && headerVisible && header.isNotEmpty()) Text(header, Modifier.align(Alignment.TopCenter).padding(top = 10.dp).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(100.dp)).padding(horizontal = 10.dp, vertical = 5.dp), fontSize = logTextSize(R.dimen.default_font_text_view))
     }
 }
 private object NoLogPrefetch : LazyListPrefetchStrategy {

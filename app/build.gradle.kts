@@ -625,6 +625,7 @@ dependencies {
     implementation(libs.androidxFragmentFragmentCompose)
     testImplementation(libs.androidxComposeUiTestJunit4)
     testImplementation(libs.androidxTestEspressoEspressoCore)
+    androidTestImplementation(platform(libs.androidxComposeComposeBom))
     androidTestImplementation(libs.androidxComposeUiTestJunit4)
     debugImplementation(libs.androidxComposeUiTestManifest)
 

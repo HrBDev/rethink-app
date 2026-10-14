@@ -1,0 +1,44 @@
+{
+  "as_of": "2026-10-14T06:17:30Z",
+  "release_status": "partial; not production ready",
+  "verified_remote_commit": "ae0737e390bf4d8d98c3d5fc0ac921acdbe211f6",
+  "results": [
+    {
+      "log": "baseline-compile-current-proxy.log",
+      "sha256": "5b9be463da80397fe78fa4f7d025134edd8aa836b5a9f8796def8e4a6e785264",
+      "outcome": "passed",
+      "scope": "Pinned baseline fdroidFullDebug main Kotlin"
+    },
+    {
+      "log": "first-groups-safe-tests-1.log",
+      "sha256": "d677689d8087dc843ccb016132dc071fb3b2516e0b6a576bc2f5ca9800d95936",
+      "outcome": "passed",
+      "scope": "Earlier partial snapshot: 30 explicitly selected plain-Application state/search tests"
+    },
+    {
+      "log": "second-groups-safe-render-tests.log",
+      "sha256": "ceaf950b35ae0e7c38216232d61df0ccbfda40f441651bb5de8aa08d490ad8ed",
+      "outcome": "failed",
+      "scope": "46 tests: 44 passed, 2 failed (heatmap semantics, legacy font metrics)"
+    },
+    {
+      "log": "second-groups-native-render-tests.log",
+      "sha256": "2a324d99af3e74d0c42a8ac90a4aba4a9483cd8546c9f6e2c6c1a336d8cd04b8",
+      "outcome": "failed",
+      "scope": "46 tests: 45 passed, 1 failed (test invoked touch instead of accessibility action)"
+    },
+    {
+      "log": "second-groups-native-render-tests-2.log",
+      "sha256": "508a93e440ad4ed2e32ae6b9d4fa13323636717587070d550e15fca0d51c8f80",
+      "outcome": "passed",
+      "scope": "46 selected tests at remote tree 0e886c94a123351398058cdb3825c26314d1098a"
+    },
+    {
+      "log": "third-groups-compile-3.log",
+      "sha256": "abd89bd9fd78d418489b24ed0a9d66841354dc048131f03b0569e63a894b8f0e",
+      "outcome": "passed",
+      "scope": "Third frozen snapshot plus documented compiler fixes: main, unit-test and Android-test Kotlin compilation"
+    }
+  ],
+  "in_progress": "Remaining native content fixture batch; complete source and all variant compilation; original safe-host migration; visual baseline/device accessibility parity"
+}

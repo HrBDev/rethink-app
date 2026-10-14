@@ -21,6 +21,7 @@ import org.robolectric.annotation.Config
 /** Pure renderer tests; no production Activity, Fragment, Application, ViewModel, billing,
  * identity store, tunnel, network, worker or repository is constructed. Exact call lists are
  * strict synthetic recorders. CheckoutActivity is deliberately never instantiated. */
+@org.robolectric.annotation.GraphicsMode(org.robolectric.annotation.GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 class PurchaseContentTest {

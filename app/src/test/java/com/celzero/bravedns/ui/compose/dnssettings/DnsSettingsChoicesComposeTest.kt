@@ -11,6 +11,7 @@ import org.junit.Rule
 import org.junit.Test
 
 /** Content only; never launches DnsDetailActivity or a real VPN controller. */
+@org.robolectric.annotation.GraphicsMode(org.robolectric.annotation.GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 class DnsSettingsChoicesComposeTest {

@@ -1,0 +1,707 @@
+{
+  "status": "PASS",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "reconstruction": "Fresh source after workspace loss; no old validation reused",
+  "verified_methods": 116,
+  "protected_dependencies": 7,
+  "methods": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "method": "onNewIntent",
+      "kind": "exact",
+      "sha256": "a5a29d567ed09fae4754f72f57b8f336eb9656c391e2944e29a88b41afe52995"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "method": "showBiometricPrompt",
+      "kind": "exact",
+      "sha256": "8925155e3030c245ecef5d7d67b416ea9af8775e904befea179a02ff046d3fa4"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "method": "startHomeActivity",
+      "kind": "exact",
+      "sha256": "64ff713d3883104bad89909b4334663fc865e244649cbd12a11ed24f1add9315"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "method": "isBiometricEnabled",
+      "kind": "exact",
+      "sha256": "b598c79559ce225ec588d6aaf7a03628020149fdce7f237c7e46f4c558c8e553"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "method": "isAppRunningOnTv",
+      "kind": "exact",
+      "sha256": "6e1d341b2013a254ca8a89aa394cde2ee926d7fb586c160985776c93b732763c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppLockActivity.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "4d1b0c239e09a303639b6d1d869130aa95a0595c9658e98868792eab2cae8025"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/WelcomeActivity.kt",
+      "method": "launchHomeScreen",
+      "kind": "exact",
+      "sha256": "f28f09a570070c86c03d6b141111d04c682b9c2aa5c0369bb454fbaeaa190cc9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "openHomeScreenAndFinishIfNeeded",
+      "kind": "exact",
+      "sha256": "6b69087ae83450faba0473b3229d2e658a46f3fb8cbe41b10bacc50b5e53d46c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "initView",
+      "kind": "exact",
+      "sha256": "74ceb17fbf80bb78200e583eb4a7ba2838c5f2a2edc97aba8087363ba2770ef5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "observeAppState",
+      "kind": "exact",
+      "sha256": "c80649a15cd2c491fc0d3df60630f2bbdb89107ba3e0e16161ffcbd1fc9c33e5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "observeTimer",
+      "kind": "exact",
+      "sha256": "c02ce323634418b60dd0a85f130721a7e90a988a03d9ff32024376a2527624f9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "initClickListeners",
+      "kind": "exact",
+      "sha256": "5c948a07a4e51f27ba556b338c3c9917a818a05b0b6b53de4f5e3762fe55c229"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "decreaseTimer",
+      "kind": "exact",
+      "sha256": "04350eaa907cdb142017ff0d58701c97b9ac3b1b81ad382a9ea5645ad2239610"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "increaseTimer",
+      "kind": "exact",
+      "sha256": "ad79f1021118b06a287cf3ab38f71772bb508387ffc20fb9f0c5d6bee139c7dd"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "openHomeScreenAndFinish",
+      "kind": "exact",
+      "sha256": "2b9dc7c58d7f4cf02101fca94387f103e561bfed1701cfb1e7a63c373269c767"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "handleLongPress",
+      "kind": "exact",
+      "sha256": "de66a94acd542da03858a9ffba84e4338a70ad9849b5e4a06e866ed4d5330356"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PauseActivity.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "3bfea8f17852b035330004bcbcc5c8bc188d0b7d2bb5815848c0fa8ab2e10497"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "onNewIntent",
+      "kind": "exact",
+      "sha256": "af344b30e2bcbde2644a974de8e4ddcaecfb69f5439763a82e07ad819b4d6210"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "onResume",
+      "kind": "exact",
+      "sha256": "0b23ca34c708486c71f0da50faa728dfd531681adec16fba34de3110810f785e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "onStop",
+      "kind": "exact",
+      "sha256": "1b786829cd182011bee01114f73d49d344560d15bcc0274d9227638ed2b5ed03"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "onDestroy",
+      "kind": "exact",
+      "sha256": "74fde3986fbc37d344bc2e01242b1fcf0654fee422eb08f6e951239d03b721d0"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "startAllowedCollector",
+      "kind": "exact",
+      "sha256": "a10ee80a500686851a896570d813143a06d0d9c4f7d3eae3b03754c026d261a5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "startBlockedCollector",
+      "kind": "exact",
+      "sha256": "3c1d7820ff2fc5e34a45b4c886d1509e8a6aff2fc42d18021beb473e6022af76"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "allowApp",
+      "kind": "exact",
+      "sha256": "92b2f1d173e6d8e17f3169f1ce00626c01c8f0857a4c9c72364223bfd28686c7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "removeAllowedApp",
+      "kind": "exact",
+      "sha256": "c78dde71b1f088c4d12e26cf94f2f1c43afa9558dae53f3bbee6ff6c020e70f6"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "setupLoadStateListeners",
+      "kind": "exact",
+      "sha256": "2838ed6ba0b1c9b41c756f41833b265aca891a697d715dbee44a2fd7d7892f21"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "showVpnOffState",
+      "kind": "exact",
+      "sha256": "0302e7760ba3e867beaf717505499bd314c3e4f89ace85097edad1ee233427ab"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "showContentState",
+      "kind": "exact",
+      "sha256": "ca41b22ef85951b7f1c41193a728d49c0f36368053285c8da729868fef27b5c2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "stopCollectors",
+      "kind": "exact",
+      "sha256": "42c358a1f7bf9f3363abd356f885939ea3a08d5f8876478a7aaf4a954d66f92b"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "io",
+      "kind": "exact",
+      "sha256": "20c1597f9b885339c64e0505882bcaebeb74b201720b0ee41e1081636a16d31e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "uiCtx",
+      "kind": "exact",
+      "sha256": "c958027178306c2465b778d4021a921285381a88db395b8ffc95dda5d3e6aecb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "655269f4e44727e11e52da98226c2e56917248c953f44dc5ee192c56ca02549a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/BubbleActivity.kt",
+      "method": "setupQuickFixes",
+      "kind": "adapted",
+      "sha256": "7a65a1fb31ecc148474326de089d165fcff047590dacf1dc0ba57d8a940c7f09"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "init",
+      "kind": "exact",
+      "sha256": "86e37206dad321f98c20647613bde0ebe658d2cf4ed79c5d180d72eecfab9344"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "displayTcpProxyStatus",
+      "kind": "exact",
+      "sha256": "9b9e6d057fff3cd1669359e072d43089a7886b781ea8df8bbe008a209d28c821"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "showTcpErrorLayout",
+      "kind": "exact",
+      "sha256": "56e850c1d1f3e4c0e42bb546682440e149a60ece9c4ce86fab8ff0632eca8c7e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "observeTcpProxyApps",
+      "kind": "exact",
+      "sha256": "0304faa874a5a4ab3a378734b19706d73598faf52a2832ec7784e00796946a06"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "setupClickListeners",
+      "kind": "exact",
+      "sha256": "b852cfb974287cf81157afc04c2a54defffb5d6d978f66cde41a3e770759e23d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "openAppsDialog",
+      "kind": "exact",
+      "sha256": "610578e538b4299ffd681967c6919fff7106820ce736d9a3b58a1df28a8853b5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "showConfigCreationError",
+      "kind": "exact",
+      "sha256": "397d0298b9a7996f060a70607e9f38c7123e4717ddfa2e9f4556adc74ec7b7a5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "enableTcpProxy",
+      "kind": "exact",
+      "sha256": "162aeb010548709c07266e14f61ff8dbbf4460761943bdb6a9e51a68d88d7433"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "uiCtx",
+      "kind": "exact",
+      "sha256": "c958027178306c2465b778d4021a921285381a88db395b8ffc95dda5d3e6aecb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "io",
+      "kind": "exact",
+      "sha256": "20c1597f9b885339c64e0505882bcaebeb74b201720b0ee41e1081636a16d31e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/TcpProxyMainActivity.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "974ba9bebb19d4286e50a332a54b1e7df9e3c77abef15506c36d48e06a944153"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "initView",
+      "kind": "exact",
+      "sha256": "79828c0076bc53e4150a08ad5b790179c736eb0442ab5b69c6c5459f1182324d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "setupClickListeners",
+      "kind": "exact",
+      "sha256": "acb6a15142bf176bf46df1cfc224f8d8a282dfc36907663cddab07e5f4c4b854"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "showReadyState",
+      "kind": "exact",
+      "sha256": "2cf8704c479a991f12f05825fe5d07a1e11f4e644a390b4308ba3d3e0d6bf156"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "showTestingState",
+      "kind": "exact",
+      "sha256": "f15ae7f77c7a07182e02b99c09d52806d8f96ca9886e98aac409e8a1f4337465"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "showSuccessState",
+      "kind": "exact",
+      "sha256": "bd4883f947266e292eb4de42baf21591ba18f84096614b3b0e91cb74f5e7a47c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "showPartialState",
+      "kind": "exact",
+      "sha256": "80c9a0466dfc3fb6cfc3de8f0bb94161fba26f28e85396041de715b80b2abc94"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "showFailureState",
+      "kind": "exact",
+      "sha256": "f44f458d3bf5aaf86addd4a5289c566db6ea558bfb8f0c6376bd5887780e269a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "showNoProxyState",
+      "kind": "exact",
+      "sha256": "9e0cf63fb800d08e86ea5ad651055f17b1c843cfb18be1d47261382ec9561b53"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "setInputEnabled",
+      "kind": "exact",
+      "sha256": "f2d720048ef856bd1245f787ceee0c62e9e30b1f7227a91cea77b2562aba1bca"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "recordHistory",
+      "kind": "exact",
+      "sha256": "2ef22592a0f7e48c43f88bd5cdf6ef8a8d42a739ab1e20e953868e834db53d36"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "stopDolphinSwim",
+      "kind": "exact",
+      "sha256": "e95cdcb8df4e2ce7585d838e1fc219f57e8f09f33d8e97eefc013918d5a79817"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "animateSuccess",
+      "kind": "exact",
+      "sha256": "b6c15044bd527d58204879ddcd7b325def4a167ef07250fea1cbc9c540acbddc"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "animateFailure",
+      "kind": "exact",
+      "sha256": "0e43177df3b99bf96257036358960ed046b6dcd8c5ba92431ddb937c27e1ffcd"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "onDestroy",
+      "kind": "exact",
+      "sha256": "dea79de8e7155dd68721f34f05428be68b7cd473b6674f28a4305b9781ca3c37"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "uiCtx",
+      "kind": "exact",
+      "sha256": "c958027178306c2465b778d4021a921285381a88db395b8ffc95dda5d3e6aecb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "io",
+      "kind": "exact",
+      "sha256": "20c1597f9b885339c64e0505882bcaebeb74b201720b0ee41e1081636a16d31e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "2c4f0fd67b93573287f138bd4eed0d3561b7f68979a5a99d44be40c6f7d56fae"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "setupHistory",
+      "kind": "adapted",
+      "sha256": "4d03d57cb47300ff4ab6f3e03d41cdf9541942a7651dc95fb7a6e39d44a5bc70"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "setDolphinSignature",
+      "kind": "adapted",
+      "sha256": "648fd2de62f35510fe0d705e4533e3b1b2fb0fbe0043b926dc63ff68d742b9bb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "performTest",
+      "kind": "adapted",
+      "sha256": "5aa5747a3e65c7638802c82854147098dbcf0ebe815332b88d8b9838a77296ee"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/PingTestActivity.kt",
+      "method": "animateDolphinSwim",
+      "kind": "adapted",
+      "sha256": "42bd3099e61108b3b01bc167ea59578b5cbf314bb074523bd71c37b0f40f0ecd"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "prefillDescriptionFromExtras",
+      "kind": "exact",
+      "sha256": "6e2c703e6e4b72dc2709607073e86547651a9b2b92443a994cfa70a111dfd900"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "updateHeroSubtitle",
+      "kind": "exact",
+      "sha256": "c53fa63640fd1c3f4c0f86a9136cfce70f8d448361721a2030e12026d802eb44"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "heroIdentityLine",
+      "kind": "exact",
+      "sha256": "f7962360744d570f029b0c8fb9ccbd8d25d242ca98d5a36fd4962965ee9b8a1e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "loadSubscriptionSummary",
+      "kind": "exact",
+      "sha256": "6c9cf2b54bb954b83a39a0262184967977bbb74464e0cac07a9e99c47558eb0a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "setupSendButton",
+      "kind": "exact",
+      "sha256": "d31f3ccf7adbad9c0154fd0da1cab29c0f830b0c00ad8bd7c1f321cd9d8e66f5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "selectedCategory",
+      "kind": "exact",
+      "sha256": "6aaed0dec38a388162d698409b894a742632c85cbb324b12e3c88aefa985dfc2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "collectAndSend",
+      "kind": "exact",
+      "sha256": "c5b988bd99e7998d89f04a9636f2b5e8ec3396eab98e1203bab6138c57e7119a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "buildDiagnosticText",
+      "kind": "exact",
+      "sha256": "6d78b3d9e261775575da1cdabb802f7c1a635a1272a1f7b34bc97a48295bc639"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "buildEmailBody",
+      "kind": "exact",
+      "sha256": "a7869fe812631939bc419ecb3d4159046dd5adfedeff57c230675a923a9657d9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "prepareWirelogAttachment",
+      "kind": "exact",
+      "sha256": "4deb34aa34eb80ae7ff7818924680f549a9919bad28f84a3f66401f2669d9d16"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "readTailBytes",
+      "kind": "exact",
+      "sha256": "b5cc0df0b48ccf8d8105b0312992861ee8537703b829c35f72a57645fac28ebb"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "buildSupportZip",
+      "kind": "exact",
+      "sha256": "b20e28ff8aab360bd67003ee1939f1f2f364fe71c6d1d088da8d2fcbdbb7e68d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "zipBytes",
+      "kind": "exact",
+      "sha256": "7dcb8aded637c99d24716c238c78113a8a331b0ed9dcfd0e16fe34893d897804"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "trimBugZipIfNeeded",
+      "kind": "exact",
+      "sha256": "a4aadcc9199cd8c5ca537912a46271ef407f9a8138da734dfb1d1e2af0ed95b7"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "writeDiagFile",
+      "kind": "exact",
+      "sha256": "2969e34212a15565aee8092504a36ef266a0de0f84bc35306ace75f2eb74902f"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "getFileUri",
+      "kind": "exact",
+      "sha256": "931e96f2892edd644cebfc98c61d535c9fedfa3ff80c5981646753cbc9870549"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "launchEmailIntent",
+      "kind": "exact",
+      "sha256": "4261da6af1603d30781649a1d852b574804b89167921dbcf28d1ad106b5772ba"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "buildSubject",
+      "kind": "exact",
+      "sha256": "1a40890cef75591ef3c64dca852b4e025336e79f76ad7b2b7192b654bb7a79e9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "redactId",
+      "kind": "exact",
+      "sha256": "a91c3834e8119c0da37ff17503d931d2f5b001f6d31f9518f6b5f88da32e5a95"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "redactDid",
+      "kind": "exact",
+      "sha256": "bb2dbdad53d3651839784024c7b569ddb87765b30d5589c173e59ecd4ac2c42f"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "formatTs",
+      "kind": "exact",
+      "sha256": "ba8206dd21f952da2c5622a6cb779c5346b16a2ee3897bcbd148f86f63e64bf9"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "2d20a07e35afc21f10416ff502336f41e483bac8fe61e52c886f88a806047071"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomerSupportActivity.kt",
+      "method": "setLoading",
+      "kind": "adapted",
+      "sha256": "5459b161a4fe19e0f96cb5821aea8413fbee1407c8046f5685744d796d7a88b5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "initViews",
+      "kind": "exact",
+      "sha256": "4ea3cb3bf13908e482fe796b7d0695440aaa292ce2e68f1d020c8e4f4e29f0a3"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "setProtocolsUi",
+      "kind": "exact",
+      "sha256": "8722cb498263bd964f76debd5f49a465a8876897d7741fc4db9e9192ba6e1076"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "setupListeners",
+      "kind": "exact",
+      "sha256": "0aeb5fb6b93395b3101604f1c64f83aad6b4a9a4bdc920904aedc14ead173164"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "updateAutoModeUi",
+      "kind": "exact",
+      "sha256": "e06942c05f404951f8277480c9e360368b73cb65cf8e8ceaa6ce67fd8775f8e5"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "updateManualModeUi",
+      "kind": "exact",
+      "sha256": "4e4d69e779fac0e8a09ac2ad16ba88fef2f3a12925bd1ff5b27be78a06e520ae"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "resetToDefaults",
+      "kind": "exact",
+      "sha256": "83cebf9ed784f5053e6df15e0ed6dee9ed328ebc53ec9b0e8277724b5b62dd51"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "testConnections",
+      "kind": "exact",
+      "sha256": "3f2c9873f60678f8a9dd39829aebae39ce41cfc1fe3759b42a5433bc9b101016"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "probeIpOrUrl",
+      "kind": "exact",
+      "sha256": "057df8c08bc16e440e0cabc3f3690eefe3f1b96c477dbef472673c42fb899c28"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "updateStatusIcons",
+      "kind": "exact",
+      "sha256": "af5bb7d3fb0216c6e5efc9222dfdb460595f3c8679bfd79456bc94408e13317e"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "getDrawableForProbeResult",
+      "kind": "exact",
+      "sha256": "c0f6d1c298ddcf90ac93b96b0f7ab0b4332e923f36864e7ea230727fa3debeb6"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "setAllStatusIconsVisibility",
+      "kind": "exact",
+      "sha256": "36c66617167853ac7cad480fcb8ab94c7dfe49faec7794997e5ca5336fc3f0f2"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "setAllProgressBarsVisibility",
+      "kind": "exact",
+      "sha256": "56f8082717848da74d734d61d229e777e3cb0b3fffe546f3658fed53074c870a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "setButtonsEnabled",
+      "kind": "exact",
+      "sha256": "46c79b0d9f081df279b5af377adb82b3f5ebc43841da7d66ad54f0bdb0358a96"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "saveIps",
+      "kind": "exact",
+      "sha256": "39dcf67cf043f20bf51861407adae753e3b5cb4dbffd18d90da0ccbe3f68cab1"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "io",
+      "kind": "exact",
+      "sha256": "7616a41b66126d28f636ed3c65ec079989f1ec652394c6796f4bdb56300ce8d3"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "uiCtx",
+      "kind": "exact",
+      "sha256": "8dc6a9966858532332201d652f29d45a4bfd5edbb7c4d261eb6176a460352c57"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "isValidIp",
+      "kind": "exact",
+      "sha256": "646435551ccd4d0d86db81ca91878acb23043e4ac017bba904944729a8bc869d"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "isValidUrl",
+      "kind": "exact",
+      "sha256": "7f85d96729f52c4c598acf3bf94aab293557c997284dcca256043fe81b5a0ade"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "selectToggleBtnUi",
+      "kind": "exact",
+      "sha256": "6710ee49fdb2a7d56371bbb8d2e81e25b235e3a99d18d32f09a40b34ff09449c"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "unselectToggleBtnUi",
+      "kind": "exact",
+      "sha256": "892c07a65e6cadb02caa64c4781b0a5198dc2a3a0583f7eff8a6f6c008c91998"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/dialog/NetworkReachabilityDialog.kt",
+      "method": "onCreate",
+      "kind": "adapted",
+      "sha256": "2e25745f069e5cb306b6deb4f35e2df67ad579c933d96dbb6e0a827eed0a64f4"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "method": "onViewCreated",
+      "kind": "exact",
+      "sha256": "22508da6b90400b0068b5c2f8f10b2886a88b345df885a1ed5ebea910801bca0"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "method": "configurePaymentOptions",
+      "kind": "exact",
+      "sha256": "0d62698e9fcf492aab37b7a26a650f5d5d8a6f26b94e490d09eecc6da7148f55"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "method": "observeUiState",
+      "kind": "exact",
+      "sha256": "9067513de6d29afab6209b039f95a1e80906c26592b1adf2581913954eb2ae7f"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "method": "observeSponsorState",
+      "kind": "exact",
+      "sha256": "0e971de3eced3807c9d1302fc25ccc36ba53dedaa16ad809a433fef9c8f9ff42"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "method": "updateUi",
+      "kind": "exact",
+      "sha256": "aac803df38ba448dd5dacb7d7758e5636e31bd62f1b7c92f26bdd52defa25c7a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorFragment.kt",
+      "method": "showSuccessFragment",
+      "kind": "exact",
+      "sha256": "84dd3970e34f21437c08175b9179672ef305b09f0247f8e9d68ad500c5ea596a"
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/sponsor/ui/SponsorSuccessFragment.kt",
+      "method": "onViewCreated",
+      "kind": "exact",
+      "sha256": "873764b483df92acfee493d9faeab59a19e52c28aad13f708f538edf90399917"
+    }
+  ],
+  "errors": [],
+  "limitation": "Source preservation only, not compilation, runtime, visual or service parity."
+}

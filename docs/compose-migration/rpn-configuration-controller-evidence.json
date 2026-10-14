@@ -1,0 +1,730 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "passed": true,
+  "exactBodies": 73,
+  "adaptedBodies": 8,
+  "errors": [],
+  "methods": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onPermissionsGranted",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "09a845d913d256e486cb6bf2bf62c48ee4e1056b59c2da0e5a29adbc54a0d0ff",
+      "currentHash": "09a845d913d256e486cb6bf2bf62c48ee4e1056b59c2da0e5a29adbc54a0d0ff"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onPermissionsDenied",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "a2160cfc35ad811abfbfaad1b1c23807f693eb8183804766c252bda719d39b84",
+      "currentHash": "a2160cfc35ad811abfbfaad1b1c23807f693eb8183804766c252bda719d39b84"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onPermissionsRationale",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "55cb207ae1e773c380301e12e305cbeb1018711a61210a00c67dc892cab6d452",
+      "currentHash": "55cb207ae1e773c380301e12e305cbeb1018711a61210a00c67dc892cab6d452"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setDolphinSignature",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "55dd8aff42a59d8f4c02c84b660468306b90010e51783a885565f72b16210bb5",
+      "currentHash": "55dd8aff42a59d8f4c02c84b660468306b90010e51783a885565f72b16210bb5"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onResume",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "0efdf617eff592d0d847328281faa7f10ce18750b199ca9edfc7cd6c5ab902f8",
+      "currentHash": "0efdf617eff592d0d847328281faa7f10ce18750b199ca9edfc7cd6c5ab902f8"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onPause",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "f6dd66f3921e6f02137f93f0f953af80f49e4a50878f070109a6be53da3369ad",
+      "currentHash": "f6dd66f3921e6f02137f93f0f953af80f49e4a50878f070109a6be53da3369ad"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "init",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "ee9d396dae8f455ed0eae292a1d69d7e461302313172e3879027f1f9ed663fca",
+      "currentHash": "ee9d396dae8f455ed0eae292a1d69d7e461302313172e3879027f1f9ed663fca"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "resolveClientIps",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "4fb291cadf5b7ef09b7dce79cb1b7d4b69c2623ecbe9b754be3aef15a7debf79",
+      "currentHash": "4fb291cadf5b7ef09b7dce79cb1b7d4b69c2623ecbe9b754be3aef15a7debf79"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "serverEndpoint",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "b86e0c362fda60c50b4b698dd5ac569cf2891349f0c0185b3ebf0f814da8ee24",
+      "currentHash": "b86e0c362fda60c50b4b698dd5ac569cf2891349f0c0185b3ebf0f814da8ee24"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "stripPort",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "d5f2464ced09365ee69c09070aa171d41c349f3ecf7c220f2bb140627aa09564",
+      "currentHash": "d5f2464ced09365ee69c09070aa171d41c349f3ecf7c220f2bb140627aa09564"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "buildHopIpSpan",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "3b17f8133d19f3ad9a88335572b07cf4ef77c78428179aea9a1c439b182fcb07",
+      "currentHash": "3b17f8133d19f3ad9a88335572b07cf4ef77c78428179aea9a1c439b182fcb07"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "buildIpDetailSpan",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "639113ba5f77164f27daed1e7746b98c0daafe2ed521d20114a31b65d3622df2",
+      "currentHash": "639113ba5f77164f27daed1e7746b98c0daafe2ed521d20114a31b65d3622df2"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "cancelStatsJob",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "cfa07b0d1f90d52f6401c6562154a09c11f7103a7ae92e06282941e81bc266dc",
+      "currentHash": "cfa07b0d1f90d52f6401c6562154a09c11f7103a7ae92e06282941e81bc266dc"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "startStatsPolling",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "d147fcdd3d0a71a5fd1c63747dffc364241985988ee6e785b4dec988b405ab73",
+      "currentHash": "d147fcdd3d0a71a5fd1c63747dffc364241985988ee6e785b4dec988b405ab73"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "fetchAndApplyStats",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "3284a06a69b65f010fc05a3d44fefdd2c05acda8664fb107dee9d818f58caebd",
+      "currentHash": "3284a06a69b65f010fc05a3d44fefdd2c05acda8664fb107dee9d818f58caebd"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "applyStats",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "e515f41b5b78235ec2e12597e4e1105686b2ae7011da72b7be8e14365081724a",
+      "currentHash": "e515f41b5b78235ec2e12597e4e1105686b2ae7011da72b7be8e14365081724a"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "buildStatusText",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "a50c14f2e5098862f1e5df2097d5792a7be86ec742dca9b7f7f985388f0fb2c6",
+      "currentHash": "a50c14f2e5098862f1e5df2097d5792a7be86ec742dca9b7f7f985388f0fb2c6"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "buildStatusColor",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "fb7691a244c899bbf7212c37880b3924ac998659877ab1b2c615b6e4552e89f5",
+      "currentHash": "fb7691a244c899bbf7212c37880b3924ac998659877ab1b2c615b6e4552e89f5"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "isFailing",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "9639afde93b22af2a3e7fd55981f281f8a71feedfd41877a8aab35f02ffe5359",
+      "currentHash": "9639afde93b22af2a3e7fd55981f281f8a71feedfd41877a8aab35f02ffe5359"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "shrinkEmoji",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "7639edc0e239faeb53ffc20fc607978d353a954de9d7137ee9db456b3b87b5ef",
+      "currentHash": "7639edc0e239faeb53ffc20fc607978d353a954de9d7137ee9db456b3b87b5ef"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "buildLoadSpeedText",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "8721929fd07dbdde1aacaa6e60dbf25c42976d59dee75b885b9278a04a121337",
+      "currentHash": "8721929fd07dbdde1aacaa6e60dbf25c42976d59dee75b885b9278a04a121337"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "observeAppCount",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "1cd44420abb3ed9bd37e5d0f1583af2bef8a7b746a3b2ca8a27a8296dc5a2ce8",
+      "currentHash": "1cd44420abb3ed9bd37e5d0f1583af2bef8a7b746a3b2ca8a27a8296dc5a2ce8"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "loadConfigSettings",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "b41e9040747234c334e745f8b8c340508809dc0af4182e0a777da40979b0dfb1",
+      "currentHash": "b41e9040747234c334e745f8b8c340508809dc0af4182e0a777da40979b0dfb1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setupClickListeners",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "dc4f7a466eb71d8e1172d593080013d1d015f0abb96abf20b2ec5544f9063f43",
+      "currentHash": "dc4f7a466eb71d8e1172d593080013d1d015f0abb96abf20b2ec5544f9063f43"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "applyHop",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "5059c25f87242c1622d4c5a8dd29eafac37622125b90554ed38219569160a7e0",
+      "currentHash": "5059c25f87242c1622d4c5a8dd29eafac37622125b90554ed38219569160a7e0"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setHopCheckSilently",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "111de5cd943912f6286086954a01d54938c49f692db203b97564e088cb7f8c8d",
+      "currentHash": "111de5cd943912f6286086954a01d54938c49f692db203b97564e088cb7f8c8d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "applyMobileOnly",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "80561d6a219f17246473ac17d9447f272d055bb5c08c142ccac745ba9397148c",
+      "currentHash": "80561d6a219f17246473ac17d9447f272d055bb5c08c142ccac745ba9397148c"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setMobileCheckSilently",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "2a07f61bf3692b92881d2a33c9f94c113fdb2f7e284c7f0f75baa54e25f5ef38",
+      "currentHash": "2a07f61bf3692b92881d2a33c9f94c113fdb2f7e284c7f0f75baa54e25f5ef38"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setSsidCheckSilently",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "5224b1be54c636387c42b5518f0222651a6f6f67015b6c17bc235dcb2ba30170",
+      "currentHash": "5224b1be54c636387c42b5518f0222651a6f6f67015b6c17bc235dcb2ba30170"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "initiateRefresh",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "326ab0f8ab786d568cfa7d3d298535003739469f99dfecd83298e04b6a6cf50b",
+      "currentHash": "326ab0f8ab786d568cfa7d3d298535003739469f99dfecd83298e04b6a6cf50b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showInvalidConfigDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "d4c5e1a052a50904e80f259df32e434121512d8bdb5384a300cc5cfc21a289ae",
+      "currentHash": "d4c5e1a052a50904e80f259df32e434121512d8bdb5384a300cc5cfc21a289ae"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showRecoveryDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "321744ef4bf32b9168bda956856ed6d7b4b8f917ae45e98c6274a77b9f39cdcb",
+      "currentHash": "321744ef4bf32b9168bda956856ed6d7b4b8f917ae45e98c6274a77b9f39cdcb"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "openHopDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "fadd796124c7fd8623bd6a2730f6d5f07d373b7d58460c9b385d8fe4e275b0a5",
+      "currentHash": "fadd796124c7fd8623bd6a2730f6d5f07d373b7d58460c9b385d8fe4e275b0a5"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "openLogsDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "31ba42eb7ff316351774f2b57550205dc70e2d1543d3ebac79e7a574c66e5ae2",
+      "currentHash": "31ba42eb7ff316351774f2b57550205dc70e2d1543d3ebac79e7a574c66e5ae2"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "invokeNetworkLogs",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "f928e6d7df8b62011e98477483a7b29b48836a591679e1dad30311d2139b3b0f",
+      "currentHash": "f928e6d7df8b62011e98477483a7b29b48836a591679e1dad30311d2139b3b0f"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "openAppsDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "92cb09933f5a01e191a490f0a01490126f42acde7827b6053bef2d4e24486cdb",
+      "currentHash": "92cb09933f5a01e191a490f0a01490126f42acde7827b6053bef2d4e24486cdb"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onIndividualAppModified",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "dcf9e730e3a19eb929aec9ddb10ab7367478bb4958b74025044759a3fce8e0f9",
+      "currentHash": "dcf9e730e3a19eb929aec9ddb10ab7367478bb4958b74025044759a3fce8e0f9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "collapsedHeaderTitle",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "8a7d633cc38611ac0cd0737e165bcd6ee0ddffc3234ebec53e1f6441524ac085",
+      "currentHash": "8a7d633cc38611ac0cd0737e165bcd6ee0ddffc3234ebec53e1f6441524ac085"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setupSsidSection",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "d4a477a82efc5d90bf9634f1820c693320f5370cdf9125e58e49fe7f4f30f115",
+      "currentHash": "d4a477a82efc5d90bf9634f1820c693320f5370cdf9125e58e49fe7f4f30f115"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setupSsidErrorActionListeners",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "2d4b76f48b00dcdef468bc3499b63d18cf14d3d35be0f501d2cc3c5c7faa456e",
+      "currentHash": "2d4b76f48b00dcdef468bc3499b63d18cf14d3d35be0f501d2cc3c5c7faa456e"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "updateErrorLayouts",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "25d02fc5501d5e3c5d3b886fe4eefff0c79bf0284d8e600edbf680666654bc9d",
+      "currentHash": "25d02fc5501d5e3c5d3b886fe4eefff0c79bf0284d8e600edbf680666654bc9d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "hideErrorLayouts",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "bacb1ddbf492c0e20f9a0988d0356dd556822181a98b6e147d40bd4bd15988eb",
+      "currentHash": "bacb1ddbf492c0e20f9a0988d0356dd556822181a98b6e147d40bd4bd15988eb"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showPermissionDeniedDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "d4aa663efe2fec3f4a9263fdc5bda989559a5678e86ae5108a70c2ae9a2783bf",
+      "currentHash": "d4aa663efe2fec3f4a9263fdc5bda989559a5678e86ae5108a70c2ae9a2783bf"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "refreshSsidSection",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "43d8fbdb007fa8a274f30b96e9903ab6ebc01e6ad43fa15ac4bc99311d448155",
+      "currentHash": "43d8fbdb007fa8a274f30b96e9903ab6ebc01e6ad43fa15ac4bc99311d448155"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "openSsidDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "761aff7645f48d92f9be7213013860c98a2915eede0fa129cd87034edd477eda",
+      "currentHash": "761aff7645f48d92f9be7213013860c98a2915eede0fa129cd87034edd477eda"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showLocationDisclosureDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "80b6f9dc61ca9be801621f5a9b0ece5df69c7e77abdc73e2d20f604bd8a31911",
+      "currentHash": "80b6f9dc61ca9be801621f5a9b0ece5df69c7e77abdc73e2d20f604bd8a31911"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showLocationEnableDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "aea6b40f442bbfea826028883e837ed4ab7a11a5e90e0a5539f9492929b08977",
+      "currentHash": "aea6b40f442bbfea826028883e837ed4ab7a11a5e90e0a5539f9492929b08977"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "onRequestPermissionsResult",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "a4514f9866ee4fc26fe9b0c0bcfaefab23bdb385d4ebc87d7da3ebaeb20eb70f",
+      "currentHash": "a4514f9866ee4fc26fe9b0c0bcfaefab23bdb385d4ebc87d7da3ebaeb20eb70f"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "io",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "26ad899406e12b7cb1330bb4305c89cd7ec150d0315c24068c07f4f39e2b9cd9",
+      "currentHash": "26ad899406e12b7cb1330bb4305c89cd7ec150d0315c24068c07f4f39e2b9cd9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "ui",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "ae3946c668b0acc878aa8a6c00f366c440d746294fafb9c4d9cda87c32c6fcab",
+      "currentHash": "ae3946c668b0acc878aa8a6c00f366c440d746294fafb9c4d9cda87c32c6fcab"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "uiCtx",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "currentHash": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "onDestroy",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "170f7d7c376371e19fcea1080452e7299e805ac2379f49d86a3b912e91a8d3f4",
+      "currentHash": "170f7d7c376371e19fcea1080452e7299e805ac2379f49d86a3b912e91a8d3f4"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "loadApps",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "319b0624bbc2107effcec3a3274d382bbc1cfd367a7829610dab4790d8dc780d",
+      "currentHash": "319b0624bbc2107effcec3a3274d382bbc1cfd367a7829610dab4790d8dc780d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "appTypeRank",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "c27e8d9e26d97b97686049ba94b6a46da82afad5df18587674670fa865128b5b",
+      "currentHash": "c27e8d9e26d97b97686049ba94b6a46da82afad5df18587674670fa865128b5b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "categoryRank",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "5dfe6801d7daaf6b719521df0fa5110c7926bd5190bf643e482b36c8ba056668",
+      "currentHash": "5dfe6801d7daaf6b719521df0fa5110c7926bd5190bf643e482b36c8ba056668"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "applyFilter",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "e58e49c1b6cc371b1b86c5ae93779e7b81d3497a9867115c187b9ff18a9e124d",
+      "currentHash": "e58e49c1b6cc371b1b86c5ae93779e7b81d3497a9867115c187b9ff18a9e124d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "updateCountLabel",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "20abe109edfc89f99e8ea9844060caf9f35db9555ddc5fea15c06027db04c8d4",
+      "currentHash": "20abe109edfc89f99e8ea9844060caf9f35db9555ddc5fea15c06027db04c8d4"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "syncBulkToggleState",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "7ca1b28e1bf7e2fb746988c7cfdd2ae3bcf88f5ef7c0be65e32494d4f7446e8b",
+      "currentHash": "7ca1b28e1bf7e2fb746988c7cfdd2ae3bcf88f5ef7c0be65e32494d4f7446e8b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "confirmBulkAction",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "6c0a5c81fc7e655adeaded2ed6b167178a9c2ccf1e28a7682b9d5895ae8152e1",
+      "currentHash": "6c0a5c81fc7e655adeaded2ed6b167178a9c2ccf1e28a7682b9d5895ae8152e1"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "performBulkAction",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "e632a427c77c2db31ff5b2777c5ace3a1143d05785dc3df245dcb6cf05a2f4fc",
+      "currentHash": "e632a427c77c2db31ff5b2777c5ace3a1143d05785dc3df245dcb6cf05a2f4fc"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "setBulkControlsEnabled",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "0fe97fbd78b73783630317626dcdf4573e99994cb266cfef7f780c03b6b856f9",
+      "currentHash": "0fe97fbd78b73783630317626dcdf4573e99994cb266cfef7f780c03b6b856f9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "onAppToggled",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "c894759dc81d0cf0e7a7362ed19ea97c6a718a0940d7d23c1746ec8b436ecf0b",
+      "currentHash": "c894759dc81d0cf0e7a7362ed19ea97c6a718a0940d7d23c1746ec8b436ecf0b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "onQueryTextSubmit",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "9d05f9ffbbc17344a890e8e5f1b0f4387cb6e5949ed7dd334e673f176e6f2180",
+      "currentHash": "9d05f9ffbbc17344a890e8e5f1b0f4387cb6e5949ed7dd334e673f176e6f2180"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "onQueryTextChange",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "9d05f9ffbbc17344a890e8e5f1b0f4387cb6e5949ed7dd334e673f176e6f2180",
+      "currentHash": "9d05f9ffbbc17344a890e8e5f1b0f4387cb6e5949ed7dd334e673f176e6f2180"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "io",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "26ad899406e12b7cb1330bb4305c89cd7ec150d0315c24068c07f4f39e2b9cd9",
+      "currentHash": "26ad899406e12b7cb1330bb4305c89cd7ec150d0315c24068c07f4f39e2b9cd9"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "uiCtx",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "currentHash": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "method": "initViews",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "bac12633a66aaa03d26807ba129495d3914dad8f1060ac30025087e18fb1c1a5",
+      "currentHash": "bac12633a66aaa03d26807ba129495d3914dad8f1060ac30025087e18fb1c1a5"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "method": "initClickListeners",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "6dc0408c5fec6f8739ef572e9f0219e8ebda22b69b22840307e9b477e50d63de",
+      "currentHash": "6dc0408c5fec6f8739ef572e9f0219e8ebda22b69b22840307e9b477e50d63de"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "method": "showNoProxyFoundDialog",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "6b967c5088c653b4e1ed3a792c35e6ef9174117f4a74e5f1e35af12a15225588",
+      "currentHash": "6b967c5088c653b4e1ed3a792c35e6ef9174117f4a74e5f1e35af12a15225588"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "method": "io",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "d84f00a8536f978efde76404f225f34a662d7417e127c2dcd45b4068d68f9ddc",
+      "currentHash": "d84f00a8536f978efde76404f225f34a662d7417e127c2dcd45b4068d68f9ddc"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnWinProxyDetailsActivity.kt",
+      "method": "uiCtx",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed",
+      "currentHash": "3c8484f084c9d3e31b53340c940dbdde34b4edd9e5195de4dcf4d64d31950eed"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "method": "saveSsids",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "f0737b6d9bf86b671b71c201d41f1dc5c8b2a30ca5cdbcec4fa75ca0b972d499",
+      "currentHash": "f0737b6d9bf86b671b71c201d41f1dc5c8b2a30ca5cdbcec4fa75ca0b972d499"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnProxyHopDialog.kt",
+      "method": "create",
+      "exact": true,
+      "passed": true,
+      "baselineHash": "8ba5913abe966cbb2115b335f1f959d431c210406785e29e4822327381f9958d",
+      "currentHash": "8ba5913abe966cbb2115b335f1f959d431c210406785e29e4822327381f9958d"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "populateHeroBanner",
+      "exact": false,
+      "substitutions": [
+        [
+          "b.collapsingToolbar.title",
+          "b.headerTitle"
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "6789af82372506b32226070c7859351d0f71e2954598c6e598ea541f1e00ab77",
+      "currentHash": "6789af82372506b32226070c7859351d0f71e2954598c6e598ea541f1e00ab77"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showServerInfo",
+      "exact": false,
+      "substitutions": [
+        [
+          "b.collapsingToolbar.title",
+          "b.headerTitle"
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "54c0e7b2f180830741457b45418e5be956165d325c2db2d776e0b91fce2b48b8",
+      "currentHash": "54c0e7b2f180830741457b45418e5be956165d325c2db2d776e0b91fce2b48b8"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "setupSsidSectionUI",
+      "exact": false,
+      "substitutions": [
+        [
+          ": LinearLayout",
+          ": WgControlState"
+        ],
+        [
+          ": AppCompatImageView",
+          ": WgControlState"
+        ],
+        [
+          "b.root",
+          "composeRoot"
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "d0b041a5f88889d8b91800c0a035176af77173a84c47078369a8b4dd502b5d19",
+      "currentHash": "d0b041a5f88889d8b91800c0a035176af77173a84c47078369a8b4dd502b5d19"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "applyClientIps",
+      "exact": false,
+      "substitutions": [
+        [
+          "b.shimmerIpv4.stopShimmer() b.shimmerIpv4.visibility = View.GONE",
+          "b.clientIpShimmer = false"
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "836f2ac9483f65372310b10cb809ed8d149bfb4a82284d228cd525e6f900ba86",
+      "currentHash": "836f2ac9483f65372310b10cb809ed8d149bfb4a82284d228cd525e6f900ba86"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnConfigDetailActivity.kt",
+      "method": "showClientIpShimmer",
+      "exact": false,
+      "substitutions": [
+        [
+          "b.shimmerIpv4.visibility = View.VISIBLE b.shimmerIpv4.startShimmer()",
+          "b.clientIpShimmer = true"
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "870cba604dff79e1da19a35aeebf8edfedfc62d747632a202106859d2e75f586",
+      "currentHash": "870cba604dff79e1da19a35aeebf8edfedfc62d747632a202106859d2e75f586"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/activity/RpnBypassAppsActivity.kt",
+      "method": "setupClickListeners",
+      "exact": false,
+      "substitutions": [
+        [
+          "b.rpnBypassSearchView.setOnQueryTextListener(this) b.rpnBypassSearchView.setOnCloseListener { searchText = \"\" applyFilter() false }",
+          ""
+        ],
+        [
+          "b.rpnBypassRefreshList.animation = animation b.rpnBypassRefreshList.startAnimation(animation)",
+          "b.startRefresh()"
+        ],
+        [
+          "b.rpnBypassRefreshList.clearAnimation()",
+          "b.refreshSpinning = false"
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "5301baea94dc34a7277d2baf06a53dc1abb4a2e1518e69dad1fdf8c750830b4b",
+      "currentHash": "5301baea94dc34a7277d2baf06a53dc1abb4a2e1518e69dad1fdf8c750830b4b"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "method": "loadCurrentSsids",
+      "exact": false,
+      "substitutions": [
+        [
+          "ssidAdapter.notifyDataSetChanged()",
+          ""
+        ],
+        [
+          "updateEmptyState()",
+          ""
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "247a88830212c768d9d34e6081eda5a5284fea8528ebbb94305ff967ad09c024",
+      "currentHash": "247a88830212c768d9d34e6081eda5a5284fea8528ebbb94305ff967ad09c024"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/dialog/RpnSsidDialog.kt",
+      "method": "showDeleteConfirmation",
+      "exact": false,
+      "substitutions": [
+        [
+          "ssidAdapter.notifyItemRemoved(position)",
+          ""
+        ],
+        [
+          "updateEmptyState()",
+          ""
+        ]
+      ],
+      "passed": true,
+      "adaptedHash": "f353a5a1e114e22702bfe96930512401c6a74ae617b8098982969bc892e858dd",
+      "currentHash": "f353a5a1e114e22702bfe96930512401c6a74ae617b8098982969bc892e858dd"
+    }
+  ],
+  "limitation": "Static literal-preserving selected-token equality; not Android compilation, runtime/dispatch/lifecycle or rendering parity."
+}

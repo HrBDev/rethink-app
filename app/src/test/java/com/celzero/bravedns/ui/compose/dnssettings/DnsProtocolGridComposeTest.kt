@@ -12,6 +12,7 @@ import org.junit.Test
 import org.junit.Assert.assertEquals
 
 /** Isolated native content and recording callbacks; original integration tests remain separate. */
+@org.robolectric.annotation.GraphicsMode(org.robolectric.annotation.GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 class DnsProtocolGridComposeTest {

@@ -25,7 +25,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /** Filter submissions reset expansion and cached children, as in the original adapter. */
-class BlocklistAppsAdapter(private val context: Context, private val fetchDomains: suspend (uid: Int) -> List<AppConnection>) {
+class BlocklistAppsAdapter internal constructor(private val context: Context,
+    private val identityResolver: (suspend (Int) -> Pair<String?, Drawable?>)?,
+    private val fetchDomains: suspend (uid: Int) -> List<AppConnection>) {
+    constructor(context: Context, fetchDomains: suspend (uid: Int) -> List<AppConnection>) : this(context, null, fetchDomains)
     private class Group(val app: AppConnection) {
         var expanded by mutableStateOf(false)
         var domains by mutableStateOf<List<AppConnection>?>(null)
@@ -40,15 +43,17 @@ class BlocklistAppsAdapter(private val context: Context, private val fetchDomain
         val app = group.app
         val identity by produceState(identities[app.uid], app.uid) {
             if (value == null) value = withContext(Dispatchers.IO) {
-                val info = FirewallManager.getAppInfoByUid(app.uid)
-                info?.appName to (Utilities.getIcon(context, info?.packageName.orEmpty(), info?.appName.orEmpty()) ?: Utilities.getDefaultIcon(context))
+                if (identityResolver != null) identityResolver.invoke(app.uid) else {
+                    val info = FirewallManager.getAppInfoByUid(app.uid)
+                    info?.appName to (Utilities.getIcon(context, info?.packageName.orEmpty(), info?.appName.orEmpty()) ?: Utilities.getDefaultIcon(context))
+                }
             }.also { identities[app.uid] = it }
         }
         val description = stringResource(if (group.expanded) R.string.statistics_expanded else R.string.statistics_collapsed)
         Column(Modifier.testTag("blocklist_group_${app.uid}").semantics { stateDescription = description }) {
             StatisticsRow(identity?.first ?: app.appOrDnsName ?: stringResource(R.string.network_log_app_name_unnamed, app.uid.toString()),
                 null, "", app.count.toString(), icon = identity?.second ?: Utilities.getDefaultIcon(context),
-                downArrow = true, arrowRotation = if (group.expanded) 180f else 0f) { toggle(group) }
+                downArrow = true, arrowRotation = if (group.expanded) 180f else 0f, tag = "blocklist_app_${app.uid}") { toggle(group) }
             if (group.expanded) group.domains.orEmpty().forEach { domain ->
                 Row(Modifier.fillMaxWidth().padding(start = 54.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)) {
                     Text(domain.appOrDnsName.orEmpty(), Modifier.weight(1f)); Text(domain.count.toString())

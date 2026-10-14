@@ -1,0 +1,112 @@
+/* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
+package com.celzero.bravedns.ui.compose.utilities
+
+import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.*
+import androidx.compose.ui.platform.*
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.*
+import androidx.compose.ui.text.lerp
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.*
+import com.celzero.bravedns.R
+import com.celzero.bravedns.ui.compose.themeColor
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun SupportScreen(ui: SupportUiState) {
+    val density = LocalDensity.current
+    val focus = LocalFocusManager.current
+    val keyboard = LocalSoftwareKeyboardController.current
+    LaunchedEffect(ui.keyboardRequest) { if (ui.keyboardRequest > 0) { focus.clearFocus(); keyboard?.hide() } }
+    val range = with(density) { 124.dp.toPx() }
+    var collapsed by rememberSaveable { mutableFloatStateOf(0f) }
+    fun consume(delta: Float): Float { val old = collapsed; collapsed = (old - delta).coerceIn(0f, range); return old - collapsed }
+    suspend fun snap() { val target = if (collapsed < range / 2) 0f else range; animate(collapsed, target, animationSpec = tween(220)) { value, _ -> collapsed = value } }
+    val connection = remember(range) { object : NestedScrollConnection {
+        override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset = if (available.y < 0) Offset(0f, consume(available.y)) else Offset.Zero
+        override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource) = Offset(0f, consume(available.y))
+        override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity { snap(); return Velocity.Zero }
+    } }
+    val fraction = (collapsed / range).coerceIn(0f, 1f)
+    Surface(Modifier.fillMaxSize(), color = themeColor(R.attr.background)) {
+        Column(Modifier.fillMaxSize().safeDrawingPadding().imePadding().nestedScroll(connection)) {
+            Box(Modifier.fillMaxWidth().height(with(density) { (180.dp.toPx() - collapsed).toDp() }).utilityHeroBackground()
+                .testTag("support.header").draggable(rememberDraggableState { consume(it) }, Orientation.Vertical, onDragStopped = { snap() })) {
+                Text(ui.headerTitle, Modifier.align(Alignment.BottomStart).padding(start = (24-8*fraction).dp, bottom = (48-32*fraction).dp).semantics { heading() },
+                    color = themeColor(R.attr.primaryTextColor), maxLines = 1, overflow = TextOverflow.Ellipsis,
+                    style = lerp(utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_HeadlineMedium),
+                        utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_TitleLarge), fraction))
+                if (fraction < 1) UtilityText(ui.tvHeroSubtitle, Modifier.align(Alignment.BottomStart).padding(start = 24.dp, end = 24.dp, bottom = 18.dp).alpha(.7f*(1-fraction)))
+            }
+            Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 16.dp).testTag("support.scroll")) {
+                SupportSection(R.string.support_section_describe)
+                Card(Modifier.fillMaxWidth().padding(bottom = 20.dp), shape = RoundedCornerShape(16.dp), colors = CardDefaults.cardColors(containerColor = themeColor(androidx.cardview.R.attr.cardBackgroundColor))) {
+                    Column(Modifier.padding(16.dp)) {
+                        SupportLabel(R.string.support_issue_category_label, 13f, secondary = true)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            ui.categories.filter { it.isVisible }.forEach { chip -> FilterChip(chip.isChecked, { ui.selectCategory(chip) }, label = { Text(chip.text.toString(), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_LabelLarge)) }, modifier = Modifier.testTag(chip.tag)) }
+                        }
+                        OutlinedTextField(ui.etDescription.text.toString(), { ui.etDescription.text = it },
+                            Modifier.fillMaxWidth().testTag(ui.etDescription.tag), minLines = 5, maxLines = 10,
+                            label = { Text(ui.tilDescription.hint.toString()) }, isError = ui.tilDescription.error != null,
+                            supportingText = ui.tilDescription.error?.let { error -> { Text(error.toString()) } },
+                            textStyle = utilityTextStyle(size = 14f).copy(color = themeColor(R.attr.primaryTextColor)))
+                    }
+                }
+                SupportSection(R.string.support_section_attachments)
+                Card(Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp), colors = CardDefaults.cardColors(containerColor = themeColor(androidx.cardview.R.attr.cardBackgroundColor))) {
+                    Column(Modifier.padding(16.dp)) {
+                        SupportLabel(R.string.support_attachments_desc, 13f, secondary = true)
+                        AttachmentRow(ui.switchAttachStatus, R.string.support_attach_sub_status, R.string.support_attach_sub_status_desc, null)
+                        HorizontalDivider(color = themeColor(R.attr.divider))
+                        AttachmentRow(ui.switchAttachStats, R.string.support_attach_vpn_stats, R.string.support_attach_vpn_stats_desc, 14f)
+                        HorizontalDivider(color = themeColor(R.attr.divider))
+                        AttachmentRow(ui.switchAttachProcInfo, R.string.support_attach_proc_info, R.string.support_attach_proc_info_desc, 14f)
+                    }
+                }
+                Spacer(Modifier.height(16.dp))
+            }
+            Surface(color = themeColor(com.google.android.material.R.attr.colorSurface), shadowElevation = 8.dp) {
+                Column(Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    OutlinedButton({ ui.btnSendEmail.performClick() }, enabled = ui.btnSendEmail.isEnabled,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(ui.btnSendEmail.tag)) {
+                        Text(ui.btnSendEmail.text.toString(), style = utilityTextStyle(size = 16f), color = themeColor(R.attr.accentGood))
+                    }
+                    SupportLabel(R.string.support_privacy_note, 10f, secondary = true)
+                    if (ui.layoutLoading.isVisible) Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                        CircularProgressIndicator(Modifier.size(24.dp).testTag("support.loading"))
+                        SupportLabel(R.string.support_loading_data, 14f, secondary = true, modifier = Modifier.padding(start = 8.dp))
+                    }
+                }
+            }
+        }
+    }
+}
+@Composable private fun SupportSection(id: Int) { Text(stringResource(id), Modifier.padding(start = 4.dp, bottom = 8.dp).semantics { heading() }, color = themeColor(androidx.appcompat.R.attr.colorPrimary), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_TitleSmall, weight = android.graphics.Typeface.BOLD, spacing = .08f)) }
+@Composable private fun SupportLabel(id: Int, size: Float?, secondary: Boolean = false, bold: Boolean = false, modifier: Modifier = Modifier) { Text(stringResource(id), modifier, color = themeColor(if (secondary) R.attr.primaryLightColorText else R.attr.primaryTextColor), style = utilityTextStyle(size = size, weight = if (bold) android.graphics.Typeface.BOLD else null)) }
+@Composable private fun AttachmentRow(state: UtilityControl, title: Int, description: Int, size: Float?) {
+    Row(Modifier.fillMaxWidth().padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Column(Modifier.weight(1f).padding(end = 12.dp)) {
+            SupportLabel(title, size, bold = true)
+            SupportLabel(description, 12f, secondary = true)
+        }
+        val label = stringResource(title)
+        Switch(state.isChecked, { state.isChecked = it }, modifier = Modifier.testTag(state.tag).semantics { contentDescription = label })
+    }
+}

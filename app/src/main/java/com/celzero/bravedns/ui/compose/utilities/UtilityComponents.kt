@@ -34,12 +34,12 @@ fun UtilityText(control: UtilityControl, modifier: Modifier = Modifier) {
 
 /** Draw platform vector/shape artwork directly in Compose; never inflates or wraps a View. */
 @Composable
-fun UtilityImage(control: UtilityControl, modifier: Modifier = Modifier, description: String? = null) {
+fun UtilityImage(control: UtilityControl, modifier: Modifier = Modifier, description: String? = null, tagged: Boolean = true) {
     if (!control.isVisible) return
     val context = LocalContext.current
     val drawable = control.drawable ?: control.imageRes?.let { remember(it, context) { ContextCompat.getDrawable(context, it) } } ?: return
     val bitmap = remember(drawable) { drawable.toBitmap(width = maxOf(1, drawable.intrinsicWidth).coerceAtMost(256), height = maxOf(1, drawable.intrinsicHeight).coerceAtMost(256)).asImageBitmap() }
-    Image(bitmap, description, modifier.testTag(control.tag), colorFilter = control.colorFilter?.let { ColorFilter.tint(Color(it)) })
+    Image(bitmap, description, if (tagged) modifier.testTag(control.tag) else modifier, colorFilter = control.colorFilter?.let { ColorFilter.tint(Color(it)) })
 }
 
 @Composable

@@ -1,0 +1,620 @@
+{
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "original_cases": 86,
+  "authored_cases": {
+    "AppInfo": 29,
+    "MiscSettings": 64
+  },
+  "executed": false,
+  "case_mapping": [
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchesSuccessfullyWithValidUid",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchWithInvalidUid",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testUiElementsAreDisplayedWithValidData",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testUiElementsContentAndInteractions",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testAppSettingsToggleStates",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testRecyclerViewsAreInitialized",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testActivityHandlesConfigurationChanges",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchWithMissingUidExtra",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchWithNegativeUid",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchWithZeroUid",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchWithVeryLargeUid",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testLaunchWithSystemAppUid",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testActivityStateWithMultipleIntents",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testActivityLifecycleStates",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testMemoryPressureHandling",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testActivityWithEmptyIntentExtras",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testActivityErrorRecovery",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testActivityLaunchPerformance",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Launch < 5,000 ms"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testUiRenderingPerformance",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Render metadata < 3,000 ms"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testMultipleActivityInstancesPerformance",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Three concurrent instances, average launch < 5,000 ms"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testConfigurationChangePerformance",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Three recreations < 10,000 ms"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testMemoryUsageStability",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Ten UI operations, heap increase < 50 MiB"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testScrollingPerformance",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Four list scroll interactions < 2,000 ms"
+    },
+    {
+      "screen": "AppInfo",
+      "baseline_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+      "method": "testInteractionResponseTimes",
+      "status": "deterministic-host-workload-authored; original-device-metric-unrun",
+      "device_acceptance": "Each proxy/app-info/close-connections interaction < 1,000 ms"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "activityCreation_withMockedDependencies_doesNotCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "activityFullLifecycle_createStartResumePauseStop_doesNotCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "activityClass_isAssignableFromActivity",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "koinModule_persistentState_isMockInstance",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "koinModule_allDependencies_areResolvable",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "onSaveInstanceState_persistsThemeChangedFlagTrue",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "onSaveInstanceState_persistsThemeChangedFlagFalse",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "onCreate_withSavedInstanceState_restoresThemeChangedTrue",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "onCreate_withoutSavedInstanceState_isThemeChangedStartsFalse",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "backPress_withThemeChanged_setsThemeChangedResult",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "backPress_withoutThemeChange_doesNotSetThemeChangedResult",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "enableLogsRl_click_togglesEnableLogsSwitch",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "enableLogsSwitch_checkedTrue_setsLogsEnabled",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "enableLogsSwitch_checkedFalse_setsLogsEnabledFalse",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "autoStartRl_click_togglesAutoStartSwitch",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "autoStartSwitch_checkedTrue_setsPrefAutoStartBootUp",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "ipInfoRl_click_togglesDvIpInfoSwitch",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "dvIpInfoSwitch_checkedTrue_setsDownloadIpInfo",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "tombstoneAppRl_click_togglesTombstoneAppSwitch",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "tombstoneAppSwitch_checkedTrue_setsTombstoneApps",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "tombstoneAppSwitch_checked_triggersRefreshDatabase",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "tombstoneAppSwitch_toggle_thenActivityDestroyed_doesNotCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "persistentNotificationRl_click_togglesSwitch",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "persistentNotificationSwitch_checkedTrue_setsPersistentNotification",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "pcapRl_click_createsAlertDialog",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "pcapDialog_dismiss_closesWithoutCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "themeRl_click_createsAlertDialog",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "notificationRl_click_createsAlertDialog",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "goLogRl_click_createsAlertDialog",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "taskerRl_click_createsAlertDialog",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "showAppTriggerPackageDialog_isDisplayed",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "showAppTriggerPackageDialog_negativeButton_doesNotTriggerCallback",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "importExportRl_whenActivityIsFinishing_doesNotShowBottomSheet",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "invokeImportExport_whenActivityIsDestroyed_doesNotShowBottomSheet",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "onResume_api28_notificationSectionIsHidden",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "onResume_api28_bubbleSectionIsHidden",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "fdroidFlavour_firebaseSectionIsGone",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayPcapUi_noneMode_showsOptionOneText",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayPcapUi_logcatMode_showsOptionTwoText",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayPcapUi_externalFileMode_showsOptionThreeText",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayNotificationActionUi_pauseStop_showsDesc1",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayNotificationActionUi_dnsFirewall_showsDesc2",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayNotificationActionUi_none_showsDesc3",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayAppThemeUi_systemDefault_showsTheme1Text",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayAppThemeUi_light_showsTheme2Text",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "displayAppThemeUi_dark_showsTheme3Text",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "pcapRl_afterClick_isDisabledImmediately",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "themeRl_afterClick_isDisabledImmediately",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "notificationRl_afterClick_isDisabledImmediately",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "goLogRl_afterClick_isDisabledImmediately",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "pcapDialog_activityDestroyedWhileShowing_doesNotCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "themeDialog_activityDestroyedWhileShowing_doesNotCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "notificationDialog_activityDestroyedWhileShowing_doesNotCrash",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "setFirebaseUserId_withValidToken_doesNotThrow",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "setFirebaseUserId_withEmptyToken_doesNotThrow",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "activityRecreation_preservesThemeChangedFlag",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "pcapRl_rapidDoubleClick_onlyOneDialogCreated",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "enableLogsSwitch_initialState_trueWhenLogsEnabled",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "autoStartSwitch_initialState_trueWhenPrefAutoStartBootUpTrue",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "dvIpInfoSwitch_initialState_trueWhenDownloadIpInfoTrue",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "tombstoneSwitch_initialState_trueWhenTombstoneAppsTrue",
+      "status": "authored-not-run"
+    },
+    {
+      "screen": "MiscSettings",
+      "baseline_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+      "method": "tombstoneSwitch_toggleAfterPause_doesNotCrash",
+      "status": "authored-not-run"
+    }
+  ]
+}

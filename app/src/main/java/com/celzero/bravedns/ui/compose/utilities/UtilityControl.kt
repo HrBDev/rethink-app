@@ -35,6 +35,7 @@ class UtilityControl(val context: Context, val tag: String = "") {
     var imageRes: Int? by mutableStateOf(null)
     var textColor: Int? by mutableStateOf(null)
     var maxLines: Int = Int.MAX_VALUE
+    var maxLength: Int? = null
     var ellipsize: Boolean = false
     var centered: Boolean = false
     var allCaps: Boolean = false
@@ -67,7 +68,7 @@ class UtilityControl(val context: Context, val tag: String = "") {
         get() = floatValue
         set(value) { if (value != floatValue) { floatValue = value; slider?.invoke(this, value, false) } }
     fun userValue(value: Float) { if (value != floatValue) { floatValue = value; slider?.invoke(this, value, true) } }
-    fun setText(value: Any?) { text = value?.toString().orEmpty() }
+    fun setText(value: Any?) { text = utilityLengthLimitedInput("", value?.toString().orEmpty(), maxLength) }
     fun setText(value: Int) { text = context.getText(value) }
     fun setTextColor(value: Int) { textColor = value }
     fun setImageResource(value: Int) { imageRes = value; drawable = null }
@@ -97,4 +98,17 @@ fun restoreUtilityControls(saved: Bundle?, controls: List<UtilityControl>) {
         if (saved.containsKey("utility.checked.${it.tag}")) it.isChecked = saved.getBoolean("utility.checked.${it.tag}")
         if (saved.containsKey("utility.value.${it.tag}")) it.value = saved.getFloat("utility.value.${it.tag}")
     }
+}
+
+/** Mirrors InputFilter.LengthFilter: limit only the changed insertion and retain the suffix. */
+internal fun utilityLengthLimitedInput(previous: String, next: String, maximum: Int?): String {
+    if (maximum == null || next.length <= maximum) return next
+    val prefix = previous.zip(next).takeWhile { (a, b) -> a == b }.size
+    var suffix = 0
+    while (suffix < previous.length - prefix && suffix < next.length - prefix &&
+        previous[previous.lastIndex - suffix] == next[next.lastIndex - suffix]) suffix++
+    val keep = (maximum - prefix - suffix).coerceAtLeast(0)
+    var end = (prefix + keep).coerceAtMost(next.length - suffix)
+    if (end > prefix && Character.isHighSurrogate(next[end - 1])) end--
+    return next.substring(0, prefix) + next.substring(prefix, end) + next.takeLast(suffix)
 }

@@ -105,3 +105,31 @@ rotation/destroy while dialogs, pending bars or tour anchor work are outstanding
 screenshot comparison. Source checks and renderer tests do not replace these integration
 and visual gates. Existing live instrumentation tests also require a safe startup fixture
 and migrated Compose selectors before activation.
+
+## Measured label typography correction (2026-10-14)
+
+The coordinator's real retained-widget/Compose PNG comparisons measured selected label
+weight 800 versus native 500, and a 12px baseline versus 24px native size at fontScale=2.
+The local pinned Material 1.14.0 AAR was inspected directly, including its values/layout XML
+and javap output for NavigationBarItemView and MaterialResources:
+
+- Widget.Material3.BottomNavigationView selects the theme's active/inactive LabelMedium
+  TextAppearance, with active bold enabled and label font scaling disabled by default.
+- NavigationBarItemView applies setTextAppearanceWithoutFontScaling, whose SP conversion
+  rounds the raw size times physical density to pixels, then uses COMPLEX_UNIT_PX.
+- updateActiveLabelBoldness applies Typeface.BOLD to the existing medium family; this
+  resolves to weight 800 rather than replacing the family with numeric weight 700.
+- design_bottom_navigation_item.xml explicitly disables includeFontPadding for both labels.
+
+HomeChrome.kt now resolves that widget style locally for the labels, carries the actual
+Typeface/weight into Compose, converts the widget's pixel size through the current Density,
+keeps tracking in em and disables font padding. Other typography remains font-scaled and no
+shared UtilityTypography code was changed. Menu IDs, callbacks, selection/reselection,
+window anchors, controller bodies and bar/item geometry are untouched.
+
+RootNavigationTypographyTest adds plain-Application, no-Activity reference assertions against
+actual Material BottomNavigationView labels across five existing themes at font scales 1/2.
+This worker did not run Gradle or these tests. The existing navigation source guard and its
+seven negative controls passed after the change. The visual fixture owner is refreshing
+indicator/layout-post settling before interpreting the separate PNG geometry difference;
+no production indicator removal or speculative geometry adjustment was made.

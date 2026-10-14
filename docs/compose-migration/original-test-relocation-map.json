@@ -1,0 +1,236 @@
+[
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/CoreNavigationTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/CoreNavigationTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 2,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/HomeScreenActivityTest.kt",
+    "current_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/HomeScreenActivityTest.kt",
+    "original_test_count": 2,
+    "current_test_count": 2,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/ConfigChangeTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/ConfigChangeTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 2,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/ThemeChangeTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/ThemeChangeTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 1,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt",
+    "original_test_count": 24,
+    "current_test_count": 29,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/AppListActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/AppListActivityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 3,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/ProxySettingsActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/ProxySettingsActivityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 1,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+    "original_test_count": 2,
+    "current_test_count": 20,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragmentTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/FirewallSettingsFragmentTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 2,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/NetworkLogsActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/NetworkLogsActivityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 4,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragmentTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragmentTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 2,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsListActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsListActivityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 3,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragmentTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/DnsSettingsFragmentTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 3,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/WgMainActivityTest.kt",
+    "current_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/WgMainActivityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 1,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsDetailAccessibilityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailAccessibilityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 1,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/DnsDetailNavigationTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 3,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/FirewallActivityTest.kt",
+    "original_test_count": 1,
+    "current_test_count": 2,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/androidTest/java/com/celzero/bravedns/ui/HomeScreenActivityDialogInstrumentedTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/HomeScreenActivityDialogInstrumentedTest.kt",
+    "original_test_count": 7,
+    "current_test_count": 7,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/test/java/com/celzero/bravedns/ui/HomeScreenActivityDialogTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/HomeScreenActivityDialogTest.kt",
+    "original_test_count": 8,
+    "current_test_count": 8,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt",
+    "original_test_count": 62,
+    "current_test_count": 64,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/test/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/activity/WelcomeActivityTest.kt",
+    "original_test_count": 16,
+    "current_test_count": 20,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/HomeScreenFragmentTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/ui/fragment/HomeScreenFragmentTest.kt",
+    "original_test_count": 65,
+    "current_test_count": 65,
+    "missing_original_method_names": [],
+    "prior_worker_native_method_replacements": {},
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/test/java/com/celzero/bravedns/adapter/FirewallAppListAdapterTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/adapter/FirewallAppListAdapterTest.kt",
+    "original_test_count": 20,
+    "current_test_count": 20,
+    "missing_original_method_names": [
+      "`test adapter handles null appInfo gracefully`",
+      "`test adapter inherits from correct parent classes`",
+      "`test onBindViewHolder does not crash with empty data`",
+      "`test onCreateViewHolder creates proper view holder`"
+    ],
+    "prior_worker_native_method_replacements": {
+      "`test onCreateViewHolder creates proper view holder`": "`test presentation factory creates a real row controller`",
+      "`test onBindViewHolder does not crash with empty data`": "`test empty presenter exposes no row or command`",
+      "`test adapter inherits from correct parent classes`": "`test adapter inherits native paging presenter rather than recycler renderer`",
+      "`test adapter handles null appInfo gracefully`": "`test section lookup handles missing positions without manager access`"
+    },
+    "unmapped_original_method_names": []
+  },
+  {
+    "original_path": "app/src/test/java/com/celzero/bravedns/adapter/WgConfigAdapterTest.kt",
+    "current_path": "app/src/test/java/com/celzero/bravedns/adapter/WgConfigAdapterTest.kt",
+    "original_test_count": 28,
+    "current_test_count": 28,
+    "missing_original_method_names": [
+      "`test bind view holder`",
+      "`test real view holder creation`",
+      "`test view holder creation`"
+    ],
+    "prior_worker_native_method_replacements": {
+      "`test view holder creation`": "`test native row presenter creation`",
+      "`test real view holder creation`": "`test real one-config row presenter creation`",
+      "`test bind view holder`": "`test native row binding dispatch`"
+    },
+    "unmapped_original_method_names": []
+  }
+]

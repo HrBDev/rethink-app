@@ -58,21 +58,30 @@ fun SupportScreen(ui: SupportUiState) {
                 SupportSection(R.string.support_section_describe)
                 Card(Modifier.fillMaxWidth().padding(bottom = 20.dp), shape = RoundedCornerShape(16.dp), colors = CardDefaults.cardColors(containerColor = themeColor(androidx.cardview.R.attr.cardBackgroundColor))) {
                     Column(Modifier.padding(16.dp)) {
-                        SupportLabel(R.string.support_issue_category_label, 13f, secondary = true)
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        SupportLabel(R.string.support_issue_category_label, 13f, secondary = true, modifier = Modifier.padding(bottom = 8.dp))
+                        FlowRow(Modifier.padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             ui.categories.filter { it.isVisible }.forEach { chip -> FilterChip(chip.isChecked, { ui.selectCategory(chip) }, label = { Text(chip.text.toString(), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_LabelLarge)) }, modifier = Modifier.testTag(chip.tag)) }
                         }
-                        OutlinedTextField(ui.etDescription.text.toString(), { ui.etDescription.text = it },
+                        OutlinedTextField(ui.etDescription.text.toString(), { ui.etDescription.text = utilityLengthLimitedInput(ui.etDescription.text.toString(), it, ui.etDescription.maxLength) },
                             Modifier.fillMaxWidth().testTag(ui.etDescription.tag), minLines = 5, maxLines = 10,
+                            keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(capitalization = androidx.compose.ui.text.input.KeyboardCapitalization.Sentences),
                             label = { Text(ui.tilDescription.hint.toString()) }, isError = ui.tilDescription.error != null,
-                            supportingText = ui.tilDescription.error?.let { error -> { Text(error.toString()) } },
+                            supportingText = {
+                                Row(Modifier.fillMaxWidth()) {
+                                    Text(ui.tilDescription.error?.toString().orEmpty(), Modifier.weight(1f))
+                                    Text(stringResource(com.google.android.material.R.string.character_counter_pattern, ui.etDescription.text.length, 1000),
+                                        Modifier.testTag("support.description.counter"),
+                                        color = themeColor(if (ui.etDescription.text.length > 1000) androidx.appcompat.R.attr.colorError else R.attr.primaryLightColorText),
+                                        style = utilityTextStyle(size = 12f))
+                                }
+                            }, shape = RoundedCornerShape(12.dp),
                             textStyle = utilityTextStyle(size = 14f).copy(color = themeColor(R.attr.primaryTextColor)))
                     }
                 }
                 SupportSection(R.string.support_section_attachments)
                 Card(Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp), colors = CardDefaults.cardColors(containerColor = themeColor(androidx.cardview.R.attr.cardBackgroundColor))) {
                     Column(Modifier.padding(16.dp)) {
-                        SupportLabel(R.string.support_attachments_desc, 13f, secondary = true)
+                        SupportLabel(R.string.support_attachments_desc, 13f, secondary = true, lineExtraDp = 3f, modifier = Modifier.padding(bottom = 12.dp))
                         AttachmentRow(ui.switchAttachStatus, R.string.support_attach_sub_status, R.string.support_attach_sub_status_desc, null)
                         HorizontalDivider(color = themeColor(R.attr.divider))
                         AttachmentRow(ui.switchAttachStats, R.string.support_attach_vpn_stats, R.string.support_attach_vpn_stats_desc, 14f)
@@ -88,7 +97,7 @@ fun SupportScreen(ui: SupportUiState) {
                         modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(ui.btnSendEmail.tag)) {
                         Text(ui.btnSendEmail.text.toString(), style = utilityTextStyle(size = 16f), color = themeColor(R.attr.accentGood))
                     }
-                    SupportLabel(R.string.support_privacy_note, 10f, secondary = true)
+                    SupportLabel(R.string.support_privacy_note, 10f, secondary = true, lineExtraDp = 3f, centered = true, modifier = Modifier.padding(top = 6.dp, start = 4.dp, end = 4.dp, bottom = 4.dp).alpha(.8f))
                     if (ui.layoutLoading.isVisible) Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         CircularProgressIndicator(Modifier.size(24.dp).testTag("support.loading"))
                         SupportLabel(R.string.support_loading_data, 14f, secondary = true, modifier = Modifier.padding(start = 8.dp))
@@ -99,12 +108,12 @@ fun SupportScreen(ui: SupportUiState) {
     }
 }
 @Composable private fun SupportSection(id: Int) { Text(stringResource(id), Modifier.padding(start = 4.dp, bottom = 8.dp).semantics { heading() }, color = themeColor(androidx.appcompat.R.attr.colorPrimary), style = utilityTextStyle(com.google.android.material.R.style.TextAppearance_Material3_TitleSmall, weight = android.graphics.Typeface.BOLD, spacing = .08f)) }
-@Composable private fun SupportLabel(id: Int, size: Float?, secondary: Boolean = false, bold: Boolean = false, modifier: Modifier = Modifier) { Text(stringResource(id), modifier, color = themeColor(if (secondary) R.attr.primaryLightColorText else R.attr.primaryTextColor), style = utilityTextStyle(size = size, weight = if (bold) android.graphics.Typeface.BOLD else null)) }
+@Composable private fun SupportLabel(id: Int, size: Float?, secondary: Boolean = false, bold: Boolean = false, modifier: Modifier = Modifier, family: String? = null, lineExtraDp: Float? = null, centered: Boolean = false) { Text(stringResource(id), modifier, textAlign = if(centered) androidx.compose.ui.text.style.TextAlign.Center else androidx.compose.ui.text.style.TextAlign.Start, color = themeColor(if (secondary) R.attr.primaryLightColorText else R.attr.primaryTextColor), style = utilityTextStyle(size = size, family = family, weight = if (bold) android.graphics.Typeface.BOLD else null, lineExtraDp = lineExtraDp)) }
 @Composable private fun AttachmentRow(state: UtilityControl, title: Int, description: Int, size: Float?) {
     Row(Modifier.fillMaxWidth().padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f).padding(end = 12.dp)) {
-            SupportLabel(title, size, bold = true)
-            SupportLabel(description, 12f, secondary = true)
+            SupportLabel(title, size, bold = true, family = if(size != null) "sans-serif-medium" else null)
+            SupportLabel(description, 12f, secondary = true, modifier = Modifier.padding(top = 2.dp))
         }
         val label = stringResource(title)
         Switch(state.isChecked, { state.isChecked = it }, modifier = Modifier.testTag(state.tag).semantics { contentDescription = label })

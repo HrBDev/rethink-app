@@ -153,6 +153,17 @@ class UtilityContentTest {
         compose.onNodeWithTag("dialog_input_ips.save_button").performScrollTo().performClick()
         compose.runOnIdle {assertEquals(listOf("manual","reset","test","save"),calls)}
     }
+    @Test fun disabledReachabilityModeNeverDispatchesAndFieldsRetainEditedText() {
+        lateinit var state:ReachabilityUiState;var modes=0
+        compose.setContent {TestTheme {
+            val context=LocalContext.current;state=remember {ReachabilityUiState(context).apply {
+                manualToggleBtn.isEnabled=false;manualToggleBtn.setOnClickListener{modes++}
+            }};ReachabilityScreen(state)
+        }}
+        compose.onNodeWithTag("dialog_input_ips.manual_toggle_btn").assertIsNotEnabled().performClick()
+        compose.onNodeWithTag("dialog_input_ips.ipv4_address_1").performScrollTo().performTextReplacement("192.0.2.1")
+        compose.runOnIdle {assertEquals(0,modes);assertEquals("192.0.2.1",state.ipv4Address1.text.toString())}
+    }
     @Test fun pauseReleaseAndCancellationStopTheRepeatState() {
         val calls=mutableListOf<String>()
         compose.setContent {TestTheme {

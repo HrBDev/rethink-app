@@ -107,9 +107,9 @@ class NetworkSettingsComposeTest {
     @Test fun selectorInterceptionShowsOneAttemptAndDoesNotOpenMenu() {
         val state = ProxyEditorState(context); var attempts = 0
         state.dialogProxySpinnerAppname.items = listOf("None", "Synthetic app")
-        state.dialogProxySpinnerAppname.setOnTouchListener { _, _ -> attempts++; true }
+        state.dialogProxySpinnerAppname.setOnTouchListener { _, event -> if (event.actionMasked == android.view.MotionEvent.ACTION_DOWN) attempts++; true }
         compose.setContent { Theme { NetworkContent(state.layout) } }
-        compose.onNodeWithText("None").performScrollTo().performClick()
+        compose.onNodeWithText("None").performScrollTo().performTouchInput { click() }
         compose.onNodeWithText("Synthetic app").assertDoesNotExist()
         compose.runOnIdle { assertEquals(1, attempts) }
     }

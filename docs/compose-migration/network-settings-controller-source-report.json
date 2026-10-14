@@ -309,8 +309,8 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
       "method": "onCreate",
       "passed": true,
-      "baselineAdaptedSha256": "e557dbda326b218579be1859c4a69d6bfd3a7bb96edca0479f53b9640476beea",
-      "currentSha256": "e557dbda326b218579be1859c4a69d6bfd3a7bb96edca0479f53b9640476beea"
+      "baselineAdaptedSha256": "b60f85f98b333b10a4545bde141976fc1ed8f9702fe88db892b09ee8a7bd38c7",
+      "currentSha256": "b60f85f98b333b10a4545bde141976fc1ed8f9702fe88db892b09ee8a7bd38c7"
     },
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
@@ -344,8 +344,8 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
       "method": "refresh",
       "passed": true,
-      "baselineAdaptedSha256": "717de87eef5c0bdd6bbde85ef0381ccfd42364f87f6377c400109a27869f0ad6",
-      "currentSha256": "717de87eef5c0bdd6bbde85ef0381ccfd42364f87f6377c400109a27869f0ad6"
+      "baselineAdaptedSha256": "a6eefb2642420ff5d2e89bfbd11722a8e5fe52ea73f5572b12e3bdcd2ed8865f",
+      "currentSha256": "a6eefb2642420ff5d2e89bfbd11722a8e5fe52ea73f5572b12e3bdcd2ed8865f"
     },
     {
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",

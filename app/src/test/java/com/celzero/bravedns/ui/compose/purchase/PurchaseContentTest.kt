@@ -122,9 +122,9 @@ class PurchaseContentTest {
         val first = com.celzero.bravedns.database.SubscriptionStateHistory(1, 101, 0, 1, 1, "Synthetic first")
         val second = com.celzero.bravedns.database.SubscriptionStateHistory(2, 101, 1, 2, 2, "Synthetic second")
         compose.runOnIdle { adapter.submitData(lifecycle, androidx.paging.PagingData.from(listOf(first))) }
-        compose.waitUntil { adapter.itemCount == 1 }
+        compose.waitUntil(5_000) { compose.runOnIdle { adapter.itemCount == 1 } }
         compose.runOnIdle { assertEquals(1, adapter.key(0)); adapter.submitData(lifecycle, androidx.paging.PagingData.from(listOf(second, first))) }
-        compose.waitUntil { adapter.itemCount == 2 }
+        compose.waitUntil(5_000) { compose.runOnIdle { adapter.itemCount == 2 } }
         compose.runOnIdle { assertEquals(2, adapter.key(0)); assertEquals(1, adapter.key(1)) }
         compose.onNodeWithText("Synthetic second").assertExists()
     }

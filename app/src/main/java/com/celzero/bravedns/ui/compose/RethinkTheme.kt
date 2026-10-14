@@ -9,11 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.PlatformTextStyle
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.celzero.bravedns.R
 import com.google.android.material.R as MaterialR
 
@@ -69,23 +64,35 @@ fun RethinkTheme(content: @Composable () -> Unit) {
             surfaceContainerHighest = themeColor(R.attr.colorSurfaceContainerHighest),
             surfaceContainerLowest = themeColor(R.attr.colorSurfaceContainerLowest),
         ),
-        typography = rethinkTypography,
+        typography = rethinkTypography(),
         content = content,
     )
 }
 
-// No fixed line heights: match the branch's OEM-safe TextAppearance.Rethink scale.
-private fun textStyle(size: Int, spacing: Float, medium: Boolean = false) = TextStyle(
-    fontFamily = FontFamily.SansSerif,
-    fontWeight = if (medium) FontWeight.Medium else FontWeight.Normal,
-    fontSize = size.sp,
-    letterSpacing = spacing.sp,
-    platformStyle = PlatformTextStyle(includeFontPadding = true),
-)
-private val rethinkTypography = Typography(
-    displayLarge = textStyle(57, -.25f), displayMedium = textStyle(45, 0f), displaySmall = textStyle(36, 0f),
-    headlineLarge = textStyle(32, 0f), headlineMedium = textStyle(28, 0f), headlineSmall = textStyle(24, 0f),
-    titleLarge = textStyle(22, 0f, true), titleMedium = textStyle(16, .15f, true), titleSmall = textStyle(14, .1f, true),
-    bodyLarge = textStyle(16, .5f), bodyMedium = textStyle(14, .25f), bodySmall = textStyle(12, .4f),
-    labelLarge = textStyle(14, .1f, true), labelMedium = textStyle(12, .5f, true), labelSmall = textStyle(11, .5f, true),
-)
+/** Resolve the existing Android TextAppearance values, including font-relative spacing.
+ * Keeping SP spacing constants would incorrectly scale letter spacing on Android 14+.
+ */
+@Composable
+private fun rethinkTypography(): Typography {
+    val context = LocalContext.current
+    @Composable fun style(attribute: Int) = com.celzero.bravedns.ui.compose.utilities.utilityTextStyle(
+        appearance = com.celzero.bravedns.ui.compose.utilities.resolveUtilityStyle(context, attribute)
+    )
+    return Typography(
+        displayLarge = style(MaterialR.attr.textAppearanceDisplayLarge),
+        displayMedium = style(MaterialR.attr.textAppearanceDisplayMedium),
+        displaySmall = style(MaterialR.attr.textAppearanceDisplaySmall),
+        headlineLarge = style(MaterialR.attr.textAppearanceHeadlineLarge),
+        headlineMedium = style(MaterialR.attr.textAppearanceHeadlineMedium),
+        headlineSmall = style(MaterialR.attr.textAppearanceHeadlineSmall),
+        titleLarge = style(MaterialR.attr.textAppearanceTitleLarge),
+        titleMedium = style(MaterialR.attr.textAppearanceTitleMedium),
+        titleSmall = style(MaterialR.attr.textAppearanceTitleSmall),
+        bodyLarge = style(MaterialR.attr.textAppearanceBodyLarge),
+        bodyMedium = style(MaterialR.attr.textAppearanceBodyMedium),
+        bodySmall = style(MaterialR.attr.textAppearanceBodySmall),
+        labelLarge = style(MaterialR.attr.textAppearanceLabelLarge),
+        labelMedium = style(MaterialR.attr.textAppearanceLabelMedium),
+        labelSmall = style(MaterialR.attr.textAppearanceLabelSmall),
+    )
+}

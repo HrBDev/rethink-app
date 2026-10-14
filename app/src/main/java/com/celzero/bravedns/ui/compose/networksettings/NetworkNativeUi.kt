@@ -109,6 +109,8 @@ class NetworkSpinnerState {
     }
 }
 
+data class NetworkRefreshState(val generation: Int, val durationMs: Int, val interpolator: android.view.animation.Interpolator)
+
 enum class NetworkKind { SCROLL, COLUMN, ROW, OVERLAY, CARD, TEXT, ICON, SWITCH, CHECK, RADIO, BUTTON, FIELD, SLIDER, SPINNER, DIVIDER, PROGRESS }
 data class NetworkInsets(val start: Float = 0f, val top: Float = 0f, val end: Float = 0f, val bottom: Float = 0f)
 data class NetworkNode(
@@ -162,7 +164,7 @@ fun networkAnnotatedText(value: CharSequence): AnnotatedString {
 }
 
 @Composable
-fun NetworkSettingsScreen(layout: NetworkNode, refreshing: Set<WgControlState> = emptySet()) {
+fun NetworkSettingsScreen(layout: NetworkNode, refreshing: Map<WgControlState, NetworkRefreshState> = emptyMap()) {
     Surface(color = themeColor(R.attr.background)) {
         NetworkContent(layout, Modifier.fillMaxSize().safeDrawingPadding(), refreshing)
     }
@@ -170,7 +172,7 @@ fun NetworkSettingsScreen(layout: NetworkNode, refreshing: Set<WgControlState> =
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing: Set<WgControlState> = emptySet(),
+fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing: Map<WgControlState, NetworkRefreshState> = emptyMap(),
                    extraChildren: Map<WgControlState, List<NetworkNode>> = emptyMap(), scrollContainer: Boolean = true) {
     val context = LocalContext.current
     val density = LocalDensity.current
@@ -245,10 +247,11 @@ fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing:
                     Image(bitmap, node.description?.toString(), Modifier.size(24.dp), colorFilter = state.textColor?.let { ColorFilter.tint(Color(it)) })
                 } else state.imageResource?.let { Image(painterResource(it), node.description?.toString(), Modifier.size(24.dp), colorFilter = state.textColor?.let { tint -> ColorFilter.tint(Color(tint)) }) }
             }
-            val rotating = state in refreshing
-            val angle = if (rotating) {
+            val animation = state?.let { refreshing[it] }
+            val angle = if (animation != null) key(animation.generation) {
                 val transition = rememberInfiniteTransition(label = "proxy refresh")
-                val degrees by transition.animateFloat(0f, 360f, infiniteRepeatable(tween(750, easing = Easing { ((kotlin.math.cos((it + 1f) * kotlin.math.PI) / 2.0) + 0.5).toFloat() })), label = "refresh angle")
+                val degrees by transition.animateFloat(0f, 360f,
+                    infiniteRepeatable(tween(animation.durationMs, easing = Easing { animation.interpolator.getInterpolation(it) })), label = "refresh angle")
                 degrees
             } else 0f
             if (clickable) IconButton({ state!!.performClick() }, m.rotate(angle), enabled = state!!.isEnabled && state.isClickable) { icon() }

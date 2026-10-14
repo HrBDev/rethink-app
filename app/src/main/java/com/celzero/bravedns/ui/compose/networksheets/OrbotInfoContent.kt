@@ -27,6 +27,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextDirection
+import kotlin.math.roundToInt
 import androidx.compose.ui.unit.*
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.wireguard.setWgContent
@@ -35,11 +37,12 @@ import com.celzero.bravedns.ui.compose.wireguard.wgTextDimensionSp
 import com.celzero.bravedns.util.UIUtils
 
 /** Values from dialog_info_rules_layout, not a replacement Material3 title/body typography. */
-data class OrbotInfoTypography(val sizeSp: Float, val sizePx: Float, val typeface: Typeface, val letterSpacing: Float, val color: Int) {
+data class OrbotInfoTypography(val sizeSp: Float, val sizePx: Float, val typeface: Typeface, val letterSpacing: Float, val color: Int,
+    val paddingStartDp: Float, val paddingEndDp: Float) {
     fun textStyle() = TextStyle(fontSize = sizeSp.sp, fontFamily = FontFamily(typeface),
         fontWeight = if (typeface.isBold) FontWeight.Bold else FontWeight.Normal,
         fontStyle = if (typeface.isItalic) FontStyle.Italic else FontStyle.Normal,
-        letterSpacing = letterSpacing.em, platformStyle = PlatformTextStyle(includeFontPadding = true))
+        letterSpacing = letterSpacing.em, textDirection = TextDirection.Content, platformStyle = PlatformTextStyle(includeFontPadding = true))
     fun lineHeightPx(extraPx: Float = 0f, multiplier: Float = 1f): Float = TextPaint().let {
         it.typeface = typeface
         it.textSize = sizePx
@@ -65,7 +68,16 @@ fun resolveOrbotInfoTypography(context: Context, description: Boolean): OrbotInf
     val colorValue = context.obtainStyledAttributes(intArrayOf(R.attr.primaryTextColor))
     val color = colorValue.getColor(0, android.graphics.Color.BLACK)
     colorValue.recycle()
-    return OrbotInfoTypography(wgTextDimensionSp(context, dimension), context.resources.getDimension(dimension), typeface, spacing, color)
+    // SpinnerItem defines relative padding. It takes precedence over the description's
+    // android:padding=5dp, which only replaces its absolute/top/bottom padding.
+    val padding = context.obtainStyledAttributes(androidx.appcompat.R.style.Widget_AppCompat_TextView_SpinnerItem,
+        intArrayOf(android.R.attr.paddingStart, android.R.attr.paddingEnd))
+    val density = context.resources.displayMetrics.density
+    val fallback = if (description) 5f else 0f
+    val start = padding.getDimension(0, fallback * density) / density
+    val end = padding.getDimension(1, fallback * density) / density
+    padding.recycle()
+    return OrbotInfoTypography(wgTextDimensionSp(context, dimension), context.resources.getDimension(dimension), typeface, spacing, color, start, end)
 }
 
 /** Preserve the non-interactive HTML spans from the original selectable TextView. */
@@ -91,9 +103,9 @@ fun OrbotInfoContent(title: String, description: CharSequence, onDismiss: () -> 
             IconButton(onDismiss, Modifier.align(Alignment.End)) {
                 Icon(painterResource(android.R.drawable.ic_menu_close_clear_cancel), stringResource(R.string.lbl_dismiss), Modifier.size(30.dp))
             }
-            Text(title, Modifier.testTag("orbot_info_title"), color = Color(heading.color), style = heading.textStyle())
+            Text(title, Modifier.testTag("orbot_info_title").padding(start = heading.paddingStartDp.dp, end = heading.paddingEndDp.dp), color = Color(heading.color), style = heading.textStyle())
             SelectionContainer(Modifier.padding(top = 10.dp)) {
-                Text(orbotInfoText(description), Modifier.testTag("orbot_info_description").padding(5.dp), color = Color(body.color),
+                Text(orbotInfoText(description), Modifier.testTag("orbot_info_description").padding(start = body.paddingStartDp.dp, end = body.paddingEndDp.dp, top = 5.dp, bottom = 5.dp), color = Color(body.color),
                     style = sheetLineSpacing(body.textStyle(), extra = 5.dp))
             }
         }
@@ -106,10 +118,15 @@ internal fun sheetLineSpacing(style: TextStyle, multiplier: Float = 1f, extra: D
     val density = LocalDensity.current
     val typeface = LocalFontFamilyResolver.current.resolve(style.fontFamily, style.fontWeight ?: FontWeight.Normal,
         style.fontStyle ?: FontStyle.Normal).value as Typeface
-    val lineHeight = with(density) {
-        TextPaint().apply { this.typeface = typeface; textSize = style.fontSize.toPx() }.fontSpacing * multiplier + extra.toPx()
-    }
-    return style.copy(lineHeight = with(density) { lineHeight.toSp() },
+    val fontPx = with(density) { style.fontSize.toPx() }
+    val paint = TextPaint().apply { this.typeface = typeface; textSize = fontPx }
+    val metrics = paint.fontMetricsInt
+    val naturalLine = metrics.descent - metrics.ascent
+    // StaticLayout rounds the extra spacing around integer font metrics. Compose's sp
+    // lineHeight scales relative to fontSize on Android 14+, so px -> nonlinear sp
+    // applies the scale twice. Em keeps this exact physical baseline step at any scale.
+    val step = naturalLine + (naturalLine * (multiplier - 1f) + with(density) { extra.toPx() }).roundToInt()
+    return style.copy(lineHeight = (step / fontPx).em,
         lineHeightStyle = androidx.compose.ui.text.style.LineHeightStyle(
             androidx.compose.ui.text.style.LineHeightStyle.Alignment.Top,
             androidx.compose.ui.text.style.LineHeightStyle.Trim.LastLineBottom))

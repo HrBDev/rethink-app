@@ -23,3 +23,11 @@ Coverage includes radio-before-click ordering, repeat click behavior, row/radio 
 ## Current evidence and limits
 
 Source guard and diff whitespace checks pass. Gradle/build/test execution is owned serially by the coordinator; this worker has not run Gradle. Compilation and the fifteen authored tests therefore require coordinator confirmation. Pixel-perfect baseline screenshots, actual device TalkBack/focus, physical swipe/back/system-window interaction and production process recreation are not claimed as verified. No live behavior exercise was performed because protected services and operations must remain untouched. Source equality and fake presentation tests do not independently prove full lifecycle/runtime/visual parity.
+
+## Coordinated review follow-up
+
+The coordinator's frozen full-source snapshot compiled main and unit sources. The native-graphics run passed the XML typography comparisons and all sheet state tests; one loading-state semantics fixture incorrectly searched the merged tree for a deliberately non-actionable child. That test now checks the disabled parent and the non-actionable child in the unmerged tree. Separate actionable row and radio callback coverage was already passing and remains unchanged.
+
+Actual narrow/RTL/fontScale2 OrbotInfo PNGs revealed a 35px XML versus 43px native description line step. This is fixed by expressing the physical line step in font-relative em rather than round-tripping through nonlinear sp conversion. The step uses StaticLayout-style integer font metrics and rounded extra spacing. First-strong content direction and SpinnerItem's resolved relative padding are also restored. A new actual-XML/Compose regression covers line steps, line counts, paragraph direction and overflow at nonlinear fontScale2. There are now sixteen sheet tests.
+
+The visual fixture owner is correcting the dismiss target measurement to inspect expanded touch bounds rather than the smaller icon's visual bounds. No button action or target was changed here. These follow-up changes await the coordinator's rerun; prior compilation and source checks are not a claim that the revised visual/runtime parity has passed.

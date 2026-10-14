@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
@@ -96,7 +97,7 @@ class NetworkAlertDialogBuilder(private val context: Context, private val theme:
         }
         val customOnly = title.isEmpty() && message.isEmpty() && rows.isEmpty() && choices == null && policyAdapter == null && positive == null && negative == null && neutral == null
         dialog.setWgContent(activity) {
-            Surface(shape = MaterialTheme.shapes.extraLarge, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
+            Surface(modifier = Modifier.testTag("network.dialog"), shape = MaterialTheme.shapes.extraLarge, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
                 Column(Modifier.padding(if (customOnly) 0.dp else 24.dp), verticalArrangement = Arrangement.spacedBy(if (customOnly) 0.dp else 16.dp)) {
                     icon?.let { Icon(painterResource(it), null) }
                     if (title.isNotEmpty()) Text(networkAnnotatedText(title), style = MaterialTheme.typography.headlineSmall)

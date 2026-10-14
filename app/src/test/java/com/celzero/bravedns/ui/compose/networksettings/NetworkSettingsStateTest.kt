@@ -113,9 +113,12 @@ class NetworkSettingsStateTest {
     }
     @Test fun refreshIsIdentitySpecificAndDuplicateStartsDoNotDuplicateAnimation() {
         val state = ProxySettingsState(context)
-        state.startRefresh(state.rpnRefresh); state.startRefresh(state.rpnRefresh); state.startRefresh(state.wgRefresh)
+        state.startRefresh(state.rpnRefresh)
+        val firstGeneration = state.refreshing.getValue(state.rpnRefresh).generation
+        state.startRefresh(state.rpnRefresh); state.startRefresh(state.wgRefresh)
+        assertNotEquals(firstGeneration, state.refreshing.getValue(state.rpnRefresh).generation)
         assertEquals(2, state.refreshing.size); state.stopRefresh(state.rpnRefresh)
-        assertEquals(listOf(state.wgRefresh), state.refreshing.toList())
+        assertEquals(listOf(state.wgRefresh), state.refreshing.keys.toList())
     }
     @Test fun spinnerPreservesDefaultExplicitAndBlockedSelections() {
         val spinner = NetworkSpinnerState(); spinner.items = listOf("None", "Synthetic app")
@@ -164,6 +167,10 @@ class NetworkSettingsStateTest {
         assertEquals(original.toString(), converted.text)
         assertEquals(1, converted.getLinkAnnotations(0, converted.length).size)
         assertTrue(converted.spanStyles.isNotEmpty())
+    }
+    @Test fun numericProxyPortFiltersPastedNonDigitsLikeOriginalInputType() {
+        assertEquals("1234", networkDigitsOnly("a12:34. -", java.util.Locale.US))
+        assertEquals("", networkDigitsOnly("invalid", java.util.Locale.US))
     }
     private fun recorder(calls: MutableList<String>, name: String) = object : NetworkSeekState.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: NetworkSeekState?, progress: Int, fromUser: Boolean) { calls += "$name:$progress:$fromUser" }

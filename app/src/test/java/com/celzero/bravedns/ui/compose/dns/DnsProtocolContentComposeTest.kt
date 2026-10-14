@@ -169,6 +169,10 @@ class DnsProtocolContentComposeTest {
 
 @Composable private fun DnsProtocolTestTheme(content: @Composable () -> Unit) {
     val base = androidx.compose.ui.platform.LocalContext.current
+    remember(base) {
+        generateSequence(base) { (it as? android.content.ContextWrapper)?.baseContext }
+            .filterIsInstance<android.app.Activity>().first().setTheme(R.style.AppThemeWhite)
+    }
     val context = remember(base) { android.view.ContextThemeWrapper(base, R.style.AppThemeWhite) }
     CompositionLocalProvider(androidx.compose.ui.platform.LocalContext provides context) {
         com.celzero.bravedns.ui.compose.RethinkTheme(content)

@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
 import androidx.compose.foundation.focusable
+import androidx.compose.ui.focus.onFocusChanged
 
 @Composable fun PauseScreen(ui: PauseUiState) {
     Surface(Modifier.fillMaxSize(), color = themeColor(R.attr.background)) {
@@ -30,7 +31,7 @@ import androidx.compose.foundation.focusable
             Text(ui.pacTimer.text.toString(), Modifier.testTag(ui.pacTimer.tag).semantics { liveRegion = LiveRegionMode.Polite }, style = utilityTextStyle(ui.pacTimer.textAppearance, 75f), color = themeColor(R.attr.secondaryTextColor), textAlign = TextAlign.Center)
             Row(Modifier.padding(vertical = 20.dp), horizontalArrangement = Arrangement.spacedBy(28.dp), verticalAlignment = Alignment.CenterVertically) {
                 PauseRepeatControl(ui.pacMinusIv, "Decrease pause duration", 48)
-                IconButton({ ui.pacStopIv.performClick() }, Modifier.size(80.dp).testTag(ui.pacStopIv.tag)) { UtilityImage(ui.pacStopIv, Modifier.size(80.dp), stringResource(R.string.notification_action_resume_vpn)) }
+                IconButton({ ui.pacStopIv.performClick() }, Modifier.size(80.dp).testTag(ui.pacStopIv.tag)) { UtilityImage(ui.pacStopIv, Modifier.size(80.dp), stringResource(R.string.notification_action_resume_vpn), tagged = false) }
                 PauseRepeatControl(ui.pacPlusIv, "Increase pause duration", 48)
             }
             UtilityText(ui.pacTimerDesc, Modifier.padding(top = 16.dp))
@@ -40,6 +41,7 @@ import androidx.compose.foundation.focusable
 /** Baseline long-click returns false: a completed long hold also dispatches the release click. */
 @Composable private fun PauseRepeatControl(control: UtilityControl, label: String, size: Int) {
     DisposableEffect(control) { onDispose { control.dispatchTouch(MotionEvent.ACTION_CANCEL) } }
+    var hadFocus by remember { mutableStateOf(false) }
     Box(Modifier.size(size.dp).testTag(control.tag).semantics {
         role = Role.Button; contentDescription = label
         onClick { control.performClick(); true }
@@ -47,11 +49,14 @@ import androidx.compose.foundation.focusable
     }.onKeyEvent { event ->
         if (event.key != Key.Enter && event.key != Key.Spacebar && event.key != Key.DirectionCenter) false
         else { if (event.type == KeyEventType.KeyDown && event.nativeKeyEvent.repeatCount == 1) control.performLongClick(); if (event.type == KeyEventType.KeyUp) { control.dispatchTouch(MotionEvent.ACTION_UP); control.performClick() }; true }
+    }.onFocusChanged { state ->
+        if (hadFocus && !state.isFocused) control.dispatchTouch(MotionEvent.ACTION_CANCEL)
+        hadFocus = state.isFocused
     }.focusable().pointerInput(control) {
         detectTapGestures(onLongPress = { control.performLongClick() }, onPress = {
             val released = tryAwaitRelease()
             control.dispatchTouch(if (released) MotionEvent.ACTION_UP else MotionEvent.ACTION_CANCEL)
             if (released) control.performClick()
         })
-    }, contentAlignment = Alignment.Center) { UtilityImage(control, Modifier.fillMaxSize()) }
+    }, contentAlignment = Alignment.Center) { UtilityImage(control, Modifier.fillMaxSize(), tagged = false) }
 }

@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-14T06:17:30Z",
-  "release_status": "partial; not production ready",
-  "verified_remote_commit": "ae0737e390bf4d8d98c3d5fc0ac921acdbe211f6",
+  "as_of": "2026-10-14T07:04:30Z",
+  "release_status": "full source reconstruction; acceptance incomplete, not production ready",
+  "verified_remote_commit": "1563c53735d5efb800e5b1f7366c2aa24a75f3a6",
   "results": [
     {
       "log": "baseline-compile-current-proxy.log",
@@ -38,7 +38,37 @@
       "sha256": "abd89bd9fd78d418489b24ed0a9d66841354dc048131f03b0569e63a894b8f0e",
       "outcome": "passed",
       "scope": "Third frozen snapshot plus documented compiler fixes: main, unit-test and Android-test Kotlin compilation"
+    },
+    {
+      "log": "third-groups-safe-content-tests-2.log",
+      "sha256": "b0151eeb82bf2e5d3e48b2d8b3ed47d6bfffbdb46abcc49f54565d57f2fb3417",
+      "outcome": "failed",
+      "scope": "126 selected tests: 125 passed, one About gesture fixture failed; subsequent fix awaiting rerun"
+    },
+    {
+      "log": "full-source-compile-2.log",
+      "sha256": "574d04444d0046d56ce05de3f92ec97d19a0c16ff7a6e44a2bc6bdbeab290880",
+      "outcome": "passed",
+      "scope": "Full reconstructed fdroidFullDebug production Kotlin"
+    },
+    {
+      "log": "full-source-content-visual-tests.log",
+      "sha256": "eb7cf709f538ff20ec490d34066f7925307e05bdf6279dbf0673930c34fa24cd",
+      "outcome": "failed",
+      "scope": "86 selected tests: 68 passed, 18 failed; actual 48 XML/native image pairs captured before fixes"
+    },
+    {
+      "log": "safe-welcome-host-tests.log",
+      "sha256": "7dc5bbacec0e41c81f444ce80d1cc1490ebf57b3d62349d3c64b13e8835f8e09",
+      "outcome": "failed",
+      "scope": "20 isolated Welcome tests failed before host creation in MockK self-attach setup"
+    },
+    {
+      "log": "full-source-compile-7.log",
+      "sha256": "bcdbf04b698aa276dad2a024a9c3ef24f8e75c3ba46fe7434cbfaf8a2058497a",
+      "outcome": "passed",
+      "scope": "Snapshot f84a752925cfd424db8bbf8de8760e873ae914c8 plus three compile-only corrections: all main, unit, Android-test Kotlin compile"
     }
   ],
-  "in_progress": "Remaining native content fixture batch; complete source and all variant compilation; original safe-host migration; visual baseline/device accessibility parity"
+  "in_progress": "Reviewed actual-host tests with corrected isolated launcher; corrected content/rendering reruns; complete variant compilation; independent source audit. Intentional newer Material cosmetic differences accepted, regressions in visible content/actions/contrast/clipping/state/RTL/a11y remain gates."
 }

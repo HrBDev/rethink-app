@@ -9,7 +9,7 @@ class SupportUiState(context: Context) {
     val appBar = UtilityControl(context, "activity_customer_support.app_bar").apply {  }
     val collapsingToolbar = UtilityControl(context, "activity_customer_support.collapsing_toolbar").apply {  }
     val toolbar = UtilityControl(context, "activity_customer_support.toolbar").apply {  }
-    val tvHeroSubtitle = UtilityControl(context, "activity_customer_support.tv_hero_subtitle").apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryTextColor); fontSize = context.resources.getDimension(R.dimen.mini_font_text_view) / context.resources.displayMetrics.scaledDensity; fontFamily = "sans-serif"; maxLines = 1; ellipsize = true }
+    val tvHeroSubtitle = UtilityControl(context, "activity_customer_support.tv_hero_subtitle").apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryTextColor); fontSize = utilityDimensionSp(context, R.dimen.mini_font_text_view); fontFamily = "sans-serif"; maxLines = 1; ellipsize = true }
     val nestedScroll = UtilityControl(context, "activity_customer_support.nested_scroll").apply {  }
     val chipGroupCategory = UtilityControl(context, "activity_customer_support.chip_group_category").apply {  }
     val chipPayment = UtilityControl(context, "activity_customer_support.chip_payment").apply { text = context.getText(R.string.support_category_payment) }
@@ -19,7 +19,7 @@ class SupportUiState(context: Context) {
     val chipMoneyback = UtilityControl(context, "activity_customer_support.chip_moneyback").apply { text = context.getText(R.string.support_category_moneyback) }
     val chipOther = UtilityControl(context, "activity_customer_support.chip_other").apply { text = context.getText(R.string.category_name_others) }
     val tilDescription = UtilityControl(context, "activity_customer_support.til_description").apply { hint = context.getText(R.string.support_description_hint) }
-    val etDescription = UtilityControl(context, "activity_customer_support.et_description").apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryTextColor); fontSize = 14f; maxLines = 10 }
+    val etDescription = UtilityControl(context, "activity_customer_support.et_description").apply { textColor = com.celzero.bravedns.util.UIUtils.fetchColor(context, R.attr.primaryTextColor); fontSize = 14f; maxLines = 10; maxLength = 1000 }
     val switchAttachStatus = UtilityControl(context, "activity_customer_support.switch_attach_status").apply { isChecked = true }
     val switchAttachStats = UtilityControl(context, "activity_customer_support.switch_attach_stats").apply { isChecked = true }
     val switchAttachProcInfo = UtilityControl(context, "activity_customer_support.switch_attach_proc_info").apply { isChecked = true }

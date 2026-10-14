@@ -73,6 +73,20 @@ class NetworkReachabilityDialog(private val activity: Activity,
         setupListeners()
     }
 
+    override fun onSaveInstanceState(): Bundle = super.onSaveInstanceState().also { saved ->
+        saveUtilityControls(saved, binding.savedControls)
+        saved.putBoolean("utility.reachability.auto", useAuto)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (savedInstanceState.containsKey("utility.reachability.auto")) {
+            useAuto = savedInstanceState.getBoolean("utility.reachability.auto")
+            if (useAuto) updateAutoModeUi() else updateManualModeUi()
+            restoreUtilityControls(savedInstanceState, binding.savedControls)
+        }
+    }
+
     private fun initViews() {
         binding.saveButton.text = context.getString(R.string.lbl_save).uppercase()
         binding.testButton.text = context.getString(R.string.lbl_test).uppercase()

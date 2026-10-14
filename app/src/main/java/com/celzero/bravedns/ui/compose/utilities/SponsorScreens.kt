@@ -83,7 +83,8 @@ import com.celzero.bravedns.ui.compose.themeColor
                 UtilityText(ui.successTitle, Modifier.padding(top = 40.dp).semantics { heading() })
                 Text(ui.successMessage.text.toString(), Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp), textAlign = TextAlign.Center,
                     color = themeColor(R.attr.colorOnSurfaceVariant), style = utilityTextStyle(ui.successMessage.textAppearance, lineExtraDp = 6f))
-                OutlinedButton({ ui.continueButton.performClick() }, Modifier.fillMaxWidth().padding(top = 56.dp).heightIn(min = 64.dp).testTag(ui.continueButton.tag), border = BorderStroke(1.dp, themeColor(R.attr.accentGood))) {
+                OutlinedButton({ ui.continueButton.performClick() }, Modifier.fillMaxWidth().padding(top = 56.dp).heightIn(min = 64.dp).testTag(ui.continueButton.tag), border = BorderStroke(.75.dp, themeColor(R.attr.border)), shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = themeColor(androidx.appcompat.R.attr.colorPrimary))) {
                     Text(ui.continueButton.text.toString(), style = utilityTextStyle(ui.continueButton.textAppearance))
                 }
             }

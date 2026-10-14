@@ -72,7 +72,7 @@ import kotlinx.coroutines.launch
             }
             b.ffaAppList.adapter?.let { adapter ->
                 Box(Modifier.fillMaxWidth().weight(1f)) {
-                    LazyColumn(Modifier.fillMaxSize(),state=scroll){items(adapter.itemCount,key={index->adapter.peek(index)?.let{"${it.uid}:${it.packageName}"}?:"placeholder:$index"}){adapter.RowAt(it)}}
+                    LazyColumn(Modifier.fillMaxSize().testTag("ffa_app_list"),state=scroll){items(adapter.itemCount,key={index->adapter.peek(index)?.let{"${it.uid}:${it.packageName}"}?:"placeholder:$index"}){adapter.RowAt(it)}}
                     if(adapter.itemCount>scroll.layoutInfo.visibleItemsInfo.size && scroll.layoutInfo.visibleItemsInfo.isNotEmpty()) {
                         var section by remember{mutableStateOf("")}
                         Box(Modifier.align(Alignment.CenterEnd).fillMaxHeight().width(20.dp).pointerInput(adapter.itemCount){

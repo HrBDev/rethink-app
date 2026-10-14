@@ -24,7 +24,7 @@ def adapt_baseline(name, source):
  s=s.replace('package com.celzero.bravedns.ui.activity','package com.celzero.bravedns.ui.activity\n\nimport androidx.activity.compose.setContent\nimport com.celzero.bravedns.ui.compose.RethinkTheme\nimport com.celzero.bravedns.ui.compose.networksettings.*\nimport com.celzero.bravedns.ui.compose.wireguard.WgControlState')
  s=s.replace(f'BaseActivity(R.layout.{layout})','BaseActivity()')
  s=re.sub(r'private val b by viewBinding\(\w+::bind\)',f'private val b by lazy {{ {state}(this) }}',s)
- s=s.replace('super.onCreate(savedInstanceState)','super.onCreate(savedInstanceState)\n        setContent { RethinkTheme { NetworkSettingsScreen(b.layout'+(', b.refreshing.toSet()' if name.startswith('Proxy') else '')+') } }',1)
+ s=s.replace('super.onCreate(savedInstanceState)','super.onCreate(savedInstanceState)\n        setContent { RethinkTheme { NetworkSettingsScreen(b.layout'+(', b.refreshing.toMap()' if name.startswith('Proxy') else '')+') } }',1)
  s=s.replace('vararg views: View','vararg views: WgControlState')
  s=s.replace('SnackbarHelper.showStabilityProgram(b.root, persistentState)','SnackbarHelper.showStabilityProgram(window.decorView, persistentState)')
  if 'override fun onSaveInstanceState' in s:s=s.replace('super.onSaveInstanceState(outState)','super.onSaveInstanceState(outState)\n        b.saveChecks(outState)',1)
@@ -62,7 +62,7 @@ def adapt_baseline(name, source):
   s=s.replace('.setView(scrollView)','.setContent { NetworkTaskerContent(context, editText) }')
  if name.startswith('Proxy'):
   s=s.replace('private fun refresh(iv: AppCompatImageView)','private fun refresh(iv: WgControlState)')
-  s=s.replace('        iv.animation = animation\n        iv.startAnimation(animation)','        b.startRefresh(iv)')
+  s=s.replace('        iv.animation = animation\n        iv.startAnimation(animation)','        b.startRefresh(iv, animation)')
   s=s.replace('iv.clearAnimation()','b.stopRefresh(iv)')
   s=s.replace('val dialogBinding = DialogSetProxyBinding.inflate(layoutInflater)','val dialogBinding = ProxyEditorState(this)')
   s=s.replace('.setView(dialogBinding.root)','.setContent { NetworkContent(dialogBinding.layout, scrollContainer = false) }')

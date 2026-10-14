@@ -33,15 +33,9 @@ import android.view.View
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
-import android.widget.ArrayAdapter
-import android.widget.CheckBox
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState as CompoundButton
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.celzero.bravedns.R
@@ -126,7 +120,7 @@ class ProxySettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         theme.applyStyle(getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
         super.onCreate(savedInstanceState)
-        setContent { RethinkTheme { NetworkSettingsScreen(b.layout, b.refreshing.toSet()) } }
+        setContent { RethinkTheme { NetworkSettingsScreen(b.layout, b.refreshing.toMap()) } }
 
         handleFrostEffectIfNeeded(persistentState.theme)
 
@@ -337,7 +331,7 @@ class ProxySettingsActivity : BaseActivity() {
 
     private fun refresh(iv: WgControlState) {
         iv.isEnabled = false
-        b.startRefresh(iv)
+        b.startRefresh(iv, animation)
         io {
             if (RpnProxyManager.isRpnActive()) {
                 VpnController.refreshRpnProxy(Backend.RpnWin)

@@ -10,6 +10,7 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.ui.HomeScreenActivity
 import com.celzero.bravedns.util.Themes
+import com.celzero.bravedns.util.Logger
 import io.mockk.*
 import org.junit.*
 import org.junit.Assert.*
@@ -51,9 +52,12 @@ class WelcomeActivityTest {
             firstLaunch = firstArg(); writes += firstArg<Boolean>()
         }
         startKoin { modules(module { single { persistent } }) }
+        mockkObject(Logger)
+        every { Logger.d(any(), any()) } just Runs
+        every { Logger.v(any(), any()) } just Runs
     }
 
-    @After fun tearDown() { closeHost(); stopKoin() }
+    @After fun tearDown() { closeHost(); unmockkObject(Logger); stopKoin() }
 
     private fun launch(saved: Bundle? = null): WelcomeActivity {
         check(controller == null)
@@ -196,4 +200,18 @@ class WelcomeActivityTest {
             assertTrue(writes.isEmpty())
         }
     }
+    // Original device suite contracts merged here to capture, rather than launch, Home.
+    @Test fun testWelcomeOnboardingFlow() {
+        val activity = launch()
+        compose.onNodeWithTag("welcome.next").assertTextEquals(activity.getString(R.string.next))
+        for (page in 1..3) { next(); assertPage(page) }
+        compose.onNodeWithTag("welcome.next").assertTextEquals(activity.getString(R.string.finish))
+        assertTrue(writes.isEmpty())
+    }
+    @Test fun testSkipButton() {
+        val activity = launch()
+        compose.onNodeWithTag("welcome.skip").assertIsDisplayed().performClick()
+        assertCompletion(activity)
+    }
+
 }

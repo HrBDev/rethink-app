@@ -21,21 +21,13 @@ import com.celzero.bravedns.ui.compose.networksettings.*
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import com.celzero.bravedns.ui.compose.wireguard.WgControlState as CompoundButton
-import android.widget.LinearLayout
 import com.celzero.bravedns.ui.compose.networksettings.NetworkSeekState as SeekBar
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatRadioButton
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.celzero.bravedns.R

@@ -51,6 +51,16 @@ def check():
  protected=['util/BubbleHelper.kt','service/TcpProxyHelper.kt','rpnproxy/RpnProxyManager.kt','viewmodel/AllowedAppsBubbleViewModel.kt','viewmodel/BlockedAppsBubbleViewModel.kt','sponsor/viewmodel/SponsorViewModel.kt','service/PauseTimer.kt']
  for rel in protected:
   if subprocess.check_output(['git','show',BASE+':'+P+rel],cwd=ROOT)!=(ROOT/P/rel).read_bytes():errors.append('Protected dependency changed: '+rel)
+ # Native utility renderers may draw Android Drawable artwork, but may not host legacy Views.
+ native=list((ROOT/P/'ui/compose/utilities').glob('*.kt'))+[ROOT/P/'adapter'/n for n in ['BubbleAllowedAppsAdapter.kt','BubbleBlockedAppsAdapter.kt','PingTestHistoryAdapter.kt']]
+ for file in native:
+  code=file.read_text()
+  for forbidden in ['AndroidView(', 'AndroidViewBinding(', 'ViewBinding', 'androidx.recyclerview.widget.RecyclerView', 'LayoutInflater', 'setContentView(']:
+   if forbidden in code:errors.append('Legacy rendering boundary: '+str(file.relative_to(ROOT))+' '+forbidden)
+ for file in (ROOT/'app/src/test/java/com/celzero/bravedns/ui/compose/utilities').glob('*.kt'):
+  code=file.read_text()
+  if not re.search(r'application\s*=\s*Application::class',code):errors.append('Missing plain Application isolation: '+str(file))
+  if 'createComposeRule' in code and '@GraphicsMode(GraphicsMode.Mode.NATIVE)' not in code:errors.append('Missing native graphics fixture: '+str(file))
  # The Alerts adapter is wholly inactive in the baseline. Do not turn it into an action source.
  rel='adapter/AlertAdapter.kt'
  if subprocess.check_output(['git','show',BASE+':'+P+rel],cwd=ROOT)!=(ROOT/P/rel).read_bytes():errors.append('Disabled AlertAdapter changed')

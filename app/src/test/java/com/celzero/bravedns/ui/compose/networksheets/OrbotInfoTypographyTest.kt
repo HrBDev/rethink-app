@@ -22,7 +22,7 @@ import org.robolectric.annotation.GraphicsMode
 @Config(sdk = [35], application = Application::class)
 class OrbotInfoTypographyTest {
     @Test fun actualXmlTypographyMatchesAtNormalAndLargeScalesAcrossThemes() {
-        val app = RuntimeEnvironment.getApplication<Application>()
+        val app = RuntimeEnvironment.getApplication()
         for (theme in listOf(R.style.AppThemeWhite, R.style.AppTheme, R.style.AppThemeTrueBlackFrost)) {
             for (scale in listOf(1f, 2f)) {
                 val config = Configuration(app.resources.configuration).apply { fontScale = scale }
@@ -41,6 +41,9 @@ class OrbotInfoTypographyTest {
                     assertEquals(label, view.paint.measureText(sample), paint.measureText(sample), .1f)
                     assertEquals(label, view.paint.fontSpacing, paint.fontSpacing, .1f)
                     assertTrue(label, view.includeFontPadding)
+                    assertEquals(label, view.paddingStart.toFloat(), typography.paddingStartDp * context.resources.displayMetrics.density, .01f)
+                    assertEquals(label, view.paddingEnd.toFloat(), typography.paddingEndDp * context.resources.displayMetrics.density, .01f)
+                    assertEquals(androidx.compose.ui.text.style.TextDirection.Content, typography.textStyle().textDirection)
                     if (description) {
                         assertEquals(5f * context.resources.displayMetrics.density, view.lineSpacingExtra, .01f)
                         assertTrue(view.isTextSelectable)

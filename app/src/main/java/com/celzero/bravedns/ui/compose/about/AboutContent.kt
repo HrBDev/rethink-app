@@ -6,7 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -153,13 +152,7 @@ private fun AboutFooter(b: AboutState) {
             Text(b.aboutAppVersion.text.toString(), Modifier.fillMaxWidth().padding(top = 28.dp, start = 16.dp, end = 16.dp).alpha(.75f),
                 color = themeColor(R.attr.primaryLightColorText), fontSize = 10.sp, fontFamily = FontFamily.Monospace, textAlign = TextAlign.Center)
         }
-        if (b.tokenTextView.isVisible) SelectionContainer {
-            Text(b.tokenTextView.text.toString(), Modifier.fillMaxWidth().alpha(.75f).testTag("about.token")
-                .combinedClickable(onClick = { b.tokenSingleTap(); b.tokenTextView.performClick() },
-                    onDoubleClick = { b.tokenDoubleTap(); b.tokenTextView.performClick() })
-                .padding(vertical = 10.dp, horizontal = 16.dp), fontSize = 10.sp, fontFamily = FontFamily.Monospace,
-                color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center)
-        }
+        if (b.tokenTextView.isVisible) AboutTokenContent(b)
         Text(b.aboutLicense.text.toString(), Modifier.fillMaxWidth().padding(horizontal = 16.dp).alpha(.75f).clickable { b.aboutLicense.performClick() }.padding(top = 8.dp),
             fontSize = 10.sp, fontFamily = FontFamily.Monospace, color = themeColor(R.attr.primaryLightColorText), textAlign = TextAlign.Center)
     }

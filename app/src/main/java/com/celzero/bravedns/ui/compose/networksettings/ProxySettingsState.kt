@@ -61,8 +61,12 @@ class ProxySettingsState(context: Context) {
     val settingsActivityHttpProxyDesc = WgControlState(context, checkable = false) .apply { text = context.getText(R.string.settings_https_desc) }
     val settingsActivityHttpProxySwitch = WgControlState(context, checkable = true) .apply { switchThemeOverlay = R.style.CustomCompoundButtonSwitch }
     val settingsActivityHttpProxyProgress = WgControlState(context, checkable = false)
-    val refreshing = androidx.compose.runtime.mutableStateListOf<WgControlState>()
-    fun startRefresh(control: WgControlState) { if (control !in refreshing) refreshing.add(control) }
+    val refreshing = androidx.compose.runtime.mutableStateMapOf<WgControlState, NetworkRefreshState>()
+    private var refreshGeneration = 0
+    fun startRefresh(control: WgControlState, animation: android.view.animation.Animation? = null) {
+        refreshing[control] = NetworkRefreshState(++refreshGeneration, animation?.duration?.toInt() ?: 750,
+            animation?.interpolator ?: android.view.animation.AccelerateDecelerateInterpolator())
+    }
     fun stopRefresh(control: WgControlState) { refreshing.remove(control) }
     val layout = NetworkNode(NetworkKind.SCROLL, control = node0, fillWidth = true, children = listOf(
         NetworkNode(NetworkKind.COLUMN, control = node1, margin = NetworkInsets(0f, 10f, 0f, 0f), fillWidth = true, children = listOf(

@@ -157,7 +157,9 @@ class AboutContentComposeTest {
         compose.runOnIdle { assertEquals(listOf(-2, -3, -1), calls) }
     }
 
-    @Test fun tokenTapAndDoubleTapUseSeparateFakeActions() {
+    @Test
+    @Config(shadows = [NoSurfaceMagnifierShadow::class])
+    fun tokenTapAndDoubleTapUseSeparateFakeActions() {
         var single = 0; var double = 0
         compose.setContent { AboutTestTheme {
             val context = LocalContext.current
@@ -168,11 +170,55 @@ class AboutContentComposeTest {
             AboutContent(state)
         } }
         compose.onNodeWithTag("about").performScrollToNode(hasTestTag("about.token"))
-        compose.onNodeWithTag("about.token").performClick()
+        compose.onNodeWithTag("about.token").performTouchInput { click() }
+        org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idleFor(java.time.Duration.ofMillis(600))
+        compose.mainClock.advanceTimeBy(600)
         compose.runOnIdle { assertEquals(1, single); assertEquals(0, double) }
         compose.onNodeWithTag("about.token").performTouchInput { doubleClick() }
+        org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idleFor(java.time.Duration.ofMillis(600))
         compose.mainClock.advanceTimeBy(600)
         compose.runOnIdle { assertEquals(1, single); assertEquals(1, double) }
+    }
+
+    @Test
+    @Config(shadows = [NoSurfaceMagnifierShadow::class])
+    @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
+    fun tokenDoubleTapWinsBeforeWordSelectionButLongPressStillSelects() {
+        var single = 0; var double = 0; var performedClicks = 0
+        val selection = androidx.compose.foundation.text.selection.SelectionState()
+        compose.setContent { AboutTestTheme {
+            val context = LocalContext.current
+            val state = remember { AboutState(context).apply {
+                tokenTextView.text = "fake-token"
+                tokenTextView.setOnClickListener { performedClicks++ }
+                tokenSingleTap = { single++ }; tokenDoubleTap = { double++ }
+            } }
+            AboutTokenContent(state, selection)
+        } }
+        compose.onNodeWithTag("about.token").performTouchInput { doubleClick() }
+        org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idleFor(java.time.Duration.ofMillis(600))
+        compose.mainClock.advanceTimeBy(600)
+        compose.runOnIdle {
+            assertEquals(0, single); assertEquals(1, double); assertEquals(1, performedClicks)
+            assertTrue("Double tap must not start text selection", selection.selectedTexts.isEmpty())
+        }
+        // longClick() batches down/up and advances only MotionEvent timestamps. The
+        // platform GestureDetector also needs its main-looper timeout while still down,
+        // and Compose selection needs its frame clock. Advance both before releasing.
+        compose.onNodeWithTag("about.token").performTouchInput { down(center) }
+        org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idleFor(java.time.Duration.ofMillis(600))
+        compose.mainClock.advanceTimeBy(600)
+        compose.runOnIdle {
+            assertEquals(0, single); assertEquals(1, double); assertEquals(1, performedClicks)
+            assertFalse("Long press must still select text while held", selection.selectedTexts.isEmpty())
+        }
+        compose.onNodeWithTag("about.token").performTouchInput { advanceEventTime(600); up() }
+        org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idleFor(java.time.Duration.ofMillis(600))
+        compose.mainClock.advanceTimeBy(600)
+        compose.runOnIdle {
+            assertEquals(0, single); assertEquals(1, double); assertEquals(1, performedClicks)
+            assertFalse("Long press selection must survive release", selection.selectedTexts.isEmpty())
+        }
     }
 
     @Test fun contributorsCloseControlDoesNotDispatchDialogButtons() {
@@ -221,4 +267,13 @@ private fun AboutTestTheme(themeRes: Int = R.style.AppThemeWhite, content: @Comp
     val base = LocalContext.current
     val context = remember(base, themeRes) { ContextThemeWrapper(base, themeRes) }
     CompositionLocalProvider(LocalContext provides context) { RethinkTheme(content) }
+}
+
+/** Robolectric has no compositor-backed magnifier surface. Keep the real gesture/selection
+ * code and assertions; only suppress unsupported framework surface disposal for this fixture.
+ * Device magnifier rendering remains a separate unrun accessibility acceptance check. */
+@org.robolectric.annotation.Implements(android.widget.Magnifier::class, minSdk = 28)
+class NoSurfaceMagnifierShadow {
+    @org.robolectric.annotation.Implementation
+    fun dismiss() = Unit
 }

@@ -4,13 +4,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.themeColor
-import com.facebook.shimmer.Shimmer
+
+// Shimmer 0.5.0 has no public getters for these defaults. Preserve the original
+// subscription banner's unconfigured alpha mask: base 0x4cffffff, highlight WHITE.
+// https://github.com/facebookarchive/shimmer-android/blob/5ec9d4e73ef84696e6807488d7663a5d5ccf766d/shimmer/src/main/java/com/facebook/shimmer/Shimmer.java
+private const val SHIMMER_050_DURATION_MILLIS = 1000
+private const val SHIMMER_050_BASE_ALPHA = 0x4c / 255f
+private const val SHIMMER_050_HIGHLIGHT_ALPHA = 1f
 
 /** fragment_server_selection: small left bar and end-aligned action placeholder. */
 @Composable internal fun RpnHeaderLoadingSkeleton(running: Boolean) {
@@ -22,13 +27,10 @@ import com.facebook.shimmer.Shimmer
     }
 }
 
-/** This source ShimmerFrameLayout has no XML overrides: read the already-pinned library defaults. */
+/** This source ShimmerFrameLayout has no XML overrides: preserve the pinned 0.5.0 defaults. */
 @Composable internal fun RpnSubscriptionLoadingSkeleton(running: Boolean) {
-    val defaults = remember { Shimmer.AlphaHighlightBuilder().build() }
-    val baseAlpha = (defaults.baseColor ushr 24 and 0xff) / 255f
-    val highlightAlpha = (defaults.highlightColor ushr 24 and 0xff) / 255f
     Row(Modifier.fillMaxWidth().padding(top = 8.dp).height(40.dp)
-        .then(sourceShimmerModifier(running, defaults.animationDuration.toInt(), baseAlpha, highlightAlpha))
+        .then(sourceShimmerModifier(running, SHIMMER_050_DURATION_MILLIS, SHIMMER_050_BASE_ALPHA, SHIMMER_050_HIGHLIGHT_ALPHA))
         .padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         HeaderPlaceholder(Modifier.size(20.dp))
         Spacer(Modifier.width(8.dp))

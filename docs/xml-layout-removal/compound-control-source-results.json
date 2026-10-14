@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-14T13:39:53.081808+00:00",
+  "generated_at_utc": "2026-10-14T14:26:42.689918+00:00",
   "guard_sha256": "d3eccf7c9dd3e10a2850567ed2602f1b503c0a1ad46d7e0e25c04bc7678a40c3",
   "result": "PASS_SOURCE_ONLY",
   "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
@@ -269,7 +269,7 @@
     "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistConfigurationScreen.kt": "783b426a07a36390e83d596a1cc75ed3f737f1b9159c43e2cd867979c9b85aa4",
     "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/RethinkListScreen.kt": "a3c1b8501b527f6d93675473d8d2a417fc354d18d54a456d3071840f817937f9",
     "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundCatalog.kt": "fa20b7b9069f5c2476f29c1b6aed13f7c2510f6645e28538a17d536b68b59f4f",
-    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt": "5e3d3f1377ad72f46f4e239bae8438730c227db87760257a6fb24683fdf37e00",
+    "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt": "94f5380a75be6010577432ee885875deaed66de9ab631f0441ddfa5366c25a83",
     "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalSliders.kt": "012dd26051058ddf0c1a43c1bbe4e58b351be4c003f7a35e50217222c2a10157",
     "app/src/main/java/com/celzero/bravedns/ui/compose/dns/DnsEndpointEditors.kt": "9c252ae7bc8a7abf189d5ccb82173474f1bb06718c77e6901b6a569c261ef520",
     "app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsSettingsScreen.kt": "9729cd818351e0090ed88380c62082c0ec71c51056f8ac7a6b96fd0a6d844d76",

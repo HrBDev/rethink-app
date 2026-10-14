@@ -229,13 +229,15 @@ internal fun resolveOriginalCompound(context: Context, spec: OriginalCompoundSpe
         OriginalCompoundKind.AppCompatRadioButton -> androidx.appcompat.R.style.Widget_AppCompat_CompoundButton_RadioButton
         else -> androidx.appcompat.R.style.Widget_AppCompat_CompoundButton_CheckBox
     }
+    // MaterialSwitch inherits these core switch attributes from AppCompat SwitchCompat.
+    // Keep their owning namespace when android.nonTransitiveRClass is enabled.
     val attrs = intArrayOf(android.R.attr.button, androidx.appcompat.R.attr.buttonCompat, android.R.attr.buttonTint,
         androidx.appcompat.R.attr.buttonTint, MaterialR.attr.buttonIcon, MaterialR.attr.buttonIconTint,
-        android.R.attr.thumb, MaterialR.attr.thumbTint, MaterialR.attr.track, MaterialR.attr.trackTint,
+        android.R.attr.thumb, androidx.appcompat.R.attr.thumbTint, androidx.appcompat.R.attr.track, androidx.appcompat.R.attr.trackTint,
         MaterialR.attr.thumbIcon, MaterialR.attr.thumbIconTint, MaterialR.attr.trackDecoration, MaterialR.attr.trackDecorationTint,
         android.R.attr.minWidth, android.R.attr.minHeight, android.R.attr.padding, android.R.attr.paddingStart,
         android.R.attr.paddingEnd, android.R.attr.paddingTop, android.R.attr.paddingBottom, android.R.attr.drawableBottom,
-        MaterialR.attr.switchMinWidth, android.R.attr.paddingHorizontal, android.R.attr.paddingVertical,
+        androidx.appcompat.R.attr.switchMinWidth, android.R.attr.paddingHorizontal, android.R.attr.paddingVertical,
         MaterialR.attr.materialThemeOverlay, android.R.attr.theme, android.R.attr.background, MaterialR.attr.rippleColor)
     fun overlay(attr: Int): Int {
         val a = context.obtainStyledAttributes(spec.style, intArrayOf(attr))

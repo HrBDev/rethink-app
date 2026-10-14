@@ -23,7 +23,7 @@ The baseline Git object `23cb6dd98805445174bd83b7237ad5f5d2c24ac9` must exist lo
 python3 scripts/compose-migration/check-final-source.py
 ```
 
-This executes only the 41 explicitly listed Python source checks plus `git diff --check`. It does not run Gradle, Kotlin, Android, a native backend, VPN or any live flow. Keep the exact pinned baseline Git object locally; no retained layout files are needed. Individual checks include strict zero-layout/binding/resource-reference gates, original-style contracts, independent reference-fixture checks, targeted negative controls and protected/controller source comparisons. The resulting report pins current `app/src` source hashes and labels all Android tests UNRUN.
+This executes only the 44 explicitly listed Python source checks plus `git diff --check`. It does not run Gradle, Kotlin, Android, a native backend, VPN or any live flow. Keep the exact pinned baseline Git object locally; no retained layout files are needed. Individual checks include strict zero-layout/binding/resource-reference gates, original-style contracts, independent reference-fixture checks, targeted negative controls and protected/controller source comparisons. The resulting report pins current `app/src` source hashes and labels all Android tests UNRUN.
 
 ## Compilation after toolchain access is restored
 

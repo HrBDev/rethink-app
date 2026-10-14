@@ -1,0 +1,140 @@
+{
+  "verification_kind": "source-only; not Kotlin compilation or visual equivalence",
+  "baseline": "23cb6dd98805445174bd83b7237ad5f5d2c24ac9",
+  "upstream_evidence": {
+    "version": "0.5.0",
+    "commit": "5ec9d4e73ef84696e6807488d7663a5d5ccf766d",
+    "Shimmer.java": {
+      "url": "https://github.com/facebookarchive/shimmer-android/blob/5ec9d4e73ef84696e6807488d7663a5d5ccf766d/shimmer/src/main/java/com/facebook/shimmer/Shimmer.java",
+      "git_blob_sha": "a68993e882d0e94d3065cb175042750b2fbc9b4d",
+      "declarations": [
+        "@ColorInt int baseColor = 0x4cffffff;",
+        "@ColorInt int highlightColor = Color.WHITE;",
+        "long animationDuration = 1000L;"
+      ],
+      "contract": "Package-private fields; no public getters. AlphaHighlightBuilder leaves these defaults unchanged."
+    },
+    "ShimmerFrameLayout.java": {
+      "url": "https://github.com/facebookarchive/shimmer-android/blob/5ec9d4e73ef84696e6807488d7663a5d5ccf766d/shimmer/src/main/java/com/facebook/shimmer/ShimmerFrameLayout.java",
+      "git_blob_sha": "42c8fbe0b1351ffea6040292672b310229b29469",
+      "contract": "Defaults to AlphaHighlightBuilder when shimmer_colored is absent. Attributes are applied only when supplied."
+    },
+    "expected": {
+      "duration_millis": 1000,
+      "base_alpha_byte": 76,
+      "highlight_alpha_byte": 255
+    }
+  },
+  "checks": [
+    {
+      "name": "dependency remains pinned to the verified Shimmer 0.5.0",
+      "passed": true
+    },
+    {
+      "name": "original subscription banner has no shimmer parameter/style overrides",
+      "passed": true
+    },
+    {
+      "name": "original banner geometry remains the reference",
+      "passed": true
+    },
+    {
+      "name": "original placeholder is primaryTextColor with 12dp corners",
+      "passed": true
+    },
+    {
+      "name": "pinned subscription shimmer constant: DURATION_MILLIS",
+      "passed": true
+    },
+    {
+      "name": "pinned subscription shimmer constant: BASE_ALPHA",
+      "passed": true
+    },
+    {
+      "name": "pinned subscription shimmer constant: HIGHLIGHT_ALPHA",
+      "passed": true
+    },
+    {
+      "name": "subscription wires pinned defaults and caller running state into native shimmer",
+      "passed": true
+    },
+    {
+      "name": "no inaccessible Shimmer fields, builder dependency or reflection",
+      "passed": true
+    },
+    {
+      "name": "source-specific header timing and geometry are unchanged",
+      "passed": true
+    },
+    {
+      "name": "subscription placeholder geometry and source theme color are unchanged",
+      "passed": true
+    },
+    {
+      "name": "native rendering has no XML/View bridge",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "mutation": "wrong duration",
+      "rejected": true
+    },
+    {
+      "mutation": "rounded base alpha",
+      "rejected": true
+    },
+    {
+      "mutation": "wrong highlight alpha",
+      "rejected": true
+    },
+    {
+      "mutation": "private baseColor access",
+      "rejected": true
+    },
+    {
+      "mutation": "private highlightColor access",
+      "rejected": true
+    },
+    {
+      "mutation": "private animationDuration access",
+      "rejected": true
+    },
+    {
+      "mutation": "ignores stopped state",
+      "rejected": true
+    },
+    {
+      "mutation": "placeholder color drift",
+      "rejected": true
+    },
+    {
+      "mutation": "subscription geometry drift",
+      "rejected": true
+    },
+    {
+      "mutation": "header timing drift",
+      "rejected": true
+    },
+    {
+      "mutation": "unreviewed dependency version",
+      "rejected": true
+    }
+  ],
+  "source_sha256": {
+    "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnHeaderSkeletons.kt": "11ffc209eae0df2b9b0ddc3495b421c0ec51cda12a8be8c03603b920ec8fee1f",
+    "gradle/lib.toml": "6289d8946555d26dd6b2f549b425c0b198d6ba23ae87e90445a3668335c6d067"
+  },
+  "baseline_sha256": {
+    "app/src/main/res/layout/fragment_server_selection.xml": "31b0a534953574b9902a28473cb20624b5e31a349e4772c22f39b0a799c570dd",
+    "app/src/main/res/drawable/shimmer_placeholder.xml": "984fc797244c1f4167d54374ddd780c9f4011bf181fb469ba846755b04dae494"
+  },
+  "unrun": [
+    "Android/Kotlin compilation",
+    "Compose/Robolectric tests",
+    "device/screenshots"
+  ],
+  "remaining_limits": [
+    "Exact shimmer sweep/dropoff/tilt and stopped-frame rendering still require visual comparison."
+  ]
+}

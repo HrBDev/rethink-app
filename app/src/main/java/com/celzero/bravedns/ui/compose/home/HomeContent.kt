@@ -265,7 +265,7 @@ private fun AppsCount(b: HomePresentation) {
 /** Source aligned Flow order is blocked/isolated, then bypassed/excluded. */
 @Composable
 private fun AppsMetricGrid(b: HomePresentation, modifier: Modifier, verticalGap: Dp, alignEnd: Boolean) {
-    Layout(modifier, content = {
+    Layout(modifier = modifier, content = {
         listOf(b.fhsCardAppsBlockedCount, b.fhsCardAppsIsolatedCount, b.fhsCardAppsBypassedCount, b.fhsCardAppsExcludedCount).forEach { node ->
             Box { HomeText(node) }
         }

@@ -31,7 +31,8 @@ def generated():
   xml.append(f'    <style name="{name}" parent="{parent[7:] if parent.startswith("@style/") else ""}">')
   for k,v in attrs.items(): xml.append(f'        <item name="{k}">{v.replace("&", "&amp;").replace("<", "&lt;")}</item>')
   xml.append('    </style>')
-  default='com.google.android.material.R.attr.checkboxStyle' if 'MaterialCheckBox' in tag else 'androidx.appcompat.R.attr.checkboxStyle' if 'CheckBox' in tag else 'androidx.appcompat.R.attr.radioButtonStyle' if 'RadioButton' in tag else 'com.google.android.material.R.attr.chipStyle' if 'Chip' in tag else 'android.R.attr.textViewStyle'
+  # MaterialCheckBox also uses AppCompat's checkboxStyle in its two-argument constructor.
+  default='androidx.appcompat.R.attr.checkboxStyle' if 'CheckBox' in tag else 'androidx.appcompat.R.attr.radioButtonStyle' if 'RadioButton' in tag else 'com.google.android.material.R.attr.chipStyle' if 'Chip' in tag else 'android.R.attr.textViewStyle'
   kt.append(f'    "{layout}:{node}" to WgTextSource(R.style.{name}, {str("MaterialTextView" in tag).lower()}, {default}),')
  for layout in PROGRESS_LAYOUTS:
   for e in source(layout).iter():
@@ -94,6 +95,8 @@ def main():
   p='app/src/main/res/values/original_wg_text_styles.xml'
   for old,new,label in [('sans-serif-medium','sans-serif','font family'),('<item name="android:letterSpacing">0.01</item>','<item name="android:letterSpacing">0</item>','tracking'),('<item name="android:lineSpacingExtra">3dp</item>','<item name="android:lineSpacingExtra">0dp</item>','line spacing'),('android:textAppearance','android:hint','appearance'),('android:singleLine','android:enabled','line limit')]:
    mutation=dict(actual); mutation[p]=mutation[p].replace(old,new,1); controls.append({'mutation':label,'caught':bool(check_text_catalog(mutation))})
+  p='app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextCatalog.kt'
+  mutation=dict(actual); mutation[p]=mutation[p].replace('androidx.appcompat.R.attr.checkboxStyle','com.google.android.material.R.attr.checkboxStyle',1); controls.append({'mutation':'checkbox attribute owner','caught':bool(check_text_catalog(mutation))})
   for path,needle,label in [(next(p for p in CODE_REQUIREMENTS if p.endswith('OriginalProgress.kt')), 'spec.indicatorTrackGapSize = overrides.gapDp', 'progress inherited gap'), (next(p for p in CODE_REQUIREMENTS if p.endswith('OriginalProgress.kt')), 'spec.trackStopIndicatorSize = overrides.stopSizeDp', 'progress inherited stop'), (next(p for p in CODE_REQUIREMENTS if p.endswith('WgRows.kt')), 'WgProgress(b.wgHopListProgress, Modifier.fillMaxWidth().padding(horizontal = 10.dp))', 'hop progress callsite'), (next(p for p in CODE_REQUIREMENTS if p.endswith('WgControls.kt')), 'style = look.style', 'text renderer consumes source')]:
    mutation=dict(actual); mutation[path]=mutation[path].replace(needle,'REMOVED_SOURCE_CONTRACT',1); controls.append({'mutation':label,'caught':bool(check_code(mutation))})
   if not all(x['caught'] for x in controls):errors.append('negative control escaped')

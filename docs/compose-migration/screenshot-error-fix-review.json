@@ -1,0 +1,189 @@
+{
+  "result": "PASS_SOURCE_ONLY",
+  "reviewed_at_utc": "2026-10-14T14:28:13.938839+00:00",
+  "review_baseline": "02b826718295f054411b99912b4a00938ace263a",
+  "production_scope_files": 5,
+  "screenshot_diagnostics": 15,
+  "screenshot": {
+    "path": "../screenshot-errors-1420/image(20261014-141943).png",
+    "sha256": "72acd64b28a1cf3e3d59e4691476f91371b0a8eac22c7e538baf05be32fd8fd3",
+    "visually_inspected_before_source_review": true
+  },
+  "diagnostics": [
+    {
+      "file": "OriginalCompoundControls.kt",
+      "screenshot_line": 234,
+      "diagnostic": "Unresolved reference 'thumbTint'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "OriginalCompoundControls.kt",
+      "screenshot_line": 234,
+      "diagnostic": "Unresolved reference 'track'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "OriginalCompoundControls.kt",
+      "screenshot_line": 234,
+      "diagnostic": "Unresolved reference 'trackTint'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "OriginalCompoundControls.kt",
+      "screenshot_line": 238,
+      "diagnostic": "Unresolved reference 'switchMinWidth'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "HomeContent.kt",
+      "screenshot_line": 268,
+      "diagnostic": "Argument type mismatch: Modifier supplied where ComposableFunction0<Unit> expected",
+      "correction": "Name modifier argument",
+      "source_covered": true
+    },
+    {
+      "file": "HomeContent.kt",
+      "screenshot_line": 268,
+      "diagnostic": "Argument already passed for this parameter",
+      "correction": "Name modifier argument",
+      "source_covered": true
+    },
+    {
+      "file": "HomeContent.kt",
+      "screenshot_line": 270,
+      "diagnostic": "@Composable invocation outside @Composable context",
+      "correction": "Name modifier argument, restores content lambda context",
+      "source_covered": true
+    },
+    {
+      "file": "RpnHeaderSkeletons.kt",
+      "screenshot_line": 28,
+      "diagnostic": "Cannot access package-private Shimmer.baseColor",
+      "correction": "Use exact 0.5.0 base alpha 0x4c / 255f",
+      "source_covered": true
+    },
+    {
+      "file": "RpnHeaderSkeletons.kt",
+      "screenshot_line": 29,
+      "diagnostic": "Cannot access package-private Shimmer.highlightColor",
+      "correction": "Use exact 0.5.0 highlight alpha 1f",
+      "source_covered": true
+    },
+    {
+      "file": "RpnHeaderSkeletons.kt",
+      "screenshot_line": 31,
+      "diagnostic": "Cannot access package-private Shimmer.animationDuration",
+      "correction": "Use exact 0.5.0 duration 1000 ms",
+      "source_covered": true
+    },
+    {
+      "file": "RpnRemovalContent.kt",
+      "screenshot_line": 32,
+      "diagnostic": "Unresolved reference 'colorSurface'",
+      "correction": "Material attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "WgTextCatalog.kt",
+      "screenshot_line": 71,
+      "diagnostic": "Unresolved reference 'checkboxStyle'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "WgTextCatalog.kt",
+      "screenshot_line": 72,
+      "diagnostic": "Unresolved reference 'checkboxStyle'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "WgTextCatalog.kt",
+      "screenshot_line": 142,
+      "diagnostic": "Unresolved reference 'checkboxStyle'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    },
+    {
+      "file": "WgTextCatalog.kt",
+      "screenshot_line": 143,
+      "diagnostic": "Unresolved reference 'checkboxStyle'",
+      "correction": "AppCompat attr owner",
+      "source_covered": true
+    }
+  ],
+  "source_checks": {
+    "exact_allowlisted_transformation_matches_all_five_files": true,
+    "only_five_production_files_changed": true,
+    "git_diff_check": "PASS",
+    "callbacks_and_control_state_code": "unchanged",
+    "home_content_child_order_measurement_and_placement": "unchanged",
+    "compound_attribute_array_order_and_resolution_fallbacks": "unchanged; only four resource owners corrected",
+    "wireguard_keys_style_resources_and_boolean_flags": "unchanged; only four checkboxStyle owners corrected",
+    "removal_card_theme_value_and_geometry": "unchanged; only colorSurface resource owner corrected",
+    "subscription_shimmer_defaults": {
+      "duration_ms": 1000,
+      "base_alpha": "76 / 255f",
+      "highlight_alpha": "1f",
+      "exact_pinned_defaults": true
+    },
+    "shimmer_running_input_geometry_header_parameters_and_placeholder_color": "unchanged"
+  },
+  "evidence": {
+    "material_checkbox_constructor": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/checkbox/MaterialCheckBox.java",
+    "material_switch_inheritance": "https://github.com/material-components/material-components-android/blob/1.14.0/lib/java/com/google/android/material/materialswitch/MaterialSwitch.java",
+    "appcompat_attr_declarations": "https://github.com/androidx/androidx/blob/androidx-main/appcompat/appcompat/src/main/res/values/attrs.xml",
+    "appcompat_switch_constructor": "https://github.com/androidx/androidx/blob/androidx-main/appcompat/appcompat/src/main/java/androidx/appcompat/widget/SwitchCompat.java",
+    "shimmer_report": "docs/compose-migration/shimmer-public-contract-source-report.json",
+    "shimmer_commit": "5ec9d4e73ef84696e6807488d7663a5d5ccf766d",
+    "shimmer_java_blob": "a68993e882d0e94d3065cb175042750b2fbc9b4d",
+    "non_transitive_R": "gradle.properties:21 android.nonTransitiveRClass=true",
+    "evidence_origin": "Existing worker-verified official source evidence; no new network access in this review"
+  },
+  "files": [
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/controls/OriginalCompoundControls.kt",
+      "baseline_sha256": "5e3d3f1377ad72f46f4e239bae8438730c227db87760257a6fb24683fdf37e00",
+      "final_sha256": "94f5380a75be6010577432ee885875deaed66de9ab631f0441ddfa5366c25a83",
+      "exact_allowlisted_diff": "PASS"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeContent.kt",
+      "baseline_sha256": "b61bb4c8dd0ce07414cc30142b5ee372adc5148afbddb23bfb16fd64b42ce8eb",
+      "final_sha256": "dc1c2c0f615f723f9bd99dbbce99017aaaf9cfccb7730a2bc7eb7bd33af04437",
+      "exact_allowlisted_diff": "PASS"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnHeaderSkeletons.kt",
+      "baseline_sha256": "373977846c02651632226746a29e182e40a10d3126e9fc3fce2cd2fb82bc77c5",
+      "final_sha256": "11ffc209eae0df2b9b0ddc3495b421c0ec51cda12a8be8c03603b920ec8fee1f",
+      "exact_allowlisted_diff": "PASS"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnRemovalContent.kt",
+      "baseline_sha256": "a7d11089702fc965a3d81c861900237d024d9f1af40afeef3c02a4d88aef36dd",
+      "final_sha256": "9088ab933dcbeb7a2cc0c47159fb71277cb34d914b64e651038423d7bddd32bd",
+      "exact_allowlisted_diff": "PASS"
+    },
+    {
+      "path": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgTextCatalog.kt",
+      "baseline_sha256": "cec647211a7616ca9892c2fd2c4d04beea7af55c2ef5def8a4fda8d463fa3323",
+      "final_sha256": "3dd9425960e7d53cf1869cb4278cd1f4b9d62e7e675f223cae687d91d3588ecd",
+      "exact_allowlisted_diff": "PASS"
+    }
+  ],
+  "findings": [],
+  "compile": "UNRUN",
+  "runtime": "UNRUN",
+  "device_or_visual_parity": "UNRUN",
+  "limitations": [
+    "This is a source review, not confirmation of successful Kotlin/Android compilation or that no additional diagnostics will emerge.",
+    "AppCompat declaration evidence was read from AndroidX main, not a resolved 1.8.0 binary; no artifact download or dependency resolution was attempted.",
+    "Exact rendered shimmer sweep/dropoff/tilt, stopped-frame behavior, and overall visual parity remain unverified at runtime.",
+    "Source-level lack of callback, measurement, or style-value drift applies to this exact five-file diff, not the entire migration."
+  ]
+}

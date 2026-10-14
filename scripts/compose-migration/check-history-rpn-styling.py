@@ -257,7 +257,10 @@ def validate(src):
              'padding(top = 4.dp)', 'sourceShimmerModifier(running, 1200, .12f, .35f)',
              'width(80.dp).height(10.dp)', 'Spacer(Modifier.weight(1f).height(10.dp))', 'width(60.dp).height(26.dp)')
     contains('header_loading', 'subscription banner skeleton source composition and pinned library defaults',
-             'Shimmer.AlphaHighlightBuilder().build()', 'defaults.baseColor', 'defaults.highlightColor', 'defaults.animationDuration',
+             'private const val SHIMMER_050_DURATION_MILLIS = 1000',
+             'private const val SHIMMER_050_BASE_ALPHA = 0x4c / 255f',
+             'private const val SHIMMER_050_HIGHLIGHT_ALPHA = 1f',
+             'sourceShimmerModifier(running, SHIMMER_050_DURATION_MILLIS, SHIMMER_050_BASE_ALPHA, SHIMMER_050_HIGHLIGHT_ALPHA)',
              'padding(top = 8.dp).height(40.dp)', '.padding(8.dp)', 'Modifier.size(20.dp)', 'Spacer(Modifier.width(8.dp))',
              'Modifier.weight(1f).height(12.dp)')
     contains('selection', 'header skeletons wired without generic fractional lines',

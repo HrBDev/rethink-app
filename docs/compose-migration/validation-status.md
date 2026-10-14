@@ -2,6 +2,17 @@
 
 **Work in progress. Not production ready. Binding removal and the latest layout/component-style corrections have not been compiled or executed.**
 
+## Reported compiler errors after the source checkpoint
+
+The user's F-Droid Full build screenshot reports 15 Kotlin errors in checkpoint
+`02b826718295f054411b99912b4a00938ace263a`. They identify incorrect resource-owner
+namespaces, one positional/named Compose `Layout` argument collision, and access
+to package-private Shimmer fields. The targeted source fixes and regression
+checks are documented in `screenshot-compiler-errors.md`. The earlier passing
+source gates did not establish compilation and missed these errors. A new
+Android build is still required; it cannot run here under the existing artifact
+access blocker.
+
 ## Current source checkpoint: final XML removal and styling reconciliation
 
 The latest source work removes **all 186 remaining app-owned XML layout files**. Together with the four earlier shell removals, no app-owned layout resource remains. `docs/xml-layout-removal/layout-removal-manifest.json` records each deleted file, original Git hash, original styling contract and Compose family or verified retired-owner disposition. All 2,516 layout-declared ID names/types remain as values-only resources. Manifest, drawables, colors, styles, strings and dependency-internal resources are retained.

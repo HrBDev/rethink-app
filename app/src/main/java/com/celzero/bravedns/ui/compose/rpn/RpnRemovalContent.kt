@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.celzero.bravedns.R
+import com.google.android.material.R as MaterialR
 import com.celzero.bravedns.ui.compose.themeColor
 import com.celzero.bravedns.ui.compose.utilities.utilityTextStyle
 import android.graphics.Typeface
@@ -29,7 +30,7 @@ import android.graphics.Typeface
 fun RpnRemovalContent(ui: RpnRemovalState) {
     OriginalCardSurface(Modifier.fillMaxWidth().padding(16.dp).rpnMotion(ui.notificationCard),
         cornerRadius = 24.dp, border = BorderStroke(0.dp, Color.Transparent)) {
-        Column(Modifier.fillMaxWidth().background(themeColor(R.attr.colorSurface)).padding(24.dp)) {
+        Column(Modifier.fillMaxWidth().background(themeColor(MaterialR.attr.colorSurface)).padding(24.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                 OriginalCardSurface(Modifier.size(64.dp).rpnMotion(ui.iconContainer),
                     cornerRadius = 32.dp, elevation = 0.dp, border = BorderStroke(0.dp, Color.Transparent)) {

@@ -18,6 +18,7 @@ CHECKS = [
     ('check-about-controllers.py', []),
     ('check-about-reference-layout.py', ['--self-test']),
     ('check-blocklist-reference-restoration.py', ['--self-test']),
+    ('check-blocklist-inset-boundary.py', ['--self-test']),
     ('check-ordered-style-attributes.py', ['--self-test']),
     ('check-stats-reference-layout.py', ['--self-test']),
     ('check-apps-controller-parity.py', []),

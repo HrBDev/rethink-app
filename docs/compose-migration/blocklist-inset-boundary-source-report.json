@@ -1,0 +1,9 @@
+{
+  "status": "PASS_SOURCE_ONLY",
+  "contracts": 17,
+  "rejected_mutations": 10,
+  "authored_test_methods": 2,
+  "android_compilation": "UNRUN",
+  "android_tests": "UNRUN",
+  "inset_dispatch_and_rendering": "UNRUN"
+}

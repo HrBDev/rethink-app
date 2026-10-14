@@ -59,6 +59,7 @@ CHECKS = [
     ('check-wg-text-progress-source.py', ['--negative-controls']),
     ('check-wireguard-controllers.py', ['--self-test']),
     ('check-wireguard-resources.py', []),
+    ('check-watermark-accessors.py', ['--self-test']),
 ]
 DOC_CHECKS = [
     'check_compound_control_sources.py',

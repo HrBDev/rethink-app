@@ -1,0 +1,1201 @@
+{
+  "audit": "Finite source-only Kotlin/JVM accessor collision review",
+  "baseline_local_commit": "969aef531b9f82c7f9cee739734011860ad0c37c",
+  "baseline_remote_tree_equivalence": "Parent verified local HEAD tree equals remote 7fd20ed5df65610e450e8b27d84951ef1959e348; remote not queried in this audit.",
+  "scope": {
+    "production_kotlin_files_initial_name_sweep": 795,
+    "production_ui_files": 358,
+    "compose_files": 188,
+    "other_adapter_files": 28,
+    "candidate_method_declarations": 79,
+    "candidate_files": 34
+  },
+  "method": "Candidate name sweep plus manual owner, visibility/delegation, JVM parameter, default-argument, annotation, Boolean-name and migrated-base inheritance review. Candidate discovery is not a Kotlin parser, JVM type checker or proof for arbitrary source changes.",
+  "confirmed_clashes": [
+    {
+      "class": "RpnFlagWatermarkState",
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt",
+      "property_line": 113,
+      "method_line": 139,
+      "signature": "setFlagText(Ljava/lang/String;)V",
+      "fix": "flagText -> flagTextValue"
+    },
+    {
+      "class": "RpnFlagWatermarkState",
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt",
+      "property_line": 122,
+      "method_line": 187,
+      "signature": "setSpread(Z)V",
+      "fix": "spread -> spreadEnabled"
+    }
+  ],
+  "independent_patch_review": {
+    "exact_reverse_rename_equals_baseline": true,
+    "baseline_sha256": "b8188c257508fc4a52b5af91a69952d4cc7654604dfbf5877ae25fb40f87a883",
+    "patched_sha256": "951647f6cbbc0201adbf933ff577225013258ab1225510abfd0d0ba16d6e1412",
+    "public_api_unchanged": true,
+    "drawing_logic_unchanged": true
+  },
+  "candidates": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getStatusText",
+      "method_line": 294,
+      "properties": [
+        {
+          "name": "statusText",
+          "line": 334,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText and handshakeTime are local presentation variables."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/OneWgConfigAdapter.kt",
+      "method": "getHandshakeTime",
+      "method_line": 416,
+      "properties": [
+        {
+          "name": "handshakeTime",
+          "line": 330,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText and handshakeTime are local presentation variables."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "setUid",
+      "method_line": 48,
+      "properties": [
+        {
+          "name": "uid",
+          "line": 47,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "uid and timeCategory are private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/SummaryStatisticsAdapter.kt",
+      "method": "setTimeCategory",
+      "method_line": 211,
+      "properties": [
+        {
+          "name": "timeCategory",
+          "line": 46,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "uid and timeCategory are private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getStatusText",
+      "method_line": 481,
+      "properties": [
+        {
+          "name": "statusText",
+          "line": 526,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText and humanReadableLastOk are local presentation variables."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/WgConfigAdapter.kt",
+      "method": "getHumanReadableLastOk",
+      "method_line": 571,
+      "properties": [
+        {
+          "name": "humanReadableLastOk",
+          "line": 432,
+          "kind": "val"
+        },
+        {
+          "name": "humanReadableLastOk",
+          "line": 522,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText and humanReadableLastOk are local presentation variables."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/adapter/WgNwStatsAdapter.kt",
+      "method": "getAppName",
+      "method_line": 172,
+      "properties": [
+        {
+          "name": "appName",
+          "line": 165,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "appName is local; getAppName(Int) is a helper."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/AppListActivity.kt",
+      "method": "setFirewallFilter",
+      "method_line": 534,
+      "properties": [
+        {
+          "name": "firewallFilter",
+          "line": 207,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_distinct_owner",
+      "reason": "firewallFilter belongs to nested Filters; setFirewallFilter is on AppListActivity."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt",
+      "method": "getIntent",
+      "method_line": 45,
+      "properties": [
+        {
+          "name": "intent",
+          "line": 46,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_distinct_owner_or_local",
+      "reason": "dnsType is on the activity, getDnsType(Int) on DnsScreen.Companion; intent is a local variable of companion getIntent(Context, Int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ConfigureOtherDnsActivity.kt",
+      "method": "getDnsType",
+      "method_line": 64,
+      "properties": [
+        {
+          "name": "dnsType",
+          "line": 40,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_distinct_owner_or_local",
+      "reason": "dnsType is on the activity, getDnsType(Int) on DnsScreen.Companion; intent is a local variable of companion getIntent(Context, Int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/CustomRulesActivity.kt",
+      "method": "getType",
+      "method_line": 76,
+      "properties": [
+        {
+          "name": "type",
+          "line": 71,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_distinct_owner",
+      "reason": "RULES.type belongs to enum instance; getType(Int) belongs to RULES.Companion."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/NetworkLogsActivity.kt",
+      "method": "getCount",
+      "method_line": 148,
+      "properties": [
+        {
+          "name": "count",
+          "line": 121,
+          "kind": "val"
+        },
+        {
+          "name": "count",
+          "line": 156,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "count declarations are locals inside init/getCount; getCount() is an activity method with no matching member property."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/ProxySettingsActivity.kt",
+      "method": "getStatusText",
+      "method_line": 633,
+      "properties": [
+        {
+          "name": "statusText",
+          "line": 592,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText is local; getStatusText(UIUtils.ProxyStatus?, RouterStats?, String?) is a helper method."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "getStatusText",
+      "method_line": 577,
+      "properties": [
+        {
+          "name": "statusText",
+          "line": 361,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText and handshakeTime are local presentation variables; getStatusText and getHandshakeTime are helper methods."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/activity/WgConfigDetailActivity.kt",
+      "method": "getHandshakeTime",
+      "method_line": 615,
+      "properties": [
+        {
+          "name": "handshakeTime",
+          "line": 360,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "statusText and handshakeTime are local presentation variables; getStatusText and getHandshakeTime are helper methods."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/adapter/AppActivityAdapter.kt",
+      "method": "getItemCount",
+      "method_line": 104,
+      "properties": [
+        {
+          "name": "itemCount",
+          "line": 106,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_explicit_jvm_name",
+      "reason": "@get:JvmName(\"getNativeItemCount\") renames the property getter; explicit getItemCount() remains distinct."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/adapter/VpnServerAdapter.kt",
+      "method": "setProxyStopped",
+      "method_line": 196,
+      "properties": [
+        {
+          "name": "proxyStopped",
+          "line": 132,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "proxyStopped is a private non-delegated default-accessor field."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/LocalBlocklistsBottomSheet.kt",
+      "method": "setDismissListener",
+      "method_line": 94,
+      "properties": [
+        {
+          "name": "dismissListener",
+          "line": 75,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "dismissListener is a private non-delegated default-accessor field; its interface type also differs from the explicit DnsSettingsFragment argument."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/ServerRemovalNotificationBottomSheet.kt",
+      "method": "setOnDismissCallback",
+      "method_line": 221,
+      "properties": [
+        {
+          "name": "onDismissCallback",
+          "line": 53,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "onDismissCallback is a private non-delegated default-accessor field."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setTitle",
+      "method_line": 50,
+      "properties": [
+        {
+          "name": "title",
+          "line": 43,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setTitle",
+      "method_line": 51,
+      "properties": [
+        {
+          "name": "title",
+          "line": 43,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setMessage",
+      "method_line": 52,
+      "properties": [
+        {
+          "name": "message",
+          "line": 44,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setMessage",
+      "method_line": 53,
+      "properties": [
+        {
+          "name": "message",
+          "line": 44,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setIcon",
+      "method_line": 54,
+      "properties": [
+        {
+          "name": "icon",
+          "line": 45,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setCloseButton",
+      "method_line": 55,
+      "properties": [
+        {
+          "name": "closeButton",
+          "line": 47,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setCancelable",
+      "method_line": 56,
+      "properties": [
+        {
+          "name": "cancelable",
+          "line": 46,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/about/AboutDialog.kt",
+      "method": "setContent",
+      "method_line": 57,
+      "properties": [
+        {
+          "name": "content",
+          "line": 48,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "AboutDialogBuilder uses private non-delegated default-accessor properties, compiled as fields. Fluent setters additionally return the builder rather than void."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/appdetails/AppLogsContent.kt",
+      "method": "setQuery",
+      "method_line": 39,
+      "properties": [
+        {
+          "name": "query",
+          "line": 33,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "AppSearchState query setter takes String; explicit setQuery takes String, Boolean."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/blocklists/BlocklistSelectionPresenter.kt",
+      "method": "getGroupName",
+      "method_line": 84,
+      "properties": [
+        {
+          "name": "groupName",
+          "line": 11,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_distinct_owner",
+      "reason": "BlocklistRow.groupName is a property on the data class; getGroupName(String) is a separate BlocklistSelectionPresenter helper."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/firewallapps/FirewallAppsPresenter.kt",
+      "method": "getItem",
+      "method_line": 33,
+      "properties": [
+        {
+          "name": "item",
+          "line": 38,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "item is local to RowAt; getItem(Int) is a presenter method, with no matching member property."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeDialogs.kt",
+      "method": "setTitle",
+      "method_line": 49,
+      "properties": [
+        {
+          "name": "title",
+          "line": 45,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "HomeDialogBuilder has private non-delegated default-accessor fields; HomeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeDialogs.kt",
+      "method": "setTitle",
+      "method_line": 50,
+      "properties": [
+        {
+          "name": "title",
+          "line": 45,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "HomeDialogBuilder has private non-delegated default-accessor fields; HomeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeDialogs.kt",
+      "method": "setMessage",
+      "method_line": 51,
+      "properties": [
+        {
+          "name": "message",
+          "line": 46,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "HomeDialogBuilder has private non-delegated default-accessor fields; HomeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeDialogs.kt",
+      "method": "setMessage",
+      "method_line": 52,
+      "properties": [
+        {
+          "name": "message",
+          "line": 46,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "HomeDialogBuilder has private non-delegated default-accessor fields; HomeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomeDialogs.kt",
+      "method": "setCancelable",
+      "method_line": 53,
+      "properties": [
+        {
+          "name": "cancelable",
+          "line": 47,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "HomeDialogBuilder has private non-delegated default-accessor fields; HomeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomePresentation.kt",
+      "method": "setText",
+      "method_line": 54,
+      "properties": [
+        {
+          "name": "text",
+          "line": 16,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_type",
+      "reason": "CharSequence setter versus int resource helper."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomePresentation.kt",
+      "method": "setTextColor",
+      "method_line": 55,
+      "properties": [
+        {
+          "name": "textColor",
+          "line": 27,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_type",
+      "reason": "Nullable Int? boxes to java.lang.Integer; helper takes primitive int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomePresentation.kt",
+      "method": "setTextSize",
+      "method_line": 57,
+      "properties": [
+        {
+          "name": "textSize",
+          "line": 26,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "Property setter takes float; helper takes int, float."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/home/HomePresentation.kt",
+      "method": "setCurrentItem",
+      "method_line": 81,
+      "properties": [
+        {
+          "name": "currentItem",
+          "line": 78,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "Property setter takes int; helper takes int, boolean."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setContent",
+      "method_line": 42,
+      "properties": [
+        {
+          "name": "content",
+          "line": 40,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setTitle",
+      "method_line": 54,
+      "properties": [
+        {
+          "name": "title",
+          "line": 44,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setTitle",
+      "method_line": 55,
+      "properties": [
+        {
+          "name": "title",
+          "line": 44,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setMessage",
+      "method_line": 56,
+      "properties": [
+        {
+          "name": "message",
+          "line": 45,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setMessage",
+      "method_line": 57,
+      "properties": [
+        {
+          "name": "message",
+          "line": 45,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setIcon",
+      "method_line": 58,
+      "properties": [
+        {
+          "name": "icon",
+          "line": 47,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkAlertDialog.kt",
+      "method": "setCancelable",
+      "method_line": 59,
+      "properties": [
+        {
+          "name": "cancelable",
+          "line": 46,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "NetworkAlertDialogBuilder has private non-delegated default-accessor fields. NetworkNativeDialog is a separate owner."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt",
+      "method": "setFlagText",
+      "method_line": 139,
+      "properties": [
+        {
+          "name": "flagText",
+          "line": 113,
+          "kind": "var"
+        }
+      ],
+      "disposition": "confirmed_fixed",
+      "reason": "Private delegated property emitted the same JVM setter signature as the explicit public method. Coordinator renamed only the backing property and its uses."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt",
+      "method": "setFlagDrawable",
+      "method_line": 154,
+      "properties": [
+        {
+          "name": "flagDrawable",
+          "line": 114,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "Private setter takes Drawable; explicit setFlagDrawable takes Drawable, Integer, Float. Defaults generate $default, and there is no @JvmOverloads."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermark.kt",
+      "method": "setSpread",
+      "method_line": 187,
+      "properties": [
+        {
+          "name": "spread",
+          "line": 122,
+          "kind": "var"
+        }
+      ],
+      "disposition": "confirmed_fixed",
+      "reason": "Private delegated property emitted the same JVM setter signature as the explicit public method. Coordinator renamed only the backing property and its uses."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnMotion.kt",
+      "method": "setDuration",
+      "method_line": 30,
+      "properties": [
+        {
+          "name": "duration",
+          "line": 19,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "RpnPropertyAnimator duration and interpolator are private non-delegated default-accessor fields; fluent setters return RpnPropertyAnimator."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/rpn/RpnMotion.kt",
+      "method": "setInterpolator",
+      "method_line": 32,
+      "properties": [
+        {
+          "name": "interpolator",
+          "line": 21,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "RpnPropertyAnimator duration and interpolator are private non-delegated default-accessor fields; fluent setters return RpnPropertyAnimator."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogControlState.kt",
+      "method": "setTextColor",
+      "method_line": 37,
+      "properties": [
+        {
+          "name": "textColor",
+          "line": 19,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_nullable_primitive_boxing",
+      "reason": "Property is Int? (java.lang.Integer); explicit helper takes Int (primitive int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogControlState.kt",
+      "method": "setBackgroundColor",
+      "method_line": 38,
+      "properties": [
+        {
+          "name": "backgroundColor",
+          "line": 20,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_nullable_primitive_boxing",
+      "reason": "Property is Int? (java.lang.Integer); explicit helper takes Int (primitive int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogControlState.kt",
+      "method": "setImageResource",
+      "method_line": 39,
+      "properties": [
+        {
+          "name": "imageResource",
+          "line": 16,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_nullable_primitive_boxing",
+      "reason": "Property is Int? (java.lang.Integer); explicit helper takes Int (primitive int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt",
+      "method": "setQuery",
+      "method_line": 51,
+      "properties": [
+        {
+          "name": "query",
+          "line": 45,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "LogSearchState query setter takes String; explicit setQuery takes String, Boolean. Boolean default creates a $default bridge, not a one-argument overload; no @JvmOverloads."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityControl.kt",
+      "method": "setText",
+      "method_line": 71,
+      "properties": [
+        {
+          "name": "text",
+          "line": 20,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_type",
+      "reason": "text property uses CharSequence; explicit setText uses Object or int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityControl.kt",
+      "method": "setText",
+      "method_line": 72,
+      "properties": [
+        {
+          "name": "text",
+          "line": 20,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_type",
+      "reason": "text property uses CharSequence; explicit setText uses Object or int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityControl.kt",
+      "method": "setTextColor",
+      "method_line": 73,
+      "properties": [
+        {
+          "name": "textColor",
+          "line": 36,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_type",
+      "reason": "Property is Int? (java.lang.Integer); explicit helper takes Int (primitive int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityControl.kt",
+      "method": "setColorFilter",
+      "method_line": 76,
+      "properties": [
+        {
+          "name": "colorFilter",
+          "line": 33,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_type",
+      "reason": "Property is Int? (java.lang.Integer); explicit helper takes Int (primitive int)."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "method": "setTitle",
+      "method_line": 65,
+      "properties": [
+        {
+          "name": "title",
+          "line": 55,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "WgAlertDialogBuilder has private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "method": "setTitle",
+      "method_line": 66,
+      "properties": [
+        {
+          "name": "title",
+          "line": 55,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "WgAlertDialogBuilder has private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "method": "setMessage",
+      "method_line": 67,
+      "properties": [
+        {
+          "name": "message",
+          "line": 56,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "WgAlertDialogBuilder has private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "method": "setMessage",
+      "method_line": 68,
+      "properties": [
+        {
+          "name": "message",
+          "line": 56,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "WgAlertDialogBuilder has private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "method": "setIcon",
+      "method_line": 69,
+      "properties": [
+        {
+          "name": "icon",
+          "line": 58,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "WgAlertDialogBuilder has private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgAlertDialog.kt",
+      "method": "setCancelable",
+      "method_line": 70,
+      "properties": [
+        {
+          "name": "cancelable",
+          "line": 57,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "WgAlertDialogBuilder has private non-delegated default-accessor fields."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "method": "setText",
+      "method_line": 95,
+      "properties": [
+        {
+          "name": "text",
+          "line": 24,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "Property setter takes CharSequence; explicit methods take Object,Object (with $default bridge, no @JvmOverloads) or int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "method": "setText",
+      "method_line": 100,
+      "properties": [
+        {
+          "name": "text",
+          "line": 24,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "Property setter takes CharSequence; explicit methods take Object,Object (with $default bridge, no @JvmOverloads) or int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "method": "setTextColor",
+      "method_line": 101,
+      "properties": [
+        {
+          "name": "textColor",
+          "line": 54,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_nullable_primitive_boxing",
+      "reason": "Property Int? boxes to Integer; helper takes primitive int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "method": "setImageResource",
+      "method_line": 104,
+      "properties": [
+        {
+          "name": "imageResource",
+          "line": 62,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_nullable_primitive_boxing",
+      "reason": "Property Int? boxes to Integer; helper takes primitive int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "method": "setIndicatorColor",
+      "method_line": 105,
+      "properties": [
+        {
+          "name": "indicatorColor",
+          "line": 67,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_nullable_primitive_boxing",
+      "reason": "Property Int? boxes to Integer; helper takes primitive int."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/wireguard/WgControlState.kt",
+      "method": "setProgress",
+      "method_line": 106,
+      "properties": [
+        {
+          "name": "progress",
+          "line": 64,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_parameter_arity",
+      "reason": "Property setter takes int; explicit helper takes int, boolean."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/custom/AppHistogramView.kt",
+      "method": "setLightTheme",
+      "method_line": 77,
+      "properties": [
+        {
+          "name": "lightTheme",
+          "line": 75,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "lightTheme is a private non-delegated default-accessor field."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/custom/DonutChartView.kt",
+      "method": "setCenterText",
+      "method_line": 93,
+      "properties": [
+        {
+          "name": "centerText",
+          "line": 66,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "centerText is a private non-delegated default-accessor field."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/custom/FlagWatermarkView.kt",
+      "method": "setFlagText",
+      "method_line": 132,
+      "properties": [
+        {
+          "name": "flagText",
+          "line": 106,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "Original View properties are private non-delegated default-accessor fields; unlike migrated snapshot delegates they do not introduce matching setter methods."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/custom/FlagWatermarkView.kt",
+      "method": "setFlagDrawable",
+      "method_line": 148,
+      "properties": [
+        {
+          "name": "flagDrawable",
+          "line": 107,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "Original View properties are private non-delegated default-accessor fields; unlike migrated snapshot delegates they do not introduce matching setter methods."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/custom/FlagWatermarkView.kt",
+      "method": "setSpread",
+      "method_line": 183,
+      "properties": [
+        {
+          "name": "spread",
+          "line": 115,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "Original View properties are private non-delegated default-accessor fields; unlike migrated snapshot delegates they do not introduce matching setter methods."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/RethinkBlocklistFragment.kt",
+      "method": "getTag",
+      "method_line": 106,
+      "properties": [
+        {
+          "name": "tag",
+          "line": 99,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_distinct_owner",
+      "reason": "tag is on enum BlocklistView; getTag(String) is on BlocklistView.Companion."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/fragment/SummaryStatisticsFragment.kt",
+      "method": "getType",
+      "method_line": 69,
+      "properties": [
+        {
+          "name": "type",
+          "line": 123,
+          "kind": "val"
+        }
+      ],
+      "disposition": "harmless_local_variable",
+      "reason": "type is local to a fragment setup method; getType(Int) is on SummaryStatisticsType.Companion."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/tour/SpotlightOverlayView.kt",
+      "method": "setPremiumGlow",
+      "method_line": 186,
+      "properties": [
+        {
+          "name": "premiumGlow",
+          "line": 111,
+          "kind": "var"
+        }
+      ],
+      "disposition": "harmless_private_plain_field",
+      "reason": "premiumGlow is a private non-delegated default-accessor field."
+    }
+  ],
+  "property_property_candidates": [
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/compose/utilities/UtilityControl.kt",
+      "properties": [
+        "checked:50",
+        "isChecked:58"
+      ],
+      "disposition": "harmless",
+      "reason": "checked is a private plain Function2 callback field, not delegated Boolean state; isChecked has the sole setChecked(boolean) accessor."
+    },
+    {
+      "file": "app/src/main/java/com/celzero/bravedns/ui/bottomsheet/DnsRecordTypesBottomSheet.kt",
+      "properties": [
+        "isAutoMode:49",
+        "autoMode:207"
+      ],
+      "disposition": "harmless",
+      "reason": "isAutoMode belongs to DnsRecordTypesBottomSheet; autoMode is a constructor property of nested DnsRecordTypesAdapter, a separate JVM owner."
+    }
+  ],
+  "result": "Two pre-fix collisions, both resolved by reviewed private identifier renames. No additional confirmed collision in the finite UI/adapter candidate set.",
+  "limits": [
+    "No Gradle, Kotlin/JVM compiler, Android build, lint, unit test, instrumentation test, application, VPN/backend, or network/security runtime executed.",
+    "No toolchain or artifact downloads attempted; existing denial retained.",
+    "No code edits by auditor; only this report and companion Markdown summary written.",
+    "Source reasoning cannot establish whole-project compilation success."
+  ],
+  "inheritance_review": {
+    "HomeNode": "Reviewed HomeToggleGroup, HomePager, HomeHeatmap, HomeHistogram, IntervalRangeGroup, IntervalRows, IntervalSignature, RpnStatRows. Their properties/methods do not reuse inherited accessor signatures. HomePages.itemCount implementations are explicit property overrides, not duplicate getItemCount methods.",
+    "RpnControlState": "Reviewed RpnSearchState, RpnRefreshState, AppListControlState. New query/onRefresh/animation members do not duplicate inherited accessors. RpnSearchState.query is read-only; setQuery(String) writes distinct queryValue.",
+    "WgFormState": "Only inherited member property editableFields plus saveForm/restoreForm; 14 form subclasses do not redeclare colliding property/method names.",
+    "PagingPresenters": "Reviewed LogPagingPresenter, WgPagingPresenter, AppConnectionsPresenter, FirewallAppsPresenter and repository adapter subclass declarations. No subclass declares getItemCount() against inherited itemCount. AppActivityAdapter has its independent @get:JvmName safeguard and does not inherit these presenters.",
+    "NetworkNativeDialog": "context and theme constructor parameters are not val/var, so no generated getContext against android.app.Dialog. Its private buttons field and getButton(Int) have distinct names/arity.",
+    "Boolean_and_custom_accessors": "Reviewed isChecked/isVisible and related isX properties in HomeNode, RpnControlState, WgControlState, UtilityControl, LogControlState, DnsControl. Boolean state backing name checkedValue avoids setChecked(Z)V conflicts; UtilityControl.checked is a plain private Function2 callback field. No additional same-owner Boolean alias collisions found.",
+    "Defaults_and_annotations": "No @JvmOverloads on any method in the production UI subtree; occurrences are legacy View constructors. AppActivityAdapter @get:JvmName is the sole UI accessor renaming annotation. Compose setters with default parameters use distinct full-arity JVM methods and $default bridges. Reviewed generic/extension declarations do not introduce a matching accessor signature in this finite set."
+  },
+  "authored_guard_and_tests_review": {
+    "guard": "scripts/compose-migration/check-watermark-accessors.py",
+    "test": "app/src/test/java/com/celzero/bravedns/ui/compose/rpn/RpnFlagWatermarkStateTest.kt",
+    "source_review": "Guard pins whole pre-fix source hash after reversing only the two code-identifier renames, asserts original public methods, and mutates names/API/mask/alpha/test oracle/plain Application. Finite tokenizer suffices for this exact pinned file; it is not a general Kotlin parser.",
+    "test_review": "Two authored Robolectric tests check public setter reflection and compare synthetic bitmap output to the original FlagWatermarkView under both layout directions, repeated/changed modes, repeated text, resize, blank text, drawable override/default, clear and repeated clear. Uses plain Application with native graphics; no production Activity/controller/service or live data in the fixture.",
+    "runtime_status": "UNRUN. Source inspection does not grant isolated-test runtime clearance; existing toolchain, native-graphics and launcher/allowlist prerequisites remain in force.",
+    "source_execution": "PASS_SOURCE_ONLY: independently ran python3 scripts/compose-migration/check-watermark-accessors.py --self-test; all 7 mutations rejected. git diff --check also passed."
+  }
+}

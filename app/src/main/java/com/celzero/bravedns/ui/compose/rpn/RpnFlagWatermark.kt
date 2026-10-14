@@ -110,7 +110,7 @@ class RpnFlagWatermarkState(private val context: Context) {
     private const val SPREAD_END_BLEED_FRACTION = 0.5f
     }
 
-    private var flagText: String? by mutableStateOf(null)
+    private var flagTextValue: String? by mutableStateOf(null)
     private var flagDrawable: Drawable? by mutableStateOf(null)
 
     /**
@@ -119,7 +119,7 @@ class RpnFlagWatermarkState(private val context: Context) {
      * view (banner usage); when false it stays small in the same corner
      * (card usage).
      */
-    private var spread by mutableStateOf(false)
+    private var spreadEnabled by mutableStateOf(false)
 
     /** Per-flag peak-alpha override; `null` uses the mode default. */
     private var peakAlphaOverride: Float? by mutableStateOf(null)
@@ -138,8 +138,8 @@ class RpnFlagWatermarkState(private val context: Context) {
     /** Sets the flag from a country-flag emoji string (e.g. "🇮🇳"). */
     fun setFlagText(text: String?) {
         val next = text?.takeIf { it.isNotBlank() }
-        if (next == flagText && flagDrawable == null && peakAlphaOverride == null) return
-        flagText = next
+        if (next == flagTextValue && flagDrawable == null && peakAlphaOverride == null) return
+        flagTextValue = next
         flagDrawable = null
         if (peakAlphaOverride != null) {
             peakAlphaOverride = null
@@ -152,7 +152,7 @@ class RpnFlagWatermarkState(private val context: Context) {
      * and with an optional per-flag peak alpha.
      */
     fun setFlagDrawable(drawable: Drawable?, tintAttr: Int? = null, peakAlpha: Float? = null) {
-        if (drawable === flagDrawable && flagText == null && peakAlphaOverride == peakAlpha) return
+        if (drawable === flagDrawable && flagTextValue == null && peakAlphaOverride == peakAlpha) return
         flagDrawable = drawable
         if (drawable != null) {
             if (tintAttr != null) {
@@ -161,7 +161,7 @@ class RpnFlagWatermarkState(private val context: Context) {
                 drawable.setTintList(null)
             }
         }
-        flagText = null
+        flagTextValue = null
         if (peakAlphaOverride != peakAlpha) {
             peakAlphaOverride = peakAlpha
             maskShader = null
@@ -170,8 +170,8 @@ class RpnFlagWatermarkState(private val context: Context) {
 
     /** Removes the flag; the view collapses to GONE. */
     fun clear() {
-        if (flagText == null && flagDrawable == null) return
-        flagText = null
+        if (flagTextValue == null && flagDrawable == null) return
+        flagTextValue = null
         flagDrawable = null
         if (peakAlphaOverride != null) {
             peakAlphaOverride = null
@@ -185,8 +185,8 @@ class RpnFlagWatermarkState(private val context: Context) {
      * cached mask is rebuilt since its geometry depends on the mode.
      */
     fun setSpread(enabled: Boolean) {
-        if (spread == enabled) return
-        spread = enabled
+        if (spreadEnabled == enabled) return
+        spreadEnabled = enabled
         maskShader = null
     }
 
@@ -195,7 +195,7 @@ class RpnFlagWatermarkState(private val context: Context) {
         width = drawWidth
         height = drawHeight
         rtl = isRtl
-        if (flagText == null && flagDrawable == null) return
+        if (flagTextValue == null && flagDrawable == null) return
         val w = width.toFloat()
         val h = height.toFloat()
         if (w <= 0f || h <= 0f) return
@@ -228,7 +228,7 @@ class RpnFlagWatermarkState(private val context: Context) {
         val anchor = cornerX(w)
         val dir = inwardDir(w)
         val size = flagSize(w, h)
-        if (spread) {
+        if (spreadEnabled) {
             val bleed = size * SPREAD_END_BLEED_FRACTION
             val cx = anchor + dir * (size / 2f - bleed)
             // Centre vertically so the wash reaches the banner's top and
@@ -242,7 +242,7 @@ class RpnFlagWatermarkState(private val context: Context) {
 
     /** Content size: full view height in spread mode, capped otherwise. */
     private fun flagSize(w: Float, h: Float): Float =
-        if (spread) h
+        if (spreadEnabled) h
         else min(preferredContentSize * CARD_CONTENT_SCALE, h * 0.92f)
 
     private fun buildMask(w: Float, h: Float): Shader {
@@ -250,8 +250,8 @@ class RpnFlagWatermarkState(private val context: Context) {
         val size = flagSize(w, h)
         // Hold most of the tint across the glyph and dissolve past it, so the
         // wash still reads at full strength where the card edge cuts it off.
-        val radius = if (spread) size * 1.1f else size * CARD_MASK_RADIUS_FACTOR
-        val peak = if (spread) SPREAD_PEAK_ALPHA else peakAlphaOverride ?: CARD_PEAK_ALPHA
+        val radius = if (spreadEnabled) size * 1.1f else size * CARD_MASK_RADIUS_FACTOR
+        val peak = if (spreadEnabled) SPREAD_PEAK_ALPHA else peakAlphaOverride ?: CARD_PEAK_ALPHA
         val stops = floatArrayOf(0f, 0.5f, 1f)
         val colors = intArrayOf(
             alphaColor(peak),
@@ -282,7 +282,7 @@ class RpnFlagWatermarkState(private val context: Context) {
 
         canvas.save()
         canvas.translate(cx - centreX, cy - centreY)
-        if (!spread) {
+        if (!spreadEnabled) {
             // Tilt the glyph so the bottom-end cut reads as a slant.
             canvas.rotate(CARD_TILT_DEGREES, centreX, centreY)
         }
@@ -310,7 +310,7 @@ class RpnFlagWatermarkState(private val context: Context) {
             return
         }
 
-        val text = flagText ?: run {
+        val text = flagTextValue ?: run {
             canvas.restore()
             return
         }
@@ -318,7 +318,7 @@ class RpnFlagWatermarkState(private val context: Context) {
         // content square via font metrics so they are not clipped or stretched.
         // Spread mode scales the em box up so the flag's visible body spans
         // the full height of the banner.
-        textPaint.textSize = size * (if (spread) SPREAD_TEXT_SCALE else 0.95f)
+        textPaint.textSize = size * (if (spreadEnabled) SPREAD_TEXT_SCALE else 0.95f)
         val fm = textPaint.fontMetrics
         val baseline = (size - (fm.descent - fm.ascent)) / 2f - fm.ascent
         canvas.drawText(text, centreX, baseline, textPaint)

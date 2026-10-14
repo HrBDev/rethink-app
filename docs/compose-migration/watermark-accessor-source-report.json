@@ -1,0 +1,11 @@
+{
+  "status": "PASS_SOURCE_ONLY",
+  "reported_jvm_signature_collisions": 2,
+  "reported_compiler_diagnostics": 4,
+  "private_identifier_renames": 2,
+  "exact_reverse_rename_sha256": "b8188c257508fc4a52b5af91a69952d4cc7654604dfbf5877ae25fb40f87a883",
+  "rejected_mutations": 7,
+  "authored_test_methods": 2,
+  "kotlin_compilation": "UNRUN",
+  "android_tests_and_rendering": "UNRUN"
+}

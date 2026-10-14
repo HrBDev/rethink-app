@@ -183,8 +183,12 @@ def validate(src):
     check('entire VPN adapter unchanged except the two watermark presentation assignments', unchanged == git(BEFORE, FILES['vpn']))
     old_watermark = git(BASE, UI + 'custom/FlagWatermarkView.kt')
     for name in ['flagCenter', 'buildMask', 'drawFlag']:
-        check('watermark '+name+' drawing body byte-exact from baseline',
-              block(src['watermark'], 'fun '+name) == block(old_watermark, 'fun '+name))
+        # Private delegated backing properties must not share the public setters' JVM names.
+        # Reverse only those two identifier renames; every other drawing byte stays protected.
+        drawing = re.sub(r'\bflagTextValue\b', 'flagText', block(src['watermark'], 'fun '+name))
+        drawing = re.sub(r'\bspreadEnabled\b', 'spread', drawing)
+        check('watermark '+name+' drawing body unchanged except private backing names',
+              drawing == block(old_watermark, 'fun '+name))
     contains('watermark', 'watermark source constants, native drawing and RTL',
              'CONTENT_SIZE_DP = 20f', 'CARD_CONTENT_SCALE = 4f', 'CARD_END_BLEED_FRACTION = 0.3f',
              'CARD_TILT_DEGREES = -35f', 'CARD_MASK_RADIUS_FACTOR = 5f', 'if (rtl) 0f else w',

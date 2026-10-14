@@ -31,7 +31,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
@@ -41,9 +41,11 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.ui.compose.NoDimDialogWindow
 import com.celzero.bravedns.ui.compose.settings.SettingsCard
 import com.celzero.bravedns.ui.compose.themeColor
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable internal fun <T: Any> DnsEndpointScreen(
@@ -73,10 +75,23 @@ import kotlinx.coroutines.withContext
             entries.itemCount == 0 && entries.loadState.source.refresh is LoadState.Loading -> CircularProgressIndicator(Modifier.align(Alignment.Center))
             entries.itemCount == 0 && entries.loadState.source.refresh is LoadState.NotLoading -> DnsEmptyState(emptyTitle, emptyDescription, Modifier.align(Alignment.Center))
             else -> LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(start = 8.dp, end = 8.dp, top = 8.dp, bottom = bottomPadding.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(entries.itemCount, key = entries.itemKey { row(it).id }) { index -> entries[index]?.let { DnsEndpointRow(row(it)) } }
+                items(entries.itemCount, key = entries.itemKey { row(it).id }) { index ->
+                    entries[index]?.let { DnsEndpointRow(rememberDnsEndpointRow(it, row)) }
+                }
             }
         }
     }
+}
+
+// Endpoint entity equality can ignore changed fields (some protocols compare only the id).
+// A new paged entity must bind again, but redrawing its existing instance must not manufacture
+// fresh effect callbacks. Bound presenter method references compare equal across parent redraws.
+@Composable internal fun <T: Any> rememberDnsEndpointRow(endpoint: T, row: (T) -> DnsEndpointRowState): DnsEndpointRowState =
+    remember(DnsEndpointSourceIdentity(endpoint), row) { row(endpoint) }
+
+private class DnsEndpointSourceIdentity(private val endpoint: Any) {
+    override fun equals(other: Any?): Boolean = other is DnsEndpointSourceIdentity && endpoint === other.endpoint
+    override fun hashCode(): Int = System.identityHashCode(endpoint)
 }
 
 @Composable internal fun DnsEmptyState(title: Int, description: Int, modifier: Modifier = Modifier) {
@@ -87,22 +102,33 @@ import kotlinx.coroutines.withContext
     }
 }
 
-@Composable internal fun DnsEndpointRow(item: DnsEndpointRowState) {
+@Composable internal fun DnsEndpointRow(item: DnsEndpointRowState, ioDispatcher: CoroutineDispatcher = Dispatchers.IO) {
     val owner = LocalLifecycleOwner.current
-    val latest by rememberUpdatedState(item)
-    var description by remember(item.id, item.selected) { mutableStateOf<String?>(null) }
+    var description by remember(item) { mutableStateOf(item.initialDescription) }
     var flag by remember(item.id, item.selected, item.address) { mutableStateOf<String?>(null) }
-    LaunchedEffect(item.id, item.selected, item.pollStatus, owner) {
-        owner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+    // A new row snapshot is a bind, including replacement callbacks for the same id/address.
+    // START/STOP alone must not rebind: the adapters fetched flags once per bind and stopped
+    // polling after an inactive tick, without restarting it on the next START.
+    DisposableEffect(item, owner, ioDispatcher) {
+        val statusJob = owner.lifecycleScope.launch {
+            val readDescription = item.description ?: return@launch
             do {
-                description = withContext(Dispatchers.IO) { latest.description() }
-                if (!latest.pollStatus) break
+                if (item.pollStatus && !owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) break
+                // The adapters scheduled each read separately, so a pending read must not
+                // postpone the next lifecycle check or turn a stopped poll into a later retry.
+                launch {
+                    val value = withContext(ioDispatcher) { readDescription() }
+                    if (owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) description = value
+                }
+                if (!item.pollStatus) break
                 delay(1_000L)
             } while (isActive)
         }
-    }
-    LaunchedEffect(item.id, item.selected, item.address, owner) {
-        owner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) { flag = withContext(Dispatchers.IO) { latest.flag() } }
+        val flagJob = owner.lifecycleScope.launch {
+            val value = withContext(ioDispatcher) { item.flag() }
+            if (owner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) flag = value
+        }
+        onDispose { statusJob.cancel(); flagJob.cancel() }
     }
     val announcement = stringResource(if (item.selected) R.string.dns_list_item_selected_cd else R.string.dns_list_item_select_cd, item.name)
     SettingsCard(contentPadding = 0.dp, cornerRadius = 12.dp) {

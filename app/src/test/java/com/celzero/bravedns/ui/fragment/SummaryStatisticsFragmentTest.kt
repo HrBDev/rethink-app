@@ -20,6 +20,7 @@ class SummaryStatisticsFragmentTest : SafeRootHostTest() {
     @Test fun testStatisticsDisplay() {
         launch()
         compose.onNodeWithTag("root_nav_${R.id.summaryStatisticsFragment}").performClick()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         assertEquals(R.id.summaryStatisticsFragment, destination)
         assertTrue(navHost.childFragmentManager.primaryNavigationFragment is SummaryStatisticsFragment)
         compose.onNodeWithTag("stats_time_0").assertIsDisplayed()
@@ -28,8 +29,10 @@ class SummaryStatisticsFragmentTest : SafeRootHostTest() {
     @Test fun timeSelectionRecreationReattachesWithoutChangingSelectedTime() {
         launch()
         compose.onNodeWithTag("root_nav_${R.id.summaryStatisticsFragment}").performClick()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         compose.onNodeWithTag("stats_time_1").performClick().assertIsSelected()
         recreateHost()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         compose.onNodeWithTag("stats_time_1").assertIsSelected()
         // The real fragment re-applies the ViewModel category once on restored onResume.
         assertEquals(2, calls.count { it == "statistics-time:1" })

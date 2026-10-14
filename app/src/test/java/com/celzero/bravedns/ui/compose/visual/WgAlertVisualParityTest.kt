@@ -90,6 +90,8 @@ class WgAlertVisualParityTest {
                 evidence.text("message", baseline.findViewById(android.R.id.message)!!, text(message))
                 listOf(DialogInterface.BUTTON_NEGATIVE to "Cancel", DialogInterface.BUTTON_POSITIVE to "Continue").forEach { (id, label) ->
                     evidence.text("button $label", reference.getButton(id), text(label))
+                    evidence.contrast("button $label", text(label), reference.getButton(id).currentTextColor,
+                        native.context.color(R.attr.colorSurfaceContainerHigh), native.context.color(android.R.attr.colorBackground))
                     val button = compose.onNodeWithText(label)
                     button.assertIsDisplayed().assertHasClickAction().assertIsEnabled()
                     evidence.check("$label touch target", button.fetchSemanticsNode().touchBoundsInRoot.height >= 48f, "minimum 48 dp")

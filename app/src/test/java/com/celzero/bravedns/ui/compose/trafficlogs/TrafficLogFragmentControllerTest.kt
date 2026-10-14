@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.paging.PagingData
 import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
@@ -50,6 +51,7 @@ class TrafficLogFragmentControllerTest {
     @Before fun setUp() {
         Dispatchers.setMain(main); stopKoin()
         connectionVm = mockk(); dnsVm = mockk()
+        allowFrameworkDisposal(connectionVm); allowFrameworkDisposal(dnsVm)
         val prefs = mockk<PersistentState>(); val config = mockk<AppConfig>()
         every { prefs.logsEnabled } answers { enabled }
         every { prefs.fetchFavIcon } returns false
@@ -122,6 +124,11 @@ class TrafficLogFragmentControllerTest {
         assertEquals("network::[synthetic-rule]:BLOCKED", calls.last())
     }
     private fun add(fragment: Fragment) { host.get().supportFragmentManager.beginTransaction().add(containerId, fragment, "fixture").commitNow() }
+    private fun allowFrameworkDisposal(viewModel: ViewModel) {
+        // Constructor-free strict fakes own no resources; permit only framework disposal.
+        // Every unlisted application method still fails closed.
+        every { ViewModel::class.java.getDeclaredMethod("clear\$lifecycle_viewmodel").invoke(viewModel) } returns null
+    }
     private fun state(fragment: Fragment) = fragment.javaClass.getDeclaredField("state").apply { isAccessible = true }.get(fragment) as LogScreenState
     private fun invoke(target: Any, name: String, types: Array<Class<*>>, args: Array<Any>) = target.javaClass.getDeclaredMethod(name, *types).apply { isAccessible = true }.invoke(target, *args)
 }

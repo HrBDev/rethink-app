@@ -24,6 +24,9 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.graphics.ColorUtils
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -153,7 +156,13 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
                                         else -> AppCompatR.attr.buttonBarPositiveButtonStyle
                                     }
                                     val style = utilityTextStyle(defaultStyleAttribute = styleAttribute, lineExtraDp = 0f)
-                                    val color = wgDialogTextColor(styleAttribute, MaterialTheme.colorScheme.primary)
+                                    // Use the native Material text-button accent. Reading the legacy widget selector
+                                    // directly can expose its unresolved magenta fallback instead of themed color.
+                                    val surface = MaterialTheme.colorScheme.surfaceContainerHigh.compositeOver(
+                                        themeColor(android.R.attr.colorBackground).copy(alpha = 1f))
+                                    val primary = MaterialTheme.colorScheme.primary
+                                    val color = if (ColorUtils.calculateContrast(primary.compositeOver(surface).toArgb(), surface.toArgb()) >= 4.5)
+                                        primary else MaterialTheme.colorScheme.onSurface
                                     TextButton({ dispatchButton(action, which) }, Modifier.padding(start = 8.dp).defaultMinSize(minWidth = 64.dp, minHeight = 48.dp),
                                         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 10.dp),
                                         colors = ButtonDefaults.textButtonColors(contentColor = color)) {

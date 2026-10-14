@@ -2,7 +2,7 @@
 
 Baseline: `23cb6dd98805445174bd83b7237ad5f5d2c24ac9` (`gradle-improvements`).
 
-Status: authored and source-audited; **not compiled or executed by this worker**. The coordinator must review the boundaries below before a serial, class-filtered Robolectric run. No Gradle, emulator/device, application, VPN, probe, network, permission, export, account or remote operation was executed to author this change. Do not count authored tests as passing coverage.
+Status: authored and source-audited; **not compiled or executed by this worker**. The coordinator’s initial serial, class-filtered run compiled both suites and exposed fixture failures, documented below. The fixture corrections remain unexecuted and require renewed source-pin review before a rerun. No Gradle, emulator/device, application, VPN, probe, network, permission, export, account or remote operation was executed to author this change. Do not count authored tests as passing coverage.
 
 ## Original test ownership and relocation
 
@@ -89,3 +89,79 @@ A later device harness must use the same complete fake boundaries and native sel
 2. Fix any compiler/runtime failures without reintroducing permissive catches or weakening assertions. Source-only authorship is not an execution result.
 3. Separately review the original pure unit tests and the untouched baseline test suite's safe run eligibility. Do not blanket-run application-backed tests.
 4. Device benchmark metrics above, full seven-theme visual comparison/Frost, RTL/accessibility traversal, process death, notes/shared-UID confirmation, active connection confirmation, and OS permission/export interactions remain separate unrun obligations. No live action is authorized by this test migration.
+
+
+## Initial coordinator execution and fixture corrections (2026-10-14 UTC)
+
+Source of runtime evidence: `../validation/reviewed-host-tests-1.log`. This worker only read the
+coordinator’s log and source; it did not start Gradle or execute a test.
+
+- AppInfo: the first four cases passed. `testAppSettingsToggleStates` then timed out at the
+  recorded-command wait, and teardown timed out joining lifecycle jobs. The next 24 cases failed
+  the fixture’s empty-Koin precondition, so they do not establish independent UI regressions.
+  The inspected Wi-Fi/mobile callbacks cross IO → Main → IO before recording the fake command.
+  The former wait only inspected a collection and did not drain Robolectric’s paused Android main
+  looper. Blocking that looper in teardown also prevented queued cancellation continuations from
+  completing. Bounded state/command waits now use `compose.runOnIdle`; teardown explicitly idles
+  the shadow main looper until every cancelled lifecycle job is complete, then still joins every
+  job before unmocking. Neither timeout is swallowed or treated as success.
+- The OS App Info callback has the same IO → Main boundary. Its recorded package list is now
+  awaited with main-loop synchronization before retaining the exact package and exactly-one
+  MockK verification. The callback remains an in-memory sink; no system Activity is launched.
+- MiscSettings: 59 cases passed and five tombstone cases failed verification of the default
+  suspend callback argument to `RefreshDatabase.refresh`. Each failure already showed the exact
+  expected action `4` and one actual call; only the compiler-created callback identity differed.
+  The stub and all verifications now explicitly match the unused callback argument. They retain
+  `ACTION_REFRESH_FORCE` and exactly-one checks; the initial-state case checks zero calls across
+  both arguments. The fake never invokes the callback or enters the actor/repository implementation.
+
+The original 24 AppInfo and 62 MiscSettings names remain present. Total declared test counts remain
+29 and 64, verified by source/manifest comparison. No production file, dependency, startup order,
+DAO boundary, network path, permission flow, backend path, account, or export operation changed.
+The manifest’s `authored-not-run` values are the pre-execution mapping snapshot and are not a claim
+that the initial coordinator run passed; coordinator-owned execution accounting still needs updating.
+
+Pending source pins for coordinator review/rerun:
+
+- `app/src/test/java/com/celzero/bravedns/ui/activity/AppInfoActivityTest.kt`:
+  `f70a63c2c97151739b88ef12ddf0adf4b0ba0d5be8b19272dbe3db57f63e0eb2`
+- `app/src/test/java/com/celzero/bravedns/ui/activity/MiscSettingsActivityRobolectricTest.kt`:
+  `02107b7a4bba1d8282df312bd55c01498e5df7b404cc351bca5b73ad7c4b7efa`
+
+These changes preserve the previously inspected safety bounds but invalidate the old test-source
+pins in `host-safety-review.md`. They are proposed fixture corrections, not passing rerun evidence.
+
+
+## Second coordinator run: replaced Activity Intent (2026-10-14 UTC)
+
+`../validation/reviewed-host-tests-2.log` records 28 passing AppInfo cases and one failure:
+`testActivityStateWithMultipleIntents` expected an invalid-app dialog after controller recreation.
+The expectation was added during migration and was incorrect for this harness.
+
+Proof inspected without running a test:
+
+- Baseline `23cb6dd98805445174bd83b7237ad5f5d2c24ac9`, original Android-test method lines 370–396:
+  launches the valid Intent, assigns `activity.intent = newIntent` containing `INVALID_UID`, then
+  asserts the same Activity still exists. It neither delivers `onNewIntent` nor requests recreation.
+- Production `AppInfoActivity.kt:199` reads UID from Intent in `onCreate`. There is no
+  `onNewIntent` override and `setIntent` does not call the Activity's initialization code.
+- Read-only `javap -c -p` inspection of the already-cached Robolectric 4.17
+  `shadows-framework-4.17.jar` (SHA-256
+  `ee580073a51a045e3950280c16e7d07382cd47f9049053a01f7a6d1dcc6a0527`) shows
+  `ComponentController` retains its constructor Intent in its own `intent` field.
+  `ActivityController.recreate()` constructs a new Activity (bytecode offsets 184–205), calls
+  `attach` (229–236), then `create` (238–243). `attach` passes controller `getIntent()` to
+  `ShadowActivity.callAttach` (offsets 86–95); it never reads the destroyed Activity's replacement
+  Intent. Controller `getIntent()` returns its retained launch Intent.
+
+The corrected case preserves and strengthens the original obligation: it verifies the replacement
+Intent identity and invalid extra, the existing exact app name/package/UID semantics, a resumed
+non-finishing lifecycle, and zero rule commands. It retains the added recreation and explicitly
+checks the controller's original `TEST_UID`, the recreated Activity's `TEST_UID`, exact mounted
+metadata, no open dialog, and no invalid-UID lookup. Invalid launch dialogs remain covered by the
+separate invalid/missing/negative/empty-Intent cases. No production behavior or safety boundary
+changed, and no test was run by this worker.
+
+New AppInfo test SHA-256, pending coordinator review/rerun:
+`5eda39bd46d5e23fb4b98e1a808571d449823a7d63a0a85003eafca26577e6df`. MiscSettings remains unchanged at
+`02107b7a4bba1d8282df312bd55c01498e5df7b404cc351bca5b73ad7c4b7efa`.

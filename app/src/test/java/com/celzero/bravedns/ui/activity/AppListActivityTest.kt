@@ -5,6 +5,7 @@ import android.app.Application
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.paging.PagingData
 import com.celzero.bravedns.database.AppInfo
 import com.celzero.bravedns.service.EventLogger
@@ -42,6 +43,8 @@ class AppListActivityTest {
         stopKoin()
         val prefs = mockk<PersistentState>()
         val vm = mockk<AppInfoViewModel>()
+        // Only framework cleanup is a no-op: this strict, constructor-free VM has no resources.
+        every { ViewModel::class.java.getDeclaredMethod("clear\$lifecycle_viewmodel").invoke(vm) } returns null
         refresh = mockk(); events = mockk()
         every { prefs.theme } returns Themes.LIGHT.id
         every { vm.appInfo } returns data
@@ -51,9 +54,12 @@ class AppListActivityTest {
         compose.waitForIdle()
     }
     @After fun tearDown() {
-        if (::host.isInitialized) host.pause().stop().destroy()
-        verify { listOf(refresh, events) wasNot Called }
-        stopKoin()
+        try {
+            if (::host.isInitialized && !host.get().isDestroyed) host.pause().stop().destroy()
+            verify { listOf(refresh, events) wasNot Called }
+        } finally {
+            stopKoin()
+        }
     }
     @Test fun testAppListDisplay() {
         compose.onNodeWithTag("ffa_app_list").assertIsDisplayed()

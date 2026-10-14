@@ -184,6 +184,21 @@ internal class VisualEvidence(private val surface: String, private val scenario:
         if (compareLineStep && baselineStep != null && nativeStep != null) close(label, "line step", baselineStep.toFloat(), nativeStep, 1f)
         flush()
     }
+    fun contrast(label: String, native: SemanticsNodeInteraction, baselineColor: Int, background: Int, backing: Int) {
+        val color = native.textLayout().layoutInput.style.color
+        check("$label explicit enabled text color", color.isSpecified, "Contrast requires a resolved foreground color")
+        if (!color.isSpecified) return
+        val opaqueBackground = androidx.core.graphics.ColorUtils.compositeColors(background, backing)
+        val nativeForeground = androidx.core.graphics.ColorUtils.compositeColors(color.toArgb(), opaqueBackground)
+        val baselineForeground = androidx.core.graphics.ColorUtils.compositeColors(baselineColor, opaqueBackground)
+        val ratio = androidx.core.graphics.ColorUtils.calculateContrast(nativeForeground, opaqueBackground)
+        val baselineRatio = androidx.core.graphics.ColorUtils.calculateContrast(baselineForeground, opaqueBackground)
+        measurements.put(JSONObject().put("contrastLabel", label).put("nativeContrastRatio", ratio)
+            .put("baselineContrastRatioAgainstNativeSurface", baselineRatio).put("minimumRatio", 4.5)
+            .put("compositedSurfaceArgb", opaqueBackground).put("nativeForegroundArgb", nativeForeground)
+            .put("scope", "Enabled synthetic button text against its known surface; no disabled alpha or wallpaper backdrop"))
+        check("$label contrast", ratio >= 4.5, "native=$ratio:1; baseline foreground=$baselineRatio:1; required normal-label contrast=4.5:1")
+    }
     fun check(label: String, condition: Boolean, details: String) {
         measurements.put(JSONObject().put("check", label).put("passed", condition).put("details", details))
         if (!condition) failures += "$label: $details"

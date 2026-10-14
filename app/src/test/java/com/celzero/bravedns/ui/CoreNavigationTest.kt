@@ -19,7 +19,9 @@ class CoreNavigationTest : SafeRootHostTest() {
     @Test fun testBottomNavigation() {
         launch()
         for (id in listOf(R.id.summaryStatisticsFragment, R.id.configureFragment, R.id.aboutFragment, R.id.homeScreenFragment)) {
-            compose.onNodeWithTag("root_nav_$id").performClick().assertIsSelected()
+            compose.onNodeWithTag("root_nav_$id").performClick()
+            awaitRootDestination(id)
+            compose.onNodeWithTag("root_nav_$id").assertIsSelected()
             compose.runOnIdle { assertEquals(id, destination) }
         }
         compose.onNodeWithTag("fhs_dns_on_off_btn").assertIsDisplayed()
@@ -27,10 +29,13 @@ class CoreNavigationTest : SafeRootHostTest() {
     @Test fun reselectionDoesNotReplaceCurrentFragmentAndBackReturnsHomeThenFinishes() {
         launch()
         compose.onNodeWithTag("root_nav_${R.id.summaryStatisticsFragment}").performClick()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         val current = navHost.childFragmentManager.primaryNavigationFragment
         compose.onNodeWithTag("root_nav_${R.id.summaryStatisticsFragment}").performClick()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         compose.runOnIdle { assertSame(current, navHost.childFragmentManager.primaryNavigationFragment) }
         compose.runOnIdle { activity.onBackPressedDispatcher.onBackPressed() }
+        awaitRootDestination(R.id.homeScreenFragment)
         compose.runOnIdle { assertEquals(R.id.homeScreenFragment, destination); assertFalse(activity.isFinishing) }
         compose.runOnIdle { activity.onBackPressedDispatcher.onBackPressed() }
         assertTrue(activity.isFinishing)

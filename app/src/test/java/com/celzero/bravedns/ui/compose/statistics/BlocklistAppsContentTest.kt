@@ -13,6 +13,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.lifecycleScope
 import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.BlocklistAppsAdapter
@@ -20,6 +21,7 @@ import com.celzero.bravedns.data.AppConnection
 import com.celzero.bravedns.ui.compose.RethinkTheme
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Job
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -43,12 +45,14 @@ class BlocklistAppsContentTest {
         compose.setContent { Theme { adapter.GroupAt(0) } }
         compose.runOnIdle { assertTrue(calls.isEmpty()) }
         compose.onNodeWithTag("blocklist_app_10001").performClick()
-        compose.waitUntil { calls.size == 1 }
+        compose.waitUntil(5_000) { compose.runOnIdle { calls.size == 1 } }
         compose.onNodeWithTag("blocklist_app_10001").performClick()
         compose.runOnIdle { pending.complete(listOf(domain)) }
-        compose.waitUntil { cachedDomains(adapter) != null }
+        // The fake IO result is committed on Main.immediate. Drain Robolectric's paused
+        // main queue while polling instead of merely waiting for wall-clock time to pass.
+        compose.waitUntil(5_000) { compose.runOnIdle { cachedDomains(adapter) != null } }
         compose.onNodeWithTag("blocklist_app_10001").performClick()
-        compose.waitUntil { compose.onAllNodesWithText("example.test").fetchSemanticsNodes().size == 1 }
+        compose.waitUntil(5_000) { compose.onAllNodesWithText("example.test").fetchSemanticsNodes().size == 1 }
         compose.onNodeWithText("example.test").assertIsDisplayed()
         compose.onNodeWithTag("blocklist_app_10001").performClick()
         compose.onNodeWithText("example.test").assertDoesNotExist()
@@ -57,7 +61,9 @@ class BlocklistAppsContentTest {
         compose.runOnIdle { assertEquals(listOf(10001), calls.toList()); adapter.submitApps(listOf(app)) }
         compose.onNodeWithText("example.test").assertDoesNotExist()
         compose.onNodeWithTag("blocklist_app_10001").performClick()
-        compose.waitUntil { calls.size == 2 }
+        compose.waitUntil(5_000) { compose.runOnIdle { calls.size == 2 } }
+        waitForDomainFetchesToFinish(owner)
+        compose.runOnIdle { assertEquals(listOf(10001, 10001), calls.toList()) }
         compose.runOnIdle { owner.registry.currentState = Lifecycle.State.DESTROYED }
     }
     @Test fun lateFetchFromPreviousTagSubmissionCannotPopulateTheReplacementGroup() {
@@ -68,12 +74,20 @@ class BlocklistAppsContentTest {
         compose.runOnIdle { owner.registry.currentState = Lifecycle.State.STARTED; adapter.submitApps(listOf(app)) }
         compose.setContent { Theme { adapter.GroupAt(0) } }
         compose.onNodeWithTag("blocklist_app_10001").performClick()
-        compose.waitUntil { calls.size == 1 }
+        compose.waitUntil(5_000) { compose.runOnIdle { calls.size == 1 } }
         compose.runOnIdle { adapter.submitApps(listOf(app.copy(count = 99))); pending.complete(listOf(domain)) }
-        compose.waitForIdle()
+        // Wait through the old fetch's Main delivery before asserting isolation. A single
+        // Compose idle observation can otherwise precede the IO coroutine's resumption.
+        waitForDomainFetchesToFinish(owner)
         compose.onNodeWithText("example.test").assertDoesNotExist()
         compose.onNodeWithText("99").assertIsDisplayed()
+        compose.runOnIdle { assertEquals(listOf(10001), calls.toList()) }
         compose.runOnIdle { owner.registry.currentState = Lifecycle.State.DESTROYED }
+    }
+    private fun waitForDomainFetchesToFinish(owner: FakeOwner) {
+        compose.waitUntil(5_000) {
+            compose.runOnIdle { owner.lifecycleScope.coroutineContext[Job]!!.children.none() }
+        }
     }
     private fun cachedDomains(adapter: BlocklistAppsAdapter): List<*>? {
         val groups = BlocklistAppsAdapter::class.java.getDeclaredMethod("getGroups").apply { isAccessible = true }.invoke(adapter) as List<*>

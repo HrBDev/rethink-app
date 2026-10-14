@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,14 +21,20 @@ import com.celzero.bravedns.ui.compose.appdetails.AppConnectionsPresenter
 @Composable
 internal fun PagedStatisticsScreen(title: String, subtitle: String?, empty: Boolean,
     presenter: AppConnectionsPresenter?, chips: @Composable () -> Unit = {},
-    extraCount: Int = 0, extraRow: @Composable (Int) -> Unit = {}) {
+    extraCount: Int = 0, extraRow: @Composable (Int) -> Unit = {},
+    selectableTitle: Boolean = false) {
     val listState = rememberLazyListState()
     Surface {
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
             Column(Modifier.fillMaxWidth().padding(15.dp)) {
                 Text(stringResource(R.string.app_name_small_case), Modifier.alpha(.5f).padding(horizontal = 7.dp), style = MaterialTheme.typography.headlineLarge)
                 FlowRow(Modifier.fillMaxWidth().padding(10.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(title, style = MaterialTheme.typography.titleLarge)
+                    if (selectableTitle) {
+                        // Domain connection headings were selectable in the original TextView.
+                        SelectionContainer { Text(title, style = MaterialTheme.typography.titleLarge) }
+                    } else {
+                        Text(title, style = MaterialTheme.typography.titleLarge)
+                    }
                     if (subtitle != null) Text(subtitle, Modifier.padding(start = 12.dp), style = MaterialTheme.typography.bodyMedium)
                 }
                 chips()

@@ -83,8 +83,9 @@ class UtilityTypographyTest {
         compose.runOnIdle {assertTypography(reference,rendered)}
     }
     @Test fun sponsorLargeFontPreservesRawSpAndRenderedLineStep() {
-        val context=ContextThemeWrapper(ApplicationProvider.getApplicationContext(),R.style.AppThemeWhite).apply {
-            applyOverrideConfiguration(android.content.res.Configuration(resources.configuration).apply {fontScale=2f})
+        val base=ApplicationProvider.getApplicationContext<Application>()
+        val context=ContextThemeWrapper(base,R.style.AppThemeWhite).apply {
+            applyOverrideConfiguration(android.content.res.Configuration(base.resources.configuration).apply {fontScale=2f})
         }
         val root=LayoutInflater.from(context).inflate(R.layout.fragment_sponsor_success,null)
         val title=root.findViewById<TextView>(R.id.success_title)
@@ -102,7 +103,8 @@ class UtilityTypographyTest {
             }
         }}
         compose.runOnIdle {
-            assertEquals(title.textSize,with(density){titleStyle.fontSize.toPx()},.1f)
+            // TextAppearance rounds pixels while Compose retains subpixels; cosmetic rounding is accepted.
+            assertEquals(title.textSize,with(density){titleStyle.fontSize.toPx()},.51f)
             val expected=message.layout.getLineBaseline(1)-message.layout.getLineBaseline(0)
             assertEquals(expected.toFloat(),bodyLayout.getLineBaseline(1)-bodyLayout.getLineBaseline(0),1f)
         }

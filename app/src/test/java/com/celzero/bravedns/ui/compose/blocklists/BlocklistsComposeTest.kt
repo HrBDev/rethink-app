@@ -16,6 +16,7 @@ import android.app.Application
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import org.robolectric.annotation.GraphicsMode
 import org.junit.Rule
 import org.junit.Test
 import org.junit.Assert.*
@@ -23,6 +24,7 @@ import org.junit.Assert.*
 /** Native content only, with empty paging flows and recording callbacks. */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
 class BlocklistsComposeTest {
     @get:Rule val compose = createComposeRule()
     private fun row(entries: String? = null, select: (Boolean) -> Unit = {}, link: () -> Unit = {}) = BlocklistRow("pack:fake:1", "security", "Security", "Description", "Fake pack", "Two lists", 1, { false }, select, entries, link)
@@ -99,6 +101,9 @@ class BlocklistsComposeTest {
         compose.runOnIdle { s.prompt = prompt() }
         compose.onNodeWithTag("blocklist-dialog-positive").performClick()
         compose.runOnIdle { s.prompt = prompt() }
+        // runOnIdle mutates state after synchronization; materialize the replacement dialog
+        // before Espresso sends Back to the currently attached window.
+        compose.onNodeWithTag("blocklist-dialog-positive").assertIsDisplayed()
         Espresso.pressBack()
         compose.runOnIdle { assertNull(s.prompt); assertEquals(listOf("continue", "discard", "apply"), calls) }
     }

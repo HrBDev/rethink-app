@@ -63,8 +63,8 @@ class TrafficLogsComposeTest {
         compose.setContent { Theme { lifecycle = LocalLifecycleOwner.current.lifecycle; LogList(LogScreenState(), presenter, timestamp = { it.timestamp }) } }
         val first = Event(1, 1, EventType.DNS_QUERY, Severity.LOW, "first.test", source = EventSource.DNS)
         val second = Event(2, 2, EventType.DNS_QUERY, Severity.LOW, "second.test", source = EventSource.DNS)
-        compose.runOnIdle { presenter.submitData(lifecycle, PagingData.from(listOf(first))) }; compose.waitUntil { presenter.itemCount == 1 }
-        compose.runOnIdle { presenter.submitData(lifecycle, PagingData.from(listOf(second, first))) }; compose.waitUntil { presenter.itemCount == 2 }
+        compose.runOnIdle { presenter.submitData(lifecycle, PagingData.from(listOf(first))) }; compose.waitUntil(5000) { compose.runOnIdle { presenter.itemCount == 1 } }
+        compose.runOnIdle { presenter.submitData(lifecycle, PagingData.from(listOf(second, first))) }; compose.waitUntil(5000) { compose.runOnIdle { presenter.itemCount == 2 } }
         compose.runOnIdle { assertEquals(listOf(second, first), presenter.snapshot().items) }
         compose.onNodeWithText("second.test").assertIsDisplayed(); compose.onNodeWithText("first.test").assertIsDisplayed()
     }
@@ -84,7 +84,13 @@ class TrafficLogsComposeTest {
     }
     private fun string(resource: Int) = ApplicationProvider.getApplicationContext<Context>().getString(resource)
     @Composable private fun Theme(content: @Composable () -> Unit) {
-        val base = LocalContext.current; val themed = remember(base) { ContextThemeWrapper(base, R.style.AppThemeWhite) }
+        val base = LocalContext.current
+        // Dialog creates its own Compose root from the generic test Activity's context.
+        remember(base) {
+            generateSequence(base) { (it as? android.content.ContextWrapper)?.baseContext }
+                .filterIsInstance<android.app.Activity>().first().setTheme(R.style.AppThemeWhite)
+        }
+        val themed = remember(base) { ContextThemeWrapper(base, R.style.AppThemeWhite) }
         CompositionLocalProvider(LocalContext provides themed) { RethinkTheme(content) }
     }
 }

@@ -152,7 +152,7 @@ class DomainConnectionsActivity : BaseActivity(){
         viewModel.timeCategoryChanged(timeCategory)
         setRecyclerView(timeCategory)
         setContent { RethinkTheme {
-            PagedStatisticsScreen(screenTitle, subtitle, empty, presenter, chips = {
+            PagedStatisticsScreen(screenTitle, subtitle, empty, presenter, selectableTitle = true, chips = {
                 @OptIn(ExperimentalLayoutApi::class)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     tags.forEachIndexed { index, tag ->

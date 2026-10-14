@@ -27,9 +27,26 @@ import kotlinx.coroutines.withContext
 internal data class DnsEndpointRowState(
     val id: Int, val name: String, val selected: Boolean, val deletable: Boolean,
     val address: String, val pollStatus: Boolean = false, val relay: Boolean = false,
-    val description: suspend () -> String?, val flag: suspend () -> String?,
-    val onSelect: () -> Unit, val onInfo: () -> Unit
+    val description: (suspend () -> String?)?, val flag: suspend () -> String?,
+    val onSelect: () -> Unit, val onInfo: () -> Unit,
+    // Static text belongs to the bind itself and does not dispatch an asynchronous read.
+    val initialDescription: String? = null
 )
+
+internal data class DnsEndpointDescriptionState(
+    val initial: String? = null, val read: (suspend () -> String?)? = null,
+    val poll: Boolean = false
+)
+
+/** The adapter chose this branch once in displayDetails, before any asynchronous status read. */
+internal fun bindDnsEndpointDescription(
+    selected: Boolean, canPoll: () -> Boolean, selectedLabel: () -> String,
+    status: suspend () -> String?
+): DnsEndpointDescriptionState {
+    if (!selected) return DnsEndpointDescriptionState()
+    return if (canPoll()) DnsEndpointDescriptionState(read = status, poll = true)
+    else DnsEndpointDescriptionState(initial = selectedLabel())
+}
 
 /** Adapter-owned actions moved without changing the AppConfig/service entry points. */
 internal class DnsEndpointPresenter(
@@ -92,7 +109,7 @@ internal class DnsEndpointPresenter(
         success = R.string.dns_crypt_relay_remove_success, noDimDelete = true,
         info = { metadata(e.dnsCryptRelayName, cryptMessage(e.dnsCryptRelayURL, e.dnsCryptRelayExplanation), e.dnsCryptRelayURL, noDim = true) },
         relay = true, polling = false,
-        description = { if (e.isSelected && !appConfig.isSmartDnsEnabled()) dnsStatus() else null })
+        description = if (e.isSelected && !appConfig.isSmartDnsEnabled()) ::dnsStatus else null)
 
     fun proxy(e: DnsProxyEndpoint) = row(e.id, e.proxyName, e.isSelected, e.isDeletable(), e.proxyIP.orEmpty(),
         select = {
@@ -133,25 +150,27 @@ internal class DnsEndpointPresenter(
         deleteTitle: Int, deleteMessage: Int, success: Int,
         info: suspend () -> Unit, noDimDelete: Boolean = false, directIp: Boolean = false,
         polling: Boolean = true, relay: Boolean = false,
-        description: suspend () -> String? = {
-            when {
-                selected && VpnController.hasTunnel() && !appConfig.isSmartDnsEnabled() -> dnsStatus()
-                selected -> context.getString(R.string.rt_filter_parent_selected)
-                else -> null
-            }
-        }
-    ) = DnsEndpointRowState(id, name, selected, deletable, address,
-        polling && selected && VpnController.hasTunnel() && !appConfig.isSmartDnsEnabled(), relay,
-        description, { flag(address, selected, directIp) },
-        onSelect = { io(select) },
-        onInfo = {
-            if (deletable) {
-                WgAlertDialogBuilder(context, if (noDimDelete) R.style.App_Dialog_NoDim else 0)
-                    .setTitle(deleteTitle).setMessage(deleteMessage).setCancelable(true)
-                    .setPositiveButton(R.string.lbl_delete) { _, _ -> io { delete(); ui { toast(success) } } }
-                    .setNegativeButton(R.string.lbl_cancel) { _, _ -> }.show()
-            } else io(info)
-        })
+        description: (suspend () -> String?)? = null
+    ): DnsEndpointRowState {
+        val boundDescription = if (polling) bindDnsEndpointDescription(
+            selected,
+            canPoll = { VpnController.hasTunnel() && !appConfig.isSmartDnsEnabled() },
+            selectedLabel = { context.getString(R.string.rt_filter_parent_selected) },
+            status = ::dnsStatus
+        ) else DnsEndpointDescriptionState(read = description)
+        return DnsEndpointRowState(id, name, selected, deletable, address,
+            boundDescription.poll, relay,
+            boundDescription.read, { flag(address, selected, directIp) },
+            onSelect = { io(select) },
+            onInfo = {
+                if (deletable) {
+                    WgAlertDialogBuilder(context, if (noDimDelete) R.style.App_Dialog_NoDim else 0)
+                        .setTitle(deleteTitle).setMessage(deleteMessage).setCancelable(true)
+                        .setPositiveButton(R.string.lbl_delete) { _, _ -> io { delete(); ui { toast(success) } } }
+                        .setNegativeButton(R.string.lbl_cancel) { _, _ -> }.show()
+                } else io(info)
+            }, initialDescription = boundDescription.initial)
+    }
 
     private suspend fun metadata(title: String, message: String, copy: String?, noDim: Boolean = false, ip: Boolean = false) {
         ui {

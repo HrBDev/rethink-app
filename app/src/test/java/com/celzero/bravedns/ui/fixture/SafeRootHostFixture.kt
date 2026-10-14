@@ -3,6 +3,7 @@ package com.celzero.bravedns.ui.fixture
 
 import android.app.Application
 import android.os.Bundle
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,8 @@ import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.NavHostFragment
 import androidx.paging.PagingData
 import androidx.test.core.app.ApplicationProvider
@@ -44,6 +47,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import org.robolectric.Robolectric
+import org.robolectric.Shadows.shadowOf
 import org.robolectric.android.controller.ActivityController
 
 /**
@@ -78,6 +82,9 @@ abstract class SafeRootHostTest {
         stopKoin()
         preferences = mockk()
         statistics = mockk()
+        // The constructor-free strict VM owns no resources. Stub only framework disposal,
+        // retaining fail-closed behavior for every unlisted application method.
+        every { ViewModel::class.java.getDeclaredMethod("clear\$lifecycle_viewmodel").invoke(statistics) } returns null
         updater = mockk()
         val config = mockk<AppConfig>()
         val messages = mockk<InAppMessageProvider>()
@@ -143,16 +150,35 @@ abstract class SafeRootHostTest {
         next.create(saved).start().resume().visible()
         compose.waitForIdle()
     }
+    /** Selection posts navigation to the Android queue; Compose idleness alone is not enough. */
+    protected fun awaitRootDestination(id: Int) {
+        compose.waitUntil(timeoutMillis = 5_000) {
+            shadowOf(Looper.getMainLooper()).idle()
+            activity.supportFragmentManager.executePendingTransactions()
+            navHost.childFragmentManager.executePendingTransactions()
+            destination == id &&
+                navHost.childFragmentManager.primaryNavigationFragment?.lifecycle?.currentState == Lifecycle.State.RESUMED
+        }
+        compose.waitForIdle()
+    }
     protected fun recreateHost() {
+        // Flush a pending selection before snapshotting the real NavHost state.
+        shadowOf(Looper.getMainLooper()).idle()
+        activity.supportFragmentManager.executePendingTransactions()
+        navHost.childFragmentManager.executePendingTransactions()
         val saved = Bundle()
         checkNotNull(host).pause().saveInstanceState(saved).stop().destroy()
         host = null
         launch(saved)
     }
     @After fun closeSafeRootHost() {
-        host?.pause()?.stop()?.destroy(); host = null
-        unmockkObject(VpnController, Logger)
-        stopKoin()
+        val closing = host; host = null
+        try {
+            if (closing != null && !closing.get().isDestroyed) closing.pause().stop().destroy()
+        } finally {
+            unmockkObject(VpnController, Logger)
+            stopKoin()
+        }
     }
 }
 

@@ -7,7 +7,10 @@ import android.os.Bundle
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.paging.PagingData
+import androidx.paging.LoadState
+import androidx.paging.LoadStates
 import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
@@ -57,6 +60,10 @@ class NetworkLogsActivityTest {
         val config = mockk<AppConfig>()
         val network = mockk<ConnectionTrackerViewModel>()
         val dns = mockk<DnsLogViewModel>()
+        // Exact no-op disposal for resource-free strict mocks; application calls remain strict.
+        val clear = ViewModel::class.java.getDeclaredMethod("clear\$lifecycle_viewmodel")
+        every { clear.invoke(network) } returns null
+        every { clear.invoke(dns) } returns null
         every { preferences.theme } returns Themes.LIGHT.id
         every { preferences.routeRethinkInRethink } returns false
         every { preferences.logsEnabled } returns true
@@ -82,8 +89,12 @@ class NetworkLogsActivityTest {
         every { VpnController.stop(any(), any(), any()) } throws AssertionError("VPN forbidden in UI fixture")
     }
     @After fun tearDown() {
-        host?.pause()?.stop()?.destroy(); host = null
-        unmockkObject(Logger, VpnController); stopKoin()
+        val closing = host; host = null
+        try {
+            if (closing != null && !closing.get().isDestroyed) closing.pause().stop().destroy()
+        } finally {
+            unmockkObject(Logger, VpnController); stopKoin()
+        }
     }
     private fun launch(query: String = "", saved: Bundle? = null) {
         val intent = Intent(ApplicationProvider.getApplicationContext<Application>(), NetworkLogsActivity::class.java)
@@ -102,7 +113,19 @@ class NetworkLogsActivityTest {
     @Test fun actualNetworkFragmentTransitionsToEmptyAfterMemoryOnlyPagingEmission() {
         launch()
         compose.onNodeWithTag("log-list").assertIsDisplayed()
-        compose.runOnIdle { networkData.value = PagingData.empty() }
+        compose.runOnIdle {
+            // PagingData.empty() without states deliberately emits no load-state event.
+            // Supply an explicit completed empty generation to exercise the fragment's
+            // real end-of-pagination listener without loading a row or touching a DAO.
+            networkData.value = PagingData.empty(sourceLoadStates = LoadStates(
+                refresh = LoadState.NotLoading(false),
+                prepend = LoadState.NotLoading(true),
+                append = LoadState.NotLoading(true)
+            ))
+        }
+        compose.waitUntil(timeoutMillis = 5_000) {
+            compose.onAllNodesWithTag("log-list").fetchSemanticsNodes().isEmpty()
+        }
         compose.onNodeWithTag("log-list").assertDoesNotExist()
         compose.onNodeWithTag("log-search").assertIsDisplayed()
     }

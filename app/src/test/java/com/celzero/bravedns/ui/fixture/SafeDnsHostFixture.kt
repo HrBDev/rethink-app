@@ -2,8 +2,13 @@
 package com.celzero.bravedns.ui.fixture
 
 import android.app.Application
+import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.setViewTreeLifecycleOwner
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.service.BraveVPNService
 import com.celzero.bravedns.service.EventLogger
@@ -67,5 +72,28 @@ abstract class SafeDnsHostTest {
     @After fun closeSafeDns() {
         if (::host.isInitialized) host.pause().stop().destroy()
         unmockkObject(VpnController); stopKoin()
+    }
+}
+
+/**
+ * Presentation-only lifecycle for actual hosts that must never enter production onResume.
+ * Compose 1.12's test registry discovers only RESUMED view-tree owners. Replacing the
+ * decor's owner before attachment lets its native content participate in semantics tests
+ * while the real Activity and its lifecycleScope remain STARTED. It does not dispatch
+ * Activity lifecycle callbacks or invoke controller/service code.
+ */
+internal class StartedHostComposeOwner : LifecycleOwner {
+    override val lifecycle = LifecycleRegistry(this)
+
+    fun attachBeforeVisible(activity: ComponentActivity) {
+        check(activity.lifecycle.currentState == Lifecycle.State.STARTED)
+        check(!activity.window.decorView.isAttachedToWindow)
+        activity.window.decorView.setViewTreeLifecycleOwner(this)
+        lifecycle.currentState = Lifecycle.State.RESUMED
+        check(activity.lifecycle.currentState == Lifecycle.State.STARTED)
+    }
+
+    fun destroy() {
+        lifecycle.currentState = Lifecycle.State.DESTROYED
     }
 }

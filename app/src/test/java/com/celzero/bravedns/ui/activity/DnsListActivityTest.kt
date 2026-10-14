@@ -5,9 +5,11 @@ import android.app.Application
 import android.os.Bundle
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
+import androidx.lifecycle.Lifecycle
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.Themes
+import com.celzero.bravedns.ui.fixture.StartedHostComposeOwner
 import io.mockk.*
 import org.junit.*
 import org.junit.Assert.*
@@ -33,6 +35,7 @@ class DnsListActivityTest {
     @get:Rule val compose = createEmptyComposeRule()
     private lateinit var host: ActivityController<DnsListActivity>
     private lateinit var config: AppConfig
+    private var composeOwner: StartedHostComposeOwner? = null
     @Before fun setUp() {
         stopKoin()
         val prefs = mockk<PersistentState>(); config = mockk()
@@ -41,13 +44,20 @@ class DnsListActivityTest {
         launch()
     }
     private fun launch(saved: Bundle? = null) {
-        host = Robolectric.buildActivity(DnsListActivity::class.java).create(saved).start().visible()
+        host = Robolectric.buildActivity(DnsListActivity::class.java).create(saved).start()
+        composeOwner = StartedHostComposeOwner().also { it.attachBeforeVisible(host.get()) }
+        host.visible()
         compose.waitForIdle()
+        assertEquals(Lifecycle.State.STARTED, host.get().lifecycle.currentState)
     }
     @After fun tearDown() {
-        if (::host.isInitialized) host.stop().destroy()
-        verify { config wasNot Called }
-        stopKoin()
+        try {
+            composeOwner?.destroy(); composeOwner = null
+            if (::host.isInitialized && !host.get().isDestroyed) host.stop().destroy()
+            verify { config wasNot Called }
+        } finally {
+            stopKoin()
+        }
     }
     @Test fun testDnsOptionsDisplay() {
         listOf("cardDoh", "cardDnscrypt", "cardDot", "cardOdoh", "cardRethinkDns", "cardDnsproxy").forEach {
@@ -68,7 +78,9 @@ class DnsListActivityTest {
     @Test fun nativeGridRemainsMountedAfterActualSavedInstanceRecreation() {
         compose.onNodeWithTag("dns-protocol-cardRethinkDns").performScrollTo()
         val saved = Bundle()
-        host.saveInstanceState(saved).stop().destroy()
+        host.saveInstanceState(saved)
+        composeOwner?.destroy(); composeOwner = null
+        host.stop().destroy()
         launch(saved)
         compose.onNodeWithTag("dns-protocol-cardRethinkDns").performScrollTo().assertIsDisplayed()
     }

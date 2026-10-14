@@ -34,8 +34,12 @@ class HomeScreenActivityDialogTest : SafeRootHostTest() {
     private fun outsideTouch() {
         compose.runOnIdle {
             val dialog = checkNotNull(ShadowDialog.getLatestDialog())
-            val event = MotionEvent.obtain(0, 0, MotionEvent.ACTION_OUTSIDE, -100f, -100f, 0)
-            try { dialog.onTouchEvent(event) } finally { event.recycle() }
+            // Compose 1.12 tracks an outside press/release pair, not ACTION_OUTSIDE.
+            // Exercise the actual window callback without directly dismissing the dialog.
+            for ((action, time) in listOf(MotionEvent.ACTION_DOWN to 0L, MotionEvent.ACTION_UP to 16L)) {
+                val event = MotionEvent.obtain(0, time, action, -100f, -100f, 0)
+                try { dialog.onTouchEvent(event) } finally { event.recycle() }
+            }
         }
     }
 

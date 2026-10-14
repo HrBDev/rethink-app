@@ -379,7 +379,7 @@
       "path": "app/src/main/java/com/celzero/bravedns/ui/activity/DomainConnectionsActivity.kt",
       "entry_reference": "[Manifest:181](../../app/src/full/AndroidManifest.xml#L181)",
       "presentation": "native_source_candidate",
-      "current_sha256": "4ba5068e8d0a0a941505590c17820c46cf0be32060616d89b79e82f7955a3a6b",
+      "current_sha256": "07b74ce9d2d99d5cdb506a81c6c76f79d2a886439aa2f108365e0ea945d35898",
       "source_acceptance": "pending final independent reference and callback audit",
       "compile": "pending final immutable all-variant run",
       "navigation_back_state_recreation": "pending actual-host/device parity",

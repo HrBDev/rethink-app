@@ -21,23 +21,23 @@ Conditions:
 | Fully qualified method pattern | Methods | Test-source SHA-256 |
 |---|---:|---|
 | `com.celzero.bravedns.ui.activity.WelcomeActivityTest.*` | 20 | `eabf2b329388619e3263176b3e6396a65bd722ec0f074be6d93bb0c31681c3fa` |
-| `com.celzero.bravedns.ui.CoreNavigationTest.*` | 2 | `77c3236114a7e6e9adb82485aa451889bb29e78422dff1bd468d5d7437628015` |
-| `com.celzero.bravedns.ui.HomeScreenActivityDialogInstrumentedTest.*` | 7 | `1e5d64ed2f5a22171ad7f5aca23ba7269da20af4213120c5c08701ad80715b38` |
-| `com.celzero.bravedns.ui.HomeScreenActivityDialogTest.*` | 8 | `0730adb430dc3e0a2c5d484b35f7e05f88174e4aa8616e2d418d594971b1fa0f` |
-| `com.celzero.bravedns.ui.activity.ConfigChangeTest.*` | 2 | `05ee31871b237625d6d630caf16d6f88d838e423fbdacc34f075bfc1803fd28c` |
+| `com.celzero.bravedns.ui.CoreNavigationTest.*` | 2 | `66393337ff858232d1c4bea2e5ce115374378c96299e5eb0ccb7fc003f3e8d5d` |
+| `com.celzero.bravedns.ui.HomeScreenActivityDialogInstrumentedTest.*` | 7 | `d8d3a68aee76cdc09fcaaeee58052d0b8db9e3dd78b23c6f183f28e0af72d90e` |
+| `com.celzero.bravedns.ui.HomeScreenActivityDialogTest.*` | 8 | `5c5234701bd15205a970df15d9d32056076b0c439b4489446a488c67964355bd` |
+| `com.celzero.bravedns.ui.activity.ConfigChangeTest.*` | 2 | `b7a4c8d6cbf62a24b3aeee21f646caa6075adbc9105ecb90d38a82c30ad44cc1` |
 | `com.celzero.bravedns.ui.activity.ThemeChangeTest.*` | 1 | `79c5215fd64ab2bb1ad56c07ee07c15f1adfa7998d4ade128b5c378bd983372d` |
-| `com.celzero.bravedns.ui.fragment.SummaryStatisticsFragmentTest.*` | 2 | `38f3c53b62fe047905553365f2b37d30880f3506270679bee82a59993cc15629` |
-| `com.celzero.bravedns.ui.activity.NetworkLogsActivityTest.*` | 4 | `4aa5dbd58d5386233dd19b20ba1863eba2b174c03c73ff54e4f660e34c8a2cca` |
+| `com.celzero.bravedns.ui.fragment.SummaryStatisticsFragmentTest.*` | 2 | `a31eed9550f160b76b2ac59f65e5b6e05d3d9d6630b5efa086d9b4373f749521` |
+| `com.celzero.bravedns.ui.activity.NetworkLogsActivityTest.*` | 4 | `8afd8ce518bdbf9943a6b1552222c1fb6d5a8ddb6f6e0b1e54419ec33afd1801` |
 | `com.celzero.bravedns.ui.activity.DnsDetailAccessibilityTest.*` | 1 | `0d2f49e4da71197460d79afd7f99187385f4c4ac70d1ba20647365de469056dd` |
 | `com.celzero.bravedns.ui.activity.DnsDetailNavigationTest.*` | 3 | `8aea78ecba2b4b4d51405a797b9cb9f5012c94c8fce9fb6320ae6a4842b903b0` |
-| `com.celzero.bravedns.ui.activity.DnsListActivityTest.*` | 3 | `814637fc39272154fb6e06efc75818fd46a497b1ea8a7480e7cf1c51c057fb30` |
+| `com.celzero.bravedns.ui.activity.DnsListActivityTest.*` | 3 | `414274c92f7280362ee9d2e7cb349aca2935d636f159f388fba66c2c07f6e423` |
 | `com.celzero.bravedns.ui.fragment.DnsSettingsFragmentTest.*` | 3 | `c7fe2e4534fa003791da8724113edae561c478a516db983b01f7bc69e3591b5b` |
 | `com.celzero.bravedns.ui.activity.FirewallActivityTest.*` | 2 | `4f35738aca624a0568a2d8ea5ba5ed23dea650705dda10bbbc50f86262fd88ae` |
 | `com.celzero.bravedns.ui.fragment.FirewallSettingsFragmentTest.*` | 2 | `8ac52a5b9c2ce6d23440e7dd8f0768000142483dfb5a54ff9fdd19659b3e6870` |
-| `com.celzero.bravedns.ui.activity.AppListActivityTest.*` | 3 | `a9f8fecd3bed8f55ba3f3390d4b75d09b5bece93952c43e0f1cd7b2c3e393c40` |
-| `com.celzero.bravedns.ui.activity.ProxySettingsActivityTest.*` | 1 | `45ac65c338a342c4aab331e919d2f5694ac04f597c311db98b7c7cd5da31472b` |
-| `com.celzero.bravedns.ui.activity.AppInfoActivityTest.*` | 29 | `7b2be36bf90c3a756d6f989dd57a0310a239a864097222a6c5411c13c3ed5dac` |
-| `com.celzero.bravedns.ui.activity.MiscSettingsActivityRobolectricTest.*` | 64 | `52ca69a7aa0eb292fcafcd98d1faeee4085fc12d6a28d5aca94ce821a94c9b57` |
+| `com.celzero.bravedns.ui.activity.AppListActivityTest.*` | 3 | `551d0fe9bc2c8391a8a98c3225a7f00c02a2de759a923e8c9b79fc023af84b4e` |
+| `com.celzero.bravedns.ui.activity.ProxySettingsActivityTest.*` | 1 | `ecc584559015acc671c94e5e72b446acde1c4bc68656156bcc5d977c1da905dc` |
+| `com.celzero.bravedns.ui.activity.AppInfoActivityTest.*` | 29 | `5eda39bd46d5e23fb4b98e1a808571d449823a7d63a0a85003eafca26577e6df` |
+| `com.celzero.bravedns.ui.activity.MiscSettingsActivityRobolectricTest.*` | 64 | `02107b7a4bba1d8282df312bd55c01498e5df7b404cc351bca5b73ad7c4b7efa` |
 
 Test files correspond to their package/class names under `app/src/test/java/`. No similarly named `androidTest` class is authorized.
 
@@ -113,7 +113,7 @@ The existing Welcome run in `../validation/safe-welcome-host-tests.log` failed d
 -javaagent:/workspace/scratch/a9ec32c7322a/rethink-compose/toolchain/gradle-user-home/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.2/62f38a6faf7f069d661b79a07d566f504b0b20c4/byte-buddy-agent-1.18.2.jar
 ```
 
-This review did not edit or execute the launcher. Its source pin below is the pre-addendum launcher. When applying the exact argument above, record the resulting launcher hash before the next run; any other functional change needs separate review.
+The launcher now contains exactly the reviewed additional Byte Buddy argument and its explanatory comment; its resulting SHA-256 is `71495eee566283a2aadf2d00d5736ad5f26fcbfd681776c39a1d4c40af3007db`, pinned below. No other functional launcher change was found. This reviewer did not execute the launcher.
 
 The already-cached artifact is `net.bytebuddy:byte-buddy-agent:1.18.2`, SHA-256 `d91e2d6d1b777687ab14a52b18b08aca32c4c91274131c99907674c661402a76`. The cached MockK 1.14.11 POM explicitly declares this Byte Buddy version. No artifact was downloaded, upgraded, installed or executed for this addendum. Inspection used the actual JAR manifest and `javap -c -p --multi-release 17` against the existing Java 17 toolchain, including the JAR's versioned classes.
 
@@ -126,6 +126,21 @@ The already-cached artifact is `net.bytebuddy:byte-buddy-agent:1.18.2`, SHA-256 
 **Conclusion:** the exact second startup agent is consistent with the existing allowlist and synthetic plain-Application host boundary. All prior test filters, fixture ordering, lifecycle limits and prohibited production branches remain mandatory. This review establishes the startup path from inspected bytecode; runtime success still must be measured. If instrumentation remains unavailable, stop and diagnose within this boundary instead of enabling dynamic attach or changing host security/network settings.
 
 Robolectric 4.17 AndroidTestEnvironment bytecode was inspected: the selected Application class is constructed and its onCreate is called; there is no automatic installation of application manifest ContentProviders in this path. It sets up its FakeMediaProvider and process-local Android/native/shadow runtime. This is library test infrastructure, not production Rethink application startup. No new dependency/source was downloaded for this review.
+
+## Fixture-correction re-review (2026-10-14 UTC)
+
+Compared the exact current allowlisted test and fixture files with checkpoint `efa4b2ff720c41148230e0af4f28cf08c35fc807` using file-content comparisons, including files that are untracked relative to the local index. The original 18 classes and all 157 method names/order are unchanged. The allowlist and fixture pins above/below now identify these reviewed current files. All previously pinned production files, build files and dependency artifacts remain unchanged. No Gradle task, test or application was run by this reviewer.
+
+**Decision:** these corrections may run under the same isolated synthetic plain-Application scope, exact class filters and exclusions. They do not clear additional business branches or real resumed DNS/Proxy hosts.
+
+- AppInfo (`5eda39bd46d5e23fb4b98e1a808571d449823a7d63a0a85003eafca26577e6df`) replaces asynchronous assertion polling with bounded `compose.runOnIdle` polling. OS App Info remains intercepted and now records the synthetic package in a synchronized list; no system Settings Intent is dispatched. Teardown destroys all hosts, drains the paused main looper until every captured Activity lifecycle job is completed, then joins them before removing any fake boundary. A timeout fails before interception is removed. Startup FirewallManager joining, synthetic populated paging and forbidden confirmation branches are unchanged.
+- Misc (`02107b7a4bba1d8282df312bd55c01498e5df7b404cc351bca5b73ad7c4b7efa`) explicitly matches the second, default suspend callback parameter of `RefreshDatabase.refresh`. The strict constructor-free fake returns without invoking that callback or entering the real actor. The refresh action and positive/zero invocation counts remain exact. No test interaction or production code changed.
+- Root/Summary, AppList and NetworkLogs mocks receive only an exact no-op for framework `ViewModel.clear$lifecycle_viewmodel`. These constructor-free mock VMs own no real resources; application methods remain strict. This permits framework disposal without claiming to test a real ViewModel's resource cleanup. Root navigation waits drain the already-posted Android/FragmentManager work and require the selected reviewed destination to be RESUMED before asserting or saving it. FragmentFactory fencing, empty Summary data and excluded Rethink+ clicks are unchanged. The synthetic Home assertion now matches its renderer's existing uppercase text.
+- Update-dialog outside touches now send an outside DOWN/UP pair. Cached Compose 1.12 `DialogWrapper.onTouchEvent` bytecode confirms that this pair reaches `onDismissRequest` only for dismissible dialogs. `HomeChromeDialog.dismiss` executes an empty action and the existing presentation dismissal, so it does not call the positive/negative update callbacks. Modal and action-cardinality assertions remain intact.
+- DNS protocol and Proxy display tests stop the actual Activity at STARTED. `StartedHostComposeOwner` installs a separate `LifecycleRegistry` only as the unattached decor's view-tree owner and advances that registry to RESUMED; it does not call Activity lifecycle callbacks or advance the Activity's own lifecycle/lifecycleScope. Checks enforce STARTED before/after replacement and after rendering. Cached Compose test-registry bytecode registers roots on `ON_RESUME`, explaining this presentation-only adapter. Inspected `DnsProtocolGrid`, `NetworkSettingsScreen`/`NetworkContent` and `RethinkTheme` do not start business work from that lifecycle. The synthetic owner is destroyed before host teardown/recreation. DNS AppConfig remains verified unused; Proxy's false endpoint gates and no-click display-only scope remain unchanged. Actual DNS/Proxy `onResume`, resolver/native/account branches remain excluded.
+- NetworkLogs emits an explicitly completed, empty in-memory paging generation. The reached `updateLoadState` branch only changes message/list/search state and removes an observer from the fake LiveData. No row is introduced, no PagingSource/DAO is invoked and no identity/icon/favicon/native work is unlocked. The separately changed `LogScreen` search focus handler was also inspected: editor focus no longer invokes root expansion automatically, and the new explicit search affordance only calls the existing presentation callback, requests Compose focus and shows the shadow IME. The reviewed host tests do not click that new affordance; their query callbacks still terminate at strict fake filters. Its current source is additionally pinned below.
+
+Prior execution evidence remains separate: `../validation/safe-welcome-host-tests-2.log` reports 20 Welcome passes with the reviewed startup agents; `../validation/reviewed-host-tests-1.log` reports 137 tests completed with 51 failures before these fixture corrections. These logs do not establish that the corrected suite passes. A fresh filtered rerun is required.
 
 ## Explicit blocks and required corrections before expanding coverage
 
@@ -142,8 +157,8 @@ Robolectric 4.17 AndroidTestEnvironment bytecode was inspected: the selected App
 Any drift in a relevant pin below requires reviewing that change before relying on this allowlist. These pins describe source at review time; they are not a claim that the suite passed.
 
 ```text
-84d0938901369341e12f723c545c951831febd0c3c5010d8022ecc80888c5ea6  app/src/test/java/com/celzero/bravedns/ui/fixture/SafeRootHostFixture.kt
-811d4a71f0965816cdc461d051fd5523b3b97b212fd0c8dad03279838aabedfa  app/src/test/java/com/celzero/bravedns/ui/fixture/SafeDnsHostFixture.kt
+6d47f453e2795fd3075152b775ed2d67c4a47380ce1f693c6e0c184fa95b0301  app/src/test/java/com/celzero/bravedns/ui/fixture/SafeRootHostFixture.kt
+fcb4931346d3fdb720f64d69ef4f155719165d0b74f84c9479ccc5e5d46d598c  app/src/test/java/com/celzero/bravedns/ui/fixture/SafeDnsHostFixture.kt
 79a0ecaba0773a7a8f25e97e7227170ead688a379adc0be3fe17bf42bc3b00a6  app/src/test/java/com/celzero/bravedns/ui/fixture/SafeFirewallHostFixture.kt
 c4b235b955ce6db432c203528634061c02c7d013f5182dd9ac3b3e9d0a4255b6  app/src/main/java/com/celzero/bravedns/ui/BaseActivity.kt
 2c030a321b7c4d73e9705adfad7e25d6eddd7c0c7f2d5af860f6be868d22e216  app/src/main/java/com/celzero/bravedns/ui/HomeScreenActivity.kt
@@ -193,11 +208,20 @@ fafc5d3383454d6db81ae934e97b8f980bdb27623acda63a3300ddd7bd279ddc  app/src/test/r
 60488169810260378871e4543f86b989957f267160aecccbdb140c7cde5663ed  app/src/full/res/layout/activity_home_screen.xml
 16f67b0273939e69f262764bd4340149d2f8ca3cf273e72c6831ec82eba3ee3b  app/build.gradle.kts
 75761edad45b67af0cee8e2d55130f8bbbdbfc22db35659b7e1a74a8d9fa56c6  gradle/lib.toml
-ca3b911e5747933332986359c35076c171cbc6e622a1baa25d8b035e8c8f3f48  ../validation/isolated-tests.init.gradle
+71495eee566283a2aadf2d00d5736ad5f26fcbfd681776c39a1d4c40af3007db  ../validation/isolated-tests.init.gradle
 ae295bebd5d11fab97ab297815dc7617188b86003cbce3dfd5c0d5c3a6cc4a0c  ../toolchain/gradle-user-home/caches/modules-2/files-2.1/org.mockito/mockito-core/5.23.0/a5cf3cf244300e4cd05f779827cf50d373a8460e/mockito-core-5.23.0.jar
 d91e2d6d1b777687ab14a52b18b08aca32c4c91274131c99907674c661402a76  ../toolchain/gradle-user-home/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.2/62f38a6faf7f069d661b79a07d566f504b0b20c4/byte-buddy-agent-1.18.2.jar
 bb3af4f281c8d5d50141cad9d1a1f8dde9d2bd695b68054777830957708ea0b4  ../toolchain/gradle-user-home/caches/modules-2/files-2.1/io.mockk/mockk-agent-jvm/1.14.11/e1e1acc201dc6ec3bfb9d2d8f10e5960eda3c9f0/mockk-agent-jvm-1.14.11.jar
 69e5bc128ba8d1fbb09d36bfb8a617018d6a3a418f77d44b36e7aca6747f14ea  ../toolchain/gradle-user-home/caches/modules-2/files-2.1/org.robolectric/robolectric/4.17/31a19773cc1daf1be0f77769497371ddf18a518f/robolectric-4.17.jar
+46c00c91138dbef5c570e15c8eba2c0f37a143d53904a065eef90e03a0f50630  app/src/main/java/com/celzero/bravedns/ui/compose/trafficlogs/LogScreen.kt
+894a8133c1e039d9bbb125cebef9f42fb1aa572b8e8058101fca2c4c85313c06  app/src/main/java/com/celzero/bravedns/ui/compose/dnssettings/DnsProtocolGrid.kt
+c4680396ea8405f2be5dbc585faa3b338d7ee3921105a2ae065ef7ed02fa87d5  app/src/main/java/com/celzero/bravedns/ui/compose/networksettings/NetworkNativeUi.kt
+99a7faff9041b0fbf23ac548ad667da549ab2861095796606ff25593fe72b041  app/src/main/java/com/celzero/bravedns/ui/compose/RethinkTheme.kt
+4de691784e4111dc11ba6c766ccba4c3ede26c76508d173aca4be732456e56eb  app/src/main/java/com/celzero/bravedns/ui/compose/chrome/HomeChrome.kt
 ```
 
 Coordinator applied the reviewed second startup agent on 2026-10-14 at 06:58 UTC. Launcher SHA-256: `71495eee566283a2aadf2d00d5736ad5f26fcbfd681776c39a1d4c40af3007db`. No dynamic-attach flags or host settings were changed; runtime result is still pending.
+
+## Coordinator additive review: AppInfo replacement Intent fixture
+
+Reviewed the final single-method correction at 2026-10-14 07:34 UTC against the previously cleared class. Only testActivityStateWithMultipleIntents assertions change. It still sets a synthetic replacement Intent, inspects the already-mounted synthetic app, recreates the same reviewed controller, and reads synthetic metadata. New controller.intent and Activity.intent getters are pure framework state; no new production action or lifecycle branch is introduced. Invalid-UID and rule-command zero-call checks remain. The baseline original case never required an invalid dialog after recreation, and the cached Robolectric controller retains its original launch Intent. AppInfo source pin updated to `5eda39bd46d5e23fb4b98e1a808571d449823a7d63a0a85003eafca26577e6df`; all other clearance conditions remain unchanged. Execution of this correction is pending.

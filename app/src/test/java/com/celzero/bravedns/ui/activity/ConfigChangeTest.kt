@@ -19,19 +19,21 @@ class ConfigChangeTest : SafeRootHostTest() {
     @Test fun testHomeScreenStateRetentionOnRotation() {
         launch()
         compose.onNodeWithTag("fhs_dns_on_off_btn").assertIsDisplayed().performClick()
-        compose.onNodeWithTag("fhs_dns_on_off_btn").assertTextContains("Synthetic protection 1")
+        compose.onNodeWithTag("fhs_dns_on_off_btn").assertTextContains("SYNTHETIC PROTECTION 1")
         // Actual saved-instance restoration, preserving the original rotation obligation.
         org.robolectric.RuntimeEnvironment.setQualifiers("en-rUS-w800dp-h360dp-land")
         recreateHost()
-        compose.onNodeWithTag("fhs_dns_on_off_btn").assertIsDisplayed().assertTextContains("Synthetic protection 1")
+        compose.onNodeWithTag("fhs_dns_on_off_btn").assertIsDisplayed().assertTextContains("SYNTHETIC PROTECTION 1")
         org.robolectric.RuntimeEnvironment.setQualifiers("en-rUS-w360dp-h800dp-port")
         recreateHost()
-        compose.onNodeWithTag("fhs_dns_on_off_btn").assertIsDisplayed().assertTextContains("Synthetic protection 1")
+        compose.onNodeWithTag("fhs_dns_on_off_btn").assertIsDisplayed().assertTextContains("SYNTHETIC PROTECTION 1")
     }
     @Test fun selectedDestinationAndHighlightSurviveActualRecreation() {
         launch()
         compose.onNodeWithTag("root_nav_${R.id.summaryStatisticsFragment}").performClick()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         recreateHost()
+        awaitRootDestination(R.id.summaryStatisticsFragment)
         compose.onNodeWithTag("root_nav_${R.id.summaryStatisticsFragment}").assertIsSelected()
         compose.onNodeWithTag("stats_time_0").assertIsDisplayed()
         assertEquals(R.id.summaryStatisticsFragment, destination)

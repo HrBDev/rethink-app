@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -21,12 +21,18 @@ import com.celzero.bravedns.database.SmartDnsEndpoint
             Text(stringResource(R.string.doh_empty_state_title), Modifier.padding(top = 12.dp), style = MaterialTheme.typography.titleMedium)
         }
         val selectedLabel = stringResource(R.string.rt_filter_parent_selected)
+        val select by rememberUpdatedState(onSelect)
+        val info by rememberUpdatedState(onInfo)
         LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 80.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(items.orEmpty(), key = { it.id }) { endpoint ->
                 val selected = endpoint.isSelected && active
-                DnsEndpointRow(DnsEndpointRowState(endpoint.id, endpoint.dnsName, selected, false, "",
-                    description = { if (selected) selectedLabel else null }, flag = { null },
-                    onSelect = { onSelect(endpoint) }, onInfo = { onInfo(endpoint) }))
+                val row = remember(endpoint, selected, selectedLabel) {
+                    DnsEndpointRowState(endpoint.id, endpoint.dnsName, selected, false, "",
+                        description = null, flag = { null },
+                        onSelect = { select(endpoint) }, onInfo = { info(endpoint) },
+                        initialDescription = if (selected) selectedLabel else null)
+                }
+                DnsEndpointRow(row)
             }
         }
     }

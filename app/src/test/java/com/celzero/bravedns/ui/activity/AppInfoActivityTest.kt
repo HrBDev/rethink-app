@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Process
+import android.os.Looper
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.lifecycle.Lifecycle
@@ -89,6 +90,7 @@ class AppInfoActivityTest {
     private val controllers = mutableListOf<ActivityController<AppInfoActivity>>()
     private lateinit var controller: ActivityController<AppInfoActivity>
     private val firewallCommands = Collections.synchronizedList(mutableListOf<Triple<Int, FirewallManager.FirewallStatus, FirewallManager.ConnectionStatus>>())
+    private val androidInfoPackages = Collections.synchronizedList(mutableListOf<String>())
     private val ipCount = MutableLiveData(3)
     private val domainCount = MutableLiveData(5)
     private var statsMode = StatsViewMode.LIST.id
@@ -174,7 +176,9 @@ class AppInfoActivityTest {
         every { DomainRulesManager.status(any(), any()) } returns DomainRulesManager.Status.NONE
         every { IpRulesManager.getMostSpecificRuleMatch(any(), any(), any()) } returns IpRulesManager.IpRuleStatus.NONE
         every { Utilities.getIcon(any(), any(), any()) } answers { ColorDrawable(Color.BLUE) }
-        every { UIUtils.openAndroidAppInfo(any(), any()) } just Runs
+        every { UIUtils.openAndroidAppInfo(any(), any()) } answers {
+            androidInfoPackages.add(secondArg()); Unit
+        }
         // A failed-cache hit renders the flag and never constructs a Glide request/cache target.
         every { FavIconDownloader.isUrlAvailableInFailedCache(any()) } returns true
         ShadowDialog.reset()
@@ -193,7 +197,15 @@ class AppInfoActivityTest {
     @After fun tearDown() {
         ShadowDialog.getShownDialogs().filter { it.isShowing }.forEach { it.dismiss() }
         controllers.asReversed().forEach { if (!it.get().isDestroyed) it.pause().stop().destroy() }
-        runBlocking { withTimeout(5000) { controllers.map { requireNotNull(it.get().lifecycleScope.coroutineContext[Job]) }.joinAll() } }
+        val lifecycleJobs = controllers.map { requireNotNull(it.get().lifecycleScope.coroutineContext[Job]) }
+        // IO children can have cancelled continuations queued on Robolectric's paused main looper.
+        // Never block that looper in joinAll: drain it until every job is complete, keeping all
+        // fake boundaries installed throughout cancellation. The timeout still fails closed.
+        compose.waitUntil(5000) {
+            shadowOf(Looper.getMainLooper()).idle()
+            lifecycleJobs.all { it.isCompleted }
+        }
+        runBlocking { withTimeout(5000) { lifecycleJobs.joinAll() } }
         verify { appDao wasNot Called }
         verify { rethinkDao wasNot Called }
         // The initializer repository cannot be used for real data after object methods are mocked.
@@ -233,13 +245,18 @@ class AppInfoActivityTest {
     private fun state(activity: AppInfoActivity = host()): AppDetailsState = AppInfoActivity::class.java.getDeclaredField("b").let {
         it.isAccessible = true; it.get(activity) as AppDetailsState
     }
+    private fun awaitMain(condition: () -> Boolean) {
+        // waitUntil advances Compose frames, but does not drain Android's paused main looper.
+        // Real Activity IO -> Main callbacks must run before inspecting their recorded results.
+        compose.waitUntil(5000) { compose.runOnIdle(condition) }
+    }
     private fun ready(uid: Int = TEST_UID) {
-        compose.waitUntil(5000) { state().aadAppDetailName.text.toString() == requireNotNull(apps[uid]).appName }
+        awaitMain { state().aadAppDetailName.text.toString() == requireNotNull(apps[uid]).appName }
         compose.onAllNodesWithText(requireNotNull(apps[uid]).appName, useUnmergedTree = true).onLast().assertExists()
         assertFalse(host().isFinishing)
     }
     private fun dialogReady() {
-        compose.waitUntil(5000) { ShadowDialog.getLatestDialog()?.isShowing == true }
+        awaitMain { ShadowDialog.getLatestDialog()?.isShowing == true }
         compose.onNodeWithText(host().getString(R.string.ada_noapp_dialog_title)).assertIsDisplayed()
         assertFalse(shadowOf(requireNotNull(ShadowDialog.getLatestDialog())).isCancelable)
     }
@@ -284,7 +301,9 @@ class AppInfoActivityTest {
         launch(); ready(); switchProxy().performScrollTo().performClick(); switchProxy().assertIsOn()
         verify(timeout = 2000, exactly = 1) { FirewallManager.updateIsProxyExcluded(TEST_UID, true) }
         compose.onNodeWithContentDescription(host().getString(R.string.about_settings_app_info)).performScrollTo().performClick()
-        verify(timeout = 2000, exactly = 1) { UIUtils.openAndroidAppInfo(any(), TEST_PACKAGE) }
+        awaitMain { androidInfoPackages.size == 1 }
+        assertEquals(listOf(TEST_PACKAGE), androidInfoPackages.toList())
+        verify(exactly = 1) { UIUtils.openAndroidAppInfo(any(), TEST_PACKAGE) }
         showAllSections()
         compose.onNodeWithText(host().getString(R.string.close_all)).performScrollTo().performClick()
         compose.onNodeWithText(host().getString(R.string.close_conns_dialog_title)).assertIsDisplayed()
@@ -301,7 +320,7 @@ class AppInfoActivityTest {
             FirewallManager.FirewallStatus.EXCLUDE to FirewallManager.ConnectionStatus.ALLOW)
         expected.forEachIndexed { index, (firewall, connection) ->
             launch(); ready(); compose.onNodeWithTag("app_rule_$index").performScrollTo().assertIsEnabled().performClick()
-            compose.waitUntil(5000) { firewallCommands.size == index + 1 }
+            awaitMain { firewallCommands.size == index + 1 }
             assertEquals(Triple(TEST_UID, firewall, connection), firewallCommands[index])
             destroyCurrent(); assertNoObserverLeaks()
         }
@@ -328,10 +347,26 @@ class AppInfoActivityTest {
     @Test fun testLaunchWithVeryLargeUid() { launch(Int.MAX_VALUE); ready(Int.MAX_VALUE); verify(exactly = 1) { domainDao.getAppWiseDomainRulesCount(Int.MAX_VALUE) } }
     @Test fun testLaunchWithSystemAppUid() { launch(1000); ready(1000); compose.onNodeWithTag("app_rule_0").assertIsEnabled() }
     @Test fun testActivityStateWithMultipleIntents() {
-        launch(); ready(); host().intent = Intent(host(), AppInfoActivity::class.java).putExtra(AppInfoActivity.INTENT_UID, INVALID_UID)
-        // Original only replaced Intent, not onNewIntent: current content stays until recreation.
-        compose.onNodeWithText(TEST_NAME, useUnmergedTree = true).assertExists()
-        controller.recreate(); dialogReady()
+        launch(); ready()
+        val replacement = Intent(host(), AppInfoActivity::class.java).putExtra(AppInfoActivity.INTENT_UID, INVALID_UID)
+        compose.runOnIdle { host().intent = replacement }
+        // Baseline only called Activity.setIntent: it did not deliver onNewIntent or recreate.
+        // AppInfo reads UID in onCreate, so the existing mounted content must remain unchanged.
+        assertSame(replacement, host().intent)
+        assertEquals(INVALID_UID, host().intent.getIntExtra(AppInfoActivity.INTENT_UID, TEST_UID))
+        compose.onNodeWithText(TEST_NAME, useUnmergedTree = true).assertIsDisplayed()
+        compose.onNodeWithText(host().getString(R.string.app_id_package, TEST_UID, TEST_PACKAGE), useUnmergedTree = true).assertIsDisplayed()
+        assertFalse(host().isFinishing)
+        assertEquals(Lifecycle.State.RESUMED, host().lifecycle.currentState)
+        // Robolectric 4.17 recreates from ComponentController's original launch Intent, not the
+        // prior Activity's replacement. Verify the real recreated host with that exact UID.
+        assertEquals(TEST_UID, controller.intent.getIntExtra(AppInfoActivity.INTENT_UID, INVALID_UID))
+        controller.recreate(); ready()
+        assertEquals(TEST_UID, host().intent.getIntExtra(AppInfoActivity.INTENT_UID, INVALID_UID))
+        compose.onNodeWithText(host().getString(R.string.app_id_package, TEST_UID, TEST_PACKAGE), useUnmergedTree = true).assertIsDisplayed()
+        assertNull(ShadowDialog.getShownDialogs().firstOrNull { it.isShowing })
+        coVerify(exactly = 0) { FirewallManager.getAppInfoByUid(INVALID_UID) }
+        assertTrue(firewallCommands.isEmpty())
     }
     @Test fun testActivityLifecycleStates() {
         launch(); ready(); controller.pause(); assertEquals(Lifecycle.State.STARTED, host().lifecycle.currentState)
@@ -398,7 +433,7 @@ class AppInfoActivityTest {
     }
     @Test fun emptySyntheticLogs_hideSections_andViewModeToggle() {
         emptyLogs = true; launch(); ready()
-        compose.waitUntil(5000) { state().aadMostContactedIpsRv.adapter != null }
+        awaitMain { state().aadMostContactedIpsRv.adapter != null }
         compose.onNodeWithText(host().getString(R.string.top_active_conns)).assertDoesNotExist()
         compose.onNodeWithContentDescription(host().getString(R.string.cd_stats_switch_to_insights)).assertDoesNotExist()
     }

@@ -125,7 +125,10 @@ class MiscSettingsActivityRobolectricTest {
         every { persistent.shouldRequestNotificationPermission } returns false
         every { persistent.shouldRequestNotificationPermission = any() } just Runs
         every { persistent.enableStabilityDependentSettings() } returns false
-        coEvery { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) } just Runs
+        // The omitted production callback is a compiler-created suspend lambda. Its identity is
+        // not a refresh contract; match it explicitly and never invoke it. Action/cardinality
+        // remain exact, and the strict fake never enters RefreshDatabase's actor or repository.
+        coEvery { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE, any()) } just Runs
         every { events.log(EventType.UI_TOGGLE, Severity.LOW, "Misc settings", EventSource.UI, false, any()) } just Runs
         startKoin { modules(module {
             single { persistent }; single { config }; single { refresh }; single { events }; single { scheduler }
@@ -276,20 +279,20 @@ class MiscSettingsActivityRobolectricTest {
     @Test fun tombstoneAppRl_click_togglesTombstoneAppSwitch() {
         launch(); click("tombstone_app_rl"); node("tombstone_app_switch").assertIsOn()
         verify(exactly = 1) { persistent.tombstoneApps = true }
-        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
+        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE, any()) }
     }
     @Test fun tombstoneAppSwitch_checkedTrue_setsTombstoneApps() {
         launch(); click("tombstone_app_switch"); verify(exactly = 1) { persistent.tombstoneApps = true }
-        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
+        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE, any()) }
     }
     @Test fun tombstoneAppSwitch_checked_triggersRefreshDatabase() {
         launch(); click("tombstone_app_switch")
-        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
+        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE, any()) }
         verifyLog("Tombstone apps set to true")
     }
     @Test fun tombstoneAppSwitch_toggle_thenActivityDestroyed_doesNotCrash() {
         launch(); click("tombstone_app_switch")
-        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
+        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE, any()) }
         requireNotNull(controller).pause().stop().destroy(); assertTrue(host().isDestroyed)
         verify(exactly = 1) { persistent.tombstoneApps = true }
     }
@@ -377,12 +380,12 @@ class MiscSettingsActivityRobolectricTest {
     @Test fun enableLogsSwitch_initialState_trueWhenLogsEnabled() { logs = true; launch(); node("settings_activity_enable_logs_switch").assertIsOn(); verify(exactly = 0) { persistent.logsEnabled = any() } }
     @Test fun autoStartSwitch_initialState_trueWhenPrefAutoStartBootUpTrue() { boot = true; launch(); node("settings_activity_auto_start_switch").assertIsOn(); verify(exactly = 0) { persistent.prefAutoStartBootUp = any() } }
     @Test fun dvIpInfoSwitch_initialState_trueWhenDownloadIpInfoTrue() { ipInfo = true; launch(); node("dv_ip_info_switch").assertIsOn(); verify(exactly = 0) { persistent.downloadIpInfo = any() } }
-    @Test fun tombstoneSwitch_initialState_trueWhenTombstoneAppsTrue() { tombstone = true; launch(); node("tombstone_app_switch").assertIsOn(); verify(exactly = 0) { persistent.tombstoneApps = any() }; coVerify(exactly = 0) { refresh.refresh(any()) } }
+    @Test fun tombstoneSwitch_initialState_trueWhenTombstoneAppsTrue() { tombstone = true; launch(); node("tombstone_app_switch").assertIsOn(); verify(exactly = 0) { persistent.tombstoneApps = any() }; coVerify(exactly = 0) { refresh.refresh(any(), any()) } }
     @Test fun tombstoneSwitch_toggleAfterPause_doesNotCrash() {
         launch(); requireNotNull(controller).pause()
         // Preserve the original programmatic-listener contract while the Activity is STARTED.
         state().tombstoneAppSwitch.isChecked = true
-        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
+        coVerify(timeout = 2000, exactly = 1) { refresh.refresh(RefreshDatabase.ACTION_REFRESH_FORCE, any()) }
         verify(exactly = 1) { persistent.tombstoneApps = true }
         requireNotNull(controller).resume(); node("tombstone_app_switch").assertIsOn()
     }

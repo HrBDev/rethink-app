@@ -20,7 +20,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.*
 import androidx.compose.ui.res.painterResource
@@ -76,6 +77,8 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
 @Composable fun LogSearchBar(state: LogScreenState, hint: String, onSearchFocus: () -> Unit = {}, boxed: Boolean = true,
     filters: @Composable () -> Unit = {}, actions: @Composable RowScope.() -> Unit) {
     val focus = LocalFocusManager.current
+    val editorFocus = remember { FocusRequester() }
+    val keyboard = LocalSoftwareKeyboardController.current
     val view = LocalView.current
     val context = LocalContext.current
     LaunchedEffect(state.resumeGeneration) {
@@ -84,8 +87,15 @@ data class LogFilterChip(val key: String, val label: String, val selected: Boole
     }
     @Composable fun Content() {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            TextField(state.search.query, { state.search.setQuery(it) }, Modifier.weight(1f).onFocusChanged { if (it.isFocused) onSearchFocus() }.testTag("log-search"),
-                singleLine = true, placeholder = { Text(hint) }, leadingIcon = { Icon(Icons.Default.Search, null) },
+            TextField(state.search.query, { state.search.setQuery(it) }, Modifier.weight(1f).focusRequester(editorFocus).testTag("log-search"),
+                singleLine = true, placeholder = { Text(hint) }, leadingIcon = {
+                    // The baseline's already-visible SearchView editor never invokes the root
+                    // click listener on focus. Only the root/search affordance expands it and
+                    // clears the initial query; tapping or refocusing the editor preserves it.
+                    IconButton({ onSearchFocus(); editorFocus.requestFocus(); keyboard?.show() }, Modifier.testTag("log-search-open")) {
+                        Icon(Icons.Default.Search, stringResource(R.string.lbl_search))
+                    }
+                },
                 colors = TextFieldDefaults.colors(focusedContainerColor = androidx.compose.ui.graphics.Color.Transparent, unfocusedContainerColor = androidx.compose.ui.graphics.Color.Transparent, focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent, unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = { state.search.submit() }),
                 trailingIcon = { if (state.search.query.isNotEmpty()) IconButton({ state.search.setQuery("") }) { Icon(Icons.Default.Close, stringResource(R.string.fapps_filter_clear_btn)) } })

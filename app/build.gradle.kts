@@ -362,6 +362,8 @@ android {
     lint {
         abortOnError = true
         ignoreTestSources = true
+        // Weblate locales are partial; Android falls back to the default English resources.
+        warning.add("MissingTranslation")
         disable.addAll(
             listOf(
                 "FragmentLiveDataObserve",

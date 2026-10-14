@@ -281,7 +281,7 @@
     </style>
     <style name="OriginalControl_activity_rpn_win_proxy_detail_open_app_selector" parent="@style/Widget.Material3.Button">
         <item name="android:icon">@drawable/ic_loop_back_app</item>
-        <item name="android:iconTint">?attr/primaryTextColor</item>
+        <item name="iconTint">?attr/primaryTextColor</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="backgroundTint">?attr/accentGood</item>

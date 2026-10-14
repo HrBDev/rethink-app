@@ -1,5 +1,6 @@
 package com.celzero.bravedns.ui.adapter
 
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -99,7 +100,7 @@ class CountryServerAdapter(countries: List<CountryItem>, private val listener: C
         val star = remember { RpnControlState() }
         Column(Modifier.fillMaxWidth().padding(bottom = 8.dp).background(themeColor(CardR.attr.cardBackgroundColor), RoundedCornerShape(16.dp)).border(1.dp, themeColor(R.attr.border), RoundedCornerShape(16.dp))) {
             Row(Modifier.fillMaxWidth().clickable { expandedCountries[item.countryCode] = !expanded }.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) { Text(item.flagEmoji, fontSize = 26.sp); Text(item.countryCode.uppercase(Locale.getDefault()), fontSize = 10.sp) }
+                Column(horizontalAlignment = Alignment.CenterHorizontally) { Text(item.flagEmoji, fontSize = 26.sp); Text(item.countryCode.uppercase(LocalLocale.current.platformLocale), fontSize = 10.sp) }
                 Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
                     Text(item.countryName)
                     val total = item.serverGroups.sumOf { it.serverCount }

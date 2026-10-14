@@ -74,7 +74,7 @@ class AppLogsState {
                 b.timeButtons.forEachIndexed{i,node->OriginalChip("activity_app_wise_ip_logs:" + listOf("tb_recent_toggle_btn", "tb_daily_toggle_btn", "tb_weekly_toggle_btn")[i], b.selectedTime==i, {b.onTime(i)}, segmentIndex=i, segmentCount=3, contentColor=node.textColor?.let { androidx.compose.ui.graphics.Color(it) }, backgroundTint=node.backgroundTintList, label={Text(node.text.toString())})}
             }
             b.awlRecyclerConnection.adapter?.let { adapter ->
-                LazyColumn(Modifier.weight(1f), style = OriginalFieldStyle.AppLogSearch,state=scroll){items(adapter.itemCount){adapter.RowAt(it)}}
+                LazyColumn(Modifier.weight(1f),state=scroll){items(adapter.itemCount){adapter.RowAt(it)}}
             }
         }
     }

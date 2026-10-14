@@ -1,6 +1,7 @@
 /* Copyright 2024 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.tour
 
+import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.graphics.Rect
@@ -221,10 +222,10 @@ class TourOverlayController(
                 .verticalScroll(rememberScrollState()).padding(start = 20.dp, top = 18.dp, end = 20.dp, bottom = 16.dp)) {
                 if (step.isPremium) Row(Modifier.fillMaxWidth().padding(bottom = 12.dp).clip(RoundedCornerShape(6.dp)).background(gold.copy(alpha = .12f)).padding(horizontal = 10.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
                     Icon(painterResource(R.drawable.ic_rethink_plus_sparkle), null, Modifier.size(14.dp), tint = gold)
-                    Text(stringResource(R.string.tour_premium_badge_label).uppercase(Locale.getDefault()), Modifier.padding(start = 6.dp), color = gold, fontSize = 10.sp, fontWeight = FontWeight.Medium)
+                    Text(stringResource(R.string.tour_premium_badge_label).uppercase(LocalLocale.current.platformLocale), Modifier.padding(start = 6.dp), color = gold, fontSize = 10.sp, fontWeight = FontWeight.Medium)
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(stringResource(R.string.tour_step_counter, step.position, step.total).uppercase(Locale.getDefault()), Modifier.weight(1f), color = themeColor(R.attr.primaryTextColor).copy(alpha = .55f), fontSize = 11.sp)
+                    Text(stringResource(R.string.tour_step_counter, step.position, step.total).uppercase(LocalLocale.current.platformLocale), Modifier.weight(1f), color = themeColor(R.attr.primaryTextColor).copy(alpha = .55f), fontSize = 11.sp)
                     IconButton(onClick = ::skipTour, modifier = Modifier.size(32.dp)) { Icon(painterResource(R.drawable.ic_cross), stringResource(R.string.tour_btn_skip), Modifier.size(24.dp), tint = themeColor(R.attr.primaryLightColorText)) }
                 }
                 Text(stringResource(step.titleRes), Modifier.padding(top = 8.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 16.sp, fontWeight = FontWeight.Bold)

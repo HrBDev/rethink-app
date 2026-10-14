@@ -19,7 +19,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -71,7 +71,7 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
 }
 
 @Composable internal fun DnsCryptEditor(nextIndices: suspend () -> Pair<Int, Int>, onApply: (String, String, String, Boolean) -> String?, onDismiss: () -> Unit) {
-    val context = LocalContext.current
+    val resources = LocalResources.current
     val defaultName = stringResource(R.string.cd_dns_crypt_name_default)
     var name by remember { mutableStateOf(defaultName) }
     var stamp by remember { mutableStateOf("") }
@@ -83,12 +83,12 @@ internal enum class DnsServerKind { DOH, DOT, ODOH }
     LaunchedEffect(Unit) {
         val indices = withContext(Dispatchers.IO) { nextIndices() }
         serverIndex = indices.first; relayIndex = indices.second
-        name = context.getString(R.string.cd_dns_crypt_name, serverIndex.toString())
+        name = resources.getString(R.string.cd_dns_crypt_name, serverIndex.toString())
     }
     DnsEditorDialog(stringResource(R.string.cd_dns_crypt_dialog_heading), onDismiss, { error = onApply(name, stamp, description, relay) }) {
         Column(Modifier.selectableGroup()) {
-            DnsRadio(stringResource(R.string.cd_dns_crypt_resolver_heading), !relay) { relay = false; name = context.getString(R.string.cd_dns_crypt_name, serverIndex.toString()) }
-            DnsRadio(stringResource(R.string.cd_dns_crypt_relay_heading), relay) { relay = true; name = context.getString(R.string.cd_dns_crypt_relay_name, relayIndex.toString()) }
+            DnsRadio(stringResource(R.string.cd_dns_crypt_resolver_heading), !relay) { relay = false; name = resources.getString(R.string.cd_dns_crypt_name, serverIndex.toString()) }
+            DnsRadio(stringResource(R.string.cd_dns_crypt_relay_heading), relay) { relay = true; name = resources.getString(R.string.cd_dns_crypt_relay_name, relayIndex.toString()) }
         }
         DnsField(name, { name = it }, stringResource(R.string.cd_dns_crypt_dialog_name), "dns_name")
         DnsField(stamp, { stamp = it }, stringResource(R.string.cd_dns_crypt_dialog_stamp), "dns_stamp", singleLine = false)

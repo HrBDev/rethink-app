@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.settings
 
+import androidx.compose.ui.platform.LocalLocale
 import android.content.Context
 import android.graphics.Typeface
 import androidx.compose.foundation.Image
@@ -18,7 +19,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
@@ -64,7 +64,8 @@ fun ConfigureMenuContent(b: ConfigureMenuState) {
         Column(Modifier.fillMaxSize().safeDrawingPadding().verticalScroll(rememberScrollState()).padding(bottom = homeNavigationClearance(90.dp, contentGap = 10.dp))) {
             Column(Modifier.padding(start = 20.dp, top = 20.dp, end = 20.dp, bottom = 8.dp)) {
                 val title = b.fhsTitleRethink.text.toString()
-                Text(if (b.fhsTitleRethink.isAllCaps) title.uppercase(LocalConfiguration.current.locales[0]) else title,
+                val locale = LocalLocale.current.platformLocale
+                Text(if (b.fhsTitleRethink.isAllCaps) title.uppercase(locale) else title,
                     Modifier.fillMaxWidth().alpha(.55f).semantics { heading() }, fontSize = 24.sp, letterSpacing = 6.sp,
                     fontFamily = FontFamily(Typeface.create("sans-serif-smallcaps", Typeface.NORMAL)), fontWeight = FontWeight.Medium,
                     color = themeColor(R.attr.colorOnSurface))

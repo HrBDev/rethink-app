@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.home
 
+import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import android.content.res.ColorStateList
 import android.text.Spanned
@@ -159,7 +160,7 @@ private fun RulesCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
             NativePager(b.fhsFirewallRulesPager, Modifier.fillMaxWidth().weight(1f, false)) { page ->
                 Row(Modifier.fillMaxWidth().clickable { pages.onRulePageTapped?.invoke(page) }.padding(start = 10.dp, top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(pages.counts[page], color = themeColor(R.attr.primaryTextColor), fontFamily = FontFamily.Monospace, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                    Text(pages.labels[page].replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }, Modifier.weight(1f).padding(start = 6.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 12.sp)
+                    Text(pages.labels[page].replaceFirstChar { if (it.isLowerCase()) it.titlecase(LocalLocale.current.platformLocale) else it.toString() }, Modifier.weight(1f).padding(start = 6.dp), color = themeColor(R.attr.primaryTextColor), fontSize = 12.sp)
                 }
             }
             Dots(listOf(b.fhsRulesDot0, b.fhsRulesDot1, b.fhsRulesDot2), wide)
@@ -187,7 +188,7 @@ private fun ProxyCard(b: HomePresentation, modifier: Modifier, wide: Boolean) {
                                     Box(Modifier.size(5.dp).background(color, CircleShape))
                                     HomeText(count, Modifier.padding(start = 2.dp))
                                 }
-                                Text(stringResource(labels[index]).uppercase(Locale.getDefault()), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .85f), fontSize = 8.sp, textAlign = TextAlign.Center)
+                                Text(stringResource(labels[index]).uppercase(LocalLocale.current.platformLocale), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .85f), fontSize = 8.sp, textAlign = TextAlign.Center)
                             }
                         }
                     }
@@ -478,7 +479,7 @@ private fun StartBorder(b: HomePresentation, modifier: Modifier) {
 private fun HomeText(node: HomeNode, modifier: Modifier = Modifier, align: TextAlign? = null, animated: Boolean = false) {
     if (!node.isVisible) return
     val size = (node.textSize / node.context.resources.displayMetrics.scaledDensity).sp
-    val text = if (node.allCaps) node.text?.toString()?.uppercase(Locale.getDefault()).orEmpty() else node.text ?: ""
+    val text = if (node.allCaps) node.text?.toString()?.uppercase(LocalLocale.current.platformLocale).orEmpty() else node.text ?: ""
     val color = node.textColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor)
     val font = if (node.monospace) FontFamily.Monospace else FontFamily.SansSerif
     if (animated) AnimatedContent(text, modifier.alpha(node.alpha), transitionSpec = { fadeIn(tween(150, 150)) togetherWith fadeOut(tween(150)) }, label = "home status") { value ->

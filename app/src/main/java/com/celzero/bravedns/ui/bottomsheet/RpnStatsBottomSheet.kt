@@ -25,6 +25,7 @@ import android.view.ViewGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.celzero.bravedns.ui.compose.RethinkTheme
@@ -273,7 +274,7 @@ class RpnStatsBottomSheet : BaseBottomSheetDialogFragment() {
             val meta = getString(R.string.rpn_stats_conn_count, formatCount(item.count)) + " · " +
                 humanReadableByteCount(item.downloadBytes ?: 0L, true) + " 🔻 · " +
                 humanReadableByteCount(item.uploadBytes ?: 0L, true) + " 🔺"
-            StatisticsRow(item.appOrDnsName ?: context.getString(R.string.lbl_unknown), meta, "",
+            StatisticsRow(item.appOrDnsName ?: stringResource(R.string.lbl_unknown), meta, "",
                 humanReadableByteCount(item.totalBytes ?: 0L, true), icon = icon)
         }
         private fun loadIconForUid(context: android.content.Context, uid: Int) =

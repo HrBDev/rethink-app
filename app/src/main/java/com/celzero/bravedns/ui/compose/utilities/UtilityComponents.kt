@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
 
+import androidx.compose.ui.platform.LocalLocale
 import android.graphics.Typeface
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,7 +26,7 @@ import com.celzero.bravedns.ui.compose.themeColor
 
 @Composable
 fun UtilityText(control: UtilityControl, modifier: Modifier = Modifier) {
-    if (control.isVisible) Text(if (control.allCaps) control.text.toString().uppercase(java.util.Locale.getDefault()) else control.text.toString(), modifier.testTag(control.tag),
+    if (control.isVisible) Text(if (control.allCaps) control.text.toString().uppercase(LocalLocale.current.platformLocale) else control.text.toString(), modifier.testTag(control.tag),
         maxLines = control.maxLines, overflow = if (control.ellipsize) androidx.compose.ui.text.style.TextOverflow.Ellipsis else androidx.compose.ui.text.style.TextOverflow.Clip,
         textAlign = if (control.centered) androidx.compose.ui.text.style.TextAlign.Center else androidx.compose.ui.text.style.TextAlign.Start,
         color = control.textColor?.let(::Color) ?: themeColor(R.attr.primaryTextColor),

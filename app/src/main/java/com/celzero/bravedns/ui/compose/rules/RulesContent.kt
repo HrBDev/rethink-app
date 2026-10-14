@@ -203,15 +203,17 @@ internal fun RuleEditor(domain: Boolean, uid: Int, state: RulesPageState, onSubm
 internal data class RuleAppMetadata(val name: String = "", val icon: ImageBitmap? = null)
 @Composable internal fun rememberRuleApp(uid: Int, domain: Boolean, sheet: Boolean = false): RuleAppMetadata {
     val context = LocalContext.current
-    var result by remember(uid, domain, sheet, context) { mutableStateOf(RuleAppMetadata()) }
-    LaunchedEffect(uid, domain, sheet, context) { result = withContext(Dispatchers.IO) {
-        if (sheet && uid == Constants.UID_EVERYBODY) return@withContext RuleAppMetadata(context.getString(R.string.firewall_act_universal_tab).replaceFirstChar(Char::titlecase), if (domain) Utilities.getDefaultIcon(context)?.toBitmap()?.asImageBitmap() else null)
+    val resources = LocalResources.current
+    val configuration = LocalConfiguration.current
+    var result by remember(uid, domain, sheet, context, configuration) { mutableStateOf(RuleAppMetadata()) }
+    LaunchedEffect(uid, domain, sheet, context, configuration) { result = withContext(Dispatchers.IO) {
+        if (sheet && uid == Constants.UID_EVERYBODY) return@withContext RuleAppMetadata(resources.getString(R.string.firewall_act_universal_tab).replaceFirstChar(Char::titlecase), if (domain) Utilities.getDefaultIcon(context)?.toBitmap()?.asImageBitmap() else null)
         val names = FirewallManager.getAppNamesByUid(uid)
         val info = FirewallManager.getAppInfoByUid(uid)
         val label = when {
-            uid == Constants.UID_EVERYBODY -> context.getString(R.string.firewall_act_universal_tab).replaceFirstChar(Char::titlecase)
-            names.isEmpty() -> if (domain && !sheet) context.getString(R.string.network_log_app_name_unnamed, "($uid)") else context.getString(R.string.network_log_app_name_unknown) + " ($uid)"
-            names.size >= 2 -> context.getString(R.string.ctbs_app_other_apps, names[0], (names.size - 1).toString())
+            uid == Constants.UID_EVERYBODY -> resources.getString(R.string.firewall_act_universal_tab).replaceFirstChar(Char::titlecase)
+            names.isEmpty() -> if (domain && !sheet) resources.getString(R.string.network_log_app_name_unnamed, "($uid)") else resources.getString(R.string.network_log_app_name_unknown) + " ($uid)"
+            names.size >= 2 -> resources.getString(R.string.ctbs_app_other_apps, names[0], (names.size - 1).toString())
             else -> names[0]
         }
         RuleAppMetadata(label, (Utilities.getIcon(context, info?.packageName.orEmpty(), info?.appName.orEmpty()) ?: Utilities.getDefaultIcon(context))?.toBitmap()?.asImageBitmap())

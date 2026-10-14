@@ -8,7 +8,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
@@ -23,15 +22,14 @@ import com.celzero.bravedns.util.UIUtils.getCountryNameFromFlag
     val fractions=StatsInsightsMath.normalizeFractions(items.map{it.count.toLong()})
     val good=themeColor(R.attr.accentGood);val bad=themeColor(R.attr.accentBad);val track=themeColor(R.attr.colorSurfaceContainerHighest)
     val base=if(section.blocked)bad else good
-    val ctx=LocalContext.current
     val rows:@Composable ()->Unit={
         Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
             items.take(5).forEachIndexed { i,item ->
                 val label=when(section) {
                     AppInsightsSection.ACTIVE_CONNS,AppInsightsSection.IPS,AppInsightsSection.BLOCKED_IPS -> item.ipAddress
                     AppInsightsSection.DOMAINS,AppInsightsSection.BLOCKED_DOMAINS -> item.appOrDnsName?.dropLastWhile{it=='.'}.orEmpty()
-                    AppInsightsSection.COUNTRIES -> getCountryNameFromFlag(item.flag).takeIf{it.isNotEmpty()&&!it.all{c->c=='-'}}?:ctx.getString(R.string.two_argument_space,ctx.getString(R.string.network_log_app_name_unknown),item.flag)
-                    AppInsightsSection.ASN,AppInsightsSection.BLOCKED_ASN -> ctx.getString(R.string.two_argument_space,item.flag,item.appOrDnsName.orEmpty())
+                    AppInsightsSection.COUNTRIES -> getCountryNameFromFlag(item.flag).takeIf{it.isNotEmpty()&&!it.all{c->c=='-'}}?:stringResource(R.string.two_argument_space,stringResource(R.string.network_log_app_name_unknown),item.flag)
+                    AppInsightsSection.ASN,AppInsightsSection.BLOCKED_ASN -> stringResource(R.string.two_argument_space,item.flag,item.appOrDnsName.orEmpty())
                     AppInsightsSection.BLOCKLISTS -> item.appOrDnsName.orEmpty()
                 }
                 val description=stringResource(R.string.ci_desc,label,item.count.toString())

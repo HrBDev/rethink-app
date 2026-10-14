@@ -1,5 +1,6 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.utilities
+import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.background
@@ -90,7 +91,7 @@ data class BubbleQuickFix(val drawable: Int, val label: Int, val active: Boolean
 }
 @Composable fun BubbleBlockedRow(app: BlockedAppInfo, action: (BlockedAppInfo) -> Unit, now: Long = remember(app) { System.currentTimeMillis() }) {
     val age = bubbleBlockedAge(app.lastBlocked, now)
-    val ago = when (age.unit) { "now" -> stringResource(R.string.bubble_time_just_now); "minutes" -> stringResource(R.string.bubble_time_minutes_ago, age.value); "hours" -> stringResource(R.string.bubble_time_hours_ago, age.value); else -> SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date(app.lastBlocked)) }
+    val ago = when (age.unit) { "now" -> stringResource(R.string.bubble_time_just_now); "minutes" -> stringResource(R.string.bubble_time_minutes_ago, age.value); "hours" -> stringResource(R.string.bubble_time_hours_ago, age.value); else -> SimpleDateFormat("MMM dd, HH:mm", LocalLocale.current.platformLocale).format(Date(app.lastBlocked)) }
     BubbleRow(app.appName, app.packageName, stringResource(R.string.bubble_blocked_count, app.count), ago, true, stringResource(R.string.bubble_allow_btn), "bubble.allow.${app.uid}", { action(app) }, true)
 }
 @Composable private fun BubbleRow(name: String, pkg: String, line: String, time: String?, blocked: Boolean, action: String, tag: String, click: () -> Unit, bad: Boolean) {

@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 package com.celzero.bravedns.ui.compose.fields
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Rect
@@ -32,6 +33,7 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsPropertyKey
@@ -85,6 +87,8 @@ internal data class FieldResources(
 )
 
 /** Resource lookup only. No Views, layout inflation, or theme-independent M3 substitutions. */
+// These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
+@SuppressLint("ResourceType")
 internal fun resolveFieldResources(context: Context, style: OriginalFieldStyle): FieldResources {
     val density = context.resources.displayMetrics.density
     val widgetStyle = if (style.outlined) MaterialR.style.Widget_Material3_TextInputLayout_OutlinedBox
@@ -199,21 +203,22 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
     val cursor = fieldCursorColor(normalCursor, errorColor, isError)
     val appearance = if (style == OriginalFieldStyle.Dns || style == OriginalFieldStyle.DnsProxy)
         resolveUtilityStyle(context, MaterialR.attr.textAppearanceBodyLarge) else 0
-    val size = style.textSizeSp ?: if (style == OriginalFieldStyle.Rule) utilityDimensionSp(context, R.dimen.large_font_text_view)
+    val textSize = style.textSizeSp ?: if (style == OriginalFieldStyle.Rule) utilityDimensionSp(context, R.dimen.large_font_text_view)
         else if (style.search) 16f else null
-    val baseText = utilityTextStyle(appearance = appearance, size = size,
+    val baseText = utilityTextStyle(appearance = appearance, size = textSize,
         family = if (style.search) "sans-serif" else null,
         defaultStyleAttribute = if (style == OriginalFieldStyle.Notes) android.R.attr.editTextStyle else androidx.appcompat.R.attr.editTextStyle)
     val resolvedText = baseText.merge(textStyle).copy(
         color = if (textStyle.color != Color.Unspecified) textStyle.color else foreground,
         platformStyle = PlatformTextStyle(includeFontPadding = style != OriginalFieldStyle.ServerSearch))
+    val invalidInputMessage = errorMessage ?: stringResource(R.string.compose_field_invalid_input)
     // Minimum touch bounds grow naturally with font scale and multiline content. No fixed field height.
     val fieldModifier = modifier
         .then(if (resources.mode == 2 && label != null) Modifier.padding(top = 8.dp) else Modifier)
         .heightIn(min = maxOf(if (style.materialBox) 56f else 48f, resources.minHeight).dp)
         .semantics {
             originalFieldFamily = style.name
-            if (isError) error(errorMessage ?: context.getString(R.string.compose_field_invalid_input))
+            if (isError) error(invalidInputMessage)
         }
     CompositionLocalProvider(LocalTextSelectionColors provides TextSelectionColors(normalCursor, resources.highlight)) {
     editor(fieldModifier, resolvedText, cursor, interaction) { inner ->
@@ -257,7 +262,7 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
                     label = label, placeholder = if (expandedHint) placeholder else null, leadingIcon = leading, trailingIcon = trailing,
                     supportingText = supporting, colors = colors,
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
-                    container = { OutlinedTextFieldDefaults.Container(enabled, isError, interaction, colors, shape = resources.shape,
+                    container = { OutlinedTextFieldDefaults.Container(enabled, isError, interaction, colors = colors, shape = resources.shape,
                         focusedBorderThickness = resources.focusedStrokeWidth.dp, unfocusedBorderThickness = resources.strokeWidth.dp) })
                 else TextFieldDefaults.DecorationBox(
                     value = decorationValue, innerTextField = decoratedInner, enabled = enabled, singleLine = singleLine,
@@ -265,7 +270,7 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
                     label = label, placeholder = if (expandedHint) placeholder else null, leadingIcon = leading, trailingIcon = trailing,
                     supportingText = supporting, colors = colors,
                     contentPadding = if (style == OriginalFieldStyle.RpnSsid) PaddingValues(16.dp) else TextFieldDefaults.contentPaddingWithLabel(),
-                    container = { TextFieldDefaults.Container(enabled, isError, interaction, colors, shape = resources.shape,
+                    container = { TextFieldDefaults.Container(enabled, isError, interaction, colors = colors, shape = resources.shape,
                         focusedIndicatorLineThickness = resources.focusedStrokeWidth.dp, unfocusedIndicatorLineThickness = resources.strokeWidth.dp) })
             }
         } else {
@@ -297,6 +302,8 @@ private fun OriginalField(value: String, modifier: Modifier, style: OriginalFiel
  * The caller still owns its dialog/menu and selection callbacks.
  */
 @Composable
+// These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
+@SuppressLint("ResourceType")
 fun OriginalSpinner(value: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current

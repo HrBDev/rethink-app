@@ -2,6 +2,7 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.trafficlogs
 
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.*
@@ -53,7 +54,7 @@ internal val LogAccelerateDecelerate = Easing { fraction -> ((kotlin.math.cos((f
                     }
                     if (hasDetails) Icon(painterResource(R.drawable.ic_arrow_down), null, Modifier.size(24.dp).rotate(rotation), tint = themeColor(R.attr.svgStrokeColor))
                 }
-                Text(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date(event.timestamp)), style = MaterialTheme.typography.bodySmall)
+                Text(SimpleDateFormat("yyyy-MM-dd HH:mm:ss", LocalLocale.current.platformLocale).format(Date(event.timestamp)), style = MaterialTheme.typography.bodySmall)
                 Row(verticalAlignment = Alignment.CenterVertically) { Text(event.source.name, style = MaterialTheme.typography.labelSmall); if (event.userAction) Icon(painterResource(R.drawable.ic_person), null, Modifier.padding(start = 18.dp).size(16.dp), tint = themeColor(R.attr.accentGood)) }
                 Text(event.message, color = themeColor(R.attr.primaryLightColorText), style = MaterialTheme.typography.bodyMedium)
                 AnimatedVisibility(expanded, enter = fadeIn(tween(300, easing = LogAccelerateDecelerate)), exit = fadeOut(tween(300, easing = LogAccelerateDecelerate))) { SelectionContainer { Text(event.details.orEmpty(), Modifier.padding(12.dp).padding(top = 4.dp), color = themeColor(R.attr.primaryLightColorText), style = MaterialTheme.typography.bodySmall) } }

@@ -2,6 +2,8 @@
 @file:OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 package com.celzero.bravedns.ui.compose.wireguard
 
+import android.annotation.SuppressLint
+import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import android.app.Activity
 import android.app.Dialog
@@ -145,7 +147,7 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
                     if (buttons.isNotEmpty()) {
                         // The XML ButtonBarLayout explicitly resolves direction from locale, not a
                         // parent view's forced direction. Preserve its neutral spacer and stacking.
-                        val locale = LocalContext.current.resources.configuration.locales[0]
+                        val locale = LocalLocale.current.platformLocale
                         val direction = if (android.text.TextUtils.getLayoutDirectionFromLocale(locale) == android.view.View.LAYOUT_DIRECTION_RTL) LayoutDirection.Rtl else LayoutDirection.Ltr
                         CompositionLocalProvider(LocalLayoutDirection provides direction) {
                             WgDialogButtonBar(neutral != null, Modifier.fillMaxWidth().padding(horizontal = preferredPadding, vertical = 14.dp)) {
@@ -219,6 +221,8 @@ class WgAlertDialogBuilder(private val context: Context, private val theme: Int 
 }
 
 /** Widget colors can override their TextAppearance, including NoDim negative/neutral colors. */
+// These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
+@SuppressLint("ResourceType")
 @Composable private fun wgDialogTextColor(styleAttribute: Int, fallback: Color): Color {
     val context = LocalContext.current
     return remember(context, styleAttribute, fallback) {

@@ -1,6 +1,7 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.home
 
+import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -124,7 +125,7 @@ private fun IntervalCount(node: HomeNode, label: Int, color: Color, modifier: Mo
     Surface(modifier, shape = RoundedCornerShape(16.dp), border = BorderStroke(1.dp, themeColor(R.attr.border))) {
         Column(Modifier.padding(14.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Text(node.text?.toString().orEmpty(), color = color, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Text(stringResource(label).uppercase(Locale.getDefault()), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .7f), fontSize = 12.sp)
+            Text(stringResource(label).uppercase(LocalLocale.current.platformLocale), color = themeColor(R.attr.primaryLightColorText).copy(alpha = .7f), fontSize = 12.sp)
         }
     }
 }
@@ -149,7 +150,7 @@ fun AppActivityNativeRow(
             Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).clickable { onGroupClicked(row) }.padding(vertical = 8.dp).testTag("activity_app_${row.uid}").semantics { stateDescription = if (expanded) "Expanded" else "Collapsed" }, verticalAlignment = Alignment.CenterVertically) {
                 if (icon != null) Image(icon, stringResource(R.string.settings_dns_proxy_dialog_app), Modifier.size(36.dp))
                 else Box(Modifier.size(36.dp).background(themeColor(R.attr.accentGood).copy(alpha = 0x1A / 255f), CircleShape), contentAlignment = Alignment.Center) {
-                    Text(name.take(1).uppercase(Locale.getDefault()), color = themeColor(androidx.appcompat.R.attr.colorPrimary), fontSize = 15.sp, fontWeight = FontWeight.Bold)
+                    Text(name.take(1).uppercase(LocalLocale.current.platformLocale), color = themeColor(androidx.appcompat.R.attr.colorPrimary), fontSize = 15.sp, fontWeight = FontWeight.Bold)
                 }
                 Column(Modifier.weight(1f).padding(start = 12.dp)) {
                     Text(name, color = themeColor(R.attr.primaryTextColor), fontSize = 15.sp)

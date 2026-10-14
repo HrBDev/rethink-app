@@ -1,12 +1,15 @@
 /* Copyright 2026 RethinkDNS and its authors. Licensed under Apache-2.0. */
 package com.celzero.bravedns.ui.compose.networksettings
 
+import android.annotation.SuppressLint
+import androidx.compose.ui.platform.LocalLocale
 import com.celzero.bravedns.ui.compose.controls.*
 import com.celzero.bravedns.ui.compose.fields.OriginalSpinner
 import com.celzero.bravedns.ui.compose.fields.OriginalTextField
 import com.celzero.bravedns.ui.compose.fields.OriginalFieldStyle
 import com.celzero.bravedns.ui.compose.fields.originalFieldFamily
 import android.os.Bundle
+import android.os.Build
 import android.view.View
 import android.view.MotionEvent
 import androidx.compose.animation.core.*
@@ -264,7 +267,7 @@ fun NetworkContent(node: NetworkNode, modifier: Modifier = Modifier, refreshing:
         }
         NetworkKind.SWITCH, NetworkKind.CHECK -> WgCheck(state!!, node.description?.toString(), node.kind == NetworkKind.SWITCH, m)
         NetworkKind.RADIO -> RadioButton(state!!.isChecked, { state.performClick() }, m, enabled = state.isEnabled)
-        NetworkKind.BUTTON -> OriginalButton("dialog_set_proxy:" + node.key.substringAfterLast('.'), { state!!.performClick() }, m, enabled = state!!.isEnabled && state.isClickable) {
+        NetworkKind.BUTTON -> OriginalButton("dialog_set_proxy:" + node.key.orEmpty().substringAfterLast('.'), { state!!.performClick() }, m, enabled = state!!.isEnabled && state.isClickable) {
             Text(networkAnnotatedText(state.text), color = state.textColor?.let(::Color) ?: MaterialTheme.colorScheme.primary, style = utilityTextStyle(node.appearance, resolvedTextSize, node.fontFamily, node.textWeight, node.letterSpacing))
         }
         NetworkKind.FIELD -> NetworkEditField(state!!, m.fillMaxWidth(), node.numeric, node.description?.toString(),
@@ -319,16 +322,24 @@ private fun descendantTexts(node: NetworkNode): List<String> =
     if (node.kind == NetworkKind.TEXT) listOf(node.control?.text?.toString().orEmpty()) else node.children.flatMap(::descendantTexts)
 
 /** Mirrors inputType=number's DigitsKeyListener filtering, including paste and locale digits. */
+@Suppress("DEPRECATION")
 fun networkDigitsOnly(value: String, locale: java.util.Locale): String {
-    val filter = android.text.method.DigitsKeyListener.getInstance(locale, false, false)
+    val filter = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        android.text.method.DigitsKeyListener.getInstance(locale, false, false)
+    } else {
+        android.text.method.DigitsKeyListener.getInstance(false, false)
+    }
     return filter.filter(value, 0, value.length, android.text.SpannedString(""), 0, 0)?.toString() ?: value
 }
 
 /** Compose text input with the selected Android editTextStyle background, rather than an outlined M3 field. */
 @Composable
+// These TypedArray indexes address explicitly ordered attribute arrays, not R.styleable IDs.
+@SuppressLint("ResourceType")
 private fun NetworkEditField(state: WgControlState, modifier: Modifier, numeric: Boolean = false,
                              description: String? = null, style: TextStyle = utilityTextStyle()) {
     val context = LocalContext.current
+    val locale = LocalLocale.current.platformLocale
     val density = LocalDensity.current
     var focused by remember { mutableStateOf(false) }
     val decoration = remember(context) {
@@ -349,7 +360,7 @@ private fun NetworkEditField(state: WgControlState, modifier: Modifier, numeric:
     val hintColor = decoration.third.first?.let { Color(it.getColorForState(states, it.defaultColor)) } ?: themeColor(R.attr.primaryLightColorText)
     val padding = decoration.second
     BasicTextField(state.text.toString(), {
-        state.setText(if (numeric) networkDigitsOnly(it, context.resources.configuration.locales[0]) else it)
+        state.setText(if (numeric) networkDigitsOnly(it, locale) else it)
     }, modifier.heightIn(min = maxOf(48.dp, with(density) { decoration.third.second.toDp() }))
         .semantics { originalFieldFamily = OriginalFieldStyle.Network.name }
         .onFocusChanged { focused = it.isFocused }

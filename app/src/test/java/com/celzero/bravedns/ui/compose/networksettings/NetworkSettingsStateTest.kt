@@ -168,7 +168,9 @@ class NetworkSettingsStateTest {
         assertEquals(1, converted.getLinkAnnotations(0, converted.length).size)
         assertTrue(converted.spanStyles.isNotEmpty())
     }
-    @Test fun numericProxyPortFiltersPastedNonDigitsLikeOriginalInputType() {
+    @Test
+    @Config(sdk = [23, 24, 26, 35])
+    fun numericProxyPortFiltersPastedNonDigitsLikeOriginalInputType() {
         assertEquals("1234", networkDigitsOnly("a12:34. -", java.util.Locale.US))
         assertEquals("", networkDigitsOnly("invalid", java.util.Locale.US))
     }

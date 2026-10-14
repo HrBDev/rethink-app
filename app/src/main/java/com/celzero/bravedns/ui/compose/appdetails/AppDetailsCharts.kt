@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -44,8 +44,8 @@ internal fun AppCountryMap(items: List<AppConnection>) {
     val outline = themeColor(R.attr.secondaryTextColor)
     val stats = remember(items) { items.mapNotNull { item -> CountryInsightsMapper.toCountryCode(item.flag)?.let { it to item.count } }.toMap() }
     val maximum = stats.values.maxOrNull() ?: 0
-    val context = LocalContext.current
-    val summary = stats.entries.take(3).joinToString(", ") { context.getString(R.string.ci_desc, it.key, it.value.toString()) }
+    val resources = LocalResources.current
+    val summary = stats.entries.take(3).joinToString(", ") { resources.getString(R.string.ci_desc, it.key, it.value.toString()) }
     val description = if (summary.isEmpty()) stringResource(R.string.cd_stats_country_map)
         else stringResource(R.string.two_argument_colon, stringResource(R.string.cd_stats_country_map), summary)
     val paths = remember {
